@@ -1,0 +1,20 @@
+# .prettierrc or .prettierrc.yaml
+trailingComma             : "es5"
+tabWidth                  : 4
+semi                      : false
+singleQuote               : true
+endOfLine                 : "lf"
+embeddedLanguageFormatting: "auto"
+
+# HTML
+bracketSpacing            : true
+bracketSameLine           : true
+htmlWhitespaceSensitivity : "css"
+singleAttributePerLine    : true
+
+# Programming Language
+arrowParens               : "avoid"
+
+# Markdown Configuration
+proseWrap                 : "preserve"
+

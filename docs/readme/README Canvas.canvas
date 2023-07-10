@@ -1,0 +1,29 @@
+{
+	"nodes":[
+		{"type":"group","id":"a3216633947f78d7","x":1760,"y":-365,"width":720,"height":1764,"color":"5","label":"SOLUTION: EXECUTE"},
+		{"type":"group","id":"5aa7a9422fcab0fe","x":-1280,"y":-366,"width":680,"height":1745,"color":"1","label":"ASSIGNMENT"},
+		{"type":"group","id":"2c975a54768212ae","x":1000,"y":-366,"width":680,"height":1745,"color":"6","label":"SOLUTTION: DESIGN"},
+		{"type":"group","id":"75c240e4ce2939a8","x":-480,"y":-362,"width":680,"height":1741,"color":"2","label":"PROJECT: PLAN"},
+		{"type":"group","id":"f6ce986d9496d891","x":280,"y":-365,"width":648,"height":1744,"color":"3","label":"SOLUTION: IDEATE"},
+		{"type":"group","id":"99a3158f42f9adae","x":2600,"y":-365,"width":640,"height":1744,"color":"4","label":"SOLUTION: DELIVER"},
+		{"type":"file","file":"docs/readme/README 3 Project ❓✔.md","id":"2d47bb34dbf37477","x":-460,"y":-342,"width":580,"height":831},
+		{"type":"file","file":"docs/readme/README 2 Problem ❓✔.md","id":"9b85b217a7f3e79e","x":308,"y":-345,"width":600,"height":505},
+		{"type":"file","file":"docs/readme/README 10 Build❓✔.md","id":"49ee61f7bd92c746","x":1780,"y":-345,"width":620,"height":400},
+		{"type":"file","file":"docs/readme/README 13 Quality ❓✔.md","id":"ff1cec831616cb4f","x":1786,"y":979,"width":614,"height":400},
+		{"type":"file","file":"docs/readme/README 11 Code ❓✔.md","id":"43d0cb921b866cb1","x":1788,"y":98,"width":612,"height":400},
+		{"type":"file","file":"docs/readme/README 12 Test ❓✔.md","id":"83f0998a6501edf9","x":1788,"y":546,"width":612,"height":400},
+		{"type":"file","file":"docs/readme/README 14 Acceptance ❓✔.md","id":"8ef15728581812cb","x":2627,"y":-345,"width":533,"height":834},
+		{"type":"file","file":"docs/readme/README 7 Architecture ❓✔.md","id":"629d441d225c3c96","x":1020,"y":-346,"width":580,"height":506},
+		{"type":"file","file":"docs/readme/README 1 Introduction ❓✔.md","id":"3d0440f99a81cbb5","x":-1251,"y":-346,"width":571,"height":506},
+		{"type":"text","text":"# **`P4 FULL STACK TOOLKIT`**","id":"79985c227997e4b8","x":770,"y":-720,"width":370,"height":60},
+		{"type":"file","file":"docs/readme/README 15 Deploy ❓✔.md","id":"cf3e5c7e0711586f","x":2627,"y":546,"width":540,"height":774},
+		{"type":"file","file":"docs/readme/README 9 Data ❓✔.md","id":"bfc56e808ce75351","x":1020,"y":840,"width":580,"height":480},
+		{"type":"file","file":"docs/readme/README 8 Design ❓✔.md","id":"cfb483f5b8d8b29c","x":1020,"y":240,"width":580,"height":537},
+		{"type":"file","file":"docs/readme/README 5 Scope ❓✔.md","id":"fd9fccaa9dc74f15","x":300,"y":840,"width":600,"height":480},
+		{"type":"file","file":"docs/readme/README 4 Concept ❓✔.md","id":"fe7b21a3c4490a18","x":296,"y":240,"width":608,"height":537},
+		{"type":"file","file":"docs/readme/README 6 Plan ❓✔.md","id":"051eb94e6464d0ea","x":-460,"y":546,"width":580,"height":774},
+		{"type":"file","file":"docs/readme/README 17 Assessment ❓✔.md","id":"f5b07049c00a7abf","x":-1260,"y":840,"width":580,"height":480},
+		{"type":"file","file":"docs/readme/README 16 DX ❓✔.md","id":"c5fee9e0d4415c12","x":-1260,"y":240,"width":571,"height":506}
+	],
+	"edges":[]
+}

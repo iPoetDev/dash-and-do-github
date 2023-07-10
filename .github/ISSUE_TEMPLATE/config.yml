@@ -1,0 +1,35 @@
+#file: noinspection YAMLSchemaValidation
+blank_issues_enabled: true
+contact_links:
+  -
+    name: Sprint to Milestone Planning
+    url: https://github.com/iPoetDev/P4Template/milestones
+    about: Project Planning & Organisation
+  -
+    name: Agile Projects Tool
+    url: https://github.com/iPoetDev/P4Template/projects
+    about: Agile Tool for Epics & User Stories per Sprint
+  -
+    name: Project & Academic Wiki
+    url: https://github.com/iPoetDev/P4Template/wiki
+    about: Appendicies, Commentary & Assessment criteria
+  -
+    name: Repository Discussions
+    url: https://github.com/iPoetDev/P4Template/discussions
+    about: Open forum and contact point
+  -
+    name: Code Institute Student Handbook
+    url: http://4060571.hs-sites.com/student-experience-handbook-2022/2023  #noqa
+    about: View Code Institute's policies and procedures in this comprehensive handbook.
+  -
+    name: Code Institute Tutoring Guidelines
+    url: https://code-institute-org.github.io/tutoring-info/guidelines/
+    about: Tutoring Guidelines from Code of Institute
+  -
+    name: GitHub Community Support
+    url: https://github.com/orgs/community/discussions
+    about: Please ask and answer questions here.
+  -
+    name: GitHub Security Bug Bounty
+    url: https://bounty.github.com/
+    about: Please report security vulnerabilities here.

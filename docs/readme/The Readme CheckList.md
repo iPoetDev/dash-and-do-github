@@ -1,0 +1,299 @@
+- [ ] Completed?
+- [ ] Checklist
+- [ ] Outline
+
+- [ ] 1.0 Introduction
+    - [x] 1.1 Goals
+        - [ ] *Criteria:*
+        - [x] *Completed?*
+    - [ ] 1.2 Live App
+        - [ ] *Criteria:*
+        - [ ] *Completed?*?
+    - [ ] 1.3 App Visuals
+        - [ ] *Criteria:*
+        - [ ] *Completed?*
+- [ ] 2.0 Problem
+    - [x] **[DONE]**
+    - [x] 2.1 Domain Driven Scenarios
+        - [x] *Criteria:*
+        - [x] *Completed?*
+    - [x] 2.2 Problem Concern
+        - [x] *Criteria:*
+        - [x] *Completed?*
+    - [x] 2.3 Developer Motivations
+        - [x] *Criteria:*
+        - [x] *Completed?*
+- [ ] 3.0 Project
+    - [x] 3.1 Project Brief
+        - [x] *Criteria:*
+        - [ ] ADR?
+        - [x] *Completed?*
+    - [x] 3.2 Project Methodology
+        - [x] *Criteria:*
+        - [x] *Completed?*
+    - [ ] 3.3 Agile Artefacts
+        - [x] *Criteria:*
+        - [x] *Completed?*
+        - [ ] 3.3.1. Templates
+    - [ ] 3.4 Readme
+        - [ ] *Criteria:*
+        - [ ] *Completed?*
+- [ ] 4.0 Concept
+    - [ ] 4.1 Read World Domain
+        - [x] *Criteria:*
+        - [x] *Completed?*
+    - [ ] 4.2 Target Audiences
+        - [ ] *Criteria:*
+        - [x] *Completed?*
+    - [ ] 4.3 Web App Capabilities
+        - [ ] *Criteria:*
+        - [x] *Completed?*
+    - [ ] 4.4 Real User Frustration
+        - [ ] 4.4.1 Challenge: Creating Labels
+        - [ ] *Criteria:*
+        - [ ] *Completed?*
+        - [ ] 4.4.2 Challenge: Common Files
+            - [ ] *Criteria:*
+            - [ ] *Completed?*
+        - [ ] 4.4.3 Challenge: Cross Repository Actions & Activities
+            - [ ] *Criteria:*
+            - [ ] *Completed?*
+    - [ ] 4.5 Real World Solution & Idea
+        - [ ] *Criteria:*
+        - [ ] *Completed?*
+        - [ ] 4.4.1 Criteria:
+- [ ] 5.0 Scope
+    - [ ] 5.1.Pre-conditions
+        - [ ] *Criteria:*
+        - [x] *Completed?*
+    - [ ] 5.2 Assumptions
+        - [ ] *Criteria:*
+        - [x] *Completed?*
+    - [ ] 5.3 Constraints
+        - [ ] *Criteria:*
+        - [x] *Completed?*
+- [ ] 6.0 Plan
+    - [ ] 6.1 Planning Tool
+        - [ ] *Criteria:*
+        - [ ] *ADR*:
+        - [x] *Completed?*
+    - [ ] 6.2 Sprints
+        - [ ] *Criteria:*
+        - [x] *Completed?*
+    - [ ] 6.3 Workflows
+        - [ ] *Criteria:*
+        - [ ] *Completed?*
+    - [ ] 6.4 Decisions
+        - [ ] *Criteria:*
+        - [ ] *Template*:
+        - [ ] *Completed?*
+        - [ ] 6.4.1 Pre-Set Choices
+            - [ ] 6.4.1.1 PROJECT
+                - [ ] *Criteria:*
+                - [ ] *Completed?*
+            - [ ] 6.4.1.1 SOLUTION
+                - [ ] *Criteria:*
+                - [ ] *Completed?*
+        - [ ]  6.4.2 Developer Selects
+            - [ ] 6.4.2.1 PROJECT
+                - [ ] *Criteria:*
+                - [ ] *Completed?*
+            - [ ] 6.4.2.1 SOLUTION
+                - [ ] *Criteria:*
+                - [ ] *Completed?*
+    - [ ] 6.5 Epics
+        - [ ] *Criteria:*
+        - [ ] *Template*:
+        - [ ] *Completed?*
+        - [ ] 6.5.1. Definition of Done
+    - [ ] 6.6 Features
+        - [ ] *Criteria:*
+        - [ ] *Template*:
+        - [ ] *Completed?*
+        - [ ] 6.6.1. Definition of Done
+    - [ ] 6.7 User Stories
+        - [ ] *Criteria:*
+        - [ ] *Template*:
+        - [ ] *Completed?*
+        - [ ] 6.7.1. Definition of Done
+    - [ ] 6.8 Test Methodologies
+        - [ ] *Criteria:*
+        - [ ] *Template*:
+        - [ ] *Completed?*
+        - [ ] 6.8.1. Definition of Done
+    - [ ] 6.9 Quality Assurance
+        - [ ] *Criteria:*
+        - [ ] *Completed?*
+        - [ ] 6.9.1. Definition of Done
+    - [ ] 6.10 Security Assurance
+        - [ ] *Criteria:*
+        - [ ] *Template*:
+        - [ ] *Completed?*
+        - [ ] 6.10.1. Definition of Done
+    - [ ] 6.11 User Acceptance
+        - [ ] *Criteria:*
+        - [ ] *Template*:
+        - [ ] *Completed?*
+        - [ ] 6.10.1. Definition of Done
+    - [ ] 6.12 Verification
+        - [ ] 6.12.1. PROJECT: Definition of Done
+            - [ ] *Criteria:*
+            - [ ] *Completed?*
+        - [ ] 6.12.2. SOLUTION: Definition of Done
+            - [ ] *Criteria:*
+            - [ ] *Completed?*
+        - [ ] 6.12.3. ASSESSMENT: Definition of Done
+            - [ ] *Criteria:*
+            - [ ] *Completed?*
+- [ ] 7.0 Architecture
+    - [ ] *Criteria:*
+    - [ ] *Completed?*
+    - [ ] 7.1 ?
+- [ ] 8.0 Design
+    - [ ] *Criteria:*
+    - [ ] *Completed?*
+    - [ ] 8.1 ?
+- [ ] 9.0 Data
+    - [ ] *Criteria:*
+    - [ ] *Completed?*
+    - [ ] 9.1 ?
+- [ ] 10.0 Build
+    - [ ] 10.1 Branching
+        - [ ] *Criteria:*
+        - [ ] *ADR*:
+        - [ ] *Completed?*
+        - [ ] 10.1.1 Epic-Flow
+        - [ ] 10.1.2 Review-Flow
+        - [ ] 10.1.3 Deploy-Flow
+    - [ ] 10.2 Commit
+        - [ ] *Criteria:*
+        - [ ] *ADR*:
+        - [ ] *Completed?*
+        - [ ] 10.2.1 Types
+    - [ ] 10.3 Pre-Commit
+        - [ ] *Criteria:*
+        - [ ] *ADR*:
+        - [ ] *Completed?*
+    - [ ] 10.4 Tooling
+        - [ ] 10.4.1 Languages
+            - [ ] *Criteria:*
+            - [ ] *ADR*:
+            - [ ] *Completed?*
+            - [ ] 10.4.1.1. Libraries, Framework, Component
+        - [ ] 10.4.2 IDE & Extensions
+        - [ ] 10.4.3 Code Linters
+        - [ ] 10..4.4 AI Tools
+        - [ ] 10.4.5 GitHub Apps/CI
+- [ ] 11.0 Code
+    - [ ] 11.1 Code Styles
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+        - [ ] 11.1.1 Semantic HTML
+        - [ ] 11.1.2 Modern CSS
+        - [ ] 11.1.3 EMCA JavaScript
+        - [ ] 11.1.4 PEP Python
+    - [ ] 11.2 Code Linting
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+    - [ ] 11.3 Code Organisation
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+    - [ ] 11.4 Clean Robust Code
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+    - [ ] 11.5 Code & Data Secrets
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+    - [ ] 11.6 Code Review
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+    - [ ] 11.7 Code AI Prompts
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+        - [ ] 11.7.1 Code Explain Prompt
+        - [ ] 11.7.2 Code Refactor Prompt
+        - [ ] 11.7.3 Code Analysis Prompt
+        - [ ] 11.7.4 Code Quality Prompt
+        - [ ] 11.7.5 Code Debug Prompt
+- [ ] 12.0 Test
+    - [ ] 12.__ AI Test Generation
+- [ ] 13.0 Quality
+    - [ ] 13.1 Report
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+    - [ ] 13.2 HTML Validation
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+    - [ ] 13.3 CSS Validation
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+    - [ ] 13.4 JavaScript QA
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+    - [ ] 13.5 Python QA
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+- [ ] 14.0 Acceptance
+    - [ ] 14.1 Epic to Features
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+    - [ ] 14.2 Epic to Story
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+    - [ ] 14.3 User Acceptance
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+    - [ ] 14.4 Screenshots
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+        - [ ] 14.4.1 Feature
+        - [ ] 14.4.2 Feature
+        - [ ] 14.4.3 Feature
+        - [ ] 14.4.4 Feature
+        - [ ] 14.4.5 Feature
+- [ ] 15.0 Deploy
+    - [ ] Deployment Flow
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+        - [ ] Heroku Create App
+            - [ ] *Criteria*
+            - [ ] *Completed?* 🛫
+            - [ ] Workflow
+        - [ ] App Information
+        - [ ] Heroku Branch Deployment
+            - [ ] *Criteria*
+            - [ ] *Completed?* 🛫
+        - [ ] Heroku Configuration
+            - [ ] *Criteria*
+            - [ ] *Completed?* 🛫
+        - [ ] Heroku CLI Logs
+            - [ ] *Criteria*
+            - [ ] *Completed?* 🛫
+        - [ ] Repository Services
+            - [ ] *Criteria*
+            - [ ] *Completed?* 🛫
+        - [ ] Local Git Service / IDEv
+            - [ ] *Criteria*
+            - [ ] *Completed?* 🛫
+        - [ ] Deployment Environment
+            - [ ] *Criteria*
+            - [ ] *Completed?* 🛫
+            - [ ] App Web URI
+- [ ] 16.0 DX
+    - [ ] *Completed?* 🛫
+    - [ ] 16.1 Development Approach
+    - [ ] 16.2 Developer AI Tool Usage
+- [ ] 17.0 Assessment
+    - [ ]
+        171. References & Acknowledgements
+
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+    - [ ] 17.2 Credits
+        - [ ] *Criteria*
+        - [ ] *Completed?* 🛫
+        - [ ] 17.2.1. Guides, Books, Articles
+        - [ ] 17.2.2. Videos
+        - [ ] 17.2.3. Library Documentation
+        - [ ] 17.2.4. GitHub
+        - [ ] 17.2.5. Student Projects

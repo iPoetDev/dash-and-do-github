@@ -2,10 +2,7 @@
 name: '07 BUG: Exception | Issue | Usability | Function | Responsiveness'
 about: 'BUG: Code Exception | Testing Issue | UI/UX Concern | UAT Issue'
 title: 'BUG ::   '
-labels: 'FIXES: Found Bugs | Issues | Full Triage, NO-FIXES: Won''t Fix Bug | Issues
-  | Full Triage, TRIAGE: Dependency: Blocker, TRIAGE: Dependency: Update, TRIAGE:
-  Fixable, TRIAGE: Fixed, TRIAGE: Invalid, TRIAGE: More Information, TRIAGE: Not Reproduced,
-  TRIAGE: WontFix, TYPES: Bug'
+labels: ''
 assignees: iPoetDev
 
 ---

@@ -2,7 +2,7 @@
 name: '06 ACCEPT: User Acceptance Criteria'
 about: 'UAC: Scenario, Feature:  ||  Given ... When ... Then'
 title: 'UAC-000? ::'
-labels: 'Feature: User Acceptance Criteria (UAC)'
+labels: ''
 assignees: iPoetDev
 
 ---

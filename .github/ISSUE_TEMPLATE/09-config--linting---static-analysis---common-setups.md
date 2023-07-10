@@ -2,9 +2,7 @@
 name: '09 CONFIG: Linting | Static Analysis | Common Setups'
 about: 'CONFIG: Public acceptable | Well Known Configuration'
 title: 'CONFIG :: '
-labels: 'Config: Code Quality, Config: Code Style, CONFIG: Lint, Config: Pre-Commit,
-  Focus: Back End Server, Focus: Backing DB Services, Focus: Build Integration, Focus:
-  Front-End Client, Focus: Project Repository, TYPE: Config'
+labels: ''
 assignees: iPoetDev
 
 ---

@@ -2,10 +2,10 @@
 name: '00 SPRINT: Plan & Report'
 about: 'SPRING: Flow | Plan | Report'
 title: "[SPRINT]  :: "
-labels: 'LATER: Priority: Time: [Outside 3 Sprints], NOW: Priority: Time: [Current/Next
-  Sprint], SOON: Priority: Time: [Next 3 Sprints], SPRINT 1:, SPRINT 2:, SPRINT 3:,
-  SPRINT 4:, SPRINT 5:, SPRINT 6:, SPRINT 7:, SPRINT 8:, SPRINT 9:, SPRINT 10:, SPRINT
-  11:, SPRINT 12:, SPRINT 13:, SPRINT 14:, SPRINT-RUN: Backlog, TYPES: Sprint'
+labels: 'Kind: Sprint, Plan : Horizon, Plan : Sprint, Sprint 01 : The First Config,
+  Sprint 02 : Arch n Deploy, Sprint 03 : ??, W/E: Aug 04, W/E: Aug 11, W/E: Aug 18,
+  W/E: Aug 25, W/E: Jul 14, W/E: Jul 21, W/E: Jul 28, W/E: Oct 07, W/E: Oct 14, W/E:
+  Oct 21, W/E: Sep 08, W/E: Sep 15, W/E: Sep 22, W/E: Sep 29, W/E: Sept 01'
 assignees: iPoetDev
 
 ---

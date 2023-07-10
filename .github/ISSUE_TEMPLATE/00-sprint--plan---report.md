@@ -5,17 +5,18 @@ title: "[SPRINT]  :: "
 labels: 'Kind: Sprint, Plan : Horizon, Plan : Sprint, Sprint 01 : The First Config,
   Sprint 02 : Arch n Deploy, Sprint 03 : ??, W/E: Aug 04, W/E: Aug 11, W/E: Aug 18,
   W/E: Aug 25, W/E: Jul 14, W/E: Jul 21, W/E: Jul 28, W/E: Oct 07, W/E: Oct 14, W/E:
-  Oct 21, W/E: Sep 08, W/E: Sep 15, W/E: Sep 22, W/E: Sep 29, W/E: Sept 01'
+  Oct 21, W/E: Sep 08, W/E: Sep 15, W/E: Sep 22, W/E: Sep 29'
 assignees: iPoetDev
 
 ---
 
-# [`SPRINT #`](https://github.com/iPoetDev/P4Template/milestones/#)
+# [`SPRINT #03 - Milestone: Agile Plan | Control`](https://github.com/iPoetDev/dash-and-do-github/milestone/2)
 > - [ ] Replace Milestone Id in link.
 > - [ ] Add Sprint Sequence Id in Title.
 > - [ ] Copy Sprint label per sprint.
 
-> https://github.com/iPoetDev/P4Template/labels/SPRINT%201%3A
+> https://github.com/iPoetDev/dash-and-do-github/labels/Kind%3A%20Sprint
+> https://github.com/iPoetDev/dash-and-do-github/labels/Plan%20%3A%20Horizon: **3 Weeks**
 
 ## Spint Backlog
 > Add Planned Issues Below

@@ -3,9 +3,9 @@ name: '00 SPRINT: Plan & Report'
 about: 'SPRING: Flow | Plan | Report'
 title: "[SPRINT]  :: "
 labels: 'Kind: Sprint, Plan : Horizon, Plan : Sprint, Sprint 01 : The First Config,
-  Sprint 02 : Arch n Deploy, Sprint 03 : ??, W/E: Aug 04, W/E: Aug 11, W/E: Aug 18,
-  W/E: Aug 25, W/E: Jul 14, W/E: Jul 21, W/E: Jul 28, W/E: Oct 07, W/E: Oct 14, W/E:
-  Oct 21, W/E: Sep 08, W/E: Sep 15, W/E: Sep 22, W/E: Sep 29'
+  Sprint 02 : Arch n Deploy, W/E: Aug 04, W/E: Aug 11, W/E: Aug 18, W/E: Aug 25, W/E:
+  Jul 14, W/E: Jul 21, W/E: Jul 28, W/E: Oct 07, W/E: Oct 14, W/E: Oct 21, W/E: Sep
+  08, W/E: Sep 15, W/E: Sep 22, W/E: Sep 29'
 assignees: iPoetDev
 
 ---

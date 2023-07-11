@@ -22,10 +22,9 @@ assignees: iPoetDev
 > Add Planned Issues Below
 
 **VIEWS**: <small>Replace Project ID in link,</small>
-- [ ] Project ID: (**` 15 `**): https://github.com/users/iPoetDev/projects/15
-- [ ] Roadmap (**` 4 `**):  https://github.com/users/iPoetDev/projects/15/views/4
-- [ ] BackLog (**` 2 `**): https://github.com/users/iPoetDev/projects/15/views/2
+- [x] Project ID: (**` 21 `**): https://github.com/users/iPoetDev/projects/21
 
+|
 - #.
 - #.
 
@@ -34,17 +33,21 @@ assignees: iPoetDev
 ## Sprint Plan | Report
 
 - Epic: " "
-  https://github.com/iPoetDev/P4Template/labels/TYPES%3A%20Epic
+  https://github.com/iPoetDev/dash-and-do-github/labels/Kind%3A%20Epic
 - Features:
-  https://github.com/iPoetDev/P4Template/labels/TYPES%3A%20Feature
+  https://github.com/iPoetDev/dash-and-do-github/labels/Kind%3A%20Feature
   -  :
   -  :
 - Stories:
-  https://github.com/iPoetDev/P4Template/labels/TYPES%3A%20Story
+  https://github.com/iPoetDev/dash-and-do-github/labels/Kind%3A%20Story
   -  :
   -  :
+- Acceptance:
+  https://github.com/iPoetDev/dash-and-do-github/labels/Kind%3A%20Accept
+  -  :
+  -  :   
 - Progress:
-  - Started::
+  - Started:
   - Not Completed:
   - Completed:
   - Moved Next:

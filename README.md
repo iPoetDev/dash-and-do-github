@@ -10,6 +10,7 @@
 ###### <ins>Contact Me</ins>
 
 **Author**: Charles J Fowler <br>
+**Dashboard**: [https://wakatime.com/@ipoetdev](https://wakatime.com/@ipoetdev) WakaTime <br>
 **GitHub (iPoetDev)**: [https://github.com/iPoetDev](https://github.com/iPoetDev)  <br>
 **LinkedIn**: [www.linkedin.com/in/CharlesJFowler](www.linkedin.com/in/CharlesJFowler)  <br>
 **Scheduling**: [www.tidycal.com/CharlesJFowler](www.tidycal.com/CharlesJFowler)  <br>

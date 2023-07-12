@@ -3,10 +3,26 @@
     "prettier-watch": "onchange \"**/*\" -- prettier --write --ignore-unknown {{changed}}"
   },
   "devDependencies": {
-    "tailwindcss": "^3.3.2"
+    "editorconfig": "^2.0.0",
+    "eslint": "^8.44.0",
+    "htmlhint": "^1.1.4",
+    "htmx.org": "^1.9.2",
+    "postcss": "^8.4.25",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.0",
+    "stylelint": "^15.10.1",
+    "stylelint-config-recommended": "^13.0.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-config-tailwindcss": "^0.0.7",
+    "stylelint-csstree-validator": "^3.0.0",
+    "w3c-html-validator": "^1.4.0"
   },
   "browserslist": [
     ">0.3%, defaults and supports es6-module",
     "maintained node versions"
-  ]
+  ],
+  "dependencies": {
+    "autoprefixer": "^10.4.14",
+    "browserslist": "^4.21.9"
+  }
 }

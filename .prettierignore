@@ -2,6 +2,11 @@
 build
 coverage
 
+
+# IDEs and editors:
+**/.ai
+**/.idea
+
 # Git
 **/.git
 **/.svn
@@ -10,3 +15,9 @@ coverage
 
 # Ignore all HTML files:
 # **/*.html
+
+# Ignore all CSS files:
+# **/*.css
+
+# Ignore all JS files:
+# **/*.js

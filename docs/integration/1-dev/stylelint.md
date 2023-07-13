@@ -227,12 +227,12 @@ Environ:
 **NPM**: `package.json`
 
 ```json
-"devDependencies": {  
-    "stylelint": "^15.10.1",  
-    "stylelint-config-recommended": "^13.0.0",  
-    "stylelint-config-standard": "^34.0.0",  
-    "stylelint-config-tailwindcss": "^0.0.7",  
-    "stylelint-csstree-validator": "^3.0.0",  
+"devDependencies": {
+"stylelint": "^15.10.1",
+"stylelint-config-recommended": "^13.0.0",
+"stylelint-config-standard": "^34.0.0",
+"stylelint-config-tailwindcss": "^0.0.7",
+"stylelint-csstree-validator": "^3.0.0",
 },
 ```
 
@@ -242,10 +242,12 @@ Environ:
 
 ```yml
 repos:
-- repo: https://github.com/thibaudcolas/pre-commit-stylelint
-  rev: v15.10.0
-  hooks:
-    - id: stylelint
+  -
+    repo : https://github.com/thibaudcolas/pre-commit-stylelint
+    rev  : v15.10.0
+    hooks:
+      -
+        id: stylelint
 ```
 
 ### Options

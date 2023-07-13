@@ -1,7 +1,18 @@
 # dash-and-do-github
+
 > Dash &amp; Do GithHub Manager: A Dashboard (Reporting) and Do (Act or Automate) for GitHub Repositories
 
 # 1.0 Introduction
+
+---
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![wakatime](https://wakatime.com/badge/user/2027c27d-0bab-4d7c-bfed-5d0b21285657/project/62c65141-830a-41c9-af92-98a9302fa984.svg)](https://wakatime.com/badge/user/2027c27d-0bab-4d7c-bfed-5d0b21285657/project/62c65141-830a-41c9-af92-98a9302fa984)
+[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+
+- Share [WakaTime:](https://wakatime.com/@ipoetdev/projects/forvkqvyji)
+
+---
+
 
 ---
 > `FOOTER`
@@ -10,7 +21,7 @@
 ###### <ins>Contact Me</ins>
 
 **Author**: Charles J Fowler <br>
-**Dashboard**: [https://wakatime.com/@ipoetdev](https://wakatime.com/@ipoetdev) WakaTime <br>
+**WakaTime**: [https://wakatime.com/@ipoetdev](https://wakatime.com/@ipoetdev) <br>
 **GitHub (iPoetDev)**: [https://github.com/iPoetDev](https://github.com/iPoetDev)  <br>
 **LinkedIn**: [www.linkedin.com/in/CharlesJFowler](www.linkedin.com/in/CharlesJFowler)  <br>
 **Scheduling**: [www.tidycal.com/CharlesJFowler](www.tidycal.com/CharlesJFowler)  <br>

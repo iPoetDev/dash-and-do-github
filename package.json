@@ -1,7 +1,12 @@
 {
   "scripts": {
     "prettier-watch": "onchange \"**/*\" -- prettier --write --ignore-unknown {{changed}}",
-    "test": "standard && node **.js"
+    "test": "standard && node **.js | snazzy",
+    "test-fix": "standard --fix && node **.js | snazzy",
+    "validate": "html-validator docs/*.html flyer.html --exclude=build,tmp --delay=200",
+    "one-folder": "html-validator docs --exclude=build,tmp --delay=200",
+    "all": "html-validator --quiet --exclude=build,tmp --delay=200",
+    "continue": "html-validator --quiet --continue --exclude=build,tmp --delay=200"
   },
   "devDependencies": {
     "editorconfig": "^2.0.0",
@@ -35,7 +40,8 @@
   ],
   "dependencies": {
     "autoprefixer": "^10.4.14",
-    "browserslist": "^4.21.9"
+    "browserslist": "^4.21.9",
+    "snazzy": "^9.0.0"
   },
   "standard": {
     "ignore": [

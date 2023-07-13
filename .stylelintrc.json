@@ -3,5 +3,21 @@
     "stylelint-config-standard",
     "stylelint-config-tailwindcss",
     "stylelint-config-recommended"
-  ]
+  ],
+  "plugins": [
+    "stylelint-csstree-validator"
+  ],
+  "rules": {
+    "csstree/validator": {
+      "syntaxExtensions": false,
+      "atrules": false,
+      "ignoreAtrules": [
+        "tailwind",
+        "apply",
+        "variants",
+        "responsive",
+        "screen"
+      ]
+    }
+  }
 }

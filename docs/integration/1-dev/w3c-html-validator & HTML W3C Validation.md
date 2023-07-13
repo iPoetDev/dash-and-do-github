@@ -5,10 +5,10 @@
 > .
 
 - [ ] CONFIG:
-    - [ ]  Build | Integrate | Test | Quality  | Config | Deploy | Release
+    - [ ]  Build | Integrate | Test | Quality | Config | Deploy | Release
 - [ ] GitHub Issue(s) Created?
     - [ ] FLOW: Workflow | Process | Outline
-        - [ ] #Issue #12 
+        - [ ] #Issue #12
     - [ ] LINT: Report
         - [ ] #Issue
 - [ ] FLOW
@@ -32,7 +32,9 @@
 >> **w3c-html-validator** takes HTML files and returns detailed validation results.  
 >> The reporter produces formatted output indended for use in build scripts and test suites.
 ```
+
 ![[Pasted image 20230713172443.png]]
+
 - Related Config
     - [[CONFIG - {{}}]]
     - .
@@ -83,7 +85,6 @@ html-validator docs/*.html flyer.html
 
 ### CLI Flags
 
-
 ```shell
 `--continue`: Report messages but do not throw an error if validation failed. N/A 
 `--delay`:  Debounce pause in milliseconds between each file validation. **number** 
@@ -102,9 +103,11 @@ html-validator *.html --exclude=build,tmp --delay=200 --quite --continue
 ```
 
 **CONFIGURATION | RUN** `Script File`
-Either 
+Either
+
 - Define in `package.json`
-- Use the Run Config control 
+- Use the Run Config control
+
 ```json
 "scripts": {
     "validate": "html-validator docs/*.html flyer.html --exclude=build,tmp --delay=200",  
@@ -115,8 +118,9 @@ Either
 ```
 
 OR
+
 - Name: **`validate`** | **`one-folder`** | **`all`** | **`continue`**
-- Allow Multiple: N 
+- Allow Multiple: N
 - Store as File: N - in package.json
 - Package.json: `D:\Code\Code Institute\dash-and-do-github\package.json`
 - Command: ` run `
@@ -148,7 +152,8 @@ Environ: -
 ```
 
 **Pre-Commit**: ``
- - 
+- 
+
 ```yml
 repos: 
     - repo: local 
@@ -160,10 +165,14 @@ repos:
           types: [file] 
           exclude: build,tmp
 ```
+
 ### Options
 
 - Package: https://www.npmjs.com/package/w3c-html-validator
-- GitHub: [center-key/w3c-html-validator: 🚦 A package for testing HTML files or URLs against the W3C validator (github.com)](https://github.com/center-key/w3c-html-validator)
+-
+
+GitHub: [center-key/w3c-html-validator: 🚦 A package for testing HTML files or URLs against the W3C validator (github.com)](https://github.com/center-key/w3c-html-validator)
+
 - Perplexity: Create local commit hook https://www.perplexity.ai/search/7f0c138a-2248-49c6-9590-1841ecee9cc0?s=c
 
 ## Final
@@ -172,14 +181,14 @@ repos:
 
 ### Steps
 
-1. [x] Install NPM Package. 
+1. [x] Install NPM Package.
 2. [ ] Run manually as a CLI
     1. [ ] Run against URL
     2. [ ] Run against path
     3. [ ] Run against the file
 3. Install in Package.json
 4. Use WebStorm/PyCharm run controls to integrate scripts into the IDE
-5. Pre-commit 
+5. Pre-commit
     1. [ ] Defined the bash script for a local pre-commit hook
     2. [ ] Use the Pre-commit local config.
 6. .

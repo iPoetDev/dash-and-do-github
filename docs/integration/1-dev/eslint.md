@@ -1,10 +1,11 @@
 **META**: 23-07-12.21:35 | Last Edited By:
 
 ## Workflow | Issue
+
 > .
 
 - [x] CONFIG:
-    - [x] Build | Integrate | Test | Quality | Security | Config 
+    - [x] Build | Integrate | Test | Quality | Security | Config
 - [ ] GitHub Issue(s) Created?
     - [ ] FLOW: Workflow | Process | Outline
         - [ ] #Issue #12 [FLOW :: Code Quality Assurance](https://github.com/iPoetDev/dash-and-do-github/issues/12)
@@ -45,10 +46,12 @@
     - Associated Package: [[StandardJS]]
 
 ## Package | Library Source
+
 > .
 
 - [x] NPM
-- [ ] **Link:** **[`URL`](https://eslint.org/)**: [Find and fix problems in your JavaScript code - ESLint - Pluggable JavaScript Linter](https://eslint.org/)
+- [ ] **Link:** **[`URL`](https://eslint.org/)
+  **: [Find and fix problems in your JavaScript code - ESLint - Pluggable JavaScript Linter](https://eslint.org/)
 
 ```bash
 [Find and fix problems in your JavaScript code - ESLint - Pluggable JavaScript Linter](https://eslint.org/)
@@ -65,20 +68,30 @@ https://github.com/eslint/eslint
 
 #### Dependencies
 
-Only focus on 
+Only focus on
+
 - [ ] Sharable Configs
 - [ ] Plugins as strictly necessary, as they emerge
 
--  See below **Depends on:** ``
+- See below **Depends on:** ``
     - Sharable Configs
-        - *eslint-Config-Defaults: [eslint-config-defaults - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-defaults)
-        - *eslint-Config-Prettier: [- eslint-config-prettier - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-prettier)
-        - *eslint-Config-SemiStandard: - [eslint-config-semistandard - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-semistandard)
-        - *eslint-Config-Standard: - [eslint-config-standard - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-standard)
+      -
+            *
+      eslint-Config-Defaults: [eslint-config-defaults - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-defaults)
+      -
+            *
+      eslint-Config-Prettier: [- eslint-config-prettier - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-prettier)
+      -
+            *
+      eslint-Config-SemiStandard: - [eslint-config-semistandard - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-semistandard)
+      -
+            *
+      eslint-Config-Standard: - [eslint-config-standard - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-standard)
 
 ### Install
 
 #### Currently
+
 ```dirtree
 
 - /node_modules
@@ -121,9 +134,9 @@ Only focus on
         - [ ] `parser`
         - [ ] `parserOptions`
     - [ ] `linterOptions` .
-        - [ ] ` noInlineConfig` 
-        - [ ] ` reportUnusedDisableDirecttives` 
-    - [ ] `processor` 
+        - [ ] ` noInlineConfig`
+        - [ ] ` reportUnusedDisableDirecttives`
+    - [ ] `processor`
     - [ ] `plugins` .
     - [ ] `rules` .
     - [ ] `settings` .
@@ -142,7 +155,9 @@ module.exports = {
 ```
 
 #### Command Line
+
 [Command Line Interface Reference - ESLint - Pluggable JavaScript Linter](https://eslint.org/docs/latest/use/command-line-interface)
+
 ```json
 🦄  eslint -h
 eslint [options] file.js [file.js] [dir]
@@ -208,8 +223,12 @@ Miscellaneous:
 ```
 
 #### Formatters
+
 [Formatters Reference - ESLint - Pluggable JavaScript Linter](https://eslint.org/docs/latest/use/formatters/)
-- [ ] - [stylish](https://eslint.org/docs/latest/use/formatters/#stylish)
+
+- [ ] 
+    - [stylish](https://eslint.org/docs/latest/use/formatters/#stylish)
+
 ```shell
 /var/lib/jenkins/workspace/Releases/eslint Release/eslint/fullOfProblems.js
   1:10  error    'addOne' is defined but never used            no-unused-vars
@@ -227,9 +246,11 @@ Miscellaneous:
 ```
 
 #### IDE
+
 ![[IDE Inspections StandardJs.png]]
 
-- IntelliJ IDEA, WebStorm, PhpStorm, PyCharm, RubyMine, and other JetBrains IDEs: [How to use ESLint](https://www.jetbrains.com/help/webstorm/eslint.html)
+- IntelliJ IDEA, WebStorm, PhpStorm, PyCharm, RubyMine, and other JetBrains
+  IDEs:[How to use ESLint](https://www.jetbrains.com/help/webstorm/eslint.html)
 
 #### File Watcher
 
@@ -238,11 +259,13 @@ Miscellaneous:
 #### Local | Pre-Commit Requirements | Proc
 ---
 **PYTHON**: **`Requirements.txt | Requirements-dev.txt | Requirements-test.txt`**
+
 ```text
 
 ```
 
 **SCRIPT | RUN** `Script File`: - File Name: **``  .sh ``**
+
 ```bash
 #!/bin/bash 
 npx eslint . --fix --formatter stylish
@@ -293,7 +316,9 @@ Environ:
 ```
 
 ##### Pre-Commit Hook
+
 [eslint pre-commit hook (Example) (coderwall.com)](https://coderwall.com/p/zq8jlq/eslint-pre-commit-hook)
+
 ```bash
 #!/bin/zsh
 
@@ -314,6 +339,7 @@ lintit
 Mirror : [github.com/pre-commit/mirrors-eslint](https://github.com/pre-commit/mirrors-eslint)
 Tags: [Tags · pre-commit/mirrors-eslint (github.com)](https://github.com/pre-commit/mirrors-eslint/tags)
 Use @latest for dependencies
+
 ```yml
 -   repo: https://github.com/pre-commit/mirrors-eslint
     rev: v8.44.0  # Use the sha / tag you want to point at
@@ -330,12 +356,15 @@ Use @latest for dependencies
         types: [file]
 ```
 
-###  Sources
+### Sources
 
 - Docs: [Docs (eslint.org)](https://eslint.org/docs/latest/)
 - Org: [Eslint:  Organisation: Find and fix problems in your JavaScript code. (github.com)](https://github.com/eslint)
 - GitHub: [eslint/eslint: Find and fix problems in your JavaScript code. (github.com)](https://github.com/eslint/eslint)
-- Awesome: [dustinspecker/awesome-eslint: A list of awesome ESLint plugins, configs, etc. (github.com)](https://github.com/dustinspecker/awesome-eslint)
+-
+
+Awesome: [dustinspecker/awesome-eslint: A list of awesome ESLint plugins, configs, etc. (github.com)](https://github.com/dustinspecker/awesome-eslint)
+
 - Perplexity:
 
 ## Final
@@ -354,7 +383,7 @@ Use @latest for dependencies
 6. [ ]  Alternative Configs
     1. [ ] Defaults etc
     2. [ ] Semistandard
-7. [x] Not installing AirBnB or Google style guides 
+7. [x] Not installing AirBnB or Google style guides
 8. [x] No custom rules
 9. [x] IDE Configuration
     1. [x] Detect and enable Standard for Project in Inspections, using ESlint
@@ -381,7 +410,6 @@ Use @latest for dependencies
 	- package.json
 	- package.lock.json
 ```
-
 
 ---
 > .

@@ -9,8 +9,9 @@
     - [x] Build | Integrate | Test | Quality | Security | Config |
 - [x] GitHub Issue(s) Created?
     - [x] FLOW: Workflow | Process | Outline
-        - [x] #Issue #12 [FLOW :: Code Quality Assurance (github.com)](https://github.com/iPoetDev/dash-and-do-github/issues/12)
-        - [x] #Flow: Commit-Flow 
+        - [x] #Issue
+          #12 [FLOW :: Code Quality Assurance (github.com)](https://github.com/iPoetDev/dash-and-do-github/issues/12)
+        - [x] #Flow: Commit-Flow
         - [x] #Flow Code Quality
     - [ ] LINT: Report
         - [ ] #Issue
@@ -38,9 +39,11 @@
 
 ## Install and runs as terminal cli as standalone
 
-**`Intent | Purpose:`** The beauty of JavaScript Standard Style is that it's simple. No one wants to maintain multiple hundred-line style configuration files for every module/project they work on.
+**`Intent | Purpose:`** The beauty of JavaScript Standard Style is that it's simple. No one wants to maintain multiple
+hundred-line style configuration files for every module/project they work on.
 
-At the end of the day you have to 'just pick something', and that's the whole philosophy of `standard` -- its a bunch of sensible 'just pick something' opinions. Avoid debates/bikeshedding.
+At the end of the day you have to 'just pick something', and that's the whole philosophy of`standard`-- its a bunch of
+sensible 'just pick something' opinions. Avoid debates/bikeshedding.
 
 ```ruby
 >> JavaScript style guide, linter, and formatter
@@ -50,17 +53,20 @@ At the end of the day you have to 'just pick something', and that's the whole ph
 
 This module saves you (and others!) time in three ways:
 
-- **No configuration.** The easiest way to enforce code quality in your project. No decisions to make. No `.eslintrc` files to manage. It just works.
-- **Automatically format code.** Just run `standard --fix` and say goodbye to messy or inconsistent code.
-- **Catch style issues & programmer errors early.** Save precious code review time by eliminating back-and-forth between reviewer & contributor.
+- **No configuration.**The easiest way to enforce code quality in your project. No decisions to make. No`.eslintrc`files
+  to manage. It just works.
+- **Automatically format code.**Just run`standard --fix`and say goodbye to messy or inconsistent code.
+- **Catch style issues & programmer errors early.**Save precious code review time by eliminating back-and-forth between
+  reviewer & contributor.
 
 #### Talk
 
- ["Write Perfect Code with Standard and ESLint"](https://www.youtube.com/watch?v=kuHfMw8j4xk). In this talk, you'll learn about linting, when to use `standard` versus `eslint`, and how `prettier` compares to `standard`.
+["Write Perfect Code with Standard and ESLint"](https://www.youtube.com/watch?v=kuHfMw8j4xk). In this talk, you'll learn
+about linting, when to use`standard`versus`eslint`, and how`prettier`compares to`standard`.
 
 #### Related
 
-Give it a try by running `npx standard --fix` right now!
+Give it a try by running`npx standard --fix`right now!
 
 - Related Config
     - [[CONFIG - {{}}]]
@@ -87,16 +93,18 @@ https://www.npmjs.com/package/standard
 #### Dependencies
 
 - Eslint Sharable Configs Standard
-- some important packages in the `standard` ecosystem:
-    - **[standard](https://github.com/standard/standard)** - this repo
-        - **[standard-engine](https://github.com/standard/standard-engine)** - cli engine for arbitrary eslint rules
-        - **[eslint-config-standard](https://github.com/standard/eslint-config-standard)** - eslint rules for standard
-        - **[eslint-config-standard-jsx](https://github.com/standard/eslint-config-standard-jsx)** - eslint rules for standard (JSX)
-        - **[eslint](https://github.com/eslint/eslint)** - the linter that powers standard
-    - **[snazzy](https://github.com/standard/snazzy)** - pretty terminal output for standard
-    - **[standard-www](https://github.com/standard/standard-www)** - code for [https://standardjs.com](https://standardjs.com/)
-    - **[semistandard](https://github.com/standard/semistandard)** - standard, with semicolons (if you must)
-    - **[standardx](https://github.com/standard/standardx)** - standard, with custom tweaks
+- some important packages in the`standard`ecosystem:
+    - **[standard](https://github.com/standard/standard)**- this repo
+        - **[standard-engine](https://github.com/standard/standard-engine)**- cli engine for arbitrary eslint rules
+        - **[eslint-config-standard](https://github.com/standard/eslint-config-standard)**- eslint rules for standard
+        - **[eslint-config-standard-jsx](https://github.com/standard/eslint-config-standard-jsx)**- eslint rules for
+          standard (JSX)
+        - **[eslint](https://github.com/eslint/eslint)**- the linter that powers standard
+    - **[snazzy](https://github.com/standard/snazzy)**- pretty terminal output for standard
+    - **[standard-www](https://github.com/standard/standard-www)**- code
+      for[https://standardjs.com](https://standardjs.com/)
+    - **[semistandard](https://github.com/standard/semistandard)**- standard, with semicolons (if you must)
+    - **[standardx](https://github.com/standard/standardx)**- standard, with custom tweaks
 
 ```bash
 
@@ -121,10 +129,14 @@ npx standard
 ![[IDE Inspections StandardJs.png]]
 
 #### WebStorm Custom Config
-1. 1. Close your IDE.
-2. [Figure out where your configuration lives](https://www.jetbrains.com/help/phpstorm/2016.1/directories-used-by-phpstorm-to-store-settings-caches-plugins-and-logs.html?origin=old_help#d66583e60) (_IDE Settings_ section)
-3. Navigate to `your-config-dir/codestyles`. If this directory doesn't exist, create it in the WebStorm config settings directory
-4. Create a `Standard.xml` file:
+
+1.
+    1. Close your IDE.
+2. [Figure out where your configuration lives](https://www.jetbrains.com/help/phpstorm/2016.1/directories-used-by-phpstorm-to-store-settings-caches-plugins-and-logs.html?origin=old_help#d66583e60)(
+   _IDE Settings_section)
+3. Navigate to`your-config-dir/codestyles`. If this directory doesn't exist, create it in the WebStorm config settings
+   directory
+4. Create a`Standard.xml`file:
     ```xml
       <code_scheme name="Standard">
         <JSCodeStyleSettings>
@@ -146,20 +158,29 @@ npx standard
       </code_scheme>
     ```
 5. You may install dependencies and config globally or locally and with support of ES7 or without it
-    - **Local** install:
+    - **Local**install:
         - `npm install --save-dev eslint-config-standard eslint-config-standard-jsx eslint-plugin-promise eslint-plugin-react`
         - `echo '{"extends": ["standard", "standard-jsx"]}' > .eslintrc`
-- **Global** install:
-        - `npm install --global eslint-config-standard eslint-config-standard-jsx eslint-plugin-promise eslint-plugin-react`
-        - `echo '{"extends": ["standard", "standard-jsx"]}' > ~/.eslintrc`
-            Be aware: The second command above will overwrite an existing `.eslintrc` if one exists.
-            If you choose global install, the first command may require you to use `sudo`. If it does require sudo, that means you do not have permission to write to the directories that npm uses to store global packages. `Standard` will work, but if you would like to fix it, [read this article](https://docs.npmjs.com/getting-started/fixing-npm-permissions).
-6. Start up the IDE and open a _Settings_/_Preferences_ screen (choose between project and default settings accordingly to your preference)
-7. Under `Editor > Code Style > JavaScript` change `Scheme` to `Standard`
-8. Under `Editor > Code Style > HTML` just select `Other`, in `Spaces` setting, check `In empty tag`
-9. Under `Editor > Inspections > JavaScript > Code style issues` untick `Unterminated statement`
-10. Under `Languages & Frameworks > JavaScript > Code Quality Tools > ESLint` just select `Enable`. If you didn't install `ESLint` before, and you don't have it in your dependencies - that's all. If you do - be sure to use `ESLint package` of the same version as the current version of `standard` is using. Or just remove your old one - you probably won't need it any more
 
+- **Global**install:
+    - `npm install --global eslint-config-standard eslint-config-standard-jsx eslint-plugin-promise eslint-plugin-react`
+    - `echo '{"extends": ["standard", "standard-jsx"]}' > ~/.eslintrc`
+      Be aware: The second command above will overwrite an existing`.eslintrc`if one exists.
+      If you choose global install, the first command may require you to use`sudo`. If it does require sudo, that means
+      you
+      do not have permission to write to the directories that npm uses to store global packages.`Standard`will work, but
+      if
+      you would like to fix it,[read this article](https://docs.npmjs.com/getting-started/fixing-npm-permissions).
+
+6. Start up the IDE and open a_Settings_/_Preferences_screen (choose between project and default settings accordingly to
+   your preference)
+7. Under`Editor > Code Style > JavaScript`change`Scheme`to`Standard`
+8. Under`Editor > Code Style > HTML`just select`Other`, in`Spaces`setting, check`In empty tag`
+9. Under`Editor > Inspections > JavaScript > Code style issues`untick`Unterminated statement`
+10. Under`Languages & Frameworks > JavaScript > Code Quality Tools > ESLint`just select`Enable`. If you didn't
+    install`ESLint`before, and you don't have it in your dependencies - that's all. If you do - be sure to
+    use`ESLint package`of the same version as the current version of`standard`is using. Or just remove your old one -
+    you probably won't need it any more
 
 ### Command Line
 
@@ -221,6 +242,7 @@ Environ:
 
 **NPM**: `package.json`
 `npm test` checks standard automatically
+
 ```json
   
   "name": "my-cool-package",
@@ -269,7 +291,9 @@ if [[ $? -ne 0 ]]; then
 ```
 
 #### Output
+
 -  [ ] Snazzy https://www.npmjs.com/package/snazzy
+
 ```
 $ npm install snazzy
 $ standard | snazzy
@@ -293,9 +317,9 @@ $ standard | snazzy
 3. [x] . Configure IDE to use Standard via ESlint on save
     1. [ ] .Additionally optional WebStorm manual code style
 4. [ ] .Understand the Command Line options
-5. [ ]  Create a Bash script to 
+5. [ ]  Create a Bash script to
     1. [ ] Detect
-    2. [ ] Fix 
+    2. [ ] Fix
     3. [ ] Format output
 6. [x]  Decide the Commit Hooks
     1. [ ] Define your own
@@ -305,6 +329,7 @@ $ standard | snazzy
     2. [x] Advanced
 8. [ ]  Handle the Output
 9. [ ] Decide to automate
+
 ### CLI Checks → Maybe Automate
 
 ```shell

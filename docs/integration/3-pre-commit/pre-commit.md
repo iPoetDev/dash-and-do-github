@@ -2,15 +2,15 @@ Activate: 23-07-08
 
 # Source
 
-- Pre-Commit Repo [URL]:
-- Hook ID
-    - id: `trailing-whitespace`
-    - id: `debug-statements`
-    - id: ``detect-private-key``
-    - id: `check-yaml`
-    - id: `end-of-file-fixer`
-- Category | Intent: Check | Lint | Fix
-- Description:
+-   Pre-Commit Repo [URL]:
+-   Hook ID
+    -   id: `trailing-whitespace`
+    -   id: `debug-statements`
+    -   id: `detect-private-key`
+    -   id: `check-yaml`
+    -   id: `end-of-file-fixer`
+-   Category | Intent: Check | Lint | Fix
+-   Description:
 
 ## Fetch
 
@@ -20,13 +20,13 @@ pip install pre-commit
 
 ## Config
 
-- [ ] Create a`.pre-commit-config.yaml` in root of repository
-- [ ] Commit to repository
-- [ ] Prepare for run by adding hook's
-    - [ ] Repository: `- repo: {url}`
-    - [ ] Revision: `rev` - Select/Use the ref you want to point at
-    - [ ] Hooks:
-        - [ ] Id: `id {hook-ident}`
+-   [ ] Create a`.pre-commit-config.yaml` in root of repository
+-   [ ] Commit to repository
+-   [ ] Prepare for run by adding hook's
+    -   [ ] Repository: `- repo: {url}`
+    -   [ ] Revision: `rev` - Select/Use the ref you want to point at
+    -   [ ] Hooks:
+        -   [ ] Id: `id {hook-ident}`
 
 ```yaml
 repos:
@@ -75,9 +75,9 @@ pre-commit run --all-files
 
 ### Actions
 
-- [ ] Detects
-- [ ] Asserts: Pass | Fails
-- [ ] Fixes
+-   [ ] Detects
+-   [ ] Asserts: Pass | Fails
+-   [ ] Fixes
 
 ### Example
 

@@ -1,11 +1,11 @@
 # Source
 
-- Pre-Commit Repo [URL]:  https://github.com/awebdeveloper/pre-commit-stylelint
-- Hook ID
-    - **` stylelint `**
-- Category | Intent:
-- Action: **prevents git commits unless the checks pass.**
-- Description:
+-   Pre-Commit Repo [URL]: https://github.com/awebdeveloper/pre-commit-stylelint
+-   Hook ID
+    -   **`stylelint`**
+-   Category | Intent:
+-   Action: **prevents git commits unless the checks pass.**
+-   Description:
 
 ## Fetch
 
@@ -20,10 +20,10 @@ npm install --save-dev stylelint stylelint-config-standard-scss
 
 > Package | Repo
 
-- [ ] Web: https://stylelint.io/
-- [ ] Package:
-- [ ] Source: https://github.com/stylelint/stylelint
-- [ ] Config:
+-   [ ] Web: https://stylelint.io/
+-   [ ] Package:
+-   [ ] Source: https://github.com/stylelint/stylelint
+-   [ ] Config:
 
 ### Options
 
@@ -31,9 +31,9 @@ npm install --save-dev stylelint stylelint-config-standard-scss
 
 Each rule configuration fits one of the following formats:
 
-- `null`(to turn the rule off)
-- a single value (the primary option)
-- an array with two values (`[primary option, secondary options]`)
+-   `null`(to turn the rule off)
+-   a single value (the primary option)
+-   an array with two values (`[primary option, secondary options]`)
 
 ```bash
 - rules
@@ -60,10 +60,10 @@ Each rule configuration fits one of the following formats:
 
 ### Config ` styleintrc.json|yml|yaml|cjs`
 
-- [ ] Project Level
-- [ ] Node Module: `D:\Code\node_modules`
-- [ ] Package: `D:\Code\node_modules\{{}}`
-  Basic
+-   [ ] Project Level
+-   [ ] Node Module: `D:\Code\node_modules`
+-   [ ] Package: `D:\Code\node_modules\{{}}`
+        Basic
 
 ```json
 {
@@ -71,18 +71,18 @@ Each rule configuration fits one of the following formats:
   # Or
   "customSyntax": "postcss-lit"
   # Or
-  "overrides": [  
-		{  
-			"files": ["*.js"],  
-			"customSyntax": "postcss-lit"  
-		}  
+  "overrides": [
+		{
+			"files": ["*.js"],
+			"customSyntax": "postcss-lit"
+		}
 	]
 }
 ```
 
 ### Standard Config
 
-- https://www.npmjs.com/package/stylelint-config-standard
+-   https://www.npmjs.com/package/stylelint-config-standard
 
 ```css
 - alpha-value-notation
@@ -125,26 +125,26 @@ Each rule configuration fits one of the following formats:
 
 ### Avoid Errors
 
-- [Avoid errors](https://stylelint.io/user-guide/rules#avoid-errors)
-    - [Descending](https://stylelint.io/user-guide/rules#descending)
-    - [Duplicate](https://stylelint.io/user-guide/rules#duplicate)
-    - [Empty](https://stylelint.io/user-guide/rules#empty)
-    - [Invalid](https://stylelint.io/user-guide/rules#invalid)
-    - [Irregular](https://stylelint.io/user-guide/rules#irregular)
-    - [Missing](https://stylelint.io/user-guide/rules#missing)
-    - [Non-standard](https://stylelint.io/user-guide/rules#non-standard)
-    - [Overrides](https://stylelint.io/user-guide/rules#overrides)
-    - [Unmatchable](https://stylelint.io/user-guide/rules#unmatchable)
-    - [Unknown](https://stylelint.io/user-guide/rules#unknown)
+-   [Avoid errors](https://stylelint.io/user-guide/rules#avoid-errors)
+    -   [Descending](https://stylelint.io/user-guide/rules#descending)
+    -   [Duplicate](https://stylelint.io/user-guide/rules#duplicate)
+    -   [Empty](https://stylelint.io/user-guide/rules#empty)
+    -   [Invalid](https://stylelint.io/user-guide/rules#invalid)
+    -   [Irregular](https://stylelint.io/user-guide/rules#irregular)
+    -   [Missing](https://stylelint.io/user-guide/rules#missing)
+    -   [Non-standard](https://stylelint.io/user-guide/rules#non-standard)
+    -   [Overrides](https://stylelint.io/user-guide/rules#overrides)
+    -   [Unmatchable](https://stylelint.io/user-guide/rules#unmatchable)
+    -   [Unknown](https://stylelint.io/user-guide/rules#unknown)
 
 ## IDE
 
-- [ ] Pycharm ✔
-- [ ] WebStorm ✔
+-   [ ] Pycharm ✔
+-   [ ] WebStorm ✔
 
 ### Config
 
-- [ ] 
+-   [ ]
 
 <details><summary>Screenshots</summary></details>
 
@@ -155,7 +155,7 @@ Each rule configuration fits one of the following formats:
 
 ### Run
 
-- [ ] 
+-   [ ]
 
 ```bash
 
@@ -166,33 +166,32 @@ Each rule configuration fits one of the following formats:
 
 ### Config
 
-- [ ] Create a` .pre-commit-config.yaml` in root of repository.
-- [ ] Commit `yaml` repository.
-- [ ] Prepare for run by adding hook's
-    - [ ] Repository: `- repo: {url}`:
-    - [ ] Revision: `rev` : `    `
-        - [ ] v
-        - Select/Use the ref you want to point at
-    - [ ] Hooks:
-        - [ ] id: `id {hook-ident}`
-        - [ ] alias:
-        - [ ] name:
-- [ ] More
-    - [ ] language_version
-    - [ ] files
-    - [ ] exclude
-    - [ ] types
-    - [ ] types_or
-    - [ ] exclude_types
-    - [ ] args
-    - [ ] stages
-    - [ ] additional_dependencies
-    - [ ] always_run
-    - [ ] verbose
-    - [ ] log_file
+-   [ ] Create a` .pre-commit-config.yaml` in root of repository.
+-   [ ] Commit `yaml` repository.
+-   [ ] Prepare for run by adding hook's
+    -   [ ] Repository: `- repo: {url}`:
+    -   [ ] Revision: `rev` : `    `
+        -   [ ] v
+        -   Select/Use the ref you want to point at
+    -   [ ] Hooks:
+        -   [ ] id: `id {hook-ident}`
+        -   [ ] alias:
+        -   [ ] name:
+-   [ ] More
+    -   [ ] language_version
+    -   [ ] files
+    -   [ ] exclude
+    -   [ ] types
+    -   [ ] types_or
+    -   [ ] exclude_types
+    -   [ ] args
+    -   [ ] stages
+    -   [ ] additional_dependencies
+    -   [ ] always_run
+    -   [ ] verbose
+    -   [ ] log_file
 
 ```yaml
-
 
 ```
 

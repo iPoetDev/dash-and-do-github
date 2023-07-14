@@ -1,24 +1,25 @@
-feat(design|config|build|test|deploy): __
+feat(design|config|build|test|deploy): \_\_
 
 Intent:
 Tag: epic, feat, story, uac
 Sprint: 01: Ends 23-7-14
 Changelog: 2023-07-09 v00.00.001:0
 
-- add:
-    - .
-- update:
-    - .
-- note:
-    - .
+-   add:
+    -   .
+-   update:
+    -   .
+-   note:
+    -   .
 
 ---
+
 Agilelog:
 
-- epic:
+-   epic:
 
 --
 
-- Edit:
-  Per week|period: Sprint, Changelog
-- Copy
+-   Edit:
+    Per week|period: Sprint, Changelog
+-   Copy

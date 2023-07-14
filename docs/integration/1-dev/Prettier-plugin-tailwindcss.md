@@ -2,17 +2,16 @@ Activate: 23-07-09
 
 ### Badge:
 
-- [ ] [📛 Awesome Badges - DEV Community](https://dev.to/envoy_/150-badges-for-github-pnk)
+-   [ ] [📛 Awesome Badges - DEV Community](https://dev.to/envoy_/150-badges-for-github-pnk)
 
 ## ADR
 
 ### Y-Statement
 
->
-Status: [`Proposed`](https://github.com/iPoetDev/P4Template/labels/ADR-Proposed)  |  [`Pending`](https://github.com/iPoetDev/P4Template/labels/ADR-Pending)  |  [`Defered`](https://github.com/iPoetDev/P4Template/labels/ADR-Deferred)  |  [`Accepted`](https://github.com/iPoetDev/P4Template/labels/ADR-Accepted)  |  [`Rejected`](https://github.com/iPoetDev/P4Template/labels/ADR-Rejected)  |  [`Suspended`](https://github.com/iPoetDev/P4Template/labels/ADR-Suspended)  |  [`Superseded`](https://github.com/iPoetDev/P4Template/labels/ADR-Superseded)
+> Status: [`Proposed`](https://github.com/iPoetDev/P4Template/labels/ADR-Proposed) | [`Pending`](https://github.com/iPoetDev/P4Template/labels/ADR-Pending) | [`Defered`](https://github.com/iPoetDev/P4Template/labels/ADR-Deferred) | [`Accepted`](https://github.com/iPoetDev/P4Template/labels/ADR-Accepted) | [`Rejected`](https://github.com/iPoetDev/P4Template/labels/ADR-Rejected) | [`Suspended`](https://github.com/iPoetDev/P4Template/labels/ADR-Suspended) | [`Superseded`](https://github.com/iPoetDev/P4Template/labels/ADR-Superseded)
 
 ```
-In the context of Tailwind Editor Setup and Plugin Use .. 
+In the context of Tailwind Editor Setup and Plugin Use ..
 Facing the case were editors this can trigger warnings or errors where Tailwind @apply, @tailwind, @screen rules aren’t recognized.  ..
 We decided for Tailwind Prettier pluigin  ..
 And neglected, as alternatives [none]  ..
@@ -26,9 +25,9 @@ Accepting that `Cost` | `Effort` | `Trade Off` as some editors may need to disab
 
 Repo [URL]: [tailwindlabs/prettier-plugin-tailwindcss: A Prettier plugin for Tailwind CSS that automatically sorts classes based on our recommended class order. (github.com)](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
 
-- Category | Intent:
-- Description:
-    - .
+-   Category | Intent:
+-   Description:
+    -   .
     -
 
 ## Fetch: npm | pip
@@ -44,16 +43,18 @@ Repo [URL]: [tailwindlabs/prettier-plugin-tailwindcss: A Prettier plugin for Tai
 ```
 
 ---
+
 > .
+
 ---
 
 ## Library
 
-- [ ] IDE Plugin
-- [ ] Web
-- [ ] Repo:
-- [ ] Source:
-- [ ] Config:
+-   [ ] IDE Plugin
+-   [ ] Web
+-   [ ] Repo:
+-   [ ] Source:
+-   [ ] Config:
 
 ### Options
 
@@ -61,11 +62,11 @@ Repo [URL]: [tailwindlabs/prettier-plugin-tailwindcss: A Prettier plugin for Tai
 
 ```
 
-### Config  `. .json|yml|yaml|js`
+### Config `. .json|yml|yaml|js`
 
-- [ ] Project Level
-- [ ] Node_Modules | Virtual:
-- [ ] Package:
+-   [ ] Project Level
+-   [ ] Node_Modules | Virtual:
+-   [ ] Package:
 
 ```yanl
 
@@ -74,10 +75,13 @@ Repo [URL]: [tailwindlabs/prettier-plugin-tailwindcss: A Prettier plugin for Tai
 **ACTUAL**
 
 ```yaml
+
 ```
 
 ---
+
 > .
+
 ---
 
 ### Use Case
@@ -91,17 +95,16 @@ Activate: 23-07-09
 
 ### Badge:
 
-- [ ] [📛 Awesome Badges - DEV Community](https://dev.to/envoy_/150-badges-for-github-pnk)
+-   [ ] [📛 Awesome Badges - DEV Community](https://dev.to/envoy_/150-badges-for-github-pnk)
 
 ## ADR
 
 ### Y-Statement
 
->
-Status: [`Proposed`](https://github.com/iPoetDev/P4Template/labels/ADR-Proposed)  |  [`Pending`](https://github.com/iPoetDev/P4Template/labels/ADR-Pending)  |  [`Defered`](https://github.com/iPoetDev/P4Template/labels/ADR-Deferred)  |  [`Accepted`](https://github.com/iPoetDev/P4Template/labels/ADR-Accepted)  |  [`Rejected`](https://github.com/iPoetDev/P4Template/labels/ADR-Rejected)  |  [`Suspended`](https://github.com/iPoetDev/P4Template/labels/ADR-Suspended)  |  [`Superseded`](https://github.com/iPoetDev/P4Template/labels/ADR-Superseded)
+> Status: [`Proposed`](https://github.com/iPoetDev/P4Template/labels/ADR-Proposed) | [`Pending`](https://github.com/iPoetDev/P4Template/labels/ADR-Pending) | [`Defered`](https://github.com/iPoetDev/P4Template/labels/ADR-Deferred) | [`Accepted`](https://github.com/iPoetDev/P4Template/labels/ADR-Accepted) | [`Rejected`](https://github.com/iPoetDev/P4Template/labels/ADR-Rejected) | [`Suspended`](https://github.com/iPoetDev/P4Template/labels/ADR-Suspended) | [`Superseded`](https://github.com/iPoetDev/P4Template/labels/ADR-Superseded)
 
 ```
-In the context of  .. 
+In the context of  ..
 Facing the   ..
 We decided for   ..
 And neglected, as alternatives   ..
@@ -111,10 +114,10 @@ Accepting that `Cost` | `Effort` | `Trade Off`  .
 
 # Source
 
-- Repo [URL]:
-- Category | Intent:
-- Description:
-    - .
+-   Repo [URL]:
+-   Category | Intent:
+-   Description:
+    -   .
     -
 
 ## Fetch: npm | pip
@@ -130,16 +133,18 @@ Accepting that `Cost` | `Effort` | `Trade Off`  .
 ```
 
 ---
+
 > .
+
 ---
 
 ## Library
 
-- [ ] IDE Plugin
-- [ ] Web
-- [ ] Repo:
-- [ ] Source:
-- [ ] Config:
+-   [ ] IDE Plugin
+-   [ ] Web
+-   [ ] Repo:
+-   [ ] Source:
+-   [ ] Config:
 
 ### Options
 
@@ -147,11 +152,11 @@ Accepting that `Cost` | `Effort` | `Trade Off`  .
 
 ```
 
-### Config  `. .json|yml|yaml|js`
+### Config `. .json|yml|yaml|js`
 
-- [ ] Project Level
-- [ ] Node_Modules | Virtual:
-- [ ] Package:
+-   [ ] Project Level
+-   [ ] Node_Modules | Virtual:
+-   [ ] Package:
 
 ```yanl
 
@@ -160,10 +165,13 @@ Accepting that `Cost` | `Effort` | `Trade Off`  .
 **ACTUAL**
 
 ```yaml
+
 ```
 
 ---
+
 > .
+
 ---
 
 ### Use Case
@@ -172,4 +180,3 @@ Accepting that `Cost` | `Effort` | `Trade Off`  .
 
 
 ```
-

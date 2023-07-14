@@ -5,35 +5,35 @@
 
 > .
 
-- [x] CONFIG:
-    - [x] Build | Integrate | Test | Quality | Security | Config |
-- [x] GitHub Issue(s) Created?
-    - [x] FLOW: Workflow | Process | Outline
-        - [x] #Issue
-          #12 [FLOW :: Code Quality Assurance (github.com)](https://github.com/iPoetDev/dash-and-do-github/issues/12)
-        - [x] #Flow: Commit-Flow
-        - [x] #Flow Code Quality
-    - [ ] LINT: Report
-        - [ ] #Issue
-- [ ] FLOW
-    - [x] Config .dotfile
-        - [x] see Eslint ` eslintrc.js`
-    - [ ] Local Script
-        - [ ] Bash?
-            - [ ] Develop
-            - [x]  Runs `>> standard --fix` from CLI
-            - [x] Locally: `>> npx standard --fix`
-        - [ ] Package.json
-            - [ ] Test scripts?
-    - [x] IDE Configuration
-        - [x] Run Configuration?
-    - [ ] Pre-Commit
-        - [ ]  Local
-        - [x] Simple
-        - [x] Advanced
-    - [ ] CI Workflow
-        - [ ] YML
-        - [ ] Runner
+-   [x] CONFIG:
+    -   [x] Build | Integrate | Test | Quality | Security | Config |
+-   [x] GitHub Issue(s) Created?
+    -   [x] FLOW: Workflow | Process | Outline
+        -   [x] #Issue
+                #12 [FLOW :: Code Quality Assurance (github.com)](https://github.com/iPoetDev/dash-and-do-github/issues/12)
+        -   [x] #Flow: Commit-Flow
+        -   [x] #Flow Code Quality
+    -   [ ] LINT: Report
+        -   [ ] #Issue
+-   [ ] FLOW
+    -   [x] Config .dotfile
+        -   [x] see Eslint ` eslintrc.js`
+    -   [ ] Local Script
+        -   [ ] Bash?
+            -   [ ] Develop
+            -   [x] Runs `>> standard --fix` from CLI
+            -   [x] Locally: `>> npx standard --fix`
+        -   [ ] Package.json
+            -   [ ] Test scripts?
+    -   [x] IDE Configuration
+        -   [x] Run Configuration?
+    -   [ ] Pre-Commit
+        -   [ ] Local
+        -   [x] Simple
+        -   [x] Advanced
+    -   [ ] CI Workflow
+        -   [ ] YML
+        -   [ ] Runner
 
 # Package:
 
@@ -53,11 +53,11 @@ sensible 'just pick something' opinions. Avoid debates/bikeshedding.
 
 This module saves you (and others!) time in three ways:
 
-- **No configuration.**The easiest way to enforce code quality in your project. No decisions to make. No`.eslintrc`files
-  to manage. It just works.
-- **Automatically format code.**Just run`standard --fix`and say goodbye to messy or inconsistent code.
-- **Catch style issues & programmer errors early.**Save precious code review time by eliminating back-and-forth between
-  reviewer & contributor.
+-   **No configuration.**The easiest way to enforce code quality in your project. No decisions to make. No`.eslintrc`files
+    to manage. It just works.
+-   **Automatically format code.**Just run`standard --fix`and say goodbye to messy or inconsistent code.
+-   **Catch style issues & programmer errors early.**Save precious code review time by eliminating back-and-forth between
+    reviewer & contributor.
 
 #### Talk
 
@@ -68,15 +68,15 @@ about linting, when to use`standard`versus`eslint`, and how`prettier`compares to
 
 Give it a try by running`npx standard --fix`right now!
 
-- Related Config
-    - [[CONFIG - {{}}]]
-- [[eslint]]
+-   Related Config
+    -   [[CONFIG - {{}}]]
+-   [[eslint]]
 
 ## Package | Library Source
 
 > .
 
-- [x] NPM
+-   [x] NPM
 
 **Link:** **`URL`**
 
@@ -92,19 +92,19 @@ https://www.npmjs.com/package/standard
 
 #### Dependencies
 
-- Eslint Sharable Configs Standard
-- some important packages in the`standard`ecosystem:
-    - **[standard](https://github.com/standard/standard)**- this repo
-        - **[standard-engine](https://github.com/standard/standard-engine)**- cli engine for arbitrary eslint rules
-        - **[eslint-config-standard](https://github.com/standard/eslint-config-standard)**- eslint rules for standard
-        - **[eslint-config-standard-jsx](https://github.com/standard/eslint-config-standard-jsx)**- eslint rules for
-          standard (JSX)
-        - **[eslint](https://github.com/eslint/eslint)**- the linter that powers standard
-    - **[snazzy](https://github.com/standard/snazzy)**- pretty terminal output for standard
-    - **[standard-www](https://github.com/standard/standard-www)**- code
-      for[https://standardjs.com](https://standardjs.com/)
-    - **[semistandard](https://github.com/standard/semistandard)**- standard, with semicolons (if you must)
-    - **[standardx](https://github.com/standard/standardx)**- standard, with custom tweaks
+-   Eslint Sharable Configs Standard
+-   some important packages in the`standard`ecosystem:
+    -   **[standard](https://github.com/standard/standard)**- this repo
+        -   **[standard-engine](https://github.com/standard/standard-engine)**- cli engine for arbitrary eslint rules
+        -   **[eslint-config-standard](https://github.com/standard/eslint-config-standard)**- eslint rules for standard
+        -   **[eslint-config-standard-jsx](https://github.com/standard/eslint-config-standard-jsx)**- eslint rules for
+            standard (JSX)
+        -   **[eslint](https://github.com/eslint/eslint)**- the linter that powers standard
+    -   **[snazzy](https://github.com/standard/snazzy)**- pretty terminal output for standard
+    -   **[standard-www](https://github.com/standard/standard-www)**- code
+        for[https://standardjs.com](https://standardjs.com/)
+    -   **[semistandard](https://github.com/standard/semistandard)**- standard, with semicolons (if you must)
+    -   **[standardx](https://github.com/standard/standardx)**- standard, with custom tweaks
 
 ```bash
 
@@ -130,13 +130,12 @@ npx standard
 
 #### WebStorm Custom Config
 
-1.
-    1. Close your IDE.
-2. [Figure out where your configuration lives](https://www.jetbrains.com/help/phpstorm/2016.1/directories-used-by-phpstorm-to-store-settings-caches-plugins-and-logs.html?origin=old_help#d66583e60)(
-   _IDE Settings_section)
-3. Navigate to`your-config-dir/codestyles`. If this directory doesn't exist, create it in the WebStorm config settings
-   directory
-4. Create a`Standard.xml`file:
+1.  1. Close your IDE.
+2.  [Figure out where your configuration lives](https://www.jetbrains.com/help/phpstorm/2016.1/directories-used-by-phpstorm-to-store-settings-caches-plugins-and-logs.html?origin=old_help#d66583e60)(
+    \_IDE Settings_section)
+3.  Navigate to`your-config-dir/codestyles`. If this directory doesn't exist, create it in the WebStorm config settings
+    directory
+4.  Create a`Standard.xml`file:
     ```xml
       <code_scheme name="Standard">
         <JSCodeStyleSettings>
@@ -157,22 +156,22 @@ npx standard
         </codeStyleSettings>
       </code_scheme>
     ```
-5. You may install dependencies and config globally or locally and with support of ES7 or without it
-    - **Local**install:
-        - `npm install --save-dev eslint-config-standard eslint-config-standard-jsx eslint-plugin-promise eslint-plugin-react`
-        - `echo '{"extends": ["standard", "standard-jsx"]}' > .eslintrc`
+5.  You may install dependencies and config globally or locally and with support of ES7 or without it
+    -   **Local**install:
+        -   `npm install --save-dev eslint-config-standard eslint-config-standard-jsx eslint-plugin-promise eslint-plugin-react`
+        -   `echo '{"extends": ["standard", "standard-jsx"]}' > .eslintrc`
 
-- **Global**install:
-    - `npm install --global eslint-config-standard eslint-config-standard-jsx eslint-plugin-promise eslint-plugin-react`
-    - `echo '{"extends": ["standard", "standard-jsx"]}' > ~/.eslintrc`
-      Be aware: The second command above will overwrite an existing`.eslintrc`if one exists.
-      If you choose global install, the first command may require you to use`sudo`. If it does require sudo, that means
-      you
-      do not have permission to write to the directories that npm uses to store global packages.`Standard`will work, but
-      if
-      you would like to fix it,[read this article](https://docs.npmjs.com/getting-started/fixing-npm-permissions).
+-   **Global**install:
+    -   `npm install --global eslint-config-standard eslint-config-standard-jsx eslint-plugin-promise eslint-plugin-react`
+    -   `echo '{"extends": ["standard", "standard-jsx"]}' > ~/.eslintrc`
+        Be aware: The second command above will overwrite an existing`.eslintrc`if one exists.
+        If you choose global install, the first command may require you to use`sudo`. If it does require sudo, that means
+        you
+        do not have permission to write to the directories that npm uses to store global packages.`Standard`will work, but
+        if
+        you would like to fix it,[read this article](https://docs.npmjs.com/getting-started/fixing-npm-permissions).
 
-6. Start up the IDE and open a_Settings_/_Preferences_screen (choose between project and default settings accordingly to
+6. Start up the IDE and open a*Settings*/\_Preferences_screen (choose between project and default settings accordingly to
    your preference)
 7. Under`Editor > Code Style > JavaScript`change`Scheme`to`Standard`
 8. Under`Editor > Code Style > HTML`just select`Other`, in`Spaces`setting, check`In empty tag`
@@ -209,34 +208,36 @@ Flags (advanced):
 ```
 
 #### Local | Pre-Commit Requirements | Proc
+
 ---
-**SCRIPT | RUN** `Script File`: - File Name: **``  .sh ``**
+
+**SCRIPT | RUN** `Script File`: - File Name: **` .sh`**
 
 ```bash
-#!/bin/bash 
+#!/bin/bash
 npx standard --fix .
 ```
 
 **CONFIGURATION | RUN** `Script File`
 
-- Name:
-- Allow Multiple: N | Y
-- Store as File: N | Y
-- Package.json: `D:\Code\Code Institute\dash-and-do-github\package.json`
-- Command:
-- Scripts:
-- Arguments:
-- Node: Node: `C:\Programs Files\node.js\node.exe` 20.3.0
-- Node Options:
-- Package manager: `C:\Program Files\node.js\node.exe`
-- Environments:
-- Before Launch:
+-   Name:
+-   Allow Multiple: N | Y
+-   Store as File: N | Y
+-   Package.json: `D:\Code\Code Institute\dash-and-do-github\package.json`
+-   Command:
+-   Scripts:
+-   Arguments:
+-   Node: Node: `C:\Programs Files\node.js\node.exe` 20.3.0
+-   Node Options:
+-   Package manager: `C:\Program Files\node.js\node.exe`
+-   Environments:
+-   Before Launch:
 
 ```
 Command: run
 Script:
 Arguement:
-Node Opt: 
+Node Opt:
 Environ:
 ```
 
@@ -244,7 +245,7 @@ Environ:
 `npm test` checks standard automatically
 
 ```json
-  
+
   "name": "my-cool-package",
   "devDependencies": {
     "standard": "*"
@@ -258,16 +259,16 @@ Environ:
 #### Commit Hook
 
 ```bash
-#!/bin/bash # Ensure all JavaScript files staged for commit pass standard code style 
-function xargs-r() { # Portable version of "xargs -r". The -r flag is a GNU extension that # prevents xargs from running if there are no input files. 
-if IFS= read -r -d $'\n' path; then 
-echo "$path" | cat - | xargs "$@" 
-fi 
-} 
+#!/bin/bash # Ensure all JavaScript files staged for commit pass standard code style
+function xargs-r() { # Portable version of "xargs -r". The -r flag is a GNU extension that # prevents xargs from running if there are no input files.
+if IFS= read -r -d $'\n' path; then
+echo "$path" | cat - | xargs "$@"
+fi
+}
 
-git diff --name-only --cached --relative | grep '\.jsx\?$' | sed 's/[^[:alnum:]]/\\&/g' | xargs-r -E '' -t standard 
+git diff --name-only --cached --relative | grep '\.jsx\?$' | sed 's/[^[:alnum:]]/\\&/g' | xargs-r -E '' -t standard
 if [[ $? -ne 0 ]]; then
-    echo 'JavaScript Standard Style errors were detected. Aborting commit.' exit 1 
+    echo 'JavaScript Standard Style errors were detected. Aborting commit.' exit 1
     fi
 ```
 
@@ -275,24 +276,24 @@ if [[ $? -ne 0 ]]; then
 
 ```yml
 # simply add `standard` to their `.pre-commit-config.yaml`
-- repo: https://github.com/standard/standard 
-  rev: master 
-  hooks: 
+- repo: https://github.com/standard/standard
+  rev: master
+  hooks:
   - id: standard
 # more advanced styling configurations
-- repo: https://github.com/pre-commit/mirrors-eslint 
-  rev: master 
+- repo: https://github.com/pre-commit/mirrors-eslint
+  rev: master
   hooks: - id: eslint
-    files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx 
-    types: [file] 
-    additional_dependencies: 
-      - eslint@latest 
+    files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
+    types: [file]
+    additional_dependencies:
+      - eslint@latest
       - eslint-config-standard@latest # and whatever other plugins...
 ```
 
 #### Output
 
--  [ ] Snazzy https://www.npmjs.com/package/snazzy
+-   [ ] Snazzy https://www.npmjs.com/package/snazzy
 
 ```
 $ npm install snazzy
@@ -301,10 +302,10 @@ $ standard | snazzy
 
 ### Sources
 
-- Web + Docs: https://standardjs.com/
-- Package: https://www.npmjs.com/package/standard
-- GitHub: https://github.com/standard/standard
-- Perplexity:
+-   Web + Docs: https://standardjs.com/
+-   Package: https://www.npmjs.com/package/standard
+-   GitHub: https://github.com/standard/standard
+-   Perplexity:
 
 ## Final
 
@@ -317,17 +318,17 @@ $ standard | snazzy
 3. [x] . Configure IDE to use Standard via ESlint on save
     1. [ ] .Additionally optional WebStorm manual code style
 4. [ ] .Understand the Command Line options
-5. [ ]  Create a Bash script to
+5. [ ] Create a Bash script to
     1. [ ] Detect
     2. [ ] Fix
     3. [ ] Format output
-6. [x]  Decide the Commit Hooks
+6. [x] Decide the Commit Hooks
     1. [ ] Define your own
     2. [x] Use Pre-commit
 7. [x] Pre-commit
     1. [x] Simple
     2. [x] Advanced
-8. [ ]  Handle the Output
+8. [ ] Handle the Output
 9. [ ] Decide to automate
 
 ### CLI Checks → Maybe Automate
@@ -346,7 +347,7 @@ standard --fix | stylish
 - /dash-and-do-github
 	- /.github
 		- /workflows
-			- 
+			-
 	- /docs
 		- /integration
 			- /1-dev
@@ -359,5 +360,7 @@ standard --fix | stylish
 ```
 
 ---
+
 > .
+
 ---

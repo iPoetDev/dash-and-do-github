@@ -1,5 +1,5 @@
 ---
-name: '00 FLOW: Workflow | Process'
+name: '00 FLOW: Workflow | Process | Checklist'
 about: 'FLOW: Best Practice | Strategic or Tactical Workflow'
 title: 'FLOW :: '
 labels: 'Deadline: Oct 21, Mentor: 1st Review: Aug 07, Mentor: 2nd Review: : Sep 04,

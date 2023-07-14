@@ -1,6 +1,6 @@
 ---
 name: '01: ADR Full'
-about: ADR Record - Full - Key Decisions & Dervivations
+about: ADR Record - Full - Key Decisions & Devviations
 title: 'ADR000? :: '
 labels: ''
 assignees: iPoetDev

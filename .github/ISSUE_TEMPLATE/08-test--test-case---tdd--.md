@@ -1,6 +1,6 @@
 ---
 name: '08 TEST: Test Case | TDD |'
-about: 'TEST: Unit | Manual | Automated | AI Generated | AI Prompted '
+about: '08 TEST: Test Case | TDD |'
 title: "[TEST/TDD]"
 labels: ''
 assignees: iPoetDev

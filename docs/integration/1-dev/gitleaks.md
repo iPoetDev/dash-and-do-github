@@ -6,28 +6,28 @@
 
 > .
 
-- [x] CONFIG:
-    - [x]  Data | Build | Integrate | Test | Quality | Security | Config | Deploy | Release
-- [x] GitHub Issue(s) Created?
-    - [x] FLOW: Workflow | Process | Outline
-        - [x] #Issue #12 [FLOW :: Code Quality Assurance](https://github.com/iPoetDev/dash-and-do-github/issues/12)
-        - [ ] #Flow: Secrets Protect Flow (TBA)
-    - [ ] LINT: Report
-        - [ ] #Issue
-- [ ] FLOW
-    - [x] Config .dotfile
-    - [x] use default
-        - [ ] `  .toml`
-    - [x] Local Script
-        - [ ] Bash?
-    - [ ] IDE Configuration
-        - [ ] Run Configuration?
-    - [ ] Pre-Commit
-        - [ ] as a runner
-        - [x] on commit
-    - [ ] CI Workflow
-        - [x] YML
-        - [ ] Runner
+-   [x] CONFIG:
+    -   [x] Data | Build | Integrate | Test | Quality | Security | Config | Deploy | Release
+-   [x] GitHub Issue(s) Created?
+    -   [x] FLOW: Workflow | Process | Outline
+        -   [x] #Issue #12 [FLOW :: Code Quality Assurance](https://github.com/iPoetDev/dash-and-do-github/issues/12)
+        -   [ ] #Flow: Secrets Protect Flow (TBA)
+    -   [ ] LINT: Report
+        -   [ ] #Issue
+-   [ ] FLOW
+    -   [x] Config .dotfile
+    -   [x] use default
+        -   [ ] `  .toml`
+    -   [x] Local Script
+        -   [ ] Bash?
+    -   [ ] IDE Configuration
+        -   [ ] Run Configuration?
+    -   [ ] Pre-Commit
+        -   [ ] as a runner
+        -   [x] on commit
+    -   [ ] CI Workflow
+        -   [x] YML
+        -   [ ] Runner
 
 # Package:
 
@@ -42,8 +42,8 @@ Blog [Gitleaks](https://blog.gitleaks.io/)
 
 > .
 
-- [x] Chocolatly
-    - [ ] Use a gloabl config var: GITLEAKS_CONFIG for central config, not per project
+-   [x] Chocolatly
+    -   [ ] Use a gloabl config var: GITLEAKS_CONFIG for central config, not per project
 
 **Link:** **`URL`** [Gitleaks](https://gitleaks.io/)
 
@@ -61,8 +61,8 @@ https://github.com/gitleaks/gitleaks
 
 ### Install
 
-- [x] Chocolately
-  Like done by Chocolatel
+-   [x] Chocolately
+        Like done by Chocolatel
 
 ```bash
 # From Source
@@ -77,7 +77,7 @@ make build
 2. env var GITLEAKS_CONFIG
 3. (--source/-s)/.gitleaks.toml
 4. If none of the three options are used, then gitleaks will use the default
-   config  [Default config](https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml)
+   config [Default config](https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml)
 
 ```toml
 # Title for the gitleaks configuration file.
@@ -236,12 +236,12 @@ Use "gitleaks [command] --help" for more information about a command.
 2. gitleaks detect --baseline-path gitleaks-report.json --report-path findings.json
 ```
 
-- After running the detect command with the --baseline-path parameter, report output (findings.json) will only contain
-  new issues.
-  **Detect**
-- used on developer machines and in CI environments.
-- gitleaks parses the output of a`git log -p`command
-- can scan files and directories by using the`--no-git`option.
+-   After running the detect command with the --baseline-path parameter, report output (findings.json) will only contain
+    new issues.
+    **Detect**
+-   used on developer machines and in CI environments.
+-   gitleaks parses the output of a`git log -p`command
+-   can scan files and directories by using the`--no-git`option.
 
 ```shell
 gitleaks detect --source . --log-opts="--all commitA..commitB"
@@ -249,60 +249,62 @@ gitleaks detect --source . --log-opts="--all commitA..commitB"
 
 **Protect**
 
-- used to scan uncommitted changes in a git repo
+-   used to scan uncommitted changes in a git repo
 
-- can set the`--staged`flag to check for changes in commits that have been`git add`ed.
-- `--staged`flag should be used when running Gitleaks as a pre-commit.
+-   can set the`--staged`flag to check for changes in commits that have been`git add`ed.
+-   `--staged`flag should be used when running Gitleaks as a pre-commit.
 
 ```ini
 
 ```
 
 #### Local | Pre-Commit Requirements | Proc
+
 ---
-**SCRIPT | RUN** `Script File`: - File Name: **``  .sh ``**
+
+**SCRIPT | RUN** `Script File`: - File Name: **` .sh`**
 
 **Baseline**
 
 ```bash
-#!/bin/bash 
+#!/bin/bash
 gitleaks detect --baseline-path gitleaks-report.json --report-format sarif --report-path findings.sarif
 ```
 
 **Detect**
 
 ```bash
-#!/bin/bash 
+#!/bin/bash
 gitleaks detect --source --redeact . --log-opts="--all"
 ```
 
 **Protect**
 
 ```bash
-#!/bin/bash 
+#!/bin/bash
 gitleaks protect --verbose --redact --staged
 ```
 
 **CONFIGURATION | RUN** `Script File`
 
-- Name:
-- Allow Multiple: N | Y
-- Store as File: N | Y
-- Package.json: `D:\Code\Code Institute\dash-and-do-github\package.json`
-- Command:
-- Scripts:
-- Arguments:
-- Node: Node: `C:\Programs Files\node.js\node.exe` 20.3.0
-- Node Options:
-- Package manager: `C:\Program Files\node.js\node.exe`
-- Environments:
-- Before Launch:
+-   Name:
+-   Allow Multiple: N | Y
+-   Store as File: N | Y
+-   Package.json: `D:\Code\Code Institute\dash-and-do-github\package.json`
+-   Command:
+-   Scripts:
+-   Arguments:
+-   Node: Node: `C:\Programs Files\node.js\node.exe` 20.3.0
+-   Node Options:
+-   Package manager: `C:\Program Files\node.js\node.exe`
+-   Environments:
+-   Before Launch:
 
 ```
 Command: run
 Script:
 Arguement:
-Node Opt: 
+Node Opt:
 Environ:
 ```
 
@@ -311,24 +313,21 @@ Tags: [Releases · gitleaks/gitleaks (github.com)](https://github.com/gitleaks/g
 
 ```yml
 repos:
-  - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.16.1
-    hooks:
-      - id: gitleaks
-        # Optional
-        name: Detect hardcoded secrets
-        description: Detect hardcoded secrets using Gitleaks
-        entry: gitleaks protect --verbose --redact --staged
-        language: golang
-        pass_filenames: false
+    - repo: https://github.com/gitleaks/gitleaks
+      rev: v8.16.1
+      hooks:
+          - id: gitleaks
+            # Optional
+            name: Detect hardcoded secrets
+            description: Detect hardcoded secrets using Gitleaks
+            entry: gitleaks protect --verbose --redact --staged
+            language: golang
+            pass_filenames: false
 ```
 
--
-    1. Auto-update the config to the latest repos' versions by executing`pre-commit autoupdate`
--
-    2. Install with`pre-commit install`
--
-    3. To disable the gitleaks pre-commit hook you can prepend`SKIP=gitleaks`to the commit command
+-   1. Auto-update the config to the latest repos' versions by executing`pre-commit autoupdate`
+-   2. Install with`pre-commit install`
+-   3. To disable the gitleaks pre-commit hook you can prepend`SKIP=gitleaks`to the commit command
 
 #### CI
 
@@ -364,16 +363,15 @@ Gitleaks-Action does not find any secrets you will see the follow job log and jo
 
 Docs: [gitleaks/gitleaks: Protect and discover secrets using Gitleaks 🔑 (github.com)](https://github.com/gitleaks/gitleaks)
 
-- Blog: https://blog.gitleaks.io/
-- GitHub:
-  -
-  Main: [gitleaks/gitleaks: Protect and discover secrets using Gitleaks 🔑 (github.com)](https://github.com/gitleaks/gitleaks)
-    - Action:
+-   Blog: https://blog.gitleaks.io/
+-   ## GitHub:
+    Main: [gitleaks/gitleaks: Protect and discover secrets using Gitleaks 🔑 (github.com)](https://github.com/gitleaks/gitleaks)
+    -   Action:
 -
 
 Article: [Stop Leaking Secrets — Configuration (2/3) | by Zach | Gitleaks](https://blog.gitleaks.io/stop-leaking-secrets-configuration-2-3-aeed293b1fbf)
 
-- Perplexity:
+-   Perplexity:
 
 ## Final
 
@@ -383,7 +381,7 @@ Article: [Stop Leaking Secrets — Configuration (2/3) | by Zach | Gitleaks](htt
 
 1. [x] . Installed GitLeaks (globally, on cmd line) (Chocolately)
 2. [ ] . Manual run of Baseline `gitleaks detect --report-path gitleaks-report.json`
-3. [ ]  Subseuqnet run of Baseline `gitleaks detect --baseline-path gitleaks-report.json --report-path findings.json`
+3. [ ] Subseuqnet run of Baseline `gitleaks detect --baseline-path gitleaks-report.json --report-path findings.json`
 4. [ ] Create Scripts
     1. [ ] Detect
     2. [ ] Protect
@@ -412,5 +410,7 @@ Article: [Stop Leaking Secrets — Configuration (2/3) | by Zach | Gitleaks](htt
 ```
 
 ---
+
 > .
+
 ---

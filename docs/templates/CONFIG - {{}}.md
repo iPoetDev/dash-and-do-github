@@ -4,47 +4,47 @@
 
 > .
 
-- [ ] CONFIG:
-    - [ ] Agile | Plan | Design | Architect | System | Data | Build | Integrate | Test | Quality | Security | Config |
-      Deploy | Release
-- [ ] GitHub Issue(s) Created?
-    - [ ] FLOW: Workflow | Process | Outline
-        - [ ] #Issue
-    - [ ] LINT: Report
-        - [ ] #Issue
-- [ ] FLOW
-    - [ ] Config .dotfile
-        - [ ] `   .json|yml|js`
-    - [ ] Local Script
-        - [ ] Bash?
-    - [ ] IDE Configuration
-        - [ ] Run Configuration?
-    - [ ] Pre-Commit
-        - [ ] 
-    - [ ] CI Workflow
-        - [ ] YML
-        - [ ] Runner
+-   [ ] CONFIG:
+    -   [ ] Agile | Plan | Design | Architect | System | Data | Build | Integrate | Test | Quality | Security | Config |
+            Deploy | Release
+-   [ ] GitHub Issue(s) Created?
+    -   [ ] FLOW: Workflow | Process | Outline
+        -   [ ] #Issue
+    -   [ ] LINT: Report
+        -   [ ] #Issue
+-   [ ] FLOW
+    -   [ ] Config .dotfile
+        -   [ ] `   .json|yml|js`
+    -   [ ] Local Script
+        -   [ ] Bash?
+    -   [ ] IDE Configuration
+        -   [ ] Run Configuration?
+    -   [ ] Pre-Commit
+        -   [ ]
+    -   [ ] CI Workflow
+        -   [ ] YML
+        -   [ ] Runner
 
 # Package:
 
 **`Intent | Purpose:`**
 
 ```ruby
->> 
+>>
 ```
 
-- Related Config
-    - [[CONFIG - {{}}]]
-    - .
+-   Related Config
+    -   [[CONFIG - {{}}]]
+    -   .
 
 ## Package | Library Source
 
 > .
 
-- [ ] PIP
-- [ ] NPM
-- [ ] Unpkg
-- [ ] JsDeliver
+-   [ ] PIP
+-   [ ] NPM
+-   [ ] Unpkg
+-   [ ] JsDeliver
 
 **Link:** **`URL`**
 
@@ -60,11 +60,10 @@
 
 #### Dependencies
 
-- .
--
-    -
-- .
-  **Depends on:** ``
+-   .
+-   -
+-   .
+    **Depends on:** ``
 
 ```bash
 
@@ -95,7 +94,9 @@
 ```
 
 #### Local | Pre-Commit Requirements | Proc
+
 ---
+
 **Proc**: `Heroku`
 
 ```ini
@@ -108,33 +109,33 @@
 
 ```
 
-**SCRIPT | RUN** `Script File`: - File Name: **``  .sh ``**
+**SCRIPT | RUN** `Script File`: - File Name: **` .sh`**
 
 ```bash
-#!/bin/bash 
+#!/bin/bash
 npx prettier . --write
 ```
 
 **CONFIGURATION | RUN** `Script File`
 
-- Name:
-- Allow Multiple: N | Y
-- Store as File: N | Y
-- Package.json: `D:\Code\Code Institute\dash-and-do-github\package.json`
-- Command:
-- Scripts:
-- Arguments:
-- Node: Node: `C:\Programs Files\node.js\node.exe` 20.3.0
-- Node Options:
-- Package manager: `C:\Program Files\node.js\node.exe`
-- Environments:
-- Before Launch:
+-   Name:
+-   Allow Multiple: N | Y
+-   Store as File: N | Y
+-   Package.json: `D:\Code\Code Institute\dash-and-do-github\package.json`
+-   Command:
+-   Scripts:
+-   Arguments:
+-   Node: Node: `C:\Programs Files\node.js\node.exe` 20.3.0
+-   Node Options:
+-   Package manager: `C:\Program Files\node.js\node.exe`
+-   Environments:
+-   Before Launch:
 
 ```
 Command: run
 Script:
 Arguement:
-Node Opt: 
+Node Opt:
 Environ:
 ```
 
@@ -152,10 +153,10 @@ Environ:
 
 ### Options
 
-- Docs:
-- Package:
-- GitHub:
-- Perplexity:
+-   Docs:
+-   Package:
+-   GitHub:
+-   Perplexity:
 
 ## Final
 
@@ -193,10 +194,12 @@ Environ:
 
 ## Sources
 
-- .
-- .
-- .
+-   .
+-   .
+-   .
 
 ---
+
 > .
+
 ---

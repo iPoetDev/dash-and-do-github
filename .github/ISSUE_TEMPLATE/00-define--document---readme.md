@@ -4,42 +4,45 @@ about: 'DEFINE: Readme Development | Document | Effort | Concept'
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
-# `[DEFINE]()`: 
+# `[DEFINE]()`:
+
 > PROJECT | SOLUTION: Concept | Idea Capture | Discovery | Document Driven Effort
 
-- [ ] Ideation, Concept
-- [ ] Research
-- [ ] Readme
-  - [ ] Writing
-  - [ ] Diagramming
-- [ ] Proofing
-- [ ] Editorial
+-   [ ] Ideation, Concept
+-   [ ] Research
+-   [ ] Readme
+    -   [ ] Writing
+    -   [ ] Diagramming
+-   [ ] Proofing
+-   [ ] Editorial
 
 ## Idea
 
 ```text
 
 ```
+
 ## Research
+
 > Sources
 
-- 
-- 
+-
+-
 
 ## Readme
 
-- Header:
-- Tags:
-- Notes:
+-   Header:
+-   Tags:
+-   Notes:
 
 ## Proof
-> Grammar, Spelling, Diagram, 
+
+> Grammar, Spelling, Diagram,
 
 ## Editorial
 
-- Include
-- Edit
-- Exclude
+-   Include
+-   Edit
+-   Exclude

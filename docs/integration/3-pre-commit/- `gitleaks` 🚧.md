@@ -1,16 +1,16 @@
-- Detect hardcoded secrets using Gitleaks
+-   Detect hardcoded secrets using Gitleaks
 
 # Source
 
-- Pre-Commit Repo [URL]:
-- Hook ID
-    - ID: `gitleaks`
-- Category | Intent: Static Application Security Testing (SAST)
-    - [SAST Tools & Testing: How Does it Work and Why Do You Need it? | Snyk](https://snyk.io/learn/application-security/static-application-security-testing/?utm_medium=paid-search&utm_source=google&utm_campaign=nb_lg_sast&utm_content=sast-topic&utm_term=sast%20testing&gclid=Cj0KCQjwkqSlBhDaARIsAFJANkjce_iW05LYNobpL-Fw91a6D21p3wRt0fjqCUgzJ6bKDOUOxobqh4YaAtvrEALw_wcB)
-- Description:
-    - Gitleaks is a SAST tool for**detecting**and**preventing**hardcoded secrets like passwords, api keys, and tokens in
-      git repos.
-    - Gitleaks is an**easy-to-use, all-in-one solution**for detecting secrets, past or present, in your code
+-   Pre-Commit Repo [URL]:
+-   Hook ID
+    -   ID: `gitleaks`
+-   Category | Intent: Static Application Security Testing (SAST)
+    -   [SAST Tools & Testing: How Does it Work and Why Do You Need it? | Snyk](https://snyk.io/learn/application-security/static-application-security-testing/?utm_medium=paid-search&utm_source=google&utm_campaign=nb_lg_sast&utm_content=sast-topic&utm_term=sast%20testing&gclid=Cj0KCQjwkqSlBhDaARIsAFJANkjce_iW05LYNobpL-Fw91a6D21p3wRt0fjqCUgzJ6bKDOUOxobqh4YaAtvrEALw_wcB)
+-   Description:
+    -   Gitleaks is a SAST tool for**detecting**and**preventing**hardcoded secrets like passwords, api keys, and tokens in
+        git repos.
+    -   Gitleaks is an**easy-to-use, all-in-one solution**for detecting secrets, past or present, in your code
 
 ## Fetch
 
@@ -20,11 +20,11 @@
 
 ## Library
 
-- [ ] Web: [Gitleaks](https://gitleaks.io/)
-- [ ] Repo: ### [github.com/zricethezav/gitleaks](https://github.com/zricethezav/gitleaks)
-- [ ] 
-  Source: [gitleaks_8.17.0_windows_arm64.zip (github.com)](https://github.com/gitleaks/gitleaks/releases/download/v8.17.0/gitleaks_8.17.0_windows_arm64.zip)
-- [ ] Config: [gitleaks config (github.com)](https://github.com/zricethezav/gitleaks/blob/master/config/gitleaks.toml)
+-   [ ] Web: [Gitleaks](https://gitleaks.io/)
+-   [ ] Repo: ### [github.com/zricethezav/gitleaks](https://github.com/zricethezav/gitleaks)
+-   [ ]
+    Source: [gitleaks_8.17.0_windows_arm64.zip (github.com)](https://github.com/gitleaks/gitleaks/releases/download/v8.17.0/gitleaks_8.17.0_windows_arm64.zip)
+-   [ ] Config: [gitleaks config (github.com)](https://github.com/zricethezav/gitleaks/blob/master/config/gitleaks.toml)
 
 #### Config
 
@@ -143,7 +143,7 @@ stopwords = [
 #### Baseline
 
 ```
-gitleaks detect --report-path gitleaks-report.json 
+gitleaks detect --report-path gitleaks-report.json
 # This will save the report in a file called gitleaks-report.json
 ```
 
@@ -166,11 +166,11 @@ which gitleaks will use to detect secrets.
 
 Can ignore specific findings by creating a`.gitleaksignore`file at the root of your repo.
 
-- In release v8.10.0 Gitleaks added a`Fingerprint`value to the Gitleaks report.
-- Each leak, or finding, has a Fingerprint that uniquely identifies a secret.
-- Add this fingerprint to the`.gitleaksignore`file to ignore that specific secret.
-- See Gitleaks'[.gitleaksignore](https://github.com/zricethezav/gitleaks/blob/master/.gitleaksignore)for an example.
-  Note: this feature is experimental and is subject to change in the future.
+-   In release v8.10.0 Gitleaks added a`Fingerprint`value to the Gitleaks report.
+-   Each leak, or finding, has a Fingerprint that uniquely identifies a secret.
+-   Add this fingerprint to the`.gitleaksignore`file to ignore that specific secret.
+-   See Gitleaks'[.gitleaksignore](https://github.com/zricethezav/gitleaks/blob/master/.gitleaksignore)for an example.
+    Note: this feature is experimental and is subject to change in the future.
 
 #### Exit
 
@@ -182,30 +182,30 @@ Can ignore specific findings by creating a`.gitleaksignore`file at the root of y
 
 ## Config
 
-- [ ] Create a` .pre-commit-config.yaml` in root of repository.
-- [ ] Commit `yaml` repository.
-- [ ] Prepare for run by adding hook's
-    - [ ] 
-      Repository: `- repo: https://github.com/gitleaks/gitleaks`: [gitleaks/gitleaks: Protect and discover secrets using Gitleaks 🔑 (github.com)](https://github.com/gitleaks/gitleaks)
-    - [ ] Revision: `rev` : `  8.17.0  `
-        - [ ] v8.17.0 - [v8.17.0 Latest (github.com)](https://github.com/gitleaks/gitleaks/releases/tag/v8.17.0)
-        - Select/Use the ref you want to point at
-    - [ ] Hooks: Detect hardcoded secrets using Gitleaks
-        - [ ] Id: `id gitleaks`
+-   [ ] Create a` .pre-commit-config.yaml` in root of repository.
+-   [ ] Commit `yaml` repository.
+-   [ ] Prepare for run by adding hook's
+    -   [ ]
+        Repository: `- repo: https://github.com/gitleaks/gitleaks`: [gitleaks/gitleaks: Protect and discover secrets using Gitleaks 🔑 (github.com)](https://github.com/gitleaks/gitleaks)
+    -   [ ] Revision: `rev` : `  8.17.0  `
+        -   [ ] v8.17.0 - [v8.17.0 Latest (github.com)](https://github.com/gitleaks/gitleaks/releases/tag/v8.17.0)
+        -   Select/Use the ref you want to point at
+    -   [ ] Hooks: Detect hardcoded secrets using Gitleaks
+        -   [ ] Id: `id gitleaks`
 
 ```yaml
-  - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.17.0
-    hooks:
+- repo: https://github.com/gitleaks/gitleaks
+  rev: v8.17.0
+  hooks:
       - id: gitleak
 ```
 
--  [ ] Copy into `.pre-commit-configuration.yaml`
+-   [ ] Copy into `.pre-commit-configuration.yaml`
 
 ## Install
 
-- [x] Installed: WinGetUI: Scoop
-- Or ...
+-   [x] Installed: WinGetUI: Scoop
+-   Or ...
 
 ```bash
 # From Source
@@ -220,4 +220,3 @@ make build
 
 
 ```
-

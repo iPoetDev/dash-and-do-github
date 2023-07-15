@@ -9,11 +9,10 @@ Activate: 23-07-09
 
 ### Y-Statement
 
->
-Status: [`Proposed`](https://github.com/iPoetDev/P4Template/labels/ADR-Proposed)  |  [`Pending`](https://github.com/iPoetDev/P4Template/labels/ADR-Pending)  |  [`Defered`](https://github.com/iPoetDev/P4Template/labels/ADR-Deferred)  |  [`Accepted`](https://github.com/iPoetDev/P4Template/labels/ADR-Accepted)  |  [`Rejected`](https://github.com/iPoetDev/P4Template/labels/ADR-Rejected)  |  [`Suspended`](https://github.com/iPoetDev/P4Template/labels/ADR-Suspended)  |  [`Superseded`](https://github.com/iPoetDev/P4Template/labels/ADR-Superseded)
+> Status: [`Proposed`](https://github.com/iPoetDev/P4Template/labels/ADR-Proposed) | [`Pending`](https://github.com/iPoetDev/P4Template/labels/ADR-Pending) | [`Defered`](https://github.com/iPoetDev/P4Template/labels/ADR-Deferred) | [`Accepted`](https://github.com/iPoetDev/P4Template/labels/ADR-Accepted) | [`Rejected`](https://github.com/iPoetDev/P4Template/labels/ADR-Rejected) | [`Suspended`](https://github.com/iPoetDev/P4Template/labels/ADR-Suspended) | [`Superseded`](https://github.com/iPoetDev/P4Template/labels/ADR-Superseded)
 
 ```
-In the context of CSS Utility Frameworks for Front-End Development .. 
+In the context of CSS Utility Frameworks for Front-End Development ..
 Facing the 1) choice of native CSS baseline developmentb or predefined CSS utility classes 2) Putting ease of workflow into the developer's experience  ..
 We decided for Tailwind  ..
 And neglected, as alternatives: Bootstrap  ..
@@ -21,16 +20,16 @@ To achieve, in full or in part, an easier developer experience and `just bacause
 Accepting that `Cost` | `Effort` | `Trade Off` Tailwinds is not taught by CI, and Bootstrap is with its own learning modules, and is recommneded by CI, so to expect less support from the CI community when questions / issues arise  ...
 ```
 
-###### **STATUS:** *[PENDING]*
+###### **STATUS:** _[PENDING]_
 
 # Source
 
-- Repo [URL]:
-- Install: [Installation - Tailwind CSS](https://tailwindcss.com/docs/installation)
-- Version: 3.3.2
-- Category | Intent:
-- Description:
-    - .
+-   Repo [URL]:
+-   Install: [Installation - Tailwind CSS](https://tailwindcss.com/docs/installation)
+-   Version: 3.3.2
+-   Category | Intent:
+-   Description:
+    -   .
     -
 
 ## Fetch: npm | pip
@@ -47,94 +46,95 @@ npx tailwindcss init
 
 ### AutoComplete
 
-- Webstorm | PyCharm
+-   Webstorm | PyCharm
 
-- WebStorm autocompletes Tailwind classes in HTML files and in CSS files after the`@apply`directive.
-- WebStorm suggests Tailwind classes for completion in JavaScript string literals.
-- Completion suggestions are also shown for pseudo-class variants.
-- Preview by hover over a Tailwind class in an HTML or CSS file, WebStorm shows you the preview of the resulting CSS.
+-   WebStorm autocompletes Tailwind classes in HTML files and in CSS files after the`@apply`directive.
+-   WebStorm suggests Tailwind classes for completion in JavaScript string literals.
+-   Completion suggestions are also shown for pseudo-class variants.
+-   Preview by hover over a Tailwind class in an HTML or CSS file, WebStorm shows you the preview of the resulting CSS.
 
 ---
+
 > .
+
 ---
 
 ## Library | IDE
 
-- [ ] IDE
-  Docs: [Tailwind CSS | WebStorm Documentation (jetbrains.com)](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_configuration)
-- [ ] Web
-- [ ] Repo:
-- [ ] Source:
-- [ ] Config:
+-   [ ] IDE
+        Docs: [Tailwind CSS | WebStorm Documentation (jetbrains.com)](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_configuration)
+-   [ ] Web
+-   [ ] Repo:
+-   [ ] Source:
+-   [ ] Config:
 
 #### Requirements
 
-- [ ] No use case for pre-processors so 🚫
-  to [Using with Preprocessors (tailwindcss.com)](https://tailwindcss.com/docs/using-with-preprocessors)
-- [ ] Not optimising for production at scale so 🚫
-  to [Optimizing for Production - Tailwind CSS](https://tailwindcss.com/docs/optimizing-for-production)
-- [ ] Avoid using Non -Browser supported Tailwind CSS features
-  🚧❓ [Browser Support - Tailwind CSS](https://tailwindcss.com/docs/browser-support)
-    - [ ] :focus-visible
-    - [ ] backdrop-filter
-- [ ] Avoid, for now, using vendor prefixes were possible 🚧❓ [​ Vendor
-  Prefixes)(https://tailwindcss.com/docs/browser-support#vendor-prefixes)
+-   [ ] No use case for pre-processors so 🚫
+        to [Using with Preprocessors (tailwindcss.com)](https://tailwindcss.com/docs/using-with-preprocessors)
+-   [ ] Not optimising for production at scale so 🚫
+        to [Optimizing for Production - Tailwind CSS](https://tailwindcss.com/docs/optimizing-for-production)
+-   [ ] Avoid using Non -Browser supported Tailwind CSS features
+        🚧❓ [Browser Support - Tailwind CSS](https://tailwindcss.com/docs/browser-support)
+    -   [ ] :focus-visible
+    -   [ ] backdrop-filter
+-   [ ] Avoid, for now, using vendor prefixes were possible 🚧❓ [​ Vendor
+        Prefixes)(https://tailwindcss.com/docs/browser-support#vendor-prefixes)
 
 Refer:
 
-- [Can I Use](https://caniuse.com/?search=focus-visible)
-- [Autoprefixer (github.com)](https://github.com/postcss/autoprefixer) + PostCSS plugin
-- [Browserslist (github.com)](https://github.com/browserslist/browserslist)
+-   [Can I Use](https://caniuse.com/?search=focus-visible)
+-   [Autoprefixer (github.com)](https://github.com/postcss/autoprefixer) + PostCSS plugin
+-   [Browserslist (github.com)](https://github.com/browserslist/browserslist)
 
 ### Options
 
-- customize the default
-  Tailwind[configuration options](https://github.com/tailwindlabs/tailwindcss-intellisense#extension-settings).
-- to tune the[HTML attributes](https://github.com/tailwindlabs/tailwindcss-intellisense#tailwindcssclassattributes) list
-  for which to provide class completions
-- use an
-  experimental[regular expression format](https://github.com/tailwindlabs/tailwindcss/issues/7553#issuecomment-735915659)
-  to specify additional places where completions should be triggered.
-- Open the Settings dialog (Ctrl+Alt+S) and go to Languages and Frameworks | Style Sheets | Tailwind CSS.
+-   customize the default
+    Tailwind[configuration options](https://github.com/tailwindlabs/tailwindcss-intellisense#extension-settings).
+-   to tune the[HTML attributes](https://github.com/tailwindlabs/tailwindcss-intellisense#tailwindcssclassattributes) list
+    for which to provide class completions
+-   use an
+    experimental[regular expression format](https://github.com/tailwindlabs/tailwindcss/issues/7553#issuecomment-735915659)
+    to specify additional places where completions should be triggered.
+-   Open the Settings dialog (Ctrl+Alt+S) and go to Languages and Frameworks | Style Sheets | Tailwind CSS.
 
 #### IDE Config
 
 > Default, Base
 
 ```json
-
-{  
-	"includeLanguages": {},  
-	"files": {  
-	"exclude": [  
-			"**/.git/**",  
-			"**/node_modules/**",  
-			"**/.hg/**",  
-			"**/.svn/**"  
-		]  
-},  
-"emmetCompletions": false,  
-"classAttributes": ["class", "className", "ngClass"],  
-"colorDecorators": false,  
-"showPixelEquivalents": true,  
-"rootFontSize": 16,  
-"hovers": true,  
-"suggestions": true,  
-"codeActions": true,  
-"validate": true,  
-"lint": {  
-		"invalidScreen": "error",  
-		"invalidVariant": "error",  
-		"invalidTailwindDirective": "error",  
-		"invalidApply": "error",  
-		"invalidConfigPath": "error",  
-		"cssConflict": "warning",  
-		"recommendedVariantOrder": "warning"  
-	},  
-"experimental": {  
-		"configFile": null,  
-		"classRegex": []  
-	}  
+{
+    "includeLanguages": {},
+    "files": {
+        "exclude": [
+            "**/.git/**",
+            "**/node_modules/**",
+            "**/.hg/**",
+            "**/.svn/**"
+        ]
+    },
+    "emmetCompletions": false,
+    "classAttributes": ["class", "className", "ngClass"],
+    "colorDecorators": false,
+    "showPixelEquivalents": true,
+    "rootFontSize": 16,
+    "hovers": true,
+    "suggestions": true,
+    "codeActions": true,
+    "validate": true,
+    "lint": {
+        "invalidScreen": "error",
+        "invalidVariant": "error",
+        "invalidTailwindDirective": "error",
+        "invalidApply": "error",
+        "invalidConfigPath": "error",
+        "cssConflict": "warning",
+        "recommendedVariantOrder": "warning"
+    },
+    "experimental": {
+        "configFile": null,
+        "classRegex": []
+    }
 }
 ```
 
@@ -146,22 +146,22 @@ Refer:
 
 #### Regex - More places
 
-### Config  `. .json|yml|yaml|js`
+### Config `. .json|yml|yaml|js`
 
-- [ ] Project Level
-- [ ] Node_Modules | Virtual:
-- [ ] Package:
+-   [ ] Project Level
+-   [ ] Node_Modules | Virtual:
+-   [ ] Package:
 
 ##### Steps: CLI
 
-1. [ ] Install Tailwind CSS  `Install `tailwindcss` via npm, and create your `tailwind.config.js` file.`
-2. [ ] Configure your template paths  `Add the paths to all of your template files in your `tailwind.config.js` file.`
+1. [ ] Install Tailwind CSS `Install `tailwindcss` via npm, and create your `tailwind.config.js` file.`
+2. [ ] Configure your template paths `Add the paths to all of your template files in your `tailwind.config.js` file.`
 3. [ ] Add the Tailwind directives to your CSS `Add the `
-   @tailwind` directives for each of Tailwind’s layers to your main CSS file.`
+       @tailwind` directives for each of Tailwind’s layers to your main CSS file.`
 4. [ ] Start the Tailwind CLI build
-   process  `Run the CLI tool to scan your template files for classes and build your CSS.`
+       process `Run the CLI tool to scan your template files for classes and build your CSS.`
 5. [ ] Start using Tailwind in your
-   HTML: `Add your compiled CSS file to the <head> and start using Tailwind’s utility classes to style your content.`
+       HTML: `Add your compiled CSS file to the <head> and start using Tailwind’s utility classes to style your content.`
 
 ```yanl
 
@@ -171,8 +171,8 @@ Refer:
 
 1. [ ] UTILITIES: [Utility-First Fundamentals (tailwindcss.com)](https://tailwindcss.com/docs/utility-first)
 2. [ ] RESPONSE [Responsive Design (tailwindcss.com)](https://tailwindcss.com/docs/responsive-design)
-3. [ ] 
-   STATE/FEEDBACK:  [Hover, Focus & Other States (tailwindcss.com)](https://tailwindcss.com/docs/hover-focus-and-other-states)
+3. [ ]
+   STATE/FEEDBACK: [Hover, Focus & Other States (tailwindcss.com)](https://tailwindcss.com/docs/hover-focus-and-other-states)
 4. [ ] VISUAL MODE: [Dark Mode (tailwindcss.com)](https://tailwindcss.com/docs/dark-mode)
 5. [ ] REUSE: [Reusing Styles (tailwindcss.com)](https://tailwindcss.com/docs/reusing-styles)
 6. [ ] CUSTOM: [Customizing the Framework (tailwindcss.com)](https://tailwindcss.com/docs/adding-custom-styles)
@@ -182,63 +182,64 @@ Refer:
 **MIN**
 
 ```json
-module.exports = { 
-	content: [], 
-	theme: { 
-		extend: {}, }, 
+module.exports = {
+	content: [],
+	theme: {
+		extend: {}, },
 	plugins: [], }
 ```
 
 **SAMPLE**
 
 ```JSON
-module.exports = { 
-	content: ['./src/**/*.{html,js}'], 
-	theme: { 
-		colors: { 
-			'blue': '#1fb6ff', 
-			'purple': '#7e5bef', 
-			'pink': '#ff49db', 
-			'orange': '#ff7849', 
-			'green': '#13ce66', 
-			'yellow': '#ffc82c', 
-			'gray-dark': '#273444', 
-			'gray': '#8492a6', 
-			'gray-light': '#d3dce6', }, 
-	fontFamily: { 
-		sans: ['Graphik', 'sans-serif'], 
-		serif: ['Merriweather', 'serif'], }, 
-	extend: { 
-		spacing: { 
-			'8xl': '96rem', 
-			'9xl': '128rem', }, 
-	borderRadius: { 
+module.exports = {
+	content: ['./src/**/*.{html,js}'],
+	theme: {
+		colors: {
+			'blue': '#1fb6ff',
+			'purple': '#7e5bef',
+			'pink': '#ff49db',
+			'orange': '#ff7849',
+			'green': '#13ce66',
+			'yellow': '#ffc82c',
+			'gray-dark': '#273444',
+			'gray': '#8492a6',
+			'gray-light': '#d3dce6', },
+	fontFamily: {
+		sans: ['Graphik', 'sans-serif'],
+		serif: ['Merriweather', 'serif'], },
+	extend: {
+		spacing: {
+			'8xl': '96rem',
+			'9xl': '128rem', },
+	borderRadius: {
 	'4xl': '2rem', } } }, }
 ```
 
 #### Editors / WebStorm / PyCharm
 
 [#### PLugins: Prettier]([​ (tailwindcss.com)](https://tailwindcss.com/docs/editor-setup#automatic-class-sorting-with-prettier))
+
 > Tailwind \ Prettier
 
-- Source: [Prettier plugin (github.com)](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
+-   Source: [Prettier plugin (github.com)](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)
 -
 
 #### Preflight
 
 > [Preflight - Tailwind CSS](https://tailwindcss.com/docs/preflight)
 
-- Located in `@tailwind base`
-- Pre-flight Css:
-- Default margins are removed
-- Headings are unstyled
-- Lists are unstyled
-    - Accessibility considerations
-- Images are block-level
-- Images are constrained to the parent width
-- Border styles are reset globally
-- [ ] Extending Preflight
-- [ ] Disabling Preflight
+-   Located in `@tailwind base`
+-   Pre-flight Css:
+-   Default margins are removed
+-   Headings are unstyled
+-   Lists are unstyled
+    -   Accessibility considerations
+-   Images are block-level
+-   Images are constrained to the parent width
+-   Border styles are reset globally
+-   [ ] Extending Preflight
+-   [ ] Disabling Preflight
 
 LINK: [unpkg.com/tailwindcss@3.3.2/src/css/preflight.css](https://unpkg.com/tailwindcss@3.3.2/src/css/preflight.css)
 
@@ -617,12 +618,14 @@ Copied
 ```
 
 ---
+
 > .
+
 ---
 
 ### Run
 
-	**FULL Scaffold**
+    **FULL Scaffold**
 
 ```bash
 npx tailwindcss init --full

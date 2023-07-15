@@ -4,49 +4,49 @@
 
 > .
 
-- [ ] CONFIG:
-    - [ ]  Build | Integrate | Test | Quality | Config | Deploy | Release
-- [ ] GitHub Issue(s) Created?
-    - [ ] FLOW: Workflow | Process | Outline
-        - [ ] #Issue #12
-    - [ ] LINT: Report
-        - [ ] #Issue
-- [ ] FLOW
-    - [ ] Config .dotfile
-        - [ ] `   .json|yml|js`
-    - [ ] Local Script
-        - [ ] Bash?
-    - [ ] IDE Configuration
-        - [ ] Run Configuration?
-    - [ ] Pre-Commit
-        - [ ] 
-    - [ ] CI Workflow
-        - [ ] YML
-        - [ ] Runner
+-   [ ] CONFIG:
+    -   [ ] Build | Integrate | Test | Quality | Config | Deploy | Release
+-   [ ] GitHub Issue(s) Created?
+    -   [ ] FLOW: Workflow | Process | Outline
+        -   [ ] #Issue #12
+    -   [ ] LINT: Report
+        -   [ ] #Issue
+-   [ ] FLOW
+    -   [ ] Config .dotfile
+        -   [ ] `   .json|yml|js`
+    -   [ ] Local Script
+        -   [ ] Bash?
+    -   [ ] IDE Configuration
+        -   [ ] Run Configuration?
+    -   [ ] Pre-Commit
+        -   [ ]
+    -   [ ] CI Workflow
+        -   [ ] YML
+        -   [ ] Runner
 
 # Package:
 
 **`Intent | Purpose: `**
 
 ```ruby
->> **w3c-html-validator** takes HTML files and returns detailed validation results.  
+>> **w3c-html-validator** takes HTML files and returns detailed validation results. 
 >> The reporter produces formatted output indended for use in build scripts and test suites.
 ```
 
 ![[Pasted image 20230713172443.png]]
 
-- Related Config
-    - [[CONFIG - {{}}]]
-    - .
+-   Related Config
+    -   [[CONFIG - {{}}]]
+    -   .
 
 ## Package | Library Source
 
 > .
 
-- [ ] PIP
-- [ ] NPM
-- [ ] Unpkg
-- [ ] JsDeliver
+-   [ ] PIP
+-   [ ] NPM
+-   [ ] Unpkg
+-   [ ] JsDeliver
 
 **Link:** **`URL`**
 
@@ -76,9 +76,9 @@ html-validator docs/*.html flyer.html
 
 ```json
 "scripts": {
-    "validate": "html-validator docs/*.html flyer.html --exclude=build,tmp --delay=200",  
-    "one-folder": "html-validator docs --exclude=build,tmp --delay=200",  
-    "all": "html-validator --quiet --exclude=build,tmp --delay=200",  
+    "validate": "html-validator docs/*.html flyer.html --exclude=build,tmp --delay=200",
+    "one-folder": "html-validator docs --exclude=build,tmp --delay=200",
+    "all": "html-validator --quiet --exclude=build,tmp --delay=200",
     "continue": "html-validator --quiet --continue --exclude=build,tmp --delay=200"
    },
 ```
@@ -86,51 +86,51 @@ html-validator docs/*.html flyer.html
 ### CLI Flags
 
 ```shell
-`--continue`: Report messages but do not throw an error if validation failed. N/A 
-`--delay`:  Debounce pause in milliseconds between each file validation. **number** 
-`--exclude`: Comma separated list of strings to match in paths to skip. **string** 
-`--ignore`: Skip messages containing a string or matching a RegEx. **string** 
-`--note`:   Place to add a comment only for humans. **string** 
-`--quiet`:  Suppress messages for successful validations. N/A 
-`--trim`:   Truncate validation messages to not exceed a maximum length. **number** 
+`--continue`: Report messages but do not throw an error if validation failed. N/A
+`--delay`:  Debounce pause in milliseconds between each file validation. **number**
+`--exclude`: Comma separated list of strings to match in paths to skip. **string**
+`--ignore`: Skip messages containing a string or matching a RegEx. **string**
+`--note`:   Place to add a comment only for humans. **string**
+`--quiet`:  Suppress messages for successful validations. N/A
+`--trim`:   Truncate validation messages to not exceed a maximum length. **number**
 ```
 
-**SCRIPT | RUN** `Script File`: - File Name: **``  .sh ``**
+**SCRIPT | RUN** `Script File`: - File Name: **` .sh`**
 
 ```bash
-#!/bin/bash 
+#!/bin/bash
 html-validator *.html --exclude=build,tmp --delay=200 --quite --continue
 ```
 
 **CONFIGURATION | RUN** `Script File`
 Either
 
-- Define in `package.json`
-- Use the Run Config control
+-   Define in `package.json`
+-   Use the Run Config control
 
 ```json
 "scripts": {
-    "validate": "html-validator docs/*.html flyer.html --exclude=build,tmp --delay=200",  
-    "one-folder": "html-validator docs --exclude=build,tmp --delay=200",  
-    "all": "html-validator --quiet --exclude=build,tmp --delay=200",  
+    "validate": "html-validator docs/*.html flyer.html --exclude=build,tmp --delay=200",
+    "one-folder": "html-validator docs --exclude=build,tmp --delay=200",
+    "all": "html-validator --quiet --exclude=build,tmp --delay=200",
     "continue": "html-validator --quiet --continue --exclude=build,tmp --delay=200"
    },
 ```
 
 OR
 
-- Name: **`validate`** | **`one-folder`** | **`all`** | **`continue`**
-- Allow Multiple: N
-- Store as File: N - in package.json
-- Package.json: `D:\Code\Code Institute\dash-and-do-github\package.json`
-- Command: ` run `
-- Scripts: ` all `
-- Arguments:
-- Node: Node: `C:\Programs Files\node.js\node.exe` 20.3.0
-- Node Options:
-- Package manager: `C:\Program Files\node.js\node.exe`
-- Environments:
-- Before Launch:
+-   Name: **`validate`** | **`one-folder`** | **`all`** | **`continue`**
+-   Allow Multiple: N
+-   Store as File: N - in package.json
+-   Package.json: `D:\Code\Code Institute\dash-and-do-github\package.json`
+-   Command: `run`
+-   Scripts: `all`
+-   Arguments:
+-   Node: Node: `C:\Programs Files\node.js\node.exe` 20.3.0
+-   Node Options:
+-   Package manager: `C:\Program Files\node.js\node.exe`
+-   Environments:
+-   Before Launch:
 
 ```
 Command: run
@@ -144,36 +144,35 @@ Environ: -
 
 ```json
 "scripts": {
-    "validate": "html-validator docs/*.html flyer.html --exclude=build,tmp --delay=200",  
-    "one-folder": "html-validator docs --exclude=build,tmp --delay=200",  
-    "all": "html-validator --quiet --exclude=build,tmp --delay=200",  
+    "validate": "html-validator docs/*.html flyer.html --exclude=build,tmp --delay=200",
+    "one-folder": "html-validator docs --exclude=build,tmp --delay=200",
+    "all": "html-validator --quiet --exclude=build,tmp --delay=200",
     "continue": "html-validator --quiet --continue --exclude=build,tmp --delay=200"
    },
 ```
 
-**Pre-Commit**: ``
-- 
+## **Pre-Commit**: ``
 
 ```yml
-repos: 
-    - repo: local 
-      hooks: 
-        - id: validate-html-wc3 
-          name: Validate HTML with WC3 
-          entry: ./scripts/1-dev/validate-html-wc3.sh 
-          language: system 
-          types: [file] 
-          exclude: build,tmp
+repos:
+    - repo: local
+      hooks:
+          - id: validate-html-wc3
+            name: Validate HTML with WC3
+            entry: ./scripts/1-dev/validate-html-wc3.sh
+            language: system
+            types: [file]
+            exclude: build,tmp
 ```
 
 ### Options
 
-- Package: https://www.npmjs.com/package/w3c-html-validator
+-   Package: https://www.npmjs.com/package/w3c-html-validator
 -
 
 GitHub: [center-key/w3c-html-validator: 🚦 A package for testing HTML files or URLs against the W3C validator (github.com)](https://github.com/center-key/w3c-html-validator)
 
-- Perplexity: Create local commit hook https://www.perplexity.ai/search/7f0c138a-2248-49c6-9590-1841ecee9cc0?s=c
+-   Perplexity: Create local commit hook https://www.perplexity.ai/search/7f0c138a-2248-49c6-9590-1841ecee9cc0?s=c
 
 ## Final
 
@@ -215,10 +214,12 @@ GitHub: [center-key/w3c-html-validator: 🚦 A package for testing HTML files or
 
 ## Sources
 
-- .
-- .
-- .
+-   .
+-   .
+-   .
 
 ---
+
 > .
+
 ---

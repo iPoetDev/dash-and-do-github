@@ -1,16 +1,16 @@
-- [ ] Completed?
+-   [ ] Completed?
 
 ## 17. [Assessment](#)
 
 > .
 
-- [ ] Criteria:
+-   [ ] Criteria:
 
 ### 17.1. References & Acknowledgements
 
 >
 
-- [ ] Criteria:
+-   [ ] Criteria:
 
 -
 -
@@ -19,7 +19,7 @@
 
 >
 
-- [ ] Criteria:
+-   [ ] Criteria:
 
 -
 -
@@ -28,7 +28,7 @@
 
 >
 
-- [ ] Criteria:
+-   [ ] Criteria:
 
 -
 -
@@ -37,7 +37,7 @@
 
 >
 
-- [ ] Criteria:
+-   [ ] Criteria:
 
 -
 -
@@ -46,7 +46,7 @@
 
 >
 
-- [ ] Criteria:
+-   [ ] Criteria:
 
 -
 -
@@ -55,7 +55,7 @@
 
 >
 
-- [ ] Criteria:
+-   [ ] Criteria:
 
 -
 
@@ -63,29 +63,31 @@
 
 > As we are recommended other projects to take inspiration and/or artefacts from, so credit is where credit is due.
 
-- [ ] Criteria:
+-   [ ] Criteria:
 
-- .
-- .
+-   .
+-   .
 
 #### 17.2.6 Tooling, Plugins, Services
 
-- [ ]()
-- [ ]()
-- [ ]()
-- [ ]()
-- [ ]()
-- [ ]()
-- [ ]()
-- [ ]()
-- [ ]()
-- [ ]()
-- [ ]()
-- [ ]()
-- [ ]()
-- [ ]()
-- [ ]()
+-   [ ]()
+-   [ ]()
+-   [ ]()
+-   [ ]()
+-   [ ]()
+-   [ ]()
+-   [ ]()
+-   [ ]()
+-   [ ]()
+-   [ ]()
+-   [ ]()
+-   [ ]()
+-   [ ]()
+-   [ ]()
+-   [ ]()
 
 ---
+
 > .
+
 ---

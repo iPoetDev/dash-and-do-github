@@ -1,19 +1,19 @@
-- Run 'ruff' for extremely fast Python linting
+-   Run 'ruff' for extremely fast Python linting
 
-### Badge:  ![Ruff](https://camo.githubusercontent.com/3ab2287018b49eee45474feef5f497e69759e7d29fabfb8c5a82637b8d6d4aa1/68747470733a2f2f696d672e736869656c64732e696f2f656e64706f696e743f75726c3d68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f636861726c6965726d617273682f727566662f6d61696e2f6173736574732f62616467652f76322e6a736f6e)](https://github.com/astral-sh/ruff)
+### Badge: ![Ruff](https://camo.githubusercontent.com/3ab2287018b49eee45474feef5f497e69759e7d29fabfb8c5a82637b8d6d4aa1/68747470733a2f2f696d672e736869656c64732e696f2f656e64706f696e743f75726c3d68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f636861726c6965726d617273682f727566662f6d61696e2f6173736574732f62616467652f76322e6a736f6e)](https://github.com/astral-sh/ruff)
 
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 # Source
 
-- Pre-Commit Repo [URL]: https://github.com/astral-sh/ruff-pre-commit
-- Hook ID
-    - ` ruff `
-- Category | Intent: Python Linter | Static Code Analysis | Style Guide
-- Description:
-    - Be used to replace[Flake8](https://pypi.org/project/flake8/)(plus dozens of
-      plugins),[isort](https://pypi.org/project/isort/),[pydocstyle](https://pypi.org/project/pydocstyle/),[yesqa](https://github.com/asottile/yesqa),[eradicate](https://pypi.org/project/eradicate/),[pyupgrade](https://pypi.org/project/pyupgrade/),
-      and[autoflake](https://pypi.org/project/autoflake/),
+-   Pre-Commit Repo [URL]: https://github.com/astral-sh/ruff-pre-commit
+-   Hook ID
+    -   `ruff`
+-   Category | Intent: Python Linter | Static Code Analysis | Style Guide
+-   Description:
+    -   Be used to replace[Flake8](https://pypi.org/project/flake8/)(plus dozens of
+        plugins),[isort](https://pypi.org/project/isort/),[pydocstyle](https://pypi.org/project/pydocstyle/),[yesqa](https://github.com/asottile/yesqa),[eradicate](https://pypi.org/project/eradicate/),[pyupgrade](https://pypi.org/project/pyupgrade/),
+        and[autoflake](https://pypi.org/project/autoflake/),
 
 ## Fetch
 
@@ -23,8 +23,8 @@ https://github.com/astral-sh/ruff-pre-commit
 
 ## Library: Ruff
 
-- [ ] Source: https://github.com/astral-sh/ruff
-- [ ] Config:
+-   [ ] Source: https://github.com/astral-sh/ruff
+-   [ ] Config:
 
 ```bash
 pip install ruff
@@ -94,41 +94,41 @@ max-complexity = 10
 
 ## Pre-Commit Config
 
-- [ ] Create a` .pre-commit-config.yaml` in root of repository.
-- [ ] Commit `yaml` repository.
-- [ ] Prepare for run by adding hook's
-    - [ ] Repository: `- repo: {url}`:
-    - [ ] Revision: `rev` : `  v0.0.277  `
-        - [ ] v
-        - Select/Use the ref you want to point at
-    - [ ] Hooks:
-        - [ ] Id: `id {hook-ident}`
-        - [ ] 
+-   [ ] Create a` .pre-commit-config.yaml` in root of repository.
+-   [ ] Commit `yaml` repository.
+-   [ ] Prepare for run by adding hook's
+    -   [ ] Repository: `- repo: {url}`:
+    -   [ ] Revision: `rev` : `  v0.0.277  `
+        -   [ ] v
+        -   Select/Use the ref you want to point at
+    -   [ ] Hooks:
+        -   [ ] Id: `id {hook-ident}`
+        -   [ ]
 
 **REPORT | MANUAL**
 
-- Ruff's pre-commit hook should be placed after other formatting tools, such as Black and isort,
+-   Ruff's pre-commit hook should be placed after other formatting tools, such as Black and isort,
 
 ```yaml
-- repo : https://github.com/astral-sh/ruff-pre-commit
+- repo: https://github.com/astral-sh/ruff-pre-commit
   # Ruff version.
-  rev  : v0.0.277
+  rev: v0.0.277
   hooks:
-    - id: ruff
+      - id: ruff
 ```
 
 **AUTO FIX**
 
-- _UNLESS_you enable autofix, in which case, Ruff's pre-commit hook should run_before_Black, isort, and other formatting
-  tools, as Ruff's autofix behavior can output code changes that require reformatting.
+-   \_UNLESS_you enable autofix, in which case, Ruff's pre-commit hook should run_before_Black, isort, and other formatting
+    tools, as Ruff's autofix behavior can output code changes that require reformatting.
 
 ```yaml
-- repo : https://github.com/astral-sh/ruff-pre-commit
+- repo: https://github.com/astral-sh/ruff-pre-commit
   # Ruff version.
-  rev  : v0.0.277
+  rev: v0.0.277
   hooks:
-    - id  : ruff
-      args: [ --fix, --exit-non-zero-on-fix ]
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
 ```
 
 ## Install
@@ -140,23 +140,23 @@ max-complexity = 10
 
 ## Config: Actual `pyproject.toml`
 
-- [ ] E
-- [ ] F
-- [ ] I
-- [ ] D
-- [ ] YTT
-- [ ] PL
-- [ ] T20
-- [ ] RSE
-- [ ] RET
-- [ ] SIM
-- [ ] TID
-- [ ] TCH
-- [ ] ARG
-- [ ] PTH
-- [ ] S
-- [ ] ANN
-- [ ] B: Bandit
+-   [ ] E
+-   [ ] F
+-   [ ] I
+-   [ ] D
+-   [ ] YTT
+-   [ ] PL
+-   [ ] T20
+-   [ ] RSE
+-   [ ] RET
+-   [ ] SIM
+-   [ ] TID
+-   [ ] TCH
+-   [ ] ARG
+-   [ ] PTH
+-   [ ] S
+-   [ ] ANN
+-   [ ] B: Bandit
 
 ```toml
 [tool.ruff]
@@ -326,15 +326,15 @@ keep-runtime-typing = true
 
 ### Style: Python
 
-- Line Length: 100
-- Max complexity: 15
-- Docstring Quotes: Double
-- Single Quotes: Inline and Multi-line
-- Max Doc Length: 100
-- Doc Style: Google
-- Max Args: 6
-- Max Returns: 6
-- Max Statements: 50
+-   Line Length: 100
+-   Max complexity: 15
+-   Docstring Quotes: Double
+-   Single Quotes: Inline and Multi-line
+-   Max Doc Length: 100
+-   Doc Style: Google
+-   Max Args: 6
+-   Max Returns: 6
+-   Max Statements: 50
 
 ## Run
 
@@ -342,4 +342,3 @@ keep-runtime-typing = true
 
 
 ```
-

@@ -1,23 +1,23 @@
 ```ruby
-This is a note for the outline of how https://github.com/ipoetdev/P4Template related to 
+This is a note for the outline of how https://github.com/ipoetdev/P4Template related to
 
 This repo is a template for the follow project and assignment submission.
 
 Project Repo: https://github.com/ipoetdev/dash-and-do-gh-manager
 ```
 
-- [ ] Push P4Template from local to remote
-- [ ] Prepare this checklist & justifications for the file via local to remote - local
-- [ ] Create
+-   [ ] Push P4Template from local to remote
+-   [ ] Prepare this checklist & justifications for the file via local to remote - local
+-   [ ] Create
 
 ## Repo Maintenance Checklist
 
-- [ ] Pre-Commit #WIP
-- [ ] Prompts: #WIP
-- [ ] Dev Spec Lists #WIP
-- [x] Commit Flow
-- [ ] Changelog #WIP
-- [ ] Development-flow #WIP
+-   [ ] Pre-Commit #WIP
+-   [ ] Prompts: #WIP
+-   [ ] Dev Spec Lists #WIP
+-   [x] Commit Flow
+-   [ ] Changelog #WIP
+-   [ ] Development-flow #WIP
 
 ## Folders
 
@@ -37,7 +37,7 @@ Project Repo: https://github.com/ipoetdev/dash-and-do-gh-manager
     - /design
     - /ui
   - /diagrams
-    - /library 
+    - /library
   - /integration
     - /1-dev
     - /2-prompts
@@ -50,7 +50,7 @@ Project Repo: https://github.com/ipoetdev/dash-and-do-gh-manager
   - /release
   - /templates
   - /testing
-    - /test-log 
+    - /test-log
 ```
 
 ### Target Projects Structure
@@ -64,11 +64,11 @@ Project Repo: https://github.com/ipoetdev/dash-and-do-gh-manager
   - /.obsidian                                  # .gitignore
   - /docs
     - /..                                       # See above
-  - /repository                                 # Repository Notes 
+  - /repository                                 # Repository Notes
 ```
 
 ## Docs Obsidian Publish
 
-- [ ] Set a new vault at root of the Repo
-- [ ] Create a new hub pub site
-- [ ] Should be a duplicate of the current URL
+-   [ ] Set a new vault at root of the Repo
+-   [ ] Create a new hub pub site
+-   [ ] Should be a duplicate of the current URL

@@ -1,29 +1,28 @@
 # Source
 
-> - `editorconfig-checker` is a tool to check if your files consider your .editorconfig-rules.
+> -   `editorconfig-checker` is a tool to check if your files consider your .editorconfig-rules.
 
-- Pre-Commit Repo [URL]: https://github.com/editorconfig-checker/editorconfig-checker.python
-- Hook ID
-    - editorconfig-checker
-- Category | Intent: Code Style | Code Quality |
-- Description: maintain consistent coding styles and base line linting for Code Institute projects
-    - `EditorConfig` helps maintain consistent coding styles for multiple developers working on the same project across
-      various editors and IDEs.
-    - The `EditorConfig` project consists of**a file format**for defining coding styles and a collection of**text editor
-      plugins**that enable editors to read the file format and adhere to defined styles.
-    - `EditorConfig` files are easily readable and they work nicely with version control systems.
+-   Pre-Commit Repo [URL]: https://github.com/editorconfig-checker/editorconfig-checker.python
+-   Hook ID
+    -   editorconfig-checker
+-   Category | Intent: Code Style | Code Quality |
+-   Description: maintain consistent coding styles and base line linting for Code Institute projects
+    -   `EditorConfig` helps maintain consistent coding styles for multiple developers working on the same project across
+        various editors and IDEs.
+    -   The `EditorConfig` project consists of**a file format**for defining coding styles and a collection of**text editor
+        plugins**that enable editors to read the file format and adhere to defined styles.
+    -   `EditorConfig` files are easily readable and they work nicely with version control systems.
 
 ## Fetch
 
 ```yaml
 
-
 ```
 
 ## Library
 
-- [ ] Source: https://github.com/editorconfig-checker/editorconfig-checker.python
-- [ ] Installed: PyCharm/WebStorm
+-   [ ] Source: https://github.com/editorconfig-checker/editorconfig-checker.python
+-   [ ] Installed: PyCharm/WebStorm
 
 ```python
 pip install editorconfig-checker
@@ -81,17 +80,17 @@ indent_size = 2
 
 ## IDE
 
-- [ ] Pycharm
-- [ ] WebStorm
-- [ ] VSCode
+-   [ ] Pycharm
+-   [ ] WebStorm
+-   [ ] VSCode
 
 ### Config
 
-- [ ] 
+-   [ ]
 
 ### Run
 
-- [ ] 
+-   [ ]
 
 ```bash
 
@@ -102,25 +101,24 @@ indent_size = 2
 
 ### Config
 
-- [ ] Create a` .pre-commit-config.yaml` in root of repository.
-- [ ] Commit `yaml` repository.
-- [ ] Prepare for run by adding hook's
-    - [ ] Repository: `- repo: {url}`:
-    - [ ] Revision: `rev` : ` 2.7.2   `
-        - [ ] 2.7.2: https://github.com/editorconfig-checker/editorconfig-checker.python/releases/tag/2.7.2
-        - Select/Use the ref you want to point at
-    - [ ] Hooks:
-        - [ ] Id: `id {hook-ident}`
-        - [ ] alias: `alias: {}`
+-   [ ] Create a` .pre-commit-config.yaml` in root of repository.
+-   [ ] Commit `yaml` repository.
+-   [ ] Prepare for run by adding hook's
+    -   [ ] Repository: `- repo: {url}`:
+    -   [ ] Revision: `rev` : `2.7.2  `
+        -   [ ] 2.7.2: https://github.com/editorconfig-checker/editorconfig-checker.python/releases/tag/2.7.2
+        -   Select/Use the ref you want to point at
+    -   [ ] Hooks:
+        -   [ ] Id: `id {hook-ident}`
+        -   [ ] alias: `alias: {}`
 
 ```yaml
-
 repos:
-  - repo : https://github.com/editorconfig-checker/editorconfig-checker.python
-    rev  : '2.7.2'  # pick a git hash / tag to point to
-    hooks:
-      - id   : editorconfig-checker
-        alias: ec
+    - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+      rev: '2.7.2' # pick a git hash / tag to point to
+      hooks:
+          - id: editorconfig-checker
+            alias: ec
 ```
 
 ### Install

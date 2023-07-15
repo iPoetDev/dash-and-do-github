@@ -4,29 +4,29 @@
 
 > .
 
-- [x] CONFIG:
-    - [x] Build | Integrate | Test | Quality | Security | Config
-- [ ] GitHub Issue(s) Created?
-    - [ ] FLOW: Workflow | Process | Outline
-        - [ ] #Issue #12 [FLOW :: Code Quality Assurance](https://github.com/iPoetDev/dash-and-do-github/issues/12)
-        - [ ] #Flow: Commit-Flow (pre-commits)
-    - [ ] LINT: Report
-        - [ ] #Issue
-- [ ] FLOW
-    - [x] Config .dotfile
-        - [x] ` .eslintrc.js`
-        - [x] Only Add Shareabe Configs
-        - [x] Keep to a minimum, lowest maintence
-    - [x] Local Script
-        - [x] Bash?
-    - [x] IDE Configuration
-        - [ ] Run Configuration?
-    - [x] Pre-Commit
-        - [ ] Installed?
-        - [ ] Use as a local runner?
-    - [ ] CI Workflow
-        - [ ] YML
-        - [ ] Runner
+-   [x] CONFIG:
+    -   [x] Build | Integrate | Test | Quality | Security | Config
+-   [ ] GitHub Issue(s) Created?
+    -   [ ] FLOW: Workflow | Process | Outline
+        -   [ ] #Issue #12 [FLOW :: Code Quality Assurance](https://github.com/iPoetDev/dash-and-do-github/issues/12)
+        -   [ ] #Flow: Commit-Flow (pre-commits)
+    -   [ ] LINT: Report
+        -   [ ] #Issue
+-   [ ] FLOW
+    -   [x] Config .dotfile
+        -   [x] ` .eslintrc.js`
+        -   [x] Only Add Shareabe Configs
+        -   [x] Keep to a minimum, lowest maintence
+    -   [x] Local Script
+        -   [x] Bash?
+    -   [x] IDE Configuration
+        -   [ ] Run Configuration?
+    -   [x] Pre-Commit
+        -   [ ] Installed?
+        -   [ ] Use as a local runner?
+    -   [ ] CI Workflow
+        -   [ ] YML
+        -   [ ] Runner
 
 # Package:
 
@@ -41,17 +41,17 @@
 >> High level of extensibility so to enforce custom conventions
 ```
 
-- Related Config
-    - Template [[CONFIG - {{}}]]:
-    - Associated Package: [[StandardJS]]
+-   Related Config
+    -   Template [[CONFIG - {{}}]]:
+    -   Associated Package: [[StandardJS]]
 
 ## Package | Library Source
 
 > .
 
-- [x] NPM
-- [ ] **Link:** **[`URL`](https://eslint.org/)
-  **: [Find and fix problems in your JavaScript code - ESLint - Pluggable JavaScript Linter](https://eslint.org/)
+-   [x] NPM
+-   [ ] **Link:** **[`URL`](https://eslint.org/)
+        **: [Find and fix problems in your JavaScript code - ESLint - Pluggable JavaScript Linter](https://eslint.org/)
 
 ```bash
 [Find and fix problems in your JavaScript code - ESLint - Pluggable JavaScript Linter](https://eslint.org/)
@@ -70,23 +70,19 @@ https://github.com/eslint/eslint
 
 Only focus on
 
-- [ ] Sharable Configs
-- [ ] Plugins as strictly necessary, as they emerge
+-   [ ] Sharable Configs
+-   [ ] Plugins as strictly necessary, as they emerge
 
-- See below **Depends on:** ``
-    - Sharable Configs
-      -
-            *
-      eslint-Config-Defaults: [eslint-config-defaults - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-defaults)
-      -
-            *
-      eslint-Config-Prettier: [- eslint-config-prettier - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-prettier)
-      -
-            *
-      eslint-Config-SemiStandard: - [eslint-config-semistandard - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-semistandard)
-      -
-            *
-      eslint-Config-Standard: - [eslint-config-standard - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-standard)
+-   See below **Depends on:** ``
+    -   ## Sharable Configs
+              *
+        ## eslint-Config-Defaults: [eslint-config-defaults - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-defaults)
+              *
+        ## eslint-Config-Prettier: [- eslint-config-prettier - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-prettier)
+              *
+        ## eslint-Config-SemiStandard: - [eslint-config-semistandard - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-semistandard)
+              *
+        eslint-Config-Standard: - [eslint-config-standard - npm (npmjs.com)](https://www.npmjs.com/package/eslint-config-standard)
 
 ### Install
 
@@ -121,36 +117,36 @@ Only focus on
 
 ### Config
 
-- [ ] Use only Sharable Confits
-- [ ] Properties
-    - [ ] `root`: Scope to checks to root of project
-    - [ ] `extends`: include sharable configs, inc plugin dependencies
-    - [ ] `files`
-    - [ ] `ignores`
-    - [ ] `langauageOptions`
-        - [ ] `ecmaVersion`
-        - [ ] `sourceType`
-        - [ ] `globals`
-        - [ ] `parser`
-        - [ ] `parserOptions`
-    - [ ] `linterOptions` .
-        - [ ] ` noInlineConfig`
-        - [ ] ` reportUnusedDisableDirecttives`
-    - [ ] `processor`
-    - [ ] `plugins` .
-    - [ ] `rules` .
-    - [ ] `settings` .
-    - [ ] Rules
-    - [ ] Formatters Reference
+-   [ ] Use only Sharable Confits
+-   [ ] Properties
+    -   [ ] `root`: Scope to checks to root of project
+    -   [ ] `extends`: include sharable configs, inc plugin dependencies
+    -   [ ] `files`
+    -   [ ] `ignores`
+    -   [ ] `langauageOptions`
+        -   [ ] `ecmaVersion`
+        -   [ ] `sourceType`
+        -   [ ] `globals`
+        -   [ ] `parser`
+        -   [ ] `parserOptions`
+    -   [ ] `linterOptions` .
+        -   [ ] ` noInlineConfig`
+        -   [ ] ` reportUnusedDisableDirecttives`
+    -   [ ] `processor`
+    -   [ ] `plugins` .
+    -   [ ] `rules` .
+    -   [ ] `settings` .
+    -   [ ] Rules
+    -   [ ] Formatters Reference
 
 ```shell
 
 ```
 
 ```js
-module.exports = {  
-    root: true,  
-    extends: ['standard', 'prettier'],  
+module.exports = {
+    root: true,
+    extends: ['standard', 'prettier'],
 }
 ```
 
@@ -226,8 +222,8 @@ Miscellaneous:
 
 [Formatters Reference - ESLint - Pluggable JavaScript Linter](https://eslint.org/docs/latest/use/formatters/)
 
-- [ ] 
-    - [stylish](https://eslint.org/docs/latest/use/formatters/#stylish)
+-   [ ]
+    -   [stylish](https://eslint.org/docs/latest/use/formatters/#stylish)
 
 ```shell
 /var/lib/jenkins/workspace/Releases/eslint Release/eslint/fullOfProblems.js
@@ -249,66 +245,68 @@ Miscellaneous:
 
 ![[IDE Inspections StandardJs.png]]
 
-- IntelliJ IDEA, WebStorm, PhpStorm, PyCharm, RubyMine, and other JetBrains
-  IDEs:[How to use ESLint](https://www.jetbrains.com/help/webstorm/eslint.html)
+-   IntelliJ IDEA, WebStorm, PhpStorm, PyCharm, RubyMine, and other JetBrains
+    IDEs:[How to use ESLint](https://www.jetbrains.com/help/webstorm/eslint.html)
 
 #### File Watcher
 
 [eslint-watch - npm (npmjs.com)](https://www.npmjs.com/package/eslint-watch)
 
 #### Local | Pre-Commit Requirements | Proc
+
 ---
+
 **PYTHON**: **`Requirements.txt | Requirements-dev.txt | Requirements-test.txt`**
 
 ```text
 
 ```
 
-**SCRIPT | RUN** `Script File`: - File Name: **``  .sh ``**
+**SCRIPT | RUN** `Script File`: - File Name: **` .sh`**
 
 ```bash
-#!/bin/bash 
+#!/bin/bash
 npx eslint . --fix --formatter stylish
 ```
 
 **CONFIGURATION | RUN** `Script File`
 
-- Name:
-- Allow Multiple: N | Y
-- Store as File: N | Y
-- Package.json: `D:\Code\Code Institute\dash-and-do-github\package.json`
-- Command:
-- Scripts:
-- Arguments:
-- Node: Node: `C:\Programs Files\node.js\node.exe` 20.3.0
-- Node Options:
-- Package manager: `C:\Program Files\node.js\node.exe`
-- Environments:
-- Before Launch:
+-   Name:
+-   Allow Multiple: N | Y
+-   Store as File: N | Y
+-   Package.json: `D:\Code\Code Institute\dash-and-do-github\package.json`
+-   Command:
+-   Scripts:
+-   Arguments:
+-   Node: Node: `C:\Programs Files\node.js\node.exe` 20.3.0
+-   Node Options:
+-   Package manager: `C:\Program Files\node.js\node.exe`
+-   Environments:
+-   Before Launch:
 
 ```
 Command: run
 Script:
 Arguement:
-Node Opt: 
+Node Opt:
 Environ:
 ```
 
 **NPM**: `package.json`
 
 ```json
-  
-"devDependencies": {  
-    "eslint": "^8.44.0",  
-    "eslint-config-defaults": "^9.0.0",  
-    "eslint-config-prettier": "^8.8.0",  
-    "eslint-config-semistandard": "^17.0.0",  
-    "eslint-config-standard": "^17.1.0",  
-    "eslint-import-resolver-node": "^0.3.7",  
-    "eslint-module-utils": "^2.8.0",  
-    "eslint-plugin-import": "^2.27.5",  
-    "eslint-plugin-security": "^1.7.1",  
-    "eslint-scope": "^7.2.0",  
+
+"devDependencies": {
+    "eslint": "^8.44.0",
+    "eslint-config-defaults": "^9.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-semistandard": "^17.0.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-import-resolver-node": "^0.3.7",
+    "eslint-module-utils": "^2.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-security": "^1.7.1",
+    "eslint-scope": "^7.2.0",
     "eslint-utils": "^3.0.0",
     "standard": "^17.1.0",
 }
@@ -341,31 +339,31 @@ Tags: [Tags · pre-commit/mirrors-eslint (github.com)](https://github.com/pre-co
 Use @latest for dependencies
 
 ```yml
--   repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v8.44.0  # Use the sha / tag you want to point at
-    hooks:
-    -   id: eslint
+- repo: https://github.com/pre-commit/mirrors-eslint
+  rev: v8.44.0 # Use the sha / tag you want to point at
+  hooks:
+      - id: eslint
         # using plugins with `eslint` you'll need to declare them
         additional_dependencies:
-        -  eslint@latest
-        # -   eslint-config-semistandardd@latest
-        -   eslint-config-standardd@latest
-        -   eslint-config-prettier@latest
+            - eslint@latest
+            # -   eslint-config-semistandardd@latest
+            - eslint-config-standardd@latest
+            - eslint-config-prettier@latest
         # use eslint on TypeScript codebases
-        files: \.[jt]sx?$  # *.js, *.jsx, *.ts and *.tsx
+        files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
         types: [file]
 ```
 
 ### Sources
 
-- Docs: [Docs (eslint.org)](https://eslint.org/docs/latest/)
-- Org: [Eslint:  Organisation: Find and fix problems in your JavaScript code. (github.com)](https://github.com/eslint)
-- GitHub: [eslint/eslint: Find and fix problems in your JavaScript code. (github.com)](https://github.com/eslint/eslint)
+-   Docs: [Docs (eslint.org)](https://eslint.org/docs/latest/)
+-   Org: [Eslint: Organisation: Find and fix problems in your JavaScript code. (github.com)](https://github.com/eslint)
+-   GitHub: [eslint/eslint: Find and fix problems in your JavaScript code. (github.com)](https://github.com/eslint/eslint)
 -
 
 Awesome: [dustinspecker/awesome-eslint: A list of awesome ESLint plugins, configs, etc. (github.com)](https://github.com/dustinspecker/awesome-eslint)
 
-- Perplexity:
+-   Perplexity:
 
 ## Final
 
@@ -375,12 +373,12 @@ Awesome: [dustinspecker/awesome-eslint: A list of awesome ESLint plugins, config
 
 1. [x] . Install Eslint
 2. [x] Update Package.json for latest tags/versions
-3. [x]  Install Sharable Configs
+3. [x] Install Sharable Configs
 4. [ ] Only install plugins as necessary
 5. [x] . Configiure `.eslintrc.js` with `extends` and sharable configu
     1. [x] Standard
     2. [x] Prettier
-6. [ ]  Alternative Configs
+6. [ ] Alternative Configs
     1. [ ] Defaults etc
     2. [ ] Semistandard
 7. [x] Not installing AirBnB or Google style guides
@@ -412,5 +410,7 @@ Awesome: [dustinspecker/awesome-eslint: A list of awesome ESLint plugins, config
 ```
 
 ---
+
 > .
+
 ---

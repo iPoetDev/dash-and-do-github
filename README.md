@@ -31,6 +31,7 @@
 
 ###### <ins>Community & Feedback</ins>
 
+**Discussions**: [Community & Point of Contact](https://github.com/iPoetDev/dash-and-do-github/discussions) ||
 **History**: [Pulse](https://github.com/iPoetDev/dash-and-do-github/pulse) ||
 **Community Files**: [Standards](https://github.com/iPoetDev/dash-and-do-github/community) ||
 **Commit**: [Frequency](https://github.com/iPoetDev/dash-and-do-github/graphs/commit-activity) ||

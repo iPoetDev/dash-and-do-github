@@ -97,7 +97,7 @@ url: "https://c4model.com/"
 - [ ] .
 
 *`Model Type: C4 System Context`*
-![[Pasted image 20230717162027.png]]
+![](Pasted image 20230717162027.png)
 **`Diagram: SYSTEMS Context: Dash and Do GitHub Managing System
 
 ###### <ins>Overview</ins>
@@ -233,7 +233,7 @@ application service provider,
     MySQL, Microsoft SQL Server, Oracle Database, MongoDB, Riak, Cassandra, Neo4j, etc.
 
 *`Model Type: C4 Container`*
-![[Pasted image 20230717151415.png]]
+![](Pasted image 20230717151415.png)
 **`Diagram: CONTAINER - EXTNERAL CONTAINERS: The Dash & Do GitHub Managing System`**
 
 **1. Front End Web Application/Client**: Web Application User Account & Profile[Sub System]

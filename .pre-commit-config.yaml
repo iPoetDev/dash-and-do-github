@@ -10,7 +10,7 @@ repos:
           - id: end-of-file-fixer
     # EditorConfig
     - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-      rev: '2.7.1' # pick a git hash / tag to point to
+      rev: '2.7.2' # pick a git hash / tag to point to
       hooks:
           - id: editorconfig-checker
             alias: ec
@@ -22,7 +22,7 @@ repos:
     ############ PYTHON ############
     # Ruff (at end, with auto-fix)
     - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: v0.0.277
+      rev: v0.0.278
       hooks:
           - id: ruff
             args: [--fix, --exit-non-zero-on-fix]

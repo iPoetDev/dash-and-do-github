@@ -1,9 +1,10 @@
 ---
 name: '04 FEAT: Feature | Component'
-about: "RFC: An Epic's Feature | An Epic's Component"
+about: 'RFC: An Epic''s Feature | An Epic''s Component'
 title: 'FEAT :: '
 labels: ''
 assignees: iPoetDev
+
 ---
 
 # [`FEATURES`]():

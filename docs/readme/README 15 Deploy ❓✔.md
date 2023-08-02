@@ -1,5 +1,5 @@
 -   [ ] Completed?
-    - Nearly ready?
+    -   Nearly ready?
 -   [ ] Copy to Readme.md?
 -   [ ] Removed meta-data
 
@@ -19,15 +19,15 @@
 -   [x] Sprint: 02
 -   [x] Completed? 🛫 2023-07-18
 
-- How the code get automatically pushed to Heroku by using Trunk-based long-lived release branches.
+-   How the code get automatically pushed to Heroku by using Trunk-based long-lived release branches.
 
-- [ ] Choose Light or Dark version for final
-  ![](15-1-Commit-light.png)
+-   [ ] Choose Light or Dark version for final
+        ![](15-1-Commit-light.png)
 
 ![](15-1-Commit-dark.png)
 **`Diagram: Commit & Branch into Deployment`**
 
-***
+---
 
 ### 15.2. [GitHub Deployment Flow](#deploy-flow)
 
@@ -40,25 +40,25 @@
 
 #### 15.2.1 Deployment Branching Strategies
 
-- [ ] Choose Light or Dark version for final
-  ![[Pasted image 20230718131542.png]]
+-   [ ] Choose Light or Dark version for final
+        ![[Pasted image 20230718131542.png]]
 
 ![[Pasted image 20230718131534.png]]
 **`Diagram: From Build via Integration Branch Strategies into Heroku Apps`**
 
 ##### 15.2.1.1 Build/Dev Trunks
 
-- .
+-   .
 
 ##### 15.2.1.2 Integration Trunk
 
-- .
+-   .
 
 ##### 15.2.1.3 Deployment Trunk
 
-- .
+-   .
 
-***
+---
 
 ### 15.3 [Heroku Integrations](#heroku-integrate)
 
@@ -70,39 +70,38 @@
 -   [x] Sprint: 02
 -   [x] Completed? 🛫 2023-07-18
 
-- [ ] Light v Dark - Choose pre-submit (`Remove`)
-  ![[15-Deploy-CreateApp-light.png]]
+-   [ ] Light v Dark - Choose pre-submit (`Remove`)
+        ![[15-Deploy-CreateApp-light.png]]
 
 ![[15-Deploy-CreateApp-dark.png]]
 **`Diagram: Cloud Hosting Platform Config: Deployment Create Apps`**
 
 ##### 15.3.1.1. Workflow
 
-- Login to Heroku, and verify and MFA authenticated:
--
-    1. Choose a configuration context: **`Development`**, **`Staging`**, **`Production`.**
-- 2: Create a new app and name it.
-- 3: Choose a **Deployment** method. `GitHub` for `@PoetDev`
-- 4: Connect to GitHub and search for the repository: `github/dash-and-do-github`
-- 5: Connect to chosen Repository, select automatic deploy and verify.
-- 6: **Buildpack**:
-    - Add _BuildPacks_ in correct order.
-    - Order sensitive, for good first run.
+-   Login to Heroku, and verify and MFA authenticated:
+-   1. Choose a configuration context: **`Development`**, **`Staging`**, **`Production`.**
+-   2: Create a new app and name it.
+-   3: Choose a **Deployment** method. `GitHub` for `@PoetDev`
+-   4: Connect to GitHub and search for the repository: `github/dash-and-do-github`
+-   5: Connect to chosen Repository, select automatic deploy and verify.
+-   6: **Buildpack**:
+    -   Add _BuildPacks_ in correct order.
+    -   Order sensitive, for good first run.
     -   [ ] Use built-in _BuildPacks_ for _Node.js_ and _Python_.
         -   [ ] 1st: `heroku/nodejs`
         -   [ ] 2nd: `heroku/python`
-- 7: **Environmental Variables**:
-    - Heroku Config-Vars.
-    - Add Secrets:
+-   7: **Environmental Variables**:
+    -   Heroku Config-Vars.
+    -   Add Secrets:
         -   [ ] API Tokens.
         -   [ ] CSRF Token.
         -   [ ] DB Connection STRINGS.
         -   [ ] Other Secrets.
-- 8 & 9: **PULL REQUEST**:
-    - On _GitHub_,
-        - Deploy to **`Heroku-^`** release trunk branch.
-        - Pull from **`main`** trunk branch.
-        - Via a Pull Request.
+-   8 & 9: **PULL REQUEST**:
+    -   On _GitHub_,
+        -   Deploy to **`Heroku-^`** release trunk branch.
+        -   Pull from **`main`** trunk branch.
+        -   Via a Pull Request.
 
 ---
 
@@ -115,46 +114,46 @@
 -   [x] Sprint: 02
 -   [x] Completed? 2023-07-18
 
-- **IDE**: <ins>PyCharm</ins> | <ins>WebStorm</ins> configured with Git & GitHub account for Local development
-  environment.
-- **Git App**: GitHub Desktop
-- **Git Version**: v2.40.0.windows.1
+-   **IDE**: <ins>PyCharm</ins> | <ins>WebStorm</ins> configured with Git & GitHub account for Local development
+    environment.
+-   **Git App**: GitHub Desktop
+-   **Git Version**: v2.40.0.windows.1
 
 ##### 15.3.2.1. Git Configuration
 
 > PROJECT: Git Commit History | Commit Message Style & Format
 
-- [x] Completed
-- [x] Criteria: LO-5.1-PASS
+-   [x] Completed
+-   [x] Criteria: LO-5.1-PASS
 
-- **Approach**:
-    - *Commit / Push Style*: Merge Only, no Squash, no Rebase. Meets criteria for a
-        - `5.1: Use Git & GitHub for version control of a Full-Stack web application up to deployment, using commit messages to document the development process`
-    - *Linting*: No Linting as decided to rigid a constraint
-    - Instead: using a Side Notes plugin for IntelliJ IDE with pre-configured templates (see below)
-- *Aim*: For consistency, manual and by conventional.
+-   **Approach**:
+    -   _Commit / Push Style_: Merge Only, no Squash, no Rebase. Meets criteria for a
+        -   `5.1: Use Git & GitHub for version control of a Full-Stack web application up to deployment, using commit messages to document the development process`
+    -   _Linting_: No Linting as decided to rigid a constraint
+    -   Instead: using a Side Notes plugin for IntelliJ IDE with pre-configured templates (see below)
+-   _Aim_: For consistency, manual and by conventional.
 
 ##### 15.3.2.2. Keep A Changelog
 
 > PROJECT: Log | Notable Changes | Human Readable | Semantic Versioning
 
-- **Link**: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
-- **Method**: Integrated Keep A Changelog format for add, update, remove *into commit messages*.
-    - Directly in the commit messages.
-    - Reduced efforts by not maintaining the `changelog.md`.
-    - Mostly adhered to Semantic Versioning approach.
-    - A minor adjustment was to put a double-digit index for each separate commit if several occurred on one day.
-- **Types**:
-    - `Add`for new features.
-    - `Update`for changes in existing functionality.
-    - `Deprecate`for soon-to-be removed features.
-    - `Remove`for now removed features.
-    - `Fix`for any bug fixes.
-    - `Secure`in case of vulnerabilities.
+-   **Link**: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+-   **Method**: Integrated Keep A Changelog format for add, update, remove _into commit messages_.
+    -   Directly in the commit messages.
+    -   Reduced efforts by not maintaining the `changelog.md`.
+    -   Mostly adhered to Semantic Versioning approach.
+    -   A minor adjustment was to put a double-digit index for each separate commit if several occurred on one day.
+-   **Types**:
+    -   `Add`for new features.
+    -   `Update`for changes in existing functionality.
+    -   `Deprecate`for soon-to-be removed features.
+    -   `Remove`for now removed features.
+    -   `Fix`for any bug fixes.
+    -   `Secure`in case of vulnerabilities.
 
 ##### 15.3.2.3. Commit Message Templates
 
-- Influenced by [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+-   Influenced by [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
 ```text
 <type>[optional scope]: <description>
@@ -164,13 +163,13 @@
 [optional footer(s)]
 ```
 
-- *Template*: Adapted.
+-   _Template_: Adapted.
 
 ```text
 type(scope): sub
 
-Intent: 
-Tag: 
+Intent:
+Tag:
 Sprint: 01: Ends 23-7-14
 Changelog: 2023-07-09 v00.00.001:01
 - add:
@@ -185,36 +184,36 @@ Agilelog:
 
 ---
 AssesmentLog:
-- pass: 
+- pass:
 - merit:
 - distinct:
 
 ```
 
-- **Subject**
-    - *type*: `feat`, `fix`, `refact`, `ui/design`, `data`, `mvs/app`, `deploy`, `proj`, `test`, `chore`, `config`, .
-    - *scope*: as appropriate, per context.
-    - *sub*: descriptor of commit.
-- *Intent*: Outline, additional information.
-- *Tags*: keywords.
-- *Sprint*: Align commit with sprint (add #Issue for GitHub link).
-    - Number: Sprint Sequence.
-    - Ends: End of Sprint date.
-- *Changelog*:
-    - Versioning:
-        - *Date* (YY-MM-DD).
-        - *SemVer*: v00.00.00:001 (*Major*.*Minor*.*Patch*:*Daily-Commit-Id*)
-    - *`Add`*: Adding new files.
-    - *`Update`*: Changes to files.
-    - *`Note`*: Additional context.
-    - Optional: `Remove`, `Lint`, `Tested`,
-- **AgileLog**:
-    - **Epic**: Epic Name.
-    - Optional: *Story*, *Acceptance*,
-- **AssessmentLog**: Align commit with academic criteria.
-    - **Pass**: *Format*: `LO-{ident}`
-    - **Merit**: *Format*: `LO-{ident}` | `M-ShortName`
-      **- Distinct**: *Format*:  `D-ShortName`
+-   **Subject**
+    -   _type_: `feat`, `fix`, `refact`, `ui/design`, `data`, `mvs/app`, `deploy`, `proj`, `test`, `chore`, `config`, .
+    -   _scope_: as appropriate, per context.
+    -   _sub_: descriptor of commit.
+-   _Intent_: Outline, additional information.
+-   _Tags_: keywords.
+-   _Sprint_: Align commit with sprint (add #Issue for GitHub link).
+    -   Number: Sprint Sequence.
+    -   Ends: End of Sprint date.
+-   _Changelog_:
+    -   Versioning:
+        -   _Date_ (YY-MM-DD).
+        -   _SemVer_: v00.00.00:001 (_Major_._Minor_._Patch_:_Daily-Commit-Id_)
+    -   _`Add`_: Adding new files.
+    -   _`Update`_: Changes to files.
+    -   _`Note`_: Additional context.
+    -   Optional: `Remove`, `Lint`, `Tested`,
+-   **AgileLog**:
+    -   **Epic**: Epic Name.
+    -   Optional: _Story_, _Acceptance_,
+-   **AssessmentLog**: Align commit with academic criteria.
+    -   **Pass**: _Format_: `LO-{ident}`
+    -   **Merit**: _Format_: `LO-{ident}` | `M-ShortName`
+        **- Distinct**: _Format_: `D-ShortName`
 
 ---
 
@@ -233,10 +232,10 @@ AssesmentLog:
 
 **CLOUD PLATFORM**
 
-- **Heroku** is the *CHOSEN* cloud environment for deployment.
-    - Deploy a static web page off every commit.
-    - Once the commit is built, then deploys the new website and pushes to hosted domain URI.
-- *Heroku* is the hosted domain URI and service.
+-   **Heroku** is the _CHOSEN_ cloud environment for deployment.
+    -   Deploy a static web page off every commit.
+    -   Once the commit is built, then deploys the new website and pushes to hosted domain URI.
+-   _Heroku_ is the hosted domain URI and service.
 
 ![Source: Wikimedia.com](Heroku.png)
 
@@ -246,22 +245,22 @@ AssesmentLog:
 > Data Schema | Data Model
 
 -   [x] Criteria: LO-2-DataModel-Pass, LO-2.5-Merit, LO-Schema-Merit, LO-Configuration-Merit, LO-Well Structured
-    Data-Distinction, LO-Datastore-Config-Distinction
+        Data-Distinction, LO-Datastore-Config-Distinction
 -   [ ] ADR:
 -   [x] Sprint: 02
 -   [x] Completed? 2023-07-18
 
 **CLOUD DATABASE**
 
-- **PostgreSQL** is the *SELECTED* database & backing service technologies.
-- **ElephantSQL** is the *SELECTED* managed database provider for …:
-    - *Service*: Remote cloud based database service.
-    - *Type*: Relational Database Management Service.
-    - *Language*: SQL
+-   **PostgreSQL** is the _SELECTED_ database & backing service technologies.
+-   **ElephantSQL** is the _SELECTED_ managed database provider for …:
+    -   _Service_: Remote cloud based database service.
+    -   _Type_: Relational Database Management Service.
+    -   _Language_: SQL
 
 ![Source: Wikimedia.com](Postgresql_elephant.svg.png)
 
-***
+---
 
 ### 15.4. [App Web URI](#app-url): Dash and Do GitHub (Manager)
 
@@ -271,15 +270,15 @@ AssesmentLog:
 -   [x] Sprint: 02
 -   [x] Completed? 2023-07-18
 
-- **Plain Text** (Copy):
+-   **Plain Text** (Copy):
 
 ```text
 https://dash-and-do-github.herokuapp.com/
 ```
 
-- **Link***: [https://dash-and-do-github.herokuapp.com/](https://dash-and-do-github/herokuapp.com/')
-- **App Name**: <ins>Dash & Do GitHub (Manager)</ins>
-- **By Line**: <ins>Managing your GitHub as a Portfolio</ins>
+-   **Link\***: [https://dash-and-do-github.herokuapp.com/](https://dash-and-do-github/herokuapp.com/')
+-   **App Name**: <ins>Dash & Do GitHub (Manager)</ins>
+-   **By Line**: <ins>Managing your GitHub as a Portfolio</ins>
 
 ---
 

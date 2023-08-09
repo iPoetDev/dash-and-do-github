@@ -5,7 +5,7 @@
 # 1.0 Introduction
 
 ---
-   
+
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![wakatime](https://wakatime.com/badge/user/2027c27d-0bab-4d7c-bfed-5d0b21285657/project/62c65141-830a-41c9-af92-98a9302fa984.svg)](https://wakatime.com/badge/user/2027c27d-0bab-4d7c-bfed-5d0b21285657/project/62c65141-830a-41c9-af92-98a9302fa984)
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)

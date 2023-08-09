@@ -4,7 +4,6 @@ about: ADR Record - Full - Key Decisions & Devviations
 title: 'ADR000? :: '
 labels: ''
 assignees: iPoetDev
-
 ---
 
 ---

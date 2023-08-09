@@ -1,8 +1,8 @@
-"""
-URL configuration for dash_and_do project.
+"""URL configuration for dash_and_do project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
+
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -18,7 +18,8 @@ Including another URLconf
 #  Copyright (c) 2023.
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include
+from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),

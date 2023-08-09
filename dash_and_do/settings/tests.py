@@ -1,5 +1,4 @@
-"""
-Django Test settings for dash_and_do project.
+"""Django Test settings for dash_and_do project.
 
 Source by https://youtu.be/uetyOZeVrOE
 Author: Johannes Spielmann

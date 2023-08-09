@@ -1,10 +1,9 @@
 ---
 name: '08 TEST: Test Case | TDD |'
 about: '08 TEST: Test Case | TDD |'
-title: "[TEST/TDD]"
+title: '[TEST/TDD]'
 labels: ''
 assignees: iPoetDev
-
 ---
 
 # `TEST`: Case - Unit Test

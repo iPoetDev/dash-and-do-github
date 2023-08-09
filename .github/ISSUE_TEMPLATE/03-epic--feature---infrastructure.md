@@ -1,11 +1,11 @@
 ---
 name: '03 EPIC: Feature | Infrastructure'
-about: 'EPIC: A chapter of deliverable work. Comprised of Features, User Stories &
-  Enabler Tasks'
+about:
+    'EPIC: A chapter of deliverable work. Comprised of Features, User Stories &
+    Enabler Tasks'
 title: 'EPIC000? ::  '
 labels: ''
 assignees: iPoetDev
-
 ---
 
 # **[`EPIC Statement`]()**: [000?]()

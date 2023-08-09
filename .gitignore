@@ -218,3 +218,12 @@ package.json
 package-lock.json
 README.md
 /requirments-dev.txt
+/apps/dash/migrations/__init__.py
+/apps/dash/__init__.py
+/apps/dash/admin.py
+/apps/dash/apps.py
+/apps/dash/forms.py
+/apps/dash/models.py
+/apps/dash/tests.py
+/apps/dash/urls.py
+/apps/dash/views.py

@@ -1,0 +1,41 @@
+scanner:
+    diff_only: True  # If False, the entire file touched by the Pull Request is scanned for errors.
+    # If True, only the diff is scanned.
+    linter: flake8
+
+flake8:  # Valid if scanner.linter is flake8
+    # https://flake8.pycqa.org/en/latest/user/options.html#options-and-their-descriptions
+    # https://github.com/OrkoHunter/pep8speaks?installation_id=39639459&setup_action=install#configuration
+    jobs: 4
+    indent-size: 4
+    count: True
+    statistics: True
+    show-source: False
+    color: "always"
+    disable-noqa: False
+    tee: True
+    output-file: stat-results/flake8.md
+    max-line-length: 79
+    hang-closing: False
+    require-plugins: []
+    enable-extensions: []
+    filename: []
+    select: []
+    ignore: [E266,E303,E128,E701,W504]
+    extend-ignore: []
+    exclude: [.git.ai,.obsidian,__pycache__,docs,repository,old,build,dist,*.pyc,*.egg-info,*.egg,venv]
+    max-complexity: 15
+
+no_blank_comment: True  # If True, no comment is made on PR without any errors.
+descending_issues_order: False  # If True, PEP 8 issues in message will be displayed
+# in descending order of line numbers in the file
+only_mention_files_with_errors: True  # If False, a separate status section for each file is made in the comment.
+
+message:  # Customize the comment made by the bot
+    opened:  # Messages when a new PR is submitted
+        header: "Dear Padawan @{name}\!; Thanks for opening this PR. :smile: \n\n"
+        footer: "Do inspect Code Institute https://pep8ci.herokuapp.com/ carefully before merging. :eyes: \n\n"
+    updated:  # Messages when a PR is updated
+        header: "Dear Padawan @{name}\!; Cheeros for updating this PR. :smile: \n\n"
+        footer: "Now verify this over at https://pep8ci.herokuapp.com/ once more \n\n"
+    no_errors: "There are currently no PEP 8 issues detected in this Pull Request. Cheers! :beers: "

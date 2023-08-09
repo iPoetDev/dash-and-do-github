@@ -30,7 +30,7 @@ ALLOWED_HOSTS = [
     'dash-and-do.herokuapp.com',
 ]
 
-if DEBUG == False and 'debug_toolbar' not in INSTALLED_APPS:
+if DEBUG is False and 'debug_toolbar' not in INSTALLED_APPS:
     DATABASES = {
         'default': env.db('DATABASE_URL')
     }

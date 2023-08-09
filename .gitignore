@@ -121,7 +121,7 @@ celerybeat.pid
 # SageMath parsed files
 *.sage.py
 
-# Environments
+# ================= Environments =================
 .env
 .venv
 env/
@@ -130,12 +130,8 @@ ENV/
 env.bak/
 venv.bak/
 
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
+requirements-dev.txt
+requirements-test.txt
 
 # mkdocs documentation
 /site
@@ -174,6 +170,8 @@ Writerside/*
 /obsidian/*
 .ai/*
 
+.gitconfig
+
 ########################### DOC CONTROL ######################################
 # Undo as needed for.
 # Tracker
@@ -190,7 +188,33 @@ Writerside/*
 /docs/assets/img/integration/Pasted image 20230709091314.png
 /docs/assets/badges/tailwind-css.png
 
+/res/
+
 # Templates
 
 .ai
 /piecesdb.json
+/repository/*
+/docs/diagrams/
+/docs/project/
+/docs/templates/
+/respository/
+/.trash/
+/.docs/deployment/select-app-repository..md
+/docs/integration/8-config/
+/docs/*
+/docs/
+/repository/
+
+/docs/decisions/
+#### Releases Plan
+
+/accounts/*
+/dash/*
+
+##### Phased Commits
+
+package.json
+package-lock.json
+README.md
+/requirments-dev.txt

@@ -11,7 +11,6 @@ Changelog:
 - Updated: DJANGO_SETTINGS_MODULE's value to 'dash_and_do.settings.production'
 """
 
-
 #  Copyright (c) 2023.
 
 import os

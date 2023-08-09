@@ -32,7 +32,6 @@ INSTALLED_APPS += [
     'debug_toolbar',
 ]
 
-
 if DEBUG and 'debug_toolbar' in INSTALLED_APPS:
     DATABASES = {
         'default': {

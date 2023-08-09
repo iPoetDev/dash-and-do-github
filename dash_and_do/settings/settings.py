@@ -169,7 +169,4 @@ STATIC_URL = env.str('STATIC_URL', default='static/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
 from .thirdparty import *  # noqa
-

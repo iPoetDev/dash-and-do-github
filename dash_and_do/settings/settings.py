@@ -11,24 +11,32 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 Changelog:
 2023-08-09
 - Added `sys` for appending apps to base directory.
+- Added `environ` for django-environ & environmental variables.
 - Added apps to `INSTALLED_APPS` for v0.5, v1.0
 - Added `django_environ` for .env file support.
 - Updated BASE_DIR to search: 2 to 3 parents: for Setting folder
 - Updated: Template Base Directory + project templates to search.
 - Updated: Canonical values added from.env as per 12 Factor.Config
+- Notes: Used env() to markup custom values for env variables & canonical
+- Notes: env(var, default=) for default values, not stored in .env file.
+values.
 """
 
 #  Copyright (c) 2023.
 
+# ================== Imports ==================
 import os
-
-from pathlib import Path
 import sys
 
+from pathlib import Path
+from environ import Env
+
+# ================== Base Paths ==================
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# ================== Django Application Grouping ==================
+# ================== Project Structure ==================
 # Project Structure: Top Level Refactoring / Applications Grouping
 # Adds additional new sources root directory.
 # Benefits to this:
@@ -46,18 +54,27 @@ env_file = os.path.join(BASE_DIR, '.env')
 
 # Be defensive, check if the file exists by default.
 if not os.path.isfile(env_file):
-    raise FileNotFoundError(f"{env_file} not found")
+    raise FileNotFoundError(f'{env_file} not found')
 
 env.read_env(env_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
+# ================== Key & Mode *SECURITY WARNING* =================
 # SECURITY WARNING: keep the secret key used in production secret!
+# https://docs.djangoproject.com/en/4.2/ref/settings/#secret-key
+
 SECRET_KEY = env.str('SECRET_KEY')
 
+# https://docs.djangoproject.com/en/4.2/ref/settings/#secret-key-fallbacks
+SECRET_KEY_FALLBACKS = []
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG')
+
+# ================== Server & Hosting ==================
+# https://docs.djangoproject.com/en/4.2/ref/settings/#wsgi-application
 
 WSGI_APPLICATION = env.str('WSGI_APPLICATION')
 
@@ -65,6 +82,17 @@ ALLOWED_HOSTS = []
 
 ROOT_URLCONF = env.str('ROOT_URLCONF')
 
+# Per HTTP Requests
+DEFAULT_CHARSET = env.str('DEFAULT_CHARSET', default='utf-8')
+
+# Only Used in debug CommonMiddleware installed.
+PREPEND_WWW = env.bool('PREPEND_WWW', default=False)
+APPEND_SLASH = env.bool('APPEND_SLASH', default=False)
+
+# +https://docs.djangoproject.com/en/4.2/ref/settings/#x-frame-options
+X_FRAME_OPTIONS = env.str('X_FRAME_OPTIONS', default='DENY')
+
+# ================== Application ==================
 # Application definition
 # Updated: Added apps to `INSTALLED_APPS`
 
@@ -81,6 +109,10 @@ INSTALLED_APPS = [
     env.str('DASH_APP'),
 ]
 
+# ================== Middleware ==================
+# https://docs.djangoproject.com/en/4.2/ref/settings/#middleware
+# - TODO: Add BrokenLinkEmailsMiddleware with correct string for 404 Errors
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -91,10 +123,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# ================== Templates ==================
+# https://docs.djangoproject.com/en/4.2/ref/settings/#templates
+# - Added templates path to `TEMPLATES` DIRS:
+# - ADR: Select between DjangoTemplates or Jinja2. Do not use a custom backend
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Updated : 2023-08-09
+        # 'BACKEND': 'django.template.backends.jinja.Jinja2',
+        'NAME': env.str('TEMPLATES_NAME', default='djtl'),
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -107,13 +146,27 @@ TEMPLATES = [
     },
 ]
 
-# Database
+# =================== Migrations ==================
+# https://docs.djangoproject.com/en/4.2/ref/settings/#migration-modules
+#  If MIGRATION_MODULES is used in your general project settings,
+#  remember to use the `migrate --run-syncdb` option if you want to create
+#  tables for the app.
+
+MIGRATION_MODULES = {
+    'core': 'core.migrations',
+    'accounts': 'accounts.migrations',
+    #'dash': 'dash.migrations',
+}
+
+# ================== Database ==================
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # Development Database moved to development.py
 # Production Database moved to production.py
 
-# Password validation
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# ================== Authentication ==================
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -139,31 +192,173 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
+# ================== Internationalization & Formats ==================
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
+# - ADR: Select L10N or DATE Format Used
+# - ADR: Select DataTime Input Formats
 
 LANGUAGE_CODE = env.str('LOCALE')
 
-TIME_ZONE = env.str('TIME_ZONE')
-
 USE_I18N = env.bool('USE_I18N')
+USE_L10N = env.bool('USE_L10N')
 
 USE_TZ = env.bool('USE_TZ')
+TIME_ZONE = env.str('TIME_ZONE')
+
+DATE_FORMAT = env.str('DATE_FORMAT', default='Y-m-d')
+# First day of week, to be used on calendars, Monday is default.
+FIRST_DAY_OF_WEEK = env.int('FIRST_DAY_OF_WEEK', default=1)
+
+DECIMAL_SEPARATOR = env.str('DECIMAL_SEPARATOR', default='.')
+
+# ================== Data Limits ==================
+# - Added `DATA_UPLOAD_MAX_MEMORY_SIZE` for defaults
+# - Added `DATA_UPLOAD_MAX_FIELDS` for defaults
+# - Added `DATA_UPLOAD_MAX_NUMBER_FILES` for defaults
+
+# Default: 2.5MB || Raised SuspiciousOperation (RequestDataTooBig)
+DATA_UPLOAD_MAX_MEMORY_SIZE = env.int('DATA_UPLOAD_MAX_MEMORY_SIZE',
+                                      default=2621440)
+
+# Default: 1000 || Raised SuspiciousOperation (TooManyFieldsSent)
+DATA_UPLOAD_MAX_NUMBER_FIELDS = env.int('DATA_UPLOAD_MAX_NUMBER_FIELDS',
+                                        default=500)
+
+# Default: 100 || Raised SuspiciousOperation (TooManyFiles)
+DATA_UPLOAD_MAX_NUMBER_FILES = env.int('DATA_UPLOAD_MAX_NUMBER_FILES',
+                                       default=10)
 
 # ==================== File & Uploads ====================
+# ChangeLog: 2023-08-10:  Comment Out when not implemented
+# - TODO: Remove Media Root and Static Root as confirmed not needed
+# - Added: Storages (4.2 LTS)
 
-# Media Files (Uploads), Untrustowrthy
+# https://docs.djangoproject.com/en/4.2/ref/settings/#storages
+
+STORAGES_ = {
+    # 'default': {
+    #     'BACKEND': 'django.core.files.storage.FileSystemStorage',
+    # },
+    'staticfiles': {
+        'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
+        'OPTIONS': {},
+    },
+}
+
+# ==================== Stored Files ====================
+# Do we use Media Root only Heroku/CloudStorage?
+# Media Files (Uploads), Untrustworthy
+# MEDIA_ROOT = env.str('MEDIA_ROOT', default='media')
 
 MEDIA_URL = env.str('MEDIA_URL', default='media/')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+# STATIC_ROOT = env.str('STATIC_ROOT', default='static')
 STATIC_URL = env.str('STATIC_URL', default='static/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# ==================== Email & Notifications ====================
+# ChangeLog: 2023-08-10:  Comment Out when not implemented
+
+#SERVER_EMAIL = env.str('SERVER_EMAIL', default='root@localhost')
+ADMINS = []
+MANAGERS = ADMINS
+# EMAIL_SUBJECT_PREFIX = env.str('EMAIL_SUBJECT_PREFIX', default='[Django] ')
+
+# # Send from site manager, automated messages.
+# DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL')
+# EMAIL_HOST = env.str('EMAIL_HOST')
+# EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD', default='')
+# EMAIL_HOST_USER = env.str('EMAIL_HOST_USER', default='')
+# EMAIL_PORT = env.int('EMAIL_PORT', default=25)
+# EMAIL_USE_LOCALTIME = env.bool('EMAIL_USE_LOCALTIME', default=False)
+# EMAIL_USE_SSL = env.bool('EMAIL_USE_SSL', default=False)
+# EMAIL_TIMEOUT = env.int('EMAIL_TIMEOUT', default=60)
+
+# ==================== Error Handling ====================
+# https://docs.djangoproject.com/en/4.2/ref/settings/#ignorable-404-urls
+
+# If BrokenLinkEmailsMiddleware is enabled
+IGNORABLE_404_URLS = []
+
+# ==================== Logging ====================
+# https://docs.djangoproject.com/en/4.2/ref/settings/#logging
+
+LOGGING = {}
+LOGGING_CONFIG = env.str('LOGGING_CONFIG',
+                         default='logging.config.dictConfig')
+# ==================== Security ====================
+#https://docs.djangoproject.com/en/4.2/ref/settings/#secure-content-type-nosniff
+# Changelog: 2023-08-10 (Comment Out when not implemented)
+# SECURE_CONTENT_TYPE_NOSNIFF = env.bool('SECURE_CONTENT_TYPE_NOSNIFF',
+#                                        default=True)
+# SECURE_CROSS_ORIGIN_OPENER_POLICY = \
+#     env.str('SECURE_CROSS_ORIGIN_OPENER_POLICY', default='same-origin')
+#
+# SECURE_REFERRER_POLICY = env.str('SECURE_REFERRER_POLICY',
+#                                  default='same-origin')
+# SECURE_SSL_HOST = env.str('SECURE_SSL_HOST', default=None)
+# SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=False)
+
+# Disable and Research: Must have correct SECURE_HSTS_SECONDS. Critical
+# SECURE_HSTS_PRELOAD = env.bool('SECURE_HSTS_PRELOAD', default=True)
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool('SECURE_HSTS_INCLUDE_SUBDOMAINS',
+#                                           default=True)
+# 31536000: Must have a correct non-zero value
+# SECURE_HSTS_SECONDS = env.int('SECURE_HSTS_SECONDS', default=0)
+
+# ==================== Proxy & Routing====================
+# https://docs.djangoproject.com/en/4.2/ref/settings/#secure-proxy-ssl-header
+# https://docs.djangoproject.com/en/4.2/ref/settings/#secure-redirect-exempt
+
+# SECURE_REDIRECT_EXEMPT = env.list('SECURE_REDIRECT_EXEMPT', default=[])
+
+# ==================== Signing ====================
+# https://docs.djangoproject.com/en/4.2/ref/settings/#signing-backend
+# SIGNING_BACKEND = env.str('SIGNING_BACKEND',
+#                           default='django.core.signing.TimestampSigner')
+
+# ==================== Cookies & Sessions ====================
+# Changelog: 2023-08-10 (Comment Out for implementation)
+# - Added Persistent Session Cookies
+# - Added CSRF Cookie Settings (Domain, SameSite, HTTPS)
+# - Updated .env/ConfigVars
+# - Added User Session Config for CSRF Cookie or Session
+# - ADR: Select User Session v Cookie storage
+
+# Age of CSRF Cookie, Default 1 week (in seconds).
+# CSRF_COOKIE_AGE = env.int('CSRF_COOKIE_AGE', default=60 * 60 * 24 * 7)
+#
+# # Added to .env file.
+# # Whether to use a secure cookie for the CSRF cookie/domain. Add to .env file.
+# CSRF_COOKIE_DOMAIN = env.str('CSRF_COOKIE_DOMAIN', default=None)
+#
+# # https://docs.djangoproject.com/en/4.2/ref/settings/#csrf-trusted-origins
+# CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=[])
+#
+# # Whether to HTTP Only. False by default.
+# CSRF_COOKIE_HTTPONLY = env.bool('CSRF_COOKIE_HTTPONLY', default=False)
+# CSRF_COOKIE_MASKED = env.bool('CSRF_COOKIE_MASKED', default=False)
+# CSRF_COOKIE_NAME = env.str('CSRF_COOKIE_NAME', default='csrftoken')
+# CSRF_COOKIE_PATH = env.str('CSRF_COOKIE_PATH', default='/')
+#
+# # See SESSION_COOKIE_SAMESITE flag for more info. Prevents X-Site requests.
+# CSRF_COOKIE_SAMESITE = env.str('CSRF_COOKIE_SAMESITE', default='Lax')
+# CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', default=True)
+# CSRF_HEADER_NAME = env.str('CSRF_HEADER_NAME', default='HTTP_X_CSRFTOKEN')
+#
+# # CSRF Session Management
+# # 1: Default Error Views: Session Middleware before other middleware
+# CSRF_USE_SESSIONS = env.bool('CSRF_USE_SESSIONS', default=False)
+
+# Failure Views: dotted path.
+# https://docs.djangoproject.com/en/4.2/ref/settings/#csrf-failure-view
+# CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
+
+# ==================== Third Party ====================
 
 from .thirdparty import *  # noqa

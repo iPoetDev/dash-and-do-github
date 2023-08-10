@@ -38,3 +38,18 @@ if DEBUG and 'debug_toolbar' in INSTALLED_APPS:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+
+# ================== Debugging & Internal IP ==================
+# https://docs.djangoproject.com/en/4.2/ref/settings/#internal-ips
+
+if DEBUG:
+    INTERNAL_IPS = []
+
+# ================== Checks ==================
+# https://docs.djangoproject.com/en/4.2/ref/settings/#silenced-system-checks
+
+SILENCED_SYSTEM_CHECKS = \
+    env.list('DJANGO_SILENCED_SYSTEM_CHECKS',
+             default=[])
+
+from .tests import *

@@ -19,7 +19,6 @@ Changelog:
 
 #  Copyright (c) 2023.
 
-from .settings import *
 
 DEBUG = False
 
@@ -28,3 +27,18 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'dash-and-do.herokuapp.com',
 ]
+
+# ================== Debugging & Internal IP ==================
+# https://docs.djangoproject.com/en/4.2/ref/settings/#test-runner
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
+# https://docs.djangoproject.com/en/4.2/ref/settings/#test-non-serialized-apps
+TEST_NON_SERIALIZED_APPS = [
+    'django.contrib.contenttypes',
+]
+
+# ================== Fitxures ==================
+# https://docs.djangoproject.com/en/4.2/ref/settings/#fixture-dirs
+
+FIXTURE_DIRS = []

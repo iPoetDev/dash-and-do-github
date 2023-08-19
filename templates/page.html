@@ -1,0 +1,243 @@
+<!doctype html>
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Copyright (c) 2023.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<!--suppress ALL -->
+<html lang="en-GB" class="" id="" title="Public Pages | Template">
+    <head title="Welcome to the Dash and Do for GitHub">
+        <meta charset="utf-8" />
+        <meta
+            name="origin"
+            content="https://dash-and-do-heroku.com/" />
+        <meta
+            name="copyright"
+            content="The Dash and Document GitHub is the copyright of Charles J Fowler, 2023-2028" />
+        <meta
+            name="author"
+            content="Charles J Fowler, @iPoetDev.github.com" />
+        <meta
+            name="creator"
+            content="Charles J Fowler, @iPoetDev.github.com" />
+        <meta
+            name="designer"
+            content="Charles J Fowler, @iPoetDev.github.com" />
+        <meta
+            name="contact"
+            content="Github: @iPoetDev" />
+        <meta
+            name="geo.lmk"
+            content="Dublin, Ireland; Europe" />
+        <meta
+            name="geo.country"
+            content="Ireland" />
+        <meta
+            name="version"
+            content="Version 1.0-beta" />
+        <meta
+            name="color-scheme"
+            content="dark" />
+        <meta
+            name="keywords"
+            content="Fowler,Charles,Clients,Designer,Web Designer,Developer,Software, Web
+                Developer,Frontend Developer,Code Institute,HTML,CSS,Modern CSS" />
+        <meta
+            name="description"
+            content="Welcome to the Dash and Do for GitHub" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <!-- CDN verses Download URL: https://cdnjs.com/libraries/modern-normalize -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.css" />
+        <link
+            type="text/css"
+            href=""
+            rel="stylesheet" />
+        <link
+            type="text/css"
+            href=""
+            rel="stylesheet" />
+
+        <title title="{% block title %}Dashboard and Do GitHub Manager{% endblock %}">
+            {% block title %}Dashboard and Do GitHub Manager{% endblock %}
+        </title>
+    </head>
+    <body class="" title="Dashboard and Do | Public | Private | Home">
+        <header class="header-page" id="header-public">
+            <section class="header-topnav" title="Header Navigation">
+                <div class="" title=" | Smalldown to Medium | Alignment Left"></div>
+                <div class="" title="Navigation | Aligment Right">
+                    <!-- Template: Conditional | Public | Checked if a) user is NOT authenticated | b) all users
+                    has permission to view | c) user | all has NO active session-->
+                    <div class="" title="Public Navigation">
+                        <div class=""
+                             title="Home | Public | Core App | State | Logged Out | Sessions | Permissions"></div>
+                        <div class=""
+                             title="About | Public |  Core App |  State | Logged Out | Sessions | Permissions"></div>
+                        <div class=""
+                             title="Contact | Public |Core App | State | Logged Out | Sessions | Permissions"></div>
+                        <div class=""
+                             title="Login | Public |  Core App | State | Logged Out | Sessions | Permissions"></div>
+                    </div>
+                    <!-- Template: Conditional | Private | Checked if a) user is authenticated | b) only logged user has
+                         permission to view | c) user has active session d) all other users types are denied access to
+                         view -->
+                    <div class="" title="Private Navigation" hidden="hidden">
+                        <div class="" title="Home | Private | State | Logged In | Sessions | Permissions"></div>
+                        <div class=""
+                             title="Dashboard | Private | Dash App | State | Logged In | Sessions | Permissions"></div>
+                        <!--<div class="" title="Do |"></div> -->
+                        <div class=""
+                             title="Accounts | Private | Account App | | State | Logged In | Permissions | Dropdown Menu"></div>
+                    </div>
+                </div>
+            </section>
+        </header>
+        <main class="" id="main-public">
+            <!-- Template: Conditional | Private | Checked if a) user is authenticated | b) only logged user has
+                 permission to view | c) user has active session d) all other users types are denied access to
+                 view -->
+            <section class=""
+                     title="Sidebar Navigation | Alignment Left | Private | Sessions | Permissions"
+                     hidden="hidden">
+
+                <div class="" title="Sidebar Navigation| App Navigation | Top Sidebar">
+                    <div class="" title="Dash &amp; Inform">
+                        <a href="" title="Dash &amp; Inform | Link">Dash &amp; Inform</a>
+
+                    </div>
+                    <!--
+                    <div class="" title="Do &amp; Act">
+                        <a href="" title="Do &amp; Act | Link">Do &amp; Act</a>
+                    </div>
+                    -->
+                </div>
+                <div class="" title="Sidebar Navigation| App Navigation | Bottom Sidebar">
+                    <div class="" title="Bottom Links | Block">
+                        <ul>
+                            <li><a href="" title="Home | Link">Home</a></li>
+                            <li><a href="" title="Docs | Link">Docs</a></li>
+                            <li><a href="" title="FAQ | Link">FAQ</a></li>
+                            <li><a href="" title="Contact | Link">Contact</a></li>
+                            <li><a href="" title="About | Link">About</a></li>
+                            <!-- Template: PARTIAL : Conditionals | Private | Checked if a) user is authenticated | b)
+                            only logged user has
+                                 permission to view | c) user has active session d) all other users types are denied access to
+                                 view | Ends User Session | Changes ownership State: Logged in to Logged out -->
+                            <li><a href="" title="Logout | Link">Logout</a></li>
+                        </ul>
+                    </div>
+            </section>
+            <!-- Template: Home Page | All States | With & Without Sidebar | Reszie with Sidebar -->
+            <section class="" title="Hero Slider Deck"></section>
+            <!-- Template: Home Page | Logged Out | Without Sidebar  -->
+            <section class="" title="Account Call to Action" hidden="none">
+                <div class="" title="Form | Sign Up">
+                    <div class="" title="Form | Sign Up | Wrapper">
+                        <form class="" title="Account Form" action="" method="POST">
+                            <label for="username" class="" title="Account Form | Name">Username</label>
+                            <input type="text" class="" title="Account Form | Name" id="username"/>
+                            <label for="email" class="" title="Account Form | Email">Email</label>
+                            <input type="email" class="" title="Account Form | Email" id="email"/>
+                            <label for="password" class="" title="Account Form | Password">Password</label>
+                            <input type="password" class="" title="Account Form | Password" id="password"/>
+                            <input type="password" class="" title="Account Form | Confirm Password"/>
+                            <button class="" title="Account Form | Submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <!-- Template: Home Page | Logged In | With Sidebar Visible | With Private Topics Nav | Swapped for forms
+             -->
+            <section class=""
+                     title="Dashboard Call to Action | Logged In | 1 x2 Grid | 2 Card Components"
+                     hidden="hidden">
+                <!-- What-If: User is logged in and navigate to index.html
+                 - What-If: replaces the home page sign up form with a web call to actions
+                 - Brief Description: The call to action is a dashboard for the user to see the their GitHub projects
+                   as portfolios status.
+                 - What-If: The dash app is a django app that is a dashboard to inform for GitHub via the Github
+                   API (Get)
+                 - What-If: The dash app is designed to help developers manage their GitHub projects as portfolios
+                 -->
+                <div class=""
+                     title="Dashboard Call to Action | Logged In | Call to Action | Card Component">
+                    <h3 class=""
+                        title="Dashboard Call to Action | Logged In | Call to Action | Card Component">
+                        Dash & Inform</h3>
+                    <p class=""
+                       title="Dashboard Call to Action | Logged In | Call to Action | Card Component">
+                        This is the dashboard for the Dash and Do for GitHub. This is a dashboard and to-do list manager for GitHub.
+                        It is designed to help developers manage their GitHub projects as portfolios.</p>
+                    <a href="" class=""
+                       title="Dashboard Call to Action | Logged In | Call to Action | Card Component">
+                        Check your GitHub Account Status</a>
+                </div>
+                <!-- What-If: User is logged in and navigate to index.html
+                 - What-If: replaces the home page sign up form with a web call to actions
+                 - Brief Description: The call to action is do task application for the user to manage their GitHub
+                   projects as portfolios
+                 - What-If: The do app is a django app that is a to-do list manager for GitHub
+                 - What-If: The do app is designed to help developers manage their GitHub projects as portfolios
+                 -->
+                <div class="" title="Do Call to Action | Logged In | Call to Action | Card Component">
+                    <h3 class=""
+                        title="Do Call to Action | Logged In | Call to Action | Card Component">
+                        Do & Act</h3>
+                    <p class="" title="Do Call to Action | Logged In | Call to Action | Card Component">
+                        This is the do for the Dash and Do for GitHub. This is a dashboard and to-do list manager for GitHub.
+                        It is designed to help developers manage their GitHub projects as portfolios.</p>
+                    <a href="" class="" title="Do Call to Action | Logged In | Call to Action | Card Component"></a>
+                </div>
+            </section>
+            <!-- Template: Home Page | All States | With + Without Sidebar  -->
+            <section class="" title="Contact Call to Action">
+                <div class="" title="Contact Form">
+                    <form class="" title="Contact Form" action="" method="POST">
+                        <label for="name" class="" title="Contact Form | Name">Name</label>
+                        <input type="text" class="" title="Contact Form | Name" id="name">
+                        <label for="email" class="" title="Contact Form | Email">Email</label>
+                        <input type="email" class="" title="Contact Form | Email" id="email"/>
+                        <textarea class="" title="Contact Form | Message"></textarea>
+                        <button class="" title="Contact Form | Submit">Submit</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <!-- Template: All Pages -->
+        <footer class="" id="footer" title="Footer | All Pages">
+            <!-- Template: All Pages -->
+            <section class="footer-wrapper">
+                <div class="" title="Left Grid | Contact About">
+                    <div class="" title="Contact">
+                        <a href="tel:" title="Contact | Mobile"></a>
+                        <a href="mailto:?subject=Contact" title="Contact | Email"></a>
+                    </div>
+                    <div class="" title="Credits"></div>
+                    <div class="" title="Copyright"></div>
+                </div>
+                <div class="" title="Middle Grid | Icons">
+                    <div class="" title="GitHub">
+                       <a href="" title="GitHub | Link to Repo">
+                           <img src="" alt="GitHub" title="GitHub | Icon | Logo | Add Copyright"/>
+                       </a>
+                    </div>
+                </div>
+                <div class="" title="Right Grid | FAQ, Help & Docs">
+                    <div class="" title="FAQ">
+                        <a href="" title="FAQ">FAQ</a>
+                    </div>
+                    <div class="" title="Help">
+                        <a href="" title="Help">Help</a>
+                    </div>
+                    <div class="" title="Docs">
+                        <a href="" title="Docs">Docs</a>
+                    </div>
+                </div>
+            </section>
+        </footer>
+    </body>
+</html>

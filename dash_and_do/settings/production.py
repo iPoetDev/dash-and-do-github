@@ -18,6 +18,7 @@ Changelog:
 - Added: ALLOWED_HOSTS for Heroku App names/URLs
 """
 
+
 #  Copyright (c) 2023.
 
 # ================== Imports ==================
@@ -29,19 +30,11 @@ from .settings import *
 if DEBUG is not True:
     DEBUG = env.bool('DEBUG', default=False)
 
-# ================== Server & Hosting ==================
-# - added: ALLOWED_HOSTS for localhost resources.
-
 if DEBUG is False:
     ALLOWED_HOSTS = [
         'dash-and-do.herokuapp.com',
     ]
 
-# ================== Application ==================
-
-# ================== Database ==================
-
-if DEBUG is False:
     DATABASES = {
         'default': env.db('DATABASE_URL')
     }

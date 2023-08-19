@@ -30,6 +30,7 @@ values.
 - Note: For now, just go to move on and get admin site running.
 """
 
+
 #  Copyright (c) 2023.
 
 # ================== Imports ==================
@@ -139,23 +140,7 @@ if DEBUG:
 if not DEBUG:
     ALLOWED_HOSTS += ['*.herokuapp.com']
 
-# ================== Application ==================
-
-INSTALLED_APPS = [
-    #'django.contrib.admindocs',
-    #'django_extensions',
-]
-
-# Application definition
-# - Updated: Added developer apps to `INSTALLED_APPS`
-# - Added: Admin Docker app
-# - Note: Excluded from base & production settings
-# - Noted: add the “Documentation” link in the upper right of the page.- https://docs.djangoproject.com/en/4.2/ref/contrib/admin/admindocs/#module-django.contrib.admindocs
-
-
-if ADMIN_ENABLED:
-    INSTALLED_APPS = []
-
+INSTALLED_APPS = []
 # ================== Application ==================
 # Application definition
 # - Updated: Added apps to `INSTALLED_APPS`

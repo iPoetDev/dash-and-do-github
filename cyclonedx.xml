@@ -1,0 +1,2580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bom xmlns="http://cyclonedx.org/schema/bom/1.4" version="1"
+     serialNumber="urn:uuid:b298c73e-883e-4091-9052-843f8543409f">
+    <metadata>
+        <timestamp>2023-08-14T19:59:27.014833+00:00</timestamp>
+        <tools>
+            <tool>
+                <vendor>CycloneDX</vendor>
+                <name>cyclonedx-bom</name>
+                <version>3.11.2</version>
+            </tool>
+            <tool>
+                <vendor>CycloneDX</vendor>
+                <name>cyclonedx-python-lib</name>
+                <version>3.1.5</version>
+                <externalReferences>
+                    <reference type="build-system">
+                        <url>https://github.com/CycloneDX/cyclonedx-python-lib/actions</url>
+                    </reference>
+                    <reference type="distribution">
+                        <url>https://pypi.org/project/cyclonedx-python-lib/</url>
+                    </reference>
+                    <reference type="documentation">
+                        <url>https://cyclonedx.github.io/cyclonedx-python-lib/</url>
+                    </reference>
+                    <reference type="issue-tracker">
+                        <url>https://github.com/CycloneDX/cyclonedx-python-lib/issues</url>
+                    </reference>
+                    <reference type="license">
+                        <url>https://github.com/CycloneDX/cyclonedx-python-lib/blob/main/LICENSE</url>
+                    </reference>
+                    <reference type="release-notes">
+                        <url>https://github.com/CycloneDX/cyclonedx-python-lib/blob/main/CHANGELOG.md</url>
+                    </reference>
+                    <reference type="vcs">
+                        <url>https://github.com/CycloneDX/cyclonedx-python-lib</url>
+                    </reference>
+                    <reference type="website">
+                        <url>https://cyclonedx.org</url>
+                    </reference>
+                </externalReferences>
+            </tool>
+        </tools>
+    </metadata>
+    <components>
+        <component type="library" bom-ref="5a4c9ba3-146b-4c46-9fcd-3765bbcf6ef6">
+            <author>Laurent LAPORTE</author>
+            <name>Deprecated</name>
+            <version>1.2.14</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/deprecated@1.2.14</purl>
+        </component>
+        <component type="library" bom-ref="2733fdf1-3cbe-442c-aaa0-3c2fe6fcd070">
+            <author>Django Software Foundation</author>
+            <name>Django</name>
+            <version>4.2.3</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>BSD-3-Clause</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/django@4.2.3</purl>
+        </component>
+        <component type="library" bom-ref="486c4039-90b4-40d1-bb28-33b178b9650c">
+            <author>Sebastian Thiel, Michael Trier</author>
+            <name>GitPython</name>
+            <version>3.1.32</version>
+            <licenses>
+                <license>
+                    <name>BSD</name>
+                </license>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/gitpython@3.1.32</purl>
+        </component>
+        <component type="library" bom-ref="8c4e92d1-51fb-40a0-8391-d45d777d930f">
+            <author>Armin Ronacher</author>
+            <name>Jinja2</name>
+            <version>3.1.2</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>BSD-3-Clause</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/jinja2@3.1.2</purl>
+        </component>
+        <component type="library" bom-ref="80b1c28d-ed7e-443f-9097-fd5821228a5d">
+            <name>MarkupSafe</name>
+            <version>2.1.3</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>BSD-3-Clause</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/markupsafe@2.1.3</purl>
+        </component>
+        <component type="library" bom-ref="edec86b6-fb7a-46ef-b743-c46f336553fb">
+            <author>Vincent Jacques</author>
+            <name>PyGithub</name>
+            <version>1.59.1</version>
+            <licenses>
+                <license>
+                    <name>GNU Library or Lesser General Public License (LGPL)</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pygithub@1.59.1</purl>
+        </component>
+        <component type="library" bom-ref="a0bcac82-b9a6-4952-9d30-fb50350bff7d">
+            <author>Jose Padilla</author>
+            <name>PyJWT</name>
+            <version>2.8.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pyjwt@2.8.0</purl>
+        </component>
+        <component type="library" bom-ref="d4317c7f-fc03-4893-b5c3-d82071505316">
+            <author>The PyNaCl developers</author>
+            <name>PyNaCl</name>
+            <version>1.5.0</version>
+            <licenses>
+                <license>
+                    <name>Apache License 2.0</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pynacl@1.5.0</purl>
+        </component>
+        <component type="library" bom-ref="bcd76392-776c-4480-8df5-5b648c2b3cf2">
+            <author>Kirill Simonov</author>
+            <name>PyYAML</name>
+            <version>6.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pyyaml@6.0</purl>
+        </component>
+        <component type="library" bom-ref="7adc5c2f-59e9-4892-b2ba-87f4ce20585f">
+            <name>Pygments</name>
+            <version>2.15.1</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>BSD-2-Clause</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pygments@2.15.1</purl>
+        </component>
+        <component type="library" bom-ref="594b79c0-e5af-4ce3-bdad-9be99f67d588">
+            <name>apeye</name>
+            <version>1.4.0</version>
+            <licenses>
+                <license>
+                    <name>GNU Lesser General Public License v3 or later (LGPLv3+)</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/apeye@1.4.0</purl>
+        </component>
+        <component type="library" bom-ref="da0c4dc1-e209-4251-bdc8-4b4fe521ee10">
+            <name>apeye-core</name>
+            <version>1.1.4</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>Copyright (c) 2022, Dominic Davis-Foster
+
+                        Redistribution and use in source and binary forms, with or without modification,
+                        are permitted provided that the following conditions are met:
+
+                        * Redistributions of source code must retain the above copyright notice,
+                        this list of conditions and the following disclaimer.
+                        * Redistributions in binary form must reproduce the above copyright notice,
+                        this list of conditions and the following disclaimer in the documentation
+                        and/or other materials provided with the distribution.
+                        * Neither the name of the copyright holder nor the names of its contributors
+                        may be used to endorse or promote products derived from this software without
+                        specific prior written permission.
+
+                        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+                        "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+                        LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+                        A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER
+                        OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+                        EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+                        PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+                        PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+                        LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+                        NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+                        SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                    </name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/apeye-core@1.1.4</purl>
+        </component>
+        <component type="library" bom-ref="dae6b6da-9c62-4455-9a0a-dc83a51dab53">
+            <author>Trent Mick</author>
+            <name>appdirs</name>
+            <version>1.4.4</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/appdirs@1.4.4</purl>
+        </component>
+        <component type="library" bom-ref="f9ff6970-6bbb-4043-ace8-b9fe279db61f">
+            <author>Andrey Kislyuk</author>
+            <name>argcomplete</name>
+            <version>3.1.1</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/argcomplete@3.1.1</purl>
+        </component>
+        <component type="library" bom-ref="8dfc3e6a-4cb8-4c8b-ae38-72684d0674af">
+            <author>Django Software Foundation</author>
+            <name>asgiref</name>
+            <version>3.7.2</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>BSD-3-Clause</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/asgiref@3.7.2</purl>
+        </component>
+        <component type="library" bom-ref="f15b8923-92cf-46a7-893c-d39591171b9d">
+            <author>Patrick Maupin</author>
+            <name>astor</name>
+            <version>0.8.1</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>BSD-3-Clause</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/astor@0.8.1</purl>
+        </component>
+        <component type="library" bom-ref="d544b002-92d4-4862-b00d-f1f98d5ec4bc">
+            <name>astroid</name>
+            <version>2.15.6</version>
+            <licenses>
+                <license>
+                    <name>GNU Lesser General Public License v2 (LGPLv2)</name>
+                </license>
+                <license>
+                    <name>LGPL-2.1-or-later</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/astroid@2.15.6</purl>
+        </component>
+        <component type="library" bom-ref="69c83229-ffc4-471a-baee-7b199e64d671">
+            <author>Dmitry Sagalovskiy, Grist Labs</author>
+            <name>asttokens</name>
+            <version>2.2.1</version>
+            <licenses>
+                <license>
+                    <name>Apache 2.0</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/asttokens@2.2.1</purl>
+        </component>
+        <component type="library" bom-ref="44cb2777-e17f-47db-ba73-82e1c1b3b328">
+            <name>attrs</name>
+            <version>23.1.0</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/attrs@23.1.0</purl>
+        </component>
+        <component type="library" bom-ref="7998cdc7-c157-4475-b38f-358f67a471e8">
+            <author>PyCQA</author>
+            <name>bandit</name>
+            <version>1.7.5</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+                <license>
+                    <name>Apache-2.0 license</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/bandit@1.7.5</purl>
+        </component>
+        <component type="library" bom-ref="4614efa1-6867-4b9f-b8d5-81ffbf10e445">
+            <name>build</name>
+            <version>0.10.0</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/build@0.10.0</purl>
+        </component>
+        <component type="library" bom-ref="5811a569-3999-4f8f-8437-80b70d49d17b">
+            <name>cachecontrol</name>
+            <version>0.13.1</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/cachecontrol@0.13.1</purl>
+        </component>
+        <component type="library" bom-ref="3387ff15-c80d-4aec-aa20-9a2769de0edd">
+            <author>Thomas Kemmer</author>
+            <name>cachetools</name>
+            <version>5.3.1</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/cachetools@5.3.1</purl>
+        </component>
+        <component type="library" bom-ref="a3acc5aa-c352-404f-a078-68d48d9c0e71">
+            <author>Tin Tvrtkovic</author>
+            <name>cattrs</name>
+            <version>23.1.2</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/cattrs@23.1.2</purl>
+        </component>
+        <component type="library" bom-ref="5ebd4d3d-19a8-47ed-ad58-8eaabaf7aa1a">
+            <author>Kenneth Reitz</author>
+            <name>certifi</name>
+            <version>2023.5.7</version>
+            <licenses>
+                <license>
+                    <name>MPL-2.0</name>
+                </license>
+                <license>
+                    <name>Mozilla Public License 2.0 (MPL 2.0)</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/certifi@2023.5.7</purl>
+        </component>
+        <component type="library" bom-ref="9c26f9b8-44d8-4f1e-b411-f1df80ce5e05">
+            <author>Armin Rigo, Maciej Fijalkowski</author>
+            <name>cffi</name>
+            <version>1.15.1</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/cffi@1.15.1</purl>
+        </component>
+        <component type="library" bom-ref="5b71d716-a11a-4961-91cd-f99c57e92b72">
+            <author>Anthony Sottile</author>
+            <name>cfgv</name>
+            <version>3.3.1</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/cfgv@3.3.1</purl>
+        </component>
+        <component type="library" bom-ref="7a91d9d3-67f2-4e05-936a-ca3529138cf5">
+            <author>Mark Pilgrim</author>
+            <name>chardet</name>
+            <version>5.1.0</version>
+            <licenses>
+                <license>
+                    <name>GNU Lesser General Public License v2 or later (LGPLv2+)</name>
+                </license>
+                <license>
+                    <name>LGPL</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/chardet@5.1.0</purl>
+        </component>
+        <component type="library" bom-ref="d5abde34-5e07-4e55-8584-cb28b30ec3a9">
+            <author>Ahmed TAHRI</author>
+            <name>charset-normalizer</name>
+            <version>3.2.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/charset-normalizer@3.2.0</purl>
+        </component>
+        <component type="library" bom-ref="91efa7a3-247b-4409-accb-065877873788">
+            <author>Sébastien Eustace</author>
+            <name>cleo</name>
+            <version>2.0.1</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/cleo@2.0.1</purl>
+        </component>
+        <component type="library" bom-ref="947a5e3f-61bf-4e28-b35e-67774e0d0733">
+            <name>click</name>
+            <version>8.1.5</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>BSD-3-Clause</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/click@8.1.5</purl>
+        </component>
+        <component type="library" bom-ref="1cd11a96-5a06-44c7-b0df-9d973c8b4345">
+            <author>Cloudinary</author>
+            <name>cloudinary</name>
+            <version>1.33.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/cloudinary@1.33.0</purl>
+        </component>
+        <component type="library" bom-ref="67c858ee-11cd-427a-9286-6974ce26c6a8">
+            <name>colorama</name>
+            <version>0.4.6</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/colorama@0.4.6</purl>
+        </component>
+        <component type="library" bom-ref="f51c39b9-d8f5-473b-9074-350d71025e8b">
+            <author>Sébastien Eustace</author>
+            <name>crashtest</name>
+            <version>0.4.1</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/crashtest@0.4.1</purl>
+        </component>
+        <component type="library" bom-ref="5e973121-55e7-4ef1-bf2a-932e98a1c22b">
+            <name>cryptography</name>
+            <version>41.0.3</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+                <license>
+                    <name>Apache-2.0 OR BSD-3-Clause</name>
+                </license>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/cryptography@41.0.3</purl>
+        </component>
+        <component type="library" bom-ref="ca0e15dc-ead7-4296-ae37-a4423cbc36cd">
+            <author>Steven Springett</author>
+            <name>cyclonedx-bom</name>
+            <version>3.11.2</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+                <license>
+                    <name>Apache-2.0</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/cyclonedx-bom@3.11.2</purl>
+        </component>
+        <component type="library" bom-ref="dd822ad8-828d-435d-bebf-ea2aa2d63ef3">
+            <author>Paul Horton</author>
+            <name>cyclonedx-python-lib</name>
+            <version>3.1.5</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+                <license>
+                    <name>Apache-2.0</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/cyclonedx-python-lib@3.1.5</purl>
+        </component>
+        <component type="library" bom-ref="c59044e9-64ed-4f4a-bd10-4082af2abff4">
+            <author>Christian Heimes</author>
+            <name>defusedxml</name>
+            <version>0.7.1</version>
+            <licenses>
+                <license>
+                    <name>PSFL</name>
+                </license>
+                <license>
+                    <name>Python Software Foundation License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/defusedxml@0.7.1</purl>
+        </component>
+        <component type="library" bom-ref="aed1548a-400c-4e9b-a430-f346f1b17527">
+            <author>Mike McKerns</author>
+            <name>dill</name>
+            <version>0.3.6</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>BSD-3-Clause</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/dill@0.3.6</purl>
+        </component>
+        <component type="library" bom-ref="cb0d6e19-a3b7-4388-82a8-4c14f4e1ff0b">
+            <author>Dominic Davis-Foster</author>
+            <name>dist-meta</name>
+            <version>0.8.0</version>
+            <licenses>
+                <license>
+                    <name>Copyright (c) 2021 Dominic Davis-Foster
+
+                        Permission is hereby granted, free of charge, to any person obtaining a copy
+                        of this software and associated documentation files (the "Software"), to deal
+                        in the Software without restriction, including without limitation the rights
+                        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                        copies of the Software, and to permit persons to whom the Software is
+                        furnished to do so, subject to the following conditions:
+
+                        The above copyright notice and this permission notice shall be included in all
+                        copies or substantial portions of the Software.
+
+                        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+                        EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+                        MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+                        IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+                        DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+                        OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+                        OR OTHER DEALINGS IN THE SOFTWARE.
+                    </name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/dist-meta@0.8.0</purl>
+        </component>
+        <component type="library" bom-ref="ae88481c-6487-4f45-a478-747e0d839194">
+            <author>Vinay Sajip</author>
+            <name>distlib</name>
+            <version>0.3.6</version>
+            <licenses>
+                <license>
+                    <name>Python Software Foundation License</name>
+                </license>
+                <license>
+                    <name>Python license</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/distlib@0.3.6</purl>
+        </component>
+        <component type="library" bom-ref="e6bff2c2-4e4c-4011-bbfa-10c389cc1f7c">
+            <author>Original Author: Kenneth Reitz, Maintained by: JazzBand Community</author>
+            <name>dj-database-url</name>
+            <version>2.0.0</version>
+            <licenses>
+                <license>
+                    <name>BSD</name>
+                </license>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/dj-database-url@2.0.0</purl>
+        </component>
+        <component type="library" bom-ref="8ea61a8d-97a0-4bde-bd43-1b2516b9427e">
+            <author>Tiago Cordeiro</author>
+            <name>dj3-cloudinary-storage</name>
+            <version>0.0.6</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/dj3-cloudinary-storage@0.0.6</purl>
+        </component>
+        <component type="library" bom-ref="9e855334-003c-4c05-a05e-12189e643b76">
+            <author>Raymond Penners</author>
+            <name>django-allauth</name>
+            <version>0.54.0</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/django-allauth@0.54.0</purl>
+        </component>
+        <component type="library" bom-ref="b034621c-4e94-41e2-a729-701c71b5fe6e">
+            <author>Rob Hudson</author>
+            <name>django-debug-toolbar</name>
+            <version>4.2.0</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>BSD-3-Clause</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/django-debug-toolbar@4.2.0</purl>
+        </component>
+        <component type="library" bom-ref="e64b363d-ce47-4bd8-9db6-f5ea9e353f21">
+            <author>Daniele Faraglia</author>
+            <name>django-environ</name>
+            <version>0.10.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/django-environ@0.10.0</purl>
+        </component>
+        <component type="library" bom-ref="152a10b3-76e8-4ecd-8301-21edbbbf3306">
+            <author>Michael Trier</author>
+            <name>django-extensions</name>
+            <version>3.2.3</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/django-extensions@3.2.3</purl>
+        </component>
+        <component type="library" bom-ref="89addcb6-513f-4f80-bbb9-5ea19e1498c4">
+            <author>Django Software Foundation</author>
+            <name>django-formtools</name>
+            <version>2.4.1</version>
+            <licenses>
+                <license>
+                    <name>BSD</name>
+                </license>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/django-formtools@2.4.1</purl>
+        </component>
+        <component type="library" bom-ref="55168eb9-2f44-4cc5-8487-9e6cf5371c7e">
+            <author>Adam Johnson</author>
+            <name>django-htmx</name>
+            <version>1.16.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/django-htmx@1.16.0</purl>
+        </component>
+        <component type="library" bom-ref="e5ddf86a-92f3-4a90-aa86-c59fb57bff91">
+            <author>Luc Belliveau</author>
+            <name>django-htmx-autocomplete</name>
+            <version>0.8.3</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/django-htmx-autocomplete@0.8.3</purl>
+        </component>
+        <component type="library" bom-ref="63d5b3fc-b88f-4998-bb19-cb1080a8cafd">
+            <author>John Galiszewski</author>
+            <name>django-htmx-refresh</name>
+            <version>0.0.7</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>BSD-3-Clause</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/django-htmx-refresh@0.0.7</purl>
+        </component>
+        <component type="library" bom-ref="cc02f461-57bc-4624-a442-09a12fbedc93">
+            <author>Jack DeVries</author>
+            <name>django-htmx-rest</name>
+            <version>0.0.1b2</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/django-htmx-rest@0.0.1b2</purl>
+        </component>
+        <component type="library" bom-ref="39ecb9c4-cb26-46fa-8ed9-b0e2d304e9cd">
+            <name>django-htmx-ui</name>
+            <version>0.1.8</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/django-htmx-ui@0.1.8</purl>
+        </component>
+        <component type="library" bom-ref="c4eeecdb-2ddb-4972-aedd-3f9b9a117b93">
+            <author>Snake-Soft</author>
+            <name>django-htmx-viewsets</name>
+            <version>0.0.9</version>
+            <licenses>
+                <license>
+                    <name>GPL3</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/django-htmx-viewsets@0.0.9</purl>
+        </component>
+        <component type="library" bom-ref="af245229-5f62-4ae7-85b3-100fd5c72944">
+            <author>Tom Christie</author>
+            <name>djangorestframework</name>
+            <version>3.14.0</version>
+            <licenses>
+                <license>
+                    <name>BSD</name>
+                </license>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/djangorestframework@3.14.0</purl>
+        </component>
+        <component type="library" bom-ref="e56aaf45-af55-4d3f-aabb-93cb313d2d8c">
+            <name>dom-toml</name>
+            <version>0.6.1</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/dom-toml@0.6.1</purl>
+        </component>
+        <component type="library" bom-ref="312432e9-5482-4e21-a158-aba75c5941b4">
+            <author>Dominic Davis-Foster</author>
+            <name>domdf-python-tools</name>
+            <version>3.6.1</version>
+            <licenses>
+                <license>
+                    <name>Copyright (c) 2019-2022 Dominic Davis-Foster
+
+                        Permission is hereby granted, free of charge, to any person obtaining a copy
+                        of this software and associated documentation files (the "Software"), to deal
+                        in the Software without restriction, including without limitation the rights
+                        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                        copies of the Software, and to permit persons to whom the Software is
+                        furnished to do so, subject to the following conditions:
+
+                        The above copyright notice and this permission notice shall be included in all
+                        copies or substantial portions of the Software.
+
+                        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+                        EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+                        MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+                        IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+                        DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+                        OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+                        OR OTHER DEALINGS IN THE SOFTWARE.
+                    </name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/domdf-python-tools@3.6.1</purl>
+        </component>
+        <component type="library" bom-ref="6c6ea0f2-9dba-483e-8313-cc8edea60cbb">
+            <name>dulwich</name>
+            <version>0.21.5</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+                <license>
+                    <name>Apachev2 or later or GPLv2</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/dulwich@0.21.5</purl>
+        </component>
+        <component type="library" bom-ref="7b735bd8-0eca-4a73-901c-25eb0004de0e">
+            <author>Marco M.</author>
+            <name>editorconfig-checker</name>
+            <version>2.7.2</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/editorconfig-checker@2.7.2</purl>
+        </component>
+        <component type="library" bom-ref="7bb63dbc-bb7a-4a77-a8e5-b1fe97c260f8">
+            <name>filelock</name>
+            <version>3.12.2</version>
+            <licenses>
+                <license>
+                    <name>The Unlicense (Unlicense)</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/filelock@3.12.2</purl>
+        </component>
+        <component type="library" bom-ref="f1d480a7-0784-4a8a-be99-bd4753bb3cf5">
+            <author>Tarek Ziade</author>
+            <name>flake8</name>
+            <version>6.0.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/flake8@6.0.0</purl>
+        </component>
+        <component type="library" bom-ref="5467ef50-b34d-4665-bac1-a0b0bbe5d9ce">
+            <author>James Cooke</author>
+            <name>flake8-aaa</name>
+            <version>0.15.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/flake8-aaa@0.15.0</purl>
+        </component>
+        <component type="library" bom-ref="1af0059c-d1ab-404c-bd7c-feb2a27ff75f">
+            <author>Tyler Wince</author>
+            <name>flake8-bandit</name>
+            <version>4.1.1</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/flake8-bandit@4.1.1</purl>
+        </component>
+        <component type="library" bom-ref="0d5da92e-f8af-4fce-afa4-b3d301bb6068">
+            <author>Rocio Aramberri Schegel</author>
+            <name>flake8-django</name>
+            <version>1.3</version>
+            <licenses>
+                <license>
+                    <name>GNU General Public License v3 or later (GPLv3+)</name>
+                </license>
+                <license>
+                    <name>GPL-3.0-or-later</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/flake8-django@1.3</purl>
+        </component>
+        <component type="library" bom-ref="98220ae8-96ff-4575-bc0b-0696b013786f">
+            <author>Bruno Alla</author>
+            <name>flake8-django-migrations</name>
+            <version>1.0.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/flake8-django-migrations@1.0.0</purl>
+        </component>
+        <component type="library" bom-ref="883f0720-8dc7-4644-b691-908e953680bf">
+            <author>Simon ANDRÉ</author>
+            <name>flake8-docstrings</name>
+            <version>1.7.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/flake8-docstrings@1.7.0</purl>
+        </component>
+        <component type="library" bom-ref="56319417-3591-41d9-b8ac-812406ca3ad0">
+            <author>Sebastian Thiel</author>
+            <name>gitdb</name>
+            <version>4.0.10</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/gitdb@4.0.10</purl>
+        </component>
+        <component type="library" bom-ref="ee5ce842-19a8-4fb0-a198-eb515c7ddc56">
+            <name>handy-archives</name>
+            <version>0.1.4</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/handy-archives@0.1.4</purl>
+        </component>
+        <component type="library" bom-ref="bbfda95c-bf9c-42b9-906d-69f0674725da">
+            <name>html5lib</name>
+            <version>1.1</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/html5lib@1.1</purl>
+        </component>
+        <component type="library" bom-ref="c6719e98-8732-4976-be76-3a972dba0ea2">
+            <name>humanize</name>
+            <version>4.7.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/humanize@4.7.0</purl>
+        </component>
+        <component type="library" bom-ref="2a5eac5f-31a4-4437-ab68-79f3da6f1765">
+            <author>Chris Kuehl</author>
+            <name>identify</name>
+            <version>2.5.24</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/identify@2.5.24</purl>
+        </component>
+        <component type="library" bom-ref="51c9a4d3-ed98-4765-98e0-c958bd1436fc">
+            <name>idna</name>
+            <version>3.4</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/idna@3.4</purl>
+        </component>
+        <component type="library" bom-ref="55a863ec-2eb5-4aad-a8dc-1e7c4c0ec36a">
+            <author>Jason R. Coombs</author>
+            <name>importlib-metadata</name>
+            <version>6.8.0</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/importlib-metadata@6.8.0</purl>
+        </component>
+        <component type="library" bom-ref="0b376c57-3b23-4fa7-ba09-5570e7d216e3">
+            <name>iniconfig</name>
+            <version>2.0.0</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/iniconfig@2.0.0</purl>
+        </component>
+        <component type="library" bom-ref="a0b08a52-6e47-4c03-a782-5df7c0dadba5">
+            <name>installer</name>
+            <version>0.7.0</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/installer@0.7.0</purl>
+        </component>
+        <component type="library" bom-ref="bdc52954-d91b-49e6-9592-4f891ed7bf66">
+            <author>Timothy Crosley</author>
+            <name>isort</name>
+            <version>5.12.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/isort@5.12.0</purl>
+        </component>
+        <component type="library" bom-ref="b0f808b9-b972-4b89-bfc4-529fa789eeca">
+            <author>Jason R. Coombs</author>
+            <name>jaraco.classes</name>
+            <version>3.3.0</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/jaraco.classes@3.3.0</purl>
+        </component>
+        <component type="library" bom-ref="05a4dcaf-dcb9-4052-bd8e-1d666f68539c">
+            <author>Julian Berman</author>
+            <name>jsonschema</name>
+            <version>4.18.3</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/jsonschema@4.18.3</purl>
+        </component>
+        <component type="library" bom-ref="b6ad7fd8-4078-45c6-9ff9-e852b298cf18">
+            <author>Julian Berman</author>
+            <name>jsonschema-specifications</name>
+            <version>2023.6.1</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/jsonschema-specifications@2023.6.1</purl>
+        </component>
+        <component type="library" bom-ref="f06169c9-757a-4a4d-8254-8319bf0ae2e7">
+            <author>Kang Zhang</author>
+            <name>keyring</name>
+            <version>23.13.1</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/keyring@23.13.1</purl>
+        </component>
+        <component type="library" bom-ref="2282802a-7388-418d-ace2-e749b466a35b">
+            <author>Ionel Cristian Mărieș</author>
+            <name>lazy-object-proxy</name>
+            <version>1.9.0</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>BSD-2-Clause</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/lazy-object-proxy@1.9.0</purl>
+        </component>
+        <component type="library" bom-ref="6810a889-1479-4f80-b7d1-4545f6c3893d">
+            <author>Anthony Harrison</author>
+            <name>lib4sbom</name>
+            <version>0.4.2</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+                <license>
+                    <name>Apache-2.0</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/lib4sbom@0.4.2</purl>
+        </component>
+        <component type="library" bom-ref="c120f381-0daf-48e9-abf3-8f8e375a4a56">
+            <author>OpenStack</author>
+            <name>lockfile</name>
+            <version>0.12.2</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/lockfile@0.12.2</purl>
+        </component>
+        <component type="library" bom-ref="b513da21-e745-4765-87d0-99d1054e52ae">
+            <name>markdown-it-py</name>
+            <version>3.0.0</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/markdown-it-py@3.0.0</purl>
+        </component>
+        <component type="library" bom-ref="76b97456-a463-4e9d-b569-ab977470d84d">
+            <author>Tarek Ziade</author>
+            <name>mccabe</name>
+            <version>0.7.0</version>
+            <licenses>
+                <license>
+                    <name>Expat license</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/mccabe@0.7.0</purl>
+        </component>
+        <component type="library" bom-ref="576bd254-3360-4866-ae0c-6f933a4d8ddc">
+            <name>mdurl</name>
+            <version>0.1.2</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/mdurl@0.1.2</purl>
+        </component>
+        <component type="library" bom-ref="5e4420b4-5e86-4472-be59-104cb464d59e">
+            <name>more-itertools</name>
+            <version>9.1.0</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/more-itertools@9.1.0</purl>
+        </component>
+        <component type="library" bom-ref="09ed5003-1935-418a-b277-b9aeca5ad2c2">
+            <author>Inada Naoki</author>
+            <name>msgpack</name>
+            <version>1.0.5</version>
+            <licenses>
+                <license>
+                    <name>Apache 2.0</name>
+                </license>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/msgpack@1.0.5</purl>
+        </component>
+        <component type="library" bom-ref="8a8570fa-63aa-4efd-859b-bf31d3297366">
+            <author>Seth M. Morton</author>
+            <name>natsort</name>
+            <version>8.4.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/natsort@8.4.0</purl>
+        </component>
+        <component type="library" bom-ref="5e289c16-ad88-4f10-bfeb-7ed595437091">
+            <author>Eugene Kalinin</author>
+            <name>nodeenv</name>
+            <version>1.8.0</version>
+            <licenses>
+                <license>
+                    <name>BSD</name>
+                </license>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/nodeenv@1.8.0</purl>
+        </component>
+        <component type="library" bom-ref="f3c2d759-c1b2-4189-9a2c-5f3ed1076209">
+            <author>The OAuthlib Community</author>
+            <name>oauthlib</name>
+            <version>3.2.2</version>
+            <licenses>
+                <license>
+                    <name>BSD</name>
+                </license>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>OSI Approved</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/oauthlib@3.2.2</purl>
+        </component>
+        <component type="library" bom-ref="eeb6a531-afa7-482a-bc65-6c9e1f658f27">
+            <author>Andrew Scott</author>
+            <name>ochrona</name>
+            <version>2.0.2</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/ochrona@2.0.2</purl>
+        </component>
+        <component type="library" bom-ref="170a25b9-8290-423f-949d-0d2a8b9962d2">
+            <author>the purl authors</author>
+            <name>packageurl-python</name>
+            <version>0.11.2</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/packageurl-python@0.11.2</purl>
+        </component>
+        <component type="library" bom-ref="1e022325-4884-4829-a1c0-f137752f796e">
+            <name>packaging</name>
+            <version>23.1</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/packaging@23.1</purl>
+        </component>
+        <component type="library" bom-ref="cfbee3ac-6f53-450b-8106-3d740f920461">
+            <author>OpenStack</author>
+            <name>pbr</name>
+            <version>5.11.1</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pbr@5.11.1</purl>
+        </component>
+        <component type="library" bom-ref="6cb452c6-08d8-4abf-8db5-cea32cfe3160">
+            <author>Noah Spurrier; Thomas Kluyver; Jeff Quast</author>
+            <name>pexpect</name>
+            <version>4.8.0</version>
+            <licenses>
+                <license>
+                    <name>ISC License (ISCL)</name>
+                </license>
+                <license>
+                    <name>ISC license</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pexpect@4.8.0</purl>
+        </component>
+        <component type="library" bom-ref="db78998e-cce1-4fe9-9203-f7c810f71ffe">
+            <author>The pip developers</author>
+            <name>pip</name>
+            <version>23.2.1</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pip@23.2.1</purl>
+        </component>
+        <component type="library" bom-ref="3492e3d7-1e20-4de9-8c0f-6f660273779f">
+            <author>Dustin Ingram</author>
+            <name>pip-api</name>
+            <version>0.0.30</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pip-api@0.0.30</purl>
+        </component>
+        <component type="library" bom-ref="233b0fde-ea32-42c3-aeda-247dc57438b5">
+            <name>pip-audit</name>
+            <version>2.6.1</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pip-audit@2.6.1</purl>
+        </component>
+        <component type="library" bom-ref="7fdfc4bf-7554-4da9-be24-1d213da8f6ea">
+            <author>The pip authors, nexB. Inc. and others</author>
+            <name>pip-requirements-parser</name>
+            <version>32.0.1</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pip-requirements-parser@32.0.1</purl>
+        </component>
+        <component type="library" bom-ref="bd2b2cd5-e103-4961-9151-d9978cb762cd">
+            <name>pipx</name>
+            <version>1.2.0</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pipx@1.2.0</purl>
+        </component>
+        <component type="library" bom-ref="f1990ba0-7df9-408b-9215-78d52f47086d">
+            <author>Tres Seaver, Agendaless Consulting</author>
+            <name>pkginfo</name>
+            <version>1.9.6</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pkginfo@1.9.6</purl>
+        </component>
+        <component type="library" bom-ref="74ea1e5e-2fca-4532-9275-229bb3f7e3c3">
+            <name>platformdirs</name>
+            <version>3.8.1</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/platformdirs@3.8.1</purl>
+        </component>
+        <component type="library" bom-ref="3652d952-c230-4d3d-af55-d1df2d23165e">
+            <author>Holger Krekel</author>
+            <name>pluggy</name>
+            <version>1.2.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pluggy@1.2.0</purl>
+        </component>
+        <component type="library" bom-ref="df00d3b6-47d1-4ac6-9598-2744d6f6ec59">
+            <author>Sébastien Eustace</author>
+            <name>poetry</name>
+            <version>1.5.1</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/poetry@1.5.1</purl>
+        </component>
+        <component type="library" bom-ref="9389e8ca-9545-4cee-8361-49a3369503cc">
+            <author>Sébastien Eustace</author>
+            <name>poetry-core</name>
+            <version>1.6.1</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/poetry-core@1.6.1</purl>
+        </component>
+        <component type="library" bom-ref="4f11a4d5-f9d1-4f4e-860a-596b361050c9">
+            <author>Sébastien Eustace</author>
+            <name>poetry-plugin-export</name>
+            <version>1.4.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/poetry-plugin-export@1.4.0</purl>
+        </component>
+        <component type="library" bom-ref="72e22dc4-5f31-4870-ab75-cc6327716d2a">
+            <author>Anthony Sottile</author>
+            <name>pre-commit</name>
+            <version>3.3.3</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pre-commit@3.3.3</purl>
+        </component>
+        <component type="library" bom-ref="74877335-6a58-467c-ace4-a3c223de6f04">
+            <author>Anthony Sottile</author>
+            <name>pre-commit-hooks</name>
+            <version>4.4.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pre-commit-hooks@4.4.0</purl>
+        </component>
+        <component type="library" bom-ref="4822fc7a-d06c-40e5-b8b7-afc56c6a02b1">
+            <author>Ivan Vedernikov</author>
+            <name>pre-commit-hooks-django</name>
+            <version>0.4.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pre-commit-hooks-django@0.4.0</purl>
+        </component>
+        <component type="library" bom-ref="67b84348-e936-4a9d-807c-1e335e9249d9">
+            <author>Vojko Pribudić</author>
+            <name>pre-commit-update</name>
+            <version>0.0.8</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pre-commit-update@0.0.8</purl>
+        </component>
+        <component type="library" bom-ref="e373cf3d-6ca9-4e91-87fc-f347c88e8bba">
+            <author>Federico Di Gregorio</author>
+            <name>psycopg2-binary</name>
+            <version>2.9.7</version>
+            <licenses>
+                <license>
+                    <name>GNU Library or Lesser General Public License (LGPL)</name>
+                </license>
+                <license>
+                    <name>LGPL with exceptions</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/psycopg2-binary@2.9.7</purl>
+        </component>
+        <component type="library" bom-ref="64d32421-edcb-4f0d-aa90-1f81fbba9aaf">
+            <author>Thomas Kluyver</author>
+            <name>ptyprocess</name>
+            <version>0.7.0</version>
+            <licenses>
+                <license>
+                    <name>ISC License (ISCL)</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/ptyprocess@0.7.0</purl>
+        </component>
+        <component type="library" bom-ref="5006a8a6-901a-4974-872b-ce08882f3be2">
+            <author>Paul Horton</author>
+            <name>py-serializable</name>
+            <version>0.11.1</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+                <license>
+                    <name>Apache-2.0</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/py-serializable@0.11.1</purl>
+        </component>
+        <component type="library" bom-ref="e1b480d4-fec9-4c7d-989c-97b8b261c4c9">
+            <author>Johann C. Rocholl</author>
+            <name>pycodestyle</name>
+            <version>2.10.0</version>
+            <licenses>
+                <license>
+                    <name>Expat license</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pycodestyle@2.10.0</purl>
+        </component>
+        <component type="library" bom-ref="049982c5-4fce-4974-b81e-f4f89e0748f3">
+            <author>Eli Bendersky</author>
+            <name>pycparser</name>
+            <version>2.21</version>
+            <licenses>
+                <license>
+                    <name>BSD</name>
+                </license>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pycparser@2.21</purl>
+        </component>
+        <component type="library" bom-ref="7533c9b2-a8ec-425c-86fd-36c65ce5e0bd">
+            <author>Amir Rachum</author>
+            <name>pydocstyle</name>
+            <version>6.3.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pydocstyle@6.3.0</purl>
+        </component>
+        <component type="library" bom-ref="69be9816-b0be-4fe5-8a70-7871f7a99a02">
+            <author>Ero Carrera</author>
+            <name>pydot</name>
+            <version>1.4.2</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pydot@1.4.2</purl>
+        </component>
+        <component type="library" bom-ref="b70cc30c-7965-4bf0-9f4b-41cc833d8cc1">
+            <author>A lot of people</author>
+            <name>pyflakes</name>
+            <version>3.0.1</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pyflakes@3.0.1</purl>
+        </component>
+        <component type="library" bom-ref="4d842169-59d4-40f7-8b42-94c6be8b553a">
+            <name>pylint</name>
+            <version>2.17.4</version>
+            <licenses>
+                <license>
+                    <name>GNU General Public License v2 (GPLv2)</name>
+                </license>
+                <license>
+                    <name>GPL-2.0-or-later</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pylint@2.17.4</purl>
+        </component>
+        <component type="library" bom-ref="96824374-09f1-4fea-9bb7-c8ad6a5926aa">
+            <author>landscape.io</author>
+            <name>pylint-django</name>
+            <version>2.5.3</version>
+            <licenses>
+                <license>
+                    <name>GPLv2</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pylint-django@2.5.3</purl>
+        </component>
+        <component type="library" bom-ref="fe27cb4c-1ff8-45ba-83c9-66fe3e677be4">
+            <author>Carl Crowder</author>
+            <name>pylint-plugin-utils</name>
+            <version>0.8.2</version>
+            <licenses>
+                <license>
+                    <name>GNU General Public License v2 or later (GPLv2+)</name>
+                </license>
+                <license>
+                    <name>GPL-2.0-or-later</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pylint-plugin-utils@0.8.2</purl>
+        </component>
+        <component type="library" bom-ref="ad56a516-c557-41e5-b08e-a991785c1bfc">
+            <name>pyparsing</name>
+            <version>3.1.1</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pyparsing@3.1.1</purl>
+        </component>
+        <component type="library" bom-ref="1bb617e2-c7de-4f2e-930e-af6a5805417f">
+            <name>pyproject-api</name>
+            <version>1.5.3</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pyproject-api@1.5.3</purl>
+        </component>
+        <component type="library" bom-ref="fa8c5bc2-d044-4c55-a044-6e072ab24587">
+            <name>pyproject-hooks</name>
+            <version>1.0.0</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pyproject-hooks@1.0.0</purl>
+        </component>
+        <component type="library" bom-ref="6e43c143-ec55-404c-b58e-b079e79f9da8">
+            <author>Dominic Davis-Foster</author>
+            <name>pyproject-parser</name>
+            <version>0.8.0</version>
+            <licenses>
+                <license>
+                    <name>Copyright (c) 2021 Dominic Davis-Foster
+
+                        Permission is hereby granted, free of charge, to any person obtaining a copy
+                        of this software and associated documentation files (the "Software"), to deal
+                        in the Software without restriction, including without limitation the rights
+                        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                        copies of the Software, and to permit persons to whom the Software is
+                        furnished to do so, subject to the following conditions:
+
+                        The above copyright notice and this permission notice shall be included in all
+                        copies or substantial portions of the Software.
+
+                        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+                        EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+                        MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+                        IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+                        DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+                        OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+                        OR OTHER DEALINGS IN THE SOFTWARE.
+                    </name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pyproject-parser@0.8.0</purl>
+        </component>
+        <component type="library" bom-ref="ae312a15-9b50-4d13-88f6-3b8b3394c5e5">
+            <author>Holger Krekel, Bruno Oliveira, Ronny Pfannschmidt, Floris Bruynooghe, Brianna Laugher, Florian
+                Bruhin and others
+            </author>
+            <name>pytest</name>
+            <version>7.4.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pytest@7.4.0</purl>
+        </component>
+        <component type="library" bom-ref="09707ae7-82d9-4d40-a515-310512271127">
+            <author>Andreas Pelme</author>
+            <name>pytest-django</name>
+            <version>4.5.2</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>BSD-3-Clause</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pytest-django@4.5.2</purl>
+        </component>
+        <component type="library" bom-ref="95a56a88-c665-42fb-ac09-acc2f4cb3513">
+            <author>Thorsten Lockert</author>
+            <name>pytest-flake8</name>
+            <version>1.1.1</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pytest-flake8@1.1.1</purl>
+        </component>
+        <component type="library" bom-ref="7ea7d0a1-e99c-489c-a4b9-c240803ab8a8">
+            <author>Gustavo Niemeyer</author>
+            <name>python-dateutil</name>
+            <version>2.8.2</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>Dual License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/python-dateutil@2.8.2</purl>
+        </component>
+        <component type="library" bom-ref="e9c8b540-20d0-4ea5-bc35-59954b0e7097">
+            <author>Adam Hupp</author>
+            <name>python-magic</name>
+            <version>0.4.27</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/python-magic@0.4.27</purl>
+        </component>
+        <component type="library" bom-ref="7cf51ef3-6c49-4168-b19d-8b348f272932">
+            <author>Julian David Rath</author>
+            <name>python-magic-bin</name>
+            <version>0.4.14</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/python-magic-bin@0.4.14</purl>
+        </component>
+        <component type="library" bom-ref="3c5377f7-0364-4c08-9126-f74e22de1100">
+            <author>Rami Chowdhury</author>
+            <name>python3-openid</name>
+            <version>3.2.0</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/python3-openid@3.2.0</purl>
+        </component>
+        <component type="library" bom-ref="17dbfdc4-52d0-4caa-bfef-eb04c19f90d7">
+            <author>Stuart Bishop</author>
+            <name>pytz</name>
+            <version>2023.3</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pytz@2023.3</purl>
+        </component>
+        <component type="library" bom-ref="11f99976-9d2c-47a7-b9a4-d09168405ec0">
+            <author>Enthought Inc.</author>
+            <name>pywin32-ctypes</name>
+            <version>0.2.2</version>
+            <licenses>
+                <license>
+                    <name>BSD-3-Clause</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/pywin32-ctypes@0.2.2</purl>
+        </component>
+        <component type="library" bom-ref="deacb536-61ab-41fc-a6d9-ddec20848e69">
+            <author>Max Bachmann</author>
+            <name>rapidfuzz</name>
+            <version>2.15.1</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/rapidfuzz@2.15.1</purl>
+        </component>
+        <component type="library" bom-ref="5768d370-4e28-41b7-93c5-ee39b02f2ec2">
+            <author>Julian Berman</author>
+            <name>referencing</name>
+            <version>0.29.1</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/referencing@0.29.1</purl>
+        </component>
+        <component type="library" bom-ref="d7b71da7-0937-4825-b1f0-f488cf0823e6">
+            <author>Kenneth Reitz</author>
+            <name>requests</name>
+            <version>2.31.0</version>
+            <licenses>
+                <license>
+                    <name>Apache 2.0</name>
+                </license>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/requests@2.31.0</purl>
+        </component>
+        <component type="library" bom-ref="4a7c8a82-ca55-4c2b-a417-a80b7e15063e">
+            <author>Roman Haritonov</author>
+            <name>requests-cache</name>
+            <version>1.1.0</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>BSD-2-Clause</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/requests-cache@1.1.0</purl>
+        </component>
+        <component type="library" bom-ref="80c64c77-2a00-4394-aa90-bd796d6744ad">
+            <author>Kenneth Reitz</author>
+            <name>requests-oauthlib</name>
+            <version>1.3.1</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>ISC</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/requests-oauthlib@1.3.1</purl>
+        </component>
+        <component type="library" bom-ref="cd1e21d3-c689-4fd6-94c5-5c7afbe1998c">
+            <author>Ian Cordasco, Cory Benfield</author>
+            <name>requests-toolbelt</name>
+            <version>1.0.0</version>
+            <licenses>
+                <license>
+                    <name>Apache 2.0</name>
+                </license>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/requests-toolbelt@1.0.0</purl>
+        </component>
+        <component type="library" bom-ref="b5a115c0-7961-45a0-b9d6-b0070b8536c7">
+            <author>Will McGugan</author>
+            <name>rich</name>
+            <version>13.4.2</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/rich@13.4.2</purl>
+        </component>
+        <component type="library" bom-ref="af0af28e-7b0f-4594-9ad6-c7ca92db3cf2">
+            <author>Julian Berman</author>
+            <name>rpds-py</name>
+            <version>0.8.10</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/rpds-py@0.8.10</purl>
+        </component>
+        <component type="library" bom-ref="796437c9-19e3-47a1-8969-cd4506b81a11">
+            <author>Anthon van der Neut</author>
+            <name>ruamel.yaml</name>
+            <version>0.17.32</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+                <license>
+                    <name>MIT license</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/ruamel.yaml@0.17.32</purl>
+        </component>
+        <component type="library" bom-ref="82f1045e-404a-417a-809b-e37a5b2fde37">
+            <author>Anthon van der Neut</author>
+            <name>ruamel.yaml.clib</name>
+            <version>0.2.7</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/ruamel.yaml.clib@0.2.7</purl>
+        </component>
+        <component type="library" bom-ref="01e8f18b-1fc8-4f93-810d-ad2dac9a10ab">
+            <author>Charlie Marsh &lt;charlie.r.marsh@gmail.com&gt;</author>
+            <name>ruff</name>
+            <version>0.0.278</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/ruff@0.0.278</purl>
+        </component>
+        <component type="library" bom-ref="c2c4cdf2-4725-4e21-ab84-0a49353878ef">
+            <author>Anthony Harrison</author>
+            <name>sbom2dot</name>
+            <version>0.3.0</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+                <license>
+                    <name>Apache-2.0</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/sbom2dot@0.3.0</purl>
+        </component>
+        <component type="library" bom-ref="6f7954b0-1105-4ef3-87ef-38425e21694b">
+            <author>Anthony Harrison</author>
+            <name>sbom4files</name>
+            <version>0.3.0</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+                <license>
+                    <name>Apache-2.0</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/sbom4files@0.3.0</purl>
+        </component>
+        <component type="library" bom-ref="f0eabddf-cb62-4779-983f-00886d4e44e6">
+            <author>Anthony Harrison</author>
+            <name>sbom4python</name>
+            <version>0.10.0</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+                <license>
+                    <name>Apache-2.0</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/sbom4python@0.10.0</purl>
+        </component>
+        <component type="library" bom-ref="a7f8d431-b7b8-4522-9dfa-24152fc42c86">
+            <author>Raphaël Barrois</author>
+            <name>semantic-version</name>
+            <version>2.10.0</version>
+            <licenses>
+                <license>
+                    <name>BSD</name>
+                </license>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/semantic-version@2.10.0</purl>
+        </component>
+        <component type="library" bom-ref="0157a46d-8dbf-4fc5-a99b-34e3951cca8a">
+            <author>Python Packaging Authority</author>
+            <name>setuptools</name>
+            <version>67.8.0</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/setuptools@67.8.0</purl>
+        </component>
+        <component type="library" bom-ref="60960754-bb34-4b49-a5cb-8eb0dd2b85e4">
+            <author>Tzu-ping Chung</author>
+            <name>shellingham</name>
+            <version>1.5.0.post1</version>
+            <licenses>
+                <license>
+                    <name>ISC License</name>
+                </license>
+                <license>
+                    <name>ISC License (ISCL)</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/shellingham@1.5.0.post1</purl>
+        </component>
+        <component type="library" bom-ref="a4fc4b36-f35c-4efe-a91c-251b70e8f0c8">
+            <author>Dominic Davis-Foster</author>
+            <name>shippinglabel</name>
+            <version>1.5.0</version>
+            <licenses>
+                <license>
+                    <name>Copyright (c) 2020-2022 Dominic Davis-Foster
+
+                        Permission is hereby granted, free of charge, to any person obtaining a copy
+                        of this software and associated documentation files (the "Software"), to deal
+                        in the Software without restriction, including without limitation the rights
+                        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                        copies of the Software, and to permit persons to whom the Software is
+                        furnished to do so, subject to the following conditions:
+
+                        The above copyright notice and this permission notice shall be included in all
+                        copies or substantial portions of the Software.
+
+                        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+                        EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+                        MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+                        IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+                        DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+                        OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+                        OR OTHER DEALINGS IN THE SOFTWARE.
+                    </name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/shippinglabel@1.5.0</purl>
+        </component>
+        <component type="library" bom-ref="7c1acdab-803f-4a43-9d86-bfd812943368">
+            <author>yaakovLowenstein</author>
+            <name>simple-django-htmx</name>
+            <version>1.0.1</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/simple-django-htmx@1.0.1</purl>
+        </component>
+        <component type="library" bom-ref="cbb04c1a-cfb7-4fac-9611-7bb4e69cd6a3">
+            <author>Benjamin Peterson</author>
+            <name>six</name>
+            <version>1.16.0</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/six@1.16.0</purl>
+        </component>
+        <component type="library" bom-ref="6839519d-5111-40a9-9ca2-56c870b4bb94">
+            <author>Sebastian Thiel</author>
+            <name>smmap</name>
+            <version>5.0.0</version>
+            <licenses>
+                <license>
+                    <name>BSD</name>
+                </license>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/smmap@5.0.0</purl>
+        </component>
+        <component type="library" bom-ref="69135ab7-a255-47cb-b1ae-25727deb5818">
+            <author>Snowball Developers</author>
+            <name>snowballstemmer</name>
+            <version>2.2.0</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+                <license>
+                    <name>BSD-3-Clause</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/snowballstemmer@2.2.0</purl>
+        </component>
+        <component type="library" bom-ref="00a54408-d21f-46fc-80af-5e9aa9692a62">
+            <author>Grant Jenks</author>
+            <name>sortedcontainers</name>
+            <version>2.4.0</version>
+            <licenses>
+                <license>
+                    <name>Apache 2.0</name>
+                </license>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/sortedcontainers@2.4.0</purl>
+        </component>
+        <component type="library" bom-ref="7ca8c1cc-b0b8-4f59-b58a-094a17b2ff73">
+            <name>sqlparse</name>
+            <version>0.4.4</version>
+            <licenses>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/sqlparse@0.4.4</purl>
+        </component>
+        <component type="library" bom-ref="8b0fbd74-7db5-4fc8-baea-712f7b047805">
+            <author>OpenStack</author>
+            <name>stevedore</name>
+            <version>5.1.0</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/stevedore@5.1.0</purl>
+        </component>
+        <component type="library" bom-ref="ee4b06f6-9557-4d5e-9c51-afe565d35576">
+            <author>Andrew Scott</author>
+            <name>tarsafe</name>
+            <version>0.0.5</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/tarsafe@0.0.5</purl>
+        </component>
+        <component type="library" bom-ref="51355747-880d-421a-9403-a45b5d8d0470">
+            <author>William Pearson</author>
+            <name>toml</name>
+            <version>0.10.2</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/toml@0.10.2</purl>
+        </component>
+        <component type="library" bom-ref="e30d24af-d7dd-4a10-934b-1913fc0e3921">
+            <author>Sébastien Eustace</author>
+            <name>tomlkit</name>
+            <version>0.11.8</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/tomlkit@0.11.8</purl>
+        </component>
+        <component type="library" bom-ref="b414bccf-69af-44c6-9fb4-3457447bc47f">
+            <name>tox</name>
+            <version>4.6.4</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/tox@4.6.4</purl>
+        </component>
+        <component type="library" bom-ref="7fd654f1-16f9-4366-8740-600e1c0b6936">
+            <author>The PyPI Admins</author>
+            <name>trove-classifiers</name>
+            <version>2023.7.6</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/trove-classifiers@2023.7.6</purl>
+        </component>
+        <component type="library" bom-ref="7d361711-5e37-4b7b-9ab5-c2e6b2d542f2">
+            <name>typing-extensions</name>
+            <version>4.7.1</version>
+            <licenses>
+                <license>
+                    <name>Python Software Foundation License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/typing-extensions@4.7.1</purl>
+        </component>
+        <component type="library" bom-ref="8c73ec00-cae7-43b4-a98a-91aef6b5238c">
+            <author>Python Software Foundation</author>
+            <name>tzdata</name>
+            <version>2023.3</version>
+            <licenses>
+                <license>
+                    <name>Apache Software License</name>
+                </license>
+                <license>
+                    <name>Apache-2.0</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/tzdata@2023.3</purl>
+        </component>
+        <component type="library" bom-ref="c3329965-0d27-4b1b-8e7f-d2987054053c">
+            <author>Nikolay Panov</author>
+            <name>url-normalize</name>
+            <version>1.4.3</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/url-normalize@1.4.3</purl>
+        </component>
+        <component type="library" bom-ref="88753181-eb0a-4cc0-9752-09203525488d">
+            <author>Andrey Petrov</author>
+            <name>urllib3</name>
+            <version>1.26.16</version>
+            <licenses>
+                <license>
+                    <name>MIT</name>
+                </license>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/urllib3@1.26.16</purl>
+        </component>
+        <component type="library" bom-ref="4abb5fe2-e577-4e34-889b-40f13b655ee6">
+            <name>userpath</name>
+            <version>1.8.0</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/userpath@1.8.0</purl>
+        </component>
+        <component type="library" bom-ref="b1ccfb99-b1c8-4149-920e-b47334cf3da0">
+            <name>virtualenv</name>
+            <version>20.23.1</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/virtualenv@20.23.1</purl>
+        </component>
+        <component type="library" bom-ref="c0b12f2e-a2e6-4fe3-a46f-d36fd990d52e">
+            <author>Geoffrey Sneddon</author>
+            <name>webencodings</name>
+            <version>0.5.1</version>
+            <licenses>
+                <license>
+                    <name>BSD</name>
+                </license>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/webencodings@0.5.1</purl>
+        </component>
+        <component type="library" bom-ref="7379aec0-a2df-40c4-9b6e-ef853a57821a">
+            <name>wheel</name>
+            <version>0.40.0</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/wheel@0.40.0</purl>
+        </component>
+        <component type="library" bom-ref="2e56629e-5949-4779-8b60-840fec612712">
+            <author>Graham Dumpleton</author>
+            <name>wrapt</name>
+            <version>1.15.0</version>
+            <licenses>
+                <license>
+                    <name>BSD</name>
+                </license>
+                <license>
+                    <name>BSD License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/wrapt@1.15.0</purl>
+        </component>
+        <component type="library" bom-ref="fd5143cc-dc00-4fee-804e-8fb8321bf93c">
+            <author>Jason R. Coombs</author>
+            <name>zipp</name>
+            <version>3.16.1</version>
+            <licenses>
+                <license>
+                    <name>MIT License</name>
+                </license>
+            </licenses>
+            <purl>pkg:pypi/zipp@3.16.1</purl>
+        </component>
+    </components>
+    <dependencies>
+        <dependency ref="5a4c9ba3-146b-4c46-9fcd-3765bbcf6ef6"/>
+        <dependency ref="2733fdf1-3cbe-442c-aaa0-3c2fe6fcd070"/>
+        <dependency ref="486c4039-90b4-40d1-bb28-33b178b9650c"/>
+        <dependency ref="8c4e92d1-51fb-40a0-8391-d45d777d930f"/>
+        <dependency ref="80b1c28d-ed7e-443f-9097-fd5821228a5d"/>
+        <dependency ref="edec86b6-fb7a-46ef-b743-c46f336553fb"/>
+        <dependency ref="a0bcac82-b9a6-4952-9d30-fb50350bff7d"/>
+        <dependency ref="d4317c7f-fc03-4893-b5c3-d82071505316"/>
+        <dependency ref="bcd76392-776c-4480-8df5-5b648c2b3cf2"/>
+        <dependency ref="7adc5c2f-59e9-4892-b2ba-87f4ce20585f"/>
+        <dependency ref="594b79c0-e5af-4ce3-bdad-9be99f67d588"/>
+        <dependency ref="da0c4dc1-e209-4251-bdc8-4b4fe521ee10"/>
+        <dependency ref="dae6b6da-9c62-4455-9a0a-dc83a51dab53"/>
+        <dependency ref="f9ff6970-6bbb-4043-ace8-b9fe279db61f"/>
+        <dependency ref="8dfc3e6a-4cb8-4c8b-ae38-72684d0674af"/>
+        <dependency ref="f15b8923-92cf-46a7-893c-d39591171b9d"/>
+        <dependency ref="d544b002-92d4-4862-b00d-f1f98d5ec4bc"/>
+        <dependency ref="69c83229-ffc4-471a-baee-7b199e64d671"/>
+        <dependency ref="44cb2777-e17f-47db-ba73-82e1c1b3b328"/>
+        <dependency ref="7998cdc7-c157-4475-b38f-358f67a471e8"/>
+        <dependency ref="4614efa1-6867-4b9f-b8d5-81ffbf10e445"/>
+        <dependency ref="5811a569-3999-4f8f-8437-80b70d49d17b"/>
+        <dependency ref="3387ff15-c80d-4aec-aa20-9a2769de0edd"/>
+        <dependency ref="a3acc5aa-c352-404f-a078-68d48d9c0e71"/>
+        <dependency ref="5ebd4d3d-19a8-47ed-ad58-8eaabaf7aa1a"/>
+        <dependency ref="9c26f9b8-44d8-4f1e-b411-f1df80ce5e05"/>
+        <dependency ref="5b71d716-a11a-4961-91cd-f99c57e92b72"/>
+        <dependency ref="7a91d9d3-67f2-4e05-936a-ca3529138cf5"/>
+        <dependency ref="d5abde34-5e07-4e55-8584-cb28b30ec3a9"/>
+        <dependency ref="91efa7a3-247b-4409-accb-065877873788"/>
+        <dependency ref="947a5e3f-61bf-4e28-b35e-67774e0d0733"/>
+        <dependency ref="1cd11a96-5a06-44c7-b0df-9d973c8b4345"/>
+        <dependency ref="67c858ee-11cd-427a-9286-6974ce26c6a8"/>
+        <dependency ref="f51c39b9-d8f5-473b-9074-350d71025e8b"/>
+        <dependency ref="5e973121-55e7-4ef1-bf2a-932e98a1c22b"/>
+        <dependency ref="ca0e15dc-ead7-4296-ae37-a4423cbc36cd"/>
+        <dependency ref="dd822ad8-828d-435d-bebf-ea2aa2d63ef3"/>
+        <dependency ref="c59044e9-64ed-4f4a-bd10-4082af2abff4"/>
+        <dependency ref="aed1548a-400c-4e9b-a430-f346f1b17527"/>
+        <dependency ref="cb0d6e19-a3b7-4388-82a8-4c14f4e1ff0b"/>
+        <dependency ref="ae88481c-6487-4f45-a478-747e0d839194"/>
+        <dependency ref="e6bff2c2-4e4c-4011-bbfa-10c389cc1f7c"/>
+        <dependency ref="8ea61a8d-97a0-4bde-bd43-1b2516b9427e"/>
+        <dependency ref="9e855334-003c-4c05-a05e-12189e643b76"/>
+        <dependency ref="b034621c-4e94-41e2-a729-701c71b5fe6e"/>
+        <dependency ref="e64b363d-ce47-4bd8-9db6-f5ea9e353f21"/>
+        <dependency ref="152a10b3-76e8-4ecd-8301-21edbbbf3306"/>
+        <dependency ref="89addcb6-513f-4f80-bbb9-5ea19e1498c4"/>
+        <dependency ref="55168eb9-2f44-4cc5-8487-9e6cf5371c7e"/>
+        <dependency ref="e5ddf86a-92f3-4a90-aa86-c59fb57bff91"/>
+        <dependency ref="63d5b3fc-b88f-4998-bb19-cb1080a8cafd"/>
+        <dependency ref="cc02f461-57bc-4624-a442-09a12fbedc93"/>
+        <dependency ref="39ecb9c4-cb26-46fa-8ed9-b0e2d304e9cd"/>
+        <dependency ref="c4eeecdb-2ddb-4972-aedd-3f9b9a117b93"/>
+        <dependency ref="af245229-5f62-4ae7-85b3-100fd5c72944"/>
+        <dependency ref="e56aaf45-af55-4d3f-aabb-93cb313d2d8c"/>
+        <dependency ref="312432e9-5482-4e21-a158-aba75c5941b4"/>
+        <dependency ref="6c6ea0f2-9dba-483e-8313-cc8edea60cbb"/>
+        <dependency ref="7b735bd8-0eca-4a73-901c-25eb0004de0e"/>
+        <dependency ref="7bb63dbc-bb7a-4a77-a8e5-b1fe97c260f8"/>
+        <dependency ref="f1d480a7-0784-4a8a-be99-bd4753bb3cf5"/>
+        <dependency ref="5467ef50-b34d-4665-bac1-a0b0bbe5d9ce"/>
+        <dependency ref="1af0059c-d1ab-404c-bd7c-feb2a27ff75f"/>
+        <dependency ref="0d5da92e-f8af-4fce-afa4-b3d301bb6068"/>
+        <dependency ref="98220ae8-96ff-4575-bc0b-0696b013786f"/>
+        <dependency ref="883f0720-8dc7-4644-b691-908e953680bf"/>
+        <dependency ref="56319417-3591-41d9-b8ac-812406ca3ad0"/>
+        <dependency ref="ee5ce842-19a8-4fb0-a198-eb515c7ddc56"/>
+        <dependency ref="bbfda95c-bf9c-42b9-906d-69f0674725da"/>
+        <dependency ref="c6719e98-8732-4976-be76-3a972dba0ea2"/>
+        <dependency ref="2a5eac5f-31a4-4437-ab68-79f3da6f1765"/>
+        <dependency ref="51c9a4d3-ed98-4765-98e0-c958bd1436fc"/>
+        <dependency ref="55a863ec-2eb5-4aad-a8dc-1e7c4c0ec36a"/>
+        <dependency ref="0b376c57-3b23-4fa7-ba09-5570e7d216e3"/>
+        <dependency ref="a0b08a52-6e47-4c03-a782-5df7c0dadba5"/>
+        <dependency ref="bdc52954-d91b-49e6-9592-4f891ed7bf66"/>
+        <dependency ref="b0f808b9-b972-4b89-bfc4-529fa789eeca"/>
+        <dependency ref="05a4dcaf-dcb9-4052-bd8e-1d666f68539c"/>
+        <dependency ref="b6ad7fd8-4078-45c6-9ff9-e852b298cf18"/>
+        <dependency ref="f06169c9-757a-4a4d-8254-8319bf0ae2e7"/>
+        <dependency ref="2282802a-7388-418d-ace2-e749b466a35b"/>
+        <dependency ref="6810a889-1479-4f80-b7d1-4545f6c3893d"/>
+        <dependency ref="c120f381-0daf-48e9-abf3-8f8e375a4a56"/>
+        <dependency ref="b513da21-e745-4765-87d0-99d1054e52ae"/>
+        <dependency ref="76b97456-a463-4e9d-b569-ab977470d84d"/>
+        <dependency ref="576bd254-3360-4866-ae0c-6f933a4d8ddc"/>
+        <dependency ref="5e4420b4-5e86-4472-be59-104cb464d59e"/>
+        <dependency ref="09ed5003-1935-418a-b277-b9aeca5ad2c2"/>
+        <dependency ref="8a8570fa-63aa-4efd-859b-bf31d3297366"/>
+        <dependency ref="5e289c16-ad88-4f10-bfeb-7ed595437091"/>
+        <dependency ref="f3c2d759-c1b2-4189-9a2c-5f3ed1076209"/>
+        <dependency ref="eeb6a531-afa7-482a-bc65-6c9e1f658f27"/>
+        <dependency ref="170a25b9-8290-423f-949d-0d2a8b9962d2"/>
+        <dependency ref="1e022325-4884-4829-a1c0-f137752f796e"/>
+        <dependency ref="cfbee3ac-6f53-450b-8106-3d740f920461"/>
+        <dependency ref="6cb452c6-08d8-4abf-8db5-cea32cfe3160"/>
+        <dependency ref="db78998e-cce1-4fe9-9203-f7c810f71ffe"/>
+        <dependency ref="3492e3d7-1e20-4de9-8c0f-6f660273779f"/>
+        <dependency ref="233b0fde-ea32-42c3-aeda-247dc57438b5"/>
+        <dependency ref="7fdfc4bf-7554-4da9-be24-1d213da8f6ea"/>
+        <dependency ref="bd2b2cd5-e103-4961-9151-d9978cb762cd"/>
+        <dependency ref="f1990ba0-7df9-408b-9215-78d52f47086d"/>
+        <dependency ref="74ea1e5e-2fca-4532-9275-229bb3f7e3c3"/>
+        <dependency ref="3652d952-c230-4d3d-af55-d1df2d23165e"/>
+        <dependency ref="df00d3b6-47d1-4ac6-9598-2744d6f6ec59"/>
+        <dependency ref="9389e8ca-9545-4cee-8361-49a3369503cc"/>
+        <dependency ref="4f11a4d5-f9d1-4f4e-860a-596b361050c9"/>
+        <dependency ref="72e22dc4-5f31-4870-ab75-cc6327716d2a"/>
+        <dependency ref="74877335-6a58-467c-ace4-a3c223de6f04"/>
+        <dependency ref="4822fc7a-d06c-40e5-b8b7-afc56c6a02b1"/>
+        <dependency ref="67b84348-e936-4a9d-807c-1e335e9249d9"/>
+        <dependency ref="e373cf3d-6ca9-4e91-87fc-f347c88e8bba"/>
+        <dependency ref="64d32421-edcb-4f0d-aa90-1f81fbba9aaf"/>
+        <dependency ref="5006a8a6-901a-4974-872b-ce08882f3be2"/>
+        <dependency ref="e1b480d4-fec9-4c7d-989c-97b8b261c4c9"/>
+        <dependency ref="049982c5-4fce-4974-b81e-f4f89e0748f3"/>
+        <dependency ref="7533c9b2-a8ec-425c-86fd-36c65ce5e0bd"/>
+        <dependency ref="69be9816-b0be-4fe5-8a70-7871f7a99a02"/>
+        <dependency ref="b70cc30c-7965-4bf0-9f4b-41cc833d8cc1"/>
+        <dependency ref="4d842169-59d4-40f7-8b42-94c6be8b553a"/>
+        <dependency ref="96824374-09f1-4fea-9bb7-c8ad6a5926aa"/>
+        <dependency ref="fe27cb4c-1ff8-45ba-83c9-66fe3e677be4"/>
+        <dependency ref="ad56a516-c557-41e5-b08e-a991785c1bfc"/>
+        <dependency ref="1bb617e2-c7de-4f2e-930e-af6a5805417f"/>
+        <dependency ref="fa8c5bc2-d044-4c55-a044-6e072ab24587"/>
+        <dependency ref="6e43c143-ec55-404c-b58e-b079e79f9da8"/>
+        <dependency ref="ae312a15-9b50-4d13-88f6-3b8b3394c5e5"/>
+        <dependency ref="09707ae7-82d9-4d40-a515-310512271127"/>
+        <dependency ref="95a56a88-c665-42fb-ac09-acc2f4cb3513"/>
+        <dependency ref="7ea7d0a1-e99c-489c-a4b9-c240803ab8a8"/>
+        <dependency ref="e9c8b540-20d0-4ea5-bc35-59954b0e7097"/>
+        <dependency ref="7cf51ef3-6c49-4168-b19d-8b348f272932"/>
+        <dependency ref="3c5377f7-0364-4c08-9126-f74e22de1100"/>
+        <dependency ref="17dbfdc4-52d0-4caa-bfef-eb04c19f90d7"/>
+        <dependency ref="11f99976-9d2c-47a7-b9a4-d09168405ec0"/>
+        <dependency ref="deacb536-61ab-41fc-a6d9-ddec20848e69"/>
+        <dependency ref="5768d370-4e28-41b7-93c5-ee39b02f2ec2"/>
+        <dependency ref="d7b71da7-0937-4825-b1f0-f488cf0823e6"/>
+        <dependency ref="4a7c8a82-ca55-4c2b-a417-a80b7e15063e"/>
+        <dependency ref="80c64c77-2a00-4394-aa90-bd796d6744ad"/>
+        <dependency ref="cd1e21d3-c689-4fd6-94c5-5c7afbe1998c"/>
+        <dependency ref="b5a115c0-7961-45a0-b9d6-b0070b8536c7"/>
+        <dependency ref="af0af28e-7b0f-4594-9ad6-c7ca92db3cf2"/>
+        <dependency ref="796437c9-19e3-47a1-8969-cd4506b81a11"/>
+        <dependency ref="82f1045e-404a-417a-809b-e37a5b2fde37"/>
+        <dependency ref="01e8f18b-1fc8-4f93-810d-ad2dac9a10ab"/>
+        <dependency ref="c2c4cdf2-4725-4e21-ab84-0a49353878ef"/>
+        <dependency ref="6f7954b0-1105-4ef3-87ef-38425e21694b"/>
+        <dependency ref="f0eabddf-cb62-4779-983f-00886d4e44e6"/>
+        <dependency ref="a7f8d431-b7b8-4522-9dfa-24152fc42c86"/>
+        <dependency ref="0157a46d-8dbf-4fc5-a99b-34e3951cca8a"/>
+        <dependency ref="60960754-bb34-4b49-a5cb-8eb0dd2b85e4"/>
+        <dependency ref="a4fc4b36-f35c-4efe-a91c-251b70e8f0c8"/>
+        <dependency ref="7c1acdab-803f-4a43-9d86-bfd812943368"/>
+        <dependency ref="cbb04c1a-cfb7-4fac-9611-7bb4e69cd6a3"/>
+        <dependency ref="6839519d-5111-40a9-9ca2-56c870b4bb94"/>
+        <dependency ref="69135ab7-a255-47cb-b1ae-25727deb5818"/>
+        <dependency ref="00a54408-d21f-46fc-80af-5e9aa9692a62"/>
+        <dependency ref="7ca8c1cc-b0b8-4f59-b58a-094a17b2ff73"/>
+        <dependency ref="8b0fbd74-7db5-4fc8-baea-712f7b047805"/>
+        <dependency ref="ee4b06f6-9557-4d5e-9c51-afe565d35576"/>
+        <dependency ref="51355747-880d-421a-9403-a45b5d8d0470"/>
+        <dependency ref="e30d24af-d7dd-4a10-934b-1913fc0e3921"/>
+        <dependency ref="b414bccf-69af-44c6-9fb4-3457447bc47f"/>
+        <dependency ref="7fd654f1-16f9-4366-8740-600e1c0b6936"/>
+        <dependency ref="7d361711-5e37-4b7b-9ab5-c2e6b2d542f2"/>
+        <dependency ref="8c73ec00-cae7-43b4-a98a-91aef6b5238c"/>
+        <dependency ref="c3329965-0d27-4b1b-8e7f-d2987054053c"/>
+        <dependency ref="88753181-eb0a-4cc0-9752-09203525488d"/>
+        <dependency ref="4abb5fe2-e577-4e34-889b-40f13b655ee6"/>
+        <dependency ref="b1ccfb99-b1c8-4149-920e-b47334cf3da0"/>
+        <dependency ref="c0b12f2e-a2e6-4fe3-a46f-d36fd990d52e"/>
+        <dependency ref="7379aec0-a2df-40c4-9b6e-ef853a57821a"/>
+        <dependency ref="2e56629e-5949-4779-8b60-840fec612712"/>
+        <dependency ref="fd5143cc-dc00-4fee-804e-8fb8321bf93c"/>
+    </dependencies>
+</bom>

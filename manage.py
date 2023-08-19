@@ -6,17 +6,26 @@
 import os
 import sys
 
-
 # Date: 2023-08-09
 # Source
 # Adjusted from: dash_and_do.settings => dash_and_do.settings.development
 # Objective to: Isolated the settings for each environment.
 # The settings for manage.py is development.py:
 #
+
+BASE_SETTINGS = 'dash_and_do.settings'
+DEVELOPMENT_SETTINGS = 'dash_and_do.settings.development'
+PRODUCTION_SETTINGS = 'dash_and_do.settings.production'
+TEST_SETTINGS = 'dash_and_do.settings.tests'
+
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE',
-                          'dash_and_do.settings.development')
+    if os.environ.get('DJANGO_SETTINGS_MODULE') != BASE_SETTINGS:
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE',
+                              BASE_SETTINGS)
+    else:  # noqa
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE',
+                                BASE_SETTINGS)
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

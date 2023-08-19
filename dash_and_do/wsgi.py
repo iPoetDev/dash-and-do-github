@@ -1,5 +1,4 @@
-"""
-WSGI config for dash_and_do project.
+"""WSGI config for dash_and_do project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

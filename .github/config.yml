@@ -7,35 +7,34 @@
 
 # Or an array:
 # A good place to demonstrate the workflow of your project
-probotTemplateEnforcerReplyComment :
-  - Ah no! PLease ensures that you provide us with more info about this issue/pr!
-  - 1. Has a good title for (like conventionally commits and in present tense)
-  - 2. Has a good description (like Releated Epics, Sprint, Issue, Accpetances, and Integration Flow)
-  - 3. Has a good label (like bug, enhancement, feature, etc)
-  - 4. Has is asisgned to a Project, Epics, Sprint and Milestone
-
+probotTemplateEnforcerReplyComment:
+    - Ah no! PLease ensures that you provide us with more info about this issue/pr!
+    - 1. Has a good title for (like conventionally commits and in present tense)
+    - 2. Has a good description (like Releated Epics, Sprint, Issue, Accpetances, and Integration Flow)
+    - 3. Has a good label (like bug, enhancement, feature, etc)
+    - 4. Has is asisgned to a Project, Epics, Sprint and Milestone
 
 # *OPTIONAL* default titles to check against for lack of descriptiveness
 # MUST BE ALL LOWERCASE
 probotTemplateEnforcerDefaultTitles:
-  - update readme.md
-  - updates
+    - update readme.md
+    - updates
 
 # *OPTIONAL* Label to be added to Issues and Pull Requests with insufficient information given
 # probotTemplateEnforcerLabelToAdd    : needs-more-info
 
 # *OPTIONAL* Require Issues to contain more information than what is provided in the issue templates
 # Will fail if the issue's body is equal to a provided template
-checkIssueTemplate                 : true
+checkIssueTemplate: true
 
 # *OPTIONAL* Require Pull Requests to contain more information than what is provided in the PR template
 # Will fail if the pull request's body is equal to the provided template
-checkPullRequestTemplate           : true
+checkPullRequestTemplate: true
 
 # *OPTIONAL* Only warn about insufficient information on these events type
 # Keys must be lowercase. Valid values are 'issue' and 'pullRequest'
-probotTemplateEnforcerOn           :
-  pullRequest: true
+probotTemplateEnforcerOn:
+    pullRequest: true
 #  issue      : true
 
 # *OPTIONAL* Add a list of people whose Issues/PRs will not be commented on

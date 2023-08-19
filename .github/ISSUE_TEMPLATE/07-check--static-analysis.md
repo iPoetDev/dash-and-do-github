@@ -1,10 +1,9 @@
 ---
 name: '07 CHECK: Static Analysis'
 about: 'CHECK: Pre-commit | Lint Report | Static Analysis'
-title: "[CHECK | LINT] :: "
+title: '[CHECK | LINT] :: '
 labels: ''
 assignees: iPoetDev
-
 ---
 
 # [`CHECK`] :

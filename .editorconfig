@@ -34,6 +34,6 @@ indent_size = 4 # Python PEP8 Style Guide as dominant factor, indent size is cri
 max_line_length = 80 # Autopep8 default #PyCharm, WebStorm
 
 # Matches the exact files either package.json or .travis.yml
-[{package.json,.travis.yml}]
+[{package.json,.travis.yml,config.js}]
 # indent_style = space
 indent_size = 2

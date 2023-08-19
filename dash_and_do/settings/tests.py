@@ -1,5 +1,4 @@
-"""
-Django Test settings for dash_and_do project.
+"""Django Test settings for dash_and_do project.
 
 Source by https://youtu.be/uetyOZeVrOE
 Author: Johannes Spielmann
@@ -20,7 +19,12 @@ Changelog:
 
 #  Copyright (c) 2023.
 
-from .settings import *
+# ================== Imports ==================
+
+
+# ================== Key & Mode *SECURITY WARNING* =================
+# SECURITY WARNING: keep the secret key used in production secret!
+# https://docs.djangoproject.com/en/4.2/ref/settings/#secret-key
 
 DEBUG = False
 
@@ -29,3 +33,18 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'dash-and-do.herokuapp.com',
 ]
+
+# ================== Debugging & Internal IP ==================
+# https://docs.djangoproject.com/en/4.2/ref/settings/#test-runner
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
+# https://docs.djangoproject.com/en/4.2/ref/settings/#test-non-serialized-apps
+TEST_NON_SERIALIZED_APPS = [
+    'django.contrib.contenttypes',
+]
+
+# ================== Fitxures ==================
+# https://docs.djangoproject.com/en/4.2/ref/settings/#fixture-dirs
+
+FIXTURE_DIRS = []

@@ -1,5 +1,4 @@
-"""
-ASGI config for dash_and_do project.
+"""ASGI config for dash_and_do project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

@@ -37,9 +37,10 @@ values.
 # -added: environ for django-environ & environmental variables.
 
 import os
-import sys
 
 from pathlib import Path
+import sys
+
 from environ import Env
 
 # ==================== Third Party ====================
@@ -738,4 +739,3 @@ LOGGING = {}
 # CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
 
 # from iptools import IpRangeList
-

@@ -21,7 +21,6 @@ Changelog:
 
 # ================== Imports ==================
 
-from .settings import env
 
 # ================== Key & Mode *SECURITY WARNING* =================
 # SECURITY WARNING: keep the secret key used in production secret!

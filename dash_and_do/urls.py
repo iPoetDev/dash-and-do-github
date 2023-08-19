@@ -25,11 +25,6 @@ from django.contrib import admin
 from django.urls import include
 from django.urls import path
 
-from django.contrib.auth import views as auth_views
-from django.conf import settings
-
-from dash_and_do import settings as project_settings
-
 # ================== URL Patterns ==================
 # Changed 2023-08-15
 # added: URL + includes for DEV when Admin enabled

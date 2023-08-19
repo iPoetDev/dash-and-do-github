@@ -6,7 +6,6 @@
 import os
 import sys
 
-
 # Date: 2023-08-09
 # Source
 # Adjusted from: dash_and_do.settings => dash_and_do.settings.development

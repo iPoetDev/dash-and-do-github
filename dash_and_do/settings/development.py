@@ -1,4 +1,1 @@
-"""
-Development settings for dash_and_do project.
-"""
-
+"""Development settings for dash_and_do project."""

@@ -19,17 +19,29 @@ Changelog:
 """
 
 #  Copyright (c) 2023.
+
+# ================== Imports ==================
+
 from .settings import *
 
-DEBUG = env.bool('DEBUG', default=False)
+# ================== Keys & Mode ==================
 
-# Add Heroku App names/URLs to ALLOWED_HOSTS.
+if DEBUG is not True:
+    DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = [
-    'dash-and-do.herokuapp.com',
-]
+# ================== Server & Hosting ==================
+# - added: ALLOWED_HOSTS for localhost resources.
 
-if DEBUG is False and 'debug_toolbar' not in INSTALLED_APPS:
+if DEBUG is False:
+    ALLOWED_HOSTS = [
+        'dash-and-do.herokuapp.com',
+    ]
+
+# ================== Application ==================
+
+# ================== Database ==================
+
+if DEBUG is False:
     DATABASES = {
         'default': env.db('DATABASE_URL')
     }

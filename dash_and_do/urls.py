@@ -25,10 +25,34 @@ from django.contrib import admin
 from django.urls import include
 from django.urls import path
 
+from django.contrib.auth import views as auth_views
+from django.conf import settings
+
+from dash_and_do import settings as project_settings
+
+# ================== URL Patterns ==================
+# Changed 2023-08-15
+# added: URL + includes for DEV when Admin enabled
+# added: URL + includes for Debug Toolbar when Admin enabled
+# added: URL + includes for Admin Password reset when Admin enabled
+# added: URL + includes for Admin Docs when Admin enabled
+# Changed 2023-08-16:
+# added: URL + includes for AllAuth for accounts & Commented Out
+# added: URL + includes for Accounts for accounts & Commented Out
+# added: URL + includes for Dash accounts & Commented Out
+# noted : Progressive enablement of Accounts, Dash, AllAuth
+# Noted: that you do not need the URLs provided by django.contrib.auth.urls
+# Noted: can use the URLs provided by allauth:
+#  - account_login,
+#  - account_logout,
+#  - account_set_password
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Apps Last Modified: 2023-08-09
-    path('accounts/', include('accounts.urls')),
+    #path("__debug__/", include("debug_toolbar.urls")),
     path('core/', include('core.urls')),
-    path('dash/', include('dash.urls')),
+    # path('accounts/', include('accounts.urls')),
+    # path('accounts/', include('allauth.urls')),
+    # path('dash/', include('dash.urls')),
 ]

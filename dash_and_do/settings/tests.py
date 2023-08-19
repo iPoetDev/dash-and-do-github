@@ -19,6 +19,13 @@ Changelog:
 
 #  Copyright (c) 2023.
 
+# ================== Imports ==================
+
+from .settings import env
+
+# ================== Key & Mode *SECURITY WARNING* =================
+# SECURITY WARNING: keep the secret key used in production secret!
+# https://docs.djangoproject.com/en/4.2/ref/settings/#secret-key
 
 DEBUG = False
 

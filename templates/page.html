@@ -6,239 +6,832 @@
 
 <!--suppress ALL -->
 
-<html lang="en-GB" class="" id="" title="Public Pages | Template">
+<html class="" id="public-page" lang="en-GB" title="Public Pages | Template">
     <head title="Welcome to the Dash and Do for GitHub">
         <meta charset="utf-8" />
+        <meta content="https://dash-and-do-heroku.com/" name="origin" />
+        <meta content="The Dash and Document GitHub is the copyright of Charles J Fowler, 2023-2028" name="copyright" />
+        <meta content="Charles J Fowler, @iPoetDev.github.com" name="author" />
+        <meta content="Charles J Fowler, @iPoetDev.github.com" name="creator" />
+        <meta content="Charles J Fowler, @iPoetDev.github.com" name="designer" />
+        <meta content="Github: @iPoetDev" name="contact" />
+        <meta content="Dublin, Ireland; Europe" name="geo.lmk" />
+        <meta content="Ireland" name="geo.country" />
+        <meta content="Version 1.0-beta" name="version" />
+        <meta content="dark" name="color-scheme" />
         <meta
-            name="origin"
-            content="https://dash-and-do-heroku.com/" />
-        <meta
-            name="copyright"
-            content="The Dash and Document GitHub is the copyright of Charles J Fowler, 2023-2028" />
-        <meta
-            name="author"
-            content="Charles J Fowler, @iPoetDev.github.com" />
-        <meta
-            name="creator"
-            content="Charles J Fowler, @iPoetDev.github.com" />
-        <meta
-            name="designer"
-            content="Charles J Fowler, @iPoetDev.github.com" />
-        <meta
-            name="contact"
-            content="Github: @iPoetDev" />
-        <meta
-            name="geo.lmk"
-            content="Dublin, Ireland; Europe" />
-        <meta
-            name="geo.country"
-            content="Ireland" />
-        <meta
-            name="version"
-            content="Version 1.0-beta" />
-        <meta
-            name="color-scheme"
-            content="dark" />
-        <meta
-            name="keywords"
             content="Fowler,Charles,Clients,Designer,Web Designer,Developer,Software, Web
-                Developer,Frontend Developer,Code Institute,HTML,CSS,Modern CSS" />
-        <meta
-            name="description"
-            content="Welcome to the Dash and Do for GitHub" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0" />
+                Developer,Frontend Developer,Code Institute,HTML,CSS,Modern CSS"
+            name="keywords" />
+        <meta content="Welcome to the Dash and Do for GitHub" name="description" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <!-- CDN verses Download URL: https://cdnjs.com/libraries/modern-normalize -->
         <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.css" />
-        <link
-            type="text/css"
-            href=""
+            href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.css"
             rel="stylesheet" />
-        <link
-            type="text/css"
-            href=""
-            rel="stylesheet" />
+        <link href="" rel="stylesheet" type="text/css" />
+        <link href="" rel="stylesheet" type="text/css" />
 
         <title title="{% block title %}Dashboard and Do GitHub Manager{% endblock %}">
             {% block title %}Dashboard and Do GitHub Manager{% endblock %}
         </title>
     </head>
-    <body class="" title="Dashboard and Do | Public | Private | Home">
-        <header class="header-page" id="header-public">
-            <section class="header-topnav" title="Header Navigation">
-                <div class="" title=" | Smalldown to Medium | Alignment Left"></div>
-                <div class="" title="Navigation | Aligment Right">
-                    <!-- Template: Conditional | Public | Checked if a) user is NOT authenticated | b) all users
-                    has permission to view | c) user | all has NO active session-->
-                    <div class="" title="Public Navigation">
-                        <div class=""
-                             title="Home | Public | Core App | State | Logged Out | Sessions | Permissions"></div>
-                        <div class=""
-                             title="About | Public |  Core App |  State | Logged Out | Sessions | Permissions"></div>
-                        <div class=""
-                             title="Contact | Public |Core App | State | Logged Out | Sessions | Permissions"></div>
-                        <div class=""
-                             title="Login | Public |  Core App | State | Logged Out | Sessions | Permissions"></div>
+    <!-- ================================= CORE APP | PUBLIC | PRIVATE | INDEX.HTML ================================ -->
+    <body class="" id="public-body" title="Dashboard and Do | Public | Private | Home">
+    <!-- ============================================= SKIP LINK =================================================  -->
+    <!-- Hide until found: https://www.w3.org/WAI/tutorials/menus/skip/ -->
+    <!-- https://webaim.org/techniques/skipnav/ -->
+    <div autofocus class="skip-links">
+        <a
+            data-skip-link="true"
+            hidden="until-found"
+            href="#main-page-content"
+            id="skip-link-main-content"
+            tabindex="0"
+            title="Jump to Main Content: Sign Up & Contact forms if not registered">
+            Skip to main content
+        </a>
+        <a
+            data-skip-link="true"
+            hidden="until-found"
+            href="#login-dropdown-menu"
+            id="skip-link-login-form"
+            tabindex="0"
+            title="Jump to Login form if registered">
+            Skip to login
+        </a>
+    </div>
+    <!-- ============================================= HEADER =================================================  -->
+    <header class="header-page" id="header-public" title="Public | Header | Navigation | Conditional | Templates">
+        <nav aria-label="Banner | Top Navigation | All Pages" id="nav-global-header" title="All Pages | Header |
+             Navigation">
+            <div class="" id="brand-header" title="Logo | Link">
+                <a href="" title="Logo | Link">
+                    <img alt="Logo" id="img-brand-header" src="" title="Logo | Icon | Logo" />
+                </a>
+            </div>
+            <div class="" id="header-title" title="Title | Link">
+                <a href="" title="Title | Link">Dash &amp; Do</a>
+            </div>
+            <div
+                aria-label="Main Navigation Banner"
+                class=""
+                data-main-banner="both"
+                id="header-nav-right"
+                role="menubar"
+                title="Navigation | Aligment Right">
+                <!-- ==================================== PUBLIC ==============================================  -->
+                <!-- Template: Conditional | Public | Checked if a) user is NOT authenticated | b) contact users
+has permission to view | c) user | contact has NO active session-->
+                <!-- Extract-Start -->
+                <nav
+                    aria-label="Public Navigation, Unauthenticated Users"
+                    class=""
+                    data-main-menu="public"
+                    data-public="true"
+                    id="public-header-nav-right"
+                    title="Public Navigation">
+                    <div
+                        class=""
+                        data-main-menu-item="public"
+                        id="home-public-navigation-menu-item"
+                        role="menuitem"
+                        title="Home | Public | Core App | State | Logged Out | Sessions | Permissions">
+                        <a data-main-menu-link="public" href="" title="Home | Link">Home</a>
                     </div>
-                    <!-- Template: Conditional | Private | Checked if a) user is authenticated | b) only logged user has
-                         permission to view | c) user has active session d) all other users types are denied access to
-                         view -->
-                    <div class="" title="Private Navigation" hidden="hidden">
-                        <div class="" title="Home | Private | State | Logged In | Sessions | Permissions"></div>
-                        <div class=""
-                             title="Dashboard | Private | Dash App | State | Logged In | Sessions | Permissions"></div>
-                        <!--<div class="" title="Do |"></div> -->
-                        <div class=""
-                             title="Accounts | Private | Account App | | State | Logged In | Permissions | Dropdown Menu"></div>
+                    <div
+                        class=""
+                        data-main-menu-item="public"
+                        id="about-public-navigation-menu-item"
+                        role="menuitem"
+                        title="About | Public |  Core App |  State | Logged Out | Sessions | Permissions">
+                        <a data-main-menu-link="public" href="" title="About | Link">About</a>
                     </div>
-                </div>
-            </section>
-        </header>
-        <main class="" id="main-public">
-            <!-- Template: Conditional | Private | Checked if a) user is authenticated | b) only logged user has
-                 permission to view | c) user has active session d) all other users types are denied access to
-                 view -->
-            <section class=""
-                     title="Sidebar Navigation | Alignment Left | Private | Sessions | Permissions"
-                     hidden="hidden">
-
-                <div class="" title="Sidebar Navigation| App Navigation | Top Sidebar">
-                    <div class="" title="Dash &amp; Inform">
-                        <a href="" title="Dash &amp; Inform | Link">Dash &amp; Inform</a>
-
+                    <div
+                        class=""
+                        data-main-menu-item="public"
+                        id="contact-puiblic-navigation-menu-item"
+                        role="menuitem"
+                        title="Contact | Public |Core App | State | Logged Out | Sessions | Permissions">
+                        <a data-main-menu-link="public" href="" title="Home | Link">Contact</a>
                     </div>
-                    <!--
-                    <div class="" title="Do &amp; Act">
-                        <a href="" title="Do &amp; Act | Link">Do &amp; Act</a>
-                    </div>
-                    -->
-                </div>
-                <div class="" title="Sidebar Navigation| App Navigation | Bottom Sidebar">
-                    <div class="" title="Bottom Links | Block">
-                        <ul>
-                            <li><a href="" title="Home | Link">Home</a></li>
-                            <li><a href="" title="Docs | Link">Docs</a></li>
-                            <li><a href="" title="FAQ | Link">FAQ</a></li>
-                            <li><a href="" title="Contact | Link">Contact</a></li>
-                            <li><a href="" title="About | Link">About</a></li>
-                            <!-- Template: PARTIAL : Conditionals | Private | Checked if a) user is authenticated | b)
-                            only logged user has
-                                 permission to view | c) user has active session d) all other users types are denied access to
-                                 view | Ends User Session | Changes ownership State: Logged in to Logged out -->
-                            <li><a href="" title="Logout | Link">Logout</a></li>
+                    <nav
+                        aria-label="Login Navigation Dropdown Menu"
+                        class=""
+                        data-main-menu-item="public"
+                        data-main-menu-submenu="public"
+                        id="login-public-navigation-menu"
+                        title="Login | Public |  Core App | State | Logged Out | Sessions | Permissions">
+                        <!-- ============================== PUBLIC LOGIN FORM ============================ -->
+                        <!-- Extract-Start -->
+                        <ul
+                            aria-label="Login Navigation Dropdown Menu | Form Component"
+                            class=""
+                            data-main-menu-item="public"
+                            data-main-menu-submenu="public"
+                            data-skip-link-target="true"
+                            id="login-dropdown-menu"
+                            title="Account | Card Components | Hidden | Dropdown Menu">
+                            <li id="login-dropdown-card">
+                                <a href="" id="login-dropdown-link" title="Account | Link">Account</a>
+                                <ul
+                                    data-main-menu-submenu="public"
+                                    hidden="hidden"
+                                    id="login-dropdown-menu-form"
+                                    title="Account | Card Components | Hidden | Dropdown Menu">
+                                    <li data-main-menu-submenu-item="public" id="login-dropdown-menu-wrapper">
+                                        <form action="" class="" id="login-form" method="post">
+                                            <!-- User Email or Username or One or more both-->
+                                            <label for="login-username" title="Account | Form | Username"
+                                            >Username
+                                            </label>
+                                            <input
+                                                autocomplete="username"
+                                                id="login-username"
+                                                name="login-username"
+                                                tabindex="2"
+                                                title="Account | Form | Username"
+                                                type="text" />
+                                            <label for="login-email" title="Account | Form | Username"
+                                            >Username
+                                            </label>
+                                            <input
+                                                autocomplete="email"
+                                                id="login-email"
+                                                tabindex="2"
+                                                title="Account | Form | Username"
+                                                type="text" />
+                                            <label for="login-password" title="Account | Form | Password"
+                                            >Password
+                                            </label>
+                                            <!-- Note: MDN Article: How to turn off form autocompletion -->
+                                            <input
+                                                autocomplete="current-password"
+                                                id="login-password"
+                                                title="Account | Form | Password"
+                                                type="password" />
+                                            <button title="Account | Form | Submit" type="submit">Submit</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
+                        <!-- Extract-End -->
+                    </nav>
+                </nav>
+                <!-- Extract-End -->
+                <!-- =================================== PRIVATE ACCOUNT =================================  -->
+                    <!-- Template: Conditional | Private | Checked if a) user is authenticated | b) only logged user has
+permission to view | c) user has active session d) contact other users types are denied access to
+view -->
+                <!-- Extract-Start -->
+                <nav
+                    aria-label="Private Navigation | Authenticated Users"
+                    class=""
+                    data-main-menu="private"
+                    data-private="true"
+                    hidden="hidden"
+                    id="private-header-nav-right"
+                    title="Private Navigation">
+                    <div
+                        class=""
+                        data-main-menu-item="private"
+                        id="home-private-navigation-menu-item"
+                        title="Home | Private | State | Logged In | Sessions | Permissions">
+                        <a data-main-menu-link="private" href="" title="Home | Link">Home</a>
                     </div>
-            </section>
-            <!-- Template: Home Page | All States | With & Without Sidebar | Reszie with Sidebar -->
-            <section class="" title="Hero Slider Deck"></section>
-            <!-- Template: Home Page | Logged Out | Without Sidebar  -->
-            <section class="" title="Account Call to Action" hidden="none">
-                <div class="" title="Form | Sign Up">
-                    <div class="" title="Form | Sign Up | Wrapper">
-                        <form class="" title="Account Form" action="" method="POST">
-                            <label for="username" class="" title="Account Form | Name">Username</label>
-                            <input type="text" class="" title="Account Form | Name" id="username"/>
-                            <label for="email" class="" title="Account Form | Email">Email</label>
-                            <input type="email" class="" title="Account Form | Email" id="email"/>
-                            <label for="password" class="" title="Account Form | Password">Password</label>
-                            <input type="password" class="" title="Account Form | Password" id="password"/>
-                            <input type="password" class="" title="Account Form | Confirm Password"/>
-                            <button class="" title="Account Form | Submit">Submit</button>
-                        </form>
+                    <div
+                        class=""
+                        data-main-menu-item="private"
+                        id="dashboard-private-navigation-menu-item"
+                        title="Dashboard | Private | Dash App | State | Logged In | Sessions | Permissions">
+                        <a data-main-menu-link="private" href="" title="Dashboard | Link">Dashboard</a>
+                    </div>
+                        <!--<div class="" title="Do |"></div> -->
+                    <div
+                        class=""
+                        id="account-navigation-menu-item"
+                        title="Accounts | Private | Account App | | State | Logged In | Permissions | Dropdown Menu">
+                        <!-- ======================== PRIVATE | DROPDOWN | MENU | ACCOUNT ======================= -->
+                        <!-- Extract Start -->
+                        <ul
+                            class=""
+                            id="account-dropdown-menu"
+                            title="Account | Card Components | Hidden | Dropdown Menu">
+                            <li id="account-dropdown-card">
+                                <a href="" id="account-dropdown-link" title="Account | Link">Account</a>
+                                <ul
+                                    hidden="hidden"
+                                    id="account-dropdown-menu-items"
+                                    title="Account | Card Components | Hidden | Dropdown Menu">
+                                    <li><a href="" id="account-profile-link" title="Profile | Link">Profile</a></li>
+                                    <li>
+                                        <a href="" id="account-settings-link" title="Settings | Link">Settings</a>
+                                    </li>
+                                    <li><a href="" id="account-logout-link" title="Logout | Link">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- Extract End -->
+                    </div>
+                </nav>
+                <!-- Extract End -->
+            </div>
+        </nav>
+    </header>
+    <!-- ========================================= Main | Body  ================================================ -->
+    <main
+        aria-label="Page Main | Public & Private Components | Single Page | No Page Reload"
+        class=""
+        data-skip-link-target="true"
+        id="main-page-content"
+        title="Public | Main | Body">
+        <!-- =============================== Main | SideBar | Private Only  ==================================== -->
+        <!-- Template: private_sidebar.html | Conditional | Private | Checked if -->
+        <!-- a) user is authenticated | -->
+        <!-- b) only logged user has permission to view | -->
+        <!-- c) user has active session -->
+        <!-- d) contact other users types are denied access to view -->
+        <!-- Added: role: complementary, aria-label: Sidebar Navigation-->
+        <!-- Added: nav tags + aria-labels-->
+        <!-- DONE: Add Data-* for Private State, Metal Data-->
+        <!-- NOTE: Toggle hidden (=none) attribute for Authenticated Private State-->
+        <!-- Extract-Start -->
+        <aside
+            class=""
+            data-private="true"
+            data-sidebar="private"
+            hidden="hidden"
+            id="sidebar-navigation-main-page"
+            title="Sidebar Navigation | Alignment Left | Private | Sessions | Permissions">
+            <div class="" id="top-sidebar-main" title="Sidebar Navigation | App Navigation | Top Sidebar">
+                <nav aria-label="Dash &amp; Inform" class="" id="nav-top-sidebar-main" title="Dash &amp; Inform">
+                    <a href="" title="Dash &amp; Inform | Link"> Dash &amp;amp; Inform </a>
+                </nav>
+                <!--
+        <nav class="" title="Do &amp; Act">
+        <a href="" title="Do &amp; Act | Link">Do &amp; Act</a>
+        </nav>
+        -->
+            </div>
+            <div class="" id="bottom-sidebar-main" title="Sidebar Navigation| App Navigation | Bottom Sidebar">
+                <nav
+                    aria-label="Site Main Navigation Links"
+                    class=""
+                    id="nav-bottom-sidebar-main"
+                    title="Bottom Links | Block">
+                    <ul>
+                        <li><a href="" title="Home | Link">Home</a></li>
+                        <li><a href="" title="Docs | Link">Docs</a></li>
+                        <li><a href="" title="FAQ | Link">FAQ</a></li>
+                        <li><a href="" title="Contact | Link">Contact</a></li>
+                        <li><a href="" title="About | Link">About</a></li>
+                        <!-- Extract Start -->
+                        <!-- ================================== SNIPPET | LOGOUT ========================================= -->
+                        <!-- Template: PARTIAL : Conditionals | Private | Checked if a) user is authenticated | b)
+        only logged user has
+        permission to view | c) user has active session d) contact other users types are denied access to
+        view | Ends User Session | Changes ownership State: Logged in to Logged out -->
+                        <li><a href="" title="Logout | Link">Logout</a></li>
+                        <!-- Extract End -->
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- Extract-End -->
+        <!-- ========================== Main | Hero Slides | Public + Private ================================ -->
+        <!-- Template: index.html | All States | With & Without Sidebar | Resize with Sidebar -->
+        <section
+            aria-label="Page Banner | Hero Content | Banner Images"
+            class=""
+            id="top-section-main-page"
+            title="Page Banner | Top | Hero Slides | Poisitional">
+            <!-- HTML Adapted & customised from https://getbootstrap.com/docs/5.0/components/carousel/ -->
+            <div class="" id="slider-hero" title="Hero | Top | Slider | Deck">
+                <div class="slider-indicators">
+                    <button
+                        aria-current="true"
+                        aria-label="Hero Slide 01"
+                        class="active"
+                        data-tw-slide-to="0"
+                        data-tw-target="#slider-hero"
+                        type="button"></button>
+                    <button
+                        aria-label="Hero Slide 02"
+                        data-tw-slide-to="1"
+                        data-tw-target="#slider-hero"
+                        type="button"></button>
+                    <button
+                        aria-label="Hero Slide 03"
+                        data-tw-slide-to="2"
+                        data-tw-target="#slider-hero"
+                        type="button"></button>
+                    <button
+                        aria-label="Hero Slide 04"
+                        data-tw-slide-to="3"
+                        data-tw-target="#slider-hero"
+                        type="button"></button>
+                    <button
+                        aria-label="Hero Slide 05"
+                        data-tw-slide-to="4"
+                        data-tw-target="#slider-hero"
+                        type="button"></button>
+                </div>
+                <div class="" id="slider-inner-hero" title="Hero | Top | Slider | Inner">
+                    <div aria-hidden="false" class="" id="slider-item-01" title="Hero | Top | Slider | 01">
+                        <img alt="Hero Slide No.1:" class="" src="hero1.jpg" />
+                        <div class="" id="slider-item-01-text" title="Hero | Label | 01">
+                            <h5>First slide label</h5>
+                            <p>Some text about the first slide goes here.</p>
+                        </div>
+                    </div>
+                    <div
+                        aria-hidden="true"
+                        class=""
+                        hidden="until-found"
+                        id="slider-item-02"
+                        title="Hero | Top | Slider | 02">
+                        <img alt="Hero Slide No.2:" class="" src="hero2.jpg" />
+                        <div class="" id="slider-item-02-text" title="Hero | Label | 02">
+                            <h5>Second slide label</h5>
+                            <p>Some text about the second slide goes here.</p>
+                        </div>
+                    </div>
+                    <div
+                        aria-hidden="true"
+                        class=""
+                        hidden="until-found"
+                        id="slider-item-03"
+                        title="Hero | Top | Slider | 03">
+                        <img alt="Hero Slide No.3:" class="" src="hero3.jpg" />
+                        <div class="" id="slider-item-03-text" title="Hero | Label | 03">
+                            <h5>Third slide label</h5>
+                            <p>Some text about the third slide goes here.</p>
+                        </div>
+                    </div>
+                    <div
+                        aria-hidden="true"
+                        class=""
+                        hidden="until-found"
+                        id="slider-item-04"
+                        title="Hero | Top | Slider | 04">
+                        <img alt="Hero Slide No.4:" class="" src="hero4.jpg" />
+                        <div class="" id="slider-item-04-text" title="Hero | Label | 04">
+                            <h5>Fourth slide label</h5>
+                            <p>Some text about the fourth slide goes here.</p>
+                        </div>
+                    </div>
+                    <div
+                        aria-hidden="true"
+                        class=""
+                        hidden="until-found"
+                        id="slider-item-05"
+                        title="Hero | Top | Slider | 05">
+                        <img alt="Hero Slide No.5:" class="" src="hero5.jpg" />
+                        <div class="" id="slider-item-05-text" title="Hero | Label | 05">
+                            <h5>Fifth slide label</h5>
+                            <p>Some text about the fifth slide goes here.</p>
+                        </div>
                     </div>
                 </div>
+                <button
+                    class="slider-control-prev"
+                    data-tw-slide="prev"
+                    data-tw-target="#slider-hero"
+                    type="button">
+                    <span aria-hidden="true" class="slider-control-prev-icon"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                    class="slider-control-next"
+                    data-tw-slide="next"
+                    data-tw-target="#slider-hero"
+                    type="button">
+                    <span aria-hidden="true" class="slider-control-next-icon"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
             </section>
-            <!-- Template: Home Page | Logged In | With Sidebar Visible | With Private Topics Nav | Swapped for forms
-             -->
-            <section class=""
-                     title="Dashboard Call to Action | Logged In | 1 x2 Grid | 2 Card Components"
-                     hidden="hidden">
-                <!-- What-If: User is logged in and navigate to index.html
-                 - What-If: replaces the home page sign up form with a web call to actions
-                 - Brief Description: The call to action is a dashboard for the user to see the their GitHub projects
-                   as portfolios status.
-                 - What-If: The dash app is a django app that is a dashboard to inform for GitHub via the Github
-                   API (Get)
-                 - What-If: The dash app is designed to help developers manage their GitHub projects as portfolios
-                 -->
-                <div class=""
-                     title="Dashboard Call to Action | Logged In | Call to Action | Card Component">
-                    <h3 class=""
+        <!-- ========================== Main | Content | Public Only | No Sidebar ============================ -->
+        <!-- Template: index.html | All States | With & Without Sidebar | Resize with Sidebar -->
+        <section
+            aria-label="Page Content | Public & Private Components"
+            class=""
+            id="middle-section-main-page"
+            title="Page Canvas | Middle | Content | Positional">
+            <!-- ========================== Main | Form | Public Only | No Sidebar ============================ -->
+            <!-- Template: form_signup.html | Logged Out | Without Sidebar  | Sign Up Form | Card Component -->
+            <!-- - TODO: Exclude if user is logged in, hide the section or if conditional
+- TODO: Extract to form_signup.html a) from id="public-cta-middle-container" or b)signup-form-public-card-->
+            <!-- Extract-Start -->
+            <div
+                aria-hidden="false"
+                class=""
+                data-public="true"
+                data-signup="public"
+                id="public-cta-middle-component"
+                title="Account Call to Action | Signed Up | Forms">
+                <h1
+                    aria-label="Sign Up Form Section: Public Users"
+                    hidden="hidden"
+                    id="signup-header-cta-component"
+                    inert="inert">
+                    New User Register: Sign Up Form
+                </h1>
+                <div class="" id="signup-form-public-cta" title="Form | Sign Up | CTA">
+                    <!-- form_signup.html -->
+                    <!-- Card is centralised | Top Down | Flows vertically | -->
+                    <article class="" id="signup-form-public-card-cta" title="Form | Sign Up | Card">
+                        <h2 class="" id="signup-form-public-header" title="Form | Sign Up | Header">Sign Up</h2>
+                        <!-- Start Form | Sign Up, Public -->
+                        <div id="signup-form-public-contains" title="Sign Up Form | Container">
+                            <!-- 1️⃣ HTMX Target: Start: OuterHTML | Relace: Form | Have to reload form redirect after submit -->
+                            <form
+                                action=""
+                                class=""
+                                id="signup-form"
+                                method="POST"
+                                name="signup-form"
+                                title="Sign Up Form | Create a New Account">
+                                <fieldset form="signup-form" id="fields-signup-form" name="signup-form">
+                                    <legend
+                                        aria-hidden="true"
+                                        class=""
+                                        hidden="hidden"
+                                        id="label-signup-form"
+                                        title="Sign Up Forms | Account App">
+                                        Sign Up
+                                    </legend>
+                                    <!-- - TODO: Add validation to this form, placeholder text
+- TODO: CSS: Label | Input block elements | Label above input-->
+                                    <div id="user-field-signup-form" title="Sign Up Form | New Username">
+                                        <label
+                                            class=""
+                                            for="signup-user"
+                                            id="signup-user-label"
+                                            title="Account Form | Name">
+                                            Username</label
+                                        >
+                                        <input
+                                            autocomplete="username"
+                                            class=""
+                                            id="signup-user"
+                                            maxlength="20"
+                                            minlength="6"
+                                            required="required"
+                                            size="30"
+                                            tabindex="1"
+                                            title="Account Form | Name"
+                                            type="text" />
+                                    </div>
+                                    <div id="email-field-signup-form" title="Sign Up Form | New Email">
+                                        <label
+                                            class=""
+                                            for="signup-email"
+                                            id="signup-email-label"
+                                            title="Account Form | Email">
+                                            Email
+                                        </label>
+                                        <input
+                                            autocomplete="email"
+                                            class=""
+                                            id="signup-email"
+                                            maxlength="50"
+                                            minlength="6"
+                                            required="required"
+                                            size="30"
+                                            tabindex="1"
+                                            title="Account Form | Email"
+                                            type="email" />
+                                    </div>
+                                    <div id="password-field-signup-form" title="Sign Up Form | New Password">
+                                        <label
+                                            class=""
+                                            for="set-password"
+                                            id="signup-password-label"
+                                            title="Account Form | Password">
+                                            Password</label
+                                        >
+                                        <input
+                                            autocomplete="new-password"
+                                            class=""
+                                            id="set-password"
+                                            maxlength="50"
+                                            minlength="15"
+                                            required="required"
+                                            size="30"
+                                            tabindex="1"
+                                            title="Account Form | Password"
+                                            type="password" />
+                                        <input
+                                            autocomplete="new-password"
+                                            class=""
+                                            id="confirm-password"
+                                            required="required"
+                                            size="30"
+                                            tabindex="1"
+                                            title="Account Form | Confirm Password"
+                                            type="password" />
+                                    </div>
+                                    <div id="submit-button-signup-form" title="Sign Up Form | Submit">
+                                        <button
+                                            class=""
+                                            tabindex="1"
+                                            title="Sign Up | Account App | Submit"
+                                            value="sign-up">
+                                            Sign Up
+                                        </button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <!-- 2️⃣HTMX Target: Start: beforeend | Keep Form & Clear Form -->
+                        <div class="" hidden="hidden" id="message-signup-form-cta" inert="inert">
+                            <h3 class="" title="Contact Form">Contact</h3>
+                            <!-- Message Success & Message Error -->
+                        </div>
+                        <!-- End Form | Sign Up, Public -->
+                    </article>
+                </div>
+            </div>
+            <!-- Extract-End -->
+            <!-- =============== Main | Content | Account Cards | Private Only | With Sidebar ================ -->
+            <!-- Template: private_appcards.html | Logged Out | Without Sidebar  -->
+            <!-- - TODO: Exclude if user is not logged in, hide the section or if conditional -->
+            <!-- Extract-Start -->
+            <!-- private_appcards.html -->
+            <div
+                class=""
+                data-appcards="private"
+                data-private="true"
+                hidden="hidden"
+                id="private-cta-middle-component"
+                title="App Cards | Call to Action | Logged In | 1 x2 Grid | 2 Card Components">
+                <!-- - TODO: Add Django Template -->
+                <!-- - TODO: Add Django View -->
+                <!-- - TODO: Add Cards Component (Tailwind CSS): Class or Style -->
+                <h1
+                    class=""
+                    hidden="hidden"
+                    id="private-cta-header"
+                    title="Calls to Action | Logged In | 1 x 2 Grid | 2 Card Components">
+                    Dash &amp; Do
+                </h1>
+                <!-- Component Block | 1 x 2 Grid -->
+                <div class="" id="cards-private-cta-section" title="Private | AppCards | CTA Component">
+                    <!-- Repeating Block | Card Component | Same Structure/Style | Differnt Content -->
+                    <!-- Note: Not Programatically View Logic | Define only in Template -->
+                    <!-- Note: Should this be subclass templated for each repeating card/block? -->
+                    <article
+                        class=""
+                        id="card-cta-dash"
                         title="Dashboard Call to Action | Logged In | Call to Action | Card Component">
-                        Dash & Inform</h3>
-                    <p class=""
-                       title="Dashboard Call to Action | Logged In | Call to Action | Card Component">
-                        This is the dashboard for the Dash and Do for GitHub. This is a dashboard and to-do list manager for GitHub.
-                        It is designed to help developers manage their GitHub projects as portfolios.</p>
-                    <a href="" class=""
-                       title="Dashboard Call to Action | Logged In | Call to Action | Card Component">
-                        Check your GitHub Account Status</a>
+                        <h2 class="" title="Dashboard Call to Action | Logged In | Call to Action | Card Component">
+                            Dash & Inform
+                        </h2>
+                        <p class="" title="Dashboard Call to Action | Logged In | Call to Action | Card Component">
+                            This is the dashboard for the Dash and Do for GitHub. This is a dashboard and to-do list
+                            manager for GitHub. It is designed to help developers manage their GitHub projects as
+                            portfolios.
+                        </p>
+                        <a
+                            class=""
+                            href=""
+                            title="Dashboard Call to Action | Logged In | Call to Action | Card Component">
+                            Check your GitHub Account Status
+                        </a>
+                    </article>
+                    <article
+                        class=""
+                        id="card-cta-do"
+                        title="Do Call to Action | Logged In | Call to Action | Card Component | Inert | Disabled | Future">
+                        inert="inert">
+                        <h3 class="" title="Do Call to Action | Logged In | Call to Action | Card Component">
+                            Do & Act (Disabled)
+                        </h3>
+                        <p class="" title="Do Call to Action | Logged In | Call to Action | Card Component">
+                            This is the do for the Dash and Do for GitHub. This is a dashboard and to-do list
+                            manager for GitHub. It is designed to help developers manage their GitHub projects as
+                            portfolios.
+                        </p>
+                        <a
+                            class=""
+                            href=""
+                            title="Do Call to Action | Logged In | Call to Action | Card Component"></a>
+                    </article>
                 </div>
-                <!-- What-If: User is logged in and navigate to index.html
-                 - What-If: replaces the home page sign up form with a web call to actions
-                 - Brief Description: The call to action is do task application for the user to manage their GitHub
-                   projects as portfolios
-                 - What-If: The do app is a django app that is a to-do list manager for GitHub
-                 - What-If: The do app is designed to help developers manage their GitHub projects as portfolios
-                 -->
-                <div class="" title="Do Call to Action | Logged In | Call to Action | Card Component">
-                    <h3 class=""
-                        title="Do Call to Action | Logged In | Call to Action | Card Component">
-                        Do & Act</h3>
-                    <p class="" title="Do Call to Action | Logged In | Call to Action | Card Component">
-                        This is the do for the Dash and Do for GitHub. This is a dashboard and to-do list manager for GitHub.
-                        It is designed to help developers manage their GitHub projects as portfolios.</p>
-                    <a href="" class="" title="Do Call to Action | Logged In | Call to Action | Card Component"></a>
-                </div>
-            </section>
-            <!-- Template: Home Page | All States | With + Without Sidebar  -->
-            <section class="" title="Contact Call to Action">
-                <div class="" title="Contact Form">
-                    <form class="" title="Contact Form" action="" method="POST">
-                        <label for="name" class="" title="Contact Form | Name">Name</label>
-                        <input type="text" class="" title="Contact Form | Name" id="name">
-                        <label for="email" class="" title="Contact Form | Email">Email</label>
-                        <input type="email" class="" title="Contact Form | Email" id="email"/>
-                        <textarea class="" title="Contact Form | Message"></textarea>
-                        <button class="" title="Contact Form | Submit">Submit</button>
-                    </form>
-                </div>
-            </section>
-        </main>
-        <!-- Template: All Pages -->
-        <footer class="" id="footer" title="Footer | All Pages">
-            <!-- Template: All Pages -->
-            <section class="footer-wrapper">
-                <div class="" title="Left Grid | Contact About">
-                    <div class="" title="Contact">
-                        <a href="tel:" title="Contact | Mobile"></a>
-                        <a href="mailto:?subject=Contact" title="Contact | Email"></a>
+            </div>
+            <!-- Extract-End -->
+        </section>
+        <!-- ============ Main | Content | Contacts Form | Public + Private | With/out Sidebar =============== -->
+        <!-- Template: index.html | All States: Logged in/out | With + Without Sidebar  -->
+        <!-- - TODO: Add Django Template-->
+        <!-- - TODO: Add Django Form-->
+        <!-- - TODO: Add Django View-->
+        <!-- - TODO: Connect Django Email Backend-->
+        <!-- - TODO: Test Django Email Sending-->
+        <!-- - TODO: Add Form HTMX-->
+        <!-- - https://www.perplexity.ai/search/547f1abd-102f-44c6-b2bc-d0b365ee4f4b?s=c-->
+        <!-- - TODO: Add Form Card Component (Tailwind CSS): Class or Style-->
+        <section
+            aria-label="Page Content | Public & Private Components"
+            class=""
+            id="lower-section-main-page"
+            title="Page Canvas | Middle | Content | Positional">
+            <!-- Template: form_contact.html | All States: Logged in/out | With + Without Sidebar  -->
+            <!-- Extract-Start due to Form component + django form -->
+            <div
+                class=""
+                data-contact="both"
+                data-private="true"
+                data-public="true"
+                id="contact-cta-lower-component"
+                title="Contact Form | Template | Card Component ">
+                <h1
+                    aria-label="Contact Form Section: All Users"
+                    hidden="hidden"
+                    id="contact-header-cta-component"
+                    inert="inert">
+                    Contact Form
+                </h1>
+                <!-- Template: form_contact.html | Contact Form | Card Component -->
+                <article class="" id="contact-form-card-cta" title="Contact Form | Card">
+                    <h2 class="" id="contact-form-header" title="Contact Form">Contact</h2>
+                    <!-- Contact Form | Card Component -->
+                    <!-- 1️⃣ HTMX Target: Start: OuterHTML | Relace: Form | Have to reload form redirect after submit -->
+                    <div id="contact-form-card" title="contact-form">
+                        <!-- Form: Start -->
+                        <!--hx-swap="outerHTML"-->
+                        <!--hx-target="#contact-form-card"-->
+                        <form
+                            action=""
+                            class=""
+                            hx-post="/submit-contact-form"
+                            hx-swap="beforeend"
+                            hx-target="#message-contact-form-cta"
+                            id="contact-form"
+                            method="POST"
+                            name="contact-form"
+                            title="Contact Form">
+                            <!-- TODO: Style: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#styling_with_css -->
+                            <fieldset
+                                class=""
+                                id="contact-form-details"
+                                name="contact-form-details"
+                                title="Contact Form | Fields | Left Column | Flexbox 1,1/1,1">
+                                <legend hidden="hidden" title="Contact Forms | Contact Inputs">
+                                    Enter your contact details ..
+                                </legend>
+                                <label
+                                    class=""
+                                    for="contact-name"
+                                    id="contact-name-label"
+                                    title="Contact Form | Name"
+                                >Name</label
+                                >
+                                <input
+                                    autocomplete="name"
+                                    class=""
+                                    id="contact-name"
+                                    title="Contact Form | Name"
+                                    type="text" />
+                                <label
+                                    class=""
+                                    for="contact-email"
+                                    id="contact-email-label"
+                                    title="Contact Form | Email"
+                                >Email</label
+                                >
+                                <input
+                                    autocomplete="email"
+                                    class=""
+                                    id="contact-email"
+                                    title="Contact Form | Email"
+                                    type="email" />
+                            </fieldset>
+                            <fieldset
+                                class=""
+                                name="contact-form-message"
+                                id="contact-form-messagebody"
+                                title="Contact Form | Contact Messages Box | Right Column | Flexbox 1,2/2,1">
+                                <legend title="Contact Forms | Message Body" hidden="hidden">
+                                    Enter your message ..
+                                </legend>
+                                <label
+                                    class=""
+                                    for="contact-message"
+                                    id="contact-message-label"
+                                    title="Contact Form | Message"
+                                >Message</label
+                                >
+                                <textarea
+                                    class=""
+                                    id="contact-message"
+                                    name="contact-message"
+                                    rows="10"
+                                    cols="50"
+                                    spellcheck="true"
+                                    required="required"
+                                    title="Contact Form | Message"></textarea>
+                                <button class="" id="contact-submit" title="Contact Form | Submit">Submit</button>
+                            </fieldset>
+                        </form>
+                        <!-- Form: End -->
                     </div>
-                    <div class="" title="Credits"></div>
-                    <div class="" title="Copyright"></div>
+                    <!--  HTMX Target: Start: OuterHTML | Replace contact-->
+                    <!-- 2️⃣HTMX Target: Start: beforeend | Keep Form & Clear Form -->
+                    <div class="" id="message-contact-form-cta" hidden="hidden" inert="inert">
+                        <h3 class="" title="Contact Form">Contact</h3>
+                        <!-- Message Success & Message Error -->
+                    </div>
+                    <!--  HTMX Target: End -->
+                </article>
+            </div>
+            <!-- Extract-End -->
+        </section>
+    </main>
+    <!-- ================================= Footer | Include | All Pages | Body =================================== -->
+    <!-- Footer -->
+    <footer class="" id="footer-page" title="Footer | All Pages">
+        <!-- Extract-Start: Include -->
+        <!-- Template: Include: All Pages -->
+        <!-- TODO: Add Django Template-->
+        <!-- includes\footer.html -->
+        <nav
+            aria-label="Footer | Bottom Navigation | All Pages"
+            class="footer-wrapper"
+            id="container-grid-footer"
+            title="Container | Grid | Footer">
+            <!-- Middle Grid: 1,1 Landscape | 1,1 Portrait -->
+            <div
+                aria-label="Footer | Left"
+                class=""
+                id="left-grid-footer"
+                role="contentinfo"
+                title="Left Grid Cell | Contact About | 1,1 Landscape | 1,1 Portrait">
+                <!-- Flexbox: 1,1 Landscape | 1,1 Portrait -->
+                <div class="" title="Contact">
+                    <!-- TODO: Add Email-->
+                    <a href="tel:+353851234567" title="Contact | Mobile"> +353851234567 </a>
+                    <!-- TODO: Add Email-->
+                    <a href="mailto:email@example.com?subject=%5BDash%20%26%20Do%5D%20Web%20Enquiry"
+                       title="Contact | Email">
+                        email@example.com
+                    </a>
                 </div>
-                <div class="" title="Middle Grid | Icons">
-                    <div class="" title="GitHub">
-                       <a href="" title="GitHub | Link to Repo">
-                           <img src="" alt="GitHub" title="GitHub | Icon | Logo | Add Copyright"/>
-                       </a>
-                    </div>
+                <div class="" title="Credits">
+                    <!-- Flexbox: 1,2 Landscape | 2,1 Portrait -->
+                    <!-- TODO: Add Link | Add Page-->
+                    <a href="" title="Credits | Link">Credits</a>
                 </div>
-                <div class="" title="Right Grid | FAQ, Help & Docs">
-                    <div class="" title="FAQ">
-                        <a href="" title="FAQ">FAQ</a>
-                    </div>
-                    <div class="" title="Help">
-                        <a href="" title="Help">Help</a>
-                    </div>
-                    <div class="" title="Docs">
-                        <a href="" title="Docs">Docs</a>
-                    </div>
+                <div class="" title="Copyright">
+                    <!-- Flexbox: 1,3 Landscape | 3,1 Portrait -->
+                    <p title="Copyright | Text">© 2023-2028</p>
                 </div>
-            </section>
-        </footer>
+            </div>
+            <!-- Middle Grid: 1,2 Landscape | 2,1 Portrait -->
+            <div
+                aria-label="Footer | Middle"
+                class=""
+                id="middle-grid-footer"
+                role="contentinfo"
+                title="Middle Grid Cell | Icons | 1,2 Landscape | 2,1 Portrait">
+                <!-- Flexbox: 1,1 Landscape | 1,1 Portrait -->
+                <div class="" title="GitHub">
+                    <!-- TODO: Add Link | Add Page-->
+                    <a href="" title="GitHub | Link to Repo">
+                        <img alt="GitHub" src="" title="GitHub | Icon | Logo | Add Copyright" />
+                    </a>
+                </div>
+            </div>
+            <!-- Middle Grid: 1,3 | 3,1 Portrait -->
+            <div
+                aria-label="Footer | Right"
+                class=""
+                id="right-grid-footer"
+                role="contentinfo"
+                title="Right Grid Cell | FAQ, Help & Docs | 1,3 Landscape | 3,1 Portrait">
+                <!-- Flexbox: 1,1 Landscape | 1,1 Portrait -->
+                <div class="" title="FAQ">
+                    <!-- TODO: Add Link | Add Page-->
+                    <a href="" title="FAQ">FAQ</a>
+                </div>
+                <!-- Flexbox: 1,2 Landscape | 2,1 Portrait -->
+                <div class="" title="Help">
+                    <!-- TODO: Add Link | Add Page-->
+                    <a href="" title="Help">Help</a>
+                </div>
+                <!-- Flexbox: 1,3 Landscape | 3,1 Portrait -->
+                <div class="" title="Docs">
+                    <!-- TODO: Add Link | Add Page-->
+                    <a href="" title="Docs">Docs</a>
+                </div>
+            </div>
+        </nav>
+        <!-- Extract-End: Include -->
+    </footer>
+    <!-- ============================================ SCRIPTS =============================================== -->
+    <!-- Skip Link Tabbing Module-->
+    <script src="./static/js/skip-link.js" defer referrerpolicy="same-origin"></script>
     </body>
 </html>

@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header-page {
+    @apply h-24 w-auto flex
+}
+
+.header-left {
+    @apply flex justify-start content-center w-full min-w-fit
+}
+
+.header-right {
+    @apply flex justify-end content-center w-full min-w-fit
+}
+
+.header-compose {
+    @apply flex-1
+}
+
+.header-look {
+    @apply bg-gray-300
+}
+
+
+
+/*.header-interact {*/
+/*    @apply */
+/*}*/
+
+.main-page {
+    @apply w-auto
+}
+
+.footer-page {
+    @apply h-24 w-auto
+}

@@ -7,7 +7,12 @@
     "one-folder": "html-validator docs --exclude=build,tmp --delay=200",
     "all": "html-validator --quiet --exclude=build,tmp --delay=200",
     "continue": "html-validator --quiet --continue --exclude=build,tmp --delay=200",
-    "server": "live-server --port=8005 --host=127.0.0.1  --wait=250 ./"
+    "server": "live-server --port=8005 --host=127.0.0.1 --watch=**/*.html,**/*.css,**/*.js  --wait=150",
+    "build:tailwind": "npx tailwind -i static/css/tailwind.css -o static/css/tailwind-core.css --watch",
+    "min:tailwind": "npx tailwind -i static/css/tailwind.css -o static/css/tailwind-core.minify.css --minify",
+    "post:tailwind": "npx tailwind -i static/css/tailwind.css -o static/css/ailwind-core.css --postcss --watch",
+    "serve:tailwind": "live-server --port=8005 --host=127.0.0.1 --watch=**/*.html,**/*.css,**/*.js  --wait=250 & npx tailwind -i static/css/tailwind.css -o static/css/tailwind-core.css --watch",
+    "ws": "npx ws --hostname 127.0.0.1 --open"
   },
   "devDependencies": {
     "editorconfig": "^2.0.0",
@@ -23,7 +28,6 @@
     "eslint-scope": "^7.2.2",
     "eslint-utils": "^3.0.0",
     "htmlhint": "^1.1.4",
-    "htmx": "^0.0.2",
     "htmx.org": "^1.9.5",
     "postcss": "^8.4.28",
     "prettier": "^3.0.2",
@@ -45,6 +49,7 @@
     "autoprefixer": "^10.4.15",
     "browserslist": "^4.21.10",
     "live-server": "^1.2.2",
+    "local-web-server": "^5.3.0",
     "snazzy": "^9.0.0"
   },
   "standard": {

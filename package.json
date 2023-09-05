@@ -8,10 +8,10 @@
     "all": "html-validator --quiet --exclude=build,tmp --delay=200",
     "continue": "html-validator --quiet --continue --exclude=build,tmp --delay=200",
     "server": "live-server --port=8005 --host=127.0.0.1 --watch=**/*.html,**/*.css,**/*.js  --wait=150",
-    "build:tailwind": "npx tailwind -i static/css/tailwind.css -o static/css/tailwind-core.css --watch",
+    "build:tailwind": "npx tailwind -i static/css/tailwind.css -o static/css/tailwind-core3.css --watch",
     "min:tailwind": "npx tailwind -i static/css/tailwind.css -o static/css/tailwind-core.minify.css --minify",
     "post:tailwind": "npx tailwind -i static/css/tailwind.css -o static/css/ailwind-core.css --postcss --watch",
-    "serve:tailwind": "live-server --port=8005 --host=127.0.0.1 --watch=**/*.html,**/*.css,**/*.js  --wait=250 & npx tailwind -i static/css/tailwind.css -o static/css/tailwind-core.css --watch",
+    "serve:tailwind": "live-server --port=8005 --host=127.0.0.1 --watch=**/*.html,**/*.css,**/*.js  --wait=250 & npx tailwind -i static/css/tailwind.css -o static/css/tailwind-core2.css --watch",
     "ws": "npx ws --hostname 127.0.0.1 --open"
   },
   "devDependencies": {
@@ -29,9 +29,9 @@
     "eslint-utils": "^3.0.0",
     "htmlhint": "^1.1.4",
     "htmx.org": "^1.9.5",
-    "postcss": "^8.4.28",
-    "prettier": "^3.0.2",
-    "prettier-plugin-tailwindcss": "^0.5.3",
+    "postcss": "^8.4.29",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.4",
     "standard": "^17.1.0",
     "stylelint": "^15.10.3",
     "stylelint-config-recommended": "^13.0.0",
@@ -39,6 +39,7 @@
     "stylelint-config-tailwindcss": "^0.0.7",
     "stylelint-csstree-validator": "^3.0.0",
     "tailwindcss": "^3.3.3",
+    "tailwindcss-owl": "^2.0.0",
     "w3c-html-validator": "^1.4.0"
   },
   "browserslist": [

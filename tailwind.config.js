@@ -1,14 +1,22 @@
 /** @type {import("tailwindcss").Config} */
 module.exports = {
-    content: [
-        "./apps/**/templates/**/*.{html,js}",
-        "./templates/*.{html,js}",
-        "./templates/**/*.{html,js}",
-        "./static/**/*.{html,css,js}",
-        "./staticfiles/**/*.{html,css,js}"
+    content: {
+        relative: true,
+        files: [
+        './templates/index.html', // main index file & entrpoint
+        './apps/**/templates/**/*.{html,js}',
+        './templates/*.{html,js}',
+        './templates/**/*.{html,js}',
+        './static/**/*.{html,css,js}',
+        './staticfiles/**/*.{html,css,js}',
     ],
-    theme: {
-        extend: {}
     },
-    plugins: []
-};
+    theme: {
+        fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Inter', 'sans-serif'],
+        },
+        extend: {},
+    },
+    plugins: [require('tailwindcss-owl')],
+}

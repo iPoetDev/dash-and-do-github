@@ -1,0 +1,249 @@
+<!doctype html>
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Copyright (c) 2023.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<html class="" id="public-page" lang="en-GB" title="Public Pages | Template">
+    <head title="Welcome to the Dash and Do for GitHub">
+        <meta charset="utf-8" />
+        <meta content="https://dash-and-do-heroku.com/" name="origin" />
+        <meta content="The Dash and Document GitHub is the copyright of Charles J Fowler, 2023-2028" name="copyright" />
+        <meta content="Charles J Fowler, @iPoetDev.github.com" name="author" />
+        <meta content="Charles J Fowler, @iPoetDev.github.com" name="creator" />
+        <meta content="Charles J Fowler, @iPoetDev.github.com" name="designer" />
+        <meta content="Github: @iPoetDev" name="contact" />
+        <meta content="Dublin, Ireland; Europe" name="geo.lmk" />
+        <meta content="Ireland" name="geo.country" />
+        <meta content="Version 1.0-beta" name="version" />
+        <meta content="dark" name="color-scheme" />
+        <meta
+            content="Fowler,Charles,Clients,Designer,Web Designer,Developer,Software, Web
+                Developer,Frontend Developer,Code Institute,HTML,CSS,Modern CSS"
+            name="keywords" />
+        <meta content="Welcome to the Dash and Do for GitHub" name="description" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <!-- CDN verses Download URL: https://cdnjs.com/libraries/modern-normalize -->
+        <!--         <link -->
+        <!--             href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.css" -->
+        <!--             rel="stylesheet" /> -->
+        <link href="../static/css/tailwind-core3.css" rel="stylesheet" type="text/css" />
+        <link href="" rel="stylesheet" type="text/css" />
+
+        <title title="{% block title %}Dashboard and Do GitHub Manager{% endblock %}">
+            {% block title %}Dashboard and Do GitHub Manager{% endblock %}
+        </title>
+    </head>
+    <!-- ================================= CORE APP | PUBLIC | PRIVATE | INDEX.HTML ================================ -->
+    <!-- Changelog 2023-09-04
+- added: class/tailwinds
+-->
+    <body class="" id="public-body" title="Dashboard and Do | Public | Private | Home">
+        <!-- ============================================= SKIP LINK =================================================  -->
+        <!-- Hide until found: https://www.w3.org/WAI/tutorials/menus/skip/ -->
+        <!-- https://webaim.org/techniques/skipnav/ -->
+        <!-- Changelog: 2023-09-04
+- added: class/tailwinds -->
+        <div
+            class="[ skip-links-block ] [ flex items-center ] [ absolute top-0 left-0 z-50 ] [ invisible sr-only opacity-0 ] [ transition-opacity duration-500 ease-out ]"
+            autofocus
+            id="skiplinks-nav"
+            tabindex="0">
+            <a
+                class="[ sr-link ] [ sr-only focus:not-sr-only ]"
+                data-skip-link="true"
+                hidden="until-found"
+                href="#main-page-content"
+                id="skip-link-main-content"
+                tabindex="0"
+                title="Jump to Main Content: Sign Up & Contact forms if not registered">
+                Skip to main content
+            </a>
+            <a
+                class="[ sr-link ] [ sr-only focus:not-sr-only ]"
+                data-skip-link="true"
+                hidden="until-found"
+                href="#login-dropdown-menu"
+                id="skip-link-login-form"
+                tabindex="0"
+                title="Jump to Login form if registered">
+                Skip to login
+            </a>
+        </div>
+        <!-- ========================================= HEADER ====================================================  -->
+        <header
+            class="[ header-page header-style ] [ flex items-center justify-between ] [ w-auto h-16 px-4 py-2 ]"
+            id="header-page">
+            <!-- ===================================== GLOBAL NAVIGATION ==========================================  -->
+            <nav
+                class="[ nav-global-header ] [ w-full ] [ flex flex-row justify-between items-center ] [ px-2 md:px-6 py-4 ] [ nav-global-style ] [ bg-gray-800 text-white text-center ]"
+                aria-label="Global Navigation"
+                id="nav-global-header">
+                <!-- Left | Banner | Logo & Title -->
+                <div class="[ nav-left-header ] [ min-w-1/3 ] [ flex flex-row ]" id="header-nav-left">
+                    <div
+                        class="[ nav-brand-header ] [ flex flex-start flex-shrink-0 items-center ] [ mx-2 md:mx-6 ] [ aspect-w-1 aspect-h-1 ]"
+                        id="brand-header">
+                        <a
+                            class="[ nav-brand-homelink ] [ text-white hover:text-gray-200 ] [ transition-colors duration-200 ease-in-out ]"
+                            href="index.html"
+                            title="Logo | Link">
+                            <img
+                                class="[ nav-left-logo ] [ object-cover w-full h-full ] [ aspect-w-1 aspect-h-1 ]"
+                                alt="Logo"
+                                id="logo-brand"
+                                src=""
+                                title="Logo | Icon | Logo" />
+                            <!-- <img class="h-8 w-auto sm:h-10 md:h-12" alt="Logo" id="logo-brand" src="" title="Logo | Icon | Logo"/> -->
+                        </a>
+                    </div>
+                    <div
+                        class="[ nav-brand-title ] [ flex flex-row flex-end flex-shrink-1 items-center ] [ hidden md:block ]"
+                        id="brand-title"
+                        title="Title | Link">
+                        <a
+                            class="[ nav-brand-homelink ] [ text-white hover:text-gray-200 ] [ transition-colors duration-200 ease-in-out ]"
+                            href="index.html"
+                            title="Title | Link">
+                            <h1
+                                class="[ nav-brand-text ] [ font-semibold text-xl tracking-tight ]"
+                                id="brand-text"
+                                title="Banner | Text | Brand">
+                                Dash &amp; Do
+                            </h1>
+                        </a>
+                    </div>
+                </div>
+                <!-- Right | Top Menu | Logo & Title -->
+                <div
+                    aria-label="Main Navigation Banner"
+                    class="[ nav-right-header ] [ mb-2 md:mb-0 ] [ flex md:flex-end md:block ]"
+                    data-main-banner="both"
+                    id="header-nav-right">
+                    <nav
+                        aria-label="Public Navigation, Unauthenticated Users"
+                        class="[ public-menu-nav-right ] [ py-3 space-y-1 ] [ md:flex ] [ md:py-0 md:space-y-0 md:space-x-4 ]"
+                        data-main-menu="public"
+                        data-public="true"
+                        id="public-header-nav-right"
+                        title="Public Navigation">
+                        <!-- Refactor: Links: Menu Item | Menu Link/Text -->
+                        <a
+                            class="[ main-menu-item ] [ block px-3 py-2 ] [ rounded-md ] [ main-menu-link] [ font-medium text-gray-300 text-base hover:text-white ]"
+                            href="#"
+                            >Home</a
+                        >
+                        <a
+                            class="[ main-menu-item ] [ block px-3 py-2 ] [ rounded-md ] [ main-menu-link] [ font-medium text-gray-300 text-base hover:text-white ]"
+                            href="#"
+                            >About</a
+                        >
+                        <a
+                            class="[ main-menu-item ] [ block px-3 py-2 ] [ rounded-md ] [ main-menu-link] [ font-medium text-gray-300 text-base hover:text-white ]"
+                            href="#"
+                            >Contact</a
+                        >
+                        <a
+                            class="[ main-menu-item ] [ block px-3 py-2 ] [ rounded-md ] [ main-menu-link] [ font-medium text-gray-300 text-base hover:text-white ]"
+                            href="#"
+                            >Login</a
+                        >
+                    </nav>
+                    <nav
+                        aria-label="Private Navigation | Authenticated Users"
+                        class="[ private-header-nav-right ] [ hidden ] [ py-3 space-y-1 ] [ md:flex ] [ md:py-0 md:space-y-0 md:space-x-4 ]"
+                        data-main-menu="private"
+                        data-private="true"
+                        id="private-header-nav-right"
+                        title="Private Navigation"></nav>
+                </div>
+            </nav>
+        </header>
+        <!-- ========================================= MAIN PAGE CONTENT =========================================  -->
+        <main
+            class="[ page-main-content ] [ flex flex-row ] [ h-screen ] [ px-4 pb-20 lg:pb-4 ] [ space-y-10 lg:space-y-0 lg:space-x-10 ]"
+            id="main-page-content">
+            <!-- Col 1 Side-Content -->
+            <!-- TODO: Research Floating Sidebar Navigation with a sidebar strip with a toggle button-->
+            <!-- Hidden & Invisble -->
+            <!-- AI PROMPT: Update existing TailwindCSS: Constain min width to 15% on all screens, proportially to the screen size -->
+            <!-- AI PROMPT: Update Tailwind CSS: Expand Column 1 width and shrink Column 2 width to 15% on all  button is toggled
+                and the aside is visible, aligned to the width of both the parent div with the max width of the aside#sidebar-content-->
+            <div
+                class="[ side-content ] [ hidden invisible ] [ container relative ] [ flex flex-1 flex-col flex-start ] [ min-w-16 width-16 max-w-16 ] [ bg-blue-500 text-white]"
+                id="sidebar-col1-content">
+                <!-- AI PROMPT: Overlay Button on top of #sidebar-content -->
+                <button
+                    class="[ sidebar-toggle ] [ absolute top-3 right-0 ] [ w-20 h-16 z-10 ] [ px-4 py-2 ] [ bg-blue-800 text-white ]"
+                    id="toggle-sidebar-btn">
+                    Toggle
+                </button>
+                <!-- AI PROMPT: Update Tailwind CSS: Move the Aside#sidebar-content to top left of the div#sidebar-col1-content -->
+                <aside
+                    class="[ sidebar-nav ] [ fixed ] [ max-w-1/3 hidden lg:block lg:width-1/3 ] [ lg:flex w-64 lg:w-1/4 xl:w-1/3 ] [ h-full lg:sticky top-0 overflow-auto ] [ transition-transform duration-200 ease-in-out ] [ transform -translate-x-full lg:translate-x-0 ] [ sidebar-style ] [ bg-gray-200 ]"
+                    id="sidebar-content"></aside>
+            </div>
+            <!-- Col 2 Main Content -->
+            <div class="[ main-content ] [ flex flex-1 flex-col flex-end ] [ space-y-10 ]" id="central-col2-content">
+                <!-- Block[Row]: Content | Top Section: 1) All Views: Hero | Carousel -->
+                <section
+                    class="[ top-content ] [ flex-1 flex-end ] [ min-w-3/4 w-full min-h-350 ] [ mx-auto p-3 ] [ bg-gray-300 ]"
+                    id="top-section-content"></section>
+                <!-- Block: Content | Mid Section: 1) Public & 2) Private  -->
+                <section
+                    class="[ mid-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-3 ] [ bg-gray-400 ]"
+                    id="middle-section-content"></section>
+                <!-- Block[Row]: Content | Bottom Section: 1) All Views: Contact Form -->
+                <section
+                    class="[ btm-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-3 ] [ bg-gray-500 ]"
+                    id="bottom-section-content"></section>
+            </div>
+        </main>
+        <!-- ========================================= FOOTER ====================================================  -->
+        <footer
+            class="[ footer-page ] [ flex items-center justify-center ] [ w-full h-fit ] [ px-2 md:px-6 py-4 ] [ nav-global-style ] [ bg-gray-800 text-white text-center ]"
+            id="footer-page"
+            title="Footer | All Pages">
+            <nav
+                aria-label="Footer | Bottom Navigation | All Pages"
+                class="[ nav-global-footer ] [ grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 ] [ w-full px-4 md:px-10 ] [ space-y-4 md:space-y-0 ]"
+                id="nav-global-footer"
+                title="Container | Grid | Footer">
+                <!-- Block[Col]: Footer | Left: Contact Details -->
+                <div
+                    aria-label="Footer | Left"
+                    class="[ footer-nav-left ] [ min-h-[200px] p-4 ]"
+                    id="left-nav-footer"
+                    role="contentinfo"
+                    title="Left Grid Cell | Contact About | 1,1 Landscape | 1,1 Portrait">
+                    <!--Ignore: Do not generate Left Grid Footer children-->
+                </div>
+                <!-- Block[Col]: Footer | Middle: Icons -->
+                <div
+                    aria-label="Footer | Middle"
+                    class="[ footer-nav-mid ] [ min-h-[200px] p-4 ]"
+                    id="mid-nav-footer"
+                    role="contentinfo"
+                    title="Middle Grid Cell | Icons | 1,2 Landscape | 2,1 Portrait">
+                    <!--Ignore: Do not generate Mid Grid Footer children -->
+                </div>
+                <!-- Block[Col]: Footer | Right: Secondary Navigation | Links -->
+                <div
+                    aria-label="Footer | Right"
+                    class="[ footer-nav-right ] [ min-h-[200px] p-4 ]"
+                    id="right-nav-footer"
+                    role="contentinfo"
+                    title="Right Grid Cell | FAQ, Help & Docs | 1,3 Landscape | 3,1 Portrait">
+                    <!--Ignore: Do not generate Right Grid Footer children-->
+                </div>
+            </nav>
+        </footer>
+        <!-- ========================================= Scripts ===================================================  -->
+        <!-- Toggle JS -->
+        <script>
+            document.getElementById('toggle-sidebar-btn').addEventListener('click', function () {
+                document.getElementById('sidebar-content').classList.toggle('-translate-x-full')
+            })
+        </script>
+    </body>
+</html>

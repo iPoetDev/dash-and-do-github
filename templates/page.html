@@ -31,18 +31,30 @@
     <!--             rel="stylesheet" /> -->
     <link href="../static/css/tailwind-core.css" rel="stylesheet" type="text/css" />
     <link href="" rel="stylesheet" type="text/css" />
-    
+
     <title title="{% block title %}Dashboard and Do GitHub Manager{% endblock %}" >
         {% block title %}Dashboard and Do GitHub Manager{% endblock %}
     </title >
 </head >
 <!-- ================================= CORE APP | PUBLIC | PRIVATE | INDEX.HTML ================================ -->
+<!-- Changelog 2023-09-04
+    - added: class/tailwinds
+-->
 <body class="" id="public-body" title="Dashboard and Do | Public | Private | Home" >
 <!-- ============================================= SKIP LINK =================================================  -->
 <!-- Hide until found: https://www.w3.org/WAI/tutorials/menus/skip/ -->
 <!-- https://webaim.org/techniques/skipnav/ -->
-<div autofocus class="skip-links flex items-center visible h-0" >
-    <a class=""
+<!-- Changelog: 2023-09-04
+    - added: class/tailwinds -->
+<div class="skip-links flex items-center
+        absolute top-0 left-0 z-50
+        invisible
+        sr-only
+        opacity-0 transition-opacity duration-500 ease-out"
+     autofocus
+     id="skiplinks-nav">
+    tabindex="0"
+    <a class="sr-only focus:not-sr-only"
        data-skip-link="true"
        hidden="until-found"
        href="#main-page-content"
@@ -51,8 +63,7 @@
        title="Jump to Main Content: Sign Up & Contact forms if not registered" >
         Skip to main content
     </a >
-    <a
-        class="="
+    <a class="sr-only focus:not-sr-only"
         data-skip-link="true"
         hidden="until-found"
         href="#login-dropdown-menu"
@@ -63,13 +74,21 @@
     </a >
 </div >
 <!-- ============================================= HEADER =================================================  -->
-<header class="header-page header-look"
+<!-- Changelog: 2023-09-04
+    - added: class/tailwinds
+        - header:
+            - nav
+-->
+<header class="header-page
+        flex flex-wrap md:flex-row
+        items-center justify-between
+        px-2 py-4 md:px-6 md:py-8
+        bg-gray-800 text-white"
         id="header-public"
         title="Public | Header | Navigation | Conditional | Templates" >
     <nav
         aria-label="Banner | Top Navigation | All Pages" id="nav-global-header"
-        class="header-compose bg-gray-400"
-        id="banner-nav-main"
+        class="flex items-center flex-shrink-0 mr-6"
         title="All Pages | Header |Navigation" >
         <div aria-label="Brand Navigation Banner"
              class="header-left"
@@ -128,7 +147,7 @@ has permission to view | c) user | contact has NO active session-->
                     title="Contact | Public |Core App | State | Logged Out | Sessions | Permissions" >
                     <a data-main-menu-link="public" href="" title="Home | Link" >Contact</a >
                 </div >
-                
+
                 <nav
                     aria-label="Login Navigation Dropdown Menu"
                     class=""
@@ -254,12 +273,14 @@ view -->
     </nav >
 </header >
 <!-- ========================================= Main | Body  ================================================ -->
-<main
+<main class="main-page
+    flex flex-wrap justify-center items-center
+    mt-20"
     aria-label="Page Main | Public & Private Components | Single Page | No Page Reload"
-    class="main-page"
     data-skip-link-target="true"
     id="main-page-content"
     title="Public | Main | Body" >
+
     <!-- =============================== Main | SideBar | Private Only  ==================================== -->
     <!-- Template: private_sidebar.html | Conditional | Private | Checked if -->
     <!-- a) user is authenticated | -->
@@ -771,20 +792,19 @@ view -->
     <!-- Template: Include: All Pages -->
     <!-- TODO: Add Django Template-->
     <!-- includes\footer.html -->
-    <nav
+    <nav class="footer-wrapper"
         aria-label="Footer | Bottom Navigation | All Pages"
-        class="footer-wrapper"
         id="container-grid-footer"
         title="Container | Grid | Footer" >
         <!-- Middle Grid: 1,1 Landscape | 1,1 Portrait -->
-        <div
+        <div class=""
             aria-label="Footer | Left"
-            class=""
             id="left-grid-footer"
             role="contentinfo"
             title="Left Grid Cell | Contact About | 1,1 Landscape | 1,1 Portrait" >
             <!-- Flexbox: 1,1 Landscape | 1,1 Portrait -->
-            <div class="" title="Contact" >
+            <div class=""
+                 title="Contact">
                 <!-- TODO: Add Email-->
                 <a href="tel:+353851234567" title="Contact | Mobile" > +353851234567 </a >
                 <!-- TODO: Add Email-->

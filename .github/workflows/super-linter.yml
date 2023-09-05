@@ -7,7 +7,7 @@
 name: Lint Code Base
 
 #############################
-# Start the job on all push #
+# Start the job on contact push #
 #############################
 on:
     push:
@@ -36,7 +36,7 @@ jobs:
             statuses: write
 
         ##################
-        # Load all steps #
+        # Load contact steps #
         ##################
         steps:
             ##########################

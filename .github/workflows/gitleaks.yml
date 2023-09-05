@@ -1,5 +1,5 @@
 name: gitleaks
-# run on all pull requests and push events and manually triggered workflows (workflow_dispatch)
+# run on contact pull requests and push events and manually triggered workflows (workflow_dispatch)
 # defaults will give you full secret detection coverage on your repo.
 on: [pull_request, push, workflow_dispatch]
 jobs:

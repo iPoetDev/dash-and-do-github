@@ -116,13 +116,13 @@
                 </div>
                 <!-- Right | Top Menu | Logo & Title -->
                 <div
-                    aria-label="Main Navigation Banner"
                     class="[ nav-right-header ] [ mb-2 md:mb-0 ] [ flex md:flex-end md:block ]"
+                    aria-label="Main Navigation Banner"
                     data-main-banner="both"
                     id="header-nav-right">
                     <nav
-                        aria-label="Public Navigation, Unauthenticated Users"
                         class="[ public-menu-nav-right ] [ py-3 space-y-1 ] [ md:flex ] [ md:py-0 md:space-y-0 md:space-x-4 ]"
+                        aria-label="Public Navigation, Unauthenticated Users"
                         data-main-menu="public"
                         data-public="true"
                         id="public-header-nav-right"
@@ -150,8 +150,8 @@
                         >
                     </nav>
                     <nav
-                        aria-label="Private Navigation | Authenticated Users"
                         class="[ private-header-nav-right ] [ hidden ] [ py-3 space-y-1 ] [ md:flex ] [ md:py-0 md:space-y-0 md:space-x-4 ]"
+                        aria-label="Private Navigation | Authenticated Users"
                         data-main-menu="private"
                         data-private="true"
                         id="private-header-nav-right"
@@ -168,7 +168,7 @@
             <!-- Hidden & Invisble -->
             <!-- AI PROMPT: Update existing TailwindCSS: Constain min width to 15% on all screens, proportially to the screen size -->
             <!-- AI PROMPT: Update Tailwind CSS: Expand Column 1 width and shrink Column 2 width to 15% on all  button is toggled
-                and the aside is visible, aligned to the width of both the parent div with the max width of the aside#sidebar-content-->
+        and the aside is visible, aligned to the width of both the parent div with the max width of the aside#sidebar-content-->
             <div
                 class="[ side-content ] [ hidden invisible ] [ container relative ] [ flex flex-1 flex-col flex-start ] [ min-w-16 width-16 max-w-16 ] [ bg-blue-500 text-white]"
                 id="sidebar-col1-content">
@@ -201,42 +201,70 @@
         </main>
         <!-- ========================================= FOOTER ====================================================  -->
         <footer
-            class="[ footer-page ] [ flex items-center justify-center ] [ w-full h-fit ] [ px-2 md:px-6 py-4 ] [ nav-global-style ] [ bg-gray-800 text-white text-center ]"
+            class="[ footer-page ] [ flex items-center justify-center md:justify-between ] [ w-full h-fit ] [ px-2 md:px-6 py-4 ] [ nav-global-style ] [ bg-gray-800 text-white text-center ]"
             id="footer-page"
             title="Footer | All Pages">
+            <!-- includes\footer.html -->
             <nav
+                class="[ nav-global-footer ] [ flex flex-col md:flex-row items-start md:items-stretch md:space-x-4 ] [ w-full px-4 md:px-10 ] [ space-y-4 md:space-y-0 ]"
                 aria-label="Footer | Bottom Navigation | All Pages"
-                class="[ nav-global-footer ] [ grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 ] [ w-full px-4 md:px-10 ] [ space-y-4 md:space-y-0 ]"
                 id="nav-global-footer"
                 title="Container | Grid | Footer">
                 <!-- Block[Col]: Footer | Left: Contact Details -->
                 <div
+                    class="[ footer-nav-left ] [ flex flex-col md:flex-row ] [ items-center ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ min-h-[200px] p-4 ] [ order-3 md:order-1 ]"
                     aria-label="Footer | Left"
-                    class="[ footer-nav-left ] [ min-h-[200px] p-4 ]"
                     id="left-nav-footer"
                     role="contentinfo"
                     title="Left Grid Cell | Contact About | 1,1 Landscape | 1,1 Portrait">
-                    <!--Ignore: Do not generate Left Grid Footer children-->
+                    <div class="" title="Contact">
+                        <a id="mobile-link" href="" title="Contact | Mobile"> +353851234567 </a>
+                        <a id="email-link" href="" title="Contact | Email"> email@example.com </a>
+                    </div>
+
+                    <div class="" title="Credits">
+                        <a href="" title="Credits | Link"> Credits </a>
+                    </div>
+
+                    <div class="" title="Copyright">
+                        <p title="Copyright | Text">© 2023-2028</p>
+                    </div>
+                    <!-- TODO: External Automatic Mobile and Email href generation/ in script file -->
+                    <!-- TODO: Create a image with mobile and email, as per rest of text style -->
                 </div>
-                <!-- Block[Col]: Footer | Middle: Icons -->
                 <div
+                    class="[ footer-nav-mid ] [ flex flex-col md:flex-row ] [ justify-center items-center ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ min-h-[200px] p-4 ] [ order-2 md:order-2 ]"
                     aria-label="Footer | Middle"
-                    class="[ footer-nav-mid ] [ min-h-[200px] p-4 ]"
                     id="mid-nav-footer"
                     role="contentinfo"
                     title="Middle Grid Cell | Icons | 1,2 Landscape | 2,1 Portrait">
-                    <!--Ignore: Do not generate Mid Grid Footer children -->
+                    <div class="" title="GitHub">
+                        <a href="https://github.com/iPoetDev/dash-and-do-github" title="GitHub | Link to Repo">
+                            <img alt="GitHub" src="" title="GitHub | Icon | Logo | Add Copyright" />
+                        </a>
+                    </div>
                 </div>
                 <!-- Block[Col]: Footer | Right: Secondary Navigation | Links -->
                 <div
+                    class="[ footer-nav-right ] [ flex flex-col md:flex-row ] [ items-center ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ min-h-[200px] p-4 ] [ order-1 md:order-3 ]"
                     aria-label="Footer | Right"
-                    class="[ footer-nav-right ] [ min-h-[200px] p-4 ]"
                     id="right-nav-footer"
                     role="contentinfo"
                     title="Right Grid Cell | FAQ, Help & Docs | 1,3 Landscape | 3,1 Portrait">
-                    <!--Ignore: Do not generate Right Grid Footer children-->
+                    <div class="" title="FAQ">
+                        <a href="" title="FAQ">FAQ</a>
+                    </div>
+
+                    <div class="" title="Help">
+                        <a href="" title="Help">Help</a>
+                    </div>
+
+                    <div class="" title="Docs">
+                        <a href="" title="Docs">Docs</a>
+                    </div>
                 </div>
             </nav>
+            <!-- Extract-End: Include -->
         </footer>
         <!-- ========================================= Scripts ===================================================  -->
         <!-- Toggle JS -->

@@ -3,13 +3,13 @@ module.exports = {
     content: {
         relative: true,
         files: [
-        './templates/index.html', // main index file & entrpoint
-        './apps/**/templates/**/*.{html,js}',
-        './templates/*.{html,js}',
-        './templates/**/*.{html,js}',
-        './static/**/*.{html,css,js}',
-        './staticfiles/**/*.{html,css,js}',
-    ],
+            './templates/index.html', // main index file & entrpoint
+            './apps/**/templates/**/*.{html,js}',
+            './templates/*.{html,js}',
+            './templates/**/*.{html,js}',
+            './static/**/*.{html,css,js}',
+            './staticfiles/**/*.{html,css,js}',
+        ],
     },
     theme: {
         fontFamily: {

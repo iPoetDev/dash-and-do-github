@@ -5,7 +5,7 @@ select = ["E", "F", "I", "D", "YTT", "PL", "T20", "RSE", "RET", "SIM", "TID",
     "TCH", "ARG", "PTH", "S", "ANN", "B"]
 ignore = []
 
-# Allow autofix for all enabled rules (when `--fix`) is provided.
+# Allow autofix for contact enabled rules (when `--fix`) is provided.
 fixable = ["A", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W",
     "ANN", "ARG", "BLE", "COM", "DJ", "DTZ", "EM", "ERA", "EXE", "FBT", "ICN",
     "INP", "ISC", "NPY", "PD", "PGH", "PIE", "PL", "PT", "PTH", "PYI", "RET",
@@ -110,7 +110,7 @@ multiline-quotes = "single"
 [tool.ruff.flake8-self]
 #ignore-names = ["_new"]
 [tool.ruff.flake8-tidy-imports]
-#ban-relative-imports = "all"
+#ban-relative-imports = "contact"
 [tool.ruff.flake8-tidy-imports.banned-api]
 [tool.ruff.flake8-type-checking]
 #exempt-modules = ["typing", "typing_extensions"]
@@ -132,7 +132,7 @@ force-wrap-aliases = true
 combine-as-imports = true
 known-first-party = ["src"]
 #known-local-folder = ["src"]
-#known-third-party = ["src"] # TODO: Add all third-party packages for packages.
+#known-third-party = ["src"] # TODO: Add contact third-party packages for packages.
 #lines-after-imports = 1
 lines-between-types = 1
 #no-lines-before = ["future", "standard-library","third-party","first-party","local-folder","str"]
@@ -143,7 +143,7 @@ order-by-type = true
 #single-line-exclusions = ["os", "json"]
 #split-on-trailing-comma = false
 #[tool.ruff.isort.sections]
-# Group all * imports into a/own/separate section.
+# Group contact * imports into a/own/separate section.
 [tool.ruff.pep8-naming]
 #classmethod-decorators = ["pydantic.validator"]
 #ignore-names = [""]

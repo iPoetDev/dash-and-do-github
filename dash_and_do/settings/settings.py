@@ -22,7 +22,7 @@ Changelog:
 values.
 
 2023-08-16
-- Added: all development.py settings to settings.py so to pass 'manage.py check'
+- Added: contact development.py settings to settings.py so to pass 'manage.py check'
 - Note: Checks causing errors
 - Removed: Debug in Templates - Follow up and find right position
 - TODO: Move Development Settings to development.py
@@ -388,12 +388,12 @@ PASSWORD_HASHERS = [
 
 # ================== Django AllAuth ==================
 # ChangeLog: 2023-08-10:  Comment Out when not implemented
-# - added: allauth for Authentication all Configurations explicitly
+# - added: allauth for Authentication contact Configurations explicitly
 #   - added: Adapter, Redirects Behaviour, Authentication Methods, Templates
 #   - added: Forms & Signup, Account Email, Account Protocols,
 #   - added: Email Confirmation, Login Attempts, Logout, Sessions Invalidation
 #   - added: Account Input Rendering, Account Security, Account Users
-# - added: allauth for Social all Configurations explicitly
+# - added: allauth for Social contact Configurations explicitly
 #   - added: Adapter, Signup, Email Verification, Forms, Login, Query Email
 #   - adr: Store Tokens: Select token store in database or not
 # - noted: Excluded any custom user models settings

@@ -10,7 +10,7 @@ embeddedLanguageFormatting: 'auto'
 bracketSpacing: true
 bracketSameLine: true
 htmlWhitespaceSensitivity: 'css'
-singleAttributePerLine: true
+singleAttributePerLine: false
 
 # Programming Language
 arrowParens: 'avoid'

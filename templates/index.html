@@ -43,7 +43,8 @@
         <!-- Hide until found: https://www.w3.org/WAI/tutorials/menus/skip/ -->
         <!-- https://webaim.org/techniques/skipnav/ -->
         <!-- Changelog: 2023-09-04
-- added: class/tailwinds -->
+            - added: class/tailwinds
+        -->
         <div
             class="[ skip-links-block ] [ flex items-center ] [ absolute top-0 left-0 z-50 ] [ invisible sr-only opacity-0 ] [ transition-opacity duration-500 ease-out ]"
             autofocus
@@ -72,17 +73,17 @@
         </div>
         <!-- ========================================= HEADER ====================================================  -->
         <header
-            class="[ header-page header-style ] [ flex items-center justify-between ] [ w-auto h-16 px-4 py-2 ]"
+            class="[ page-header header-style ] [ flex flex-auto flex-col md:flex-row ] [ items-center md:justify-between ] [ w-auto h-max md:h-16 ] [ mb-1 md:mb-0 ] [ px-4 py-2 ]"
             id="header-page">
             <!-- ===================================== GLOBAL NAVIGATION ==========================================  -->
             <nav
-                class="[ nav-global-header ] [ w-full ] [ flex flex-row justify-between items-center ] [ px-2 md:px-6 py-4 ] [ nav-global-style ] [ bg-gray-800 text-white text-center ]"
+                class="[ nav-global-header ] [ w-full ] [ flex flex-auto flex-col md:flex-row ] [ items-center md:justify-between ] [ px-2 md:px-6 py-4 ] [ md:space-x-4 space-y-4 md:space-y-0 ] [ nav-global-style ] [ bg-gray-800 text-white text-center ]"
                 aria-label="Global Navigation"
                 id="nav-global-header">
                 <!-- Left | Banner | Logo & Title -->
                 <div class="[ nav-left-header ] [ min-w-1/3 ] [ flex flex-row ]" id="header-nav-left">
                     <div
-                        class="[ nav-brand-header ] [ flex flex-start flex-shrink-0 items-center ] [ mx-2 md:mx-6 ] [ aspect-w-1 aspect-h-1 ]"
+                        class="[ nav-brand-header ] [ flex flex-shrink-0 ] [ justify-start items-center ] [ mx-2 md:mx-6 ] [ aspect-w-1 aspect-h-1 ]"
                         id="brand-header">
                         <a
                             class="[ nav-brand-homelink ] [ text-white hover:text-gray-200 ] [ transition-colors duration-200 ease-in-out ]"
@@ -98,7 +99,7 @@
                         </a>
                     </div>
                     <div
-                        class="[ nav-brand-title ] [ flex flex-row flex-end flex-shrink-1 items-center ] [ hidden md:block ]"
+                        class="[ nav-brand-title ] [ flex flex-end flex-shrink-1 ] [ justify-end items-center ] [ hidden md:block ]"
                         id="brand-title"
                         title="Title | Link">
                         <a
@@ -121,7 +122,7 @@
                     data-main-banner="both"
                     id="header-nav-right">
                     <nav
-                        class="[ public-menu-nav-right ] [ py-3 space-y-1 ] [ md:flex ] [ md:py-0 md:space-y-0 md:space-x-4 ]"
+                        class="[ public-menu-nav-right ] [ py-3 space-y-1 ] [ flex ] [ md:py-0 md:space-y-0 md:space-x-4 ]"
                         aria-label="Public Navigation, Unauthenticated Users"
                         data-main-menu="public"
                         data-public="true"
@@ -161,14 +162,11 @@
         </header>
         <!-- ========================================= MAIN PAGE CONTENT =========================================  -->
         <main
-            class="[ page-main-content ] [ flex flex-row ] [ h-screen ] [ px-4 pb-20 lg:pb-4 ] [ space-y-10 lg:space-y-0 lg:space-x-10 ]"
+            class="[ page-main-content ] [ flex flex-row ] [ h-screen ] [ mt-0 md:mt-1 lg:mt-6 ] [ px-4 pb-20 lg:pb-4 ] [ space-y-10 lg:space-y-0 lg:space-x-10 ]"
             id="main-page-content">
             <!-- Col 1 Side-Content -->
             <!-- TODO: Research Floating Sidebar Navigation with a sidebar strip with a toggle button-->
             <!-- Hidden & Invisble -->
-            <!-- AI PROMPT: Update existing TailwindCSS: Constain min width to 15% on all screens, proportially to the screen size -->
-            <!-- AI PROMPT: Update Tailwind CSS: Expand Column 1 width and shrink Column 2 width to 15% on all  button is toggled
-        and the aside is visible, aligned to the width of both the parent div with the max width of the aside#sidebar-content-->
             <div
                 class="[ side-content ] [ hidden invisible ] [ container relative ] [ flex flex-1 flex-col flex-start ] [ min-w-16 width-16 max-w-16 ] [ bg-blue-500 text-white]"
                 id="sidebar-col1-content">
@@ -201,52 +199,56 @@
         </main>
         <!-- ========================================= FOOTER ====================================================  -->
         <footer
-            class="[ footer-page ] [ flex items-center justify-center md:justify-between ] [ w-full h-fit ] [ px-2 md:px-6 py-4 ] [ nav-global-style ] [ bg-gray-800 text-white text-center ]"
+            class="[ page-footer ] [ flex flex-auto flex-col md:flex-row ] [ items-center md:justify-between ] [ w-full h-max ] [ px-2 md:px-6 py-4 ] [ nav-global-style ] [ bg-gray-800 text-white text-center ]"
             id="footer-page"
             title="Footer | All Pages">
             <!-- includes\footer.html -->
             <nav
-                class="[ nav-global-footer ] [ flex flex-col md:flex-row items-start md:items-stretch md:space-x-4 ] [ w-full px-4 md:px-10 ] [ space-y-4 md:space-y-0 ]"
+                class="[ nav-global-footer ] [ grid grid-row-3 md:grid-cols-3 gap-6 ] [ place-items-center md:justify-between md:items-start ] [ w-full h-auto ] [ px-4 md:px-10 ] [ md:space-x-4 space-y-4 md:space-y-0 ]"
                 aria-label="Footer | Bottom Navigation | All Pages"
                 id="nav-global-footer"
                 title="Container | Grid | Footer">
                 <!-- Block[Col]: Footer | Left: Contact Details -->
                 <div
-                    class="[ footer-nav-left ] [ flex flex-col md:flex-row ] [ items-center ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ min-h-[200px] p-4 ] [ order-3 md:order-1 ]"
+                    class="[ footer-nav-left ] [ flex flex-wrap flex-col lg:flex-row ] [ justify-self-center md:justify-self-start place-items-center md:items-start ] [ md:max-width-1/3 h-fit ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ p-4 ] [ order-3 md:order-1 ]"
                     aria-label="Footer | Left"
                     id="left-nav-footer"
                     role="contentinfo"
                     title="Left Grid Cell | Contact About | 1,1 Landscape | 1,1 Portrait">
-                    <div class="" title="Contact">
+                    <div class="[ place-items-center ]" title="Contact">
                         <a id="mobile-link" href="" title="Contact | Mobile"> +353851234567 </a>
+                    </div>
+                    <div class="[ place-items-center ]" title="Contact | Email">
                         <a id="email-link" href="" title="Contact | Email"> email@example.com </a>
-                    </div>
-
-                    <div class="" title="Credits">
-                        <a href="" title="Credits | Link"> Credits </a>
-                    </div>
-
-                    <div class="" title="Copyright">
-                        <p title="Copyright | Text">© 2023-2028</p>
                     </div>
                     <!-- TODO: External Automatic Mobile and Email href generation/ in script file -->
                     <!-- TODO: Create a image with mobile and email, as per rest of text style -->
+                    <div class="[ block visible md:hidden md:invisible ]" title="Copyright">
+                        <p title="Copyright | Text">© 2023-2028</p>
+                    </div>
                 </div>
                 <div
-                    class="[ footer-nav-mid ] [ flex flex-col md:flex-row ] [ justify-center items-center ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ min-h-[200px] p-4 ] [ order-2 md:order-2 ]"
+                    class="[ footer-nav-mid ] [ flex flex-col md:flex-row ] [ justify-self-center md:justify-self-center items-center md:items-start ] [ md:max-width-1/3 h-fit ] [ mx-auto ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ p-4 ] [ order-2 md:order-2 ]"
                     aria-label="Footer | Middle"
                     id="mid-nav-footer"
                     role="contentinfo"
                     title="Middle Grid Cell | Icons | 1,2 Landscape | 2,1 Portrait">
-                    <div class="" title="GitHub">
-                        <a href="https://github.com/iPoetDev/dash-and-do-github" title="GitHub | Link to Repo">
-                            <img alt="GitHub" src="" title="GitHub | Icon | Logo | Add Copyright" />
-                        </a>
+                    <div
+                        class="[ nav-mid-col ] [ flex flex-col ] [ justify-self-center md:justify-self-start items-center md:items-start ] [ md:max-width-1/3 h-fit ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ p-4 ]"
+                        id="nav-mid-col">
+                        <div class="" title="GitHub">
+                            <a href="https://github.com/iPoetDev/dash-and-do-github" title="GitHub | Link to Repo">
+                                <img alt="GitHub" src="" title="GitHub | Icon | Logo | Add Copyright" />
+                            </a>
+                        </div>
+                        <div class="[ hidden invisible md:block md:visible]" title="Copyright">
+                            <p title="Copyright | Text">© 2023-2028</p>
+                        </div>
                     </div>
                 </div>
                 <!-- Block[Col]: Footer | Right: Secondary Navigation | Links -->
                 <div
-                    class="[ footer-nav-right ] [ flex flex-col md:flex-row ] [ items-center ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ min-h-[200px] p-4 ] [ order-1 md:order-3 ]"
+                    class="[ footer-nav-right ] [ flex flex-wrap flex-col md:flex-row ] [ justify-self-center md:justify-self-end items-center md:items-start ] [ md:max-width-1/3 h-fit ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ p-4 ] [ order-1 md:order-3 ]"
                     aria-label="Footer | Right"
                     id="right-nav-footer"
                     role="contentinfo"

@@ -21,51 +21,42 @@
     }
 
     /*Block: Header */
-    .header-page {
-        @apply flex items-center justify-between w-auto h-16 px-4 py-2;
-    }
-
-    .header-style {
-    }
-
-    /*Block: Global Nav */
-    .nav-global-header {
-        @apply px-2 md:px-6 py-4 bg-gray-800 text-white flex flex-col-reverse md:flex-row justify-between items-center;
-    }
-
-    .nav-global-style {
-        @apply bg-green-800 text-white;
-    }
-
-    .nav-left-header {
-        @apply items-center flex flex-shrink-0 md:flex-start mr-6;
-    }
-
-    .nav-brand-header {
-        @apply bg-gray-500 aspect-w-1 aspect-h-1
-        @apply flex-shrink-0
-        @apply flex items-center;
-    }
-
-    .nav-brand-title {
-        @apply bg-gray-500
-        @apply hidden md:block;
-    }
-
-    .nav-brand-homelink {
-        @apply text-white hover:text-gray-200
-        @apply font-semibold text-xl tracking-tight
-        @apply transition-colors duration-200 ease-in-out;
-    }
-
-    .nav-left-logo {
-        @apply object-cover h-full w-full;
-    }
-
-    .nav-brand-text {
-        @apply text-white hover:text-gray-200
-        @apply font-semibold text-xl tracking-tight;
-    }
+    /* .header-page { */
+    /*     @apply flex items-center justify-between w-auto h-16 px-4 py-2; */
+    /* } */
+    /* .header-style { */
+    /* } */
+    /* Block: Global Nav */
+    /* .nav-global-header { */
+    /*     @apply px-2 md:px-6 py-4 bg-gray-800 text-white flex flex-col-reverse md:flex-row justify-between items-center; */
+    /* } */
+    /* .nav-global-style { */
+    /*     @apply bg-green-800 text-white; */
+    /* } */
+    /* .nav-left-header { */
+    /*     @apply items-center flex flex-shrink-0 md:flex-start mr-6; */
+    /* } */
+    /* .nav-brand-header { */
+    /*     @apply bg-gray-500 aspect-w-1 aspect-h-1 */
+    /*     @apply flex-shrink-0 */
+    /*     @apply flex items-center; */
+    /* } */
+    /* .nav-brand-title { */
+    /*     @apply bg-gray-500 */
+    /*     @apply hidden md:block; */
+    /* } */
+    /* .nav-brand-homelink { */
+    /*     @apply text-white hover:text-gray-200 */
+    /*     @apply font-semibold text-xl tracking-tight */
+    /*     @apply transition-colors duration-200 ease-in-out; */
+    /* } */
+    /* .nav-left-logo { */
+    /*     @apply object-cover h-full w-full; */
+    /* } */
+    /* .nav-brand-text { */
+    /*     @apply text-white hover:text-gray-200 */
+    /*     @apply font-semibold text-xl tracking-tight; */
+    /* } */
 }
 
 @layer utilities {

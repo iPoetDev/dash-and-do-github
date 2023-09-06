@@ -12,6 +12,9 @@ module.exports = {
         ],
     },
     theme: {
+        container: {
+            center: true,
+        },
         fontFamily: {
             sans: ['Inter', 'sans-serif'],
             serif: ['Inter', 'sans-serif'],

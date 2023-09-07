@@ -234,6 +234,7 @@
                                     data-view="public"
                                     id="login-form-in-card"
                                     method="post"
+                                    name="login-form"
                                     hx-post="server-script-goes-here"
                                     hx-trigger="submit"
                                     hx-swap="outerHTML">
@@ -251,7 +252,7 @@
                                             aria-hidden="true"
                                             hidden="until-found"
                                             id="label-login-form">
-                                            Login form
+                                            Login Form
                                         </legend>
                                         <!-- ========================= PUBLIC LOGIN ROW========================= -->
                                         <div
@@ -385,6 +386,7 @@
                         data-public="false"
                         data-private="true"
                         data-view="private"
+                        hidden="hidden"
                         role="menubar"
                         id="public-header-nav-right"
                         title="Public Navigation">
@@ -574,33 +576,476 @@
         <main
             class="[ page-main-content ] [ flex flex-row ] [ h-screen ] [ mt-0 md:mt-1 lg:mt-6 ] [ px-4 pb-20 lg:pb-4 ] [ space-y-10 lg:space-y-0 lg:space-x-10 ]"
             id="main-page-content">
-            <!-- Col 1 Side-Content -->
+            <!-- ===================================== SIDE CONTENT: 1 COLUMN ====================================  -->
             <!-- TODO: Research Floating Sidebar Navigation with a sidebar strip with a toggle button-->
             <!-- Hidden & Invisble -->
             <div
                 class="[ side-content ] [ hidden invisible ] [ container relative ] [ flex flex-1 flex-col flex-start ] [ min-w-16 width-16 max-w-16 ] [ bg-blue-500 text-white]"
                 id="sidebar-col1-content">
                 <!-- AI PROMPT: Overlay Button on top of #sidebar-content -->
+                <!-- ===================================== SIDE CONTENT: Control =================================  -->
                 <button
                     class="[ sidebar-toggle ] [ absolute top-3 right-0 ] [ w-20 h-16 z-10 ] [ px-4 py-2 ] [ bg-blue-800 text-white ]"
                     id="toggle-sidebar-btn">
                     Toggle
                 </button>
-                <!-- AI PROMPT: Update Tailwind CSS: Move the Aside#sidebar-content to top left of the div#sidebar-col1-content -->
+                <!-- ================================= SIDE CONTENT:SIDE NAV =====================================  -->
                 <aside
                     class="[ sidebar-nav ] [ fixed ] [ max-w-1/3 hidden lg:block lg:width-1/3 ] [ lg:flex w-64 lg:w-1/4 xl:w-1/3 ] [ h-full lg:sticky top-0 overflow-auto ] [ transition-transform duration-200 ease-in-out ] [ transform -translate-x-full lg:translate-x-0 ] [ sidebar-style ] [ bg-gray-200 ]"
+                    hidden="hidden"
                     id="sidebar-content"></aside>
             </div>
-            <!-- Col 2 Main Content -->
+            <!-- ===================================== CONTENT: 1 COLUMN =========================================  -->
             <div class="[ main-content ] [ flex flex-1 flex-col flex-end ] [ space-y-10 ]" id="central-col2-content">
+                <!-- ================================= CONTENT: TOP: HERO ========================================  -->
                 <!-- Block[Row]: Content | Top Section: 1) All Views: Hero | Carousel -->
                 <section
                     class="[ top-content ] [ flex-1 flex-end ] [ min-w-3/4 w-full min-h-350 ] [ mx-auto p-3 ] [ bg-gray-300 ]"
                     id="top-section-content"></section>
+                <!-- ================================= CONTENT: MID : SIGNUP | APP CARDS =========================  -->
                 <!-- Block: Content | Mid Section: 1) Public & 2) Private  -->
                 <section
                     class="[ mid-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-3 ] [ bg-gray-400 ]"
-                    id="middle-section-content"></section>
+                    aria-description="Content - Call to actions"
+                    aria-label="Content"
+                    data-view="all"
+                    id="middle-section-content">
+                    <h1
+                        class="[ header-content ] [ invisible opacity-0 ] [ sr-only ]"
+                        id="header-middle-content"
+                        aria-description=""
+                        aria-label="Content header - middle of page"
+                        aria-hidden="false"
+                        data-view="all"
+                        hidden="until-found">
+                        User Registration | App Content
+                    </h1>
+                    <!-- ============================= CONTENT: PUBLIC | MOBILE+ =================================  -->
+                    <!-- ============================= CONTENT: MID : FORM: SIGNUP ===============================  -->
+                    <article
+                        class="[ app-card ] [ flex ] [ w-auto h-fit ] [ place-items-center ] [ m-8 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] [ rounded-md shadow-lg ]"
+                        aria-description="CTA Register New Account, by Sign Up form"
+                        aria-label="Sign Up Form User Registration"
+                        data-card="form-cta"
+                        data-view="public"
+                        id="signup-form-cta-content">
+                        <h2
+                            class="[ card-label ] [ hidden ] [ sr-only ]"
+                            id="signup-form-cta-header"
+                            aria-description="Form label - Sign Up"
+                            aria-hidden="false"
+                            aria-label="Apps CTA | Header"
+                            data-view="public">
+                            Sign Up
+                        </h2>
+                        <!-- ========================= CONTENT: MID : FORM SIGNUP | HTMX ========================  -->
+                        <!-- 1️⃣ HTMX Target: Start: OuterHTML | Relace: Form | Have to reload form redirect after submit -->
+                        <div
+                            class="[ form-inner-card ] [ flex ] [ w-3/4 h-fit ] [ place-items-center ] [ mx-auto my-8 ] [ gap-4 ] [ space-2 ] [ rounded-md shadow-lg ]"
+                            id="signup-form-card-content"
+                            aria-description="Sign Up Form | Card | Inner"
+                            aria-label="Form Card"
+                            data-view="public">
+                            <!-- ===================== PUBLIC CARD SIGNUP FORM ===================================  -->
+                            <form
+                                class="[ form-signup ]"
+                                action="#"
+                                data-form="signup"
+                                data-view="public"
+                                id="signup-form-in-card"
+                                method="post"
+                                name="signup-form"
+                                hx-post="server-script-goes-here"
+                                hx-trigger="submit"
+                                hx-swap="outerHTML">
+                                <!-- ======================= PUBLIC SIGNUP FIELDS' 1 COLUMN ===================  -->
+                                <fieldset
+                                    class="[ form-card ] [ w-full h-full ] [ p-4 border ] [ bg-gray-100 ] [ rounded-lg ]"
+                                    data-view="public"
+                                    form="signup-form"
+                                    id="fields-signup-form">
+                                    <legend
+                                        class="[ form-card-label ] [ sr-only ]"
+                                        aria-description="Sign Up Form Label"
+                                        aria-hidden="true"
+                                        hidden="until-found"
+                                        id="label-signup-form">
+                                        Sign Up Form
+                                    </legend>
+                                    <!-- ========================= PUBLIC SIGNUP ROW========================= -->
+                                    <div
+                                        class="[ formrow ] [ relative ] [ my-4 ]"
+                                        aria-label="Signup Menu Item"
+                                        data-view="public"
+                                        id="signup-user-row">
+                                        <img
+                                            class="[ card-image ] [ w-full h-1/3 ] [ object-cover object-center ] [ rounded-t-md ]"
+                                            alt="Signup Card Image"
+                                            data-view="public"
+                                            height=""
+                                            id=""
+                                            src=""
+                                            width="100%" />
+                                        <h2>Create a New Account</h2>
+                                    </div>
+                                    <!-- ========================= PUBLIC SIGNUP ROW========================= -->
+                                    <div
+                                        class="[ formrow ] [ relative ] [ my-4 ]"
+                                        aria-label="Signup Menu Item: Username"
+                                        data-view="public"
+                                        id="signup-user-row">
+                                        <input
+                                            class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                            id="signup-username"
+                                            aria-description="Username: Input Length: min: 6, max: 30"
+                                            aria-label="Enter a Username"
+                                            aria-autocomplete="inline"
+                                            autocomplete="username"
+                                            data-view="public"
+                                            maxlength="30"
+                                            minlength="6"
+                                            name="username"
+                                            placeholder="Username"
+                                            aria-placeholder="Username"
+                                            required
+                                            tabindex="5"
+                                            title="Choose a valid Username"
+                                            type="text" />
+                                        <label
+                                            class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                            id="signup-username-tag"
+                                            aria-description="Enter account username"
+                                            aria-labelledby="signup-username"
+                                            data-view="public"
+                                            for="signup-username">
+                                            Username
+                                        </label>
+                                        <span
+                                            class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                                            data-status="invalid"
+                                            data-view="public"
+                                            id="invalid-signupuser-msg">
+                                            Please enter a valid username, min 6, max 30 in length.
+                                        </span>
+                                    </div>
+                                    <!-- ========================= PUBLIC SIGNUP ROW========================= -->
+                                    <div
+                                        class="[ formrow ] [ relative ] [ my-4 ]"
+                                        aria-label="Signup Menu Item: Email"
+                                        data-view="public"
+                                        id="signup-email-row">
+                                        <input
+                                            class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                            id="signup-email"
+                                            aria-description="Email: Input Length: min: 8, max: 50"
+                                            aria-label="Enter a Email"
+                                            aria-autocomplete="inline"
+                                            autocomplete="email"
+                                            data-view="public"
+                                            maxlength="50"
+                                            minlength="8"
+                                            name="email"
+                                            pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$.{8,50}"
+                                            placeholder="Email"
+                                            aria-placeholder="Email"
+                                            required
+                                            tabindex="5"
+                                            title="Choose a valid Email: a-z, A-Z, 0-9, _ + - , min 8, max 50"
+                                            type="email" />
+                                        <label
+                                            class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                            id="signup-username-tag"
+                                            aria-description="Enter account username"
+                                            aria-labelledby="signup-username"
+                                            data-view="public"
+                                            for="signup-username">
+                                            Email
+                                        </label>
+                                        <span
+                                            class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                                            data-status="invalid"
+                                            data-view="public"
+                                            id="invalid-signupemail-msg">
+                                            Please select a valid email address. <br />
+                                            (Symbols:
+                                            <pre class="highlight">_ + -</pre>
+                                            are permitted before the
+                                            <pre class="highlight">@</pre>
+                                            symbol).
+                                        </span>
+                                    </div>
+                                    <!-- ========================= PUBLIC SIGNUP ROW========================= -->
+                                    <div
+                                        class="[ form-group ] [ relative ] [ my-4 ]"
+                                        aria-label="Signup Menu Item: Password"
+                                        data-view="public"
+                                        id="signup-pass-row">
+                                        <!-- CHECK: pattern
+                                        Number: (?=.*\d)
+                                        Lowercase: (?=.*[a-z])
+                                        Uppercase: (?=.*[A-Z])
+                                        Symbols: (?=.*[@$!%*?&])
+                                        Length.{12,50}" -->
+                                        <input
+                                            class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                            id="new-password"
+                                            aria-description="Passwords use a-z, A-Z, 0-9 and @,$,!,%,*,?,&, min: 12, max: 50. Must match."
+                                            aria-label="Create a new password"
+                                            aria-autocomplete="none"
+                                            autocomplete="new-password"
+                                            data-view="public"
+                                            maxlength="50"
+                                            minlength="12"
+                                            name="new-password"
+                                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{12,50}"
+                                            placeholder="New Password"
+                                            aria-placeholder="New Password"
+                                            required
+                                            tabindex="5"
+                                            title="Create a valid Password"
+                                            type="password" />
+                                        <label
+                                            class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                            id="set-password-tag"
+                                            aria-description="Create a password: a-z, A-Z, 0-9 with @,$,!,%,*,?,& and min: 12, max: 50. Must match."
+                                            aria-labelledby="set-password"
+                                            data-view="public"
+                                            for="new-password">
+                                            New Password
+                                        </label>
+                                        <span
+                                            class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                                            data-status="invalid"
+                                            data-view="public"
+                                            id="invalid-signuppass-msg">
+                                            Please create valid password: lowercase, uppercase, 0-9, symbols, min 12,
+                                            max 50.
+                                        </span>
+                                    </div>
+                                    <!-- =============================== PUBLIC SIGNUP ROW========================= -->
+                                    <div
+                                        class="[ form-group ] [ relative ] [ my-4 ]"
+                                        aria-label="Signup Menu Item: Password"
+                                        data-view="public"
+                                        id="signup-pass-row">
+                                        <!-- CHECK: pattern
+                                        Number: (?=.*\d)
+                                        Lowercase: (?=.*[a-z])
+                                        Uppercase: (?=.*[A-Z])
+                                        Symbols: (?=.*[@$!%*?&])
+                                        Length.{12,50}" -->
+                                        <input
+                                            class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                            id="confirm-password"
+                                            aria-description="Passwords use a-z, A-Z, 0-9 and @,$,!,%,*,?,&, min: 12, max: 50. Must match."
+                                            aria-label="Create a new password"
+                                            aria-autocomplete="none"
+                                            autocomplete="new-password"
+                                            data-view="public"
+                                            maxlength="50"
+                                            minlength="12"
+                                            name="confirm-password"
+                                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{12,50}"
+                                            placeholder="Confirm Password"
+                                            aria-placeholder="Confirm Password"
+                                            required
+                                            tabindex="5"
+                                            title="Create a valid Password"
+                                            type="password" />
+                                        <label
+                                            class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                            id="confirm-password-tag"
+                                            aria-labelledby="confirm-password"
+                                            aria-description="Create a password: a-z, A-Z, 0-9 with @,$,!,%,*,?,&, min: 12, max: 50. Must match."
+                                            data-view="public"
+                                            for="confirm-password">
+                                            Confirm Password
+                                        </label>
+                                        <span
+                                            class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                                            data-status="invalid"
+                                            data-view="public"
+                                            id="invalid-signupmatch-msg">
+                                            Please confirm that both password match.
+                                        </span>
+                                    </div>
+                                    <!-- =============================== PUBLIC SIGNUP ROW ======================== -->
+                                    <div
+                                        class="[ form-group ] [ flex flex-row ] [ justify-between items-center ] [ my-2 ]"
+                                        aria-label="Signup Menu Item: Button"
+                                        data-view="public"
+                                        id="signup-btn-row">
+                                        <!-- =========================== PUBLIC SIGNUP BUTTON ===================== -->
+                                        <input
+                                            class="[ input-field peer ] [ block w-full ] [ mb-4 ] [ p-2 ] [ border rounded-md outline-none ] [ font-medium text-base text-gray-500 ] | [ focus:ring-blue-500 focus:border-blue-500 ]"
+                                            aria-description="Submit form to signup and create a new account"
+                                            aria-label="Sign Up | Create Account"
+                                            data-view="public"
+                                            tabindex="5"
+                                            type="submit"
+                                            value="Create Account" />
+                                    </div>
+                                    <!-- ========================= PUBLIC SIGNUP ROW========================= -->
+                                    <!-- ========================= FORGET PAGASSWORD: LINK ================= -->
+                                    <!-- ========================= FORGET PAGASSWORD: Reset.html =========== -->
+                                </fieldset>
+                            </form>
+                        </div>
+                        <!-- ========================= CONTENT: MID : FORM STATUS | HTMX TARGET ==================  -->
+                        <!-- 2️⃣HTMX Target: Start: beforeend | Keep Form & Clear Form -->
+                        <div
+                            class="[ status-card notification ] [ invisible opacity-0 ] [ mx-auto p-5 ] [ bg-grey-100 ] [ border-l-4 border-blue-500 ]"
+                            id="status-signup-notice"
+                            aria-description="Form Status"
+                            aria-label="Form Status"
+                            data-form="signup"
+                            data-message="status"
+                            data-view="public"
+                            hidden="hidden"
+                            inert
+                            title="Status">
+                            <h3
+                                class="[ status-label ] [ sr-only ] [ font-semibold ] [ text-md text-blue-800 ]"
+                                id="signup-status-label"
+                                aria-description="Status Message Banner"
+                                aria-label="Status Message"
+                                data-form="signup"
+                                data-status="message"
+                                hidden="until-found">
+                                Sign Up Status
+                            </h3>
+                            <p
+                                class="[ status-text ] [ my-2 ] [ font-semibold ] [ text-base text-blue-800 ]"
+                                id="signup-status-text"
+                                aria-description="Status Message:Confirm or Error"
+                                aria-label="Status Message"
+                                data-form="signup"
+                                data-status="message"
+                                data-view="public">
+                                {{Message}}
+                            </p>
+                            <!-- Message Success & Message Error -->
+                        </div>
+                        <!-- End Form | Sign Up, Public -->
+                    </article>
+                    <!-- ============================= CONTENT: PRIVATE | TABLET+ ================================= -->
+                    <!-- ============================= CONTENT: MID : APP CARDS ==================================  -->
+                    <article
+                        class="[ app-cta private ] [ hidden ] [ w-auto h-fit ] [ place-items-center ] [ m-8 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] [ rounded-md shadow-lg ]"
+                        id="appcards-cards-cta-content"
+                        aria-description="App Cards | Outline of App Features"
+                        aria-label="App Cards"
+                        data-card="content"
+                        data-private="true"
+                        data-view="private"
+                        hidden="hidden"
+                        title="App Cards | Call to Action | Logged In | 1 x2 Grid | 2 Card Components">
+                        <!-- - TODO: Add Django Template -->
+                        <!-- - TODO: Add Django View -->
+                        <h2
+                            class="[ card-label ] [ hidden ] [ sr-only ]"
+                            id="private-cta-header"
+                            aria-description="ScreenReader | Banner | Calls to Action | Logged In | 1 x 2 Grid | 2 Card Components"
+                            aria-hidden="false"
+                            aria-label="Apps CTA | Header"
+                            data-view="private"
+                            hidden="until-found"
+                            tabindex="">
+                            Dash &amp; Do
+                        </h2>
+                        <!-- Component Block | 1 x 2 Grid -->
+                        <div
+                            class="[ app-card ] [ flex flex-col flex-auto md:flex-row ] [ w-auto h-full ] [ place-items-center ] [ m-2 ] [ gap-8 ] [ rounded-md shadow-lg ]"
+                            id="cards-private-cta-section"
+                            title="Private | AppCards | CTA Component">
+                            <article
+                                class="[ app-card ] [ flex flex-col flex-auto ] [ w-auto md:w-1/2 h-full md:h-full ] [ place-items-center ] [ gap-4 ] [ shadow-lg ]"
+                                id="card-cta-dash"
+                                aria-description=""
+                                aria-label="Call to Action | Apps | Header"
+                                data-view="private"
+                                data-card="app"
+                                title="Dashboard Call to Action | Logged In | Call to Action | Card Component">
+                                <div class="[ card-row ] [ ]" id="dash-cardrow-header">
+                                    <h3
+                                        class="[ card-tag ] [ ]"
+                                        id="app-card-heading"
+                                        aria-description="Dashboard Call to Action | Logged In | Call to Action | Card Component">
+                                        Dash & Inform
+                                    </h3>
+                                </div>
+                                <div class="[ card-row ] [ ]" id="dash-cardrow-outline">
+                                    <p
+                                        class="[ card-text ] [ mx-auto px-8 ]"
+                                        id="dash-card-outline"
+                                        aria-description="Dashboard Call to Action | Logged In | Call to Action | Card Component">
+                                        This is the dashboard for the Dash and Do for GitHub. This is a dashboard and
+                                        to-do list manager for GitHub. It is designed to help developers manage their
+                                        GitHub projects as portfolios.
+                                    </p>
+                                </div>
+                                <div class="[ card-row ] [ ]" id="dash-cardrow-link">
+                                    <a
+                                        class="[ card-app-link ] [ ]"
+                                        id="dash-card-link"
+                                        aria-description=" Call to Action | Logged In | Call to Action | Card Component"
+                                        href="">
+                                        View your GitHub Dashboard Status
+                                    </a>
+                                </div>
+                            </article>
+                            <article
+                                class="[ app-card ] [ flex flex-col flex-auto ] [ w-auto md:w-1/2 h-full md:h-full ] [ place-items-center ] [ mx-2 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] [ rounded-md shadow-lg ]"
+                                id="card-cta-do"
+                                aria-description="Do Call to Action | Logged In | Call to Action | Card Component | Inert | Disabled | Future"
+                                aria-label="Call to Action | Apps | Header"
+                                data-view="private"
+                                data-card="app"
+                                hidden="hidden"
+                                inert>
+                                <div
+                                    class="[ card-tag roadmap ] [ ]"
+                                    id="do-coming-soon-tag"
+                                    aria-description="Card Tags | Comings Soon Label"
+                                    aria-label="Roadmap | Coming Soon"
+                                    data-view="private"
+                                    hidden="until-found"
+                                    inert>
+                                    Comming Soon
+                                </div>
+                                <div class="[ card-row ] [ ]" id="do-cardrow-header">
+                                    <h3
+                                        class="[ card-tag ] [ ]"
+                                        id="do-card-heading"
+                                        aria-description="Do Call to Action | Logged In | Call to Action | Card Component">
+                                        Do & Act (Disabled)
+                                    </h3>
+                                </div>
+                                <div class="[ card-row ] [ ]" id="do-cardrow-outline">
+                                    <p
+                                        class="[ card-text ] [ mx-auto px-8 ]"
+                                        id="do-card-outline"
+                                        aria-description="Do & Action Outline">
+                                        This is the do for the Dash and Do for GitHub. This is a dashboard and to-do
+                                        list manager for GitHub. It is designed to help developers manage their GitHub
+                                        projects as portfolios.
+                                    </p>
+                                </div>
+                                <div class="[ card-row ] [ ]" id="do-cardrow-link">
+                                    <a
+                                        class="[ card-app-link ] [ ]"
+                                        id="do-card-link"
+                                        aria-description="Do & Act Link"
+                                        href="">
+                                        Check your GitHub Tasks Status
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                    </article>
+                </section>
+                <!-- ============================= CONTENT: ALL | MOBILE+ =================================  -->
+                <!-- ============================= CONTENT: BOT: FORM - COMTACT  =============================  -->
                 <!-- Block[Row]: Content | Bottom Section: 1) All Views: Contact Form -->
                 <section
                     class="[ btm-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-3 ] [ bg-gray-500 ]"

@@ -595,7 +595,7 @@
                     hidden="hidden"
                     id="sidebar-content"></aside>
             </div>
-            <!-- ===================================== CONTENT: 1 COLUMN =========================================  -->
+            <!-- ===================================== CONTENT: 2 COLUMN =========================================  -->
             <div class="[ main-content ] [ flex flex-1 flex-col flex-end ] [ space-y-10 ]" id="central-col2-content">
                 <!-- ================================= CONTENT: TOP: HERO ========================================  -->
                 <!-- Block[Row]: Content | Top Section: 1) All Views: Hero | Carousel -->
@@ -694,6 +694,7 @@
                                         aria-label="Signup Menu Item: Username"
                                         data-view="public"
                                         id="signup-user-row">
+                                        <!-- UAT: pattern & INPUT -->
                                         <input
                                             class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
                                             id="signup-username"
@@ -734,6 +735,16 @@
                                         aria-label="Signup Menu Item: Email"
                                         data-view="public"
                                         id="signup-email-row">
+                                        <!-- UAT: pattern & INPUT
+                                         -Before @ [Email]
+                                           - Any: Lower-, upper-, 0-9,
+                                           - Symbols: _ + - @
+                                         - After @ [Domain.TLD]
+                                           - [Domain]:  Any: Lower-, upper-, 0-9
+                                           - \. Email
+                                           - [TLD]: Any: Lower-, upper-, 0-9
+                                         Length: min: 8, max: 50
+                                         -->
                                         <input
                                             class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
                                             id="signup-email"
@@ -780,8 +791,8 @@
                                         aria-label="Signup Menu Item: Password"
                                         data-view="public"
                                         id="signup-pass-row">
-                                        <!-- CHECK: pattern
-                                        Number: (?=.*\d)
+                                        <!-- UAT: pattern & INPUT
+                                        Number: (?=.*\d) : at least one digit character
                                         Lowercase: (?=.*[a-z])
                                         Uppercase: (?=.*[A-Z])
                                         Symbols: (?=.*[@$!%*?&])
@@ -828,7 +839,7 @@
                                         aria-label="Signup Menu Item: Password"
                                         data-view="public"
                                         id="signup-pass-row">
-                                        <!-- CHECK: pattern
+                                        <!-- UAT: pattern & INPUT
                                         Number: (?=.*\d)
                                         Lowercase: (?=.*[a-z])
                                         Uppercase: (?=.*[A-Z])
@@ -1048,8 +1059,203 @@
                 <!-- ============================= CONTENT: BOT: FORM - COMTACT  =============================  -->
                 <!-- Block[Row]: Content | Bottom Section: 1) All Views: Contact Form -->
                 <section
-                    class="[ btm-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-3 ] [ bg-gray-500 ]"
-                    id="bottom-section-content"></section>
+                    class="[ btm-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-3 ] [ bg-gray-400 ]"
+                    aria-description="Content - Contact"
+                    aria-label="Contact Form"
+                    data-view="all"
+                    id="bottom-section-content">
+                    <h1
+                        class="[ header-content ] [ invisible opacity-0 ] [ sr-only ]"
+                        id="header-bottom-content"
+                        aria-description=""
+                        aria-label="Content header -Bottom of page"
+                        aria-hidden="false"
+                        data-view="all"
+                        hidden="until-found">
+                        Contact Form
+                    </h1>
+                    <!-- ============================= CONTENT: PUBLIC | MOBILE+ =================================  -->
+                    <!-- ============================= CONTENT: MID : FORM: SIGNUP ===============================  -->
+                    <article
+                        class="[ app-card ] [ flex flex-col ] [ w-auto h-fit ] [ place-items-center ] [ m-8 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] [ rounded-md shadow-lg ]"
+                        aria-description="CTA Send us a message, by Contact form"
+                        aria-label="Contact Form Send Message"
+                        data-card="form-contact"
+                        data-view="public"
+                        id="contact-form-cta-content">
+                        <h2
+                            class="[ card-label ] [ hidden ] [ sr-only ]"
+                            id="contact-form-cta-header"
+                            aria-description="Form label - Contact"
+                            aria-hidden="false"
+                            aria-label="Apps CTA | Header"
+                            data-view="public">
+                            Contact Us
+                        </h2>
+                        <!-- ========================= CONTENT: MID : FORM SIGNUP | HTMX ========================  -->
+                        <!-- 1️⃣ HTMX Target: Start: OuterHTML | Relace: Form | Have to reload form redirect after submit -->
+                        <div
+                            class="[ form-inner-card ] [ flex flex-col ] [ w-auto h-fit ] [ place-items-center ] [ mx-auto my-8 ] [ gap-4 ] [ space-2 ]"
+                            id="contact-form-card-content"
+                            aria-description="Contact Form | Card | Inner"
+                            aria-label="Form Card"
+                            data-view="public">
+                            <!-- ===================== PUBLIC CARD CONTACT FORM ===================================  -->
+                            <form
+                                class="[ form-contact ] [ flex flex-auto flex-col md:flex-row ] [ w-auto h-fit ] [ place-items-center ] [ mx-auto my-8 ] [ gap-4 ] [ space-2 ] [ rounded-md shadow-lg ]"
+                                action="#"
+                                data-form="contact"
+                                data-view="public"
+                                id="contact-form-in-card"
+                                method="post"
+                                name="contact-form"
+                                hx-post="server-script-goes-here"
+                                hx-trigger="submit"
+                                hx-swap="outerHTML">
+                                <!-- ======================= PUBLIC CONTACT FIELDS' 1 COLUMN ===================  -->
+                                <fieldset
+                                    class="[ form-card ] [ flex flex-col ] [ w-full h-full ] [ p-4 ] [ bg-gray-100 ] [ border rounded-lg shadow-lg ]"
+                                    data-view="all"
+                                    form="contact-form"
+                                    id="fields-contact-form">
+                                    <legend
+                                        class="[ form-card-label ] [ sr-only ]"
+                                        aria-description="Contact Details"
+                                        aria-hidden="true"
+                                        data-view="all"
+                                        hidden="until-found"
+                                        id="label-contact-form">
+                                        Sign Up Form
+                                    </legend>
+                                    <!-- ========================= PUBLIC CONTACT ROW: NAME ====================== -->
+                                    <div
+                                        class="[ formrow ] [ relative ] [ my-4 ]"
+                                        aria-label="Contact Field: Username"
+                                        data-view="public"
+                                        id="contact-name-row">
+                                        <!-- UAT: pattern & INPUT
+                                        Any Character a-zA-ZÀ-ÖØ-öø-ÿ
+                                        Hyphen, Space, aspotrophe:  [ '-], one or more
+                                        Length: min: 6, max: 50
+                                        -->
+                                        <input
+                                            class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                            id="contact-username"
+                                            aria-description="Full Name: Input Length: min: 6, max: 50"
+                                            aria-label="Enter a Full Name"
+                                            aria-autocomplete="inline"
+                                            autocomplete="off"
+                                            data-view="public"
+                                            maxlength="50"
+                                            minlength="6"
+                                            name="fullname"
+                                            pattern="^[a-zA-ZÀ-ÖØ-öø-ÿ '-]+{6,50}$"
+                                            placeholder="Full Name"
+                                            aria-placeholder="Full Name"
+                                            required
+                                            tabindex="6"
+                                            title="Please enter your name"
+                                            type="text" />
+                                        <label
+                                            class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                            id="contact-name-tag"
+                                            aria-description="Enter Full Name, max length is 50"
+                                            aria-labelledby="contact-name"
+                                            data-view="public"
+                                            for="contact-name">
+                                            Full Name
+                                        </label>
+                                        <span
+                                            class="[ input-message group ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                                            data-status="invalid"
+                                            data-view="public"
+                                            hidden="until-found"
+                                            id="invalid-contactname-msg">
+                                            Please enter valid name, any letter character, space hyphens & apostrophe
+                                            only, min 6, max 50 in length.
+                                        </span>
+                                    </div>
+                                    <!-- ========================= PUBLIC SIGNUP ROW========================= -->
+                                    <div
+                                        class="[ formrow ] [ relative ] [ my-4 ]"
+                                        aria-label="Contact Field: Email"
+                                        data-view="public"
+                                        id="signup-email-row">
+                                        <!-- UAT: pattern & INPUT
+                                         -Before @ [Email]
+                                           - Any: Lower-, upper-, 0-9,
+                                           - Symbols: _ + - @
+                                         - After @ [Domain.TLD]
+                                           - [Domain]:  Any: Lower-, upper-, 0-9
+                                           - \. Email
+                                           - [TLD]: Any: Lower-, upper-, 0-9
+                                         Length: min: 8, max: 50
+                                         -->
+                                        <input
+                                            class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                            id="contact-email"
+                                            aria-description="Email: Input Length: min: 8, max: 50"
+                                            aria-label="Enter an Email"
+                                            aria-autocomplete="inline"
+                                            autocomplete="off"
+                                            data-view="public"
+                                            maxlength="50"
+                                            minlength="8"
+                                            name="email"
+                                            pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$.{8,50}"
+                                            placeholder="Email"
+                                            aria-placeholder="Email"
+                                            required
+                                            tabindex="6"
+                                            title="Choose a valid Email: a-z, A-Z, 0-9, _ + - , min 8, max 50"
+                                            type="email" />
+                                        <label
+                                            class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                            id="contact-email-tag"
+                                            aria-description="Enter an email we can reach your on"
+                                            aria-labelledby="contact-email"
+                                            data-view="public"
+                                            for="contact-email">
+                                            Email
+                                        </label>
+                                        <!-- TODO: Refine the message for symbol highlighting -->
+                                        <span
+                                            class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                                            data-status="invalid"
+                                            data-view="public"
+                                            hidden="until-found"
+                                            id="invalid-contactemail-msg">
+                                            Please select a valid email address. <br />
+                                            (Symbols:
+                                            <pre class="highlight">_ + -</pre>
+                                            are permitted before the
+                                            <pre class="highlight">@</pre>
+                                            symbol).
+                                        </span>
+                                    </div>
+                                </fieldset>
+                                <!-- ======================= PUBLIC CONTACT FIELDS' 2ND COLUMN ===================  -->
+                                <fieldset
+                                    class="[ form-card ] [ flex flex-col ] [ w-full h-full ] [ my-4 p-4 ] [ bg-gray-100 ] [ border rounded-lg shadow-lg]"
+                                    data-view="all"
+                                    form="contact-form"
+                                    id="message-contact-form">
+                                    <legend
+                                        class="[ form-card-label ] [ sr-only ]"
+                                        aria-description="Contact Message"
+                                        aria-hidden="true"
+                                        data-view="all"
+                                        hidden="until-found"
+                                        id="label-message-form">
+                                        Create your message
+                                    </legend>
+                                    <!-- ========================= PUBLIC CONTACT ROW: MESSAGE ==================== -->
+                                    <!-- ========================= PUBLIC CONTACT ROW: CONTROLS =================== -->
+                                </fieldset>
+                            </form>
+                        </div>
+                    </article>
+                </section>
             </div>
         </main>
         <!-- ========================================= FOOTER ====================================================  -->

@@ -4,8 +4,8 @@
   Copyright (c) 2023.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-<html class="" id="public-page" lang="en-GB" title="Public Pages | Template">
-    <head title="Welcome to the Dash and Do for GitHub">
+<html class="" id="public-home-page" lang="en-GB" title="Dash &amp; Do, A GitHub Manager">
+    <head title="Welcome to the Dash and Do for GitHub" id="base">
         <meta charset="utf-8" />
         <meta content="https://dash-and-do-heroku.com/" name="origin" />
         <meta content="The Dash and Document GitHub is the copyright of Charles J Fowler, 2023-2028" name="copyright" />
@@ -21,12 +21,8 @@
             content="Fowler,Charles,Clients,Designer,Web Designer,Developer,Software, Web
                 Developer,Frontend Developer,Code Institute,HTML,CSS,Modern CSS"
             name="keywords" />
-        <meta content="Welcome to the Dash and Do for GitHub" name="description" />
+        <meta content="Welcome to the Dash and Do. A GitHub Manager" name="description" />
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <!-- CDN verses Download URL: https://cdnjs.com/libraries/modern-normalize -->
-        <!--         <link -->
-        <!--             href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.css" -->
-        <!--             rel="stylesheet" /> -->
         <link href="../static/css/tailwind-core3.css" rel="stylesheet" type="text/css" />
         <link href="" rel="stylesheet" type="text/css" />
 
@@ -38,7 +34,7 @@
     <!-- Changelog 2023-09-04
 - added: class/tailwinds
 -->
-    <body class="" id="public-body" title="Dashboard and Do | Public | Private | Home">
+    <body class="" id="all-body" title="Home page: Dash &amp; Do, A GitHub Manager">
         <!-- ============================================= SKIP LINK =================================================  -->
         <!-- Hide until found: https://www.w3.org/WAI/tutorials/menus/skip/ -->
         <!-- https://webaim.org/techniques/skipnav/ -->
@@ -605,7 +601,7 @@
                 <!-- ================================= CONTENT: MID : SIGNUP | APP CARDS =========================  -->
                 <!-- Block: Content | Mid Section: 1) Public & 2) Private  -->
                 <section
-                    class="[ mid-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-3 ] [ bg-gray-400 ]"
+                    class="[ mid-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-4 ] [ bg-gray-400 ] [ text-slate-800 ]"
                     aria-description="Content - Call to actions"
                     aria-label="Content"
                     data-view="all"
@@ -623,7 +619,7 @@
                     <!-- ============================= CONTENT: PUBLIC | MOBILE+ =================================  -->
                     <!-- ============================= CONTENT: MID : FORM: SIGNUP ===============================  -->
                     <article
-                        class="[ app-card ] [ flex ] [ w-auto h-fit ] [ place-items-center ] [ m-8 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] [ rounded-md shadow-lg ]"
+                        class="[ app-card ] [ flex flex-col ] [ w-[90%] h-fit ] [ place-items-center ] [ mx-auto my-8 px-2 py-4 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] | [ bg-gray-300 ] [ rounded-md shadow-lg ]"
                         aria-description="CTA Register New Account, by Sign Up form"
                         aria-label="Sign Up Form User Registration"
                         data-card="form-cta"
@@ -638,17 +634,68 @@
                             data-view="public">
                             Sign Up
                         </h2>
-                        <!-- ========================= CONTENT: MID : FORM SIGNUP | HTMX ========================  -->
+                        <!-- ========================= CONTENT: MID 1st Col/Ro: FORM PROMO: CARDS ==================
+                         -->
+                        <div
+                            class="[ form-card ] [ flex flex-col flex-auto ] [ w-[90%] h-full md:h-full ] [ place-items-center ] [ mx-auto my-2 px-2 py-8 ] [ gap-8 ] [ space-x-2 md:space-y-2 ] | [ bg-gray-600 ] | [ rounded-md shadow-lg ]"
+                            id="signup-cta-card-content"
+                            aria-description="Sign Up CTA | Card | Inner"
+                            aria-label="Form CTA"
+                            data-view="public">
+                            <article
+                                class="[ app-card ] [ flex flex-col flex-auto ] [ w-[90%] h-full md:h-full ] ] [ place-items-center ] [ mx-2 p-8 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] | [ bg-gray-300 ] [ text-slate-800 ] | [ rounded-md shadow-lg ]"
+                                id="card-cta-signup"
+                                aria-description=""
+                                aria-label="Call to Action | Sign Up | Header"
+                                data-view="public"
+                                data-card="signup">
+                                <div
+                                    class="[ card-tag roadmap ] [ ]"
+                                    id="signup-promo-tag"
+                                    aria-description="Card Tags | Promo Label"
+                                    aria-label="Roadmap | Promo"
+                                    data-view="public"
+                                    hidden="until-found"
+                                    inert>
+                                    New
+                                </div>
+                                <div class="[ card-row ] [ ]" id="signup-cardrow-header">
+                                    <h3
+                                        class="[ card-tag ] [ text-slate-800 ]"
+                                        id="signup-card-heading"
+                                        aria-description="Sign Up Form | Call to Action | Card Component">
+                                        Sign Up: Dash & Do; Github Manager
+                                    </h3>
+                                </div>
+                                <div class="[ card-row ] [ ]" id="sign-cardrow-outline">
+                                    <p
+                                        class="[ card-text ] [ mx-auto px-8 ] [ text-slate-800 ]"
+                                        id="signup-card-features"
+                                        aria-description="Sign Up Features">
+                                        Key Features.
+                                    </p>
+                                </div>
+                                <div class="[ card-row ] [ ]" id="signup-cardrow-list">
+                                    <ul class="[ ] [ ]" id="signup-feature-list">
+                                        <li>Create account</li>
+                                        <li>Link your Github</li>
+                                        <li>Inspect your Dashboard</li>
+                                    </ul>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- ========================= CONTENT: MID 2nd Col/Ro : FORM SIGNUP | HTMX =================
+                         -->
                         <!-- 1️⃣ HTMX Target: Start: OuterHTML | Relace: Form | Have to reload form redirect after submit -->
                         <div
-                            class="[ form-inner-card ] [ flex ] [ w-3/4 h-fit ] [ place-items-center ] [ mx-auto my-8 ] [ gap-4 ] [ space-2 ] [ rounded-md shadow-lg ]"
+                            class="[ form-card ] [ flex flex-col flex-auto ] [ w-[90%] h-full ] [ place-items-center ] [ mx-auto my-8 px-2 py-4 ] [ gap-8 ] [ space-2 ] | [ bg-gray-600 ] | [ rounded-md shadow-lg ]"
                             id="signup-form-card-content"
                             aria-description="Sign Up Form | Card | Inner"
                             aria-label="Form Card"
                             data-view="public">
                             <!-- ===================== PUBLIC CARD SIGNUP FORM ===================================  -->
                             <form
-                                class="[ form-signup ]"
+                                class="[ form-signup ] [ w-[90%] h-full ] [ place-items-center ] [ mx-auto my-8 px-2 py-4 ] [ gap-8 ] [ space-2 ]"
                                 action="#"
                                 data-form="signup"
                                 data-view="public"
@@ -672,9 +719,9 @@
                                         id="label-signup-form">
                                         Sign Up Form
                                     </legend>
-                                    <!-- ========================= PUBLIC SIGNUP ROW========================= -->
+                                    <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
                                     <div
-                                        class="[ formrow ] [ relative ] [ my-4 ]"
+                                        class="[ formrow ] [ relative ] [ w-full ] [ my-4 ]"
                                         aria-label="Signup Menu Item"
                                         data-view="public"
                                         id="signup-user-row">
@@ -688,9 +735,9 @@
                                             width="100%" />
                                         <h2>Create a New Account</h2>
                                     </div>
-                                    <!-- ========================= PUBLIC SIGNUP ROW========================= -->
+                                    <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
                                     <div
-                                        class="[ formrow ] [ relative ] [ my-4 ]"
+                                        class="[ formrow ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
                                         aria-label="Signup Menu Item: Username"
                                         data-view="public"
                                         id="signup-user-row">
@@ -729,9 +776,9 @@
                                             Please enter a valid username, min 6, max 30 in length.
                                         </span>
                                     </div>
-                                    <!-- ========================= PUBLIC SIGNUP ROW========================= -->
+                                    <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
                                     <div
-                                        class="[ formrow ] [ relative ] [ my-4 ]"
+                                        class="[ formrow ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
                                         aria-label="Signup Menu Item: Email"
                                         data-view="public"
                                         id="signup-email-row">
@@ -785,9 +832,9 @@
                                             symbol).
                                         </span>
                                     </div>
-                                    <!-- ========================= PUBLIC SIGNUP ROW========================= -->
+                                    <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
                                     <div
-                                        class="[ form-group ] [ relative ] [ my-4 ]"
+                                        class="[ form-group ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
                                         aria-label="Signup Menu Item: Password"
                                         data-view="public"
                                         id="signup-pass-row">
@@ -833,9 +880,9 @@
                                             max 50.
                                         </span>
                                     </div>
-                                    <!-- =============================== PUBLIC SIGNUP ROW========================= -->
+                                    <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
                                     <div
-                                        class="[ form-group ] [ relative ] [ my-4 ]"
+                                        class="[ form-group ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
                                         aria-label="Signup Menu Item: Password"
                                         data-view="public"
                                         id="signup-pass-row">
@@ -882,13 +929,13 @@
                                     </div>
                                     <!-- =============================== PUBLIC SIGNUP ROW ======================== -->
                                     <div
-                                        class="[ form-group ] [ flex flex-row ] [ justify-between items-center ] [ my-2 ]"
+                                        class="[ form-group ] [ flex flex-row ] [ w-full ] [ justify-between items-center ] [ my-2 ]"
                                         aria-label="Signup Menu Item: Button"
                                         data-view="public"
                                         id="signup-btn-row">
                                         <!-- =========================== PUBLIC SIGNUP BUTTON ===================== -->
                                         <input
-                                            class="[ input-field peer ] [ block w-full ] [ mb-4 ] [ p-2 ] [ border rounded-md outline-none ] [ font-medium text-base text-gray-500 ] | [ focus:ring-blue-500 focus:border-blue-500 ]"
+                                            class="[ input-field peer ] [ block w-full ] [ mb-4 ] [ p-2 ] [ border rounded-md outline-none ] | [ font-medium text-base text-white ] [ bg-gray-600 ] | [ focus:ring-blue-500 focus:border-blue-500 ]"
                                             aria-description="Submit form to signup and create a new account"
                                             aria-label="Sign Up | Create Account"
                                             data-view="public"
@@ -901,43 +948,43 @@
                                     <!-- ========================= FORGET PAGASSWORD: Reset.html =========== -->
                                 </fieldset>
                             </form>
-                        </div>
-                        <!-- ========================= CONTENT: MID : FORM STATUS | HTMX TARGET ==================  -->
-                        <!-- 2️⃣HTMX Target: Start: beforeend | Keep Form & Clear Form -->
-                        <div
-                            class="[ status-card notification ] [ invisible opacity-0 ] [ mx-auto p-5 ] [ bg-grey-100 ] [ border-l-4 border-blue-500 ]"
-                            id="status-signup-notice"
-                            aria-description="Form Status"
-                            aria-label="Form Status"
-                            data-form="signup"
-                            data-message="status"
-                            data-view="public"
-                            hidden="hidden"
-                            inert
-                            title="Status">
-                            <h3
-                                class="[ status-label ] [ sr-only ] [ font-semibold ] [ text-md text-blue-800 ]"
-                                id="signup-status-label"
-                                aria-description="Status Message Banner"
-                                aria-label="Status Message"
+                            <!-- ========================= CONTENT: MID : FORM STATUS | HTMX TARGET ==================  -->
+                            <!-- 2️⃣HTMX Target: Start: beforeend | Keep Form & Clear Form -->
+                            <div
+                                class="[ status-card notification ] [ invisible opacity-0 ] [ mx-auto my-8 px-2 py-4 ] [ bg-grey-100 ] [ space-2 ] [ border-l-4 border-blue-500 ]"
+                                id="status-signup-notice"
+                                aria-description="Form Status"
+                                aria-label="Form Status"
                                 data-form="signup"
-                                data-status="message"
-                                hidden="until-found">
-                                Sign Up Status
-                            </h3>
-                            <p
-                                class="[ status-text ] [ my-2 ] [ font-semibold ] [ text-base text-blue-800 ]"
-                                id="signup-status-text"
-                                aria-description="Status Message:Confirm or Error"
-                                aria-label="Status Message"
-                                data-form="signup"
-                                data-status="message"
-                                data-view="public">
-                                {{Message}}
-                            </p>
-                            <!-- Message Success & Message Error -->
+                                data-message="status"
+                                data-view="public"
+                                hidden="hidden"
+                                inert
+                                title="Status">
+                                <h3
+                                    class="[ status-label ] [ sr-only ] [ font-semibold ] [ text-md text-blue-800 ]"
+                                    id="signup-status-label"
+                                    aria-description="Status Message Banner"
+                                    aria-label="Status Message"
+                                    data-form="signup"
+                                    data-status="message"
+                                    hidden="until-found">
+                                    Sign Up Status
+                                </h3>
+                                <p
+                                    class="[ status-text ] [ my-2 ] [ font-semibold ] [ text-base text-blue-800 ]"
+                                    id="signup-status-text"
+                                    aria-description="Status Message:Confirm or Error"
+                                    aria-label="Status Message"
+                                    data-form="signup"
+                                    data-status="message"
+                                    data-view="public">
+                                    {{Message}}
+                                </p>
+                                <!-- Message Success & Message Error -->
+                            </div>
+                            <!-- End Form | Sign Up, Public -->
                         </div>
-                        <!-- End Form | Sign Up, Public -->
                     </article>
                     <!-- ============================= CONTENT: PRIVATE | TABLET+ ================================= -->
                     <!-- ============================= CONTENT: MID : APP CARDS ==================================  -->
@@ -964,13 +1011,13 @@
                             tabindex="">
                             Dash &amp; Do
                         </h2>
-                        <!-- Component Block | 1 x 2 Grid -->
+                        <!-- ============================= CONTENT: MID : APP CARDS ==================================  -->
                         <div
                             class="[ app-card ] [ flex flex-col flex-auto md:flex-row ] [ w-auto h-full ] [ place-items-center ] [ m-2 ] [ gap-8 ] [ rounded-md shadow-lg ]"
                             id="cards-private-cta-section"
                             title="Private | AppCards | CTA Component">
                             <article
-                                class="[ app-card ] [ flex flex-col flex-auto ] [ w-auto md:w-1/2 h-full md:h-full ] [ place-items-center ] [ gap-4 ] [ shadow-lg ]"
+                                class="[ app-card ] [ flex flex-col flex-auto ] [ w-auto md:w-1/2 h-full md:h-full ] [ place-items-center ] [ gap-4 ] [ bg-gray-100 ] [ shadow-lg ]"
                                 id="card-cta-dash"
                                 aria-description=""
                                 aria-label="Call to Action | Apps | Header"
@@ -1005,8 +1052,9 @@
                                     </a>
                                 </div>
                             </article>
+                            <!-- ============================= CONTENT: MID : APP CARDS ==================================  -->
                             <article
-                                class="[ app-card ] [ flex flex-col flex-auto ] [ w-auto md:w-1/2 h-full md:h-full ] [ place-items-center ] [ mx-2 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] [ rounded-md shadow-lg ]"
+                                class="[ app-card ] [ flex flex-col flex-auto ] [ w-auto md:w-1/2 h-full md:h-full ] [ place-items-center ] [ mx-2 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] [ bg-gray-100 ] [ rounded-md shadow-lg ]"
                                 id="card-cta-do"
                                 aria-description="Do Call to Action | Logged In | Call to Action | Card Component | Inert | Disabled | Future"
                                 aria-label="Call to Action | Apps | Header"
@@ -1059,7 +1107,7 @@
                 <!-- ============================= CONTENT: BOT: FORM - COMTACT  =============================  -->
                 <!-- Block[Row]: Content | Bottom Section: 1) All Views: Contact Form -->
                 <section
-                    class="[ btm-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-3 ] [ bg-gray-400 ]"
+                    class="[ btm-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-4 ] [ bg-gray-400 ]"
                     aria-description="Content - Contact"
                     aria-label="Contact Form"
                     data-view="all"
@@ -1077,7 +1125,7 @@
                     <!-- ============================= CONTENT: PUBLIC | MOBILE+ =================================  -->
                     <!-- ============================= CONTENT: MID : FORM: SIGNUP ===============================  -->
                     <article
-                        class="[ app-card ] [ flex flex-col ] [ w-auto h-fit ] [ place-items-center ] [ m-8 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] [ rounded-md shadow-lg ]"
+                        class="[ app-card ] [ flex flex-col ] [ w-[90%] h-fit ] [ place-items-center ] [ m-8 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] [ bg-gray-300 ] [ rounded-md shadow-lg ]"
                         aria-description="CTA Send us a message, by Contact form"
                         aria-label="Contact Form Send Message"
                         data-card="form-contact"
@@ -1089,23 +1137,24 @@
                             aria-description="Form label - Contact"
                             aria-hidden="false"
                             aria-label="Apps CTA | Header"
-                            data-view="public">
+                            data-view="all">
                             Contact Us
                         </h2>
                         <!-- ========================= CONTENT: MID : FORM SIGNUP | HTMX ========================  -->
                         <!-- 1️⃣ HTMX Target: Start: OuterHTML | Relace: Form | Have to reload form redirect after submit -->
                         <div
-                            class="[ form-inner-card ] [ flex flex-col ] [ w-auto h-fit ] [ place-items-center ] [ mx-auto my-8 ] [ gap-4 ] [ space-2 ]"
+                            class="[ form-inner-card ] [ flex flex-col ] [ w-[90%] h-fit ] [ place-items-center ] [ mx-auto my-8 ] [ gap-4 ] [ space-2 ]"
                             id="contact-form-card-content"
                             aria-description="Contact Form | Card | Inner"
                             aria-label="Form Card"
-                            data-view="public">
+                            data-view="all">
                             <!-- ===================== PUBLIC CARD CONTACT FORM ===================================  -->
                             <form
-                                class="[ form-contact ] [ flex flex-auto flex-col md:flex-row ] [ w-auto h-fit ] [ place-items-center ] [ mx-auto my-8 ] [ gap-4 ] [ space-2 ] [ rounded-md shadow-lg ]"
+                                class="[ form-contact ] [ flex flex-auto flex-col lg:flex-row ] [ w-[90%] h-full ] [ justify-items-start items-stretch md:self-stretch ] [ mx-auto my-8 p-8 ] [ gap-2 lg:gap-8 ] [ space-2 ] [ bg-gray-600 ] [ rounded-md shadow-lg ]"
                                 action="#"
+                                data-card="form-contact"
                                 data-form="contact"
-                                data-view="public"
+                                data-view="all"
                                 id="contact-form-in-card"
                                 method="post"
                                 name="contact-form"
@@ -1114,10 +1163,12 @@
                                 hx-swap="outerHTML">
                                 <!-- ======================= PUBLIC CONTACT FIELDS' 1 COLUMN ===================  -->
                                 <fieldset
-                                    class="[ form-card ] [ flex flex-col ] [ w-full h-full ] [ p-4 ] [ bg-gray-100 ] [ border rounded-lg shadow-lg ]"
+                                    class="[ form-card ] [ flex flex-auto flex-col ] [ w-full h-full lg:min-h-[325px] md:max-h-full ] [ self-stretch md:self-stretch ] [ my-4 p-4 ] [ bg-gray-100 ] [ border rounded-lg shadow-lg ]"
+                                    data-card="2-columns"
+                                    data-column="1"
                                     data-view="all"
                                     form="contact-form"
-                                    id="fields-contact-form">
+                                    id="details-contact-form">
                                     <legend
                                         class="[ form-card-label ] [ sr-only ]"
                                         aria-description="Contact Details"
@@ -1129,9 +1180,9 @@
                                     </legend>
                                     <!-- ========================= PUBLIC CONTACT ROW: NAME ====================== -->
                                     <div
-                                        class="[ formrow ] [ relative ] [ my-4 ]"
+                                        class="[ formrow ] [ relative ] [ justify-items-start] [ my-4 ]"
                                         aria-label="Contact Field: Username"
-                                        data-view="public"
+                                        data-view="all"
                                         id="contact-name-row">
                                         <!-- UAT: pattern & INPUT
                                         Any Character a-zA-ZÀ-ÖØ-öø-ÿ
@@ -1140,12 +1191,12 @@
                                         -->
                                         <input
                                             class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
-                                            id="contact-username"
+                                            id="contact-name"
                                             aria-description="Full Name: Input Length: min: 6, max: 50"
                                             aria-label="Enter a Full Name"
                                             aria-autocomplete="inline"
                                             autocomplete="off"
-                                            data-view="public"
+                                            data-view="all"
                                             maxlength="50"
                                             minlength="6"
                                             name="fullname"
@@ -1161,23 +1212,23 @@
                                             id="contact-name-tag"
                                             aria-description="Enter Full Name, max length is 50"
                                             aria-labelledby="contact-name"
-                                            data-view="public"
+                                            data-view="all"
                                             for="contact-name">
                                             Full Name
                                         </label>
                                         <span
                                             class="[ input-message group ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
                                             data-status="invalid"
-                                            data-view="public"
+                                            data-view="all"
                                             hidden="until-found"
                                             id="invalid-contactname-msg">
                                             Please enter valid name, any letter character, space hyphens & apostrophe
                                             only, min 6, max 50 in length.
                                         </span>
                                     </div>
-                                    <!-- ========================= PUBLIC SIGNUP ROW========================= -->
+                                    <!-- ========================= PUBLIC CONTACT ROW========================= -->
                                     <div
-                                        class="[ formrow ] [ relative ] [ my-4 ]"
+                                        class="[ formrow ] [ relative ] [ justify-items-start] [ my-4 ]"
                                         aria-label="Contact Field: Email"
                                         data-view="public"
                                         id="signup-email-row">
@@ -1198,13 +1249,13 @@
                                             aria-label="Enter an Email"
                                             aria-autocomplete="inline"
                                             autocomplete="off"
-                                            data-view="public"
+                                            data-view="all"
                                             maxlength="50"
                                             minlength="8"
                                             name="email"
                                             pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$.{8,50}"
-                                            placeholder="Email"
                                             aria-placeholder="Email"
+                                            placeholder="Email"
                                             required
                                             tabindex="6"
                                             title="Choose a valid Email: a-z, A-Z, 0-9, _ + - , min 8, max 50"
@@ -1214,7 +1265,7 @@
                                             id="contact-email-tag"
                                             aria-description="Enter an email we can reach your on"
                                             aria-labelledby="contact-email"
-                                            data-view="public"
+                                            data-view="all"
                                             for="contact-email">
                                             Email
                                         </label>
@@ -1236,7 +1287,9 @@
                                 </fieldset>
                                 <!-- ======================= PUBLIC CONTACT FIELDS' 2ND COLUMN ===================  -->
                                 <fieldset
-                                    class="[ form-card ] [ flex flex-col ] [ w-full h-full ] [ my-4 p-4 ] [ bg-gray-100 ] [ border rounded-lg shadow-lg]"
+                                    class="[ form-card ] [ flex flex-auto flex-col ] [ w-full h-full min-h-[325px] md:max-h-full ] [ self-stretch md:self-stretch ] [ my-4 p-4 ] [ bg-gray-100 ] [ border rounded-lg shadow-lg]"
+                                    data-card="2-columns"
+                                    data-column="2"
                                     data-view="all"
                                     form="contact-form"
                                     id="message-contact-form">
@@ -1250,7 +1303,51 @@
                                         Create your message
                                     </legend>
                                     <!-- ========================= PUBLIC CONTACT ROW: MESSAGE ==================== -->
+                                    <div
+                                        class="[ formrow ] [ relative ] [ justify-items-start] [ my-4 ]"
+                                        id="message-field-contact-form"
+                                        aria-label="Contact Row: Message Body"
+                                        data-float-label>
+                                        <textarea
+                                            class="[ input-field peer ] [ w-full h-40 min-h-40 max-h-48 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ resize-x touch-pan-x ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                            id="contact-message"
+                                            aria-description="Contact Form | Sender's Message"
+                                            aria-label="Message Body"
+                                            cols="50"
+                                            maxlength="500"
+                                            minlength="10"
+                                            name="contact-message"
+                                            aria-placeholder="Message"
+                                            placeholder="Message"
+                                            required
+                                            rows="60"
+                                            spellcheck="true"
+                                            tabindex="6"
+                                            title="Min length: 10 chars">
+                                        </textarea>
+                                        <label
+                                            for="contact-message"
+                                            class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                            id="contact-message-tag">
+                                            Message
+                                        </label>
+                                    </div>
                                     <!-- ========================= PUBLIC CONTACT ROW: CONTROLS =================== -->
+                                    <div
+                                        class="[ form-group ] [ flex flex-row ] [ justify-between items-center ] [ my-2 ]"
+                                        id="message-field-contact-form"
+                                        aria-label="Contact Row: Button"
+                                        data-view="all">
+                                        <!-- =========================== PUBLIC SIGNUP BUTTON ===================== -->
+                                        <input
+                                            class="[ input-field peer ] [ block w-full ] [ mb-4 ] [ p-2 ] [ border rounded-md outline-none ] [ font-medium text-base text-white ] [ bg-gray-600 ] | [ focus:ring-blue-500 focus:border-blue-500 ]"
+                                            aria-description="Submit form to contact us and send a message"
+                                            aria-label="Contact | Press Send button"
+                                            data-view="all"
+                                            tabindex="6"
+                                            type="submit"
+                                            value="Send Message" />
+                                    </div>
                                 </fieldset>
                             </form>
                         </div>
@@ -1260,7 +1357,7 @@
         </main>
         <!-- ========================================= FOOTER ====================================================  -->
         <footer
-            class="[ page-footer ] [ flex flex-auto flex-col md:flex-row ] [ items-center md:justify-between ] [ w-full h-max ] [ px-2 md:px-6 py-4 ] [ nav-global-style ] [ bg-gray-800 text-white text-center ]"
+            class="[ page-footer ] [ flex flex-auto flex-col md:flex-row ] [ hidden ] [ items-center md:justify-between ] [ w-full h-max ] [ px-2 md:px-6 py-4 ] [ nav-global-style ] [ bg-gray-800 text-white text-center ]"
             id="footer-page"
             title="Footer | All Pages">
             <!-- includes\footer.html -->

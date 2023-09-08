@@ -34,7 +34,10 @@
     <!-- Changelog 2023-09-04
 - added: class/tailwinds
 -->
-    <body class="" id="all-body" title="Home page: Dash &amp; Do, A GitHub Manager">
+    <body
+        class="[ ] [ flex flex-col items-stretch content-between ]"
+        id="all-body"
+        title="Home page: Dash &amp; Do, A GitHub Manager">
         <!-- ============================================= SKIP LINK =================================================  -->
         <!-- Hide until found: https://www.w3.org/WAI/tutorials/menus/skip/ -->
         <!-- https://webaim.org/techniques/skipnav/ -->
@@ -570,7 +573,7 @@
         </header>
         <!-- ========================================= MAIN PAGE CONTENT =========================================  -->
         <main
-            class="[ page-main-content ] [ flex flex-row ] [ h-screen ] [ mt-0 md:mt-1 lg:mt-6 ] [ px-4 pb-20 lg:pb-4 ] [ space-y-10 lg:space-y-0 lg:space-x-10 ]"
+            class="[ page-main-content ] [ flex flex-row ] [ h-max ] [ mt-0 md:mt-1 lg:mt-6 ] [ px-4 pb-20 lg:pb-4 ] [ space-y-10 lg:space-y-0 lg:space-x-10 ]"
             id="main-page-content">
             <!-- ===================================== SIDE CONTENT: 1 COLUMN ====================================  -->
             <!-- TODO: Research Floating Sidebar Navigation with a sidebar strip with a toggle button-->
@@ -592,7 +595,9 @@
                     id="sidebar-content"></aside>
             </div>
             <!-- ===================================== CONTENT: 2 COLUMN =========================================  -->
-            <div class="[ main-content ] [ flex flex-1 flex-col flex-end ] [ space-y-10 ]" id="central-col2-content">
+            <div
+                class="[ main-content ] [ flex flex-1 flex-col flex-end ] [ space-y-10 ] | [ font-normal text-base text-black ]"
+                id="central-col2-content">
                 <!-- ================================= CONTENT: TOP: HERO ========================================  -->
                 <!-- Block[Row]: Content | Top Section: 1) All Views: Hero | Carousel -->
                 <section
@@ -601,7 +606,7 @@
                 <!-- ================================= CONTENT: MID : SIGNUP | APP CARDS =========================  -->
                 <!-- Block: Content | Mid Section: 1) Public & 2) Private  -->
                 <section
-                    class="[ mid-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-4 ] [ bg-gray-400 ] [ text-slate-800 ]"
+                    class="[ mid-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-4 ] | [ bg-gray-400 ] [ font-normal text-base text-black ]"
                     aria-description="Content - Call to actions"
                     aria-label="Content"
                     data-view="all"
@@ -619,7 +624,7 @@
                     <!-- ============================= CONTENT: PUBLIC | MOBILE+ =================================  -->
                     <!-- ============================= CONTENT: MID : FORM: SIGNUP ===============================  -->
                     <article
-                        class="[ app-card ] [ flex flex-col ] [ w-[90%] h-fit ] [ place-items-center ] [ mx-auto my-8 px-2 py-4 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] | [ bg-gray-300 ] [ rounded-md shadow-lg ]"
+                        class="[ app-card ] [ flex flex-col lg:flex-row ] [ w-[90%] h-fit ] [ place-items-center ] [ mx-auto my-8 px-2 py-4 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] | [ bg-gray-300 ] [ rounded-md shadow-lg ]"
                         aria-description="CTA Register New Account, by Sign Up form"
                         aria-label="Sign Up Form User Registration"
                         data-card="form-cta"
@@ -659,9 +664,9 @@
                                     inert>
                                     New
                                 </div>
-                                <div class="[ card-row ] [ ]" id="signup-cardrow-header">
+                                <div class="[ card-row ] [ light:text-slate-800 ]" id="signup-cardrow-header">
                                     <h3
-                                        class="[ card-tag ] [ text-slate-800 ]"
+                                        class="[ card-tag ] [ ]"
                                         id="signup-card-heading"
                                         aria-description="Sign Up Form | Call to Action | Card Component">
                                         Sign Up: Dash & Do; Github Manager
@@ -733,7 +738,7 @@
                                             id=""
                                             src=""
                                             width="100%" />
-                                        <h2>Create a New Account</h2>
+                                        <h2>Set up a New Account</h2>
                                     </div>
                                     <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
                                     <div

@@ -4,7 +4,6 @@ about: 'DONE: Definition of Done | Effort and UAC for Complete Delivery'
 title: 'DONE: '
 labels: ''
 assignees: iPoetDev
-
 ---
 
 # **[`DONE`]()**: DoD

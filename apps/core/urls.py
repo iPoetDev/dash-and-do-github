@@ -6,8 +6,8 @@
 # added: Site Mapping for core app installation Comments
 # TODO: Check these URL Append/Prepend slash patterns
 
-from django.urls import include
 from django.urls import path
+
 from . import views
 
 app_name = 'core'

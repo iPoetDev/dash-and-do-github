@@ -19,9 +19,9 @@
 
 ### 1.1.1 [App Goals](#app-goals)
 
-- To *manage a personal developer’s GitHub account* as a whole portfolio service, by connecting, and disconnecting, the web service with a developer GitHub account (maximum of 1 GitHub account).
-- Use a *Report and Inform Dashboard*  for the developer on the state of their repositories under a single glance on a single pane of glass pattern via a Dashboard design. i.e. **The Dash, aka Dash & Inform.**
-- Use a *To-do and Action task manager* for the developer in response to the state of their repositories so that they bulk edit on a single pane of glass pattern via a To Do and Tasker design. I.e. **The Do, aka Do & Act.**
+-   To _manage a personal developer’s GitHub account_ as a whole portfolio service, by connecting, and disconnecting, the web service with a developer GitHub account (maximum of 1 GitHub account).
+-   Use a _Report and Inform Dashboard_ for the developer on the state of their repositories under a single glance on a single pane of glass pattern via a Dashboard design. i.e. **The Dash, aka Dash & Inform.**
+-   Use a _To-do and Action task manager_ for the developer in response to the state of their repositories so that they bulk edit on a single pane of glass pattern via a To Do and Tasker design. I.e. **The Do, aka Do & Act.**
 
 ### 1.1.2 [Project Goals](#project-goals)
 
@@ -38,10 +38,10 @@
     -   Analyse and collated the labels used across all accounts.
     -   CRUD and manipulate Issue Labels in bulk, centrally and apply to `all|selected` repositories in bulk.
     -   Copy and Apply a central store of common file types to to `all|selected` repositories in bulk.
--   #Project To use agile methodologies and tooling to deliver the #Solution to the #Client/Assessor: **<ins>The Code
+-   #Project To use agile methodologies and tooling to deliver the #Solution to the #Client/Assessor: \*\*<ins>The Code
     Institute</ins>.
 
-***
+---
 
 ## 1.2. [Live App](#live-app)
 
@@ -59,9 +59,11 @@
 
 [`amiresponsive.co.uk/`](https://amiresponsive.co.uk/ 'Am I Responsive: amiresponsive.co. uk/') | `URI: AmIResponsive`
 
-***
+---
+
 >
-***
+
+---
 
 ## 2. [Problem Statement](#problem-solve)
 
@@ -95,9 +97,9 @@ E.
 -   A GitHub account is intentionally a fully adaptable and flexible platform; it is aimed to meet the widest number of use cases, target audiences via its universally open design.
     -   This lead to several user driven tasks to be manual, repetitive and not very good for DRY iteration.
     -   Such as:
-        1.   Label creation
-        2.   Issue Templates, in part
-        3.   GitHub Common Files (see below)
+        1.  Label creation
+        2.  Issue Templates, in part
+        3.  GitHub Common Files (see below)
 -   A GitHub account has no central store for certain artefacts that allow for one time editing and the more than one repository deployment, over a group of repositories. Such effort to duplicate and apply these programmatically.
 -   A GitHub account does have selected analytics on a account or profile level basis. However, any proposed solution is looking to extend these analytics to drive an better "at a glance" overview.
 -   There are no, as yet known by the author-developer, bulk editing features across two or more repositories. Such a feature would allow for improved user management experience in the application of conventions, standards and best practices.
@@ -110,8 +112,10 @@ E.
     knowledge and capacity in this platform. This they seek to showcase this in this project.
 
 ---
+
 >
-***
+
+---
 
 ## 3. [Project](#project)
 
@@ -132,145 +136,147 @@ activities based on the dataset._
 -   **Why**: Proscribed by the Client: The Code Institute as part of their software project portfolio development series
     in portfolio project 4: Full Stack Toolkit
 -   _Approach_:
-    -  Breaks project into iterative phases (i.e. sprints).
-    -  Emphasizes continuous adaption, adjustment to change, improvement, releases and customer feedback.
-    -  It's a cycle of flexible planning, execution and evaluation.
-    -  Is customised for a solo developer.
-- _Is not_:
-    -  A collaborative approach for this solo project.
+    -   Breaks project into iterative phases (i.e. sprints).
+    -   Emphasizes continuous adaption, adjustment to change, improvement, releases and customer feedback.
+    -   It's a cycle of flexible planning, execution and evaluation.
+    -   Is customised for a solo developer.
+-   _Is not_:
+    -   A collaborative approach for this solo project.
 
 #### 3.2.1 Project Tooling: Zube.io
 
-- The author/developer choose against using GitHub Projects for Agile Management, as it required a long of imposition of agile principles to be configured correctly.
-- The author/developer choose for using a 3rd party Project Management Tool: [zube.io](https://zube.io/).
-    - Has [Agile Components](https://zube.io/docs/components).
-    - [GitHub Issues Can be Agile if You Do it Right | The Zube Blog](https://zube.io/blog/agile-project-management-workflow-for-github-issues/)
-    - Installable via [GitHub Marketplace](https://github.com/marketplace/zube)
-    - Is a stand-alone Agile Project Management tool.
-    - Integrates and synchronises with GitHub Issues.
-    - Organises and uses a Kanban Board and/or Sprint Boards
-    - Defines Agile Epics and Scrum Style sprints
-    - Is Free (up to 4 Users)
-    - Utilises GitHub account or Gmail for social access login.
-- The disadvantage (for assessment) is that:
-    - Requires either a known Gmail account or a known GitHub to sign up.
-    - By constraint, there is no common inbox for assessors to issue an onboarding email.
-    - Assessors must be anonymous.
-    - Requires a standalone temporary email account with a supplied username and password i.e. a proxy account.
-    - This proxy guarantees the anonymity of the assessment process for the assessor.
-    - Requires testing and testing before deadline.
+-   The author/developer choose against using GitHub Projects for Agile Management, as it required a long of imposition of agile principles to be configured correctly.
+-   The author/developer choose for using a 3rd party Project Management Tool: [zube.io](https://zube.io/).
+    -   Has [Agile Components](https://zube.io/docs/components).
+    -   [GitHub Issues Can be Agile if You Do it Right | The Zube Blog](https://zube.io/blog/agile-project-management-workflow-for-github-issues/)
+    -   Installable via [GitHub Marketplace](https://github.com/marketplace/zube)
+    -   Is a stand-alone Agile Project Management tool.
+    -   Integrates and synchronises with GitHub Issues.
+    -   Organises and uses a Kanban Board and/or Sprint Boards
+    -   Defines Agile Epics and Scrum Style sprints
+    -   Is Free (up to 4 Users)
+    -   Utilises GitHub account or Gmail for social access login.
+-   The disadvantage (for assessment) is that:
+    -   Requires either a known Gmail account or a known GitHub to sign up.
+    -   By constraint, there is no common inbox for assessors to issue an onboarding email.
+    -   Assessors must be anonymous.
+    -   Requires a standalone temporary email account with a supplied username and password i.e. a proxy account.
+    -   This proxy guarantees the anonymity of the assessment process for the assessor.
+    -   Requires testing and testing before deadline.
 
 Other benefits, that capitalises on prior effort by the author, was
 
-- Provides a separate UI for managing the GitHub repository, issues, issues, milestones, templates that synchronises with GitHub.
-- Can bulk edit issues and other features, with improved global effort and control.
-- Integration of GitHub Issue Templates (see [3.3 Agile Artefacts](README.md#artefacts) below.)
-- Definition of a End to End Workflow
-    - ![](docs/assets/img-readme/3-2-1_zube-kanban-workflow.png)
-- Has an inbuilt priorities over the setup of the GitHub Projects from blank slate
-    - Blocker (P1), Critical (P2), Major (P3), Minor (P4), Trivial (P5)
-- Uses a points system (Criteria: Merit: 1.5: User Stories, Points & Timeboxes prioritisations)
-    - Uses a Fibonacci System (0,1,2,4,5,8,13). For purposes of this project, 13 is the max.
-    - Employs a relative sizing, [see here: Practical Fibonacci: A Beginner's Guide to Relative Sizing | Scrum.org](https://www.scrum.org/resources/blog/practical-fibonacci-beginners-guide-relative-sizing)
+-   Provides a separate UI for managing the GitHub repository, issues, issues, milestones, templates that synchronises with GitHub.
+-   Can bulk edit issues and other features, with improved global effort and control.
+-   Integration of GitHub Issue Templates (see [3.3 Agile Artefacts](README.md#artefacts) below.)
+-   Definition of a End to End Workflow
+    -   ![](docs/assets/img-readme/3-2-1_zube-kanban-workflow.png)
+-   Has an inbuilt priorities over the setup of the GitHub Projects from blank slate
+    -   Blocker (P1), Critical (P2), Major (P3), Minor (P4), Trivial (P5)
+-   Uses a points system (Criteria: Merit: 1.5: User Stories, Points & Timeboxes prioritisations)
+    -   Uses a Fibonacci System (0,1,2,4,5,8,13). For purposes of this project, 13 is the max.
+    -   Employs a relative sizing, [see here: Practical Fibonacci: A Beginner's Guide to Relative Sizing | Scrum.org](https://www.scrum.org/resources/blog/practical-fibonacci-beginners-guide-relative-sizing)
 
 #### 3.2.2 Relative Points
 
-These relative points are a story point matrix of *Certainty/Risk* (y-axis) against *Effort/Complexity* (x axis), and uses *Amount of Work* labels to categorise the scoring
+These relative points are a story point matrix of _Certainty/Risk_ (y-axis) against _Effort/Complexity_ (x axis), and uses _Amount of Work_ labels to categorise the scoring
 
 ![](docs/assets/img-readme/3-2-2_storypoint-matrix.png)
 `Source`: [How to Begin Story Point Estimating](https://joshmartindev.com/2022/04/29/how-to-begin-story-point-estimating/)
 
--  **Zero Points**: No Effort Required, or there is some effort required, but there is no business value delivered, so no Points are accumulated for doing the work.
-    -  <ins>0 pts: NO EFFORT: Very Easy (0) || No Uncertainty (0)</ins>
--  **1-2 Points**: Developer feel they understand most requirements
+-   **Zero Points**: No Effort Required, or there is some effort required, but there is no business value delivered, so no Points are accumulated for doing the work.
+    -   <ins>0 pts: NO EFFORT: Very Easy (0) || No Uncertainty (0)</ins>
+-   **1-2 Points**: Developer feel they understand most requirements
     Developers consider it relatively easy, probably smallest items in the Sprint, and mostly likely completed in one day.
-    -  <ins>1 pts: EXTRA SMALL: Very Easy (1) || No Uncertainty (1)</ins>
-    -  <ins>2 pts: SMALL: Very Easy (1) || Little Uncertainty (2)</ins>
-    -  <ins>2 pts: SMALL: Medium (2) || No Uncertainty (1)</ins>
-- **3 Points**: Developer(s) have done this a lot; knows what needs to be done.
+    -   <ins>1 pts: EXTRA SMALL: Very Easy (1) || No Uncertainty (1)</ins>
+    -   <ins>2 pts: SMALL: Very Easy (1) || Little Uncertainty (2)</ins>
+    -   <ins>2 pts: SMALL: Medium (2) || No Uncertainty (1)</ins>
+-   **3 Points**: Developer(s) have done this a lot; knows what needs to be done.
     There may be a few extra steps. It's doubtful that extra research will be need.
-    - <ins>3 pts: AVERAGE: Medium (3) || No Uncertainty (1)</ins>
-    - <ins>3 pts: AVERAGE: Very Easy (1) || Little Uncertainty (3)</ins>
-- **5 Points**: This is complex work, or Developers don't do this very often.
+    -   <ins>3 pts: AVERAGE: Medium (3) || No Uncertainty (1)</ins>
+    -   <ins>3 pts: AVERAGE: Very Easy (1) || Little Uncertainty (3)</ins>
+-   **5 Points**: This is complex work, or Developers don't do this very often.
     Most Developers will need assistance from someone else. This is probably one of the largest items that can be completed within a Sprint.
-    - <ins>5 pts: LARGE: Medium (5) || No Uncertainty (1)</ins>
-    - <ins>5 pts: LARGE: Easy, Low Complexity (1) || Some Uncertainty (5)</ins>
--  **8 Points**: Is going to take some time and research. Will take more than 1 developer to complete within two weeks. Plus: Developer need to make several assumptions that increase the risk. Likely to impact getting it Done.
-    - <ins>8 pts: EXTRA LARGE: Hard Complexity (8) || No Uncertainty (1)</ins>
-    - <ins>8 pts: LARGE: Easy, Low Complexity (1) || High Uncertainty (8)</ins>
-- **13 Points**: Is a complex piece of work with lots of unknowns.
-    - Requires multiple assumptions to size. It is too much to complete in one Sprint. Instead, split this into multiple Items that can be completed independently.
-    - <ins>13 pts: WARNING: Hard Complexity (13) ||  Low Uncertainty (1)</ins>
-    - <ins>13 WARNING: Easy, Low Complexity (1) || High Uncertainty (13)</ins>
+    -   <ins>5 pts: LARGE: Medium (5) || No Uncertainty (1)</ins>
+    -   <ins>5 pts: LARGE: Easy, Low Complexity (1) || Some Uncertainty (5)</ins>
+-   **8 Points**: Is going to take some time and research. Will take more than 1 developer to complete within two weeks. Plus: Developer need to make several assumptions that increase the risk. Likely to impact getting it Done.
+    -   <ins>8 pts: EXTRA LARGE: Hard Complexity (8) || No Uncertainty (1)</ins>
+    -   <ins>8 pts: LARGE: Easy, Low Complexity (1) || High Uncertainty (8)</ins>
+-   **13 Points**: Is a complex piece of work with lots of unknowns.
+    -   Requires multiple assumptions to size. It is too much to complete in one Sprint. Instead, split this into multiple Items that can be completed independently.
+    -   <ins>13 pts: WARNING: Hard Complexity (13) || Low Uncertainty (1)</ins>
+    -   <ins>13 WARNING: Easy, Low Complexity (1) || High Uncertainty (13)</ins>
 
-***
+---
+
 >
+
 ---
 
 ### 3.3. [Agile Artefacts](#artefacts)
 
-- Delivered by [GitHub Issue Template selector](https://github.com/iPoetDev/dash-and-do-github/issues/new/choose): and
-  Zube.io.
+-   Delivered by [GitHub Issue Template selector](https://github.com/iPoetDev/dash-and-do-github/issues/new/choose): and
+    Zube.io.
 
 -   WORKFLOW: Flows are processes and step wise tutorials to complete a task/goal.
-    - [00 DEFINE: Document | Readme](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=&labels=&projects=&template=00-define--document---readme.md&title=):
-        - Readme Development.
-        - Document | Effort | Concept.
-    -  [00 REQUIRE: Product | Agile Specification](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=Kind%3A+Define%2C+Kind%3A+Refine&projects=&template=00-require--product---agile-specification.md&title=DEFINE+%3A%3A+)
-        - Product.
-        - Agile Specification.
-    -  [00 FLOW: Workflow | Process | Checklist](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=Deadline%3A+Oct+21%2C+Mentor%3A+1st+Review%3A+Aug+07%2C+Mentor%3A+2nd+Review%3A+%3A+Sep+04%2C+Mentor%3A+3rd+Review%3A+Oct+02%2C+Project+%3A+Inventory&projects=&template=00-flow--workflow---process---checklist.md&title=FLOW+%3A%3A+)
-        - Best Practice.
-        - Strategic or Tactical Workflow.
+    -   [00 DEFINE: Document | Readme](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=&labels=&projects=&template=00-define--document---readme.md&title=):
+        -   Readme Development.
+        -   Document | Effort | Concept.
+    -   [00 REQUIRE: Product | Agile Specification](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=Kind%3A+Define%2C+Kind%3A+Refine&projects=&template=00-require--product---agile-specification.md&title=DEFINE+%3A%3A+)
+        -   Product.
+        -   Agile Specification.
+    -   [00 FLOW: Workflow | Process | Checklist](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=Deadline%3A+Oct+21%2C+Mentor%3A+1st+Review%3A+Aug+07%2C+Mentor%3A+2nd+Review%3A+%3A+Sep+04%2C+Mentor%3A+3rd+Review%3A+Oct+02%2C+Project+%3A+Inventory&projects=&template=00-flow--workflow---process---checklist.md&title=FLOW+%3A%3A+)
+        -   Best Practice.
+        -   Strategic or Tactical Workflow.
 -   SPRINTS: New Sprint for sprint planning/tracking.
     -   [00 SPRINT: Plan & Report](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=Kind%3A+Sprint%2C+Plan+%3A+Horizon%2C+Plan+%3A+Sprint%2C+Sprint+01+%3A+The+First+Config%2C+Sprint+02+%3A+Arch+n+Deploy%2C+W%2FE%3A+Aug+04%2C+W%2FE%3A+Aug+11%2C+W%2FE%3A+Aug+18%2C+W%2FE%3A+Aug+25%2C+W%2FE%3A+Jul+14%2C+W%2FE%3A+Jul+21%2C+W%2FE%3A+Jul+28%2C+W%2FE%3A+Oct+07%2C+W%2FE%3A+Oct+14%2C+W%2FE%3A+Oct+21%2C+W%2FE%3A+Sep+08%2C+W%2FE%3A+Sep+15%2C+W%2FE%3A+Sep+22%2C+W%2FE%3A+Sep+29&projects=&template=00-sprint--plan---report.md&title=%5BSPRINT%5D++%3A%3A+)
 -   ADR: _Any Decision Record_ <sup>[1]</sup>
-    - [01: ADR Full](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=&projects=&template=01--adr-full.md&title=ADR000%3F+%3A%3A+)
-        - ADR Record - Full Tracing of Why & Motivations
-        - Key Decisions and Derivations
+    -   [01: ADR Full](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=&projects=&template=01--adr-full.md&title=ADR000%3F+%3A%3A+)
+        -   ADR Record - Full Tracing of Why & Motivations
+        -   Key Decisions and Derivations
     -   [02 ADR-Y-Statement]().
-        - ADR Short Form:
-        - Problems Statements and Choices
-- AGILE:
+        -   ADR Short Form:
+        -   Problems Statements and Choices
+-   AGILE:
     -   EPIC:
         -   [03 EPIC: Feature | Infrastructure](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=&projects=&template=03-epic--feature---infrastructure.md&title=EPIC000%3F+%3A%3A++)
-            - A chapter of deliverable work.
-            - Comprised of Features, User Stories & Enabler Tasks
+            -   A chapter of deliverable work.
+            -   Comprised of Features, User Stories & Enabler Tasks
     -   FEATURE:
         -   [04 FEAT: Feature | Component](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=&projects=&template=04-feat--feature---component.md&title=FEAT+%3A%3A+)
-            - RFC: An Epic's Feature.
-            - An Epic's Component.
+            -   RFC: An Epic's Feature.
+            -   An Epic's Component.
     -   USER STORY & ACCEPTANCE:
         -   [05 STORY: User Story | Use Case](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=&projects=&template=05-story--user-story----use-case.md&title=STORY-000%3F+%3A%3A+)
-            - An Epic's Task
-            - Enabling Task linked to a Feature | Component
-        - [06 ACCEPT: User Acceptance Criteria](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=&projects=&template=06-accept--user-acceptance-criteria.md&title=UAC-000%3F+%3A%3A)
-            - UAC: Scenario, Feature
-            - Given ... When ... Then
+            -   An Epic's Task
+            -   Enabling Task linked to a Feature | Component
+        -   [06 ACCEPT: User Acceptance Criteria](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=&projects=&template=06-accept--user-acceptance-criteria.md&title=UAC-000%3F+%3A%3A)
+            -   UAC: Scenario, Feature
+            -   Given ... When ... Then
     -   QUALITY & TESTING:
         -   [07 CHECK: Static Analysis](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=&projects=&template=07-check--static-analysis.md&title=%5BCHECK+%7C+LINT%5D+%3A%3A+)
-            - Pre-commit.
-            - Lint Report
-            - Static Analysis
-            - W3C HTML & W3C CSS
+            -   Pre-commit.
+            -   Lint Report
+            -   Static Analysis
+            -   W3C HTML & W3C CSS
         -   [07 BUG: Exception | Issue | Usability | Function | Responsiveness](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=&projects=&template=07-bug--exception---issue---usability---function---responsiveness.md&title=BUG+%3A%3A+++)
-            - Code Exception |
-            - Testing Issue |
-            - UI/UX Concern |
-            - UAT Issue
-        - [08 TEST: Test Case | TDD](https://github.com/iPoetDev/P4Template/issues/new?assignees=iPoetDev&labels=&projects=&template=08-test--test-case---tdd--.md&title=%5BTEST%2FTDD%5D)
-            - Test Case | TDD
-        - [09 DONE: Definition of Done ](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=&projects=&template=09-done--definition-of-done-.md&title=DONE%3A+)
-            - Definition of Done
-                - Effort and UAC for Final Release & Delivery
+            -   Code Exception |
+            -   Testing Issue |
+            -   UI/UX Concern |
+            -   UAT Issue
+        -   [08 TEST: Test Case | TDD](https://github.com/iPoetDev/P4Template/issues/new?assignees=iPoetDev&labels=&projects=&template=08-test--test-case---tdd--.md&title=%5BTEST%2FTDD%5D)
+            -   Test Case | TDD
+        -   [09 DONE: Definition of Done ](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=&projects=&template=09-done--definition-of-done-.md&title=DONE%3A+)
+            -   Definition of Done
+                -   Effort and UAC for Final Release & Delivery
 -   CONFIG:
-    - [10 CONFIG: Linting | Static Analysis | Common Setups)](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=&projects=&template=09-config--linting---static-analysis---common-setups.md&title=CONFIG+%3A%3A+)
-        - Tooling: Linting, Static Analysis
-        - Common Setups: Public acceptable | Well Known Configuration
+    -   [10 CONFIG: Linting | Static Analysis | Common Setups)](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=&projects=&template=09-config--linting---static-analysis---common-setups.md&title=CONFIG+%3A%3A+)
+        -   Tooling: Linting, Static Analysis
+        -   Common Setups: Public acceptable | Well Known Configuration
 -   PROJECT
-    - [11 IMPEDE: Project Level Impediments](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=Project%3A+Impediment&projects=&template=11-impede--project-level-impediments.md&title=IMPEDE%3A+Project+Blocker%3A+)
-        - Project Impediment
-        - Epic level blockers & issues.
+    -   [11 IMPEDE: Project Level Impediments](https://github.com/iPoetDev/dash-and-do-github/issues/new?assignees=iPoetDev&labels=Project%3A+Impediment&projects=&template=11-impede--project-level-impediments.md&title=IMPEDE%3A+Project+Blocker%3A+)
+        -   Project Impediment
+        -   Epic level blockers & issues.
 
 ### 3.4. [Readme]()
 
@@ -290,9 +296,11 @@ These relative points are a story point matrix of *Certainty/Risk* (y-axis) agai
 -   Professional-grade project management and solution documentation.
 -   In the style of Readme Driven Development, this was written first before any code was committed.
 
-***
+---
+
 > .
-***
+
+---
 
 ## 4. [Concept](#concept)
 
@@ -303,8 +311,10 @@ These relative points are a story point matrix of *Certainty/Risk* (y-axis) agai
 -   **<ins>Scenario</ins>**: A Personal Developer seeking to manage, report and make bulk changes/automations to their GitHub Account.
 
 ---
+
 >
-***
+
+---
 
 ### 4.2 Target Audiences](#audiences)
 
@@ -316,10 +326,11 @@ These relative points are a story point matrix of *Certainty/Risk* (y-axis) agai
         -   Sub-Cohort: Hiring Managers (Engineering Managers | Software Development Managers)
         -   Sub-Cohort: Repo Managers in Open Source
 
+---
+
+>
 
 ---
->
-***
 
 ### 4.3. [Web App Capabilities](#app-capabilities)
 
@@ -357,8 +368,10 @@ This app will serve users with the following:
     #Integration #OffBoarding
 
 ---
+
 >
-***
+
+---
 
 ### 4.4. [Real User Frustration](#user-frustrations)
 
@@ -393,15 +406,18 @@ Institute, this may not be an isolated experience.
 -   [ ] Criteria:
 
 ---
+
 >
-***
+
+---
 
 ### 4.5. Real World Solution & Idea
 
 ---
->
-***
 
+>
+
+---
 
 > `FOOTER`
 

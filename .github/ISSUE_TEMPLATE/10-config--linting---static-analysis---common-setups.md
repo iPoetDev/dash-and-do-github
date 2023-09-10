@@ -1,9 +1,10 @@
 ---
-name: '09 CONFIG: Linting | Static Analysis | Common Setups'
+name: '10 CONFIG: Linting | Static Analysis | Common Setups'
 about: 'CONFIG: Public acceptable | Well Known Configuration'
 title: 'CONFIG :: '
 labels: ''
 assignees: iPoetDev
+
 ---
 
 # [`CONFIGURATION`]():

@@ -16,7 +16,6 @@
 
 @layer components {
     /* Reusable Styles */
-
     /* Block: Skip Links */
     .skip-link-block {
         @apply flex items-center absolute top-0 left-0 z-50 invisible sr-only opacity-0 transition-opacity duration-500 ease-out;

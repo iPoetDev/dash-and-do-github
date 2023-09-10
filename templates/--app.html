@@ -1,0 +1,524 @@
+<!doctype html>
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Copyright (c) 2023.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!-- ================================================  APP #MASTER #TEMPLATE      =================================
+
+     ================================================                             ================================ -->
+<html
+    class="[ ] [ ]"
+    data-view="private"
+    id="private-page"
+    lang="en-GB">
+    <head
+        title="Welcome to the Dash and Do for GitHub"
+        id="base">
+        <meta charset="utf-8" />
+        <meta
+            content="https://dash-and-do-heroku.com/"
+            name="origin" />
+        <meta
+            content="The Dash and Document GitHub is the copyright of Charles J Fowler, 2023-2028"
+            name="copyright" />
+        <meta
+            content="Charles J Fowler, @iPoetDev.github.com"
+            name="author" />
+        <meta
+            content="Charles J Fowler, @iPoetDev.github.com"
+            name="creator" />
+        <meta
+            content="Charles J Fowler, @iPoetDev.github.com"
+            name="designer" />
+        <meta
+            content="Github: @iPoetDev"
+            name="contact" />
+        <meta
+            content="Dublin, Ireland; Europe"
+            name="geo.lmk" />
+        <meta
+            content="Ireland"
+            name="geo.country" />
+        <meta
+            content="Version 1.0-beta"
+            name="version" />
+        <meta
+            content="dark"
+            name="color-scheme" />
+        <meta
+            content="Fowler,Charles,Clients,Designer,Web Designer,Developer,Software, Web
+                Developer,Frontend Developer,Code Institute,HTML,CSS,Modern CSS"
+            name="keywords" />
+        <meta
+            content="Welcome to the Dash and Do. A GitHub Manager"
+            name="description" />
+        <meta
+            content="width=device-width, initial-scale=1.0"
+            name="viewport" />
+        <link
+            href="../static/css/tailwind-core3.css"
+            rel="stylesheet"
+            type="text/css" />
+        <link
+            href="../static/css/dash-and-do-core.css"
+            rel="stylesheet"
+            type="text/css" />
+        <link
+            href=""
+            rel="stylesheet"
+            type="text/css" />
+        <!-- =======================================🔽 DEV ONLY GIMLI TAILWINDS 🔽===============================  -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- =======================================🔼 DEV ONLY GIMLI TAILWINDS 🔼===============================  -->
+        <title title="{% block title %}Dashboard and Do GitHub Manager{% endblock %}">
+            {% block title %}Dashboard and Do GitHub Manager{% endblock %}
+        </title>
+    </head>
+    <!-- ================================= APP MASTER |  PRIVATE | APP.HTML ====================================== -->
+    <body
+        class="[ ] [ flex flex-col items-stretch content-between ]"
+        data-app="app"
+        data-view="private"
+        id="app-body">
+        <!-- ========================================= SKIP LINK =================================================  -->
+        <!-- Hide until found: https://www.w3.org/WAI/tutorials/menus/skip/ -->
+        <!-- https://webaim.org/techniques/skipnav/ -->
+        <div
+            class="[ skip-links-block ] [ flex items-center ] [ absolute top-0 left-0 z-50 ] [ invisible sr-only opacity-0 ] [ transition-opacity duration-500 ease-out ]"
+            autofocus
+            id="skiplinks-nav"
+            tabindex="0">
+            <a
+                class="[ sr-link ] [ sr-only focus:not-sr-only ]"
+                data-skip-link="true"
+                hidden="until-found"
+                href="#main-page-content"
+                id="skip-link-main-content"
+                tabindex="0"
+                title="Jump to Main Content: Sign Up & Contact forms if not registered">
+                Skip to main content
+            </a>
+            <a
+                class="[ sr-link ] [ sr-only focus:not-sr-only ]"
+                data-skip-link="true"
+                hidden="until-found"
+                href="#login-dropdown-menu"
+                id="skip-link-login-form"
+                tabindex="0"
+                title="Jump to Login form if registered">
+                Skip to login
+            </a>
+        </div>
+        <!-- ========================================= @@@@@@ ====================================================  -->
+        <!-- ========================================= HEADER ====================================================  -->
+        <!-- ========================================= @@@@@@ ====================================================  -->
+        <header
+            class="[ page-header header-style ] [ flex flex-auto flex-col md:flex-row ] [ items-center md:justify-between ] [ w-auto h-max md:h-16 ] [ mb-1 md:mb-0 ] [ px-4 py-2 ]"
+            id="header-page">
+            <!-- ===================================== NAVIGATION ================================================  -->
+            <nav
+                class="[ nav-global-header ] [ w-full ] [ flex flex-auto flex-col md:flex-row ] [ items-center md:justify-between ] [ px-2 md:px-6 py-4 ] [ md:space-x-4 space-y-4 md:space-y-0 ] [ nav-global-style ] [ bg-gray-800 text-white text-center ]"
+                aria-label="Global Navigation"
+                data-navigation="global"
+                id="nav-global-header">
+                <!-- ================================= BRAND NAVIGATION ==========================================  -->
+                <div
+                    class="[ nav-left-header ] [ min-w-1/3 ] [ flex flex-row ]"
+                    aria-label="Brand Navigation"
+                    data-navigation="brand"
+                    id="header-nav-left"
+                    role="navigation">
+                    <div
+                        class="[ nav-brand-header ] [ flex flex-shrink-0 ] [ justify-start items-center ] [ mx-2 md:mx-6 ] [ aspect-w-1 aspect-h-1 ]"
+                        id="brand-header">
+                        <a
+                            class="[ nav-brand-homelink ] [ text-white hover:text-gray-200 ] [ transition-colors duration-200 ease-in-out ]"
+                            href="index.html"
+                            title="Logo | Link">
+                            <img
+                                class="[ nav-left-logo ] [ object-cover w-full h-full ] [ aspect-w-1 aspect-h-1 ]"
+                                alt="Logo"
+                                id="logo-brand"
+                                src=""
+                                title="Logo | Icon | Logo" />
+                            <!-- <img class="h-8 w-auto sm:h-10 md:h-12" alt="Logo" id="logo-brand" src="" title="Logo | Icon | Logo"/> -->
+                        </a>
+                    </div>
+                    <div
+                        class="[ nav-brand-title ] [ flex flex-end flex-shrink-1 ] [ justify-end items-center ] [ hidden md:block ]"
+                        id="brand-title"
+                        title="Title | Link">
+                        <a
+                            class="[ nav-brand-homelink ] [ text-white hover:text-gray-200 ] [ transition-colors duration-200 ease-in-out ]"
+                            href="index.html"
+                            title="Title | Link">
+                            <h1
+                                class="[ nav-brand-text ] [ font-semibold text-xl tracking-tight ]"
+                                id="brand-text"
+                                title="Banner | Text | Brand">
+                                Dash &amp; Do
+                            </h1>
+                        </a>
+                    </div>
+                </div>
+                <!-- ================================= GLOBAL NAVIGATION: TOP ====================================  -->
+                <nav
+                    class="[ nav-right-header ] [ mb-2 md:mb-0 ] [ flex md:flex-end md:block ]"
+                    aria-label="Main Navigation Banner"
+                    data-navigation="primary"
+                    data-view="all"
+                    id="header-nav-right">
+                    <!-- ==============================  DJANGO TEMPLATE & INCLUDE ================================  -->
+                    <!-- ================================== PRIVATE MENU ==========================================  -->
+                    <menu
+                        class="[ private-menu-nav-right ] [ hidden ] [ flex place-items-center ] [ py-3 md:py-0 ] [ space-y-1 md:space-y-0 md:space-x-4 ]"
+                        aria-label="Private Navigation, Authenticated Users"
+                        data-main-menu="private"
+                        data-mobile-show="false"
+                        data-public="false"
+                        data-private="true"
+                        data-view="private"
+                        hidden="hidden"
+                        role="menubar"
+                        id="public-header-nav-right"
+                        title="Public Navigation">
+                        <!-- ========================= PRIVATE MENU ITEMS =========================================  -->
+                        <!-- ========================= DJANGO TEMPLATE & INCLUDE ==================================  -->
+                        <!-- Refactor: Links: Menu Item | Menu Link/Text -->
+                        <li
+                            class="[ private-menu-item ] [ block ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ]"
+                            aria-label="Home | Dash and Do for GitHub management | Private Menu, Global Navigation"
+                            aria-labelledby="home-private-menuitem"
+                            data-main-menu-item="private"
+                            data-menu="top-bar"
+                            data-mobile-show="false"
+                            data-view="private"
+                            id="private-menu-item-home"
+                            role="menuitem">
+                            <!-- ===================== PRIVATE MENU LINKS =========================================  -->
+                            <a
+                                class="[ main-menu-link] [ font-medium text-gray-300 text-base hover:text-white ]"
+                                aria-label="Home Link"
+                                href="index.html"
+                                id="home-private-menuitem"
+                                role="menuitem">
+                                Home
+                            </a>
+                        </li>
+                        <li
+                            class="[ private-menu-item ] [ block ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ]"
+                            aria-label="Dashboard | Dash and Do as GitHub Manager | Private Menu, Global Navigation"
+                            aria-labelledby="app-dash-private-menuitem"
+                            data-main-menu-item="private"
+                            data-menu="top-bar"
+                            data-mobile-show="false"
+                            data-view="private"
+                            id="private-menu-item-dash"
+                            role="menuitem">
+                            <a
+                                class="[ main-menu-link] [ font-medium text-base text-gray-300 hover:text-white ]"
+                                aria-label="Dashboard App link"
+                                data-view="private"
+                                href="dash.html"
+                                id="app-dash-private-menuitem">
+                                Dash &amp; Inform
+                            </a>
+                        </li>
+                        <li
+                            class="[ private-menu-item ] [ hidden ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ]"
+                            aria-label="Do and Act | Dash and Do as GitHub Manager | Private Menu, Global Navigation"
+                            aria-labelledby="app-dash-private-menuitem"
+                            data-main-menu-item="private"
+                            data-menu="top-bar"
+                            data-mobile-show="false"
+                            data-view="private"
+                            id="private-menu-item-do"
+                            role="menuitem">
+                            <a
+                                class="[ main-menu-link] [ font-medium text-base text-gray-300 hover:text-white ]"
+                                aria-label="Do App Link"
+                                data-view="private"
+                                href="do.html
+                                id="app-do-private-menuitem"
+                                role="menuitem">
+                                Do &amp; Act
+                            </a>
+                        </li>
+                        <!-- ========================= PRIVATE DROP MENU COMPONENT ===============================  -->
+                        <!-- ========================= DJANGO TEMPLATE & INCLUDE =================================  -->
+                        <li
+                            class="[ private-menu-item ] [ hidden md:block ] [ relative ] [ z-20 ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ] [ focus-within:dropdown-visible ]"
+                            aria-description="Private Access to Account | Component, Control and Dropdown Menu"
+                            aria-label="Account Menu | Access App & Account | Not for mobile | Only Tablet & Desktop | Public Menu, Global Navigation"
+                            data-main-menu-item="private"
+                            data-menu="dropdown"
+                            data-mobile-show="false"
+                            data-view="private"
+                            id="account-menu-item-account"
+                            role="menuitem">
+                            <button
+                                class="[ main-menu-btn ] [ z-30 ] [ font-medium text-gray-300 text-base hover:text-white ] [ cursor-pointer ]"
+                                data-menu="dropdown"
+                                data-view="private"
+                                id="private-dropdown-menu-account"
+                                onclick="document.getElementById('dropdown-card-account').classList.toggle('hidden');"
+                                onKeyDown="document.getElementById('dropdown-card-account').classList.toggle('hidden');"
+                                type="button">
+                                Account
+                            </button>
+                            <!-- ===================== PRIVATE DROPDOWN CARD =====================================  -->
+                            <div
+                                class="[ dropdown-menu dropdown-visible ] [ hidden ] [ absolute right-[-22.5px] ] [ z-10 ] [ w-56 ] [ mt-2 p-4 ] [ bg-white ] [ rounded-md ] [ shadow-xl ] [ focus:dropdown-visible hover:dropdown-visible active:dropdown-visible ]"
+                                aria-description="Account Dropdown Menu & Card"
+                                data-menu="dropdown"
+                                data-view="private"
+                                id="dropdown-card-account">
+                                <!-- ===================== PRIVATE ACCOUNT MENU ==================================  -->
+                                <menu
+                                    class="[ account-menu menu-card ] [ block ] [ w-full h-full ] [ p-4 border ] [ bg-gray-100 ] [ rounded-lg ]"
+                                    aria-description="Account & User Menu"
+                                    data-menu="card"
+                                    data-view="private"
+                                    id="dropdown-menu-account">
+                                    <!-- ==================== PRIVATE ACCOUNT ROW: PROFILE =======================  -->
+                                    <li
+                                        class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                                        data-view="private"
+                                        id="account-profile">
+                                        <a
+                                            class="[ account-link ] [ font-medium text-base text-gray-600 hover:text-slate-800 ]"
+                                            aria-description="Go to Account User Profile"
+                                            data-view="private"
+                                            href="account.html#account-profile"
+                                            id="account-profile-link"
+                                            title="View your account profile">
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <!-- ==================== PRIVATE ACCOUNT ROW: GitHub ========================  -->
+                                    <li
+                                        class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                                        data-view="private"
+                                        id="account-github">
+                                        <a
+                                            class="[ account-link ] [ font-medium text-base text-gray-600 hover:text-slate-800 ]"
+                                            aria-description="Link GitHub to Account"
+                                            data-view="private"
+                                            href="account.html#account-github"
+                                            id="account-github-link"
+                                            title="Connect your GitHub to Account">
+                                            Connect
+                                        </a>
+                                    </li>
+                                    <!-- ==================== PRIVATE ACCOUNT ROW: Settings=======================  -->
+                                    <li
+                                        class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                                        data-view="private"
+                                        id="account-settings">
+                                        <a
+                                            class="[ account-link ] [ font-medium text-base text-gray-600 hover:text-slate-800 ]"
+                                            aria-description="Go to Account Settings"
+                                            aria-label="Account Settings Link"
+                                            data-view="private"
+                                            href="account.html#account-settngs"
+                                            id="account-settings-link"
+                                            title="Update the account settings">
+                                            Settings
+                                        </a>
+                                    </li>
+                                    <!-- ==================== PRIVATE ACCOUNT ROW: LOGOUT ========================  -->
+                                    <!-- ==================== DJANGO TEMPLATE & FUNCTION =========================  -->
+                                    <li
+                                        class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                                        data-view="private"
+                                        id="account-logout">
+                                        <a
+                                            class="[ account-button ]"
+                                            aria-description="Account Logout Button"
+                                            aria-label="Account Logout Link"
+                                            data-view="private"
+                                            href="account.html#account-logout"
+                                            id="account-logout-ctrl">
+                                            Logout
+                                        </a>
+                                    </li>
+                                </menu>
+                            </div>
+                        </li>
+                    </menu>
+                </nav>
+            </nav>
+        </header>
+        <!-- ========================================= MAIN: PUBLIC PAGE CONTENT =================================  -->
+        <main
+            class="[ page-main-content ] [ flex flex-row ] [ h-max ] [ mt-0 md:mt-1 lg:mt-6 ] [ px-4 pb-20 lg:pb-4 ] [ space-y-10 lg:space-y-0 lg:space-x-10 ]"
+            id="main-page-content">
+            <!-- ===================================== CONTENT: PUBLIC : 1 COLUMN ================================  -->
+            <div
+                class="[ main-content ] [ flex flex-1 flex-col ] [ space-y-10 ] | [ transition-width duration-300 ease-out ] | [ font-normal text-base text-black ]"
+                role="region"
+                id="central-col2-content">
+                <!-- ================================= CONTENT: TOP: APP ========================================  -->
+                <section
+                    class="[ top-content ] [ flex-1 flex-end ] [ min-w-3/4 w-full min-h-350 ] [ mx-auto p-3 ] [ bg-gray-300 ]"
+                    aria-description="Content - Contact"
+                    aria-label="Hero Carousel"
+                    data-content="top"
+                    data-view="all"
+                    id="top-section-content">
+                    <h1
+                        class="[ header-content ] [ invisible opacity-0 ] [ sr-only ]"
+                        id="header-middle-content"
+                        aria-description=""
+                        aria-label="ContentSummary"
+                        data-view="all"
+                        hidden="until-found"></h1>
+                </section>
+                <!-- ================================= CONTENT: MID :  =========================  -->
+                <section
+                    class="[ mid-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-4 ] | [ bg-gray-400 ] [ font-normal text-base text-black ]"
+                    aria-description="Content - Call to actions"
+                    aria-label="Content"
+                    data-content="middle"
+                    data-view="all"
+                    id="middle-section-content">
+                    <h1
+                        class="[ header-content ] [ invisible opacity-0 ] [ sr-only ]"
+                        id="header-middle-content"
+                        aria-description=""
+                        aria-label="ContentData"
+                        data-view="all"
+                        hidden="until-found"></h1>
+                    <!-- PRIVARIOUS CONTENT -->
+                </section>
+            </div>
+        </main>
+        <!-- ========================================= FOOTER ====================================================  -->
+        <footer
+            class="[ page-footer ] [ flex flex-auto flex-col md:flex-row ] [ block ] [ items-center md:justify-between ] [ w-full h-max ] [ px-2 md:px-6 py-4 ] [ nav-global-style ] [ bg-gray-800 text-white text-center ]"
+            id="footer-page"
+            title="Footer | All Pages">
+            <!-- includes\footer.html -->
+            <nav
+                class="[ nav-global-footer ] [ grid grid-row-3 md:grid-cols-3 gap-6 ] [ place-items-center md:justify-between md:items-start ] [ w-full h-auto ] [ px-4 md:px-10 ] [ md:space-x-4 space-y-4 md:space-y-0 ]"
+                aria-label="Footer | Bottom Navigation | All Pages"
+                id="nav-global-footer"
+                title="Container | Grid | Footer">
+                <!-- Block[Col]: Footer | Left: Contact Details -->
+                <div
+                    class="[ footer-nav-left ] [ flex flex-wrap flex-col lg:flex-row ] [ justify-self-center md:justify-self-start place-items-center md:items-start ] [ md:max-width-1/3 h-fit ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ p-4 ] [ order-3 md:order-1 ]"
+                    aria-label="Footer | Left"
+                    id="left-nav-footer"
+                    role="contentinfo"
+                    title="Left Grid Cell | Contact About | 1,1 Landscape | 1,1 Portrait">
+                    <div
+                        class="[ place-items-center ]"
+                        title="Contact">
+                        <a
+                            id="mobile-link"
+                            href=""
+                            title="Contact | Mobile">
+                            +353851234567
+                        </a>
+                    </div>
+                    <div
+                        class="[ place-items-center ]"
+                        title="Contact | Email">
+                        <a
+                            id="email-link"
+                            href=""
+                            title="Contact | Email">
+                            email@example.com
+                        </a>
+                    </div>
+                    <!-- TODO: External Automatic Mobile and Email href generation/ in script file -->
+                    <!-- TODO: Create a image with mobile and email, as per rest of text style -->
+                    <div
+                        class="[ block visible md:hidden md:invisible ]"
+                        title="Copyright">
+                        <p title="Copyright | Text">© 2023-2028</p>
+                    </div>
+                </div>
+                <!-- Block[Col]: Footer | Mid: Icon -->
+                <div
+                    class="[ footer-nav-mid ] [ flex flex-col md:flex-row ] [ justify-self-center md:justify-self-center items-center md:items-start ] [ md:max-width-1/3 h-fit ] [ mx-auto ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ p-4 ] [ order-2 md:order-2 ]"
+                    aria-label="Footer | Middle"
+                    id="mid-nav-footer"
+                    role="contentinfo"
+                    title="Middle Grid Cell | Icons | 1,2 Landscape | 2,1 Portrait">
+                    <div
+                        class="[ nav-mid-col ] [ flex flex-col ] [ justify-self-center md:justify-self-start items-center md:items-start ] [ md:max-width-1/3 h-fit ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ p-4 ]"
+                        id="nav-mid-col">
+                        <div
+                            class=""
+                            title="GitHub">
+                            <a
+                                href="https://github.com/iPoetDev/dash-and-do-github"
+                                title="GitHub | Link to Repo">
+                                <img
+                                    alt="GitHub"
+                                    src=""
+                                    title="GitHub | Icon | Logo | Add Copyright" />
+                            </a>
+                        </div>
+                        <div
+                            class="[ hidden invisible md:block md:visible]"
+                            title="Copyright">
+                            <p title="Copyright | Text">© 2023-2028</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Block[Col]: Footer | Right: Secondary Navigation | Links -->
+                <div
+                    class="[ footer-nav-right ] [ flex flex-wrap flex-col md:flex-row ] [ justify-self-center md:justify-self-end items-center md:items-start ] [ md:max-width-1/3 h-fit ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ p-4 ] [ order-1 md:order-3 ]"
+                    aria-label="Footer | Right"
+                    id="right-nav-footer"
+                    role="contentinfo"
+                    title="Right Grid Cell | FAQ, Help & Docs | 1,3 Landscape | 3,1 Portrait">
+                    <div
+                        class=""
+                        title="FAQ">
+                        <a
+                            href=""
+                            title="FAQ"
+                            >FAQ</a
+                        >
+                    </div>
+
+                    <div
+                        class=""
+                        title="Help">
+                        <a
+                            href=""
+                            title="Help"
+                            >Help</a
+                        >
+                    </div>
+
+                    <div
+                        class=""
+                        title="Docs">
+                        <a
+                            href=""
+                            title="Docs"
+                            >Docs</a
+                        >
+                    </div>
+                </div>
+            </nav>
+            <!-- Extract-End: Include -->
+        </footer>
+        <!-- ========================================= Scripts ===================================================  -->
+        <!-- Toggle JS -->
+        <script
+            id="hero_slider_carousel"
+            title="Hero Slider JS |  Custom"
+            defer
+            src="../static/css/nav-sidebar-toggle.js"></script>
+        <!--         <script -->
+        <!--             id="hero_slider_carousel" -->
+        <!--             title="Hero Slider JS |  Custom" -->
+        <!--             defer -->
+        <!--             src="../static/css/hero-slider-carousel.js"></script> -->
+    </body>
+</html>

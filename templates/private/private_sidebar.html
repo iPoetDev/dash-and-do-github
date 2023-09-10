@@ -1,0 +1,49 @@
+<!-- =============================== Main | SideBar | Private Only  ==================================== -->
+<!-- Template: private_sidebar.html | Conditional | Private | Checked if -->
+<!-- a) user is authenticated | -->
+<!-- b) only logged user has permission to view | -->
+<!-- c) user has active session -->
+<!-- d) contact other users types are denied access to view -->
+<!-- Added: role: complementary, aria-label: Sidebar Navigation-->
+<!-- Added: nav tags + aria-labels-->
+<!-- DONE: Add Data-* for Private State, Metal Data-->
+<!-- NOTE: Toggle hidden (=none) attribute for Authenticated Private State-->
+<!-- Extract-Start -->
+<aside
+    class=""
+    data-private="true"
+    data-sidebar="private"
+    hidden="hidden"
+    id="sidebar-navigation-main-page"
+    title="Sidebar Navigation | Alignment Left | Private | Sessions | Permissions">
+    <div class="" id="top-sidebar-main" title="Sidebar Navigation | App Navigation | Top Sidebar">
+        <nav aria-label="Dash &amp; Inform" class="" id="nav-top-sidebar-main" title="Dash &amp; Inform">
+            <a href="" title="Dash &amp; Inform | Link"> Dash &amp;amp; Inform </a>
+        </nav>
+        <!--
+<nav class="" title="Do &amp; Act">
+<a href="" title="Do &amp; Act | Link">Do &amp; Act</a>
+</nav>
+-->
+    </div>
+    <div class="" id="bottom-sidebar-main" title="Sidebar Navigation| App Navigation | Bottom Sidebar">
+        <nav aria-label="Site Main Navigation Links" class="" id="nav-bottom-sidebar-main" title="Bottom Links | Block">
+            <ul>
+                <li><a href="" title="Home | Link">Home</a></li>
+                <li><a href="" title="Docs | Link">Docs</a></li>
+                <li><a href="" title="FAQ | Link">FAQ</a></li>
+                <li><a href="" title="Contact | Link">Contact</a></li>
+                <li><a href="" title="About | Link">About</a></li>
+                <!-- Extract Start -->
+                <!-- ================================== SNIPPET | LOGOUT ========================================= -->
+                <!-- Template: PARTIAL : Conditionals | Private | Checked if a) user is authenticated | b)
+only logged user has
+permission to view | c) user has active session d) contact other users types are denied access to
+view | Ends User Session | Changes ownership State: Logged in to Logged out -->
+                <li><a href="" title="Logout | Link">Logout</a></li>
+                <!-- Extract End -->
+            </ul>
+        </nav>
+    </div>
+</aside>
+<!-- Extract-End -->

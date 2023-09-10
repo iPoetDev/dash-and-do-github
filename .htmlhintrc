@@ -19,6 +19,7 @@
     "tags-check": true,
     "tag-pair": true,
     "tag-self-close": true,
+    "empty-tag-not-self-closed": true,
     "tagname-lowercase": true,
     "tagname-specialchars": false,
     "src-not-empty": true,

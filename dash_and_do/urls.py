@@ -41,12 +41,57 @@ from django.urls import path
 #  - account_login,
 #  - account_logout,
 #  - account_set_password
+# Changed 2023-08-24:
+# added: SiteMap in Comments as a Planner
+# added: Core index forms to core.urls
 
+# ================== Site Map ================================
+# URLPatterns - .html Template: DjangoApp => urls.py | views.py
+# ================== Core App =======================
+#   Page: Public & Private
+# / - index.html: Home Page => Core Index.urls
+#   Page Parts: Private
+#   > /form_signup/ - Signup Form => core.urls core.views core.forms core.models
+#   > /form_login/ - Login Form => core.urls| core.views core.forms core.models
+#   > /form_password_reset/ - Password Reset Form => core.urls | core.views
+#     core.forms core.models
+#   Page Parts: Private
+#   > /link_logout/ - Accounts/Logout Link => accounts.urls @ Sidebar, Menu | core.view
+#   Page Parts: All
+#   > /form_contact/ - Password Reset Form => core.urls | core.views core.forms
+#                      core.email
+# /verify/ - verify.html - Verify Email => core.urls | core.views core.http
+# (redirect)
+# ================== Accounts App ==================
+#   Page: Private
+# /account/ - accounts.html: Accounts => accounts.urls
+#   Page Parts: Private
+#   /profile/ - profile.html: Accounts/Profile => dash.urls
+#   Page Parts: Private
+#   > /form_profile/ - Profile Form => accounts.urls
+#   > /form_password_change/ - Password Change Form => accounts.urls
+#   /github/ - github.html: GitHub Integration
+#   Page Parts:
+#   > /form_github_token/ - Password Reset Form => accounts.urls
+#   /link_logout/ - Accounts/Logout Link => accounts.urls
+# ================== Dash App ======================
+#   Page: Private
+# /dash/ - Dash.html => dash.urls
+# ================== Do'er App ======================
+# ================== Admin App ======================
+# IF DEBUG:
+# /admin/ - Admin Site => admin.site.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path("__debug__/", include("debug_toolbar.urls")),
-    path('core/', include('core.urls')),
+    # index.html (root) is in core.urls
+    path('', include('core.urls')),
+    # index forms is in core.urls
+    path('form_signup/', include('core.urls.signup')),
+    path('form_login/', include('core.urls.login')),
+    path('form_reset/', include('core.urls.pwd_reset')),
+    path('form_contact/', include('core.urls.contact')),
     # path('accounts/', include('accounts.urls')),
     # path('accounts/', include('allauth.urls')),
     # path('dash/', include('dash.urls')),

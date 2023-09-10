@@ -1,0 +1,13 @@
+<!-- form_login_error.html
+     TODO: Add Form HTMX
+      - https://www.perplexity.ai/search/547f1abd-102f-44c6-b2bc-d0b365ee4f4b?s=c
+     Note: Targted DIV#account-navigation-menu-item
+     Note: Type: Django Message / Success
+     Note: This is a sibling of form_login_success.html for Error States
+-->
+<div class="message message-error" id="error-login-form" title="Login Form Error">
+    <h3 id="error-login-header" title="Login Form Error">Form Error!</h3>
+    <p>Your message was not successfully submitted.</p>
+    <p>Please try again.</p>
+    <a href="/form_login" hx-get="#account-navigation-menu-item" title="Login Form | Link">New Message</a>
+</div>

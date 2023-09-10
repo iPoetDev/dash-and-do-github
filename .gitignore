@@ -93,7 +93,7 @@ ipython_config.py
 #   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
 #   However, in case of collaboration, if having platform-specific dependencies or dependencies
 #   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
+#   install contact needed dependencies.
 #Pipfile.lock
 
 # poetry
@@ -193,6 +193,8 @@ Writerside/*
 # Templates
 
 .ai
+/.tours/dash&Do.tour
+/templates/templates.lnk
 /piecesdb.json
 /repository/*
 /docs/diagrams/
@@ -200,10 +202,9 @@ Writerside/*
 /docs/templates/
 /respository/
 /.trash/
-/.docs/deployment/select-app-repository..md
-/docs/integration/8-config/
-/docs/*
-/docs/
+# /docs/*
+# /docs/
+#!/docs/assets/img-readme/*
 /repository/
 
 /docs/decisions/
@@ -216,7 +217,6 @@ Writerside/*
 
 package.json
 package-lock.json
-README.md
 /requirments-dev.txt
 /apps/dash/migrations/__init__.py
 /apps/dash/__init__.py
@@ -227,3 +227,460 @@ README.md
 /apps/dash/tests.py
 /apps/dash/urls.py
 /apps/dash/views.py
+
+/docs/.obsidian/plugins/cm-editor-syntax-highlight-obsidian/main.js
+/docs/.obsidian/plugins/cm-editor-syntax-highlight-obsidian/manifest.json
+/docs/.obsidian/plugins/cm-editor-syntax-highlight-obsidian/styles.css
+/docs/.obsidian/plugins/easy-toggle-sidebars/main.js
+/docs/.obsidian/plugins/easy-toggle-sidebars/manifest.json
+/docs/.obsidian/plugins/easy-toggle-sidebars/styles.css
+/docs/.obsidian/plugins/editor-width-slider/main.js
+/docs/.obsidian/plugins/editor-width-slider/manifest.json
+/docs/.obsidian/plugins/editor-width-slider/styles.css
+/docs/.obsidian/plugins/make-md/backups/Spaces 2023-08-28 19-29.mdb
+/docs/.obsidian/plugins/make-md/backups/Spaces 2023-08-28 19-55.mdb
+/docs/.obsidian/plugins/make-md/backups/Spaces 2023-08-29 09-16.mdb
+/docs/.obsidian/plugins/make-md/backups/Spaces 2023-08-29 11-36.mdb
+/docs/.obsidian/plugins/make-md/data.json
+/docs/.obsidian/plugins/make-md/main.js
+/docs/.obsidian/plugins/make-md/manifest.json
+/docs/.obsidian/plugins/make-md/Spaces.mdb
+/docs/.obsidian/plugins/make-md/styles.css
+/docs/.obsidian/plugins/markdown-tree/main.js
+/docs/.obsidian/plugins/markdown-tree/manifest.json
+/docs/.obsidian/plugins/markdown-tree/styles.css
+/docs/.obsidian/plugins/obsidian-checklist-plugin/main.js
+/docs/.obsidian/plugins/obsidian-checklist-plugin/manifest.json
+/docs/.obsidian/plugins/obsidian-checklist-plugin/styles.css
+/docs/.obsidian/plugins/obsidian-dirtreeist/main.js
+/docs/.obsidian/plugins/obsidian-dirtreeist/manifest.json
+/docs/.obsidian/plugins/obsidian-dirtreeist/styles.css
+/docs/.obsidian/plugins/obsidian-embedded-code-title/main.js
+/docs/.obsidian/plugins/obsidian-embedded-code-title/manifest.json
+/docs/.obsidian/plugins/obsidian-embedded-code-title/styles.css
+/docs/.obsidian/plugins/obsidian-excalidraw-plugin/data.json
+/docs/.obsidian/plugins/obsidian-excalidraw-plugin/main.js
+/docs/.obsidian/plugins/obsidian-excalidraw-plugin/manifest.json
+/docs/.obsidian/plugins/obsidian-excalidraw-plugin/styles.css
+/docs/.obsidian/plugins/obsidian-kanban/main.js
+/docs/.obsidian/plugins/obsidian-kanban/manifest.json
+/docs/.obsidian/plugins/obsidian-kanban/styles.css
+/docs/.obsidian/plugins/obsidian-outliner/data.json
+/docs/.obsidian/plugins/obsidian-outliner/main.js
+/docs/.obsidian/plugins/obsidian-outliner/manifest.json
+/docs/.obsidian/plugins/obsidian-outliner/styles.css
+/docs/.obsidian/plugins/obsidian-plugin-toc/main.js
+/docs/.obsidian/plugins/obsidian-plugin-toc/manifest.json
+/docs/.obsidian/plugins/obsidian-sidebar-expand-on-hover/data.json
+/docs/.obsidian/plugins/obsidian-sidebar-expand-on-hover/main.js
+/docs/.obsidian/plugins/obsidian-sidebar-expand-on-hover/manifest.json
+/docs/.obsidian/plugins/obsidian-tabs/main.js
+/docs/.obsidian/plugins/obsidian-tabs/manifest.json
+/docs/.obsidian/plugins/obsidian-tabs/styles.css
+/docs/.obsidian/plugins/obsidian-toggle-list/data.json
+/docs/.obsidian/plugins/obsidian-toggle-list/main.js
+/docs/.obsidian/plugins/obsidian-toggle-list/manifest.json
+/docs/.obsidian/plugins/obsidian-toggle-list/styles.css
+/docs/.obsidian/plugins/obsidian-wakatime/main.js
+/docs/.obsidian/plugins/obsidian-wakatime/manifest.json
+/docs/.obsidian/plugins/obsidian-wakatime/styles.css
+/docs/.obsidian/plugins/table-editor-obsidian/data.json
+/docs/.obsidian/plugins/table-editor-obsidian/main.js
+/docs/.obsidian/plugins/table-editor-obsidian/manifest.json
+/docs/.obsidian/plugins/table-editor-obsidian/styles.css
+/docs/.obsidian/plugins/theme-picker/main.js
+/docs/.obsidian/plugins/theme-picker/manifest.json
+/docs/.obsidian/plugins/theme-picker/styles.css
+/docs/.obsidian/plugins/wikilinks-to-mdlinks-obsidian/main.js
+/docs/.obsidian/plugins/wikilinks-to-mdlinks-obsidian/manifest.json
+/docs/.obsidian/app.json
+/docs/.obsidian/appearance.json
+/docs/.obsidian/community-plugins.json
+/docs/.obsidian/core-plugins.json
+/docs/.obsidian/core-plugins-migration.json
+/docs/.obsidian/hotkeys.json
+/docs/.obsidian/workspace.json
+/docs/Dash-and-do-docs/.obsidian/plugins/make-md/backups/Spaces 2023-09-01 14-33.mdb
+/docs/Dash-and-do-docs/.obsidian/plugins/make-md/data.json
+/docs/Dash-and-do-docs/.obsidian/plugins/make-md/main.js
+/docs/Dash-and-do-docs/.obsidian/plugins/make-md/manifest.json
+/docs/Dash-and-do-docs/.obsidian/plugins/make-md/Spaces.mdb
+/docs/Dash-and-do-docs/.obsidian/plugins/make-md/styles.css
+/docs/Dash-and-do-docs/.obsidian/plugins/obsidian-kanban/main.js
+/docs/Dash-and-do-docs/.obsidian/plugins/obsidian-kanban/manifest.json
+/docs/Dash-and-do-docs/.obsidian/plugins/obsidian-kanban/styles.css
+/docs/Dash-and-do-docs/.obsidian/app.json
+/docs/Dash-and-do-docs/.obsidian/appearance.json
+/docs/Dash-and-do-docs/.obsidian/community-plugins.json
+/docs/Dash-and-do-docs/.obsidian/core-plugins.json
+/docs/Dash-and-do-docs/.obsidian/core-plugins-migration.json
+/docs/Dash-and-do-docs/.obsidian/hotkeys.json
+/docs/Dash-and-do-docs/.obsidian/workspace.json
+/docs/Dash-and-do-docs/Untitled.md
+/docs/design/core-app-django/IndexPageLogic.dark.png
+/docs/design/core-app-django/IndexPageLogic.dark.svg
+/docs/design/core-app-django/IndexPageLogic.excalidraw
+/docs/design/core-app-django/IndexPageLogic.light.png
+/docs/design/core-app-django/IndexPageLogic.light.svg
+/docs/design/dash-and-do.bmpr
+/docs/design/design.md
+/docs/design/Untitled.md
+/docs/design/UX.excalidraw.dark.png
+/docs/design/UX.excalidraw.dark.svg
+/docs/design/UX.excalidraw.excalidraw
+/docs/design/UX.excalidraw.light.png
+/docs/design/UX.excalidraw.light.svg
+/docs/design/UX.excalidraw.md
+/docs/github/APIDog/API s.md
+/docs/github/APIDog/APIDog.md
+/docs/github/About GitHub's APIs - GitHub Docs.md
+/docs/github/GitHub API URIs.md
+/docs/github/GitHub Docs.canvas
+/docs/github/GitHub Exception Handling.md
+/docs/github/GitHub Overview Notes.md
+/docs/integration/00-repo/assets/assets.md
+/docs/integration/00-repo/assets/IDE Inspections StandardJs.png
+/docs/integration/00-repo/assets/Pasted image 20230713172443.png
+/docs/integration/00-repo/assets/Pasted image 20230714103438.png
+/docs/integration/00-repo/assets/PyCharm-Style-Inspect.png
+/docs/integration/00-repo/assets/PyCharm-Stylelint.png
+/docs/integration/00-repo/00-repo.md
+/docs/integration/00-repo/1-repo.md
+/docs/integration/00-repo/editorconfig.md
+/docs/integration/00-repo/eslint.md
+/docs/integration/00-repo/flake8.md
+/docs/integration/00-repo/gitleaks.md
+/docs/integration/00-repo/htmlhint.md
+/docs/integration/00-repo/npm.md
+/docs/integration/00-repo/Prettier.md
+/docs/integration/00-repo/Prettier-plugin-tailwindcss.md
+/docs/integration/00-repo/Repo .dotfiles.md
+/docs/integration/00-repo/repo-tracker.md
+/docs/integration/00-repo/Setting  Browserlist.md
+/docs/integration/00-repo/StandardJS.md
+/docs/integration/00-repo/stylelint.md
+/docs/integration/00-repo/stylelint-csstree-validator.md
+/docs/integration/00-repo/Tailwind.md
+/docs/integration/00-repo/w3c-html-validator & HTML W3C Validation.md
+/docs/integration/01-dev/1-dev.md
+/docs/integration/01-dev/01-dev.md
+/docs/integration/01-dev/Browserlist.md
+/docs/integration/01-dev/dev-tracker.md
+/docs/integration/01-dev/django-debug-toolbar.md
+/docs/integration/01-dev/editorconfig.md
+/docs/integration/01-dev/eslint.md
+/docs/integration/01-dev/gitleaks.md
+/docs/integration/01-dev/htmlhint.md
+/docs/integration/01-dev/iptools.md
+/docs/integration/01-dev/Pasted image 20230713172443.png
+/docs/integration/01-dev/Prettier.md
+/docs/integration/01-dev/Prettier-plugin-tailwindcss.md
+/docs/integration/01-dev/StandardJS.md
+/docs/integration/01-dev/stylelint.md
+/docs/integration/01-dev/stylelint-csstree-validator.md
+/docs/integration/01-dev/Tailwind.md
+/docs/integration/01-dev/w3c-html-validator & HTML W3C Validation.md
+/docs/integration/02-prompts/02-prompts.md
+/docs/integration/02-prompts/prompt-tracker.md
+/docs/integration/03-pre-commit/- `autopep8` ✔.md
+/docs/integration/03-pre-commit/- `check-case-conflict`.md
+/docs/integration/03-pre-commit/- `cspell` - This hook runs CSpell spellchecker.md
+/docs/integration/03-pre-commit/- `dead` - dead simple python dead code detection.md
+/docs/integration/03-pre-commit/- `debug-statements` - checks for debugger imports and py37+ `breakpoint()` calls in python source..md
+/docs/integration/03-pre-commit/- `detect-private-key` - detects the presence of private keys..md
+/docs/integration/03-pre-commit/- `double-quote-string-fixer` - replaces double quoted strings with single quoted strings..md
+/docs/integration/03-pre-commit/- `editorconfig-checker` ✔.md
+/docs/integration/03-pre-commit/- `end-of-file-fixer` - ensures that a file is either empty, or ends with one newline..md
+/docs/integration/03-pre-commit/- `eslint`.md
+/docs/integration/03-pre-commit/- `giticket` - Utility to prepend your commits with info from your branch..md
+/docs/integration/03-pre-commit/- `gitleaks` 🚧.md
+/docs/integration/03-pre-commit/- `gitlint` - Checks your git commit messages for style..md
+/docs/integration/03-pre-commit/- `htmlhint` - NodeJS HTML syntax linter (htmlhint).md
+/docs/integration/03-pre-commit/- `jinjalint` - A linter which checks the indentation and the correctness of Jinja-like HTML templates..md
+/docs/integration/03-pre-commit/- `mixed-line-ending` - replaces or checks mixed line ending..md
+/docs/integration/03-pre-commit/- `mypy`.md
+/docs/integration/03-pre-commit/- `no-commit-to-branch` - don't commit to branch.md
+/docs/integration/03-pre-commit/- `prettier` ✔.md
+/docs/integration/03-pre-commit/- `ruff` 🚧.md
+/docs/integration/03-pre-commit/- `stylelint` 🚧.md
+/docs/integration/03-pre-commit/- `talisman-commit` - talisman.md
+/docs/integration/03-pre-commit/- `validate-html` - HTML syntax validator using W3C v.Nu checker, with support for handlebars jinja2 templates.md
+/docs/integration/03-pre-commit/- `vulture` - Find unused Python code..md
+/docs/integration/03-pre-commit/pre-commit.md
+/docs/integration/03-pre-commit/pre-commit tracker.md
+/docs/integration/03-pre-commit/pre-commit view.canvas
+/docs/integration/04-commits/app (design config build test deploy)  __.md
+/docs/integration/04-commits/canvas-flow.canvas
+/docs/integration/04-commits/Commit-Flow.md
+/docs/integration/04-commits/commit-flow.png
+/docs/integration/04-commits/commit-flow tracker.md
+/docs/integration/04-commits/Commit-Flow 1.md
+/docs/integration/04-commits/data (design config build test deploy)  __.md
+/docs/integration/04-commits/deploy (design config build test deploy)  __.md
+/docs/integration/04-commits/feat (design config build test deploy)  __.md
+/docs/integration/04-commits/fix (design config build test deploy)  __.md
+/docs/integration/04-commits/ide-notes.png
+/docs/integration/04-commits/proj (agile,plan,concept)  __.md
+/docs/integration/04-commits/proj (document,readme)  __.md
+/docs/integration/04-commits/refactor (scope)  __.md
+/docs/integration/04-commits/test (plam,design,result)  __.md
+/docs/integration/04-commits/ui (design config build test deploy)  __.md
+/docs/integration/05-changelog/changelog.md
+/docs/integration/06-ci-gh-apps/ci-app-flows.md
+/docs/integration/06-ci-gh-apps/Issue-Bots.md
+/docs/integration/06-ci-gh-apps/issue-labler.md
+/docs/integration/06-ci-gh-apps/meta-bob.md
+/docs/integration/06-ci-gh-apps/super-shields.md
+/docs/integration/06-ci-gh-apps/templater.md
+/docs/integration/07-web-app/img/Pasted image 20230714235526.png
+/docs/integration/07-web-app/About Page.md
+/docs/integration/07-web-app/Activating Models.md
+/docs/integration/07-web-app/Admin.md
+/docs/integration/07-web-app/Class based views.md
+/docs/integration/07-web-app/Create Database Model.md
+/docs/integration/07-web-app/CRSF Trusted Origins.md
+/docs/integration/07-web-app/Databases.md
+/docs/integration/07-web-app/Django Admin.md
+/docs/integration/07-web-app/Django ORM.md
+/docs/integration/07-web-app/django-build.md
+/docs/integration/07-web-app/django-canvas.canvas
+/docs/integration/07-web-app/Environment Variables.md
+/docs/integration/07-web-app/Extending Templates.md
+/docs/integration/07-web-app/get_absolute_urls.md
+/docs/integration/07-web-app/Init.md
+/docs/integration/07-web-app/Middleware.md
+/docs/integration/07-web-app/Pasted image 20230714235621.png
+/docs/integration/07-web-app/Pasted image 20230714235635.png
+/docs/integration/07-web-app/Pasted image 20230714235647.png
+/docs/integration/07-web-app/Pasted image 20230714235712.png
+/docs/integration/07-web-app/Pasted image 20230714235730.png
+/docs/integration/07-web-app/Pasted image 20230714235743.png
+/docs/integration/07-web-app/Pasted image 20230714235757.png
+/docs/integration/07-web-app/Pasted image 20230714235817.png
+/docs/integration/07-web-app/Pasted image 20230714235834.png
+/docs/integration/07-web-app/Pasted image 20230714235916.png
+/docs/integration/07-web-app/PK   FK.md
+/docs/integration/07-web-app/Production Database.md
+/docs/integration/07-web-app/Pyscopg.md
+/docs/integration/07-web-app/Static Files.md
+/docs/integration/07-web-app/Static Files 1.md
+/docs/integration/07-web-app/Templates.md
+/docs/integration/07-web-app/Tests.md
+/docs/integration/07-web-app/URLs.md
+/docs/integration/07-web-app/URLs 1.md
+/docs/integration/07-web-app/Views.md
+/docs/integration/07-web-app/Views Templates URLs.md
+/docs/integration/07-web-app/Web Servers.md
+/docs/integration/07-web-app/White Noise.md
+/docs/integration/07-web-app/WSGI   ASGI.md
+/docs/integration/08-config/8-config.md
+/docs/integration/08-config/config-settings tracker.md
+/docs/integration/08-config/Default Settings   Global Settings.md
+/docs/integration/08-config/Overall Config values.md
+/docs/integration/08-config/Pasted image 20230720100031.png
+/docs/integration/09-deployments/9-deployments.md
+/docs/integration/09-deployments/Deployment CheckList.md
+/docs/integration/09-deployments/deployment-tracker.md
+/docs/integration/09-deployments/deploys-cloud-submission.md
+/docs/integration/09-deployments/Heroku CLI Help.md
+/docs/integration/09-deployments/Python Heroku CLI - ConfigVars Deployment Script.md
+/docs/integration/10-build/10-build.md
+/docs/integration/10-build/build-flow.md
+/docs/integration/10-build/build-tracker.md
+/docs/integration/10-build/django-build.md
+/docs/integration/10-build/requirements-features-priorities-containst.md
+/docs/integration/11-api/design-whiteboard.canvas
+/docs/integration/11-api/github-api-tracker.md
+/docs/integration/11-api/Inspect a GitHub OAuth URL.md
+/docs/integration/12-django/django-admin manage-py.canvas
+/docs/integration/13-implement/1st Migration.md
+/docs/integration/13-implement/1st Run  Admin Site.md
+/docs/integration/13-implement/13-implement.md
+/docs/integration/13-implement/13-implement 1.md
+/docs/integration/13-implement/Dash & Do Project Structure.md
+/docs/integration/13-implement/Django AllAuth.md
+/docs/integration/13-implement/Forms.md
+/docs/integration/13-implement/HTTP Request.md
+/docs/integration/13-implement/implement-&-model-flow.md
+/docs/integration/13-implement/integration-tracker.md
+/docs/integration/13-implement/Migration.md
+/docs/integration/13-implement/Models & Database.md
+/docs/integration/13-implement/Runserver & Admin.md
+/docs/integration/13-implement/Server Settings.md
+/docs/integration/13-implement/Session.md
+/docs/integration/13-implement/Settings.py.md
+/docs/integration/13-implement/Settings Sections.md
+/docs/integration/13-implement/Templates.md
+/docs/integration/14-models/14-models.md
+/docs/integration/14-models/Accounts.md
+/docs/integration/14-models/dash-and-do-accounts.png
+/docs/integration/14-models/Diagram Tracker.md
+/docs/integration/14-models/DRAW23-08-07.excalidraw.dark.png
+/docs/integration/14-models/DRAW23-08-07.excalidraw.dark.svg
+/docs/integration/14-models/DRAW23-08-07.excalidraw.excalidraw
+/docs/integration/14-models/DRAW23-08-07.excalidraw.light.png
+/docs/integration/14-models/DRAW23-08-07.excalidraw.light.svg
+/docs/integration/14-models/DRAW23-08-07.excalidraw.md
+/docs/integration/14-models/MODELS-08-07.excalidraw.dark.png
+/docs/integration/14-models/MODELS-08-07.excalidraw.dark.svg
+/docs/integration/14-models/MODELS-08-07.excalidraw.excalidraw
+/docs/integration/14-models/MODELS-08-07.excalidraw.light.png
+/docs/integration/14-models/MODELS-08-07.excalidraw.light.svg
+/docs/integration/14-models/MODELS-08-07.excalidraw.md
+/docs/integration/15-styling/AllCommon/Footer.md
+/docs/integration/15-styling/Dash.html/Index.html.md
+/docs/integration/15-styling/Dash.html/page.html 1.md
+/docs/integration/15-styling/Design/Appearance.md
+/docs/integration/15-styling/Design/Interact.md
+/docs/integration/15-styling/Design/Layout.md
+/docs/integration/15-styling/Design/Structure.md
+/docs/integration/15-styling/Design/Tailwind.md
+/docs/integration/15-styling/Design/Tailwind Elements.md
+/docs/integration/15-styling/Design/Untitled.md
+/docs/integration/15-styling/Index.html/res/Pasted image 20230909173348.png
+/docs/integration/15-styling/Index.html/res/Pasted image 20230909173714.png
+/docs/integration/15-styling/Index.html/res/Pasted image 20230909173726.png
+/docs/integration/15-styling/Index.html/res/Pasted image 20230909173741.png
+/docs/integration/15-styling/Index.html/res/Pasted image 20230909173800.png
+/docs/integration/15-styling/Index.html/res/Pasted image 20230909173813.png
+/docs/integration/15-styling/Index.html/res/Pasted image 20230909173828.png
+/docs/integration/15-styling/Index.html/res/Pasted image 20230909173843.png
+/docs/integration/15-styling/Index.html/res/Pasted image 20230909173903.png
+/docs/integration/15-styling/Index.html/res/Pasted image 20230909173916.png
+/docs/integration/15-styling/Index.html/res/Pasted image 20230909181903.png
+/docs/integration/15-styling/Index.html/0 index.html.md
+/docs/integration/15-styling/Index.html/Body.md
+/docs/integration/15-styling/Index.html/Head.md
+/docs/integration/15-styling/Index.html/Index   HTML.md
+/docs/integration/15-styling/Index.html/Main.md
+/docs/integration/15-styling/Inner.html/Account   Private   HTML.md
+/docs/integration/15-styling/Inner.html/BodyTemplate.md
+/docs/integration/15-styling/Inner.html/HeadTemplate.md
+/docs/integration/15-styling/Inner.html/Inner.html.md
+/docs/integration/15-styling/Inner.html/inner.html - Private.md
+/docs/integration/15-styling/Inner.html/Main.md
+/docs/integration/15-styling/Inner.html/MainTemplate.md
+/docs/integration/15-styling/Inner.html/Pasted image 20230909185857.png
+/docs/integration/15-styling/MasterTemplates/assets/Pasted image 20230831172953.png
+/docs/integration/15-styling/MasterTemplates/assets/Pasted image 20230831174415.png
+/docs/integration/15-styling/MasterTemplates/assets/Pasted image 20230831175753.png
+/docs/integration/15-styling/MasterTemplates/assets/Pasted image 20230831212135.png
+/docs/integration/15-styling/MasterTemplates/000 Body.md
+/docs/integration/15-styling/MasterTemplates/001 SkipLink.md
+/docs/integration/15-styling/MasterTemplates/002 Header.md
+/docs/integration/15-styling/MasterTemplates/002-01 Nav   Public.md
+/docs/integration/15-styling/MasterTemplates/002-01-01 Sub Menu   Login   Form Block   Public.md
+/docs/integration/15-styling/MasterTemplates/002-02 Nav   Private.md
+/docs/integration/15-styling/MasterTemplates/002-02-01 Sub Menu   Account   Private.md
+/docs/integration/15-styling/MasterTemplates/003 Main.md
+/docs/integration/15-styling/MasterTemplates/003-01 Sidebar   Private.md
+/docs/integration/15-styling/MasterTemplates/003-02 Slider   Hero   Content Top Section  AllViews (Public   Private).md
+/docs/integration/15-styling/MasterTemplates/003-03-01 Form   Sign up   Public.md
+/docs/integration/15-styling/MasterTemplates/003-03-01 Sign Up   Inner   Form Card   Content   Public.md
+/docs/integration/15-styling/MasterTemplates/003-03-01 Sign Up   Outer   CTA   Component   Mid Section   Content   Public.md
+/docs/integration/15-styling/MasterTemplates/003-03-02 App Cards   CTA   Component   Mid Section   Content   Private.md
+/docs/integration/15-styling/MasterTemplates/003-03-02 AppCards  Inner   CTA Card   Content   Private.md
+/docs/integration/15-styling/MasterTemplates/003-04 Contact   CTA   Component   Lower Section   AllViews (Private, Public).md
+/docs/integration/15-styling/MasterTemplates/003-04 Contact   Form   Card   AllViews (Public   Private).md
+/docs/integration/15-styling/MasterTemplates/Dropdown Menu   Form Component.md
+/docs/integration/15-styling/MasterTemplates/IndexPageLogic.dark.png
+/docs/integration/15-styling/MasterTemplates/IndexPageLogic.dark.svg
+/docs/integration/15-styling/MasterTemplates/IndexPageLogic.excalidraw
+/docs/integration/15-styling/MasterTemplates/IndexPageLogic.light.png
+/docs/integration/15-styling/MasterTemplates/IndexPageLogic.light.svg
+/docs/integration/15-styling/MasterTemplates/Input & Labels.md
+/docs/integration/15-styling/MasterTemplates/Main.md
+/docs/integration/15-styling/MasterTemplates/MasterTemplates.md
+/docs/integration/15-styling/MasterTemplates/page.html.md
+/docs/integration/15-styling/MasterTemplates/Site Forms   Styling.md
+/docs/integration/15-styling/PrivateCommon/Header.md
+/docs/integration/15-styling/PrivateCommon/SideBar.md
+/docs/integration/15-styling/PublicCommon/Header.md
+/docs/integration/15-styling/PublicCommon/SkipLinks.md
+/docs/integration/15-styling/15-styling.md
+/docs/integration/16-pages-site/16-pages-site.md
+/docs/integration/16-pages-site/Core App Index-html.md
+/docs/integration/16-pages-site/Core-AppLogic-Index--html 20230824172927.png
+/docs/integration/16-pages-site/Private-index-html--20230824172841.png
+/docs/integration/16-pages-site/Public-Index-html--20230824172751.png
+/docs/integration/integration.md
+/docs/integration/integration-tracker.md
+/docs/readme/1/README 1 Introduction 🔎✔ (Sprint 0,12).md
+/docs/readme/1/README 2 Problem 🔎✔ (Sprint 0).md
+/docs/readme/1/README 3 Project 🔎✔  (Sprint 0).md
+/docs/readme/1/README 4 Concept ❓✔(Sprint 3,5).md
+/docs/readme/1/README 5 Scope 🔎✔ (Sprint 0).md
+/docs/readme/1/README 6 Plan ❓✔ (Sprint 3).md
+/docs/readme/1/README 6 Plan 🚧✔ (Sprint 3).md
+/docs/readme/1/README 7 Architecture ❓✔(Sprint 2).md
+/docs/readme/1/README 7 Architecture 🔎✔(Sprint 2).md
+/docs/readme/1/README 8 Design ❓✔(Sprint 6).md
+/docs/readme/1/README 8 Design 🔎✔(Sprint 4,6).md
+/docs/readme/1/README 9 Data ❓✔(Sprint 5).md
+/docs/readme/1/README 10 Build❓✔ Sprint 2 WE).md
+/docs/readme/1/README 11 Code ❓✔ (Sprint 2 WE).md
+/docs/readme/1/README 12 Test ❓✔(Sprint 3,4).md
+/docs/readme/1/README 12 Test 🚧✔(Sprint 3,4).md
+/docs/readme/1/README 13 Quality 🔽🔎✔(Sprint 1).md
+/docs/readme/1/README 14 Acceptance ❓✔ (Sprint 3).md
+/docs/readme/1/README 15 Deploy 🔎✔(Sprint 2).md
+/docs/readme/1/README 17 Assessment ❓✔ (Sprint 11).md
+/docs/readme/assets/15-1-Commit-dark.png
+/docs/readme/assets/15-1-Commit-light.png
+/docs/readme/assets/DEFINE - Agile Product Specificiations.png
+/docs/readme/assets/Django_logo.svg
+/docs/readme/assets/Heroku.svg
+/docs/readme/assets/Pasted image 20230717132808.png
+/docs/readme/assets/Pasted image 20230717132808.png.xmp
+/docs/readme/assets/Pasted image 20230717132920.png
+/docs/readme/assets/Pasted image 20230717135014.png
+/docs/readme/assets/Pasted image 20230717151341.png
+/docs/readme/assets/Pasted image 20230717151415.png
+/docs/readme/assets/Pasted image 20230717162027.png
+/docs/readme/assets/Pasted image 20230717193153.png
+/docs/readme/assets/Pasted image 20230717193303.png
+/docs/readme/assets/Pasted image 20230718131534.png
+/docs/readme/assets/Pasted image 20230718131542.png
+/docs/readme/assets/Pasted image 20230718153644.png
+/docs/readme/assets/Postgresql_elephant.svg
+/docs/readme/assets/Postgresql_elephant.svg.png
+/docs/readme/assets/SYSTEM-GitHub-Developer-Account.png
+/docs/readme/Pasted image 20230910145727.png
+/docs/readme/Pasted image 20230910152402.png
+/docs/readme/Pasted image 20230910153501.png
+/docs/readme/Pasted image 20230910154359.png
+/docs/readme/Pasted image 20230910154658.png
+/docs/readme/Pasted image 20230910155615.png
+/docs/readme/Pasted image 20230910155956.png
+/docs/readme/Pasted image 20230910160918.png
+/docs/readme/Pasted image 20230910161040.png
+/docs/readme/readme.md
+/docs/readme/README Canvas.canvas
+/docs/readme/README TRACKER.md
+/docs/readme/README 01 Introduction✔.md
+/docs/readme/README 02 Problem✔.md
+/docs/readme/README 03 Project✔.md
+/docs/readme/README 04 Concept ❓✔.md
+/docs/readme/README 05 Scope ❓✔.md
+/docs/readme/README 06 Plan ❓✔.md
+/docs/readme/README 07 Architecture ❓✔.md
+/docs/readme/README 08 Design ❓✔.md
+/docs/readme/README 09 Data ❓✔.md
+/docs/Dashboard.md
+/docs/docs.md
+/docs/page-html-2023-08-21-1633.excalidraw
+/docs/page-html-2023-08-22-1817.excalidraw
+/docs/Pasted image 20230829091632.png
+/docs/Urls in debug.md
+/docs/assets/img/badges/badges.md
+/docs/assets/img/badges/Heroku.png
+/docs/assets/img/badges/Heroku.svg
+/docs/assets/img/deployment/2023-07-17 20_04_22-dash-and-do · GitHub _ Heroku and 10 more pages - Personal - Microsoft​ Edge.png
+/docs/assets/img/deployment/2023-07-17 20_15_18-dash-and-do · Settings.png
+/docs/assets/img/deployment/deployment.md
+/docs/assets/img/integration/integration.md
+/docs/assets/img/AgileTool-Zube-Project-CurrentSprintBoard.png
+/docs/assets/img/AgileTool-Zube-Project-KanbanView-GitHubLinked.png
+/docs/assets/img/img.md
+/docs/assets/2023-08-29 08_45_23-Meet – LWETB Cohort 370172- Weekly Stand up and 10 more pages - Personal - Micro.png
+/docs/assets/assets.md

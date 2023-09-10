@@ -1,0 +1,13 @@
+<!-- form_contact_error.html
+     TODO: Add Form HTMX
+      - https://www.perplexity.ai/search/547f1abd-102f-44c6-b2bc-d0b365ee4f4b?s=c
+     Note: Targted DIV#card-contact-form
+     Note: Type: Django Message / Success
+     Note: This is a sibling of form_contact_success.html for Error States
+-->
+<div class="message message-error" id="error-contact-form" title="Contact Form Error">
+    <h3 id="error-contact-header" title="Contact Form Error">Form Error!</h3>
+    <p>Your message was not successfully submitted.</p>
+    <p>Please try again.</p>
+    <a href="/form_contact" hx-get="#target-contact-form" title="Contact Form | Link">New Message</a>
+</div>

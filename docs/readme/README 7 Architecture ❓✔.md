@@ -472,7 +472,7 @@ Server). [Sub System]
 
 **Read more**
 
--       -   [Level 4: Code Diagram (`Optional`)](https://c4model.com/#CodeDiagram) - on C4Model.com [?]
+-         -   [Level 4: Code Diagram (`Optional`)](https://c4model.com/#CodeDiagram) - on C4Model.com [?]
 
 ---
 

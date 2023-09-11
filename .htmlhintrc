@@ -18,8 +18,8 @@
 
     "tags-check": true,
     "tag-pair": true,
-    "tag-self-close": true,
-    "empty-tag-not-self-closed": true,
+    "tag-self-close": false,
+    "empty-tag-not-self-closed": false,
     "tagname-lowercase": true,
     "tagname-specialchars": false,
     "src-not-empty": true,

@@ -4,7 +4,6 @@ about: 'CONFIG: Public acceptable | Well Known Configuration'
 title: 'CONFIG :: '
 labels: ''
 assignees: iPoetDev
-
 ---
 
 # [`CONFIGURATION`]():

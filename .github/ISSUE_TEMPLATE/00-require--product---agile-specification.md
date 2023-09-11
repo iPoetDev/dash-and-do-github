@@ -4,7 +4,6 @@ about: 'REQUIRE: Product | Agile Specification'
 title: 'DEFINE :: '
 labels: 'Kind: Define, Kind: Refine'
 assignees: iPoetDev
-
 ---
 
 # `[DEFINE]()`: DEFINE: Web App Landing Page, Forms & Impressum: A Hero Container, Home URL, & Registration for Dash & Do GitHub

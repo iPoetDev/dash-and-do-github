@@ -1,4 +1,4 @@
-
+#  Copyright (c) 2023.
 
 class Site:
     """
@@ -7,6 +7,7 @@ class Site:
     NAME = 'Dash and Do: A Personal GitHub Portfolio Manager'
     URL = 'https://dash-and-do.herokuapp.com/'
 
+
 class Services:
     """
     Service Options
@@ -14,11 +15,13 @@ class Services:
     BASIC = 'send_mail'
     CUSTOM = 'any_mail'
 
+
 class SMTP:
     """
     SMTP Settings
     """
     BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 
 class HTTP:
     """
@@ -28,6 +31,7 @@ class HTTP:
     MSG_SENT = 'Message Sent'
     MSG_FAILED = 'Message Failed'
 
+
 class Sending:
     """
     Sending Status
@@ -35,12 +39,14 @@ class Sending:
     SUCCESS = 0
     FAIL = 1
 
+
 class MIME:
     """
     MIME Types
     """
     PLAIN = 'text/plain'
     HTML = 'text/html'
+
 
 class Field:
     """
@@ -52,12 +58,14 @@ class Field:
     COPY = 'copySent'
     SUBJECT = 'subject'
 
+
 class Switch:
     """
     Switches
     """
     OFF = False
     ON = True
+
 
 class Template:
     """

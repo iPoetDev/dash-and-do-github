@@ -43,6 +43,7 @@ from dash_and_do.utils import get_date
 # Local: App Libraries
 from .values import (HTTP, Sending, Switch)
 
+
 def sender_cc(message: str, copy: bool) -> str:
     """
     Append copy flag to the message.
@@ -68,6 +69,7 @@ def sent_by(message: str, name: str) -> str:
     message += "\n\nSent at {}".format(get_date())
     return message
 
+
 def send(message, fail) -> HttpResponse:
     """
     Send email to user/site contact when they submit a contact form.
@@ -79,7 +81,8 @@ def send(message, fail) -> HttpResponse:
     """
     return HttpResponse(HTTP.MSG_SENT) \
         if message.send(fail_silently=fail) == Sending.SUCCESS \
-        else HttpResponse(HTTP.MSG_FAILED)#  Copyright (c) 2023.
+        else HttpResponse(HTTP.MSG_FAILED)  # Copyright (c) 2023.
+
 
 def any_status(message):
     """
@@ -88,6 +91,7 @@ def any_status(message):
     :return:
     """
     return message.anymail_status  # available after sending
+
 
 def any_config(message, sender, tracking=Switch.OFF):
     """

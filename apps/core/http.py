@@ -29,6 +29,7 @@ from django.http import (HttpResponse, HttpResponseBadRequest,
 from .email.values import HTTP
 from .forms import ContactForm
 
+
 class Template:
     """
     Template Paths
@@ -37,11 +38,13 @@ class Template:
     CONTACT = '/all/form_contact.html'
     CONTACT_SUCCESS = '/all/contact_success.html'
 
+
 class Ctx:
     """
     Context Variables
     """
     FORM = 'form'
+
 
 class Feedback:
     """
@@ -51,6 +54,7 @@ class Feedback:
     BADREQUEST = 'Bad request, please verify your message and try again.'
     SERVERERROR = 'Server error, your message could not be sent.'
     EMAILERROR = 'An error occurred, your message could not be sent.'
+
 
 class HttpMessage:
     """
@@ -62,6 +66,7 @@ class HttpMessage:
     MSG_SENT = 'Message Sent'
     MSG_FAILED = 'Message Failed'
 
+
 class Signal:
     """
     Message Levels
@@ -70,9 +75,9 @@ class Signal:
     SUCCESS = 'success'
     ERROR = 'error'
 
+
 def contact_http_response(request, form, response, htmx_request) \
     -> (TemplateResponse or None):
-
     """
     Handles the response in response JS/HTMX is enabled/disabled.
     Progerssive Enhancement failed back.
@@ -106,6 +111,7 @@ def contact_http_response(request, form, response, htmx_request) \
             return contact_responses(request,
                                      form,
                                      response)
+
 
 def contact_email(form, send_mail_func) \
     -> (HttpResponse or None):
@@ -154,7 +160,7 @@ def contact_htmx_responses(request, htmx_request, contact, response) \
     :rtype: TemplateResponse or None
     """
     if all([isinstance(response, HttpResponse), htmx_request,
-        response.status_code == 200]):
+            response.status_code == 200]):
         # Successful Email: 200 Ok, Fresh unbounded form.
         contact = ContactForm()  # Empty the form for the next input
         return template_response(request,
@@ -253,7 +259,7 @@ def contact_responses(request, contact, response) \
     return None
 
 
-def template_response(request, form, template, signal, message, status = None):
+def template_response(request, form, template, signal, message, status=None):
     """
 
     Creates and returns a TemplateResponse and form associated with a

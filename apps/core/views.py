@@ -31,12 +31,14 @@ from .forms import ContactForm
 from .http import (contact_email, contact_http_response)
 from .email.emails import send_mail_contact
 
+
 class HTTP:
     """
     HTTP Methods
     """
     GET = 'GET'
     POST = 'POST'
+
 
 class Template:
     """
@@ -45,12 +47,12 @@ class Template:
     HOME = 'index.html'
     CONTACT = '/all/form_contact.html'
 
+
 class Ctx:
     """
     Context Variables
     """
     FORM = 'form'
-
 
 
 # ====================== Home Page Views ===========================
@@ -67,11 +69,14 @@ def index(request):
     """
     return render(request, Template.HOME)
 
+
 # ====================== All | Public Form Views ===========================
 """
 @Changelog:
  - added: 23-09-12
     """
+
+
 @require_http_methods([HTTP.POST])
 @ensure_csrf_cookie
 @csrf_protect
@@ -92,7 +97,8 @@ def form_contact(request):
         # send email, issue a HTTP Response, witn status codes on email state
         response = contact_email(contact, send_mail_contact)
         # Render a completed Response
-        completed = contact_http_response(request, contact, response, is_htmx(request))
+        completed = contact_http_response(request, contact, response,
+                                          is_htmx(request))
         if completed is not None:
             return completed.render()
 
@@ -102,7 +108,7 @@ def form_contact(request):
             bounded_ctx = {Ctx.FORM: contact}
             # Reply with a 400 - Bad Request bounded Form Response
             bounded = TemplateResponse(request, Template.CONTACT, bounded_ctx,
-                                    status=HttpResponseBadRequest.status_code)
+                                       status=HttpResponseBadRequest.status_code)
             return bounded.render()
 
     # If the reqeust is has no data, or if nothing POST
@@ -111,7 +117,7 @@ def form_contact(request):
         unbounded_ctx = {Ctx.FORM: contact}
         # Reply with a 405 - Method Not Allowed unbounded Form Response
         unbounded = TemplateResponse(request, Template.CONTACT, unbounded_ctx,
-                                    status=HttpResponseNotAllowed.status_code)
+                                     status=HttpResponseNotAllowed.status_code)
         return unbounded.render()
 
 
@@ -121,6 +127,8 @@ def form_contact(request):
 @Changelog:
  - added: 23-09-12
 """
+
+
 @require_http_methods([HTTP.POST])
 @ensure_csrf_cookie
 @csrf_protect
@@ -144,6 +152,8 @@ def form_signup(request):
 @Changelog:
  - added: 23-09-12
 """
+
+
 @require_http_methods([HTTP.POST])
 @ensure_csrf_cookie
 @csrf_protect
@@ -158,6 +168,7 @@ def form_login(request):
     :exceptions: None
     """
     pass
+
 
 @require_http_methods([HTTP.POST])
 @ensure_csrf_cookie

@@ -55,8 +55,10 @@ from apps.core.email.values \
     import (Site, Services, SMTP, HTTP, Sending, MIME, Switch, Template)
 from apps.core.email.helpers import (sender_cc, sent_by, send, any_config)
 
+
 def site_mail(name: str, sender: str, message: str, recipients: list,
-              copy: bool, service: str, fails: bool=Switch.OFF) -> HttpResponse:
+              copy: bool, service: str,
+              fails: bool = Switch.OFF) -> HttpResponse:
     """
     Builds and sends email messages to user and site contact
 
@@ -85,10 +87,11 @@ def site_mail(name: str, sender: str, message: str, recipients: list,
         # Returns a HTTP Response (with message) when not successful/.
         return HttpResponse(HTTP.MSG_FAILED)
 
-def send_control(subject: str,  name: str, message: str,
+
+def send_control(subject: str, name: str, message: str,
                  sender: str, recipients: list,
-                 service:str,
-                 fails: bool=Switch.OFF) -> HttpResponse:
+                 service: str,
+                 fails: bool = Switch.OFF) -> HttpResponse:
     """
     Send Control: Check email service and send mail.
 
@@ -119,7 +122,6 @@ def send_control(subject: str,  name: str, message: str,
     else:
         # Returns a HTTP Response (with message) if successful/not.
         return any_mail(subject, sender, recipients, message, message)
-
 
 
 def send_default(subject, message,
@@ -164,9 +166,8 @@ def send_default(subject, message,
         return HttpResponse(HTTP.MSG_FAILED)
 
 
-
-def any_mail(subject, sender, recipients, text_content, name = '',
-             html_content = '',  fail=Switch.OFF) -> HttpResponse:
+def any_mail(subject, sender, recipients, text_content, name='',
+             html_content='', fail=Switch.OFF) -> HttpResponse:
     """
     Sends email to user/site contact when they submit a contact form.
 
@@ -191,7 +192,7 @@ def any_mail(subject, sender, recipients, text_content, name = '',
                 subject=subject,
                 body=text_content,
                 from_email=sender,
-                to=recipients,)
+                to=recipients, )
 
             if html_content != '':
                 message.attach_alternative(html_content, MIME.HTML)
@@ -208,8 +209,6 @@ def any_mail(subject, sender, recipients, text_content, name = '',
         return HttpResponse(HTTP.MSG_FAILED)
 
 
-
-
 def templated_contact(subject, name, sender, recipients,
                       text_content, fail=Switch.OFF):
     """
@@ -224,7 +223,7 @@ def templated_contact(subject, name, sender, recipients,
     :return: HTTP Response: Invalid header found.
     """
     # Send email & prevent header injection (Django Docs)
-    #if subject and sender and recipients and text_content and html_content:
+    # if subject and sender and recipients and text_content and html_content:
     if all([subject, name, sender, recipients, text_content]):
         try:
             # Send the mail: Default Service | Failback service if provider

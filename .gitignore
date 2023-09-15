@@ -692,3 +692,6 @@ package-lock.json
 /docs/readme/8-3-3-1_Tablet+Users_Public-Page-Flow.png
 /docs/readme/8-3-4-1_PrivateFlow_Wireframe_Index-html.png
 /docs/readme/8-3_Skeleton_Index-Wireframe-UserJourney_PublicPrivate.png
+
+/.email
+/server.py

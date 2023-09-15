@@ -1,11 +1,107 @@
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  Copyright (c) 2023.
-  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+{% extends "./base.html" %} {% load static %} {% load account %}
+<!-- ================================= CORE APP | PUBLIC | PRIVATE | INDEX.HTML =============================== -->
+<body
+    class="[ ] [ flex flex-col items-stretch content-between ]"
+    data-app="core"
+    data-view="public"
+    id="all-body">
+    <!-- ============================================= SKIP LINK =============================================  -->
+    <!-- Hide until found: https://www.w3.org/WAI/tutorials/menus/skip/ -->
+    <!-- https://webaim.org/techniques/skipnav/ -->
 
-{% extends 'base.html' %} {% block title %}Dashboard and Do GitHub Manager{% endblock %} {% block content %}
-<h1>Welcome to the Dash and Do for GitHub</h1>
+    {if request.user.is_authenticated %} {% include "./private/skiplinks_private.html" %} {% else %} {% include
+    "./public/skiplinks_public.html" %} {% endblock %}
 
-<p>
-    This is the home page for the Dash and Do for GitHub. This is a dashboard and to-do list manager for GitHub. It is
-    designed to help developers manage their GitHub projects as portfolios. {% endblock %} ```
-</p>
+    <!-- ========================================= HEADER ===================================================  -->
+
+    {% include "./all/header.html" %}
+
+    <!-- ========================================= ------------------------- =================================  -->
+    <!-- ========================================= MAIN: PUBLIC PAGE CONTENT =================================  -->
+    <!-- ========================================= ------------------------- =================================  -->
+    <main
+        class="[ page-main-content ] [ flex flex-row ] [ h-max ] [ mt-0 md:mt-1 lg:mt-6 ] [ px-4 pb-20 lg:pb-4 ] [ space-y-10 lg:space-y-0 lg:space-x-10 ]"
+        data-view="public"
+        id="main-page-content">
+        <!-- ===================================== CONTENT: PUBLIC : 1 COLUMN ================================  -->
+        <div
+            class="[ main-content ] [ flex flex-1 flex-col ] [ space-y-10 ] | [ transition-width duration-300 ease-out ] | [ font-normal text-base text-black ]"
+            role="region"
+            id="central-col2-content">
+            <!-- ================================= CONTENT: TOP: HERO ========================================  -->
+            <!-- Block[Row]: Content | Top Section: 1) All Views: Hero | Carousel -->
+            <section
+                class="[ top-content ] [ flex-1 flex-end ] [ min-w-3/4 w-full min-h-350 ] [ mx-auto p-3 ] [ bg-gray-300 ]"
+                aria-description="Content - Contact"
+                aria-label="Hero Carousel"
+                data-content="top"
+                data-view="all"
+                id="top-section-content">
+                <!-- ========================= INCLUDE: TOP : HERO | CAROUSEL ================================  -->
+
+                {% include "/all/hero.html" %}
+            </section>
+            <!-- ================================= CONTENT: MIDDLE: FEATURES =================================  -->
+            <!-- Block: Content | Mid Section: 1) Public & 2) Private  -->
+            <section
+                class="[ mid-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-4 ] | [ bg-gray-400 ] [ font-normal text-base text-black ]"
+                aria-description="Content - Call to actions"
+                aria-label="Content"
+                data-content="middle"
+                data-view="all"
+                id="middle-section-content">
+                <h1
+                    class="[ header-content ] [ invisible opacity-0 ] [ sr-only ]"
+                    id="header-middle-content"
+                    aria-description=""
+                    aria-label="Content header - middle of page"
+                    data-view="all"
+                    hidden="until-found">
+                    User Registration | App Content
+                </h1>
+                <!-- ======================= CONTENT: MID 1st Col/Ro: FORM PROMO: CARDS ==================  -->
+                <!-- prettier-ignore -->
+                <!-- //@formatter:off -->
+                {# Checks if user is authenticated: shows the feature app cards, else shows the public sign up form #}
+                {% comment %}
+                <!-- //@formatter:off -->
+                {% endcomment %} {% if request.user.is_authenticated %} {% include "./private/appcards_private.html" %}
+                {% comment %}
+                <!-- //@formatter:off -->
+                {% endcomment %} {% else %} {% include "./public/signup_public.html" %} {% endif %}
+                <!-- //@formatter:on -->
+                <!-- prettier-on -->
+            </section>
+            <!-- ================================= CONTENT: BOTTOM: FOOTER ===================================  -->
+            <!-- Block: Content | Bottom Section: 1) All Views: Footer | Contact, FAQ, Help, Docs -->
+            <section
+                class="[ btm-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-4 ] [ bg-gray-400 ]"
+                aria-description="Content - Contact"
+                aria-label="Contact Form"
+                data-content="lower"
+                data-view="all"
+                id="bottom-section-content">
+                <h1
+                    class="[ header-content ] [ invisible opacity-0 ] [ sr-only ]"
+                    id="header-bottom-content"
+                    aria-description=""
+                    aria-label="Content header -Bottom of page"
+                    data-view="all"
+                    hidden="until-found">
+                    Contact Form
+                </h1>
+                <!-- ========================= CONTENT: MID : FORM CONTACT | HTMX ========================  -->
+                <!-- 1️⃣ HTMX Target: Start: OuterHTML | RePlace:Form | reload form redirect after Submit -->
+
+                {% include "./all/contact.html" %}
+            </section>
+        </div>
+    </main>
+    <!-- ========================================= FOOTER ===================================================  -->
+
+    {% include "./all/footer.html" %}
+
+    <!-- ========================================= Scripts ===================================================  -->
+
+    {% include "./all/scripts.html" %}
+</body>

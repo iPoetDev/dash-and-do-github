@@ -1,0 +1,1574 @@
+{% extends "./base_FAQ.HTML" %}
+
+<!-- ================================= CORE APP | PUBLIC | PRIVATE | FAQ.HTML =============================== -->
+<body
+    class="[ ] [ flex flex-col items-stretch content-between ]"
+    data-app="core"
+    data-view="public"
+    data-page="faq"
+    data-type="static"
+    id="all-body">
+    <!-- ============================================= SKIP LINK =============================================  -->
+    <!-- Hide until found: https://www.w3.org/WAI/tutorials/menus/skip/ -->
+    <!-- https://webaim.org/techniques/skipnav/ -->
+    <div
+        class="[ skip-links-block ] [ flex items-center ] [ absolute top-0 left-0 z-50 ] [ invisible sr-only opacity-0 ] [ transition-opacity duration-500 ease-out ]"
+        autofocus
+        id="skiplinks-nav"
+        tabindex="0">
+        <a
+            class="[ sr-link ] [ sr-only focus:not-sr-only ]"
+            data-skip-link="true"
+            hidden="until-found"
+            href="#main-page-content"
+            id="skip-link-main-content"
+            tabindex="0"
+            title="Jump to Main Content: Sign Up & Contact forms if not registered">
+            Skip to main content
+        </a>
+        <a
+            class="[ sr-link ] [ sr-only focus:not-sr-only ]"
+            data-skip-link="true"
+            hidden="until-found"
+            href="#login-dropdown-menu"
+            id="skip-link-login-form"
+            tabindex="0"
+            title="Jump to Login form if registered">
+            Skip to login
+        </a>
+    </div>
+    <!-- ========================================= HEADER ====================================================  -->
+    <header
+        class="[ page-header header-style ] [ flex flex-auto flex-col md:flex-row ] [ items-center md:justify-between ] [ w-auto h-max md:h-16 ] [ mb-1 md:mb-0 ] [ px-4 py-2 ]"
+        data-view="public"
+        id="header-page">
+        <!-- ===================================== NAVIGATION ================================================  -->
+        <nav
+            class="[ nav-global-header ] [ w-full ] [ flex flex-auto flex-col md:flex-row ] [ items-center md:justify-between ] [ px-2 md:px-6 py-4 ] [ md:space-x-4 space-y-4 md:space-y-0 ] [ nav-global-style ] [ bg-gray-800 text-white text-center ]"
+            aria-label="Global Navigation"
+            data-navigation="global"
+            id="nav-global-header">
+            <!-- ================================= BRAND NAVIGATION ==========================================  -->
+            <div
+                class="[ nav-left-header ] [ min-w-1/3 ] [ flex flex-row ]"
+                aria-label="Brand Navigation"
+                data-navigation="brand"
+                id="header-nav-left"
+                role="navigation">
+                <div
+                    class="[ nav-brand-header ] [ flex flex-shrink-0 ] [ justify-start items-center ] [ mx-2 md:mx-6 ] [ aspect-w-1 aspect-h-1 ]"
+                    id="brand-header">
+                    <a
+                        class="[ nav-brand-homelink ] [ text-white hover:text-gray-200 ] [ transition-colors duration-200 ease-in-out ]"
+                        href="index.html"
+                        title="Logo | Link">
+                        <img
+                            class="[ nav-left-logo ] [ object-cover w-full h-full ] [ aspect-w-1 aspect-h-1 ]"
+                            alt="Logo"
+                            id="logo-brand"
+                            src=""
+                            title="Logo | Icon | Logo" />
+                        <!-- <img class="h-8 w-auto sm:h-10 md:h-12" alt="Logo" id="logo-brand" src="" title="Logo | Icon | Logo"/> -->
+                    </a>
+                </div>
+                <div
+                    class="[ nav-brand-title ] [ flex flex-end flex-shrink-1 ] [ justify-end items-center ] [ hidden md:block ]"
+                    id="brand-title"
+                    title="Title | Link">
+                    <a
+                        class="[ nav-brand-homelink ] [ text-white hover:text-gray-200 ] [ transition-colors duration-200 ease-in-out ]"
+                        href="index.html"
+                        title="Title | Link">
+                        <h1
+                            class="[ nav-brand-text ] [ font-semibold text-xl tracking-tight ]"
+                            id="brand-text"
+                            title="Banner | Text | Brand">
+                            Dash &amp; Do
+                        </h1>
+                    </a>
+                </div>
+            </div>
+            <!-- ================================= GLOBAL NAVIGATION: TOP ====================================  -->
+            <nav
+                class="[ nav-right-header ] [ mb-2 md:mb-0 ] [ flex md:flex-end md:block ]"
+                aria-label="Main Navigation Banner"
+                data-navigation="primary"
+                data-view="all"
+                id="header-nav-right">
+                <!-- ==============================  DJANGO TEMPLATE & INCLUDE ================================  -->
+                <!-- ================================== PUBLIC MENU ==========================================  -->
+                <menu
+                    class="[ public-menu-nav-right ] [ block ] [ py-3 md:py-0 ] [ flex place-items-center ] [ space-y-1 md:space-y-0 md:space-x-4 ]"
+                    aria-label="Public Navigation, Unauthenticated Users"
+                    data-main-menu="public"
+                    data-mobile-show="true"
+                    data-public="true"
+                    data-private="false"
+                    data-view="public"
+                    role="menubar"
+                    id="public-header-nav-right"
+                    title="Public Navigation">
+                    <!-- ========================= PUBLIC MENU ITEMS =========================================  -->
+                    <!-- Refactor: Links: Menu Item | Menu Link/Text -->
+                    <li
+                        class="[ public-menu-item ] [ block ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ]"
+                        id="public-menu-item-home"
+                        aria-label="Home | Dash and Do for GitHub manager | Public Menu, Global Navigation"
+                        data-main-menu-item="public"
+                        data-menu="top-bar"
+                        data-mobile-show="true"
+                        data-view="public"
+                        role="menuitem">
+                        <!-- ===================== PUBLIC MENU LINKS =========================================  -->
+                        <a
+                            class="[ main-menu-link] [ font-medium text-gray-300 text-base hover:text-white ]"
+                            aria-label="Home Link"
+                            data-view="public"
+                            href="index.html"
+                            id="home-public-menuitem"
+                            role="menuitem">
+                            Home
+                        </a>
+                    </li>
+                    <li
+                        class="[ public-menu-item ] [ block ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ]"
+                        id="public-menu-item-about"
+                        aria-label="About | Dash and Do for GitHub manager | Public Menu, Global Navigation"
+                        data-main-menu-item="public"
+                        data-menu="top-bar"
+                        data-mobile-show="true"
+                        data-view="public"
+                        role="menuitem">
+                        <a
+                            class="[ main-menu-link] [ font-medium text-gray-300 text-base hover:text-white ]"
+                            aria-label="About Link"
+                            data-view="public"
+                            href="about.html"
+                            id="about-public-menuitem"
+                            role="menuitem">
+                            About
+                        </a>
+                    </li>
+                    <li
+                        class="[ public-menu-item ] [ block ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ]"
+                        id="public-menu-item-contact"
+                        aria-label="Contact | Jump to Contact Form | Public Menu, Global Navigation"
+                        data-main-menu-item="public"
+                        data-main-menu-submenu="public"
+                        data-menu="top-bar"
+                        data-mobile-show="true"
+                        data-view="public"
+                        role="menuitem"
+                        title="Home - Public Menu, Global Navigation">
+                        <a
+                            class="[ main-menu-link] [ font-medium text-gray-300 text-base hover:text-white ]"
+                            aria-label="Contact JumpTo Link"
+                            data-view="public"
+                            href="FAQ.HTML#contact-form-jumptp"
+                            id="contact-public-menuitem"
+                            role="menuitem">
+                            Contact
+                        </a>
+                    </li>
+                    <!-- ========================= PUBLIC DROP MENU =========================================  -->
+                    <li
+                        class="[ public-menu-item dropdown ] [ hidden md:block ] [ relative ] [ z-20 ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ] [ focus-within:dropdown-visible ]"
+                        id="public-menu-item-login"
+                        aria-label="Login Menu | Access App & Account | Not for mobile | Only Tablet & Desktop | Public Menu, Global Navigation"
+                        data-main-menu-item="public"
+                        data-menu="top-bar"
+                        data-mobile-show="false"
+                        data-view="public"
+                        role="menuitem">
+                        <button
+                            class="[ main-menu-btn ] [ z-30 ] [ font-medium text-gray-300 text-base hover:text-white ] [ cursor-pointer ]"
+                            id="public-dropdown-menu-login"
+                            data-view="public"
+                            onclick="document.getElementById('dropdown-card-login').classList.toggle('hidden');"
+                            onKeyDown="document.getElementById('dropdown-card-login').classList.toggle('hidden');"
+                            type="button">
+                            Login
+                        </button>
+                        <!-- ===================== PUBLIC DROPDOWN CARD BLOCK ===============================  -->
+                        <div
+                            class="[ dropdown-menu dropdown-visible ] [ hidden ] [ absolute right-[-22.5px] ] [ z-10 ] [ w-56 ] [ mt-2 p-4 ] [ bg-white ] [ rounded-md ] [ shadow-xl ] [ focus:dropdown-visible hover:dropdown-visible active:dropdown-visible ]"
+                            id="dropdown-card-login"
+                            aria-description="Login Dropdown Menu & Card"
+                            data-menu="dropdown"
+                            data-view="public">
+                            <!-- ===================== PUBLIC DROPDOWN LOGIN FORM ===========================  -->
+                            <form
+                                class="[ form-login ]"
+                                action="#"
+                                data-form="login"
+                                data-view="public"
+                                id="login-form"
+                                method="post"
+                                name="login-form"
+                                hx-post="server-script-goes-here"
+                                hx-trigger="submit"
+                                hx-swap="outerHTML">
+                                <!-- ======================= PUBLIC LOGIN FIELDS' 1 COLUMN ===================  -->
+                                <fieldset
+                                    class="[ form-card ] [ w-full h-full ] [ p-4 border ] [ bg-gray-100 ] [ rounded-lg ]"
+                                    data-menu="card"
+                                    data-view="public"
+                                    form="login-form"
+                                    id="fields-login-form"
+                                    name="login-form">
+                                    <legend
+                                        class="[ form-card-label ] [ sr-only ]"
+                                        aria-description="Login Form Card | Username | Password | Remember-me Checkbox | Login button"
+                                        hidden="until-found"
+                                        id="label-login-form">
+                                        Login Form
+                                    </legend>
+                                    <!-- ========================= PUBLIC LOGIN ROW========================= -->
+                                    <div
+                                        class="[ formrow ] [ relative ] [ my-4 ]"
+                                        aria-description="Login Menu Item: Username"
+                                        data-view="public"
+                                        id="login-user-row">
+                                        <!-- TODO: pattern="/^[\w-]+$/" -->
+
+                                        <input
+                                            class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                            id="login-username"
+                                            aria-description="Enter Username: Input Length: min: 6, max: 30"
+                                            autocomplete="username"
+                                            data-view="public"
+                                            maxlength="30"
+                                            minlength="6"
+                                            name="username"
+                                            placeholder="Username"
+                                            required
+                                            tabindex="2"
+                                            title="Enter a valid Username"
+                                            type="text" />
+                                        <label
+                                            class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                            id="login-username-tag"
+                                            aria-description="Enter account username"
+                                            aria-labelledby="login-username"
+                                            data-view="public"
+                                            for="login-username">
+                                            Username
+                                        </label>
+                                        <span
+                                            class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                                            data-view="public"
+                                            id="invalid-username-msg">
+                                            Please enter a valid username
+                                        </span>
+                                    </div>
+                                    <!-- ========================= PUBLIC LOGIN ROW========================= -->
+                                    <div
+                                        class="[ form-group ] [ relative ] [ my-4 ]"
+                                        data-view="public"
+                                        id="login-pass-row">
+                                        <!-- TODO:  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{12,}" -->
+                                        <!-- TODO:  pattern="/^[a-zA-Z0-9@#$%^&*]{8,}$/" -->
+                                        <input
+                                            class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                            id="login-password"
+                                            aria-description="Passwords using a-zA-Z0-9 and sumbols"
+                                            aria-label="Enter a password"
+                                            autocomplete="current-password"
+                                            data-view="public"
+                                            name="password"
+                                            placeholder="Password"
+                                            required
+                                            title="Enter a valid Password"
+                                            type="password" />
+                                        <label
+                                            class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                            id="login-password-tag"
+                                            aria-labelledby="login-password"
+                                            aria-description="Enter account password"
+                                            data-view="public"
+                                            for="login-password">
+                                            Password
+                                        </label>
+                                        <span
+                                            class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                                            data-view="public"
+                                            id="invalid-password-msg">
+                                            Please enter a valid password, lowercase, uppercase, 0-9, symbols
+                                        </span>
+                                    </div>
+                                    <!-- ========================= PUBLIC LOGIN BUTTON ======================== -->
+                                    <div
+                                        class="[ form-group ] [ flex flex-row ] [ justify-between items-center ] [ my-2 ]"
+                                        aria-description="Login Menu Item: Checkbox and Button"
+                                        data-view="public"
+                                        id="login-btn-row">
+                                        <!-- ========================= REMEMBER ME CHECKBOX ======================== -->
+                                        <div
+                                            class="[ flex flex-col ] [ items-center ]"
+                                            id="login-row-checkbox">
+                                            <input
+                                                class="[ input-field form-checkbox ] [ m-1 ] [ h-5 w-5 ] [ rounded-md ] [ text-blue-600 ] [ focus:ring-blue-500 ]"
+                                                aria-description="Remember login for next visit"
+                                                aria-label="Remember me checkbox"
+                                                id="remember-me"
+                                                name="remember-me"
+                                                value="remember"
+                                                type="checkbox" />
+                                            <label
+                                                class="[ text-sm text-gray-500 ]"
+                                                aria-labelledby="remember-me"
+                                                aria-description="Checkbox to remember login details"
+                                                for="remember-me">
+                                                Remember
+                                            </label>
+                                        </div>
+                                        <!-- ========================= PUBLIC LOGIN BUTTON ======================== -->
+                                        <div class="[ flex ] [ items-end ]">
+                                            <input
+                                                class="[ input-field peer ] [ block w-full ] [ mb-4 ] [ p-2 ] [ border rounded-md outline-none ] [ font-medium text-base text-gray-500 ] | [ focus:ring-blue-500 focus:border-blue-500 ]"
+                                                aria-description="Submit form to login and access account"
+                                                data-view="public"
+                                                type="submit"
+                                                value="Login" />
+                                        </div>
+                                    </div>
+                                    <!-- ========================= PUBLIC LOGIN ROW========================= -->
+                                    <!-- ========================= FORGET PAGASSWORD: LINK ================= -->
+                                    <!-- ========================= FORGET PAGASSWORD: Reset.html =========== -->
+                                </fieldset>
+                            </form>
+                        </div>
+                    </li>
+                </menu>
+                <!-- ==============================  DJANGO TEMPLATE & INCLUDE ================================  -->
+                <!-- ================================== PRIVATE MENU ==========================================  -->
+                <menu
+                    class="[ private-menu-nav-right ] [ hidden ] [ flex place-items-center ] [ py-3 md:py-0 ] [ space-y-1 md:space-y-0 md:space-x-4 ]"
+                    aria-label="Private Navigation, Authenticated Users"
+                    data-main-menu="private"
+                    data-mobile-show="false"
+                    data-public="false"
+                    data-private="true"
+                    data-view="private"
+                    hidden="hidden"
+                    role="menubar"
+                    id="private-header-nav-right"
+                    title="Public Navigation">
+                    <!-- ========================= PRIVATE MENU ITEMS =========================================  -->
+                    <!-- ========================= DJANGO TEMPLATE & INCLUDE ==================================  -->
+                    <!-- Refactor: Links: Menu Item | Menu Link/Text -->
+                    <li
+                        class="[ private-menu-item ] [ block ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ]"
+                        aria-label="Home | Dash and Do for GitHub management | Private Menu, Global Navigation"
+                        aria-labelledby="home-private-menuitem"
+                        data-main-menu-item="private"
+                        data-menu="top-bar"
+                        data-mobile-show="false"
+                        data-view="private"
+                        id="private-menu-item-home"
+                        role="menuitem">
+                        <!-- ===================== PRIVATE MENU LINKS =========================================  -->
+                        <a
+                            class="[ main-menu-link] [ font-medium text-gray-300 text-base hover:text-white ]"
+                            aria-label="Home Link"
+                            href="index.html"
+                            id="home-private-menuitem"
+                            role="menuitem">
+                            Home
+                        </a>
+                    </li>
+                    <li
+                        class="[ private-menu-item ] [ block ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ]"
+                        aria-label="Dashboard | Dash and Do as GitHub Manager | Private Menu, Global Navigation"
+                        aria-labelledby="app-dash-private-menuitem"
+                        data-main-menu-item="private"
+                        data-menu="top-bar"
+                        data-mobile-show="false"
+                        data-view="private"
+                        id="private-menu-item-dash"
+                        role="menuitem">
+                        <a
+                            class="[ main-menu-link] [ font-medium text-base text-gray-300 hover:text-white ]"
+                            aria-label="Dashboard App link"
+                            data-view="private"
+                            href="dash.html"
+                            id="app-dash-private-menuitem">
+                            Dash &amp; Inform
+                        </a>
+                    </li>
+                    <li
+                        class="[ private-menu-item ] [ hidden ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ]"
+                        aria-label="Do and Act | Dash and Do as GitHub Manager | Private Menu, Global Navigation"
+                        aria-labelledby="app-dash-private-menuitem"
+                        data-main-menu-item="private"
+                        data-menu="top-bar"
+                        data-mobile-show="false"
+                        data-view="private"
+                        id="private-menu-item-do"
+                        role="menuitem">
+                        <a
+                            class="[ main-menu-link] [ font-medium text-base text-gray-300 hover:text-white ]"
+                            aria-label="Do App Link"
+                            data-view="private"
+                            href="do.html"
+                            id="app-do-private-menuitem"
+                            role="menuitem">
+                            Do &amp; Act
+                        </a>
+                    </li>
+                    <!-- ========================= PRIVATE DROP MENU COMPONENT ===============================  -->
+                    <!-- ========================= DJANGO TEMPLATE & INCLUDE =================================  -->
+                    <li
+                        class="[ private-menu-item ] [ hidden md:block ] [ relative ] [ z-20 ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ] [ focus-within:dropdown-visible ]"
+                        aria-description="Private Access to Account | Component, Control and Dropdown Menu"
+                        aria-label="Account Menu | Access App & Account | Not for mobile | Only Tablet & Desktop | Public Menu, Global Navigation"
+                        data-main-menu-item="private"
+                        data-menu="dropdown"
+                        data-mobile-show="false"
+                        data-view="private"
+                        id="account-menu-item-account"
+                        role="menuitem">
+                        <button
+                            class="[ main-menu-btn ] [ z-30 ] [ font-medium text-gray-300 text-base hover:text-white ] [ cursor-pointer ]"
+                            data-menu="dropdown"
+                            data-view="private"
+                            id="private-dropdown-menu-account"
+                            onclick="document.getElementById('dropdown-card-account').classList.toggle('hidden');"
+                            onKeyDown="document.getElementById('dropdown-card-account').classList.toggle('hidden');"
+                            type="button">
+                            Account
+                        </button>
+                        <!-- ===================== PRIVATE DROPDOWN CARD =====================================  -->
+                        <div
+                            class="[ dropdown-menu dropdown-visible ] [ hidden ] [ absolute right-[-22.5px] ] [ z-10 ] [ w-56 ] [ mt-2 p-4 ] [ bg-white ] [ rounded-md ] [ shadow-xl ] [ focus:dropdown-visible hover:dropdown-visible active:dropdown-visible ]"
+                            aria-description="Account Dropdown Menu & Card"
+                            data-menu="dropdown"
+                            data-view="private"
+                            id="dropdown-card-account">
+                            <!-- ===================== PRIVATE ACCOUNT MENU ==================================  -->
+                            <menu
+                                class="[ account-menu menu-card ] [ block ] [ w-full h-full ] [ p-4 border ] [ bg-gray-100 ] [ rounded-lg ]"
+                                aria-description="Account & User Menu"
+                                data-menu="card"
+                                data-view="private"
+                                id="dropdown-menu-account">
+                                <!-- ==================== PRIVATE ACCOUNT ROW: PROFILE =======================  -->
+                                <li
+                                    class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                                    data-view="private"
+                                    id="account-profile">
+                                    <a
+                                        class="[ account-link ] [ font-medium text-base text-gray-600 hover:text-slate-800 ]"
+                                        aria-description="Go to Account User Profile"
+                                        data-view="private"
+                                        href="account.html#account-profile"
+                                        id="account-profile-link"
+                                        title="View your account profile">
+                                        Profile
+                                    </a>
+                                </li>
+                                <!-- ==================== PRIVATE ACCOUNT ROW: GitHub ========================  -->
+                                <li
+                                    class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                                    data-view="private"
+                                    id="account-github">
+                                    <a
+                                        class="[ account-link ] [ font-medium text-base text-gray-600 hover:text-slate-800 ]"
+                                        aria-description="Link GitHub to Account"
+                                        data-view="private"
+                                        href="account.html#account-github"
+                                        id="account-github-link"
+                                        title="Connect your GitHub to Account">
+                                        Connect
+                                    </a>
+                                </li>
+                                <!-- ==================== PRIVATE ACCOUNT ROW: Settings=======================  -->
+                                <li
+                                    class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                                    data-view="private"
+                                    id="account-settings">
+                                    <a
+                                        class="[ account-link ] [ font-medium text-base text-gray-600 hover:text-slate-800 ]"
+                                        aria-description="Go to Account Settings"
+                                        aria-label="Account Settings Link"
+                                        data-view="private"
+                                        href="account.html#account-settngs"
+                                        id="account-settings-link"
+                                        title="Update the account settings">
+                                        Settings
+                                    </a>
+                                </li>
+                                <!-- ==================== PRIVATE ACCOUNT ROW: LOGOUT ========================  -->
+                                <!-- ==================== DJANGO TEMPLATE & FUNCTION =========================  -->
+                                <li
+                                    class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                                    data-view="private"
+                                    id="account-logout">
+                                    <a
+                                        class="[ account-button ]"
+                                        aria-description="Account Logout Button"
+                                        aria-label="Account Logout Link"
+                                        data-view="private"
+                                        href="account.html#account-logout"
+                                        id="account-logout-ctrl">
+                                        Logout
+                                    </a>
+                                </li>
+                            </menu>
+                        </div>
+                    </li>
+                </menu>
+            </nav>
+        </nav>
+    </header>
+    <!-- ========================================= ------------------------- =================================  -->
+    <!-- ========================================= MAIN: PUBLIC PAGE CONTENT =================================  -->
+    <!-- ========================================= ------------------------- =================================  -->
+    <main
+        class="[ page-main-content ] [ flex flex-row ] [ h-max ] [ mt-0 md:mt-1 lg:mt-6 ] [ px-4 pb-20 lg:pb-4 ] [ space-y-10 lg:space-y-0 lg:space-x-10 ]"
+        data-view="public"
+        id="main-page-content">
+        <!-- ===================================== CONTENT: PUBLIC : 1 COLUMN ================================  -->
+        <div
+            class="[ main-content ] [ flex flex-1 flex-col ] [ space-y-10 ] | [ transition-width duration-300 ease-out ] | [ font-normal text-base text-black ]"
+            role="region"
+            id="central-col2-content">
+            <!-- ================================= CONTENT: TOP: HERO ========================================  -->
+            <!-- Block[Row]: Content | Top Section: 1) All Views: Hero | Carousel -->
+            <section
+                class="[ top-content ] [ flex-1 flex-end ] [ min-w-3/4 w-full min-h-350 ] [ mx-auto p-3 ] [ bg-gray-300 ]"
+                aria-description="Content - Contact"
+                aria-label="Hero Carousel"
+                data-content="top"
+                data-view="all"
+                id="top-section-content">
+                <!-- ============================= CONTENT: TOP: HERO ========================================  -->
+                <!-- HTML Adapted & customised from https://getbootstrap.com/docs/5.0/components/carousel/ -->
+                <div
+                    class="[ hero ] [ relative ]"
+                    id="hero-slider-content"
+                    aria-description="Hero | Top | Slider | Deck"
+                    data-hero="slider"
+                    role="region">
+                    <div
+                        class="[ slider-indicators ] [ ]"
+                        role="group">
+                        <button
+                            class="[ inidcator active ] [ inline-block ]"
+                            aria-current="true"
+                            aria-label="Hero Slide 01"
+                            data-hero-slide-to="0"
+                            data-hero-target="#slider-hero"
+                            id="slider-indicator-01"
+                            type="button"></button>
+                        <button
+                            class="[ inidcator ] [ inline-block ]"
+                            aria-label="Hero Slide 02"
+                            data-hero-slide-to="1"
+                            data-hero-target="#slider-hero"
+                            id="slider-indicator-02"
+                            type="button"></button>
+                        <button
+                            class="[ inidcator ] [ inline-block ]"
+                            aria-label="Hero Slide 03"
+                            data-hero-slide-to="2"
+                            data-hero-target="#slider-hero"
+                            id="slider-indicator-03"
+                            type="button"></button>
+                        <button
+                            class="[ inidcator ] [ inline-block ]"
+                            aria-label="Hero Slide 04"
+                            data-hero-slide-to="3"
+                            data-hero-target="#slider-hero"
+                            id="slider-indicator-04"
+                            type="button"></button>
+                        <button
+                            class="[ inidcator ] [ inline-block ]"
+                            aria-label="Hero Slide 05"
+                            data-hero-slide-to="4"
+                            data-hero-target="#slider-hero"
+                            id="slider-indicator-05"
+                            type="button"></button>
+                    </div>
+                    <!-- ========================= CONTENT: TOP: HERO ========================================  -->
+                    <div
+                        class="[ slideblock ] [ ]"
+                        id="slider-inner-hero"
+                        aria-description="Hero | Top | Slider | Inner"
+                        role="region">
+                        <!-- ===================== CONTENT: TOP: HERO ========================================  -->
+                        <div
+                            class="[ slide ] [ ]"
+                            aria-hidden="false"
+                            id="slider-item-01"
+                            title="Hero | Top | Slider | 01">
+                            <img
+                                class="[ ] [ ]"
+                                alt="Hero Slide No.1:"
+                                id="hero-img-01"
+                                src="hero1.jpg" />
+                            <div
+                                class="[ ] [ ]"
+                                id="slider-item-01-text"
+                                title="Hero | Label | 01">
+                                <h5>First slide label</h5>
+                                <p>Some text about the first slide goes here.</p>
+                            </div>
+                        </div>
+                        <!-- ===================== CONTENT: TOP: HERO ========================================  -->
+                        <div
+                            class="[ slide ] [ ]"
+                            hidden="until-found"
+                            id="slider-item-02"
+                            title="Hero | Top | Slider | 02">
+                            <img
+                                class="[ heroimg ] [ ]"
+                                alt="Hero Slide No.2:"
+                                id="hero-img-02"
+                                src="hero2.jpg" />
+                            <div
+                                class="[ heroblock ] [ ]"
+                                id="slider-item-02-text"
+                                title="Hero | Label | 02">
+                                <h5>Second slide label</h5>
+                                <p>Some text about the second slide goes here.</p>
+                            </div>
+                        </div>
+                        <!-- ===================== CONTENT: TOP: HERO ========================================  -->
+                        <div
+                            class="[ slide ] [ ]"
+                            hidden="until-found"
+                            id="slider-item-03"
+                            title="Hero | Top | Slider | 03">
+                            <img
+                                class="[ heroimg ] [ ]"
+                                alt="Hero Slide No.3:"
+                                id="hero-img-03"
+                                src="hero3.jpg" />
+                            <div
+                                class="[ heroblock ] [ ]"
+                                id="slider-item-03-text"
+                                title="Hero | Label | 03">
+                                <h5>Third slide label</h5>
+                                <p>Some text about the third slide goes here.</p>
+                            </div>
+                        </div>
+                        <!-- ===================== CONTENT: TOP: HERO ========================================  -->
+                        <div
+                            class="[ slide ] [ ]"
+                            hidden="until-found"
+                            id="slider-item-04"
+                            title="Hero | Top | Slider | 04">
+                            <img
+                                class="[ heroimg ] [ ]"
+                                alt="Hero Slide No.4:"
+                                id="hero-img-04"
+                                src="hero4.jpg" />
+                            <div
+                                class="[ heroblock ] [ ]"
+                                id="slider-item-04-text"
+                                title="Hero | Label | 04">
+                                <h5>Fourth slide label</h5>
+                                <p>Some text about the fourth slide goes here.</p>
+                            </div>
+                        </div>
+                        <!-- ===================== CONTENT: TOP: HERO ========================================  -->
+                        <div
+                            class="[ slide ] [ ]"
+                            hidden="until-found"
+                            id="slider-item-05"
+                            title="Hero | Top | Slider | 05">
+                            <img
+                                class="[ heroimg ] [ ]"
+                                alt="Hero Slide No.5:"
+                                id="hero-img-05"
+                                src="hero5.jpg" />
+                            <div
+                                class="[ heroblock ] [ ]"
+                                id="slider-item-05-text"
+                                title="Hero | Label | 05">
+                                <h5>Fifth slide label</h5>
+                                <p>Some text about the fifth slide goes here.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ===================== CONTENT: TOP: HERO ========================================  -->
+                    <button
+                        class="[ slider-control-prev ] [ ] [ ]"
+                        data-hero-slide="prev"
+                        data-hero-target="#slider-hero"
+                        id="prev-slider-control"
+                        type="button">
+                        <span class="[ slider-control-prev-icon ] [ ] [ ]"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <!-- ===================== CONTENT: TOP: HERO ========================================  -->
+                    <button
+                        class="[ slider-control-next ] [ ] [ ]"
+                        data-hero-slide="next"
+                        data-hero-target="#slider-hero"
+                        id="next-slider-control"
+                        type="button">
+                        <span class="[ slider-control-next-icon ] [ ] [ ]"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </section>
+            <!-- ================================= CONTENT: MID : SIGNUP | APP CARDS =========================  -->
+            <!-- Block: Content | Mid Section: 1) Public & 2) Private  -->
+            <section
+                class="[ mid-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-4 ] | [ bg-gray-400 ] [ font-normal text-base text-black ]"
+                aria-description="Content - Call to actions"
+                aria-label="Content"
+                data-content="middle"
+                data-view="all"
+                id="middle-section-content">
+                <h1
+                    class="[ header-content ] [ invisible opacity-0 ] [ sr-only ]"
+                    id="header-middle-content"
+                    aria-description=""
+                    aria-label="Content header - middle of page"
+                    data-view="all"
+                    hidden="until-found">
+                    User Registration | App Content
+                </h1>
+                <!-- ============================= CONTENT: PUBLIC | MOBILE+ =================================  -->
+                <!-- ============================= CONTENT: MID : FORM: SIGNUP ===============================  -->
+                <article
+                    class="[ app-card ] [ flex flex-col lg:flex-row ] [ w-[90%] h-fit ] [ place-items-center ] [ mx-auto my-8 px-2 py-4 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] | [ bg-gray-300 ] [ rounded-md shadow-lg ]"
+                    aria-description="CTA Register New Account, by Sign Up form"
+                    aria-label="Sign Up Form User Registration"
+                    data-card="form-cta"
+                    data-view="public"
+                    id="signup-form-cta-content">
+                    <h2
+                        class="[ card-label ] [ hidden ] [ sr-only ]"
+                        id="signup-form-cta-header"
+                        aria-description="Form label - Sign Up"
+                        aria-hidden="false"
+                        aria-label="Apps CTA | Header"
+                        data-view="public">
+                        Sign Up
+                    </h2>
+                    <!-- ========================= CONTENT: MID 1st Col/Ro: FORM PROMO: CARDS ==================
+             -->
+                    <div
+                        class="[ form-card ] [ flex flex-col flex-auto ] [ w-[90%] h-full md:h-full ] [ place-items-center ] [ mx-auto my-2 px-2 py-8 ] [ gap-8 ] [ space-x-2 md:space-y-2 ] | [ bg-gray-600 ] | [ rounded-md shadow-lg ]"
+                        id="signup-cta-card-content"
+                        aria-description="Sign Up CTA | Card | Inner"
+                        data-view="public">
+                        <article
+                            class="[ app-card ] [ flex flex-col flex-auto ] [ w-[90%] h-full md:h-full ] ] [ place-items-center ] [ mx-2 p-8 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] | [ bg-gray-300 ] [ text-slate-800 ] | [ rounded-md shadow-lg ]"
+                            id="card-cta-signup"
+                            aria-description="Call to Action | Sign Up | Header"
+                            data-view="public"
+                            data-card="signup">
+                            <div
+                                class="[ card-tag roadmap ] [ ]"
+                                id="signup-promo-tag"
+                                aria-description="Card Tags | Promo"
+                                data-view="public"
+                                hidden="until-found"
+                                inert>
+                                New
+                            </div>
+                            <div
+                                class="[ card-row ] [ light:text-slate-800 ]"
+                                id="signup-cardrow-header">
+                                <h3
+                                    class="[ card-tag ] [ ]"
+                                    id="signup-card-heading"
+                                    aria-description="Sign Up Form | Call to Action | Card Component">
+                                    Sign Up: Dash & Do; Github Manager
+                                </h3>
+                            </div>
+                            <div
+                                class="[ card-row ] [ ]"
+                                id="sign-cardrow-outline">
+                                <p
+                                    class="[ card-text ] [ mx-auto px-8 ] [ text-slate-800 ]"
+                                    id="signup-card-features"
+                                    aria-description="Sign Up Features">
+                                    Key Features.
+                                </p>
+                            </div>
+                            <div
+                                class="[ card-row ] [ ]"
+                                id="signup-cardrow-list">
+                                <ul
+                                    class="[ ] [ ]"
+                                    id="signup-feature-list">
+                                    <li>Create account</li>
+                                    <li>Link your Github</li>
+                                    <li>Inspect your Dashboard</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                    <!-- ========================= CONTENT: MID 2nd Col/Ro : FORM SIGNUP | HTMX =================
+             -->
+                    <!-- 1️⃣ HTMX Target: Start: OuterHTML | Relace: Form | Have to reload form redirect after submit -->
+                    <div
+                        class="[ form-card ] [ flex flex-col flex-auto ] [ w-[90%] h-full ] [ place-items-center ] [ mx-auto my-8 px-2 py-4 ] [ gap-8 ] [ space-2 ] | [ bg-gray-600 ] | [ rounded-md shadow-lg ]"
+                        id="signup-form-card-content"
+                        aria-description="Sign Up Form | Card | Inner"
+                        data-view="public">
+                        <!-- ===================== PUBLIC CARD SIGNUP FORM ===================================  -->
+                        <form
+                            class="[ form-signup ] [ w-[90%] h-full ] [ place-items-center ] [ mx-auto my-8 px-2 py-4 ] [ gap-8 ] [ space-2 ]"
+                            action="#"
+                            aria-description="Sign Up Form"
+                            data-form="signup"
+                            data-view="public"
+                            id="signup-form"
+                            method="post"
+                            name="signup-form"
+                            hx-post="server-script-goes-here"
+                            hx-trigger="submit"
+                            hx-swap="outerHTML">
+                            <!-- ======================= PUBLIC SIGNUP FIELDS' 1 COLUMN ===================  -->
+                            <fieldset
+                                class="[ form-card ] [ w-full h-full ] [ p-4 border ] [ bg-gray-100 ] [ rounded-lg ]"
+                                data-view="public"
+                                form="signup-form"
+                                id="fields-signup-form">
+                                <legend
+                                    class="[ form-card-label ] [ sr-only ]"
+                                    aria-description="Sign Up Form Label"
+                                    hidden="until-found"
+                                    id="label-signup-form">
+                                    Sign Up Form
+                                </legend>
+                                <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
+                                <div
+                                    class="[ formrow ] [ relative ] [ w-full ] [ my-4 ]"
+                                    aria-description="Signup Menu Item"
+                                    data-view="public"
+                                    id="signup-bannerimg-row">
+                                    <img
+                                        class="[ card-image ] [ w-full h-1/3 ] [ object-cover object-center ] [ rounded-t-md ]"
+                                        alt="Signup Card Image"
+                                        data-view="public"
+                                        height=""
+                                        id=""
+                                        src=""
+                                        width="" />
+                                    <h2>Set up a New Account</h2>
+                                </div>
+                                <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
+                                <div
+                                    class="[ formrow ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
+                                    data-view="public"
+                                    id="signup-user-row">
+                                    <!-- UAT: pattern & INPUT -->
+                                    <input
+                                        class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                        id="signup-username"
+                                        aria-description="Username: Input Length: min: 6, max: 30"
+                                        aria-label="Enter a Username"
+                                        autocomplete="username"
+                                        data-view="public"
+                                        maxlength="30"
+                                        minlength="6"
+                                        name="username"
+                                        placeholder="Username"
+                                        required
+                                        tabindex="5"
+                                        title="Choose a valid Username"
+                                        type="text" />
+                                    <label
+                                        class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                        id="signup-username-tag"
+                                        aria-description="Enter account username"
+                                        aria-labelledby="signup-username"
+                                        data-view="public"
+                                        for="signup-username">
+                                        Username
+                                    </label>
+                                    <span
+                                        class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                                        data-status="invalid"
+                                        data-view="public"
+                                        id="invalid-signupuser-msg">
+                                        Please enter a valid username, min 6, max 30 in length.
+                                    </span>
+                                </div>
+                                <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
+                                <div
+                                    class="[ formrow ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
+                                    data-view="public"
+                                    id="signup-email-row">
+                                    <!-- UAT: pattern & INPUT
+                             -Before @ [Email]
+                               - Any: Lower-, upper-, 0-9,
+                               - Symbols: _ + - @
+                             - After @ [Domain.TLD]
+                               - [Domain]:  Any: Lower-, upper-, 0-9
+                               - \. Email
+                               - [TLD]: Any: Lower-, upper-, 0-9
+                             Length: min: 8, max: 50
+                             -->
+                                    <input
+                                        class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                        id="signup-email"
+                                        aria-description="Email: Input Length: min: 8, max: 50"
+                                        aria-label="Enter a Email"
+                                        autocomplete="email"
+                                        data-view="public"
+                                        maxlength="50"
+                                        minlength="8"
+                                        name="email"
+                                        pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$.{8,50}"
+                                        placeholder="Email"
+                                        required
+                                        tabindex="5"
+                                        title="Choose a valid Email: a-z, A-Z, 0-9, _ + - , min 8, max 50"
+                                        type="email" />
+                                    <label
+                                        class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                        id="signup-email-tag"
+                                        aria-description="Enter account username"
+                                        aria-labelledby="signup-username"
+                                        data-view="public"
+                                        for="signup-username">
+                                        Email
+                                    </label>
+                                    <span
+                                        class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                                        data-status="invalid"
+                                        data-view="public"
+                                        id="invalid-signupemail-msg">
+                                        Please select a valid email address. <br />
+                                        (Symbols: _ + - are permitted before the @ symbol).
+                                    </span>
+                                </div>
+                                <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
+                                <div
+                                    class="[ form-group ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
+                                    data-view="public"
+                                    id="signup-setpass-row">
+                                    <!-- UAT: pattern & INPUT
+                            Number: (?=.*\d) : at least one digit character
+                            Lowercase: (?=.*[a-z])
+                            Uppercase: (?=.*[A-Z])
+                            Symbols: (?=.*[@$!%*?&])
+                            Length.{12,50}" -->
+                                    <input
+                                        class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                        id="new-password"
+                                        aria-description="Passwords use a-z, A-Z, 0-9 and @,$,!,%,*,?,&, min: 12, max: 50. Must match."
+                                        aria-label="Create a new password"
+                                        aria-labelledby="set-password-tag"
+                                        autocomplete="new-password"
+                                        data-view="public"
+                                        maxlength="50"
+                                        minlength="12"
+                                        name="new-password"
+                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{12,50}"
+                                        placeholder="New Password"
+                                        required
+                                        tabindex="5"
+                                        title="Create a valid Password"
+                                        type="password" />
+                                    <label
+                                        class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                        id="set-password-tag"
+                                        aria-description="Create a password: a-z, A-Z, 0-9 with @,$,!,%,*,?,& and min: 12, max: 50. Must match."
+                                        data-view="public"
+                                        for="new-password">
+                                        New Password
+                                    </label>
+                                    <span
+                                        class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                                        data-status="invalid"
+                                        data-view="public"
+                                        id="invalid-signuppass-msg">
+                                        Please create valid password: lowercase, uppercase, 0-9, symbols, min 12, max
+                                        50.
+                                    </span>
+                                </div>
+                                <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
+                                <div
+                                    class="[ form-group ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
+                                    data-view="public"
+                                    id="signup-confpass-row">
+                                    <!-- UAT: pattern & INPUT
+                            Number: (?=.*\d)
+                            Lowercase: (?=.*[a-z])
+                            Uppercase: (?=.*[A-Z])
+                            Symbols: (?=.*[@$!%*?&])
+                            Length.{12,50}" -->
+                                    <input
+                                        class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                        id="confirm-password"
+                                        aria-description="Passwords use a-z, A-Z, 0-9 and @,$,!,%,*,?,&, min: 12, max: 50. Must match."
+                                        autocomplete="new-password"
+                                        data-view="public"
+                                        maxlength="50"
+                                        minlength="12"
+                                        name="confirm-password"
+                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{12,50}"
+                                        placeholder="Confirm Password"
+                                        required
+                                        tabindex="5"
+                                        title="Create a valid Password"
+                                        type="password" />
+                                    <label
+                                        class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                        id="confirm-password-tag"
+                                        aria-labelledby="confirm-password"
+                                        aria-description="Create a password: a-z, A-Z, 0-9 with @,$,!,%,*,?,&, min: 12, max: 50. Must match."
+                                        data-view="public"
+                                        for="confirm-password">
+                                        Confirm Password
+                                    </label>
+                                    <span
+                                        class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                                        data-status="invalid"
+                                        data-view="public"
+                                        id="invalid-signupmatch-msg">
+                                        Please confirm that both password match.
+                                    </span>
+                                </div>
+                                <!-- =============================== PUBLIC SIGNUP ROW ======================== -->
+                                <div
+                                    class="[ form-group ] [ flex flex-row ] [ w-full ] [ justify-between items-center ] [ my-2 ]"
+                                    data-view="public"
+                                    id="signup-btn-row">
+                                    <!-- =========================== PUBLIC SIGNUP BUTTON ===================== -->
+                                    <input
+                                        class="[ input-field peer ] [ block w-full ] [ mb-4 ] [ p-2 ] [ border rounded-md outline-none ] | [ font-medium text-base text-white ] [ bg-gray-600 ] | [ focus:ring-blue-500 focus:border-blue-500 ]"
+                                        aria-description="Submit form to signup and create a new account"
+                                        data-view="public"
+                                        tabindex="5"
+                                        type="submit"
+                                        value="Create Account" />
+                                </div>
+                                <!-- ========================= PUBLIC SIGNUP ROW========================= -->
+                                <!-- ========================= FORGET PAGASSWORD: LINK ================= -->
+                                <!-- ========================= FORGET PAGASSWORD: Reset.html =========== -->
+                            </fieldset>
+                        </form>
+                        <!-- ========================= CONTENT: MID : FORM STATUS | HTMX TARGET ==================  -->
+                        <!-- 2️⃣HTMX Target: Start: beforeend | Keep Form & Clear Form -->
+                        <div
+                            class="[ status-card notification ] [ invisible opacity-0 ] [ mx-auto my-8 px-2 py-4 ] [ bg-grey-100 ] [ space-2 ] [ border-l-4 border-blue-500 ]"
+                            id="status-signup-notice"
+                            aria-description="Form Status"
+                            data-form="signup"
+                            data-message="status"
+                            data-view="public"
+                            hidden="hidden"
+                            inert
+                            title="Status">
+                            <h3
+                                class="[ status-label ] [ sr-only ] [ font-semibold ] [ text-md text-blue-800 ]"
+                                id="signup-status-label"
+                                aria-description="Status Message Banner"
+                                data-form="signup"
+                                data-status="message"
+                                hidden="until-found">
+                                Sign Up Status
+                            </h3>
+                            <p
+                                class="[ status-text ] [ my-2 ] [ font-semibold ] [ text-base text-blue-800 ]"
+                                id="signup-status-text"
+                                aria-description="Status Message:Confirm or Error"
+                                data-form="signup"
+                                data-status="message"
+                                data-view="public">
+                                {{Message}}
+                            </p>
+                            <!-- Message Success & Message Error -->
+                        </div>
+                        <!-- End Form | Sign Up, Public -->
+                    </div>
+                </article>
+                <!-- ============================= CONTENT: PRIVATE | TABLET+ ================================= -->
+                <!-- ============================= CONTENT: MID : APP CARDS ==================================  -->
+                <article
+                    class="[ app-cta private ] [ hidden ] [ w-auto h-fit ] [ place-items-center ] [ m-8 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] [ rounded-md shadow-lg ]"
+                    id="appcards-cards-cta-content"
+                    aria-description="App Cards | Outline of App Features"
+                    data-card="content"
+                    data-private="true"
+                    data-view="private"
+                    hidden="hidden"
+                    title="App Cards | Call to Action | Logged In | 1 x2 Grid | 2 Card Components">
+                    <!-- - TODO: Add Django Template -->
+                    <!-- - TODO: Add Django View -->
+                    <h2
+                        class="[ card-label ] [ hidden ] [ sr-only ]"
+                        id="private-cta-header"
+                        aria-description="ScreenReader | Banner | Calls to Action | Logged In | 1 x 2 Grid | 2 Card Components"
+                        data-view="private"
+                        hidden="until-found">
+                        Dash &amp; Do
+                    </h2>
+                    <!-- ============================= CONTENT: MID : APP CARDS ==================================  -->
+                    <div
+                        class="[ app-card ] [ flex flex-col flex-auto md:flex-row ] [ w-auto h-full ] [ place-items-center ] [ m-2 ] [ gap-8 ] [ rounded-md shadow-lg ]"
+                        id="cards-private-cta-section"
+                        title="Private | AppCards | CTA Component">
+                        <article
+                            class="[ app-card ] [ flex flex-col flex-auto ] [ w-auto md:w-1/2 h-full md:h-full ] [ place-items-center ] [ gap-4 ] [ bg-gray-100 ] [ shadow-lg ]"
+                            id="card-cta-dash"
+                            aria-description="Call to Action | Apps | Header"
+                            data-view="private"
+                            data-card="app"
+                            title="Dashboard Call to Action | Logged In | Call to Action | Card Component">
+                            <div
+                                class="[ card-row ] [ ]"
+                                id="dash-cardrow-header">
+                                <h3
+                                    class="[ card-tag ] [ ]"
+                                    id="app-card-heading"
+                                    aria-description="Dashboard Call to Action | Logged In | Call to Action | Card Component">
+                                    Dash & Inform
+                                </h3>
+                            </div>
+                            <div
+                                class="[ card-row ] [ ]"
+                                id="dash-cardrow-outline">
+                                <p
+                                    class="[ card-text ] [ mx-auto px-8 ]"
+                                    id="dash-card-outline"
+                                    aria-description="Dashboard Call to Action | Logged In | Call to Action | Card Component">
+                                    This is the dashboard for the Dash and Do for GitHub. This is a dashboard and to-do
+                                    list manager for GitHub. It is designed to help developers manage their GitHub
+                                    projects as portfolios.
+                                </p>
+                            </div>
+                            <div
+                                class="[ card-row ] [ ]"
+                                id="dash-cardrow-link">
+                                <a
+                                    class="[ card-app-link ] [ ]"
+                                    id="dash-card-link"
+                                    aria-description=" Call to Action | Logged In | Call to Action | Card Component"
+                                    href="dash.html">
+                                    View your GitHub Dashboard Status
+                                </a>
+                            </div>
+                        </article>
+                        <!-- ============================= CONTENT: MID : APP CARDS ==================================  -->
+                        <article
+                            class="[ app-card ] [ flex flex-col flex-auto ] [ w-auto md:w-1/2 h-full md:h-full ] [ place-items-center ] [ mx-2 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] [ bg-gray-100 ] [ rounded-md shadow-lg ]"
+                            id="card-cta-do"
+                            aria-description="Do Call to Action | Logged In | Call to Action | Card Component | Inert | Disabled | Future"
+                            data-view="private"
+                            data-card="app"
+                            hidden="hidden"
+                            inert>
+                            <div
+                                class="[ card-tag roadmap ] [ ]"
+                                id="do-coming-soon-tag"
+                                aria-description="Card Tags | Comings Soon Label"
+                                data-view="private"
+                                hidden="until-found"
+                                inert>
+                                Comming Soon
+                            </div>
+                            <div
+                                class="[ card-row ] [ ]"
+                                id="do-cardrow-header">
+                                <h3
+                                    class="[ card-tag ] [ ]"
+                                    id="do-card-heading"
+                                    aria-description="Do Call to Action | Logged In | Call to Action | Card Component">
+                                    Do & Act (Disabled)
+                                </h3>
+                            </div>
+                            <div
+                                class="[ card-row ] [ ]"
+                                id="do-cardrow-outline">
+                                <p
+                                    class="[ card-text ] [ mx-auto px-8 ]"
+                                    id="do-card-outline"
+                                    aria-description="Do & Action Outline">
+                                    This is the do for the Dash and Do for GitHub. This is a dashboard and to-do list
+                                    manager for GitHub. It is designed to help developers manage their GitHub projects
+                                    as portfolios.
+                                </p>
+                            </div>
+                            <div
+                                class="[ card-row ] [ ]"
+                                id="do-cardrow-link">
+                                <a
+                                    class="[ card-app-link ] [ ]"
+                                    id="do-card-link"
+                                    aria-description="Do & Act Link"
+                                    href="do.html">
+                                    Check your GitHub Tasks Status
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </article>
+            </section>
+            <!-- ============================= CONTENT: ALL | MOBILE+ =================================  -->
+            <!-- ============================= CONTENT: BOT: FORM - COMTACT  =============================  -->
+            <!-- Block[Row]: Content | Bottom Section: 1) All Views: Contact Form -->
+            <section
+                class="[ btm-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-4 ] [ bg-gray-400 ]"
+                aria-description="Content - Contact"
+                aria-label="Contact Form"
+                data-content="lower"
+                data-view="all"
+                id="bottom-section-content">
+                <h1
+                    class="[ header-content ] [ invisible opacity-0 ] [ sr-only ]"
+                    id="header-bottom-content"
+                    aria-description=""
+                    aria-label="Content header -Bottom of page"
+                    data-view="all"
+                    hidden="until-found">
+                    Contact Form
+                </h1>
+                <!-- ============================= CONTENT: PUBLIC | MOBILE+ =================================  -->
+                <!-- ============================= CONTENT: MID : FORM: SIGNUP ===============================  -->
+                <article
+                    class="[ app-card ] [ flex flex-col ] [ w-[90%] h-fit ] [ place-items-center ] [ m-8 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] [ bg-gray-300 ] [ rounded-md shadow-lg ]"
+                    aria-description="CTA Send us a message, by Contact form"
+                    aria-label="Contact Form Send Message"
+                    data-card="form-contact"
+                    data-view="public"
+                    id="contact-form-cta-content">
+                    <h2
+                        class="[ card-label ] [ hidden ] [ sr-only ]"
+                        id="contact-form-cta-header"
+                        aria-description="Form label - Contact"
+                        aria-hidden="false"
+                        aria-label="Apps CTA | Header"
+                        data-view="all">
+                        Contact Us
+                    </h2>
+                    <!-- ========================= CONTENT: MID : FORM CONTACT | HTMX ========================  -->
+                    <!-- 1️⃣ HTMX Target: Start: OuterHTML | RePlace:Form | reload form redirect after Submit -->
+                    <div
+                        class="[ form-inner-card ] [ flex flex-col ] [ w-[90%] h-fit ] [ place-items-center ] [ mx-auto my-8 ] [ gap-4 ] [ space-2 ]"
+                        id="contact-form-card-content"
+                        aria-description="Contact Form | Card | Inner"
+                        data-view="all">
+                        <!-- ===================== PUBLIC CARD CONTACT FORM ===================================  -->
+                        <form
+                            class="[ form-contact ] [ flex flex-auto flex-col lg:flex-row ] [ w-[90%] h-full ] [ justify-items-start items-stretch md:self-stretch ] [ mx-auto my-8 p-8 ] [ gap-2 lg:gap-8 ] [ space-2 ] [ bg-gray-600 ] [ rounded-md shadow-lg ]"
+                            action="#"
+                            data-card="form-contact"
+                            data-form="contact"
+                            data-view="all"
+                            id="contact-form"
+                            method="post"
+                            name="contact-form"
+                            hx-post="server-script-goes-here"
+                            hx-trigger="submit"
+                            hx-swap="outerHTML">
+                            <a
+                                class="[ sr-only ]"
+                                id="contact-form-jumpto"></a>
+                            <!-- ======================= PUBLIC CONTACT FIELDS' 1 COLUMN ===================  -->
+                            <fieldset
+                                class="[ form-card ] [ flex flex-auto flex-col ] [ w-full h-full lg:min-h-[325px] md:max-h-full ] [ self-stretch md:self-stretch ] [ my-4 p-4 ] [ bg-gray-100 ] [ border rounded-lg shadow-lg ]"
+                                data-card="2-columns"
+                                data-column="1"
+                                data-view="all"
+                                form="contact-form"
+                                id="details-contact-form">
+                                <legend
+                                    class="[ form-card-label ] [ sr-only ]"
+                                    aria-description="Contact Details"
+                                    data-view="all"
+                                    hidden="until-found"
+                                    id="label-contact-form">
+                                    Sign Up Form
+                                </legend>
+                                <!-- ========================= PUBLIC CONTACT ROW: NAME ====================== -->
+                                <div
+                                    class="[ formrow ] [ relative ] [ justify-items-start] [ my-4 ]"
+                                    data-view="all"
+                                    id="contact-name-row">
+                                    <!-- UAT: pattern & INPUT
+                            Any Character a-zA-ZÀ-ÖØ-öø-ÿ
+                            Hyphen, Space, aspotrophe:  [ '-], one or more
+                            Length: min: 6, max: 50
+                            -->
+                                    <input
+                                        class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                        id="contact-name"
+                                        aria-description="Full Name: Input Length: min: 6, max: 50"
+                                        aria-label="Enter a Full Name"
+                                        autocomplete="off"
+                                        data-view="all"
+                                        maxlength="50"
+                                        minlength="6"
+                                        name="fullname"
+                                        pattern="^[a-zA-ZÀ-ÖØ-öø-ÿ '-]+{6,50}$"
+                                        placeholder="Full Name"
+                                        required
+                                        tabindex="6"
+                                        title="Please enter your name"
+                                        type="text" />
+                                    <label
+                                        class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                        id="contact-name-tag"
+                                        aria-description="Enter Full Name, max length is 50"
+                                        aria-labelledby="contact-name"
+                                        data-view="all"
+                                        for="contact-name">
+                                        Full Name
+                                    </label>
+                                    <span
+                                        class="[ input-message group ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                                        data-status="invalid"
+                                        data-view="all"
+                                        hidden="until-found"
+                                        id="invalid-contactname-msg">
+                                        Please enter valid name, any letter character, space hyphens & apostrophe only,
+                                        min 6, max 50 in length.
+                                    </span>
+                                </div>
+                                <!-- ========================= PUBLIC CONTACT ROW========================= -->
+                                <div
+                                    class="[ formrow ] [ relative ] [ justify-items-start] [ my-4 ]"
+                                    data-view="public"
+                                    id="contact-email-row">
+                                    <!-- UAT: pattern & INPUT
+                             -Before @ [Email]
+                               - Any: Lower-, upper-, 0-9,
+                               - Symbols: _ + - @
+                             - After @ [Domain.TLD]
+                               - [Domain]:  Any: Lower-, upper-, 0-9
+                               - \. Email
+                               - [TLD]: Any: Lower-, upper-, 0-9
+                             Length: min: 8, max: 50
+                             -->
+                                    <input
+                                        class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                        id="contact-email"
+                                        aria-description="Email: Input Length: min: 8, max: 50"
+                                        aria-label="Enter an Email"
+                                        autocomplete="off"
+                                        data-view="all"
+                                        maxlength="50"
+                                        minlength="8"
+                                        name="email"
+                                        pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$.{8,50}"
+                                        placeholder="Email"
+                                        required
+                                        tabindex="6"
+                                        title="Choose a valid Email: a-z, A-Z, 0-9, _ + - , min 8, max 50"
+                                        type="email" />
+                                    <label
+                                        class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                        id="contact-email-tag"
+                                        aria-description="Enter an email we can reach your on"
+                                        data-view="all"
+                                        for="contact-email">
+                                        Email
+                                    </label>
+                                    <!-- TODO: Refine the message for symbol highlighting -->
+                                    <span
+                                        class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                                        data-status="invalid"
+                                        data-view="public"
+                                        hidden="until-found"
+                                        id="invalid-contactemail-msg">
+                                        Please select a valid email address. <br />
+                                    </span>
+                                </div>
+                            </fieldset>
+                            <!-- ======================= PUBLIC CONTACT FIELDS' 2ND COLUMN ===================  -->
+                            <fieldset
+                                class="[ form-card ] [ flex flex-auto flex-col ] [ w-full h-full min-h-[325px] md:max-h-full ] [ self-stretch md:self-stretch ] [ my-4 p-4 ] [ bg-gray-100 ] [ border rounded-lg shadow-lg]"
+                                data-card="2-columns"
+                                data-column="2"
+                                data-view="all"
+                                form="contact-form"
+                                id="message-contact-form">
+                                <legend
+                                    class="[ form-card-label ] [ sr-only ]"
+                                    aria-description="Contact Message"
+                                    data-view="all"
+                                    hidden="until-found"
+                                    id="label-message-form">
+                                    Create your message
+                                </legend>
+                                <!-- ========================= PUBLIC CONTACT ROW: MESSAGE ==================== -->
+                                <div
+                                    class="[ formrow ] [ relative ] [ justify-items-start] [ my-4 ]"
+                                    id="message-field-contact-form"
+                                    data-float-label>
+                                    <textarea
+                                        class="[ input-field peer ] [ w-full h-40 min-h-40 max-h-48 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ resize-x touch-pan-x ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                                        id="contact-message"
+                                        aria-description="Contact Form | Sender's Message"
+                                        aria-label="Message Body"
+                                        cols="50"
+                                        maxlength="500"
+                                        minlength="10"
+                                        name="contact-message"
+                                        placeholder="Message"
+                                        required
+                                        rows="60"
+                                        spellcheck="true"
+                                        tabindex="6"
+                                        title="Min length: 10 chars">
+                                    </textarea>
+                                    <label
+                                        class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                        for="contact-message"
+                                        id="contact-message-tag">
+                                        Message
+                                    </label>
+                                </div>
+                                <!-- ========================= PUBLIC CONTACT ROW: CONTROLS =================== -->
+                                <div
+                                    class="[ form-group ] [ flex flex-row ] [ justify-between items-center ] [ my-2 ]"
+                                    id="send-field-contact-form"
+                                    data-view="all">
+                                    <!-- =========================== PUBLIC SIGNUP BUTTON ===================== -->
+                                    <input
+                                        class="[ input-field peer ] [ block w-full ] [ mb-4 ] [ p-2 ] [ border rounded-md outline-none ] [ font-medium text-base text-white ] [ bg-gray-600 ] | [ focus:ring-blue-500 focus:border-blue-500 ]"
+                                        aria-description="Submit form to contact us and send a message"
+                                        aria-label="Contact | Press Send button"
+                                        data-view="all"
+                                        tabindex="6"
+                                        type="submit"
+                                        value="Send Message" />
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </main>
+    <!-- ========================================= ------------------------- =================================  -->
+    <!-- ========================================= FOOTER ====================================================  -->
+    <!-- ========================================= ------------------------- =================================  -->
+    <footer
+        class="[ page-footer ] [ flex flex-auto flex-col md:flex-row ] [ block ] [ items-center md:justify-between ] [ w-full h-max ] [ px-2 md:px-6 py-4 ] [ nav-global-style ] [ bg-gray-800 text-white text-center ]"
+        id="footer-page"
+        data-view="all">
+        <!-- includes\footer.html -->
+        <nav
+            class="[ nav-global-footer ] [ grid grid-row-3 md:grid-cols-3 gap-6 ] [ place-items-center md:justify-between md:items-start ] [ w-full h-auto ] [ px-4 md:px-10 ] [ md:space-x-4 space-y-4 md:space-y-0 ]"
+            aria-label="Footer | Bottom Navigation | All Pages"
+            id="nav-global-footer"
+            title="Container | Grid | Footer">
+            <!-- Block[Col]: Footer | Left: Contact Details -->
+            <div
+                class="[ footer-nav-left ] [ flex flex-wrap flex-col lg:flex-row ] [ justify-self-center md:justify-self-start place-items-center md:items-start ] [ md:max-width-1/3 h-fit ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ p-4 ] [ order-3 md:order-1 ]"
+                aria-label="Footer | Left"
+                id="left-nav-footer"
+                role="contentinfo"
+                title="Left Grid Cell | Contact About | 1,1 Landscape | 1,1 Portrait">
+                <div
+                    class="[ place-items-center ]"
+                    title="Contact">
+                    <a
+                        id="mobile-link"
+                        href=""
+                        title="Contact | Mobile">
+                        +353851234567
+                    </a>
+                </div>
+                <div
+                    class="[ place-items-center ]"
+                    title="Contact | Email">
+                    <a
+                        id="email-link"
+                        href=""
+                        title="Contact | Email">
+                        email@example.com
+                    </a>
+                </div>
+                <!-- TODO: External Automatic Mobile and Email href generation/ in script file -->
+                <!-- TODO: Create a image with mobile and email, as per rest of text style -->
+                <div
+                    class="[ block visible md:hidden md:invisible ]"
+                    title="Copyright">
+                    <p title="Copyright | Text">© 2023-2028</p>
+                </div>
+            </div>
+            <div
+                class="[ footer-nav-mid ] [ flex flex-col md:flex-row ] [ justify-self-center md:justify-self-center items-center md:items-start ] [ md:max-width-1/3 h-fit ] [ mx-auto ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ p-4 ] [ order-2 md:order-2 ]"
+                aria-label="Footer | Middle"
+                id="mid-nav-footer"
+                role="contentinfo"
+                title="Middle Grid Cell | Icons | 1,2 Landscape | 2,1 Portrait">
+                <div
+                    class="[ nav-mid-col ] [ flex flex-col ] [ justify-self-center md:justify-self-start items-center md:items-start ] [ md:max-width-1/3 h-fit ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ p-4 ]"
+                    id="nav-mid-col">
+                    <div
+                        class=""
+                        title="GitHub">
+                        <a
+                            href="https://github.com/iPoetDev/dash-and-do-github"
+                            title="GitHub | Link to Repo">
+                            <img
+                                alt="GitHub"
+                                src=""
+                                title="GitHub | Icon | Logo | Add Copyright" />
+                        </a>
+                    </div>
+                    <div
+                        class="[ hidden invisible md:block md:visible]"
+                        title="Copyright">
+                        <p title="Copyright | Text">© 2023-2028</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Block[Col]: Footer | Right: Secondary Navigation | Links -->
+            <div
+                class="[ footer-nav-right ] [ flex flex-wrap flex-col md:flex-row ] [ justify-self-center md:justify-self-end items-center md:items-start ] [ md:max-width-1/3 h-fit ] [ space-y-2 md:space-y-0 md:space-x-4 ] [ p-4 ] [ order-1 md:order-3 ]"
+                aria-label="Footer | Right"
+                id="right-nav-footer"
+                role="contentinfo"
+                title="Right Grid Cell | FAQ, Help & Docs | 1,3 Landscape | 3,1 Portrait">
+                <div
+                    class=""
+                    title="FAQ">
+                    <a
+                        href=""
+                        title="FAQ"
+                        >FAQ</a
+                    >
+                </div>
+
+                <div
+                    class=""
+                    title="Help">
+                    <a
+                        href=""
+                        title="Help"
+                        >Help</a
+                    >
+                </div>
+
+                <div
+                    class=""
+                    title="Docs">
+                    <a
+                        href=""
+                        title="Docs"
+                        >Docs</a
+                    >
+                </div>
+            </div>
+        </nav>
+        <!-- Extract-End: Include -->
+    </footer>
+    <!-- ========================================= Scripts ===================================================  -->
+    <!-- Toggle JS -->
+    <script
+        id="hero_slider_carousel"
+        title="Hero Slider JS |  Custom"
+        defer
+        src="../static/css/nav-sidebar-toggle.js"></script>
+    <!--         <script -->
+    <!--             id="hero_slider_carousel" -->
+    <!--             title="Hero Slider JS |  Custom" -->
+    <!--             defer -->
+    <!--             src="../static/css/hero-slider-carousel.js"></script> -->
+</body>

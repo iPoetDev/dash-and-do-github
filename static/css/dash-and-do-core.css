@@ -1,0 +1,108 @@
+/* Copyright (c) 2023.  */
+
+/*
+    Author: Charles Fowler
+    Date: 2023-09-09T12:20:00+01:00
+    Dashed & Do Core Stylesheet | Supplemental Stylesheet
+    - Tailwinds don't handle all cs styles uses cases like more modern css features released in 2023.
+    - Tailwinds relies on PostCSS which is a preprocessor for css.
+    - So instead of using, PostCSS, we can use the latest css features in this file.
+    Features: nothing covered by Tailwinds.
+    - ::before & ::after
+    - :focus-within
+ */
+
+/* Sidebar Controls */
+
+/*
+Prompt: Context
+Div  id="sidebar-toggle-area" has two children
+    - label id="toggle-sidebar-ctrl"
+    - input id="toggle-sidebar-btn" type="checkbox"
+- The behaviour is thatelling when the input is checked, the sidebar is shown.
+- When the input is not checked, the sidebar is hidden.
+- The label and when it has focus, is used to toggle the input.
+- The label is used to toggle the input.
+*/
+
+/* At the start, we suppose the sidebar is minimised */
+#sidebar-col1-content {
+    background-color: gray;
+
+    --md-strip-width: 80px;
+    --lg-strip-width: 50px;
+    --strip-width: var(--md-strip-width);
+    --md-sidebar-width: 20%;
+    --lg-sidebar-width: 15%;
+    --sidebar-width: var(--md-sidebar-width);
+
+    min-width: var(--strip-width);
+    max-width: var(--lg-sidebar-width);
+}
+
+#nav-sidebar {
+    width: 100%;
+    background-color: transparent;
+}
+
+#sidebar-toggle-area {
+    display: block;
+    min-width: var(--strip-width);
+    max-width: var(--strip-width);
+    width: var(--strip-width);
+}
+
+#sidebar-toggle-area label {
+    display: block;
+    cursor: pointer;
+    width: 50%;
+}
+
+/* !* When the checkbox is checked, we show the sidebar *! */
+/* #sidebar-toggle-area:focus-within #toggle-sidebar-btn:checked ~ #sidebar-col1-content, */
+/* #sidebar-toggle-area:focus-within #toggle-sidebar-btn:checked ~ #nav-sidebar { */
+/*     width: var(--sidebar-width); */
+/*     background-color: white; */
+/* } */
+
+/* When the checkbox is checked, we show the sidebar */
+#toggle-sidebar-btn:checked ~ #sidebar-col1-content,
+#toggle-sidebar-btn:checked ~ #sidebar-toggle-area,
+#toggle-sidebar-btn:checked ~ #nav-sidebar {
+    display: block;
+    width: var(--md-sidebar-width);
+    background-color: white;
+}
+
+/* When the checkbox is not checked, we minimise the sidestrip
+#sidebar-toggle-area:focus-within
+*/
+#toggle-sidebar-btn:not(:checked) ~ #sidebar-col1-content,
+#toggle-sidebar-btn:not(:checked) ~ #sidebar-toggle-area,
+#toggle-sidebar-btn:not(:checked) ~ #sidebar-toggle-ctrl {
+    display: block;
+    min-width: var(--strip-width);
+    max-width: var(--strip-width);
+    width: var(--strip-width);
+}
+
+/* When the checkbox is not checked, we hide the full sidebar
+ #sidebar-toggle-area:focus-within
+ */
+#toggle-sidebar-btn:not(:checked) ~ #nav-sidebar {
+    display: none;
+    width: 0;
+    background-color: transparent;
+}
+
+/* Managing the size of the main content depending on whether the
+sidebar is displayed or not */
+#sidebar-toggle-area #toggle-sidebar-btn:checked ~ #central-col2-content {
+    width: calc(100% - var(--sidebar-width));
+}
+
+#sidebar-toggle-area #toggle-sidebar-btn:not(:checked) ~ #central-col2-content,
+#sidebar-toggle-area:focus #toggle-sidebar-btn:not(:checked) ~ #central-col2-content,
+#sidebar-toggle-area:focus-within #toggle-sidebar-btn:not(:checked) ~ #central-col2-content {
+    width: 100%;
+}

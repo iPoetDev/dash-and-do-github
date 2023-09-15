@@ -1987,11 +1987,6 @@ video {
     padding-top: 0px;
     padding-bottom: 0px;
   }
-
-  .md\:py-8 {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
 }
 
 @media (min-width: 1024px) {

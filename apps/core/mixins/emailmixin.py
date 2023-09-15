@@ -34,6 +34,7 @@ from django.core.mail import EmailMessage as CoreMessage
 from anymail.message import AnymailMessageMixin
 from mail_templated import EmailMessage as TemplatedMessage
 
+
 class CoreTemplatedMixin(CoreMessage, TemplatedMessage):
     """
     A mixin class that combines CoreMessage (from Django's mailing system)
@@ -41,6 +42,8 @@ class CoreTemplatedMixin(CoreMessage, TemplatedMessage):
     from both in a single class.
     """
     pass
+
+
 class TemplatedAnymailMixin(AnymailMessageMixin, TemplatedMessage):
     """
     An EmailMessage that supports both Mail-Templated

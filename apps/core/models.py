@@ -71,6 +71,7 @@ from dash_and_do.validating import valid_name, valid_email
         - Provides a string representation of the contact object
 """
 
+
 class Contact(models.Model):
     name = models.CharField(max_length=50,
                             validators=[valid_name])
@@ -85,5 +86,6 @@ class Contact(models.Model):
     """
     :Return: A string representation of the object.
     """
+
     def __str__(self):
         return f'{self.name} ({self.email})'

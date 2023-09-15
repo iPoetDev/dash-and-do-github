@@ -32,6 +32,7 @@ from django import forms
 from django.forms import ModelForm
 from .models import Contact
 
+
 class ContactForm(ModelForm):
     """
     Form for creating or updating a contact.
@@ -41,6 +42,7 @@ class ContactForm(ModelForm):
     :attribute  META
 
     """
+
     class Meta:
         """
          ContactForm's Meta
@@ -62,7 +64,11 @@ class ContactForm(ModelForm):
     }
 
     # Define form fields with custom widget names
-    name = forms.CharField(widget=forms.TextInput(attrs={'name': FIELD_ALIASES['name']}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'name': FIELD_ALIASES['email']}))
-    message = forms.CharField(widget=forms.Textarea(attrs={'name': FIELD_ALIASES['message']}))
-    copy_sent = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'name': FIELD_ALIASES['copy_sent']}))
+    name = forms.CharField(
+        widget=forms.TextInput(attrs={'name': FIELD_ALIASES['name']}))
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={'name': FIELD_ALIASES['email']}))
+    message = forms.CharField(
+        widget=forms.Textarea(attrs={'name': FIELD_ALIASES['message']}))
+    copy_sent = forms.BooleanField(required=False, widget=forms.CheckboxInput(
+        attrs={'name': FIELD_ALIASES['copy_sent']}))

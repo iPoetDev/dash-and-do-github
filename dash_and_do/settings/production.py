@@ -22,8 +22,8 @@ Changelog:
 
 # ================== Imports ==================
 
-from .settings import *
-
+from .settings import DEBUG, env, ALLOWED_HOSTS, DATABASES
+from .thirdparty import ANYMAIL
 # ================== Keys & Mode ==================
 
 if DEBUG is not True:

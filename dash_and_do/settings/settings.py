@@ -43,10 +43,11 @@ import sys
 
 from environ import Env
 
+
 # ==================== Third Party ====================
 # - added: third party settings for Settings.py
 
-# from .thirdparty import *  # noqa
+from .thirdparty import ANYMAIL  # noqa
 
 # ================== Base Paths ==================
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -66,16 +67,16 @@ sys.path.append(str(BASE_DIR / 'apps'))
 
 # ================== Environment Variables ==================
 # - added: Read the .env file
-# - note: Assign the values from the .env variables
+# - added: Read the .email file from email configuration
+# - note: Assign the values from the .env & .email variables
 
 env = Env()
 env_file = os.path.join(BASE_DIR, '.env')
-
-# Be defensive, check if the file exists by default.
-if not os.path.isfile(env_file):
-    raise FileNotFoundError(f'{env_file} not found')
-
 env.read_env(env_file)
+
+emailenv = Env()
+emailenv_file = os.path.join(BASE_DIR, '.email')
+env.read_env(emailenv_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -140,18 +141,16 @@ if not DEBUG:
     ALLOWED_HOSTS += ['*.herokuapp.com']
 
 # ================== Application ==================
-
-INSTALLED_APPS = [
-    #'django.contrib.admindocs',
-    #'django_extensions',
-]
+INSTALLED_APPS = []
+DEVELOPMENT_APPS = []
+THIRDPARTY_APPS = []
+DJANGO_APPS = []
 
 # Application definition
 # - Updated: Added developer apps to `INSTALLED_APPS`
 # - Added: Admin Docker app
 # - Note: Excluded from base & production settings
 # - Noted: add the “Documentation” link in the upper right of the page.- https://docs.djangoproject.com/en/4.2/ref/contrib/admin/admindocs/#module-django.contrib.admindocs
-
 
 if ADMIN_ENABLED:
     INSTALLED_APPS = []
@@ -166,6 +165,9 @@ if ADMIN_ENABLED:
 # - added: allauth & allauth.account
 # - todo: add: allauth.socialaccount
 # - added: anymail for allauth email backend
+# - added: mail_templated for email templates & sending
+# - added: widget_tweaks for forms field templates
+# - refactored: INSTALLED_APPS into 3 groups: Django, ThirdParty, Development
 
 INSTALLED_APPS += [
     #'debug_toolbar',
@@ -176,18 +178,38 @@ INSTALLED_APPS += [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #'django.contrib.humanize',
+]
+
+THIRDPARTY_APPS += [
     # allauth
-    'allauth',
-    'allauth.account',
-    'anymail',
     #'allauth.socialaccount',
     # ... include the providers you want to enable:
     #'allauth.socialaccount.providers.github',
-    # Customization with env variables for canonical values.
-    env.str('CORE_APP'),
-    # env.str('USERS_APP'),
-    # env.str('DASH_APP'),
+    'allauth',
+    'allauth.account',
+    'anymail',
+    'mail_templated',
+    'widget_tweaks',
 ]
+
+if DEBUG:
+    DEVELOPMENT_APPS += [
+        'django.contrib.admindocs',
+        'django_extensions',
+    ]
+
+DJANGO_APPS += [
+    # Customization with env variables for canonical values.
+    # See sys.path.append(str(BASE_DIR / 'apps'))
+    env.str('CORE_APP',default='core'),
+    # env.str('USERS_APP',default='accounts'),
+    # env.str('DASH_APP',defauls='dash'),
+]
+
+# Integrate apps into INSTALLED_APPS
+INSTALLED_APPS += DEVELOPMENT_APPS
+INSTALLED_APPS += THIRDPARTY_APPS
+INSTALLED_APPS += DJANGO_APPS
 
 # ================== Checks ==================
 # https://docs.djangoproject.com/en/4.2/ref/settings/#silenced-system-checks
@@ -251,13 +273,20 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # 'BACKEND': 'django.template.backends.jinja.Jinja2',
         # 'NAME': env.str('TEMPLATES_NAME', default='djtl'),
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [
+            BASE_DIR / 'templates',
+            BASE_DIR / 'templates' / 'contact',
+            BASE_DIR / 'templates' / 'includes',
+            BASE_DIR / 'templates' / 'emails',
+            BASE_DIR / 'templates' / 'private',
+            BASE_DIR / 'templates' / 'public'
+        ],
         'APP_DIRS': env.bool('TEMPLATES_APP_DIRS', default=True),
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request', # checked
-                #'django.template.context_processors.csrf',
+                'django.template.context_processors.csrf',
                 'django.contrib.auth.context_processors.auth', # checked
                 'django.contrib.messages.context_processors.messages', # check
             ],
@@ -577,13 +606,28 @@ STATIC_URL = env.str('STATIC_URL', default='static/')
 # }
 
 # ==================== Email & Notifications ====================
-# ChangeLog: 2023-08-10:  Comment Out when not implemented
-# - TODO: added: Admins & Managers notifications (Server, Admins, Prefix)
-# - TODO: added: EMAIL Configurations for SMTP (from, host, user/paasword,
-# - TODO: added: port, ssl, timeout)
+# ChangeLog: 2023-09-12:  Comment Out when not implemented
+# - added: EMAIL_BACKEND for SMTP, Console, Memory, Dummy
+# - added: EMAIL_SUBJECT_PREFIX for Django
+# - added: SERVER_EMAIL, FROM_EMAIL for Django
+# - added: ADMINS, MANAGER for Django
+# - added: EMAIL_HOST, EMAIL_HOST_PASSWORD, EMAIL_HOST_USER for SMTP
+# - added: EMAIL_PORT, EMAIL_USE_LOCALTIME, EMAIL_USE_SSL, EMAIL_TIMEOUT
+# - added: ANYJET_BACKEND for AnyMail ESPs: Mailjet
 
-# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_BACKEND = "anymail.backends.mailjet.EmailBackend"
+
+# Default: Django's SMTP
+DJSTMP_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+STMP_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# Use for development only: to stdout, only
+DJCONSOLE_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# DJ Test Runner uses this for testing
+DJMEMORY_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
+DJDUMMY_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
+
+# Third Party: MailJet
+ANYJET_BACKEND = "anymail.backends.mailjet.EmailBackend"
+EMAIL_BACKEND = ANYJET_BACKEND
 
 # ==================== AnyMail ====================
 # Chnagelog
@@ -591,27 +635,39 @@ EMAIL_BACKEND = "anymail.backends.mailjet.EmailBackend"
 
 MAILJET_API_URL = "https://api.mailjet.com/v3.1/"
 
-ANYMAIL = {
+ANYMAIL += {
     'MAILJET_API_KEY': env.str('MJ_APIKEY_PUBLIC'),
     'MAILJET_SECRET_KEY': env.str('MJ_APIKEY_PRIVATE'),
 }
 
-
-
-# SERVER_EMAIL = env.str('SERVER_EMAIL', default='root@localhost') # noqa
-ADMINS = []
+ADMIN_EMAIL = env.str('ADMIN_EMAIL', default='ipoetdev-github-no-reply@outlook.com')
+SERVER_EMAIL = env.str('SERVER_EMAIL', default='root@localhost') # noqa
+ADMINS = [ADMIN_EMAIL]
 MANAGERS = ADMINS
-# EMAIL_SUBJECT_PREFIX = env.str('EMAIL_SUBJECT_PREFIX', default='[Django] ')
+EMAIL_SUBJECT_PREFIX = env.str('EMAIL_SUBJECT_PREFIX', default='[Django] ')
 
 # # Send from site manager, automated messages.
-# DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL')
-# EMAIL_HOST = env.str('EMAIL_HOST')
-# EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD', default='')
-# EMAIL_HOST_USER = env.str('EMAIL_HOST_USER', default='')
-# EMAIL_PORT = env.int('EMAIL_PORT', default=25)
-# EMAIL_USE_LOCALTIME = env.bool('EMAIL_USE_LOCALTIME', default=False)
-# EMAIL_USE_SSL = env.bool('EMAIL_USE_SSL', default=False)
-# EMAIL_TIMEOUT = env.int('EMAIL_TIMEOUT', default=60)
+if DEBUG:
+    DEFAULT_FROM_EMAIL = emailenv.str('DEFAULT_FROM_EMAIL',
+                                  default='webmaster@localhost') # noqa
+    EMAIL_HOST = emailenv.str('EMAIL_HOST', default='localhost')
+    EMAIL_HOST_PASSWORD = emailenv.str('EMAIL_HOST_PASSWORD', default='')
+    EMAIL_HOST_USER = emailenv.str('EMAIL_HOST_USER', default='')
+    EMAIL_BACKEND = emailenv.str('EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
+    EMAIL_PORT = emailenv.int('EMAIL_PORT', default=8025)
+    EMAIL_USE_LOCALTIME = emailenv.bool('EMAIL_USE_LOCALTIME', default=False)
+    EMAIL_USE_SSL = emailenv.bool('EMAIL_USE_SSL', default=False)
+    EMAIL_TIMEOUT = emailenv.int('EMAIL_TIMEOUT', default=60)
+else:
+    EMAIL_BACKEND = emailenv.str('EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
+    DEFAULT_FROM_EMAIL = emailenv.str('DEFAULT_FROM_EMAIL', default='webmaster@localhost') # noqa
+    EMAIL_HOST = emailenv.str('EMAIL_HOST', default='localhost')
+    EMAIL_HOST_PASSWORD = emailenv.str('EMAIL_HOST_PASSWORD', default='')
+    EMAIL_HOST_USER = emailenv.str('EMAIL_HOST_USER', default='')
+    EMAIL_PORT = emailenv.int('EMAIL_PORT', default=25)
+    EMAIL_USE_LOCALTIME = emailenv.bool('EMAIL_USE_LOCALTIME', default=False)
+    EMAIL_USE_SSL = emailenv.bool('EMAIL_USE_SSL', default=False)
+    EMAIL_TIMEOUT = emailenv.int('EMAIL_TIMEOUT', default=60)
 
 # ==================== Error Handling ====================
 # https://docs.djangoproject.com/en/4.2/ref/settings/#ignorable-404-urls
@@ -633,15 +689,18 @@ LOGGING = {}
 # https://docs.djangoproject.com/en/4.2/ref/settings/#secure-content-type-nosniff # noqa
 # Changelog: 2023-08-10 (Comment Out when not implemented)
 # - TODO: to add: Security Content, Policy, Referrer, SSL, HSTS, CORS, CSP, XSS,
+# - Updated: No Sniff, Open Policy, Referrer Policy
 # CSRF
 
-# SECURE_CONTENT_TYPE_NOSNIFF = env.bool('SECURE_CONTENT_TYPE_NOSNIFF',
-#                                        default=True)
-# SECURE_CROSS_ORIGIN_OPENER_POLICY = \
-#     env.str('SECURE_CROSS_ORIGIN_OPENER_POLICY', default='same-origin')
+SECURE_CONTENT_TYPE_NOSNIFF = env.bool('SECURE_CONTENT_TYPE_NOSNIFF',
+                                       default=True)
 #
-# SECURE_REFERRER_POLICY = env.str('SECURE_REFERRER_POLICY',
-#                                  default='same-origin')
+SECURE_CROSS_ORIGIN_OPENER_POLICY = \
+     env.str('SECURE_CROSS_ORIGIN_OPENER_POLICY', default='same-origin')
+#
+SECURE_REFERRER_POLICY = env.str('SECURE_REFERRER_POLICY',
+                                default='same-origin')
+#
 # SECURE_SSL_HOST = env.str('SECURE_SSL_HOST', default=None)
 # SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=False)
 
@@ -668,33 +727,35 @@ LOGGING = {}
 #                           default='django.core.signing.TimestampSigner')
 
 # ==================== Sessions ====================
+# ChangeLog: 2023-09-14 (Comment Out for implementation)
 # https://docs.djangoproject.com/en/4.2/topics/http/sessions/#module-django.contrib.sessions
 # - ADR: Select Session Storage Engine: Cookie or Database or Cache or File?
-# - added: Cookie: Age, Domain, HttpOnly, Name, Path, SameSite, Secure
-# - added: Engine, Serialiser:
-# - added: Options: Expire, Cache,
+# - updated: Cookie: Age, HttpOnly, Name, Path,
+# - todo: SameSite, Secure, Domain,
+# - updated: Engine, Serialiser:
+# - updated: Options: Expire, Cache,
 
 # Age of session cookie, Default 2 weeks (in seconds).
-# SESSION_COOKIE_AGE = env.int('SESSION_COOKIE_AGE',
-#                              default=60 * 60 * 24 * 7 * 2)
+SESSION_COOKIE_AGE = env.int('SESSION_COOKIE_AGE',
+                             default=60 * 60 * 24 * 7 * 2)
 # SESSION_COOKIE_DOMAIN = env.str('SESSION_COOKIE_DOMAIN',
 #                                 default=None)
-# SESSION_COOKIE_HTTPONLY = env.bool('SESSION_COOKIE_HTTPONLY',
-#                                    default=True)
-# SESSION_COOKIE_NAME = env.str('SESSION_COOKIE_NAME',
-#                               default='sessionid')
-# SESSION_COOKIE_PATH = env.str('SESSION_COOKIE_PATH',
-#                               default='/')
+SESSION_COOKIE_HTTPONLY = env.bool('SESSION_COOKIE_HTTPONLY',
+                                    default=True)
+SESSION_COOKIE_NAME = env.str('SESSION_COOKIE_NAME',
+                              default='sessionid')
+SESSION_COOKIE_PATH = env.str('SESSION_COOKIE_PATH',
+                              default='/')
 # SESSION_COOKIE_SAMESITE = env.str('SESSION_COOKIE_SAMESITE',
 #                                   default='Lax')
 # SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE',
 #                                  default=True)
-# SESSION_ENGINE = env.str('SESSION_ENGINE',
-#                          default='django.contrib.sessions')
-# SESSION_EXPIRE_AT_BROWSER_CLOSE = env.bool('SESSION_EXPIRE_AT_BROWSER_CLOSE',
-#                                            default=False)
-# SESSION_SAVE_EVERY_REQUEST = env.bool('SESSION_SAVE_EVERY_REQUEST',
-#                                       default=False)
+SESSION_ENGINE = env.str('SESSION_ENGINE',
+                         default='django.contrib.sessions')
+SESSION_EXPIRE_AT_BROWSER_CLOSE = env.bool('SESSION_EXPIRE_AT_BROWSER_CLOSE',
+                                            default=False)
+SESSION_SAVE_EVERY_REQUEST = env.bool('SESSION_SAVE_EVERY_REQUEST',
+                                       default=False)
 
 # https://docs.djangoproject.com/en/4.2/topics/http/sessions/#session-serialization
 # SESSION_SERIALIZER = \
@@ -702,15 +763,17 @@ LOGGING = {}
 #             default='django.contrib.sessions.serializers.JSONSerializer')
 
 # ==================== CRSF & Sessions ====================
-# Changelog: 2023-08-10 (Comment Out for implementation)
+# ChangeLog: 2023-09-14 (Comment Out for implementation)
 # - ADR: Select User Session v Cookie storage
 # - Added Persistent Session Cookies
 # - Added CSRF Cookie Settings (Domain, SameSite, HTTPS)
 # - Added User Session Config for CSRF Cookie or Session
 # - Updated .env/ConfigVars
+# - Updated CSRF Cookie Settings (Name, Path, Same Site, Secure, Header Name)
+# - Updated CSRF Cookie Settings (Use Sessions, Failure View)
 
 # Age of CSRF Cookie, Default 1 week (in seconds).
-# CSRF_COOKIE_AGE = env.int('CSRF_COOKIE_AGE', default=60 * 60 * 24 * 7)
+CSRF_COOKIE_AGE = env.int('CSRF_COOKIE_AGE', default=60 * 60 * 24 * 7)
 
 # # Added to .env file.
 # # Whether to use a secure cookie for the CSRF cookie/domain. Add to .env file.
@@ -720,22 +783,22 @@ LOGGING = {}
 # CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=[])
 
 # # Whether to HTTP Only. False by default.
-# CSRF_COOKIE_HTTPONLY = env.bool('CSRF_COOKIE_HTTPONLY', default=False)
+CSRF_COOKIE_HTTPONLY = env.bool('CSRF_COOKIE_HTTPONLY', default=False)
 # CSRF_COOKIE_MASKED = env.bool('CSRF_COOKIE_MASKED', default=False)
-# CSRF_COOKIE_NAME = env.str('CSRF_COOKIE_NAME', default='csrftoken')
-# CSRF_COOKIE_PATH = env.str('CSRF_COOKIE_PATH', default='/')
+CSRF_COOKIE_NAME = env.str('CSRF_COOKIE_NAME', default='csrfmiddlewaretoken')
+CSRF_COOKIE_PATH = env.str('CSRF_COOKIE_PATH', default='/')
 
 # # See SESSION_COOKIE_SAMESITE flag for more info. Prevents X-Site requests.
-# CSRF_COOKIE_SAMESITE = env.str('CSRF_COOKIE_SAMESITE', default='Lax')
-# CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', default=True)
-# CSRF_HEADER_NAME = env.str('CSRF_HEADER_NAME', default='HTTP_X_CSRFTOKEN')
+CSRF_COOKIE_SAMESITE = env.str('CSRF_COOKIE_SAMESITE', default='Lax')
+CSRF_COOKIE_SECURE = env.bool('CSRF_COOKIE_SECURE', default=False)
+CSRF_HEADER_NAME = env.str('CSRF_HEADER_NAME', default='HTTP_X_CSRFTOKEN')
 
 # # CSRF Session Management
 # # 1: Default Error Views: Session Middleware before other middleware
-# CSRF_USE_SESSIONS = env.bool('CSRF_USE_SESSIONS', default=False)
+CSRF_USE_SESSIONS = env.bool('CSRF_USE_SESSIONS', default=False)
 
 # Failure Views: dotted path.
 # https://docs.djangoproject.com/en/4.2/ref/settings/#csrf-failure-view
-# CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
+CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
 
 # from iptools import IpRangeList

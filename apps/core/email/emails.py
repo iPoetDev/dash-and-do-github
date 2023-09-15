@@ -42,11 +42,12 @@ from django.core.mail import BadHeaderError
 from django.http import HttpResponse
 
 # Local: Common Libraries
-from dash_and_do.settings.settings\
+from dash_and_do.settings.settings \
     import (DEFAULT_FROM_EMAIL as SITE_EMAIL)
 # Local: App Libraries
 from apps.core.email.values import (Services, HTTP, Field)
 from apps.core.email.messages import site_mail
+
 
 def send_mail_contact(form) -> HttpResponse:
     """
@@ -63,18 +64,13 @@ def send_mail_contact(form) -> HttpResponse:
     copy = form.cleaned_data[Field.COPY]
 
     # Send email & prevent header injection (Django Docs)
-    if all([name,email, message]):
+    if all([name, email, message]):
         try:
             # To enable Fail Silently: fails=ON, default is OFF.
             return site_mail(name, email, message,
-                      [SITE_EMAIL], copy,
-                      service=Services.BASIC)
+                             [SITE_EMAIL], copy,
+                             service=Services.BASIC)
         except BadHeaderError:
             return HttpResponse(HTTP.INVALID_HEADER)
     else:
         return HttpResponse(HTTP.MSG_FAILED)
-
-
-
-
-

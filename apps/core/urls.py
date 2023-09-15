@@ -35,11 +35,33 @@ app_name = 'core'
 # /verify/ - verify.html - Verify Email =>
 #        core.urls | core.views core.http (redirect)
 
+"""
+#    URLPatterns - Handles Full Pages
+    - Index: core.urls | core.views
+    - Verify: core.urls | core.views
+    - Error: core.urls | core.views
+"""
 urlpatterns = [
     path('', views.index, name='index'),
-    path('verify/', views.verify, name='verify'),
-    path('form_signup/', views.signup, name='signup'),
-    path('form_login/', views.login, name='login'),
-    path('form_password_reset/', views.pwd_reset, name='pwd_reset'),
-    path('form_contact/', views.contact, name='contact'),
+    # path('about/', views.static_about, name='about'),
+    # path('fas/', views.static_faq, name='faq'),
+    # path('error/', views.error_public, name='error'),
+    # path('verify/', views.verify_public, name='verify'),
 ]
+
+"""
+# HTMXPatterns - Handles HTMX Requests URLPatterns & Includes
+ - Form Contact: core.urls | core.views core.forms core.email
+ - Form Signup: core.urls | core.views core.forms core.email core.models
+ - Form Login: core.urls | core.views core.forms core.models
+ - Form Password Reset: core.urls | core.views core.forms core.email core.models
+"""
+htmx_patterns = [
+    path('form_contact/', views.form_contact, name='contact'),
+    # path('form_signup/', views.signup, name='signup'),
+    # path('form_login/', views.login, name='login'),
+    # path('form_reset/', views.reset, name='reset'),
+]
+
+# Appends HTMX Patterns to urlpatterns
+urlpatterns += htmx_patterns

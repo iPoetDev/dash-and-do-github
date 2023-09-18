@@ -1,19 +1,23 @@
-{% extend "../includes/header.html" %}
+{% extends "./all/header.html" %}
 <!-- ==============================  DJANGO TEMPLATE & INCLUDE ================================  -->
+
+{% block menu_public %}
+
 <!-- ================================== PUBLIC MENU ==========================================  -->
-<menu
+
+<ul
     class="[ public-menu-nav-right ] [ block ] [ py-3 md:py-0 ] [ flex place-items-center ] [ space-y-1 md:space-y-0 md:space-x-4 ]"
+    id="public-header-nav-right"
+    aria-describedby="Public Navigation"
     aria-label="Public Navigation, Unauthenticated Users"
     data-main-menu="public"
     data-mobile-show="true"
     data-public="true"
     data-private="false"
     data-view="public"
-    role="menubar"
-    id="public-header-nav-right"
-    title="Public Navigation">
+    role="menubar">
     <!-- ========================= PUBLIC MENU ITEMS =========================================  -->
-    <!-- Refactor: Links: Menu Item | Menu Link/Text -->
+
     <li
         class="[ public-menu-item ] [ block ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ]"
         id="public-menu-item-home"
@@ -24,14 +28,16 @@
         data-view="public"
         role="menuitem">
         <!-- ===================== PUBLIC MENU LINKS =========================================  -->
+
         <a
             class="[ main-menu-link] [ font-medium text-gray-300 text-base hover:text-white ]"
             aria-label="Home Link"
             data-view="public"
-            href="ABOUT.HTML"
+            href="{% url 'index' %}"
             id="home-public-menuitem"
-            role="menuitem">
-            Home
+            role="menuitem"
+            title="{{ page.Index.ATITLE }}">
+            {{ page.Index.ATEXT }}
         </a>
     </li>
     <li
@@ -49,8 +55,9 @@
             data-view="public"
             href="about.html"
             id="about-public-menuitem"
-            role="menuitem">
-            About
+            role="menuitem"
+            title="{{ page.About.ATITLE }}">
+            {{ page.About.ATEXT }}
         </a>
     </li>
     <li
@@ -62,19 +69,20 @@
         data-menu="top-bar"
         data-mobile-show="true"
         data-view="public"
-        role="menuitem"
-        title="Home - Public Menu, Global Navigation">
+        role="menuitem">
         <a
             class="[ main-menu-link] [ font-medium text-gray-300 text-base hover:text-white ]"
             aria-label="Contact JumpTo Link"
             data-view="public"
-            href="ABOUT.HTML#contact-form-jumptp"
+            href="{% url "index" %}#contact-form-jump-link"
             id="contact-public-menuitem"
-            role="menuitem">
-            Contact
+            role="menuitem"
+            title="{{ page.Contact.ATITLE }}">
+            {{ page.Contact.ATEXT }}
         </a>
     </li>
     <!-- ========================= PUBLIC DROP MENU =========================================  -->
+
     <li
         class="[ public-menu-item dropdown ] [ hidden md:block ] [ relative ] [ z-20 ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ] [ focus-within:dropdown-visible ]"
         id="public-menu-item-login"
@@ -90,10 +98,12 @@
             data-view="public"
             onclick="document.getElementById('dropdown-card-login').classList.toggle('hidden');"
             onKeyDown="document.getElementById('dropdown-card-login').classList.toggle('hidden');"
-            type="button">
+            type="button"
+            title="Login Menu">
             Login
         </button>
         <!-- ===================== PUBLIC DROPDOWN CARD BLOCK ===============================  -->
+
         <div
             class="[ dropdown-menu dropdown-visible ] [ hidden ] [ absolute right-[-22.5px] ] [ z-10 ] [ w-56 ] [ mt-2 p-4 ] [ bg-white ] [ rounded-md ] [ shadow-xl ] [ focus:dropdown-visible hover:dropdown-visible active:dropdown-visible ]"
             id="dropdown-card-login"
@@ -101,146 +111,17 @@
             data-menu="dropdown"
             data-view="public">
             <!-- ===================== PUBLIC DROPDOWN LOGIN FORM ===========================  -->
-            <form
-                class="[ form-login ]"
-                action="#"
-                data-form="login"
-                data-view="public"
-                id="login-form"
-                method="post"
-                name="login-form"
-                hx-post="server-script-goes-here"
-                hx-trigger="submit"
-                hx-swap="outerHTML">
-                <!-- ======================= PUBLIC LOGIN FIELDS' 1 COLUMN ===================  -->
-                <fieldset
-                    class="[ form-card ] [ w-full h-full ] [ p-4 border ] [ bg-gray-100 ] [ rounded-lg ]"
-                    data-menu="card"
-                    data-view="public"
-                    form="login-form"
-                    id="fields-login-form"
-                    name="login-form">
-                    <legend
-                        class="[ form-card-label ] [ sr-only ]"
-                        aria-description="Login Form Card | Username | Password | Remember-me Checkbox | Login button"
-                        hidden="until-found"
-                        id="label-login-form">
-                        Login Form
-                    </legend>
-                    <!-- ========================= PUBLIC LOGIN ROW========================= -->
-                    <div
-                        class="[ formrow ] [ relative ] [ my-4 ]"
-                        aria-description="Login Menu Item: Username"
-                        data-view="public"
-                        id="login-user-row">
-                        <!-- TODO: pattern="/^[\w-]+$/" -->
 
-                        <input
-                            class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
-                            id="login-username"
-                            aria-description="Enter Username: Input Length: min: 6, max: 30"
-                            autocomplete="username"
-                            data-view="public"
-                            maxlength="30"
-                            minlength="6"
-                            name="username"
-                            placeholder="Username"
-                            required
-                            tabindex="2"
-                            title="Enter a valid Username"
-                            type="text" />
-                        <label
-                            class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
-                            id="login-username-tag"
-                            aria-description="Enter account username"
-                            aria-labelledby="login-username"
-                            data-view="public"
-                            for="login-username">
-                            Username
-                        </label>
-                        <span
-                            class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
-                            data-view="public"
-                            id="invalid-username-msg">
-                            Please enter a valid username
-                        </span>
-                    </div>
-                    <!-- ========================= PUBLIC LOGIN ROW========================= -->
-                    <div
-                        class="[ form-group ] [ relative ] [ my-4 ]"
-                        data-view="public"
-                        id="login-pass-row">
-                        <!-- TODO:  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{12,}" -->
-                        <!-- TODO:  pattern="/^[a-zA-Z0-9@#$%^&*]{8,}$/" -->
-                        <input
-                            class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
-                            id="login-password"
-                            aria-description="Passwords using a-zA-Z0-9 and sumbols"
-                            aria-label="Enter a password"
-                            autocomplete="current-password"
-                            data-view="public"
-                            name="password"
-                            placeholder="Password"
-                            required
-                            title="Enter a valid Password"
-                            type="password" />
-                        <label
-                            class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
-                            id="login-password-tag"
-                            aria-labelledby="login-password"
-                            aria-description="Enter account password"
-                            data-view="public"
-                            for="login-password">
-                            Password
-                        </label>
-                        <span
-                            class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
-                            data-view="public"
-                            id="invalid-password-msg">
-                            Please enter a valid password, lowercase, uppercase, 0-9, symbols
-                        </span>
-                    </div>
-                    <!-- ========================= PUBLIC LOGIN BUTTON ======================== -->
-                    <div
-                        class="[ form-group ] [ flex flex-row ] [ justify-between items-center ] [ my-2 ]"
-                        aria-description="Login Menu Item: Checkbox and Button"
-                        data-view="public"
-                        id="login-btn-row">
-                        <!-- ========================= REMEMBER ME CHECKBOX ======================== -->
-                        <div
-                            class="[ flex flex-col ] [ items-center ]"
-                            id="login-row-checkbox">
-                            <input
-                                class="[ input-field form-checkbox ] [ m-1 ] [ h-5 w-5 ] [ rounded-md ] [ text-blue-600 ] [ focus:ring-blue-500 ]"
-                                aria-description="Remember login for next visit"
-                                aria-label="Remember me checkbox"
-                                id="remember-me"
-                                name="remember-me"
-                                value="remember"
-                                type="checkbox" />
-                            <label
-                                class="[ text-sm text-gray-500 ]"
-                                aria-labelledby="remember-me"
-                                aria-description="Checkbox to remember login details"
-                                for="remember-me">
-                                Remember
-                            </label>
-                        </div>
-                        <!-- ========================= PUBLIC LOGIN BUTTON ======================== -->
-                        <div class="[ flex ] [ items-end ]">
-                            <input
-                                class="[ input-field peer ] [ block w-full ] [ mb-4 ] [ p-2 ] [ border rounded-md outline-none ] [ font-medium text-base text-gray-500 ] | [ focus:ring-blue-500 focus:border-blue-500 ]"
-                                aria-description="Submit form to login and access account"
-                                data-view="public"
-                                type="submit"
-                                value="Login" />
-                        </div>
-                    </div>
-                    <!-- ========================= PUBLIC LOGIN ROW========================= -->
-                    <!-- ========================= FORGET PAGASSWORD: LINK ================= -->
-                    <!-- ========================= FORGET PAGASSWORD: Reset.html =========== -->
-                </fieldset>
-            </form>
+            {% if not request.user.is_authenticated %}
+            {% block form_login %}
+
+            <!-- ================= PUBLIC DROPDOWN LOGIN FORM ===========================  -->
+
+            {% endblock %}
+            {% endif %}
+
+            <!-- ===================== PUBLIC DROPDOWN LOGIN FORM ===========================  -->
         </div>
     </li>
-</menu>
+</ul>
+{% endblock %}

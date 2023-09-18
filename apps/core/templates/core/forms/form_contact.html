@@ -1,21 +1,27 @@
-{% extends "./all/contact.html" %} {% block form_contact %}
+{% extends "./all/contact.html" %}
+<!-- ===================== PUBLIC INCLUDES CONTACT FORM ===================================  -->
+
+{% block form_contact %}
+
 <!-- ===================== PUBLIC CARD CONTACT FORM ===================================  -->
+<!-- 1️⃣ HTMX Target: Start: OuterHTML  -->
 <form
     class="[ form-contact ] [ flex flex-auto flex-col lg:flex-row ] [ w-[90%] h-full ] [ justify-items-start items-stretch md:self-stretch ] [ mx-auto my-8 p-8 ] [ gap-2 lg:gap-8 ] [ space-2 ] [ bg-gray-600 ] [ rounded-md shadow-lg ]"
-    action="#"
+    action="form_contact/"
     data-card="form-contact"
     data-form="contact"
     data-view="all"
     id="contact-form"
     method="post"
     name="contact-form"
-    hx-post="server-script-goes-here"
+    hx-post="form_contact/"
     hx-trigger="submit"
     hx-swap="outerHTML">
+    <!-- ===================== ✅ FORM CSRF TOKEN ===================================  -->
     {% csrf_token %}
     <a
         class="[ sr-only ]"
-        id="contact-form-jumpto"></a>
+        id="contact-form-jump-to"></a>
     <!-- ======================= PUBLIC CONTACT FIELDS' 1 COLUMN ===================  -->
     <fieldset
         class="[ form-card ] [ flex flex-auto flex-col ] [ w-full h-full lg:min-h-[325px] md:max-h-full ] [ self-stretch md:self-stretch ] [ my-4 p-4 ] [ bg-gray-100 ] [ border rounded-lg shadow-lg ]"
@@ -30,7 +36,7 @@
             data-view="all"
             hidden="until-found"
             id="label-contact-form">
-            Sign Up Form
+            Contact Form
         </legend>
         <!-- ========================= PUBLIC CONTACT ROW: NAME ====================== -->
         <div
@@ -38,21 +44,24 @@
             data-view="all"
             id="contact-name-row">
             <!-- UAT: pattern & INPUT
-        Any Character a-zA-ZÀ-ÖØ-öø-ÿ
-        Hyphen, Space, aspotrophe:  [ '-], one or more
-        Length: min: 6, max: 50
-        -->
+                    Any Character a-zA-ZÀ-ÖØ-öø-ÿ
+                    Hyphen, Space, aspotrophe:  [ '-], one or more
+                    Length: min: 6, max: 50
+            -->
+            <!-- ========================= INPUT: PUBLIC CONTACT RENDER FIELD : NAME ===========================  -->
+            {% render_field contact.name class="[ input-field peer ]" id="contact-fullname" maxlength=contact.name.max_length minlength-contact.name.min_length placeholder=contact.name.initial required title=contact.name.help_text type="text" %}
+            <!-- ========================= INPUT: PUBLIC CONTACT RENDER FIELD : NAME ===========================  -->
             <input
                 class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
-                id="contact-name"
+                id="contact-fullname"
                 aria-description="Full Name: Input Length: min: 6, max: 50"
                 aria-label="Enter a Full Name"
                 autocomplete="off"
                 data-view="all"
                 maxlength="50"
                 minlength="6"
-                name="fullname"
-                pattern="^[a-zA-ZÀ-ÖØ-öø-ÿ '-]+{6,50}$"
+                name="contact-fullname"
+                pattern="^[a-zA-ZÀ-ÖØ-öø-ÿ '-]+{8,50}$"
                 placeholder="Full Name"
                 required
                 tabindex="6"
@@ -186,5 +195,7 @@
                 value="Send Message" />
         </div>
     </fieldset>
+    <!-- ===================== PUBLIC CARD CONTACT FORM ===================================  -->
 </form>
 {% endblock %}
+<!-- ===================== PUBLIC INCLUDES CONTACT FORM ===================================  -->

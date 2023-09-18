@@ -27,7 +27,7 @@ app_name = 'core'
 #   > /form_password_reset/ - Password Reset Form =>
 #      core.urls | core.views core.forms core.models
 # Page Parts: Private
-#   > /link_logout/ - Accounts/Logout Link => accounts.urls @ Sidebar, Menu | core.view
+#   > /link_logout/ - Accounts/Logout Link => profile.urls @ Sidebar, Menu | core.view
 # Page Parts: All
 # / - index.html
 #   > /form_contact/ - Password Reset Form => core.urls | core.views core.forms
@@ -47,21 +47,10 @@ urlpatterns = [
     # path('fas/', views.static_faq, name='faq'),
     # path('error/', views.error_public, name='error'),
     # path('verify/', views.verify_public, name='verify'),
-]
 
-"""
-# HTMXPatterns - Handles HTMX Requests URLPatterns & Includes
- - Form Contact: core.urls | core.views core.forms core.email
- - Form Signup: core.urls | core.views core.forms core.email core.models
- - Form Login: core.urls | core.views core.forms core.models
- - Form Password Reset: core.urls | core.views core.forms core.email core.models
-"""
-htmx_patterns = [
     path('form_contact/', views.form_contact, name='contact'),
     # path('form_signup/', views.signup, name='signup'),
     # path('form_login/', views.login, name='login'),
     # path('form_reset/', views.reset, name='reset'),
 ]
 
-# Appends HTMX Patterns to urlpatterns
-urlpatterns += htmx_patterns

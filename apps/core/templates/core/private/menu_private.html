@@ -1,7 +1,9 @@
-{% extend "../includes/header.html" %}
+{% extends "./all/header.html" %}
 <!-- ==============================  DJANGO TEMPLATE & INCLUDE ================================  -->
+{% block menu_private %}
+
 <!-- ================================== PRIVATE MENU ==========================================  -->
-<menu
+<ul
     class="[ private-menu-nav-right ] [ hidden ] [ flex place-items-center ] [ py-3 md:py-0 ] [ space-y-1 md:space-y-0 md:space-x-4 ]"
     aria-label="Private Navigation, Authenticated Users"
     data-main-menu="private"
@@ -29,13 +31,13 @@
         role="menuitem">
         <button
             class="[ main-menu-btn ] [ z-30 ] [ font-medium text-gray-300 text-base hover:text-white ] [ cursor-pointer ]"
+            id="private-dropdown-menu-account"
             data-menu="dropdown"
             data-view="private"
-            id="private-dropdown-menu-account"
             onclick="document.getElementById('dropdown-card-account').classList.toggle('hidden');"
             onKeyDown="document.getElementById('dropdown-card-account').classList.toggle('hidden');"
             type="button">
-            Account
+            {{ page.AccountMenu.ACCOUNT_BUTTEXT }}
         </button>
         <!-- ===================== PRIVATE DROPDOWN CARD =====================================  -->
         <div
@@ -62,8 +64,8 @@
                         data-view="private"
                         href="account.html#account-profile"
                         id="account-profile-link"
-                        title="View your account profile">
-                        Profile
+                        title="{{ page.AccountMenu.PROFILE_ATITLE }}">
+                        {{ page.AccountMenu.PROFILE_ATEXT }}
                     </a>
                 </li>
                 <!-- ==================== PRIVATE ACCOUNT ROW: GitHub ========================  -->
@@ -77,8 +79,8 @@
                         data-view="private"
                         href="account.html#account-github"
                         id="account-github-link"
-                        title="Connect your GitHub to Account">
-                        Connect
+                        title="{{ page.AccountMenu.GITHUB_ATITLE }}">
+                        {{ page.AccountMenu.GITHUB_ATEXT }}
                     </a>
                 </li>
                 <!-- ==================== PRIVATE ACCOUNT ROW: Settings=======================  -->
@@ -93,8 +95,8 @@
                         data-view="private"
                         href="account.html#account-settngs"
                         id="account-settings-link"
-                        title="Update the account settings">
-                        Settings
+                        title="{{ page.AccountMenu.SETTINGS_ATITLE }}">
+                        {{ page.AccountMenu.SETTINGS_ATEXT }}
                     </a>
                 </li>
                 <!-- ==================== PRIVATE ACCOUNT ROW: LOGOUT ========================  -->
@@ -109,11 +111,13 @@
                         aria-label="Account Logout Link"
                         data-view="private"
                         href="account.html#account-logout"
-                        id="account-logout-ctrl">
-                        Logout
+                        id="account-logout-ctr"
+                        title="{{ page.AccountMenu.LOGOUT_ATITLE }}">
+                        {{ page.AccountMenu.LOGOUT_ATEXT }}
                     </a>
                 </li>
             </menu>
         </div>
     </li>
-</menu>
+</ul>
+{% endblock %}

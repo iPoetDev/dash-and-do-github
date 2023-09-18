@@ -1,11 +1,22 @@
-{% extends "./public/signup_public_profile.html" %}
+<!-- @formatter:off -->
+{% extends './public/signup_public.html' %}
+
+<!-- ==============================  DJANGO TEMPLATE & INCLUDE ==============================  -->
+<!-- ============================= CHANGELOG: - TODO ❓ 23-09-18 ============================  -->
+<!-- ============================= EXTENDS:  - added ✅ ./public/signup_public.html =========  -->
+<!-- ============================= BLOCK:  - added ✅ form_signup.html ======================  -->
+<!-- ============================= AUTH:  - added ✅ OK USER: If logged in ==================  -->
+<!-- ============================= AUTH:  - added ✅ PAGE: Menu variables ===================  -->
+<!-- ============================= PLANS:  - TODO ❓ MESSAGES: If loggged out ===============  -->
 {% block form_signup %}
 <!-- ===================== PUBLIC CARD SIGNUP FORM ===================================  -->
 <!-- ===================== - added TODO: View:form_signup() =================================  -->
 <!-- ===================== - added TODO: widget_tweeks ======================================  -->
 <!-- ===================== - added TODO: HTMX & Post/Target =================================  -->
 <!-- ===================== - added TODO: Validation =========================================  -->
-<!-- ===================== - added TODO: Success/Error ======================================  -->
+<!-- ===================== - added TODO: hidden fields ======================================  -->
+<!-- ===================== - added TODO: FORM Success/Error =================================  -->
+<!-- ===================== - added TODO: FIELDS Success/Error ===============================  -->
 <!-- ===================== - added TODO: Email & Verify =====================================  -->
 <form
     class="[ form-signup ] [ w-[90%] h-full ] [ place-items-center ] [ mx-auto my-8 px-2 py-4 ] [ gap-8 ] [ space-2 ]"
@@ -19,11 +30,10 @@
     hx-post="server-script-goes-here"
     hx-trigger="submit"
     hx-swap="outerHTML">
-    <!-- ======================= PUBLIC SIGNUP HIDDEN FIELDS ===================  -->
-    {% for hidden in form.hidden_fields %}
-    {{ hidden }}
-    {% endfor %}
-    <!-- ======================= PUBLIC SIGNUP FIELDS' 1 COLUMN ===================  -->
+    <!-- ===================== ✅ FORM CSRF TOKEN ===========================================  -->
+    {% csrf_token %}
+    <!-- ======================= PUBLIC SIGNUP HIDDEN FIELDS ================================  -->
+    <!-- ======================= PUBLIC SIGNUP FIELDS' 1 COLUMN ==============================  -->
     <fieldset
         class="[ form-card ] [ w-full h-full ] [ p-4 border ] [ bg-gray-100 ] [ rounded-lg ]"
         data-view="public"
@@ -36,7 +46,7 @@
             id="label-signup-form">
             Sign Up Form
         </legend>
-        <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
+        <!-- ============================== PUBLIC SIGNUP ROW ===============================  -->
         <div
             class="[ formrow ] [ relative ] [ w-full ] [ my-4 ]"
             aria-description="Signup Menu Item"
@@ -52,7 +62,7 @@
                 width="" />
             <h2>Set up a New Account</h2>
         </div>
-        <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
+        <!-- ============================== PUBLIC SIGNUP ROW ================================ -->
         <div
             class="[ formrow ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
             data-view="public"
@@ -96,15 +106,15 @@
             data-view="public"
             id="signup-email-row">
             <!-- UAT: pattern & INPUT
-             -Before @ [Email]
-               - Any: Lower-, upper-, 0-9,
-               - Symbols: _ + - @
-             - After @ [Domain.TLD]
-               - [Domain]:  Any: Lower-, upper-, 0-9
-               - \. Email
-               - [TLD]: Any: Lower-, upper-, 0-9
-             Length: min: 8, max: 50
-             -->
+                 -Before @ [Email]
+                   - Any: Lower-, upper-, 0-9,
+                   - Symbols: _ + - @
+                 - After @ [Domain.TLD]
+                   - [Domain]:  Any: Lower-, upper-, 0-9
+                   - \. Email
+                   - [TLD]: Any: Lower-, upper-, 0-9
+                 Length: min: 8, max: 50
+                 -->
             <input
                 class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
                 id="signup-email"
@@ -145,11 +155,11 @@
             data-view="public"
             id="signup-setpass-row">
             <!-- UAT: pattern & INPUT
-            Number: (?=.*\d) : at least one digit character
-            Lowercase: (?=.*[a-z])
-            Uppercase: (?=.*[A-Z])
-            Symbols: (?=.*[@$!%*?&])
-            Length.{12,50}" -->
+                Number: (?=.*\d) : at least one digit character
+                Lowercase: (?=.*[a-z])
+                Uppercase: (?=.*[A-Z])
+                Symbols: (?=.*[@$!%*?&])
+                Length.{12,50}" -->
             <input
                 class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
                 id="new-password"
@@ -189,11 +199,11 @@
             data-view="public"
             id="signup-confpass-row">
             <!-- UAT: pattern & INPUT
-            Number: (?=.*\d)
-            Lowercase: (?=.*[a-z])
-            Uppercase: (?=.*[A-Z])
-            Symbols: (?=.*[@$!%*?&])
-            Length.{12,50}" -->
+                Number: (?=.*\d)
+                Lowercase: (?=.*[a-z])
+                Uppercase: (?=.*[A-Z])
+                Symbols: (?=.*[@$!%*?&])
+                Length.{12,50}" -->
             <input
                 class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
                 id="confirm-password"
@@ -273,8 +283,9 @@
         data-form="signup"
         data-status="message"
         data-view="public">
-        {{Message}}
+        __DJANGO_TAG_6__
     </p>
     <!-- Message Success & Message Error -->
 </div>
 {% endblock %}
+<!-- ==============================  DJANGO TEMPLATE & INCLUDE ==============================  -->

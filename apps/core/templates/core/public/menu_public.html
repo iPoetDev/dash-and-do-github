@@ -1,6 +1,13 @@
+<!-- @formatter:off -->
 {% extends "./all/header.html" %}
-<!-- ==============================  DJANGO TEMPLATE & INCLUDE ================================  -->
-
+<!-- ============================= DJANGO TEMPLATE & INCLUDE ================================  -->
+<!-- ============================= CHANGELOG: - checked ✅ 23-09-18 =========================  -->
+<!-- ============================= EXTENDS:  - added ✅ ./all/header.html ===================  -->
+<!-- ============================= BLOCK:  - added ✅ public.html ===========================  -->
+<!-- ============================= AUTH:  - added ✅ PAGE: Menu variables ===================  -->
+<!-- ============================= AUTH:  - added ✅ ANON USER: If not logged in ============  -->
+<!-- ============================= BLOCK:  - added ✅ form_login.html =======================  -->
+<!-- ============================= PLANS:  - TODO ✅ MESSAGES: If logged in =================  -->
 {% block menu_public %}
 
 <!-- ================================== PUBLIC MENU ==========================================  -->
@@ -33,7 +40,7 @@
             class="[ main-menu-link] [ font-medium text-gray-300 text-base hover:text-white ]"
             aria-label="Home Link"
             data-view="public"
-            href="{% url 'index' %}"
+            href="{% url 'core:index' %}"
             id="home-public-menuitem"
             role="menuitem"
             title="{{ page.Index.ATITLE }}">
@@ -73,8 +80,7 @@
         <a
             class="[ main-menu-link] [ font-medium text-gray-300 text-base hover:text-white ]"
             aria-label="Contact JumpTo Link"
-            data-view="public"
-            href="{% url "index" %}#contact-form-jump-link"
+            href="{% url "core:index" %}#contact-form-jump-link"
             id="contact-public-menuitem"
             role="menuitem"
             title="{{ page.Contact.ATITLE }}">
@@ -113,13 +119,25 @@
             <!-- ===================== PUBLIC DROPDOWN LOGIN FORM ===========================  -->
 
             {% if not request.user.is_authenticated %}
-            {% block form_login %}
+                {% block form_login %}
 
             <!-- ================= PUBLIC DROPDOWN LOGIN FORM ===========================  -->
 
-            {% endblock %}
+                {% endblock %}
+            <!-- ===================== DISPLAY MESSAGE WHEN LOGGED IN ===================  -->
+            {% else %}
+            <!-- ===================== PRE-CONDITION: EARLIER IF CHECKS FOR AUTH =================  -->
+            <!--
+{#                {% if messages %}#}
+{#                    <ul class="messages">#}
+{#                        {% for message in messages %}#}
+{#                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
+{#                {% endif %}#}
+-->
             {% endif %}
-
+            <!-- ===================== DISPLAY MESSAGE WHEN LOGGED IN ===================  -->
             <!-- ===================== PUBLIC DROPDOWN LOGIN FORM ===========================  -->
         </div>
     </li>

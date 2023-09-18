@@ -1,4 +1,25 @@
+<!-- @formatter:off -->
 {% extends "./base.html" %}
+<!-- ==============================  DJANGO TEMPLATE & INCLUDE ==============================  -->
+<!-- ============================= CHANGELOG: - checked ✅ 23-09-18 =========================  -->
+<!-- ============================= EXTENDS:  - added ✅ ./base.html <head> ==================  -->
+<!-- ============================= BLOCK:  - added ✅ indexbody Pages Block =================  -->
+<!-- ============================= INCLUDE: - added ✅ ./public/skiplinks_private.html STATIC  -->
+<!-- ============================= INCLUDE:  - added ✅ ./all/header.html STATIC + MENUS ====  -->
+<!-- ============================= AUTH:  - added ✅ ANON USER: Public SkipLinks ============  -->
+<!-- ============================= INCLUDE: - added ✅ ./public/skiplinks_public.html STATIC=  -->
+<!-- ============================= INCLUDE: - added ✅ ./all/header.html STATIC + MENUS =====  -->
+<!-- ============================= AUTH:  - added ✅ OK USER: Private APPCARDS ==============  -->
+<!-- ============================= AUTH:  - added ✅ ANON USER: Public SIGNUP ===============  -->
+<!-- ============================= INCLUDE:  - added ✅ ./all/contact.html STATIC + FORM ====  -->
+<!-- ============================= INCLUDE:  - added ✅ ./all/footer.html  STATIC ===========  -->
+<!-- ============================= INCLUDE:  - added ✅ ./all/scripts.html  STATIC ==========  -->
+<!-- ============================= INCLUDE:  - added ✅ IF DEBUG htmx headers ===============  -->
+<!-- ============================= INCLUDE:  - added ✅ IF DEBUG debugtoolbar ===============  -->
+<!-- ============================= AUTH:  - added ✅ PAGE: Menu variables ===================  -->
+<!-- ============================= CHECKED:  - NOTE ✅ not block named 'title' ==============  -->
+
+
 {% block indexbody %}
 
 <!-- ================================= CORE APP | PUBLIC | PRIVATE | INDEX.HTML =============================== -->
@@ -10,6 +31,8 @@
     id="all-body">
     <!-- ============================================= SKIP LINK =============================================  -->
     <!-- ============================ - added: Conditional Includes: Public | Private ======================== -->
+    <!-- ============================ - added: Public Skip Links  ======================== -->
+    <!-- ============================ - added: Private Skip Links ======================== -->
     <!-- ============================ - note: Not Block Inheiriance ========================================== -->
     <!-- ============================ - note: Includes: are static partials ================================== -->
     ================== -->
@@ -17,11 +40,10 @@
     <!-- https://webaim.org/techniques/skipnav/ -->
 
     {% if request.user.is_authenticated %}
-    {% include "./private/skiplinks_private.html" %}
+        {% include "./private/skiplinks_private.html" %}
     {% else %}
-    {% include "./public/skiplinks_public.html" %}
-    {% endblock %}
-
+        {% include "./public/skiplinks_public.html" %}
+    {% endif %}
     <!-- ========================================= HEADER: Include ===========================================  -->
     <!-- ============================ - note: Not Block Inheiriance ========================================== -->
     <!-- ============================ - note: Includes: are static partials ================================== -->
@@ -53,10 +75,8 @@
                 data-view="all"
                 id="top-section-content">
                 <!-- ========================= INCLUDE: TOP : HERO | CAROUSEL ================================  -->
-                <!-- ============================ - note: Not Block Inheiriance ==============================  -->
-                <!-- ============================ - note: Includes: are static partials ======================  -->
 
-                {% include "/all/hero.html" %}
+                {% include "./all/hero.html" %}
 
                 <!-- ========================= INCLUDE: TOP : HERO | CAROUSEL ================================  -->
             </section>
@@ -85,14 +105,12 @@
                 <!-- ====================== - added: Conditional: User is Logged | Not =======================  -->
                 <!-- ====================== - added: If True: Show App Pages Feature =========================  -->
                 <!-- ====================== - added: If False: Show Sign Up Feature ==========================  -->
-                <!-- ============================ - note: Not Block Inheiriance ==============================  -->
-                <!-- ============================ - note: Includes: are static partials ======================  -->
 
                 {# Checks if user is authenticated: shows the feature app cards, else shows the public sign up form #}
                 {% if request.user.is_authenticated %}
-                {% include "./private/appcards_private.html" %}
+                    {% include "./private/appcards_private.html" %}
                 {% else %}
-                {% include "./public/signup_public.html" %}
+                    {% include "./public/signup_public.html" %}
                 {% endif %}
 
                 <!-- ======================= CONTENT: MID 1st Col/Ro: FORM PROMO: CARDS ==================  -->
@@ -116,9 +134,16 @@
                     hidden="until-found">
                     Contact Form
                 </h1>
+                <!--
+{#                {% if messages %}#}
+{#                    <ul class="messages">#}
+{#                        {% for message in messages %}#}
+{#                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
+{#                {% endif %}#}
+-->
                 <!-- ========================= CONTENT: MID : FORM CONTACT | HTMX ========================  -->
-                <!-- ============================ - note: Not Block Inheiriance ==============================  -->
-                <!-- ============================ - note: Includes: are static partials ======================  -->
 
                 {% include "./all/contact.html" %}
 

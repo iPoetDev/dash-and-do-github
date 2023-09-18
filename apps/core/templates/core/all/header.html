@@ -1,11 +1,23 @@
+<!-- @formatter:off -->
+<!-- ============================= HEADER: ALL: PAGES ========================================  -->
+<!-- ============================= CHANGELOG: - checked ✅ 23-09-18 ==========================  -->
+<!-- ============================= INCLUDED:  - added ✅ index.html  STATIC ==================  -->
+<!-- ============================= LINKS:  - added ✅ URLS: Core URLS  core:index ============  -->
+<!-- ============================= VARS:  - added ✅ BRAND PAGE: link varibales ==============  -->
+<!-- ============================= AUTH:  - added ✅ OK USER: Private Menu ===================  -->
+<!-- ============================= BLOCK: - added ✅ ./private/menu_private.html STATIC + MENU  -->
+<!-- ============================= AUTH:  - added ✅ ANON USER: Public Menu ==================  -->
+<!-- ============================= BLOCK: - added ✅ ./public/menu_public.html STATIC + FORM =  -->
+<!-- ============================= INCLUDE: - added ✅ ./all/header.html STATIC + MENUS ======  -->
 <!-- ========================================= HEADER ===================================================  -->
 
+<!-- ============================= CHECKED:  - NOTE ✅ not block named 'title' ==============  -->
 <!-- Changelog/TODOS:
     ✅ TODO: - parent: all pages (Public or Private)
-        ✅: TODO: - child: Public menu_public.html
-        ✅: TODO: - child: Private menu_private.html
+        ✅: DONE: - child: Public menu_public.html
+        ✅: DONE: - child: Private menu_private.html
     ❓ | ✔:  ADR: Include OR extend: Partial is static with some conditional logic: Requests Username Autthenticated
-    ❓ | ✔: TODO: - check:  index.URLS
+    ❓ | ✔: DONE: - check:  index.URLS
     ❓ | ✔: TODO: - check:  contact.URLS: Public URL, Index.URLS index page jumping Link (index)
     ❓ | ✔: TODO: - check:  about.URLS: Public
     ❓ | ✔: TODO: - check:  faq.URLS: Public
@@ -16,8 +28,10 @@
     ✅: TODO: - check:  request.user.is_authenticated: Private Menu
     ✅: TODO: - check:  not.URLS: request.user.is_authenticated: Public Menu
     ❓ | ✔: TODO: - check:  img.MEDIA URL: Brand Logo
-    ✅: TODO: - check:  Values: Brand.Site for Text, H1 etc, Images, Alts, Titles
-    ✅: TODO: - check:  Values: Page.Index for Links, Anchor Titles
+    ✅: done: - check:  Values: Brand.Site for Text, H1 etc, Images, Alts, Titles
+    ✅: done: - check:  Values: Page.Index for Links, Anchor Titles
+
+    - done: #128 djangotags issue & save snippets to Pieces 2023/09/18
 -->
 
 <header
@@ -39,16 +53,16 @@
             data-navigation="brand"
             id="header-nav-left"
             role="navigation">
+         <!-- ================================= BRAND LOGO URL : index.html ==============================  -->
             <div
                 class="[ nav-brand-header ] [ flex flex-shrink-0 ] [ justify-start items-center ] [ mx-2 md:mx-6 ] [ aspect-w-1 aspect-h-1 ]"
                 id="brand-header">
-                <!-- ================================= BRAND LOGO URL : index.html ==============================  -->
                 <!-- ================================= - check: TODO: index.URLS ============================== -->
                 <!-- ================================= - added: ctx: Brand.Site Values to Attributes ========== -->
                 <!-- ================================= - added: ctx: Page.Index Values to Attributes ========== -->
                 <a
                     class="[ nav-brand-homelink ] [ text-white hover:text-gray-200 ] [ transition-colors duration-200 ease-in-out ]"
-                    href="{% url 'index' %}"
+                    href="{% url 'core:index' %}"
                     id="brand-homelink-jump-to-top"
                     title="{{ page.Index.TITLE }}">
                     <!-- ================================= BRAND MEDIA URL ====================================  -->
@@ -67,11 +81,13 @@
                 aria-description="Brand Title">
                 <!-- ================================= BRAND LOGO URL: index.html ============================== -->
                 <!-- ================================= - check: TODO: index.URLS ============================== -->
+                <!-- # noinspection -->
                 <a
                     class="[ nav-brand-homelink ] [ text-white hover:text-gray-200 ] [ transition-colors duration-200 ease-in-out ]"
-                    href="{% url 'index' %}"
+                    href="{% url 'core:index' %}"
                     id="brand-hometitle-jump-to-top"
                     title="{{ page.Index.TITLE }}">
+                    <!-- #noinspection -->
                     <h1
                         class="[ nav-brand-text ] [ font-semibold text-xl tracking-tight ]"
                         id="brand-text"
@@ -82,7 +98,7 @@
             </div>
         </div>
 
-        <!-- ================================= GLOBAL NAVIGATION: TOP ====================================  -->
+        <!-- ================================= GLOBAL NAVIGATION: TOP RIGHT ====================================  -->
 
         <div
             class="[ nav-right-header ] [ mb-2 md:mb-0 ] [ flex md:flex-end md:block ]"
@@ -93,22 +109,31 @@
             id="header-nav-right">
             <!-- ================================= PUBLIC OR PRIVATE MENU ================================  -->
             <!-- ================================= PRIVATE MENU ==============================  -->
+            <!-- # noinspection -->
             {% if request.user.is_authenticated %}
 
+            <!-- # noinspection -->
             {% block menu_private %}
             <!-- ================================= PRIVATE MENU =========================  -->
+            <!-- # noinspection -->
             {% endblock %}
             <!-- ================================= PRIVATE MENU =========================  -->
             <!-- ================================= PUBLIC MENU ===============================  -->
+            <!-- # noinspection -->
             {% else %}
 
+            <!-- # noinspection -->
             {% block menu_public %}
             <!-- ================================= PUBLIC MENU ===============================  -->
+            <!-- # noinspection -->
             {% endblock %}
             <!-- ================================= PUBLIC MENU ===============================  -->
 
+            <!-- # noinspection -->
             {% endif %}
             <!-- ================================= PUBLIC OR PRIVATE MENU ================================  -->
         </div>
+
+        <!-- ================================= GLOBAL NAVIGATION: TOP RIGHT ====================================  -->
     </nav>
 </header>

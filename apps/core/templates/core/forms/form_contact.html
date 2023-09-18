@@ -1,9 +1,24 @@
+<!-- @formatter:off -->
 {% extends "./all/contact.html" %}
-<!-- ===================== PUBLIC INCLUDES CONTACT FORM ===================================  -->
-
+<!-- ===================== PUBLIC INCLUDES CONTACT FORM =====================================  -->
+<!-- ==============================  DJANGO TEMPLATE & INCLUDE ==============================  -->
+<!-- ============================= CHANGELOG: - -added ✅ 23-09-18 ==========================  -->
+<!-- ============================= EXTENDS:  - added ✅ ./all/contact.html ==================  -->
+<!-- ============================= BLOCK:  - added ✅ form_contact.html =====================  -->
+<!-- ============================= AUTH:  - added ✅ OK USER | ANONYMOUS  ===================  -->
+<!-- ============================= AUTH:  - added ✅ PAGE: Menu variables ===================  -->
 {% block form_contact %}
-
-<!-- ===================== PUBLIC CARD CONTACT FORM ===================================  -->
+<!-- ===================== ALL ANON CONTACT FORM ===================================  -->
+<!-- ===================== - added TODO: View:form_contact() ================================  -->
+<!-- ===================== - added TODO: widget_tweeks ======================================  -->
+<!-- ===================== - added TODO: HTMX & Post/Target =================================  -->
+<!-- ===================== - added TODO: Validation =========================================  -->
+<!-- ===================== - added TODO: hidden fields ======================================  -->
+<!-- ===================== - added TODO: FORM Success/Error =================================  -->
+<!-- ===================== - added TODO: FIELDS Success/Error ===============================  -->
+<!-- ===================== - added TODO: Email & Verify =====================================  -->
+<!-- ===================== PLANS:  - TODO ❓ MESSAGES: If loggged out =======================  -->
+<!-- ===================== ALL ANON CONTACT FORM =========================================  -->
 <!-- 1️⃣ HTMX Target: Start: OuterHTML  -->
 <form
     class="[ form-contact ] [ flex flex-auto flex-col lg:flex-row ] [ w-[90%] h-full ] [ justify-items-start items-stretch md:self-stretch ] [ mx-auto my-8 p-8 ] [ gap-2 lg:gap-8 ] [ space-2 ] [ bg-gray-600 ] [ rounded-md shadow-lg ]"
@@ -44,12 +59,12 @@
             data-view="all"
             id="contact-name-row">
             <!-- UAT: pattern & INPUT
-                    Any Character a-zA-ZÀ-ÖØ-öø-ÿ
-                    Hyphen, Space, aspotrophe:  [ '-], one or more
-                    Length: min: 6, max: 50
-            -->
+                        Any Character a-zA-ZÀ-ÖØ-öø-ÿ
+                        Hyphen, Space, aspotrophe:  [ '-], one or more
+                        Length: min: 6, max: 50
+                -->
             <!-- ========================= INPUT: PUBLIC CONTACT RENDER FIELD : NAME ===========================  -->
-            {% render_field contact.name class="[ input-field peer ]" id="contact-fullname" maxlength=contact.name.max_length minlength-contact.name.min_length placeholder=contact.name.initial required title=contact.name.help_text type="text" %}
+
             <!-- ========================= INPUT: PUBLIC CONTACT RENDER FIELD : NAME ===========================  -->
             <input
                 class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
@@ -91,15 +106,15 @@
             data-view="public"
             id="contact-email-row">
             <!-- UAT: pattern & INPUT
-         -Before @ [Email]
-           - Any: Lower-, upper-, 0-9,
-           - Symbols: _ + - @
-         - After @ [Domain.TLD]
-           - [Domain]:  Any: Lower-, upper-, 0-9
-           - \. Email
-           - [TLD]: Any: Lower-, upper-, 0-9
-         Length: min: 8, max: 50
-         -->
+             -Before @ [Email]
+               - Any: Lower-, upper-, 0-9,
+               - Symbols: _ + - @
+             - After @ [Domain.TLD]
+               - [Domain]:  Any: Lower-, upper-, 0-9
+               - \. Email
+               - [TLD]: Any: Lower-, upper-, 0-9
+             Length: min: 8, max: 50
+             -->
             <input
                 class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
                 id="contact-email"
@@ -197,5 +212,6 @@
     </fieldset>
     <!-- ===================== PUBLIC CARD CONTACT FORM ===================================  -->
 </form>
+<!-- ===================== ALL ANON CONTACT FORM =========================================  -->
 {% endblock %}
 <!-- ===================== PUBLIC INCLUDES CONTACT FORM ===================================  -->

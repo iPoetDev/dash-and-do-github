@@ -1,6 +1,5 @@
-<!--{{ indextitle }}-->
-{{ indextitle }}
-{% block indexbody %}
+{% load static %}
+{% load widget_tweaks %}
 <!doctype html>
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -13,26 +12,26 @@
     id="public-page"
     lang="en-GB">
     <head
-        title="Welcome to the __DJANGO_TAG_3____DJANGO_TAG_4__"
+        title="Welcome to the {{ sitename }} "
         id="base">
         <meta charset="utf-8" />
         <meta
-            content="__DJANGO_TAG_5____DJANGO_TAG_6__"
+            content="{{ siteurl }}"
             name="origin" />
         <meta
-            content="The Dash and Document GitHub is the copyright of Charles J Fowler, 2023-2028"
+            content="{{ siteright }}"
             name="copyright" />
         <meta
-            content="Charles J Fowler, @iPoetDev.github.com"
+            content="{{ siteperson }}"
             name="author" />
         <meta
-            content="Charles J Fowler, @iPoetDev.github.com"
+            content="{{ siteperson }}"
             name="creator" />
         <meta
-            content="Charles J Fowler, @iPoetDev.github.com"
+            content="{{ siteperson }}"
             name="designer" />
         <meta
-            content="Github: @iPoetDev"
+            content="{{ sitecontact }}"
             name="contact" />
         <meta
             content="Dublin, Ireland; Europe"
@@ -51,7 +50,7 @@
                 Developer,Frontend Developer,Code Institute,HTML,CSS,Modern CSS"
             name="keywords" />
         <meta
-            content="Welcome to the Dash and Do. A GitHub Manager"
+            content="{{ sitedesc }}"
             name="description" />
         <meta
             content="width=device-width, initial-scale=1.0"
@@ -61,24 +60,19 @@
             rel="stylesheet"
             type="text/css" />
         <link
-            href="{ % static 'css/tailwind-core3.css' % }"
-            rel="stylesheet"
-            type="text/css" />
-        <link
             href="../static/css/dash-and-do-core.css"
             rel="stylesheet"
             type="text/css" />
-        <link
-            href="{ % static 'css/dash-and-do-core.css' % }"
-            rel="stylesheet"
-            type="text/css" />
+
+        {% if debug %}
         <!-- =======================================🔽 DEV ONLY GIMLI TAILWINDS 🔽===============================  -->
         <script src="https://cdn.tailwindcss.com"></script>
         <!-- =======================================🔼 DEV ONLY GIMLI TAILWINDS 🔼===============================  -->
+       {% endif %}
         <title title="{{ indextitle }}">{{ indextitle }}</title>
     </head>
     <!-- ===========================================🔽 BODY 🔽=================================================  -->
-    {% block indexbody %}
+   {% block indexbody %}
     <!-- ===========================================🔽 BODY 🔽=================================================  -->
     {% endblock %}
     <!-- ===========================================🔽 BODY 🔽=================================================  -->

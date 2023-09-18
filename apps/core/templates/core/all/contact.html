@@ -1,3 +1,9 @@
+<!-- @formatter:off -->
+<!-- ============================= CONTACT: ALL: PAGES =====================================  -->
+<!-- ============================= CHANGELOG: - checked ✅ 23-09-18 ========================  -->
+<!-- ============================= INCLUDED:  - added ✅ index.html  STATIC ================  -->
+<!-- ============================= BLOCK:  - added ✅ form_contact.html ====================  -->
+
 <article
     class="[ app-card ] [ flex flex-col ] [ w-[90%] h-fit ] [ place-items-center ] [ m-8 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] [ bg-gray-300 ] [ rounded-md shadow-lg ]"
     aria-description="CTA Send us a message, by Contact form"
@@ -21,6 +27,10 @@
         id="contact-form-card-content"
         aria-description="Contact Form | Card | Inner"
         data-view="all">
-        {% block form_contact %}{% endblock %}
+        <!-- ========================= CONTENT: MID : FORM CONTACT | HTMX ========================  -->
+        {% block form_contact %}
+        <!-- ========================= CONTENT: MID : FORM CONTACT | HTMX ========================  -->
+        {% endblock %}
+        <!-- ========================= CONTENT: MID : FORM CONTACT | HTMX ========================  -->
     </div>
 </article>

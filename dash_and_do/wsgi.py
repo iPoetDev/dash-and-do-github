@@ -19,6 +19,6 @@ from django.core.wsgi import get_wsgi_application
 # Adjusted: dash_and_do.settings => dash_and_do.settings.production
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
-                      'dash_and_do.settings.production')
+                      'dash_and_do.settings')
 
 application = get_wsgi_application()

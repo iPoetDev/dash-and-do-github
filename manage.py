@@ -14,18 +14,14 @@ import sys
 #
 
 BASE_SETTINGS = 'dash_and_do.settings'
-DEVELOPMENT_SETTINGS = 'dash_and_do.settings.development'
-PRODUCTION_SETTINGS = 'dash_and_do.settings.production'
-TEST_SETTINGS = 'dash_and_do.settings.tests'
+DEVELOPMENT_SETTINGS = 'dash_and_do.development'
+PRODUCTION_SETTINGS = 'dash_and_do.production'
+TEST_SETTINGS = 'dash_and_do.tests'
 
 def main():
     """Run administrative tasks."""
-    if os.environ.get('DJANGO_SETTINGS_MODULE') != BASE_SETTINGS:
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE',
-                              BASE_SETTINGS)
-    else:  # noqa
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE',
-                                BASE_SETTINGS)
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE",
+                          'dash_and_do.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

@@ -27,17 +27,17 @@ Div  id="sidebar-toggle-area" has two children
 
 /* At the start, we suppose the sidebar is minimised */
 #sidebar-col1-content {
-    background-color: gray;
+    min-width: var(--strip-width);
 
+    max-width: var(--lg-sidebar-width);
+    background-color: gray;
     --md-strip-width: 80px;
     --lg-strip-width: 50px;
     --strip-width: var(--md-strip-width);
     --md-sidebar-width: 20%;
+
     --lg-sidebar-width: 15%;
     --sidebar-width: var(--md-sidebar-width);
-
-    min-width: var(--strip-width);
-    max-width: var(--lg-sidebar-width);
 }
 
 #nav-sidebar {
@@ -47,15 +47,15 @@ Div  id="sidebar-toggle-area" has two children
 
 #sidebar-toggle-area {
     display: block;
+    width: var(--strip-width);
     min-width: var(--strip-width);
     max-width: var(--strip-width);
-    width: var(--strip-width);
 }
 
 #sidebar-toggle-area label {
     display: block;
-    cursor: pointer;
     width: 50%;
+    cursor: pointer;
 }
 
 /* !* When the checkbox is checked, we show the sidebar *! */
@@ -81,9 +81,9 @@ Div  id="sidebar-toggle-area" has two children
 #toggle-sidebar-btn:not(:checked) ~ #sidebar-toggle-area,
 #toggle-sidebar-btn:not(:checked) ~ #sidebar-toggle-ctrl {
     display: block;
+    width: var(--strip-width);
     min-width: var(--strip-width);
     max-width: var(--strip-width);
-    width: var(--strip-width);
 }
 
 /* When the checkbox is not checked, we hide the full sidebar

@@ -49,7 +49,7 @@
                 - Other
 """
 from django.db import models
-from dash_and_do.settings.settings import DEFAULT_FROM_EMAIL
+from dash_and_do.config.settings import DEFAULT_FROM_EMAIL
 from dash_and_do.validating import valid_name, valid_email
 
 """
@@ -73,15 +73,19 @@ from dash_and_do.validating import valid_name, valid_email
 
 
 class Contact(models.Model):
+
+    # class Meta:
+    #     app_label = 'core'
+    #     verbose_name = 'Contact'
+    #     verbose_name_plural = 'Contacts'
+    #     unique_together = [['name', 'email']]
+
     name = models.CharField(max_length=50,
                             validators=[valid_name])
-    email = models.EmailField(max_length=100,
+    email = models.EmailField(max_length=50,
                               validators=[valid_email])
     message = models.TextField()
     copySent = models.BooleanField(default=False)
-    # recipient = models.EmailField(max_length=75,
-    #                               default=DEFAULT_FROM_EMAIL,
-    #                               validators=[valid_name])
 
     """
     :Return: A string representation of the object.

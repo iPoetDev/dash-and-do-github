@@ -1,5 +1,5 @@
-<!--__DJANGO_TAG_0__-->
-<!--__DJANGO_TAG_1__-->
+{% load static %}
+{% load widget_tweaks %}
 <!doctype html>
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -12,26 +12,26 @@
     id="public-page"
     lang="en-GB">
     <head
-        title="Welcome to the __DJANGO_TAG_2__ "
+        title="Welcome to the {{ sitename }} "
         id="base">
         <meta charset="utf-8" />
         <meta
-            content="__DJANGO_TAG_3__"
+            content="{{ siteurl }}"
             name="origin" />
         <meta
-            content="__DJANGO_TAG_4__"
+            content="{{ siteright }}"
             name="copyright" />
         <meta
-            content="__DJANGO_TAG_5__"
+            content="{{ siteperson }}"
             name="author" />
         <meta
-            content="__DJANGO_TAG_6__"
+            content="{{ siteperson }}"
             name="creator" />
         <meta
-            content="__DJANGO_TAG_7__"
+            content="{{ siteperson }}"
             name="designer" />
         <meta
-            content="__DJANGO_TAG_8__"
+            content="{{ sitecontact }}"
             name="contact" />
         <meta
             content="Dublin, Ireland; Europe"
@@ -50,7 +50,7 @@
                 Developer,Frontend Developer,Code Institute,HTML,CSS,Modern CSS"
             name="keywords" />
         <meta
-            content="__DJANGO_TAG_9__"
+            content="{{ sitedesc }}"
             name="description" />
         <meta
             content="width=device-width, initial-scale=1.0"
@@ -64,16 +64,16 @@
             rel="stylesheet"
             type="text/css" />
 
-        <!--__DJANGO_TAG_10__-->
+        {% if debug %}
         <!-- =======================================🔽 DEV ONLY GIMLI TAILWINDS 🔽===============================  -->
         <script src="https://cdn.tailwindcss.com"></script>
         <!-- =======================================🔼 DEV ONLY GIMLI TAILWINDS 🔼===============================  -->
-        <!--__DJANGO_TAG_11__-->
-        <title title="__DJANGO_TAG_12__"><!--__DJANGO_TAG_13__--></title>
+       {% endif %}
+        <title title="{{ indextitle }}">{{ indextitle }}</title>
     </head>
     <!-- ===========================================🔽 BODY 🔽=================================================  -->
-    <!--__DJANGO_TAG_14__-->
+   {% block indexbody %}
     <!-- ===========================================🔽 BODY 🔽=================================================  -->
-    <!--__DJANGO_TAG_15__-->
+    {% endblock %}
     <!-- ===========================================🔽 BODY 🔽=================================================  -->
 </html>

@@ -42,7 +42,7 @@ from django.core.mail import BadHeaderError
 from django.http import HttpResponse
 
 # Local: Common Libraries
-from dash_and_do.settings.settings \
+from dash_and_do.config.settings \
     import (DEFAULT_FROM_EMAIL as SITE_EMAIL)
 # Local: App Libraries
 from apps.core.email.values import (Services, HTTP, Field)

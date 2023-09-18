@@ -32,9 +32,9 @@ from django.urls import path
 # added: URL + includes for Admin Password reset when Admin enabled
 # added: URL + includes for Admin Docs when Admin enabled
 # Changed 2023-08-16:
-# added: URL + includes for AllAuth for accounts & Commented Out
-# added: URL + includes for Accounts for accounts & Commented Out
-# added: URL + includes for Dash accounts & Commented Out
+# added: URL + includes for AllAuth for profile & Commented Out
+# added: URL + includes for Accounts for profile & Commented Out
+# added: URL + includes for Dash profile & Commented Out
 # noted : Progressive enablement of Accounts, Dash, AllAuth
 # Noted: that you do not need the URLs provided by django.contrib.auth.urls
 # Noted: can use the URLs provided by allauth:
@@ -56,7 +56,7 @@ from django.urls import path
 #   > /form_password_reset/ - Password Reset Form => core.urls | core.views
 #     core.forms core.models
 #   Page Parts: Private
-#   > /link_logout/ - Accounts/Logout Link => accounts.urls @ Sidebar, Menu | core.view
+#   > /link_logout/ - Accounts/Logout Link => profile.urls @ Sidebar, Menu | core.view
 #   Page Parts: All
 #   > /form_contact/ - Password Reset Form => core.urls | core.views core.forms
 #                      core.email
@@ -64,16 +64,16 @@ from django.urls import path
 # (redirect)
 # ================== Accounts App ==================
 #   Page: Private
-# /account/ - accounts.html: Accounts => accounts.urls
+# /account/ - profile.html: Accounts => profile.urls
 #   Page Parts: Private
 #   /profile/ - profile.html: Accounts/Profile => dash.urls
 #   Page Parts: Private
-#   > /form_profile/ - Profile Form => accounts.urls
-#   > /form_password_change/ - Password Change Form => accounts.urls
+#   > /form_profile/ - Profile Form => profile.urls
+#   > /form_password_change/ - Password Change Form => profile.urls
 #   /github/ - github.html: GitHub Integration
 #   Page Parts:
-#   > /form_github_token/ - Password Reset Form => accounts.urls
-#   /link_logout/ - Accounts/Logout Link => accounts.urls
+#   > /form_github_token/ - Password Reset Form => profile.urls
+#   /link_logout/ - Accounts/Logout Link => profile.urls
 # ================== Dash App ======================
 #   Page: Private
 # /dash/ - Dash.html => dash.urls
@@ -84,15 +84,15 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path("__debug__/", include("debug_toolbar.urls")),
+    path("__debug__/", include("debug_toolbar.urls")),
     # index.html (root) is in core.urls
-    path('', include('core.urls')),
+    path('', include('core.urls', namespace='core')),
     # index forms is in core.urls
-    path('form_signup/', include('core.urls.signup')),
-    path('form_login/', include('core.urls.login')),
-    path('form_reset/', include('core.urls.pwd_reset')),
-    path('form_contact/', include('core.urls.contact')),
-    # path('accounts/', include('accounts.urls')),
-    # path('accounts/', include('allauth.urls')),
-    # path('dash/', include('dash.urls')),
+    # path('form_signup/', include('core.urls.signup', namespace='core')),
+    # path('form_login/', include('core.urls.login', namespace='core')),
+    # path('form_reset/', include('core.urls.pwd_reset', namespace='core')),
+    path('form_contact/', include('core.urls', namespace='core')),
+    # path('profile/', include('profile.urls', namespace='profile')),
+    # path('profile/', include('allauth.urls', namespace='profile')),
+    # path('dash/', include('dash.urls, namespace='dash'')),
 ]

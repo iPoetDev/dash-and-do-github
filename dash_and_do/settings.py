@@ -47,7 +47,6 @@ from django_behave import *
 
 from apps.core.context_processors import debug
 
-
 # ==================== Third Party ====================
 # - added: third party settings for Settings.py
 
@@ -57,7 +56,7 @@ from .thirdparty import ANYMAIL  # noqa
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # -added: Extended BASE DIR TO 3 parents for settings folder.
 
-#BASE_DIR = Path(__file__).resolve().parent.parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent.parent
 BASE_DIR = Path(__file__).resolve().parent.parent
 # ================== Project Structure ==================
 # Project Structure: Top Level Refactoring / Applications Grouping
@@ -110,7 +109,7 @@ ADMIN_ENABLED = env.bool('ADMIN_ENABLED', default=DEBUG)
 
 WSGI_APPLICATION = 'dash_and_do.wsgi.application'
 
-ALLOWED_HOSTS =  ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 ROOT_URLCONF = 'dash_and_do.urls'
 
@@ -183,14 +182,14 @@ INSTALLED_APPS += [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django.contrib.humanize',
+    # 'django.contrib.humanize',
 ]
 
 THIRDPARTY_APPS += [
     # allauth
-    #'allauth.socialaccount',
+    # 'allauth.socialaccount',
     # ... include the providers you want to enable:
-    #'allauth.socialaccount.providers.github',
+    # 'allauth.socialaccount.providers.github',
     'allauth',
     'allauth.account',
     'anymail',
@@ -233,7 +232,7 @@ if DEBUG:
         'debug_toolbar.panels.request.RequestPanel',
         'debug_toolbar.panels.sql.SQLPanel',
         'debug_toolbar.panels.staticfiles.StaticFilesPanel',
-        'debugtools.panels.ViewPanel', # addextra
+        'debugtools.panels.ViewPanel',  # addextra
         'debug_toolbar.panels.templates.TemplatesPanel',
         'debug_toolbar.panels.cache.CachePanel',
         'debug_toolbar.panels.signals.SignalsPanel',
@@ -291,12 +290,12 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware', # checked
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  # checked
     'allauth.account.middleware.AccountMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware', # checked
-    'django.contrib.admindocs.middleware.XViewMiddleware', # checked
+    'django.contrib.messages.middleware.MessageMiddleware',  # checked
+    'django.contrib.admindocs.middleware.XViewMiddleware',  # checked
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debugtools.middleware.XViewMiddleware', # addextra
+    'debugtools.middleware.XViewMiddleware',  # addextra
 ]
 
 # ================== Dev Middleware ==================
@@ -345,17 +344,17 @@ TEMPLATES = [
             'debug': DEBUG,
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request', # checked
+                'django.template.context_processors.request',  # checked
                 'django.template.context_processors.csrf',
                 'django.contrib.auth.context_processors.auth',
-                'django.template.context_processors.tz', # checked
+                'django.template.context_processors.tz',  # checked
                 'django.template.context_processors.static',
                 'django.template.context_processors.media',
-                'django.contrib.messages.context_processors.messages', # check
-                #'apps.core.context_processors.debug',
+                'django.contrib.messages.context_processors.messages',  # check
+                # 'apps.core.context_processors.debug',
             ],
-            'builtins': [                                     # Add this section
-                "debugtools.templatetags.debugtools_tags",   # Add this line
+            'builtins': [  # Add this section
+                "debugtools.templatetags.debugtools_tags",  # Add this line
             ],
             'libraries': {},
             # https://docs.djangoproject.com/en/4.2/ref/templates/api/#how-invalid-variables-are-handled
@@ -396,7 +395,6 @@ if DEBUG and ADMIN_ENABLED:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-
 
 SITE_ID = env.int('SITE_ID', default=1)
 
@@ -650,7 +648,7 @@ STORAGES_ = {
 # - added: STORAGES (4.2 LTS => 5.0)
 # - added: Staticfiles, FileSystemStorage, Static Url, Static Root,
 
-MEDIA_ROOT = env.str('MEDIA_ROOT', default='media') # noqa
+MEDIA_ROOT = env.str('MEDIA_ROOT', default='media')  # noqa
 MEDIA_URL = env.str('MEDIA_URL', default='media/')
 
 # ==================== Static Files ====================
@@ -673,12 +671,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # See: https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-STORAGES
 STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
-    "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
 }
 
 # Use ManifestStaticFilesStorage when not in debug mode
 if not DEBUG:
-    STORAGES['staticfiles'] = {"BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"}
+    STORAGES['staticfiles'] = {
+        "BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -796,16 +796,20 @@ LOGGING = {
             "class": "logging.handlers.RotatingFileHandler",
             "filters": ["require_debug_true"],
             "filename": "./logs/logging/debug.log",
-            "maxBytes": 50000,  # Optional: Sets the maximum file size before rotation (in bytes)
-            "backupCount": 5,  # Optional: Sets the number of backup files to keep
+            "maxBytes": 50000,
+            # Optional: Sets the maximum file size before rotation (in bytes)
+            "backupCount": 5,
+            # Optional: Sets the number of backup files to keep
         },
         "django.template": {
             "level": "INFO",
             "class": "logging.handlers.RotatingFileHandler",
             "filters": ["require_debug_true"],
             "filename": "./logs/logging/templatedebug.log",
-            "maxBytes": 50000,  # Optional: Sets the maximum file size before rotation (in bytes)
-            "backupCount": 5,  # Optional: Sets the number of backup files to keep
+            "maxBytes": 50000,
+            # Optional: Sets the maximum file size before rotation (in bytes)
+            "backupCount": 5,
+            # Optional: Sets the number of backup files to keep
         },
         "django.server": {
             "level": "WARN",
@@ -952,9 +956,12 @@ SESSION_COOKIE_NAME = env.str('SESSION_COOKIE_NAME', default='sessionid')
 SESSION_COOKIE_PATH = env.str('SESSION_COOKIE_PATH', default='/')
 SESSION_COOKIE_SAMESITE = env.str('SESSION_COOKIE_SAMESITE', default='Lax')
 SESSION_COOKIE_SECURE = env.bool('SESSION_COOKIE_SECURE', default=False)
-SESSION_ENGINE = env.str('SESSION_ENGINE', default='django.contrib.sessions.backends.signed_cookies')
-SESSION_EXPIRE_AT_BROWSER_CLOSE = env.bool('SESSION_EXPIRE_AT_BROWSER_CLOSE', default=False)
-SESSION_SAVE_EVERY_REQUEST = env.bool('SESSION_SAVE_EVERY_REQUEST', default=False)
+SESSION_ENGINE = env.str('SESSION_ENGINE',
+                         default='django.contrib.sessions.backends.signed_cookies')
+SESSION_EXPIRE_AT_BROWSER_CLOSE = env.bool('SESSION_EXPIRE_AT_BROWSER_CLOSE',
+                                           default=False)
+SESSION_SAVE_EVERY_REQUEST = env.bool('SESSION_SAVE_EVERY_REQUEST',
+                                      default=False)
 
 # https://docs.djangoproject.com/en/4.2/topics/http/sessions/#session-serialization
 # SESSION_SERIALIZER = \

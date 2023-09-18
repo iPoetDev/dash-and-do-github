@@ -1,6 +1,6 @@
 # dash-and-do-github
 
-> Dash &amp; Do GithHub Manager: A Dashboard (Reporting) and Do (Act or Automate) for GitHub Repositories
+> Dash & Do GitHub Manager: A Dashboard (Reporting) and Do (Act or Automate) for GitHub Repositories
 
 # 1.0 Introduction
 
@@ -19,12 +19,40 @@
 
 ### 1.1.1 [App Goals](#app-goals)
 
-- To *manage a personal developer’s GitHub account* as a whole portfolio service, by connecting, and disconnecting, the
+-  To *manage a personal developer’s GitHub account* as a whole portfolio service, by connecting, and disconnecting, the
   web service with a developer GitHub account (maximum of 1 GitHub account).
 - Use a *Report and Inform Dashboard*  for the developer on the state of their repositories under a single glance on a
   single pane of glass pattern via a Dashboard design. i.e. **The Dash, aka Dash & Inform.**
 - Use a *To-do and Action task manager* for the developer in response to the state of their repositories so that they
   bulk edit on a single pane of glass pattern via a To Do and Tasker design. I.e. **The Do, aka Do & Act.**
+
+### 1.1.2 [Roadmap](#roadmap)
+
+- Version 0.5: Dash & Do `Core`: 
+    -  MVC Component
+    - Apps: Core,  Accounts: 
+    - Intent: Registration & Authentication
+    - Pages: 
+                - Primary: Index (App), About (static), FAQ (static)
+        - Service: Verify, Error
+    - API Dependencies: GitHub Authentication, Authorisation APIs
+    - Flows: Sign Up (1), Login, Reset (2), Verify (1,2), Contact, Return Sessions (?) 
+- Version 1.0: Dash and Do Reporting: 
+    - MVC target 
+    - Alias: Dash & Inform dashboard
+    - Apps: Dash
+    - Pages: Dash
+    - Intent: Analysis, Reporting, 
+    - API Dependencies: GitHub Read & Listing APIs
+    - Flows:
+- Version: 1.5+: Dash and Do Manager: Do & Act task manager.
+    -  MVC++ Future 
+    - Alias: Do & Act task manager
+    - Apps: Do
+    - Pages: Primary: Do
+    - Intent: Bulk Edits, Central artefact repository (creating a central label database, a list of Social Preview images)
+    - API Dependencies
+    - Flows: 
 
 ### 1.1.2 [Project Goals](#project-goals)
 
@@ -484,10 +512,10 @@ Institute, this may not be an isolated experience.
 - Audience coverage:97.3 %
 
 ```json
-"browserslist": [
-">0.3%, defaults and supports es6-module",
-"maintained node versions"
-]
+"browserslist":  [
+    ">0.3%, defaults and supports es6-module",
+    "maintained node versions"
+],
 ```
 
 ---
@@ -580,7 +608,7 @@ Institute, this may not be an isolated experience.
 
 ---
 
-### 6.4. [Decisions]('#decisions')
+### 6.4. [Decisions](#decisions)
 
 > PROJECT: Requirements | Records | Choices | Logs | Deviations
 
@@ -615,7 +643,7 @@ Institute, this may not be an isolated experience.
 - ADR000X: Choose a de-facto character-set's language for the web application, dependencies and
   technologies: \* \*<ins>`lang=en-gb`</ins>**: **ACCEPTED\*\*
 
-#### 6.4.2. [Developer Selects](developer-decision)
+#### 6.4.2. [Developer Selects](#developer-decision)
 
 - These decisions are the developers own.
 

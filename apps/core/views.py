@@ -71,13 +71,16 @@ class SiteMeta:
     URL = 'https://dash-and-do.herokuapp.com/'
     PERSON = 'Charles J Fowler, @iPoetDev.github.com'
     DESC = 'A GitHub Portfolio Manager for the Dashboard and Do '
+    COPY = 'The Dash and Document GitHub is the copyright of Charles J Fowler, 2023-2028'
     KEYWORDS = 'GitHub, Portfolio, Manager, Dashboard, Do, '
     CONTACT = 'Github: @iPoetDev'
+
 
 class Brand:
     """
     Brand Names
     """
+
     class Site:
         """
         Site Brand Names
@@ -91,10 +94,12 @@ class Brand:
         FAVICON_ALT = 'Dash and Do Favicon'
         FAVICON_TITLE = 'Dash and Do Favicon'
 
+
 class Page:
     """
     Page Titles
     """
+
     class Index:
         """
         Index Page Details
@@ -103,6 +108,7 @@ class Page:
         TITLE = 'Home: Dashboard and Do GitHub Manager'
         ATITLE = 'Home: Dashboard and Do GitHub Manager'
         ATEXT = 'Home'
+
     class About:
         """
         About Page Details | Static
@@ -136,6 +142,7 @@ class Page:
         SETTINGS_ATEXT = 'Settings'
         LOGOUT_ATITLE = 'Logout: Sign Out of your profile'
         LOGOUT_ATEXT = 'Logout'
+
 
 class Log:
     """
@@ -171,6 +178,7 @@ def index(request):
         'siteurl': SiteMeta.URL,
         'siteperson': SiteMeta.PERSON,
         'sitedesc': SiteMeta.DESC,
+        'siteright': SiteMeta.COPY,
         'sitekeywords': SiteMeta.KEYWORDS,
         'sitecontact': SiteMeta.CONTACT,
         'brand': Brand,
@@ -212,7 +220,7 @@ def form_contact(request):  # sourcery skip: dict-assign-update-to-union
         # Handle a completed Response/HTMX Response
         completed = contact_http_response(request, contact, response,
                                           is_htmx(request))
-        completed.context |= base_ctx # merge ctx dict augmented union assigment
+        completed.context |= base_ctx  # merge ctx dict augmented union assigment
         # Log the completed Response
         log_views_response(completed,
                            label=Log.CONTACT_FORM,
@@ -226,7 +234,7 @@ def form_contact(request):  # sourcery skip: dict-assign-update-to-union
         if contact.data:
             bounded_ctx = {Ctx.FORM: contact}
             # Update the context with the base context
-            bounded_ctx |= base_ctx # merge ctx dict augmented union assigment
+            bounded_ctx |= base_ctx  # merge ctx dict augmented union assigment
             # Reply with a 400 - Bad Request bounded Form Response
             bounded = TemplateResponse(request, Template.CONTACT, bounded_ctx,
                                        status=HttpResponseBadRequest.status_code)
@@ -243,7 +251,7 @@ def form_contact(request):  # sourcery skip: dict-assign-update-to-union
         # If the form data is empty or not HTTP POST, create a new form.
         contact = ContactForm()
         unbounded_ctx = {Ctx.FORM: contact}
-        unbounded_ctx |= base_ctx # merge ctx: dict augmented union assigment
+        unbounded_ctx |= base_ctx  # merge ctx: dict augmented union assigment
         # Reply with a 405 - Method Not Allowed unbounded Form Response
         unbounded = TemplateResponse(request, Template.CONTACT, unbounded_ctx,
                                      status=HttpResponseNotAllowed.status_code)

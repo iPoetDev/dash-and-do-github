@@ -1,6 +1,7 @@
 {
   "scripts": {
     "prettier-watch": "onchange \"**/*\" -- prettier --write --ignore-unknown {{changed}}",
+    "prettier-djt": "prettier --write --plugin=prettier-plugin-django-alpine \"**/*.html\"",
     "test": "standard && node **.js | snazzy",
     "test-fix": "standard --fix && node **.js | snazzy",
     "validate": "html-validator templates --exclude=build,tmp --delay=200 --continue",
@@ -14,10 +15,11 @@
     "post:tailwind": "npx tailwind -i static/css/tailwind.css -o static/css/ailwind-core.css --postcss --watch",
     "serve:tailwind": "live-server --port=8005 --host=127.0.0.1 --watch=**/*.html,**/*.css,**/*.js  --wait=250 & npx tailwind -i static/css/tailwind.css -o static/css/tailwind-core2.css --watch",
     "ws": "npx ws --hostname 127.0.0.1 --open"
+
   },
   "devDependencies": {
     "editorconfig": "^2.0.0",
-    "eslint": "^8.48.0",
+    "eslint": "^8.49.0",
     "eslint-config-defaults": "^9.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-semistandard": "^17.0.0",
@@ -32,6 +34,7 @@
     "htmx.org": "^1.9.5",
     "postcss": "^8.4.29",
     "prettier": "^3.0.3",
+    "prettier-plugin-django-alpine": "^1.1.1",
     "prettier-plugin-tailwindcss": "^0.5.4",
     "standard": "^17.1.0",
     "stylelint": "^15.10.3",

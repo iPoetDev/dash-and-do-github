@@ -19,3 +19,6 @@ arrowParens: 'avoid'
 
 # Markdown Configuration
 proseWrap: 'preserve'
+
+plugins:
+  - prettier-plugin-django-alpine

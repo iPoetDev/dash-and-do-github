@@ -41,6 +41,7 @@ app_name = 'core'
     - Verify: core.urls | core.views
     - Error: core.urls | core.views
 """
+
 urlpatterns = [
     path('', views.index, name='index'),
     # path('about/', views.static_about, name='about'),

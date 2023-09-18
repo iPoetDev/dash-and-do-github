@@ -36,14 +36,14 @@ class Template:
     """
     HOME = 'index.html'
     CONTACT = '/all/form_contact.html'
-    CONTACT_SUCCESS = '/all/contact_success.html'
+    #CONTACT_SUCCESS = '/all/contact_success.html'
 
 
 class Ctx:
     """
     Context Variables
     """
-    FORM = 'form'
+    FORM = 'contact'
 
 
 class Feedback:
@@ -74,6 +74,7 @@ class Signal:
     INFO = 'info'
     SUCCESS = 'success'
     ERROR = 'error'
+    FAIL = False
 
 
 def contact_http_response(request, form, response, htmx_request) \
@@ -168,7 +169,8 @@ def contact_htmx_responses(request, htmx_request, contact, response) \
                                  Template.CONTACT,
                                  Signal.SUCCESS,
                                  Feedback.EMAILSUCCESS,
-                                 response.status_code)
+                                 response.status_code,
+                                 fail=Signal.FAIL)
     elif all([isinstance(response, HttpResponseBadRequest), htmx_request]):
         # Bad Request: 400, Return unbounded form with errors
         # Clear the form, allow user to retry the request afresh
@@ -178,7 +180,8 @@ def contact_htmx_responses(request, htmx_request, contact, response) \
                                  Template.CONTACT,
                                  Signal.ERROR,
                                  Feedback.BADREQUEST,
-                                 HttpResponseBadRequest.status_code)
+                                 HttpResponseBadRequest.status_code,
+                                 fail=Signal.FAIL)
     elif all([isinstance(response, HttpResponseServerError), htmx_request]):
         # Server Error: 500, Return unbounded form with errors
         # Allow user to retry the request with form data.
@@ -187,7 +190,8 @@ def contact_htmx_responses(request, htmx_request, contact, response) \
                                  Template.CONTACT,
                                  Signal.ERROR,
                                  Feedback.SERVERERROR,
-                                 HttpResponseServerError.status_code)
+                                 HttpResponseServerError.status_code,
+                                 fail=Signal.FAIL)
     elif all([response is None, htmx_request]):
         # Email Error: 405 Method Not Allowed
         # Allow user to retry the request with form data.
@@ -196,7 +200,8 @@ def contact_htmx_responses(request, htmx_request, contact, response) \
                                  Template.CONTACT,
                                  Signal.ERROR,
                                  Feedback.EMAILERROR,
-                                 HttpResponseNotAllowed.status_code)
+                                 HttpResponseNotAllowed.status_code,
+                                 fail=Signal.FAIL)
 
     return None
 
@@ -226,7 +231,8 @@ def contact_responses(request, contact, response) \
                                  Template.CONTACT,
                                  Signal.SUCCESS,
                                  Feedback.EMAILSUCCESS,
-                                 response.status_code)
+                                 response.status_code,
+                                 fail=Signal.FAIL)
     elif isinstance(response, HttpResponseBadRequest):
         # Bad Request: 400, Return unbounded form with errors
         # Clear the form, allow user to retry the request afresh
@@ -236,7 +242,8 @@ def contact_responses(request, contact, response) \
                                  Template.CONTACT,
                                  Signal.ERROR,
                                  Feedback.BADREQUEST,
-                                 HttpResponseBadRequest.status_code)
+                                 HttpResponseBadRequest.status_code,
+                                 fail=Signal.FAIL)
     elif isinstance(response, HttpResponseServerError):
         # Server Error: 500, Return unbounded form with errors
         # Allow user to retry the request with form data.
@@ -245,7 +252,8 @@ def contact_responses(request, contact, response) \
                                  Template.CONTACT,
                                  Signal.ERROR,
                                  Feedback.SERVERERROR,
-                                 HttpResponseServerError.status_code)
+                                 HttpResponseServerError.status_code,
+                                 fail=Signal.FAIL)
     elif response is None:
         # Email Error: 405 Method Not Allowed
         # Allow user to retry the request with form data.
@@ -254,12 +262,19 @@ def contact_responses(request, contact, response) \
                                  Template.CONTACT,
                                  Signal.ERROR,
                                  Feedback.EMAILERROR,
-                                 HttpResponseNotAllowed.status_code)
+                                 HttpResponseNotAllowed.status_code,
+                                 fail=Signal.FAIL)
 
     return None
 
 
-def template_response(request, form, template, signal, message, status=None):
+def template_response(request,
+                      form,
+                      template,
+                      signal,
+                      message,
+                      status=None,
+                      fail=False):
     """
 
     Creates and returns a TemplateResponse and form associated with a
@@ -272,9 +287,10 @@ def template_response(request, form, template, signal, message, status=None):
     :param signal: Message Level
     :param message: Custom HTTP Response Message
     :param status: HTTP Response Status Code, Optional
+    :param fail: Boolean, Optional, Default: False
     :return: Shared TemplateResponse
     :rtype: TemplateResponse
     """
-    messages.add_message(request, signal, message)
+    messages.add_message(request, signal, message, fail_silently=fail)
     context = {Ctx.FORM: form}
     return TemplateResponse(request, template, context, status)

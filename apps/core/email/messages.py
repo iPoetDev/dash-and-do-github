@@ -48,7 +48,7 @@ from mail_templated import send_mail, EmailMessage as TemplatedMessage
 
 # Local: Common Libraries
 from dash_and_do.utils import get_date
-from dash_and_do.settings.settings \
+from dash_and_do.config.settings \
     import (DEFAULT_FROM_EMAIL as SITE_EMAIL, emailenv as EMAILENV)
 # Local: App Libraries
 from apps.core.email.values \

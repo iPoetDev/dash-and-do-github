@@ -1,9 +1,10 @@
 ---
 name: '05 STORY: User Story |  Use Case'
-about: "User Story: An Epic's Task | Enabling Task  linked to a Feature |  Component"
+about: 'User Story: An Epic''s Task | Enabling Task  linked to a Feature |  Component'
 title: 'STORY-000? :: '
 labels: ''
 assignees: iPoetDev
+
 ---
 
 # **[`USER STORY STATEMENT`]()**:

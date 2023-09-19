@@ -4,6 +4,7 @@ about: 'IMPEDIMENTS: Project and Epic level blockers & issues.'
 title: 'IMPEDE: Project Blocker: '
 labels: 'Project: Impediment'
 assignees: iPoetDev
+
 ---
 
 ## Impediment: " "

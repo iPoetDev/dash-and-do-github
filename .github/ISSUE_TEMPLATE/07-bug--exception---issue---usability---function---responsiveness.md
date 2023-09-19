@@ -31,12 +31,13 @@ Line No: _`   `_
 
 > Triage:
 
-- [x] Are Feature and Story?
-- [x] Are the ticket been well described?
-- [x] Are the affected files pushed to the remote? Which branch: epic-core
-- [x] Are screenshots been added?
-- [x] Are the UAT for happy path been updated?
-- [x] Are any other details: like log or exception log traces been added?
+- [ ] Are Feature and Story added?
+- [ ] Has the ticket/bug/issue been well described?
+- [ ] Are the affected files pushed to the remote? 
+- [ ] Which branch: `  epic- ` 
+- [ ] Are screenshots been added?
+- [ ] Are the UAT for happy path been updated?
+- [ ] Are any other details: like log or exception log traces been added?
 
 ### Tutor Requests
 

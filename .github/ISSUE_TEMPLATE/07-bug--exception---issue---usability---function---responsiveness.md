@@ -19,11 +19,13 @@ Line No: _`   `_
 
 ### Branch/Files URLs
 
-- Branch Name:
-- Brand URL:
+- Branch Name: _`  epic-  `_
+- Brand URL: 
 - Settings File: _`dash_and_do/settings.py`_
 - Files:
-  - 1:
+  - 1: `  `
+  - 2: `  `
+  - 3: `  `
 - Files URLs: 
   - 1: 
 
@@ -35,6 +37,10 @@ Line No: _`   `_
 - [x] Are screenshots been added?
 - [x] Are the UAT for happy path been updated?
 - [x] Are any other details: like log or exception log traces been added?
+
+### Tutor Requests
+
+- 
 
 ## Bug Outline
 

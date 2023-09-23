@@ -1,27 +1,25 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 
-#  Copyright (c) 2023.
+#  Copyright © 2023.
 
 import os
 import sys
-
+import warnings
 # Date: 2023-08-09
 # Source
-# Adjusted from: dash_and_do.settings => dash_and_do.settings.development
+# Adjusted from: dash_and_do.settings → dash_and_do.settings.development
 # Objective to: Isolated the settings for each environment.
 # The settings for manage.py is development.py:
 #
 
 BASE_SETTINGS = 'dash_and_do.settings'
-DEVELOPMENT_SETTINGS = 'dash_and_do.development'
-PRODUCTION_SETTINGS = 'dash_and_do.production'
-TEST_SETTINGS = 'dash_and_do.tests'
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE",
-                          'dash_and_do.settings')
+    settings = BASE_SETTINGS
+    # Choose this according to your environment.
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings)
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -31,7 +29,12 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
-
+    # Supress warnings
+     # djt_nvu\panel.py:20, pkg_resources is deprecated as an API.
+    # https://setuptools.pypa.io/en/latest/pkg_resources.html
+    warnings.filterwarnings("ignore",
+                            category=DeprecationWarning,
+                            module='pkg_resources')
 
 if __name__ == '__main__':
     main()

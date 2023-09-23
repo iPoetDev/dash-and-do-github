@@ -695,3 +695,30 @@ package-lock.json
 
 /.email
 /server.py
+/apps/core/migrations/0001_CONTACT_001.py
+/apps/core/migrations/0002_alter_contact_email.py
+/logs/django/migrations/migrations.txt
+/staticfiles/debug_toolbar/
+/staticfiles/django_extensions/
+/scripts/Behave Contact.run.xml
+/scripts/D&D Run.run.xml
+/scripts/D&D Run + JS.run.xml
+/scripts/D&D Run as Test.run.xml
+/scripts/Django Migrate _APP_ --name _NAME_00_ .run.xml
+/scripts/Django Migrate _APP_ --plan.run.xml
+/scripts/Django Runserver.run.xml
+/scripts/Django ShowMigrations --list.run.xml
+/static/js/hero-slider-carousel.js
+/static/js/htmx.js
+/static/js/htmx.min.js
+/static/js/nav-sidebar-toggle.js
+/apps/kore/static/img/brand/brand-logo-w90-h50.jpg
+/apps/kore/static/img/hero/index/hero1.jpg
+/apps/kore/static/img/hero/index/hero2.jpg
+/apps/kore/static/img/hero/index/hero3.jpg
+/apps/kore/static/img/hero/index/hero4.jpg
+/apps/kore/static/img/hero/index/hero5.jpg
+/apps/kore/mixins/__init__.py
+/apps/kore/mixins/emailmixin.py
+/apps/kore/migrations/0001_initial.py
+/apps/kore/migrations/__init__.py

@@ -302,7 +302,7 @@ def contact_responses(request, contact, response) \
     # - debugged: 2023-09-21
     if response.status_code == 200:
         # Successful Email: 200 Ok, Fresh unbounded form.
-        pp_label(f'contact_responses: SUCCESS: '
+        pp_label('contact_responses: SUCCESS: '
                  f'{response.serialize()}')
         return template_response(request,
                                  contact,

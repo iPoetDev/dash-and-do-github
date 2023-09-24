@@ -111,9 +111,7 @@ def index(request):
 
 
 @require_http_methods([ HTTP.POST ])
-# @ensure_csrf_cookie
-# @csrf_protect
-def form_contact(request):  # sourcery skip: dict-assign-update-to-union
+def form_contact(request):    # sourcery skip: dict-assign-update-to-union
     """
     Form contact view. | Access: All Users
     Checks for HTTP POST request and if the request is htmx.
@@ -160,7 +158,7 @@ def form_contact(request):  # sourcery skip: dict-assign-update-to-union
                     label='form_contact: ContactForm: Completed')
                 return render_completed_form(request, completed,
                                              base_ctx, 'form_contact')
-        elif response is not None and response.status_code != 200:
+        elif response is not None:
             pp_label(label='3: View: contact_email: Response is not 200')
             # Render the bounded Response for user to try again
             render_bounded_form(request, contact,

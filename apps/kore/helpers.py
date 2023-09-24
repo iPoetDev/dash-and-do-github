@@ -69,7 +69,7 @@ def pp_email(data: dict, label: str = None):
     :return:
     """
     pp('======PP Email Form Values======')
-    pp(f'{label} : {str(data)}')
+    pp(f'{label} : {data}')
     for key, value in data.items():
         pp(f"{key}: {value}")
     debuginfo()
@@ -123,7 +123,7 @@ def pp_function(function, label=None):
     :return:
     """
     pp('======PP Function======')
-    pp(f"{label} %s" + function)
+    pp(f"{label} %s{function}")
     debuginfo()
 
 
@@ -134,7 +134,7 @@ def pp_file(label=None):
     :return:
     """
     pp('======PP File Values======')
-    pp(f"{label} %s" + __file__)
+    pp(f"{label} %s{__file__}")
 
 
 def pp_locate(obj=None, label=None):

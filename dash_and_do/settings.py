@@ -231,8 +231,8 @@ if DEBUG:
 DJANGO_APPS += [
     # Customization with env variables for canonical values.
     # See sys.path.append(str(BASE_DIR / 'apps'))
-    envs.str('KORE_APP', default='kore.KoreApp'),
-    envs.str('USERS_APP', default='users.UserConfig'),
+    envs.str('KORE_APP'),
+    envs.str('USERS_APP'),
     # envs.str('PROFILE_APP',default='apps.profile'),
     # envs.str('DASH_APP',default='apps.dash'),
 ]
@@ -434,7 +434,7 @@ if DEBUG and ADMIN_ENABLED:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'dev.sqlite3',
+            'NAME': BASE_DIR / 'dash.sqlite3',
         }
     }
 
@@ -562,17 +562,17 @@ PASSWORD_HASHERS = [
 
 # Add the following adapter class to use
 ACCOUNT_ADAPTER = \
-    'allauth.account.adapter.DefaultAccountAdapter'  #  checked 23/09/23
+    'allauth.account.adapter.DefaultAccountAdapter'  # checked 23/09/23
 
 # Change the default behavior of authenticated users being redirected to LOGIN_REDIRECT_URL
 # noinspection PyUnusedName
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True  # checked 23/09/23
 # Specifies the login method to use: username, emailing, or username_email
-ACCOUNT_AUTHENTICATION_METHOD = 'username'  # checked 23/09/23
+ACCOUNT_AUTHENTICATION_METHOD = 'email'  # checked 23/09/23
 # noinspection PyUnusedName
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False  # checked 23/09/23
 # Multiple Emails. Max 1
-ACCOUNT_CHANGE_EMAIL = False  #  checked 23/09/23
+ACCOUNT_CHANGE_EMAIL = False  # checked 23/09/23
 # Template
 # noinspection PyUnusedName
 ACCOUNT_TEMPLATE_EXTENSION = 'html'  # checked 23/09/23
@@ -812,7 +812,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Use ManifestStaticFilesStorage when not in debug mode
 if not DEBUG:
     STORAGES[ 'staticfiles' ] = {
-        "BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"}
+        "BACKEND": \
+            ("django.contrib.staticfiles.storage"
+             ".ManifestStaticFilesStorage")}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

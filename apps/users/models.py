@@ -68,6 +68,13 @@ class DashUser(AbstractBaseUser, PermissionsMixin):
     :return: User
     :rtype: User
     """
+
+    class Meta:
+        db_table = 'dashuser'  # optional, name of the table in db
+        app_label = 'apps.users'
+
+
+
     email = models.EmailField(max_length=254, unique=True)
     name = models.CharField(max_length=254, null=True, blank=True)
     is_staff = models.BooleanField(default=False)
@@ -89,3 +96,6 @@ class DashUser(AbstractBaseUser, PermissionsMixin):
         :return: The absolute URL for the DashUser instance.
         """
         return "/users/%i/" % (self.pk)
+
+    def __str__(self):
+        return self.email

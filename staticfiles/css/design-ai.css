@@ -1,0 +1,14 @@
+#logo-header {
+    display: flex;
+    justify-content: start;
+}
+
+#menu-header {
+    display: flex;
+    justify-content: end;
+}
+
+.header-compose {
+    display: flex;
+    justify-content: space-between;
+}

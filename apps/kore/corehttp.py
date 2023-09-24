@@ -242,7 +242,7 @@ def contact_htmx_responses(request, htmx_request, contact, response) \
                                  fail=Signal.FAIL)
     elif all([ response.status_code == 500, htmx_request ]):
         # Server Error: 500, Return unbounded form with errors
-        pp_label(f'HTMX: contact_responses: SERVER ERROR: New Form '
+        pp_label('HTMX: contact_responses: SERVER ERROR: New Form '
                  f'{response.serialize()}')
         return template_response(request,
                                  contact,

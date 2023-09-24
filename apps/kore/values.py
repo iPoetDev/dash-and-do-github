@@ -240,7 +240,7 @@ class Log:
         """
         Log Descriptions
         """
-        COMPLETED_FORM = 'Completed Form: Valid & POST',
+        COMPLETED_FORM = 'Completed Form: Valid & POST'
         BOUNDED_FORM = 'Bounded: Invalid Form & POST',
         UNBOUND_FORM = 'Unbounded: Empty Form: Method != POST'
 

@@ -38,19 +38,18 @@ values.
 # -added: environ for django-environ & environmental variables.
 
 import os
-
-from pathlib import Path
 import sys
+from pathlib import Path
 
+import django_behave
 # import env
 from django.contrib.messages import constants as messages
 from environ import Env
-import django_behave
+
+from .thirdparty import ANYMAIL  # noqa
 
 # ==================== Third Party ===============
 # - added: third party settings for Settings.py
-
-from .thirdparty import ANYMAIL  # noqa
 
 # ================== Base Paths ==================
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -193,7 +192,7 @@ if ADMIN_ENABLED:
 INSTALLED_APPS += [
     'debug_toolbar',
     'djdt_permissions',
-    #'mail_panel',
+    # 'mail_panel',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -209,7 +208,7 @@ THIRDPARTY_APPS += [
     # ... include the providers you want to enable:
     # 'allauth.socialaccount.providers.github',
     'rest_framework',
-    #'autocomplete', #django-htmx-autocomplete
+    # 'autocomplete', #django-htmx-autocomplete
     'corsheaders',  # django-cors-headers
     'allauth',  # django-allauth
     'allauth.account',  # allauth.account
@@ -567,16 +566,16 @@ ACCOUNT_ADAPTER = \
 
 # Change the default behavior of authenticated users being redirected to LOGIN_REDIRECT_URL
 # noinspection PyUnusedName
-ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True  #  checked 23/09/23
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True  # checked 23/09/23
 # Specifies the login method to use: username, emailing, or username_email
-ACCOUNT_AUTHENTICATION_METHOD = 'username'  #  checked 23/09/23
+ACCOUNT_AUTHENTICATION_METHOD = 'username'  # checked 23/09/23
 # noinspection PyUnusedName
-ACCOUNT_CONFIRM_EMAIL_ON_GET = False  #  checked 23/09/23
+ACCOUNT_CONFIRM_EMAIL_ON_GET = False  # checked 23/09/23
 # Multiple Emails. Max 1
 ACCOUNT_CHANGE_EMAIL = False  #  checked 23/09/23
 # Template
 # noinspection PyUnusedName
-ACCOUNT_TEMPLATE_EXTENSION = 'html'  #  checked 23/09/23
+ACCOUNT_TEMPLATE_EXTENSION = 'html'  # checked 23/09/23
 
 # Signup
 # noinspection PyUnusedName
@@ -596,19 +595,19 @@ ACCOUNT_SIGNUP_REDIRECT_URL = LOGIN_URL
 
 # Account Email
 ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_EMAIL_REQUIRED = True  #  checked 23/09/23
+ACCOUNT_EMAIL_REQUIRED = True  # checked 23/09/23
 # E-mail verification method during signup: none, optional, mandatory
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  #  checked 23/09/23
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # checked 23/09/23
 # noinspection PyUnusedName
-ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Dash & Do] '  #  checked 23/09/23
+ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Dash & Do] '  # checked 23/09/23
 # noinspection PyUnusedName
-ACCOUNT_EMAIL_MAX_LENGTH = 254  #  checked 23/09/24
+ACCOUNT_EMAIL_MAX_LENGTH = 254  # checked 23/09/24
 # noinspection PyUnusedName
-ACCOUNT_MAX_EMAIL_ADDRESSES = 1  #  checked 23/09/24
+ACCOUNT_MAX_EMAIL_ADDRESSES = 1  # checked 23/09/24
 
 # The URL Protocol to use when generating links in activation emails
 # noinspection PyUnusedName
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'http'  #  checked 23/09/23
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'http'  # checked 23/09/23
 
 # noinspection PyUnusedName
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = \
@@ -617,10 +616,10 @@ ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = \
 # noinspection PyUnusedName
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = None
 # noinspection PyUnusedName
-ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1  #  checked 23/09/23
-ACCOUNT_EMAIL_CONFIRMATION_HMAC = False  #  checked 23/09/23
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1  # checked 23/09/23
+ACCOUNT_EMAIL_CONFIRMATION_HMAC = False  # checked 23/09/23
 # noinspection PyUnusedName
-ACCOUNT_EMAIL_CONFIRMATION_COOLDOWN = 180  #  checked 23/09/24
+ACCOUNT_EMAIL_CONFIRMATION_COOLDOWN = 180  # checked 23/09/24
 
 # noinspection PyUnusedName
 if DEBUG:

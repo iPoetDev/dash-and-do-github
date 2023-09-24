@@ -9,10 +9,6 @@
 #  - added: 'github'
 #  - todo: add Secrets to github
 
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
-from sentry_sdk.integrations.logging import LoggingIntegration
-
 # SOCIALACCOUNT_PROVIDERS = {
 #     'github': {
 #         # For each OAuth based provider, either add a ``SocialApp``

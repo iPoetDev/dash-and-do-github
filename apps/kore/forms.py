@@ -179,7 +179,7 @@ class ContactForm(ModelForm):
             'empty': contactattrs.MSG_EMPTY,
             'min_length': 'You have add more than '
                           f'{contactattrs.AREA_MIN} '
-                          f'for a message.',
+                          'for a message.',
             'max_length': f'You have exceeded the max of'
                           f' {contactattrs.AREA_MAX}.'
         }

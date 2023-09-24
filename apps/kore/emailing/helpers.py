@@ -39,14 +39,13 @@
 # Framework Libraries
 from django.http import HttpResponse
 
-# Local: Common Libraries
-from dash_and_do.utils import get_date
 # Local: App Libraries
 from apps.kore.emailing.values import (HTTP, Sending, Switch)
+# Local: Common Libraries
+from dash_and_do.utils import get_date
 
 
 # OopCompanion:suppressRename
-
 
 
 def subject(site, name) -> str:
@@ -55,6 +54,7 @@ def subject(site, name) -> str:
     subj += f'{site}: New Message from {name}'
     subj += f' - {get_date()}'
     return subj
+
 
 def sender_cc(message: str, copy: bool) -> str:
     """

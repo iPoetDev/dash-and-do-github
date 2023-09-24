@@ -18,28 +18,24 @@ This module contains the views for the kore app.
     - added: login_required decorator to all private views
 """
 import traceback
-# Django Imports
-from django.conf import settings
-from django.shortcuts import render
+
 # Django HTTP Imports
 from django.http import Http404
 from django.http import HttpRequest
 from django.http import HttpResponse
-from django.http import HttpResponseNotAllowed
+# Django Imports
+from django.shortcuts import render
 from django.template.response import TemplateResponse
-# Django View Imports
-from django.views.defaults import page_not_found as dj_page_not_found
 from django.views.decorators.cache import never_cache
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.views.decorators.http import require_GET
 from django.views.decorators.http import require_http_methods
+# Django View Imports
+from django.views.defaults import page_not_found as dj_page_not_found
 # Third Party Imports
 from django_htmx.middleware import HtmxDetails
 
-# Local: Project Imports
-from dash_and_do.htmx import is_htmx
-from dash_and_do.settings import DEBUG
 from apps.kore.corehttp import (contact_email_response, contact_http_response,
                                 switch_form)
 from apps.kore.emailing.emails import send_mail_contact2
@@ -48,6 +44,9 @@ from apps.kore.forms import ContactForm
 from apps.kore.helpers import (pp_response,
                                pp_label)
 from apps.kore.values import (SiteMeta, Brand, Page, Template, HTTP, Forms)
+# Local: Project Imports
+from dash_and_do.htmx import is_htmx
+from dash_and_do.settings import DEBUG
 
 
 # OopCompanion:suppressRename
@@ -160,7 +159,7 @@ def form_contact(request):  # sourcery skip: dict-assign-update-to-union
                 pp_label(
                     label='form_contact: ContactForm: Completed')
                 return render_completed_form(request, completed,
-                                             base_ctx,'form_contact')
+                                             base_ctx, 'form_contact')
         elif response is not None and response.status_code != 200:
             pp_label(label='3: View: contact_email: Response is not 200')
             # Render the bounded Response for user to try again
@@ -171,7 +170,7 @@ def form_contact(request):  # sourcery skip: dict-assign-update-to-union
             pp_label(label='4: View: contact_email: Response is None')
             contact = ContactForm()
             render_unbounded_form(request, contact,
-                                Forms.CONTACT, base_ctx)
+                                  Forms.CONTACT, base_ctx)
 
     elif (not contact.is_valid() and contact.data and request.method ==
           HTTP.POST):
@@ -206,6 +205,7 @@ def switch_views(label):
         'form_settings': Forms.SETTINGS,
     }
     return viewformlookup.get(label)
+
 
 def render_completed_form(request,
                           response: TemplateResponse,
@@ -366,7 +366,6 @@ def favicon(request: HtmxHttpRequest) -> HttpResponse:
 #     :return:
 #     """
 #     return render(request, "csrf-demo.html")
-
 
 def core_page_not_found(request, exception) -> HttpResponse:
     """

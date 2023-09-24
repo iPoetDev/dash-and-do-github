@@ -39,11 +39,11 @@
 # Python
 import logging
 from unittest import mock
+
 # Django
 from django.core import mail
 from django.test import TestCase, Client
 from django.test.utils import override_settings
-
 
 # OopCompanion:suppressRename
 
@@ -71,6 +71,7 @@ PATCH_ANYMAIL = 'anymail.message.AnymailMessage.send'
 # Client
 PATCH_CLIENT = 'django.test.Client'
 
+
 class TestEmail(TestCase):
     """
     TestEmail that tests & mocks the functionality of sending an emailing
@@ -83,6 +84,7 @@ class TestEmail(TestCase):
     :method: mock_test_send_email
 
     """
+
     @classmethod
     def setUpTestData(cls):
         """
@@ -139,14 +141,15 @@ class TestEmail(TestCase):
             # ASSERT: Check Status Code is 200
             response = self.client.post(self.route,
                                         self.email_data)
-            self.assertEqual(response.status_code, self.status['success'])
+            self.assertEqual(response.status_code, self.status[ 'success' ])
             # ASSERT: Check emailing has been sent
-            self.assertEqual(len(mail.outbox), self.email_asserts['limit'])
+            self.assertEqual(len(mail.outbox), self.email_asserts[ 'limit' ])
             # ASSERT: Check content of the sent emailing
-            self.assertEqual(mail.outbox[0].subject, self.email_asserts['subject'])
+            self.assertEqual(mail.outbox[ 0 ].subject,
+                             self.email_asserts[ 'subject' ])
 
         except AssertionError as asserts:
-            logging.error(f"{self.exception_msg['general']}: {asserts}")
+            logging.error(f"{self.exception_msg[ 'general' ]}: {asserts}")
 
     @mock.patch(PATCH_DJSENDMAIL)
     @override_settings(EMAIL_BACKEND=MAILPANEL_BACKEND)
@@ -163,22 +166,21 @@ class TestEmail(TestCase):
 
         # ASSERT: Check Status Code is 200
         self.assertEqual(response.status_code,
-                         self.status['success'],
-                         self.email_asserts['expect_200'])
+                         self.status[ 'success' ],
+                         self.email_asserts[ 'expect_200' ])
 
         # ARRANGE: Check mock_send_mail method was called once
         mock_send_mail.assert_called_once()
 
         # ASSERT: Check emailing has been sent
         self.assertEqual(len(mail.outbox),
-                         self.email_asserts['limit'],
-                         self.email_asserts['expect_limit'])
+                         self.email_asserts[ 'limit' ],
+                         self.email_asserts[ 'expect_limit' ])
 
         # ASSERT: Check content of the sent emailing
-        self.assertEqual(mail.outbox[0].subject,
-                         self.email_data['subject'],
-                         self.email_asserts['expect_subject'])
-
+        self.assertEqual(mail.outbox[ 0 ].subject,
+                         self.email_data[ 'subject' ],
+                         self.email_asserts[ 'expect_subject' ])
 
     @mock.patch(PATCH_DJSENDMAIL)
     @mock.patch(PATCH_CLIENT)
@@ -193,7 +195,7 @@ class TestEmail(TestCase):
         """
         # ARRANGE
         mock_client.return_value.post.return_value = \
-            mock.Mock(status_code=self.status['success'])
+            mock.Mock(status_code=self.status[ 'success' ])
 
         # ACT Email Response: Via a route and emailing data
         response = self.client.post(self.route,
@@ -201,25 +203,25 @@ class TestEmail(TestCase):
 
         # ASSERT: Check Status Code is 200
         self.assertEqual(response.status_code,
-                         self.status['success'], self.email_asserts['expect_200'])
+                         self.status[ 'success' ],
+                         self.email_asserts[ 'expect_200' ])
 
         # ASSERT: Check mock_send_mail method was called once
         mock_send_mail.assert_called_once()
 
         # ASSERT: Check emailing has been sent
-        self.assertEqual(len(mail.outbox),self.email_asserts['limit'],
-                         self.email_asserts['expect_limit'])
+        self.assertEqual(len(mail.outbox), self.email_asserts[ 'limit' ],
+                         self.email_asserts[ 'expect_limit' ])
 
         # ASSERT: Check content of the sent emailing
-        self.assertEqual(mail.outbox[0].subject, self.email_data['subject'],
-                         self.email_asserts['expect_subject'])
+        self.assertEqual(mail.outbox[ 0 ].subject, self.email_data[ 'subject' ],
+                         self.email_asserts[ 'expect_subject' ])
 
-
-    @mock.patch(PATCH_DJSENDMAIL) #Email Client/Send
-    @mock.patch(PATCH_CLIENT) #Test Client
+    @mock.patch(PATCH_DJSENDMAIL)  # Email Client/Send
+    @mock.patch(PATCH_CLIENT)  # Test Client
     def test_mock_send_email_valid_data(self,
-                                   mock_client,
-                                   mock_send_mail):
+                                        mock_client,
+                                        mock_send_mail):
         """
         # HAPPY PATH
         Mock Sending a test emailing with valid values.
@@ -230,23 +232,24 @@ class TestEmail(TestCase):
         """
         # ARRANGE
         mock_client.return_value.post.return_value = \
-            mock.Mock(status_code=self.status['success'])
+            mock.Mock(status_code=self.status[ 'success' ])
 
         # ACT
         response = self.client.post(self.route, self.email_data)
 
         # ASSERT: Check Status Code is 200
         self.assertEqual(response.status_code,
-                         self.status['success'], self.
-                         email_asserts['expect_200'])
+                         self.status[ 'success' ], self.
+                         email_asserts[ 'expect_200' ])
 
         # ASSERT: Check mock_send_mail method was called once ONLY
         mock_send_mail.assert_called_once()
 
         # ASSERT: Check emailing has been sent
         self.assertEqual(len(mail.outbox),
-                         self.email_asserts['limit'],
-                         self.email_asserts['expect_limit'])
+                         self.email_asserts[ 'limit' ],
+                         self.email_asserts[ 'expect_limit' ])
 
         # ASSERT: Check content of the sent emailing
-        self.assertEqual(mail.outbox[0].subject, self.email_data['subject'], self.email_asserts['expect_subject'])
+        self.assertEqual(mail.outbox[ 0 ].subject, self.email_data[ 'subject' ],
+                         self.email_asserts[ 'expect_subject' ])

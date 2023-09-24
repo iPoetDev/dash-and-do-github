@@ -55,6 +55,7 @@ class HTTP:
         SERVICE_UNAVAILABLE = 503
         GATEWAY_TIMEOUT = 504
 
+
 class Template:
     """
     Template Paths
@@ -78,6 +79,7 @@ class Template:
         GITHUB = 'forms/form_github.html'
         SETTINGS = 'forms/form_settings.html'
 
+
 class Forms:
     """
     Core Form Names
@@ -91,6 +93,7 @@ class Forms:
     PROFILE = 'profile_form'
     GITHUB = 'github_form'
     SETTINGS = 'settings_form'
+
 
 class Ctx:
     """
@@ -125,6 +128,7 @@ class SiteMeta:
     KEYWORDS = 'GitHub, Portfolio, Manager, Dashboard, Do, '
     CONTACT = 'Github: @iPoetDev'
 
+
 class Brand:
     """
     Brand Names
@@ -142,6 +146,7 @@ class Brand:
         FAVICON = 'dash_and_do/favicon.ico'
         FAVICON_ALT = 'Dash and Do Favicon'
         FAVICON_TITLE = 'Dash and Do Favicon'
+
 
 class Page:
     """
@@ -222,6 +227,7 @@ class Signal:
         ERROR = messages.ERROR
         FAIL = False
 
+
 class Log:
     """
     Log Messages
@@ -247,6 +253,7 @@ class ContactFields:
     CONTACT_EMAIL = 'contact_email'
     CONTACT_MESSAGE = 'contact_message'
     CONTACT_COPY = 'copy_sent'
+
 
 class ContactAttrs:
     """"

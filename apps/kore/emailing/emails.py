@@ -41,15 +41,16 @@
 from django.core.mail import BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 
-# Third parttom
-
+from apps.kore.emailing.messages import site_mail, contact_mail
+# Local: App Libraries
+from apps.kore.emailing.values import (Services, HTTP, Field, Switch)
+from apps.kore.helpers import (pp_form, pp_email, pp_label)
 # Local: Common Libraries
 from dash_and_do.settings \
     import (DEFAULT_FROM_EMAIL as SITE_EMAIL)
-# Local: App Libraries
-from apps.kore.emailing.values import (Services, HTTP, Field, Switch)
-from apps.kore.emailing.messages import site_mail, contact_mail
-from apps.kore.helpers import (pp_form, pp_email, pp_label)
+
+
+# Third parttom
 
 
 # noinspection PyUnusedFunction

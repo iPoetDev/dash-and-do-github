@@ -21,8 +21,6 @@
         - FIXME:
         - CHECK:
 """
-from django.apps import AppConfig
-
 
 # OopCompanion:suppressRename
 

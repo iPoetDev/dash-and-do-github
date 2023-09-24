@@ -49,9 +49,8 @@
                 - Other
 """
 from django.db import models
-from dash_and_do.settings import DEFAULT_FROM_EMAIL
-from dash_and_do.validating import valid_name, valid_email
 
+from dash_and_do.settings import DEFAULT_FROM_EMAIL
 
 # OopCompanion:suppressRename
 
@@ -76,9 +75,8 @@ from dash_and_do.validating import valid_name, valid_email
 
 
 class Contacts(models.Model):
-
     name = models.CharField(max_length=50,
-                              name='contact_name')
+                            name='contact_name')
     email = models.EmailField(max_length=50,
                               default=DEFAULT_FROM_EMAIL,
                               name='contact_email')

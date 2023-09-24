@@ -38,30 +38,31 @@
                 - Other
 """
 from smtplib import SMTPException
+
+# Third Party Libraries
+from anymail.message import AnymailMessage
 #  Copyright (c) 2023.
 # Framework Libraries
 from django.core.mail \
     import (send_mail, get_connection, EmailMessage, BadHeaderError)
 from django.http import HttpResponse, HttpResponseServerError
-# Third Party Libraries
-from anymail.message import AnymailMessage
 from mail_templated import (send_mail as templatemailer, EmailMessage as
 TemplatedMessage)
 
-# Local: Common Libraries
-from dash_and_do.utils import get_date
-from dash_and_do.settings \
-    import (DEFAULT_FROM_EMAIL as SITE_EMAIL, emailenv as env)
-# Local: App Libraries
-# from apps.kore.helpers import (pp_form, pp_email, pp_response, pp_console)
-from apps.kore.emailing.values \
-    import (Site, Services, SMTP, HTTP, Sending, MIME, Switch, Template)
 from apps.kore.emailing.helpers import (subject,
                                         sender_cc,
                                         sent_by,
                                         send,
                                         any_config)
+# Local: App Libraries
+# from apps.kore.helpers import (pp_form, pp_email, pp_response, pp_console)
+from apps.kore.emailing.values \
+    import (Site, Services, SMTP, HTTP, Sending, MIME, Switch, Template)
 from apps.kore.helpers import (pp_console, pp_response, pp_label, pp_message)
+from dash_and_do.settings \
+    import (DEFAULT_FROM_EMAIL as SITE_EMAIL, emailenv as env)
+# Local: Common Libraries
+from dash_and_do.utils import get_date
 
 
 def contact_mail(sub_ject: str,

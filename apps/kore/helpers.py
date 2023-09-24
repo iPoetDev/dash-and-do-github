@@ -21,11 +21,13 @@
 """
 #  Copyright (c) 2023.
 
-from rich.pretty import pprint as pp
-from rich import pretty
 import inspect
 
+from rich import pretty
+from rich.pretty import pprint as pp
+
 pretty.install()
+
 
 def debuginfo():
     """
@@ -37,6 +39,7 @@ def debuginfo():
     filename = frame.f_code.co_filename
     lineno = frame.f_lineno
     return f"{filename}:{lineno}"
+
 
 def pp_form(form, label=None):
     """
@@ -56,6 +59,7 @@ def pp_form(form, label=None):
             pp(f'{field_name}: {errors}')
         for field_name, value in form.cleaned_data.items():
             print(f'{field_name}: {value}')
+
 
 def pp_email(data: dict, label: str = None):
     """
@@ -99,6 +103,7 @@ def pp_message(subject,
     pp(f'{label} : {smtp} : {authuser} : {fail}')
     debuginfo()
 
+
 def pp_response(response, label=None):
     """
     Pretty print response.
@@ -108,6 +113,7 @@ def pp_response(response, label=None):
     """
     pp('======PP Response Values======')
     pp(f'{label} : {response}')
+
 
 def pp_function(function, label=None):
     """
@@ -131,8 +137,6 @@ def pp_file(label=None):
     pp(f"{label} %s" + __file__)
 
 
-
-
 def pp_locate(obj=None, label=None):
     """
     Pretty print location.
@@ -150,6 +154,7 @@ def pp_locate(obj=None, label=None):
         print(
             f"{obj} is at line {inspect.currentframe().f_back.f_lineno}"
             f" in function {inspect.currentframe().f_back.f_code.co_name}")
+
 
 def pp_console(obj: object, label=None):
     """
@@ -176,6 +181,7 @@ def pp_consoleform(form, label=None):
     pp_locate(label)
     pp_file(label)
     print('=======')
+
 
 def pp_label(label):
     """

@@ -1,7 +1,6 @@
 #  Copyright (c) 2023.
 
 
-
 # OopCompanion:suppressRename
 
 class Site:
@@ -63,6 +62,7 @@ class HTTP:
             'Gateway Timeout: Email service is currently unavailable'
         UNKNOWN_ERROR = \
             'Unknown Error: Email service is currently unavailable'
+
 
 class Sending:
     """

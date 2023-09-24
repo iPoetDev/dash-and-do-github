@@ -38,6 +38,7 @@ class Forms:
     GITHUB = 'github_form'
     SETTINGS = 'settings_form'
 
+
 class ContactFields:
     """
     Contact Form Fields
@@ -46,6 +47,7 @@ class ContactFields:
     CONTACT_EMAIL = 'contact_email'
     CONTACT_MESSAGE = 'contact_message'
     CONTACT_COPY = 'copy_sent'
+
 
 class ContactAttrs:
     """"

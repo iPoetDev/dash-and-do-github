@@ -46,6 +46,7 @@ from apps.kore.modelsvalues import ContactAttrs, ContactFields, Forms
 contactattrs = ContactAttrs()
 contactfields = ContactFields()
 
+
 class ContactForm(ModelForm):
     """
     Form for creating or updating a contact
@@ -58,6 +59,7 @@ class ContactForm(ModelForm):
     :property  message: The message of the contact.
     :property  copySent: Whether to send a copy of the message to the sender.
     """
+
     def __init__(self, *args, **kwargs):
         """
         Initialise the form.
@@ -75,11 +77,10 @@ class ContactForm(ModelForm):
         """
         model = Contacts
         fields = [
-                ContactFields.CONTACT_NAME,
-                ContactFields.CONTACT_EMAIL,
-                ContactFields.CONTACT_MESSAGE,
-                ContactFields.CONTACT_COPY ]
-
+            ContactFields.CONTACT_NAME,
+            ContactFields.CONTACT_EMAIL,
+            ContactFields.CONTACT_MESSAGE,
+            ContactFields.CONTACT_COPY ]
 
     # Define form fields with custom widget names/attrs
     # contact-fullname name Strip is true, empty value is default.

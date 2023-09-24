@@ -45,17 +45,16 @@ This module contains the views for the kore app.
 # OS Libraries
 import traceback
 
-from django.contrib import messages
 from django.http import (HttpResponse,
                          HttpResponseBadRequest,
                          HttpResponseServerError)
 from django.template.response import TemplateResponse
 
-## Local: Common Libraries
-from dash_and_do.settings import DEBUG
 from apps.kore.emailing.values import HTTP
 from apps.kore.helpers import (pp_label)
 from apps.kore.values import (Ctx, Template, Feedback, Signal, Forms)
+## Local: Common Libraries
+from dash_and_do.settings import DEBUG
 
 
 # OopCompanion:suppressRename

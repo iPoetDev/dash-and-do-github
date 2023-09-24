@@ -28,31 +28,31 @@
 
 ### 1.1.2 [Roadmap](#roadmap)
 
-- Version 0.5: Dash & Do `Core`: 
+- Version 0.5: Dash & Do `Core`:
     -  MVC Component
-    - Apps: Core,  Accounts: 
+    - Apps: Core,  Accounts:
     - Intent: Registration & Authentication
-    - Pages: 
+    - Pages:
                 - Primary: Index (App), About (static), FAQ (static)
         - Service: Verify, Error
     - API Dependencies: GitHub Authentication, Authorisation APIs
-    - Flows: Sign Up (1), Login, Reset (2), Verify (1,2), Contact, Return Sessions (?) 
-- Version 1.0: Dash and Do Reporting: 
-    - MVC target 
+    - Flows: Sign Up (1), Login, Reset (2), Verify (1,2), Contact, Return Sessions (?)
+- Version 1.0: Dash and Do Reporting:
+    - MVC target
     - Alias: Dash & Inform dashboard
     - Apps: Dash
     - Pages: Dash
-    - Intent: Analysis, Reporting, 
+    - Intent: Analysis, Reporting,
     - API Dependencies: GitHub Read & Listing APIs
     - Flows:
 - Version: 1.5+: Dash and Do Manager: Do & Act task manager.
-    -  MVC++ Future 
+    -  MVC++ Future
     - Alias: Do & Act task manager
     - Apps: Do
     - Pages: Primary: Do
     - Intent: Bulk Edits, Central artefact repository (creating a central label database, a list of Social Preview images)
     - API Dependencies
-    - Flows: 
+    - Flows:
 
 ### 1.1.2 [Project Goals](#project-goals)
 

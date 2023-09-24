@@ -48,7 +48,7 @@ kanban-plugin: basic
 
 **Complete**
 - [x] [[SUBMIT READY  Meets the following README Definition of Done (TBA)]]
-- [ ] 
+- [ ]
 - [x] [[README 02 Problem✔]]<br>- [x] Completed?<br>- [ ] Copied to readme.md?<br>- [ ] Tidied Up? Remove Criteria<br>        and<br> Completed? lists.<br>- [ ] What is missing? Anything further to add? <br>- [ ] Reviewed?
 
 

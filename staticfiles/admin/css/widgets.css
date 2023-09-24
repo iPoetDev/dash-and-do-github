@@ -36,6 +36,7 @@
     color: var(--header-link-color);
     cursor: pointer;
 }
+
 .selector-chosen .list-footer-display__clear {
     color: var(--breadcrumbs-fg);
 }
@@ -98,6 +99,7 @@
     margin: 0 0 10px;
     border-radius: 0 0 4px 4px;
 }
+
 .selector .selector-chosen--with-filtered select {
     margin: 0;
     border-radius: 0;
@@ -574,8 +576,8 @@ ul.timelist, .timelist li {
 
 /* RELATED WIDGET WRAPPER */
 .related-widget-wrapper {
-    float: left;       /* display properly in form rows with multiple fields */
-    overflow: hidden;  /* clear floated contents */
+    float: left; /* display properly in form rows with multiple fields */
+    overflow: hidden; /* clear floated contents */
 }
 
 .related-widget-wrapper-link {

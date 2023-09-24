@@ -213,7 +213,7 @@ def contact_htmx_responses(request, htmx_request, contact, response) \
     # - todo: 2023-09-21
     if all([ response.status_code == 200, htmx_request ]):
         # Successful Email: 200 Ok, Fresh unbounded form.
-        pp_label(f'HTMX: contact_responses: SUCCESS: '
+        pp_label('HTMX: contact_responses: SUCCESS: '
                  f'{response.serialize()}')
         return template_response(request,
                                  contact,

@@ -356,7 +356,7 @@ def contact_responses(request, contact, response) \
                                  fail=Signal.FAIL)
     else:
         # Code should never reach here
-        pp_label(f'contact_responses: response UNKNOWN: '
+        pp_label('contact_responses: response UNKNOWN: '
                  f'{response.serialize}')
         return template_response(request,
                                  contact,

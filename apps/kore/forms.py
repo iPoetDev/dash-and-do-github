@@ -68,7 +68,7 @@ class ContactForm(ModelForm):
         :param kwargs:
         :property label: The label for the form.
         """
-        super(ContactForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.label = Forms.CONTACT
 
     class Meta:

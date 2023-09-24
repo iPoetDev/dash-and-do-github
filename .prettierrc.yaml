@@ -9,11 +9,16 @@ embeddedLanguageFormatting: 'auto'
 # HTML
 bracketSpacing: true
 bracketSameLine: true
+# ?
+htmllVoidTags: false
 htmlWhitespaceSensitivity: 'css'
-singleAttributePerLine: false
+singleAttributePerLine: true
 
 # Programming Language
 arrowParens: 'avoid'
 
 # Markdown Configuration
 proseWrap: 'preserve'
+
+plugins:
+  - prettier-plugin-django-alpine

@@ -1,0 +1,35 @@
+<!-- @formatter:off -->
+<!-- ==============================  DJANGO TEMPLATE & INCLUDE =============================  -->
+<!-- ============================= CHANGELOG: - added ✅ 23-09-18 ==========================  -->
+<!-- ============================= CHANGELOG: - added login jumplink to 23-09-18 =========  -->
+<!-- ============================= INCLUDE:  - added ✅ ./public/skiplinks_public.html =====  -->
+<!-- ============================= AUTH:  - added ✅ ANON USER: If not logged in ===========  -->
+<!-- ============================= AUTH:  - check ❓ PAGE: Menu variables ===================  -->
+
+<div
+    class="[ skip-links-block ] [ flex items-center ] [ absolute top-0 left-0 z-50 ] [ invisible sr-only opacity-0 ] [ transition-opacity duration-500 ease-out ]"
+    autofocus
+    id="skiplinks-nav"
+    data-view="public"
+    tabindex="0">
+    <a
+        class="[ sr-link ] [ sr-only focus:not-sr-only ]"
+        data-skip-link="true"
+        hidden="until-found"
+        href="#main-page-content"
+        id="skip-link-main-content"
+        tabindex="0"
+        title="Jump to Main Content: Sign Up & Contact forms if not registered">
+        Skip to main content
+    </a>
+    <a
+        class="[ sr-link ] [ sr-only focus:not-sr-only ]"
+        data-skip-link="true"
+        hidden="until-found"
+        href="#login-dropdown-menu"
+        id="skip-link-login-form"
+        tabindex="0"
+        title="Jump to Login form if not logged in">
+        Skip to login
+    </a>
+</div>

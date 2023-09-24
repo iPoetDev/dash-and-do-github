@@ -684,3 +684,41 @@ package-lock.json
 /docs/assets/img/img.md
 /docs/assets/2023-08-29 08_45_23-Meet – LWETB Cohort 370172- Weekly Stand up and 10 more pages - Personal - Micro.png
 /docs/assets/assets.md
+/docs/readme/8-1-1_NavgiationIA_SiteMap.png
+/docs/readme/8-2-1-1_CoreApp-SystemFlow.png
+/docs/readme/8-3-1-1_PublicFlow_Wireframe_Index-html.png
+/docs/readme/8-3-1-1_PublicPage-Wireframe-UserFlow.png
+/docs/readme/8-3-2-1_MobileUser_Public-Page-Flow.png
+/docs/readme/8-3-3-1_Tablet+Users_Public-Page-Flow.png
+/docs/readme/8-3-4-1_PrivateFlow_Wireframe_Index-html.png
+/docs/readme/8-3_Skeleton_Index-Wireframe-UserJourney_PublicPrivate.png
+
+/.email
+/server.py
+/apps/core/migrations/0001_CONTACT_001.py
+/apps/core/migrations/0002_alter_contact_email.py
+/logs/django/migrations/migrations.txt
+/staticfiles/debug_toolbar/
+/staticfiles/django_extensions/
+/scripts/Behave Contact.run.xml
+/scripts/D&D Run.run.xml
+/scripts/D&D Run + JS.run.xml
+/scripts/D&D Run as Test.run.xml
+/scripts/Django Migrate _APP_ --name _NAME_00_ .run.xml
+/scripts/Django Migrate _APP_ --plan.run.xml
+/scripts/Django Runserver.run.xml
+/scripts/Django ShowMigrations --list.run.xml
+/static/js/hero-slider-carousel.js
+/static/js/htmx.js
+/static/js/htmx.min.js
+/static/js/nav-sidebar-toggle.js
+/apps/kore/static/img/brand/brand-logo-w90-h50.jpg
+/apps/kore/static/img/hero/index/hero1.jpg
+/apps/kore/static/img/hero/index/hero2.jpg
+/apps/kore/static/img/hero/index/hero3.jpg
+/apps/kore/static/img/hero/index/hero4.jpg
+/apps/kore/static/img/hero/index/hero5.jpg
+/apps/kore/mixins/__init__.py
+/apps/kore/mixins/emailmixin.py
+/apps/kore/migrations/0001_initial.py
+/apps/kore/migrations/__init__.py

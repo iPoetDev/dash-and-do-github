@@ -1,0 +1,290 @@
+<!-- @formatter:off -->
+
+<!-- ==============================  DJANGO TEMPLATE & INCLUDE ==============================  -->
+<!-- ============================= CHANGELOG: - TODO ❓ 23-09-18 ============================  -->
+<!-- ============================= EXTENDS:  - added ✅ ./public/signup_public.html =========  -->
+<!-- ============================= BLOCK:  - added ✅ form_signup.html ======================  -->
+<!-- ============================= AUTH:  - added ✅ OK USER: If logged in ==================  -->
+<!-- ============================= AUTH:  - added ✅ PAGE: Menu variables ===================  -->
+<!-- ============================= PLANS:  - TODO ❓ MESSAGES: If loggged out ===============  -->
+{% block form_signup %}
+<!-- ===================== PUBLIC CARD SIGNUP FORM ===================================  -->
+<!-- ===================== - added TODO: View:form_signup() =================================  -->
+<!-- ===================== - added TODO: widget_tweeks ======================================  -->
+<!-- ===================== - added TODO: HTMX & Post/Target =================================  -->
+<!-- ===================== - added TODO: Validation =========================================  -->
+<!-- ===================== - added TODO: hidden fields ======================================  -->
+<!-- ===================== - added TODO: FORM Success/Error =================================  -->
+<!-- ===================== - added TODO: FIELDS Success/Error ===============================  -->
+<!-- ===================== - added TODO: Email & Verify =====================================  -->
+<form
+    class="[ form-signup ] [ w-[90%] h-full ] [ place-items-center ] [ mx-auto my-8 px-2 py-4 ] [ gap-8 ] [ space-2 ]"
+    action="#"
+    aria-description="Sign Up Form"
+    data-form="signup"
+    data-view="public"
+    id="signup-form"
+    method="post"
+    name="signup-form"
+    hx-post="server-script-goes-here"
+    hx-trigger="submit"
+    hx-swap="outerHTML">
+    <!-- ===================== ✅ FORM CSRF TOKEN ===========================================  -->
+    {% csrf_token %}
+    <!-- ======================= PUBLIC SIGNUP HIDDEN FIELDS ================================  -->
+    <!-- ======================= PUBLIC SIGNUP FIELDS' 1 COLUMN ==============================  -->
+    <fieldset
+        class="[ form-card ] [ w-full h-full ] [ p-4 border ] [ bg-gray-100 ] [ rounded-lg ]"
+        data-view="public"
+        form="signup-form"
+        id="fields-signup-form">
+        <legend
+            class="[ form-card-label ] [ sr-only ]"
+            aria-description="Sign Up Form Label"
+            hidden="until-found"
+            id="label-signup-form">
+            Sign Up Form
+        </legend>
+        <!-- ============================== PUBLIC SIGNUP ROW ===============================  -->
+        <div
+            class="[ formrow ] [ relative ] [ w-full ] [ my-4 ]"
+            aria-description="Signup Menu Item"
+            data-view="public"
+            id="signup-bannerimg-row">
+            <img
+                class="[ card-image ] [ w-full h-1/3 ] [ object-cover object-center ] [ rounded-t-md ]"
+                alt="Signup Card Image"
+                data-view="public"
+                height=""
+                id=""
+                src=""
+                width="" />
+            <h2>Set up a New Account</h2>
+        </div>
+        <!-- ============================== PUBLIC SIGNUP ROW ================================ -->
+        <div
+            class="[ formrow ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
+            data-view="public"
+            id="signup-user-row">
+            <!-- UAT: pattern & INPUT -->
+            <input
+                class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                id="signup-username"
+                aria-description="Username: Input Length: min: 6, max: 30"
+                aria-label="Enter a Username"
+                autocomplete="username"
+                data-view="public"
+                maxlength="30"
+                minlength="6"
+                name="username"
+                placeholder="Username"
+                required
+                tabindex="5"
+                title="Choose a valid Username"
+                type="text" />
+            <label
+                class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                id="signup-username-tag"
+                aria-description="Enter account username"
+                aria-labelledby="signup-username"
+                data-view="public"
+                for="signup-username">
+                Username
+            </label>
+            <span
+                class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                data-status="invalid"
+                data-view="public"
+                id="invalid-signupuser-msg">
+                Please enter a valid username, min 6, max 30 in length.
+            </span>
+        </div>
+        <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
+        <div
+            class="[ formrow ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
+            data-view="public"
+            id="signup-email-row">
+            <!-- UAT: pattern & INPUT
+                 -Before @ [Email]
+                   - Any: Lower-, upper-, 0-9,
+                   - Symbols: _ + - @
+                 - After @ [Domain.TLD]
+                   - [Domain]:  Any: Lower-, upper-, 0-9
+                   - \. Email
+                   - [TLD]: Any: Lower-, upper-, 0-9
+                 Length: min: 8, max: 50
+                 -->
+            <input
+                class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                id="signup-email"
+                aria-description="Email: Input Length: min: 8, max: 50"
+                aria-label="Enter a Email"
+                autocomplete="email"
+                data-view="public"
+                maxlength="50"
+                minlength="8"
+                name="email"
+                pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$.{8,50}"
+                placeholder="Email"
+                required
+                tabindex="5"
+                title="Choose a valid Email: a-z, A-Z, 0-9, _ + - , min 8, max 50"
+                type="email" />
+            <label
+                class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                id="signup-email-tag"
+                aria-description="Enter account username"
+                aria-labelledby="signup-username"
+                data-view="public"
+                for="signup-username">
+                Email
+            </label>
+            <span
+                class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                data-status="invalid"
+                data-view="public"
+                id="invalid-signupemail-msg">
+                Please select a valid email address. <br />
+                (Symbols: _ + - are permitted before the @ symbol).
+            </span>
+        </div>
+        <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
+        <div
+            class="[ form-group ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
+            data-view="public"
+            id="signup-setpass-row">
+            <!-- UAT: pattern & INPUT
+                Number: (?=.*\d) : at least one digit character
+                Lowercase: (?=.*[a-z])
+                Uppercase: (?=.*[A-Z])
+                Symbols: (?=.*[@$!%*?&])
+                Length.{12,50}" -->
+            <input
+                class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                id="new-password"
+                aria-description="Passwords use a-z, A-Z, 0-9 and @,$,!,%,*,?,&, min: 12, max: 50. Must match."
+                aria-label="Create a new password"
+                aria-labelledby="set-password-tag"
+                autocomplete="new-password"
+                data-view="public"
+                maxlength="50"
+                minlength="12"
+                name="new-password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{12,50}"
+                placeholder="New Password"
+                required
+                tabindex="5"
+                title="Create a valid Password"
+                type="password" />
+            <label
+                class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                id="set-password-tag"
+                aria-description="Create a password: a-z, A-Z, 0-9 with @,$,!,%,*,?,& and min: 12, max: 50. Must match."
+                data-view="public"
+                for="new-password">
+                New Password
+            </label>
+            <span
+                class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                data-status="invalid"
+                data-view="public"
+                id="invalid-signuppass-msg">
+                Please create valid password: lowercase, uppercase, 0-9, symbols, min 12, max 50.
+            </span>
+        </div>
+        <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
+        <div
+            class="[ form-group ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
+            data-view="public"
+            id="signup-confpass-row">
+            <!-- UAT: pattern & INPUT
+                Number: (?=.*\d)
+                Lowercase: (?=.*[a-z])
+                Uppercase: (?=.*[A-Z])
+                Symbols: (?=.*[@$!%*?&])
+                Length.{12,50}" -->
+            <input
+                class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                id="confirm-password"
+                aria-description="Passwords use a-z, A-Z, 0-9 and @,$,!,%,*,?,&, min: 12, max: 50. Must match."
+                autocomplete="new-password"
+                data-view="public"
+                maxlength="50"
+                minlength="12"
+                name="confirm-password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{12,50}"
+                placeholder="Confirm Password"
+                required
+                tabindex="5"
+                title="Create a valid Password"
+                type="password" />
+            <label
+                class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                id="confirm-password-tag"
+                aria-labelledby="confirm-password"
+                aria-description="Create a password: a-z, A-Z, 0-9 with @,$,!,%,*,?,&, min: 12, max: 50. Must match."
+                data-view="public"
+                for="confirm-password">
+                Confirm Password
+            </label>
+            <span
+                class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
+                data-status="invalid"
+                data-view="public"
+                id="invalid-signupmatch-msg">
+                Please confirm that both password match.
+            </span>
+        </div>
+        <!-- =============================== PUBLIC SIGNUP ROW ======================== -->
+        <div
+            class="[ form-group ] [ flex flex-row ] [ w-full ] [ justify-between items-center ] [ my-2 ]"
+            data-view="public"
+            id="signup-btn-row">
+            <!-- =========================== PUBLIC SIGNUP BUTTON ===================== -->
+            <input
+                class="[ input-field peer ] [ block w-full ] [ mb-4 ] [ p-2 ] [ border rounded-md outline-none ] | [ font-medium text-base text-white ] [ bg-gray-600 ] | [ focus:ring-blue-500 focus:border-blue-500 ]"
+                aria-description="Submit form to signup and create a new account"
+                data-view="public"
+                tabindex="5"
+                type="submit"
+                value="Create Account" />
+        </div>
+        <!-- ========================= PUBLIC SIGNUP ROW========================= -->
+        <!-- ========================= FORGET PAGASSWORD: LINK ================= -->
+        <!-- ========================= FORGET PAGASSWORD: Reset.html =========== -->
+    </fieldset>
+</form>
+<!-- ========================= CONTENT: MID : FORM STATUS | HTMX TARGET ==================  -->
+<!-- 2️⃣HTMX Target: Start: beforeend | Keep Form & Clear Form -->
+<div
+    class="[ status-card notification ] [ invisible opacity-0 ] [ mx-auto my-8 px-2 py-4 ] [ bg-grey-100 ] [ space-2 ] [ border-l-4 border-blue-500 ]"
+    id="status-signup-notice"
+    aria-description="Form Status"
+    data-form="signup"
+    data-message="status"
+    data-view="public"
+    hidden="hidden"
+    inert
+    title="Status">
+    <h3
+        class="[ status-label ] [ sr-only ] [ font-semibold ] [ text-md text-blue-800 ]"
+        id="signup-status-label"
+        aria-description="Status Message Banner"
+        data-form="signup"
+        data-status="message"
+        hidden="until-found">
+        Sign Up Status
+    </h3>
+    <p
+        class="[ status-text ] [ my-2 ] [ font-semibold ] [ text-base text-blue-800 ]"
+        id="signup-status-text"
+        aria-description="Status Message:Confirm or Error"
+        data-form="signup"
+        data-status="message"
+        data-view="public">
+        __DJANGO_TAG_6__
+    </p>
+    <!-- Message Success & Message Error -->
+</div>
+{% endblock %}
+<!-- ==============================  DJANGO TEMPLATE & INCLUDE ==============================  -->

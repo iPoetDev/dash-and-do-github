@@ -13,35 +13,35 @@ assignees: iPoetDev
 
 ## Issue
 Component/App: _`   `_
-Feature Name: _`   `_ 
-File Name _`   `_ 
+Feature Name: _`   `_
+File Name _`   `_
 Line No: _`   `_
 
 ### Branch/Files URLs
 
 - Branch Name: _`  epic-  `_
-- Brand URL: 
+- Brand URL:
 - Settings File: _`dash_and_do/settings.py`_
 - Files:
   - 1: `  `
   - 2: `  `
   - 3: `  `
-- Files URLs: 
-  - 1: 
+- Files URLs:
+  - 1:
 
 > Triage:
 
 - [ ] Are Feature and Story added?
 - [ ] Has the ticket/bug/issue been well described?
-- [ ] Are the affected files pushed to the remote? 
-- [ ] Which branch: `  epic- ` 
+- [ ] Are the affected files pushed to the remote?
+- [ ] Which branch: `  epic- `
 - [ ] Are screenshots been added?
 - [ ] Are the UAT for happy path been updated?
 - [ ] Are any other details: like log or exception log traces been added?
 
 ### Tutor Requests
 
-- 
+-
 
 ## Bug Outline
 
@@ -53,13 +53,13 @@ A clear and concise description of what the bug is.
 
 ## Bug Questions/Hypothetical
 
-- Q: 
+- Q:
 
 ```text
 
 ```
 
-- Hypothetical: 
+- Hypothetical:
 
 ```text
 
@@ -113,7 +113,7 @@ Then:
 
 ```
 - apps/
-  - core/ 
+  - core/
     - static/
     - templates/
 - dash_and_do/
@@ -146,7 +146,7 @@ Then:
 
 -   [x] IDE: PyCharm Pro / Webstorm Pro (JetBrains)
 -   [x] CDE: No ~~Cloudanywhere/GitPod~~ I have incompatible VSCode (broken), no to pure browser.
--   [x] Environment: Local 
+-   [x] Environment: Local
 -   [x] Language: Python | Django | HTML | CSS | JS
 -   [x] Dependencies (Versions}:
     - [x] Python: 3.11.4
@@ -156,7 +156,7 @@ Then:
 
 > <ins>Browsers: Mobile | Desktop
 
--   [x] Browser [e.g. chrome, safari]: 
+-   [x] Browser [e.g. chrome, safari]:
     - [ ] Chrome 117
     - [ ] Chrome Dev 118
     - [ ] Edge 117
@@ -171,7 +171,7 @@ Then:
 > <ins>Network: Firewall or Cloud Filters may
 
 -   [x] Wired @Home | Wireless @Home | Wireless @Mobile
--   [ ] Security: Network Firewall 
+-   [ ] Security: Network Firewall
     - [x] NextDNS (DNS firewall): On or Off. (Default: On)
 
 #### Additional context\*\*

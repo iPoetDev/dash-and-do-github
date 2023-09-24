@@ -1,0 +1,89 @@
+<!-- @formatter:off -->
+{% extends "kore/head.html" %}
+{% load django_htmx %}
+
+{% block body %}
+
+<!-- ================================= CORE APP | PUBLIC | PRIVATE | INDEX.HTML =============================== -->
+
+<body
+    class="[ ] [ flex flex-col items-stretch content-between ]"
+    data-app="error"
+    data-view="all"
+    id="all-body"
+    hx-ext="debug, event-header">
+    <!-- Hide until found: https://www.w3.org/WAI/tutorials/menus/skip/ -->
+    <!-- https://webaim.org/techniques/skipnav/ -->
+
+    {% if request.user.is_authenticated %}
+        {% include "./private/skiplinks_private.html" %}
+    {% else %}
+        {% include "./public/skiplinks_public.html" %}
+    {% endif %}
+    <!-- ========================================= HEADER: Include ===========================================  -->
+    <!-- ============================ - note: Not Block Inheiriance ========================================== -->
+    <!-- ============================ - note: Includes: are static partials ================================== -->
+
+
+    {% include 'kore/all/header.html' %}
+    <main
+        class="[ page-main-content ] [ flex flex-row ] [ h-max ] [ mt-0 md:mt-1 lg:mt-6 ] [ px-4 pb-20 lg:pb-4 ] [ space-y-10 lg:space-y-0 lg:space-x-10 ]"
+        data-view="public"
+        id="main-page-content">
+        <!-- ===================================== CONTENT: PUBLIC : 1 COLUMN ================================  -->
+
+        <div
+            class="[ main-content ] [ flex flex-1 flex-col ] [ space-y-10 ] | [ transition-width duration-300 ease-out ] | [ font-normal text-base text-black ]"
+            role="region"
+            id="central-col2-content">
+                {% block notfound %}
+                  <h1>{{ message }}</h1>
+                  <p><{{ verbose }}/p>
+                      {% if debug %}
+                          {% if stack_trace %}
+                              <pre>{{ stack_trace }}</pre>
+                          {% endif %}
+                      {% endif %}
+                {% endblock %}
+        </div>
+    </main>
+    {% include 'kore/all/footer.html' %}
+
+
+    <!-- ========================================= Scripts ===================================================  -->
+
+    <!-- ====================================== django debug toolbar | HTMX ===================================  -->
+
+    {% include "./all/scripts.html" %}
+
+    <!-- ====================================== django debug toolbar | HTMX ===================================  -->
+
+    {% if debug %}
+    <script>
+        console.log('Debug is ON, HTMX is active')
+        if (typeof window.htmx !== 'undefined') {
+            htmx.on('htmx:afterSettle', function (detail) {
+                if (typeof window.djdt !== 'undefined' && detail.target instanceof HTMLBodyElement) {
+                    djdt.show_toolbar()
+                }
+            })
+        }
+        console.log('=====================================')
+        htmx.logger = function(elt, event, data) {
+            if(console) {
+                console.log(event, elt, data);
+            }
+        }
+    </script>
+    {% endif %}
+    <!-- <script
+            {# type="text/javascript" #}
+            {# src="{{ STATIC_URL }}debugtools/jquery.debug.js"> #}
+        </script>-->
+    <!-- ====================================== django debug toolbar | HTMX ===================================  -->
+    {% django_htmx_script %}
+</body>
+
+<!-- ================================= CORE APP | PUBLIC | PRIVATE | INDEX.HTML =============================== -->
+
+{% endblock %}

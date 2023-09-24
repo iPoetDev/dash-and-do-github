@@ -7,23 +7,23 @@
         if (document.readyState !== 'loading') {
             fn()
         } else {
-            document.addEventListener('DOMContentLoaded', fn)
-        }
+            document.addEventListener('"DOMContentLoaded" fn)
+;        }
     }
 
-    ready(function () {
+    ready(function() {
         function handleClick(event) {
-            event.preventDefault()
-            const params = new URLSearchParams(window.location.search)
+            event.preventDefault();
+            const params = new URLSearchParams(window.location.search);
             if (params.has('_popup')) {
-                window.close() // Close the popup.
+                window.close(); // Close the popup.
             } else {
-                window.history.back() // Otherwise, go back.
+                window.history.back(); // Otherwise, go back.
             }
         }
 
-        document.querySelectorAll('.cancel-link').forEach(function (el) {
-            el.addEventListener('click', handleClick)
-        })
+        document.querySelectorAll(".cancel-link").forEach(function(el) {
+            el.addEventListener("click", handleClick);
+        });
     })
 }

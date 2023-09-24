@@ -1,0 +1,176 @@
+<menu
+    class="[ private-menu-nav-right ] [ hidden ] [ flex place-items-center ] [ py-3 md:py-0 ] [ space-y-1 md:space-y-0 md:space-x-4 ]"
+    aria-label="Private Navigation, Authenticated Users"
+    data-main-menu="private"
+    data-mobile-show="false"
+    data-public="false"
+    data-private="true"
+    data-view="private"
+    hidden="hidden"
+    role="menubar"
+    id="public-header-nav-right"
+    title="Public Navigation">
+    <!-- ========================= PRIVATE MENU ITEMS =========================================  -->
+    <!-- ========================= DJANGO TEMPLATE & INCLUDE ==================================  -->
+    <!-- Refactor: Links: Menu Item | Menu Link/Text -->
+    <li
+        class="[ private-menu-item ] [ block ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ]"
+        aria-label="Home | Dash and Do for GitHub management | Private Menu, Global Navigation"
+        aria-labelledby="home-private-menuitem"
+        data-main-menu-item="private"
+        data-menu="top-bar"
+        data-mobile-show="false"
+        data-view="private"
+        id="private-menu-item-home"
+        role="menuitem">
+        <!-- ===================== PRIVATE MENU LINKS =========================================  -->
+        <a
+            class="[ main-menu-link] [ font-medium text-gray-300 text-base hover:text-white ]"
+            aria-label="Home Link"
+            href="#"
+            id="home-private-menuitem"
+            role="menuitem">
+            Home
+        </a>
+    </li>
+    <li
+        class="[ private-menu-item ] [ block ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ]"
+        aria-label="Dashboard | Dash and Do as GitHub Manager | Private Menu, Global Navigation"
+        aria-labelledby="app-dash-private-menuitem"
+        data-main-menu-item="private"
+        data-menu="top-bar"
+        data-mobile-show="false"
+        data-view="private"
+        id="private-menu-item-dash"
+        role="menuitem">
+        <a
+            class="[ main-menu-link] [ font-medium text-base text-gray-300 hover:text-white ]"
+            aria-label="Dashboard App link"
+            data-view="private"
+            href="#"
+            id="app-dash-private-menuitem">
+            Dash &amp; Inform
+        </a>
+    </li>
+    <li
+        class="[ private-menu-item ] [ hidden ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ]"
+        aria-label="Do and Act | Dash and Do as GitHub Manager | Private Menu, Global Navigation"
+        aria-labelledby="app-dash-private-menuitem"
+        data-main-menu-item="private"
+        data-menu="top-bar"
+        data-mobile-show="false"
+        data-view="private"
+        id="private-menu-item-do"
+        role="menuitem">
+        <a
+            class="[ main-menu-link] [ font-medium text-base text-gray-300 hover:text-white ]"
+            aria-label="Do App Link"
+            data-view="private"
+            href="#"
+            id="app-do-private-menuitem"
+            role="menuitem">
+            Do &amp; Act
+        </a>
+    </li>
+    <!-- ========================= PRIVATE DROP MENU COMPONENT ===============================  -->
+    <!-- ========================= DJANGO TEMPLATE & INCLUDE =================================  -->
+    <li
+        class="[ private-menu-item ] [ hidden md:block ] [ relative ] [ z-20 ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ] [ focus-within:dropdown-visible ]"
+        aria-description="Private Access to Account | Component, Control and Dropdown Menu"
+        aria-label="Account Menu | Access App & Account | Not for mobile | Only Tablet & Desktop | Public Menu, Global Navigation"
+        data-main-menu-item="private"
+        data-menu="dropdown"
+        data-mobile-show="false"
+        data-view="private"
+        id="account-menu-item-account"
+        role="menuitem">
+        <button
+            class="[ main-menu-btn ] [ z-30 ] [ font-medium text-gray-300 text-base hover:text-white ] [ cursor-pointer ]"
+            data-menu="dropdown"
+            data-view="private"
+            id="private-dropdown-menu-account"
+            onclick="document.getElementById('dropdown-card-account').classList.toggle('hidden');"
+            onKeyDown="document.getElementById('dropdown-card-account').classList.toggle('hidden');"
+            type="button">
+            Account
+        </button>
+        <!-- ===================== PRIVATE DROPDOWN CARD =====================================  -->
+        <div
+            class="[ dropdown-menu dropdown-visible ] [ hidden ] [ absolute right-[-22.5px] ] [ z-10 ] [ w-56 ] [ mt-2 p-4 ] [ bg-white ] [ rounded-md ] [ shadow-xl ] [ focus:dropdown-visible hover:dropdown-visible active:dropdown-visible ]"
+            aria-description="Account Dropdown Menu & Card"
+            data-menu="dropdown"
+            data-view="private"
+            id="dropdown-card-account">
+            <!-- ===================== PRIVATE ACCOUNT MENU ==================================  -->
+            <menu
+                class="[ account-menu menu-card ] [ block ] [ w-full h-full ] [ p-4 border ] [ bg-gray-100 ] [ rounded-lg ]"
+                aria-description="Account & User Menu"
+                data-menu="card"
+                data-view="private"
+                id="dropdown-menu-account">
+                <!-- ==================== PRIVATE ACCOUNT ROW: PROFILE =======================  -->
+                <li
+                    class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                    data-view="private"
+                    id="account-profile">
+                    <a
+                        class="[ account-link ] [ font-medium text-base text-gray-600 hover:text-slate-800 ]"
+                        aria-description="Go to Account User Profile"
+                        data-view="private"
+                        href="account.html#account-profile"
+                        id="account-profile-link"
+                        title="View your account profile">
+                        Profile
+                    </a>
+                </li>
+                <!-- ==================== PRIVATE ACCOUNT ROW: GitHub ========================  -->
+                <li
+                    class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                    data-view="private"
+                    id="account-github">
+                    <a
+                        class="[ account-link ] [ font-medium text-base text-gray-600 hover:text-slate-800 ]"
+                        aria-description="Link GitHub to Account"
+                        data-view="private"
+                        href="account.html#account-github"
+                        id="account-github-link"
+                        title="Connect your GitHub to Account">
+                        Connect
+                    </a>
+                </li>
+                <!-- ==================== PRIVATE ACCOUNT ROW: Settings=======================  -->
+                <li
+                    class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                    data-view="private"
+                    id="account-settings">
+                    <a
+                        class="[ account-link ] [ font-medium text-base text-gray-600 hover:text-slate-800 ]"
+                        aria-description="Go to Account Settings"
+                        aria-label="Account Settings Link"
+                        data-view="private"
+                        href="account.html#account-settngs"
+                        id="account-settings-link"
+                        title="Update the account settings">
+                        Settings
+                    </a>
+                </li>
+                <!-- ==================== PRIVATE ACCOUNT ROW: LOGOUT ========================  -->
+                <!-- ==================== DJANGO TEMPLATE & FUNCTION =========================  -->
+                <li
+                    class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                    data-view="private"
+                    id="account-logout">
+                    <a
+                        class="[ account-button ]"
+                        aria-description="Account Logout Button"
+                        aria-label="Account Logout Link"
+                        data-view="private"
+                        href="account.html#account-logout"
+                        id="account-logout-ctrl">
+                        Logout
+                    </a>
+                </li>
+            </menu>
+        </div>
+    </li>
+</menu>

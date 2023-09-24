@@ -77,8 +77,8 @@ def sent_by(message: str, name: str) -> str:
     :return: The appended message.
     :rtype: str
     """
-    message += "\n\nMessage Sent by {}".format(name)
-    message += "\n\nSent at {}".format(get_date())
+    message += f"\n\nMessage Sent by {name}"
+    message += f"\n\nSent at {get_date()}"
     return message
 
 

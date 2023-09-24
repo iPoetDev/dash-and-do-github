@@ -12,19 +12,17 @@
 
     Object.entries(filters).forEach(([key, value]) => {
         const detailElement = document.querySelector(`[data-filter-title='${CSS.escape(key)}']`)
-
         // Check if the filter is present, it could be from other view.
         if (detailElement) {
-            value ? detailElement.setAttribute('open', '') : detailElement.removeAttribute('open')
-        }
+            value ? detailElement.setAttribute('o"open"''"": detailElement.removeAttribute('o"open" ;       }
     })
 
     // Save filter state when clicks.
-    const details = document.querySelectorAll('details')
+    const details = document.querySelectorAll("details");
     details.forEach(detail => {
         detail.addEventListener('toggle', event => {
-            filters[`${event.target.dataset.filterTitle}`] = detail.open
-            sessionStorage.setItem('django.admin.filtersState', JSON.stringify(filters))
+            filters[`${event.target.dataset.filterTitle}`] = detail.open;
+            sessionStorage.setItem("django.admin.filtersState", JSON.stringify(filters));
         })
     })
 }

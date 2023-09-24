@@ -25,10 +25,8 @@
     - added: log_views_response (23-09-17)
 """
 import logging
-from logging import Logger
-import json
 
-from django.core.mail import BadHeaderError, send_mail
+from django.core.mail import BadHeaderError
 
 loggey = logging.getLogger(__name__)
 
@@ -111,18 +109,18 @@ def log_views_response(response, label=None, desc=None):
     logge = logging.getLogger('django')
     # Info: View Response: <TemplateResponse status_code=200, "text/html; charset=utf-8"> (23-09-17)
     logge.info("DnD INFO: View Response: %s",
-                response,
-                extra=response_extra)
+               response,
+               extra=response_extra)
     # Warning: View Response: <TemplateResponse status_code=200, "text/html; charset=utf-8"> (23-09-17)
     logge.warning("DnD WARN: View Response: ",
-                   exc_info=True,
-                   extra=response_extra)
+                  exc_info=True,
+                  extra=response_extra)
     # Error: View Response: <TemplateResponse status_code=200, "text/html; charset=utf-8"> (23-09-17)
     logge.error("DnD ERROR: View: Response is: %s",
-                 response,
-                 exc_info=True,
-                 stack_info=True,
-                 extra=response_extra),
+                response,
+                exc_info=True,
+                stack_info=True,
+                extra=response_extra),
     # Debug: View Response: <TemplateResponse status_code=200, "text/html; charset=utf-8"> (23-09-17)
     debug_response(message="DnD DEBUG: View Response: ",
                    obj=response,

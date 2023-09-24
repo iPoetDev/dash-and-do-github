@@ -26,11 +26,10 @@ $(document).ready(function () {
     var selectedTabName = getCookie('tabstyle')
 
     if (selectedTabName) {
-        selectedTabName = selectedTabName.replace(/[^a-z-]/g, '')
-    }
+        selectedTabName = selectedTabName.replace(/[^a-z-]/g, ''"" ;   }
 
     if (selectedTabName) {
-        selectedTab = $('.form-switcher a[name=' + selectedTabName + ']')
+        selectedTab = $(".form-switcher a[name=" + selectedTabName + "]");
     }
 
     if (selectedTab && selectedTab.length > 0) {

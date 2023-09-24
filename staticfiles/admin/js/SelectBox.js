@@ -17,8 +17,7 @@
             box.innerHTML = ''
             for (const node of SelectBox.cache[id]) {
                 if (node.displayed) {
-                    const new_option = new Option(node.text, node.value, false, false)
-                    // Shows a tooltip when hovering over the option
+                    const new_option = new Option(node.text, node.value, false, false) // Shows a tooltip when hovering over the option
                     new_option.title = node.text
                     box.appendChild(new_option)
                 }
@@ -35,90 +34,90 @@
                 for (const token of tokens) {
                     if (!node_text.includes(token)) {
                         node.displayed = 0
-                        break // Once the first token isn't found we're done
+ ;                       break /;/ Once the first token isn't found we're done
                     }
                 }
             }
-            SelectBox.redisplay(id)
+            SelectBox.redisplay(id);
         },
         get_hidden_node_count(id) {
-            const cache = SelectBox.cache[id] || []
-            return cache.filter(node => node.displayed === 0).length
+            const cache = SelectBox.cache[id] || [];
+            return cache.filter(node => node.displayed === 0).length;
         },
         delete_from_cache: function (id, value) {
-            let delete_index = null
-            const cache = SelectBox.cache[id]
+            let delete_index = null;
+            const cache = SelectBox.cache[id];
             for (const [i, node] of cache.entries()) {
                 if (node.value === value) {
-                    delete_index = i
-                    break
+                    delete_index = i;
+                    break;
                 }
             }
-            cache.splice(delete_index, 1)
+            cache.splice(delete_index, 1);
         },
         add_to_cache: function (id, option) {
-            SelectBox.cache[id].push({ value: option.value, text: option.text, displayed: 1 })
+            SelectBox.cache[id].push({ value: option.value, text: option.text, displayed: 1 });
         },
         cache_contains: function (id, value) {
             // Check if an item is contained in the cache
             for (const node of SelectBox.cache[id]) {
                 if (node.value === value) {
-                    return true
+                    return true;
                 }
             }
-            return false
+            return false;
         },
         move: function (from, to) {
-            const from_box = document.getElementById(from)
+            const from_box = document.getElementById(from);
             for (const option of from_box.options) {
-                const option_value = option.value
+                const option_value = option.value;
                 if (option.selected && SelectBox.cache_contains(from, option_value)) {
                     SelectBox.add_to_cache(to, {
                         value: option_value,
                         text: option.text,
-                        displayed: 1,
-                    })
-                    SelectBox.delete_from_cache(from, option_value)
+                        displayed: 1
+                    });
+                    SelectBox.delete_from_cache(from, option_value);
                 }
             }
-            SelectBox.redisplay(from)
-            SelectBox.redisplay(to)
+            SelectBox.redisplay(from);
+            SelectBox.redisplay(to);
         },
         move_all: function (from, to) {
-            const from_box = document.getElementById(from)
+            const from_box = document.getElementById(from);
             for (const option of from_box.options) {
-                const option_value = option.value
+                const option_value = option.value;
                 if (SelectBox.cache_contains(from, option_value)) {
                     SelectBox.add_to_cache(to, {
                         value: option_value,
                         text: option.text,
-                        displayed: 1,
-                    })
-                    SelectBox.delete_from_cache(from, option_value)
+                        displayed: 1
+                    });
+                    SelectBox.delete_from_cache(from, option_value);
                 }
             }
-            SelectBox.redisplay(from)
-            SelectBox.redisplay(to)
+            SelectBox.redisplay(from);
+            SelectBox.redisplay(to);
         },
         sort: function (id) {
             SelectBox.cache[id].sort(function (a, b) {
-                a = a.text.toLowerCase()
-                b = b.text.toLowerCase()
+                a = a.text.toLowerCase();
+                b = b.text.toLowerCase();
                 if (a > b) {
-                    return 1
+                    return 1;
                 }
                 if (a < b) {
-                    return -1
+                    return -1;
                 }
-                return 0
+                return 0;
             })
         },
         select_all: function (id) {
-            const box = document.getElementById(id)
+            const box = document.getElementById(id);
             for (const option of box.options) {
-                option.selected = true
+                option.selected = true;
             }
         },
     }
-    window.SelectBox = SelectBox
+    window.SelectBox = SelectBox;
 }

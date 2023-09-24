@@ -1,0 +1,63 @@
+<!-- ========================================= HEADER ===================================================  -->
+<!-- ========================================= HEADER ====================================================  -->
+<header
+    class="[ page-header header-style ] [ flex flex-auto flex-col md:flex-row ] [ items-center md:justify-between ] [ w-auto h-max md:h-16 ] [ mb-1 md:mb-0 ] [ px-4 py-2 ]"
+    data-view="public"
+    id="header-page">
+    <!-- ===================================== NAVIGATION ================================================  -->
+    <nav
+        class="[ nav-global-header ] [ w-full ] [ flex flex-auto flex-col md:flex-row ] [ items-center md:justify-between ] [ px-2 md:px-6 py-4 ] [ md:space-x-4 space-y-4 md:space-y-0 ] [ nav-global-style ] [ bg-gray-800 text-white text-center ]"
+        aria-label="Global Navigation"
+        data-navigation="global"
+        id="nav-global-header">
+        <!-- ================================= BRAND NAVIGATION ==========================================  -->
+        <div
+            class="[ nav-left-header ] [ min-w-1/3 ] [ flex flex-row ]"
+            aria-label="Brand Navigation"
+            data-navigation="brand"
+            id="header-nav-left"
+            role="navigation">
+            <div
+                class="[ nav-brand-header ] [ flex flex-shrink-0 ] [ justify-start items-center ] [ mx-2 md:mx-6 ] [ aspect-w-1 aspect-h-1 ]"
+                id="brand-header">
+                <a
+                    class="[ nav-brand-homelink ] [ text-white hover:text-gray-200 ] [ transition-colors duration-200 ease-in-out ]"
+                    href="index.html"
+                    title="Logo | Link">
+                    <img
+                        class="[ nav-left-logo ] [ object-cover w-full h-full ] [ aspect-w-1 aspect-h-1 ]"
+                        alt="Logo"
+                        id="logo-brand"
+                        src=""
+                        title="Logo | Icon | Logo" />
+                    <!-- <img class="h-8 w-auto sm:h-10 md:h-12" alt="Logo" id="logo-brand" src="" title="Logo | Icon | Logo"/> -->
+                </a>
+            </div>
+            <div
+                class="[ nav-brand-title ] [ flex flex-end flex-shrink-1 ] [ justify-end items-center ] [ hidden md:block ]"
+                id="brand-title"
+                title="Title | Link">
+                <a
+                    class="[ nav-brand-homelink ] [ text-white hover:text-gray-200 ] [ transition-colors duration-200 ease-in-out ]"
+                    href="index.html"
+                    title="Title | Link">
+                    <h1
+                        class="[ nav-brand-text ] [ font-semibold text-xl tracking-tight ]"
+                        id="brand-text"
+                        title="Banner | Text | Brand">
+                        Dash &amp; Do
+                    </h1>
+                </a>
+            </div>
+        </div>
+        <!-- ================================= GLOBAL NAVIGATION: TOP ====================================  -->
+        <nav
+            class="[ nav-right-header ] [ mb-2 md:mb-0 ] [ flex md:flex-end md:block ]"
+            aria-label="Main Navigation Banner"
+            data-navigation="primary"
+            data-view="all"
+            id="header-nav-right">
+            {% if user.is_authenticated %} {% block menu_private %} {% endblock %} {% endif %}
+        </nav>
+    </nav>
+</header>

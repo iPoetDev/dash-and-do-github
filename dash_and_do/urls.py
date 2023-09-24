@@ -43,7 +43,7 @@ from django.urls import path
 #  - account_set_password
 # Changed 2023-08-24:
 # added: SiteMap in Comments as a Planner
-# added: Core index forms to core.urls
+# added: Core index forms to kore.urls
 
 # ================== Site Map ================================
 # URLPatterns - .html Template: DjangoApp => urls.py | views.py
@@ -51,16 +51,17 @@ from django.urls import path
 #   Page: Public & Private
 # / - index.html: Home Page => Core Index.urls
 #   Page Parts: Private
-#   > /form_signup/ - Signup Form => core.urls core.views core.forms core.models
-#   > /form_login/ - Login Form => core.urls| core.views core.forms core.models
-#   > /form_password_reset/ - Password Reset Form => core.urls | core.views
-#     core.forms core.models
+#   > /form_signup/ - Signup Form => kore.urls kore.views kore.forms kore.models
+#   > /form_login/ - Login Form => kore.urls| kore.views kore.forms kore.models
+#   > /form_password_reset/ - Password Reset Form => kore.urls | kore.views
+#     kore.forms kore.models
 #   Page Parts: Private
-#   > /link_logout/ - Accounts/Logout Link => profile.urls @ Sidebar, Menu | core.view
+#   > /link_logout/ - Accounts/Logout Link => profile.urls @ Sidebar, Menu
+#   | kore.view
 #   Page Parts: All
-#   > /form_contact/ - Password Reset Form => core.urls | core.views core.forms
-#                      core.email
-# /verify/ - verify.html - Verify Email => core.urls | core.views core.http
+#   > /form_contact/ - Password Reset Form => kore.urls | kore.views kore.forms
+#                      kore.emailing
+# /verify/ - verify.html - Verify Email => kore.urls | kore.views kore.http
 # (redirect)
 # ================== Accounts App ==================
 #   Page: Private
@@ -84,15 +85,12 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
+
     path("__debug__/", include("debug_toolbar.urls")),
-    # index.html (root) is in core.urls
-    path('', include('core.urls', namespace='core')),
-    # index forms is in core.urls
-    # path('form_signup/', include('core.urls.signup', namespace='core')),
-    # path('form_login/', include('core.urls.login', namespace='core')),
-    # path('form_reset/', include('core.urls.pwd_reset', namespace='core')),
-    path('form_contact/', include('core.urls', namespace='core')),
+    # index.html (root) is in kore.urls
+    path('', include('kore.urls', namespace='kore')),
     # path('profile/', include('profile.urls', namespace='profile')),
     # path('profile/', include('allauth.urls', namespace='profile')),
-    # path('dash/', include('dash.urls, namespace='dash'')),
+    # path('dash/', include('dash.urls', namespace='dash'))
 ]

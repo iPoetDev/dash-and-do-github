@@ -41,7 +41,8 @@ def valid_name(value):
     Validates name field.
     :param value:
     :return:
-    :raise: ValidationError: Invalid Name: 6 to 50 alphanumeric characters only for international names
+    :raise: ValidationError: Invalid Name: 6 to 50 alphanumeric characters only
+     for international names
     """
     name_validator = RegexValidator(r'^[a-zA-ZÀ-ÖØ-öø-ÿ \'-]{6,50}$',
                                     'Invalid Name')
@@ -54,10 +55,11 @@ def valid_name(value):
 
 def valid_email(value):
     """
-    Validates email field.
+    Validates emailing field.
     :param value:
     :return:
-    :raise: ValidationError: Invalid Email: Email should match common email forms, and . - _
+    :raise: ValidationError: Invalid Email: Email should match common emailing
+    forms, and . - _
     """
     email_validator = RegexValidator(
         r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+.{8,50}$',
@@ -66,4 +68,5 @@ def valid_email(value):
         email_validator(value)
     except ValidationError:
         raise ValidationError(
-            "Invalid Email: Email should match common email forms, and . - _")
+            "Invalid Email: Email should match common emailing forms"
+            ", and . - _")

@@ -1,0 +1,133 @@
+<!-- @formatter:off -->
+{% extends "./all/header.html" %}
+<!-- ==============================  DJANGO TEMPLATE & INCLUDE ==============================  -->
+<!-- ============================= CHANGELOG: - checked ✅ 23-09-18 =========================  -->
+<!-- ============================= EXTENDS:  - added ✅ ./all/header.html ===================  -->
+<!-- ============================= BLOCK:  - added ✅ menu_private.html =====================  -->
+<!-- ============================= AUTH:  - added ✅ OK USER: If logged in ==================  -->
+<!-- ============================= AUTH:  - added ✅ PAGE: Menu variables ===================  -->
+<!-- ============================= PLANS:  - TODO ✅ URLS: profile.urls =====================  -->
+<!-- ============================= PLANS:  - TODO ✅ MESSAGES: If loggged out ===============  -->
+
+{% block menu_private %}
+
+<!-- ================================== PRIVATE MENU ==========================================  -->
+<ul
+    class="[ private-menu-nav-right ] [ hidden ] [ flex place-items-center ] [ py-3 md:py-0 ] [ space-y-1 md:space-y-0 md:space-x-4 ]"
+    aria-label="Private Navigation, Authenticated Users"
+    data-main-menu="private"
+    data-mobile-show="false"
+    data-public="false"
+    data-private="true"
+    data-view="private"
+    hidden="hidden"
+    role="menubar"
+    id="private-header-nav-right"
+    title="Public Navigation">
+    <!-- ========================= PRIVATE MENU ITEMS =========================================  -->
+    <!-- ========================= DJANGO TEMPLATE & INCLUDE ==================================  -->
+    <!-- Refactor: Links: Menu Item | Menu Link/Text -->
+
+    <li
+        class="[ private-menu-item ] [ hidden md:block ] [ relative ] [ z-20 ] [ mt-[-2px] md:mb-0 ] [ px-3 py-2 ] [ rounded-md ] [ focus-within:dropdown-visible ]"
+        aria-description="Private Access to Account | Component, Control and Dropdown Menu"
+        aria-label="Account Menu | Access App & Account | Not for mobile | Only Tablet & Desktop | Public Menu, Global Navigation"
+        data-main-menu-item="private"
+        data-menu="dropdown"
+        data-mobile-show="false"
+        data-view="private"
+        id="account-menu-item-account"
+        role="menuitem">
+        <button
+            class="[ main-menu-btn ] [ z-30 ] [ font-medium text-gray-300 text-base hover:text-white ] [ cursor-pointer ]"
+            id="private-dropdown-menu-account"
+            data-menu="dropdown"
+            data-view="private"
+            onclick="document.getElementById('dropdown-card-account').classList.toggle('hidden');"
+            onKeyDown="document.getElementById('dropdown-card-account').classList.toggle('hidden');"
+            type="button">
+            {{ page.AccountMenu.ACCOUNT_BUTTEXT }}
+        </button>
+        <!-- ===================== PRIVATE DROPDOWN CARD =====================================  -->
+        <div
+            class="[ dropdown-menu dropdown-visible ] [ hidden ] [ absolute right-[-22.5px] ] [ z-10 ] [ w-56 ] [ mt-2 p-4 ] [ bg-white ] [ rounded-md ] [ shadow-xl ] [ focus:dropdown-visible hover:dropdown-visible active:dropdown-visible ]"
+            aria-description="Account Dropdown Menu & Card"
+            data-menu="dropdown"
+            data-view="private"
+            id="dropdown-card-account">
+            <!-- ===================== PRIVATE ACCOUNT MENU ==================================  -->
+            <menu
+                class="[ account-menu menu-card ] [ block ] [ w-full h-full ] [ p-4 border ] [ bg-gray-100 ] [ rounded-lg ]"
+                aria-description="Account & User Menu"
+                data-menu="card"
+                data-view="private"
+                id="dropdown-menu-account">
+                <!-- ==================== PRIVATE ACCOUNT ROW: PROFILE =======================  -->
+                <li
+                    class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                    data-view="private"
+                    id="account-profile">
+                    <a
+                        class="[ account-link ] [ font-medium text-base text-gray-600 hover:text-slate-800 ]"
+                        aria-description="Go to Account User Profile"
+                        data-view="private"
+                        href="account.html#account-profile"
+                        id="account-profile-link"
+                        title="{{ page.AccountMenu.PROFILE_ATITLE }}">
+                        {{ page.AccountMenu.PROFILE_ATEXT }}
+                    </a>
+                </li>
+                <!-- ==================== PRIVATE ACCOUNT ROW: GitHub ========================  -->
+                <li
+                    class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                    data-view="private"
+                    id="account-github">
+                    <a
+                        class="[ account-link ] [ font-medium text-base text-gray-600 hover:text-slate-800 ]"
+                        aria-description="Link GitHub to Account"
+                        data-view="private"
+                        href="account.html#account-github"
+                        id="account-github-link"
+                        title="{{ page.AccountMenu.GITHUB_ATITLE }}">
+                        {{ page.AccountMenu.GITHUB_ATEXT }}
+                    </a>
+                </li>
+                <!-- ==================== PRIVATE ACCOUNT ROW: Settings=======================  -->
+                <li
+                    class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                    data-view="private"
+                    id="account-settings">
+                    <a
+                        class="[ account-link ] [ font-medium text-base text-gray-600 hover:text-slate-800 ]"
+                        aria-description="Go to Account Settings"
+                        aria-label="Account Settings Link"
+                        data-view="private"
+                        href="account.html#account-settngs"
+                        id="account-settings-link"
+                        title="{{ page.AccountMenu.SETTINGS_ATITLE }}">
+                        {{ page.AccountMenu.SETTINGS_ATEXT }}
+                    </a>
+                </li>
+                <!-- ==================== PRIVATE ACCOUNT ROW: LOGOUT ========================  -->
+                <!-- ==================== DJANGO TEMPLATE & FUNCTION =========================  -->
+                <li
+                    class="[ account-menu-item ] [ block ] [ w-full ] [ my-4 ] [ px-3 py-2 ] [ rounded-md ] [ dropmenu-interact ] [ hover:bg-grey-650 ]"
+                    data-view="private"
+                    id="account-logout">
+                    <a
+                        class="[ account-button ]"
+                        aria-description="Account Logout Button"
+                        aria-label="Account Logout Link"
+                        data-view="private"
+                        href="account.html#account-logout"
+                        id="account-logout-ctr"
+                        title="{{ page.AccountMenu.LOGOUT_ATITLE }}">
+                        {{ page.AccountMenu.LOGOUT_ATEXT }}
+                    </a>
+                </li>
+            </menu>
+        </div>
+    </li>
+</ul>
+<!-- ==============================  DJANGO TEMPLATE & INCLUDE ==============================  -->
+{% endblock %}

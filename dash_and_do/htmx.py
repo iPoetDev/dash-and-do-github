@@ -43,6 +43,7 @@ def is_htmx(request):
     return request.headers.get('Htmx-Request')
 
 
+# noinspection PyUnusedFunction
 def add_htmx_header(headers, key, value):
     """
     Adds an HTMX header to an existing dictionary of headers.
@@ -54,10 +55,11 @@ def add_htmx_header(headers, key, value):
 
     :returns: dic: The dictionary of headers with the new header added.
     """
-    headers[key] = value
+    headers[ key ] = value
     return headers
 
 
+# noinspection PyUnusedFunction
 def parse_htmx_response(response):
     """
     Parses an HTMX response into a dictionary.
@@ -70,6 +72,7 @@ def parse_htmx_response(response):
     return data
 
 
+# noinspection PyUnusedFunction
 def set_htmx_status(response, status_code):
     """
     Sets the status code of an HTMX response.
@@ -81,6 +84,7 @@ def set_htmx_status(response, status_code):
     return response
 
 
+# noinspection PyUnusedFunction
 def set_htmx_content(response, content):
     """
     Sets the content of an HTMX response.

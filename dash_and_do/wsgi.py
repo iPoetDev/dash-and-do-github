@@ -21,4 +21,5 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
                       'dash_and_do.settings')
 
+# noinspection PyUnusedName
 application = get_wsgi_application()

@@ -1,0 +1,107 @@
+{% load static %}
+{% load widget_tweaks %}
+{% load django_htmx %}
+<!doctype html>
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Copyright (c) 2023.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<!--suppress ALL -->
+<html
+    class="[ ] [ ]"
+    data-view="public"
+    id="public-page"
+    lang="en-GB">
+    <head
+        title="Welcome to the {{ sitename }} "
+        id="base">
+        <meta charset="utf-8" />
+        <meta
+            content="{{ siteurl }}"
+            name="origin" />
+        <meta
+            content="{{ siteright }}"
+            name="copyright" />
+        <meta
+            content="{{ siteperson }}"
+            name="author" />
+        <meta
+            content="{{ siteperson }}"
+            name="creator" />
+        <meta
+            content="{{ siteperson }}"
+            name="designer" />
+        <meta
+            content="{{ sitecontact }}"
+            name="contact" />
+        <meta
+            content="Dublin, Ireland; Europe"
+            name="geo.lmk" />
+        <meta
+            content="Ireland"
+            name="geo.country" />
+        <meta
+            content="Version 1.0-beta"
+            name="version" />
+        <meta
+            content="dark"
+            name="color-scheme" />
+        <meta
+            content="Fowler,Charles,Clients,Designer,Web Designer,Developer,Software, Web
+                Developer,Frontend Developer,Code Institute,HTML,CSS,Modern CSS"
+            name="keywords" />
+        <meta
+            content="{{ sitedesc }}"
+            name="description" />
+        <meta
+            content="width=device-width, initial-scale=1.0"
+            name="viewport" />
+
+        {% if not debug %}
+            <!-- =======================================🔽 PROD TAILWIND 🔽======================================  -->
+            <link
+                href="../static/css/tailwind-core3.css"
+                rel="stylesheet"
+                type="text/css" />
+            <link
+                href="../static/css/dash-and-do-core.css"
+                rel="stylesheet"
+                type="text/css" />
+        {% else %}
+            <!-- =======================================🔽 DEV ONLY GIMLI TAILWINDS 🔽===========================  -->
+            <script src="https://cdn.tailwindcss.com"></script>
+            <link
+                href="../static/css/tailwind-core3.css"
+                rel="stylesheet"
+                type="text/css" />
+            <link
+                href="../static/css/dash-and-do-core.css"
+                rel="stylesheet"
+                type="text/css" />
+        {% endif %}
+
+        {% if not debug %}
+            <!-- =======================================🔽 PROD HTMX 🔽==========================================  -->
+            {% load static %}
+            <script src="{% static 'htmx.min.js' %}" defer></script>
+        {% else %}
+            <!-- =======================================🔽 DEV HTMX 🔽==========================================  -->
+            <!-- https://htmx.org/extensions/#reference -->
+            <script src="https://unpkg.com/htmx.org@1.9.5"
+                    integrity="sha384-xcuj3WpfgjlKF+FXhSQFQ0ZNr39ln+hwjN3npfM9VBnUskLolQAcN80McRIVOPuO"
+                    crossorigin="anonymous"></script>
+            <script src="https://unpkg.com/htmx.org/dist/ext/debug.js"></script>
+            <script src="https://unpkg.com/htmx.org/dist/ext/ajax-header.js"></script>
+            <script src="https://unpkg.com/htmx.org/dist/ext/remove-me.js"></script>
+            <script src="https://unpkg.com/htmx.org/dist/ext/response-targets.js"></script>
+            <script src="https://unpkg.com/htmx.org/dist/ext/event-header.js"></script>
+        {% endif %}
+        <title title="{{ indextitle }}">{{ indextitle }}</title>
+    </head>
+    <!-- ===========================================🔽 BODY 🔽=================================================  -->
+    {% block body %}
+    <!-- ===========================================🔽 BODY 🔽=================================================  -->
+    {% endblock %}
+    <!-- ===========================================🔽 BODY 🔽=================================================  -->
+</html>

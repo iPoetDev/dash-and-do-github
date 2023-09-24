@@ -66,10 +66,11 @@ def parse_htmx_response(response):
     :param response:
     :return: dic: The dictionary of response data
     """
-    data = {'status_code': response.status_code,
-            'headers': response.headers,
-            'content': response.content}
-    return data
+    return {
+        'status_code': response.status_code,
+        'headers': response.headers,
+        'content': response.content,
+    }
 
 
 # noinspection PyUnusedFunction

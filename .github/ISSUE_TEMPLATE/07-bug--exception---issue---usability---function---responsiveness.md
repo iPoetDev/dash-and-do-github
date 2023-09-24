@@ -4,27 +4,64 @@ about: 'BUG: Code Exception | Testing Issue | UI/UX Concern | UAT Issue'
 title: 'BUG ::   '
 labels: ''
 assignees: iPoetDev
+
 ---
 
 # **`BUG`**:
 
-> Label the Bug | Component| Feature Name: _`   `_ | File Name _`   `_ | Line No: _`   `_
+> Label the Bug
+
+## Issue
+Component/App: _`   `_
+Feature Name: _`   `_ 
+File Name _`   `_ 
+Line No: _`   `_
+
+### Branch/Files URLs
+
+- Branch Name: _`  epic-  `_
+- Brand URL: 
+- Settings File: _`dash_and_do/settings.py`_
+- Files:
+  - 1: `  `
+  - 2: `  `
+  - 3: `  `
+- Files URLs: 
+  - 1: 
+
 > Triage:
->
-> > [`More Info`](https://github.com/iPoetDev/P4Template/labels/TRIAGE%3A%20More%20Information) | [`Fixable`](https://github.com/iPoetDev/P4Template/labels/TRIAGE%3A%20Fixable) | [`Not Reproduced`](https://github.com/iPoetDev/P4Template/labels/TRIAGE%3A%20Not%20Reproduced) | [`Dependency`](https://github.com/iPoetDev/P4Template/labels/TRIAGE%3A%20Dependency%3A%20Update) | [`Blocker`](https://github.com/iPoetDev/P4Template/labels/TRIAGE%3A%20Dependency%3A%20Blocker) | [`Invalid`](https://github.com/iPoetDev/P4Template/labels/TRIAGE%3A%20Invalid) | [`Wont Fix`](https://github.com/iPoetDev/P4Template/labels/TRIAGE%3A%20WontFix) | [`Fixed`](https://github.com/iPoetDev/P4Template/labels/TRIAGE%3A%20Fixed) |
-> > End: [`FIXED`](https://github.com/iPoetDev/P4Template/labels/FIXES%3A%20Found%20Bugs%20%7C%20Issues%20%7C%20Full%20Triage) | [`NO-FIX`](https://github.com/iPoetDev/P4Template/labels/NO-FIXES%3A%20Won%27t%20Fix%20Bug%20%7C%20Issues%20%7C%20Full%20Triage)
 
-## Related
+- [ ] Are Feature and Story added?
+- [ ] Has the ticket/bug/issue been well described?
+- [ ] Are the affected files pushed to the remote? 
+- [ ] Which branch: `  epic- ` 
+- [ ] Are screenshots been added?
+- [ ] Are the UAT for happy path been updated?
+- [ ] Are any other details: like log or exception log traces been added?
 
--   [`Feature`]() :: `     `
--   [`User Story`]() :: `     `
--   [`UAC`]() :: `     `
+### Tutor Requests
+
+- 
 
 ## Bug Outline
 
 A clear and concise description of what the bug is.
 
 ```
+
+```
+
+## Bug Questions/Hypothetical
+
+- Q: 
+
+```text
+
+```
+
+- Hypothetical: 
+
+```text
 
 ```
 
@@ -58,41 +95,86 @@ Then:
 (And:)
 ```
 
-<small><sub>Copy to Readme</sub></small> || <small><sub>Source: []()</sub></small>
+##### Code
 
+`Parent File/Caller`: path/file
+```python
+
+```
+`Child File/Callee`: path/file
+```python
+
+```
+
+##### Directory Structure
+
+- Screenshot:
+
+
+```
+- apps/
+  - core/ 
+    - static/
+    - templates/
+- dash_and_do/
+```
 ##### Visuals
 
 > Add screenshots if needed
 
-##### Environment
+###### Error
 
-> OS:
 
--   [ ] OS:
 
-> Developer Environment: IDE & Deployment
+###### Good
 
--   [ ] IDE:
--   [ ] Environment: Local | Cloud | Hosted:
--   [ ] Language:
--   [ ] Dependencies (Versions}:
--   [ ] Phase: Build | Pre Commit | CI Actions | Remote Build | Remote Deploy
 
-> Browsers: Mobile | Desktop
 
--   [ ] Browser [e.g. chrome, safari]
--   [ ] Version [e.g. 22]
+## Related
 
-> Platform: Model, Manufacturer, Ownership
+-   [`Feature`]() ::  #
+-   [`User Story`]() ::  #
+
+##### Environment (Please no commentary below this)
+> Remove if extra
+
+> <ins>OS:</ins>
+
+- [x] OS: Windows 10
+
+> <ins>Developer Environment: IDE & Deployment
+
+-   [x] IDE: PyCharm Pro / Webstorm Pro (JetBrains)
+-   [x] CDE: No ~~Cloudanywhere/GitPod~~ I have incompatible VSCode (broken), no to pure browser.
+-   [x] Environment: Local 
+-   [x] Language: Python | Django | HTML | CSS | JS
+-   [x] Dependencies (Versions}:
+    - [x] Python: 3.11.4
+    - [x] Django 4.2.5 LTS Current  && (no 3.2.3 LTS as insecure)
+    - [x]
+-   [x] Phase: Build | Pre Commit | CI Actions | Remote Build | Remote Deploy
+
+> <ins>Browsers: Mobile | Desktop
+
+-   [x] Browser [e.g. chrome, safari]: 
+    - [ ] Chrome 117
+    - [ ] Chrome Dev 118
+    - [ ] Edge 117
+    - [ ] Edge Dev 118
+    - [ ] Firefox Dwev
+
+> <ins>Platform: Model, Manufacturer, Ownership
 
 -   [ ] Desktop | Mobile |
 -   [ ] Personal Own | Business Own
 
-> Network: Firewall or Cloud Filters may
+> <ins>Network: Firewall or Cloud Filters may
 
--   [ ] Wired @Home | Wireless @Home | Wireless @Mobile
--   [ ] Security: Network Firewall or Network Filters or Block Lists
+-   [x] Wired @Home | Wireless @Home | Wireless @Mobile
+-   [ ] Security: Network Firewall 
+    - [x] NextDNS (DNS firewall): On or Off. (Default: On)
 
 #### Additional context\*\*
 
 > Add any other context about the problem here.
+- [ ] Logs

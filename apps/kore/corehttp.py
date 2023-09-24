@@ -332,7 +332,7 @@ def contact_responses(request, contact, response) \
         # 500: Server Error:     Return unbounded form no errors, clean slate
         # Cover up the server error and return a fresh form, so recovery is
         # seemless to the user.
-        pp_label(f'contact_responses: SERVER ERROR: New Form '
+        pp_label('contact_responses: SERVER ERROR: New Form '
                  f'{response.serialize()}')
         return template_response(request,
                                  contact,

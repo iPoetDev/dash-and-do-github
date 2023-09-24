@@ -177,7 +177,7 @@ class ContactForm(ModelForm):
         help_text='Compose your message here.',
         error_messages={
             'empty': contactattrs.MSG_EMPTY,
-            'min_length': f'You have add more than '
+            'min_length': 'You have add more than '
                           f'{contactattrs.AREA_MIN} '
                           f'for a message.',
             'max_length': f'You have exceeded the max of'

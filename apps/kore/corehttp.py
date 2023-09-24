@@ -230,7 +230,7 @@ def contact_htmx_responses(request, htmx_request, contact, response) \
         # 403: Forbidden:           Return bounded form with errors
         # 405: Method Not Allowed:  Return bounded form with errors
         # 410: Gone:                Return bounded form with errors
-        pp_label(f'contact_responses: BAD REQUEST: '
+        pp_label('contact_responses: BAD REQUEST: '
                  f'{response.serialize()}')
         return template_response(request,
                                  contact,

@@ -71,9 +71,8 @@ class DashUser(AbstractBaseUser, PermissionsMixin):
 
     class Meta:
         db_table = 'dashuser'  # optional, name of the table in db
-        app_label = 'apps.users'
-
-
+        app_label = 'users'
+        verbose_name = 'DashUser'
 
     email = models.EmailField(max_length=254, unique=True)
     name = models.CharField(max_length=254, null=True, blank=True)

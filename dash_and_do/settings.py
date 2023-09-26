@@ -568,7 +568,7 @@ ACCOUNT_ADAPTER = \
 # noinspection PyUnusedName
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True  # checked 23/09/23
 # Specifies the login method to use: username, emailing, or username_email
-ACCOUNT_AUTHENTICATION_METHOD = 'email'  # checked 23/09/23
+ACCOUNT_AUTHENTICATION_METHOD = 'email'  # checked 23/09/25
 # noinspection PyUnusedName
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False  # checked 23/09/23
 # Multiple Emails. Max 1

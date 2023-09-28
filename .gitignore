@@ -743,3 +743,12 @@ package-lock.json
 /apps/kore/context_processors.py
 /apps/kore/decorator.py
 /apps/kore/tests.py
+/.github/workflows/datree-validation.yml
+/.github/workflows/qodana.yml
+/tailwind/tw-appearance.config.js
+/tailwind/tw-compostion.config.js
+/tailwind/tw-interact.config.js
+/tailwind/tw-structure.config.js
+/IndexPageLogic.excalidraw
+/dash.sqlite3
+/.cliactions.yaml

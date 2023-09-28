@@ -1,9 +1,17 @@
-############################ RUFF ##############################
+# ==============================POETRY IS NOT USED==============================
+################################ RUFF ##############################
 [tool.ruff]
 # Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
 select = ["E", "F", "I", "D", "YTT", "PL", "T20", "RSE", "RET", "SIM", "TID",
     "TCH", "ARG", "PTH", "S", "ANN", "B"]
-ignore = []
+ignore = [
+    "D205",
+    "D106",
+    "D415"]
+
+# Ignoreing D106: Missing docstring in public nested class.
+# Ignoreing D205: 1 blank line required between summary line and description.
+# Ignoreing D415: First line should end with a period.
 
 # Allow autofix for contact enabled rules (when `--fix`) is provided.
 fixable = ["A", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W",
@@ -47,12 +55,12 @@ exclude = [
 # Per File
 
 # Same as Black.
-line-length = 100
+line-length = 79
 
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
-# Assume Python 3.10.
+# Assume Python 3.11.
 target-version = "py311"
 
 
@@ -68,18 +76,23 @@ ignore-fully-untyped = true
 mypy-init-return = false
 suppress-dummy-args = false
 suppress-none-returning = false
+#
 [tool.ruff.flake8-bandit]
 check-typed-exception = false
 #hardcoded-tmp-directory = []
 #extend-hardcoded-tmp-directory = [""]
+#
 [tool.ruff.flake8-bugbear]
 #extend-immutable-calls = ["fastapi.Depends", "fastapi.Query"]
+#
 [tool.ruff.flake8-builtins]
 #builtins-ignorelist = [""]
 [tool.ruff.flake8-comprehensions]
 allow-dict-calls-with-keyword-arguments = true
+#
 [tool.ruff.flake8-errmsg]
 max-string-length = 20
+#
 [tool.ruff.flake8-gettext]
 #extend-function-names = ["ugettetxt"]
 #function-names = ["_", "gettext", "ngettext", "ugettetxt"]
@@ -139,9 +152,9 @@ lines-between-types = 1
 order-by-type = true
 #relative-imports-order = "closest-to-furthest
 #required-imports = ["from __future__ import annotations"]
-#section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
 #single-line-exclusions = ["os", "json"]
-#split-on-trailing-comma = false
+split-on-trailing-comma = true
 #[tool.ruff.isort.sections]
 # Group contact * imports into a/own/separate section.
 [tool.ruff.pep8-naming]
@@ -169,34 +182,34 @@ keep-runtime-typing = true
 
 ############################ CURLYLINY ##############################
 
-[tool.curlylint]
-include = '\.(html|jinja|tpl|txt)$'
-
-[tool.curlylint.rules]
-indent = 4
-html_has_lang = 'en-GB'
-
-# All role attributes must be valid.
-# See https://www.curlylint.org/docs/rules/aria_role.
-aria_role = true
-# Forms cannot be rendered with as_table, as_ul, or as_p
-# See https://www.curlylint.org/docs/rules/django_forms_rendering.
-django_forms_rendering = true
-# The `lang` attribute must be present.
-# See https://www.curlylint.org/docs/rules/html_has_lang.
-html_has_lang = ["en", "en-US", "en-GB"]
-# The `alt` attribute must be present.
-# See https://www.curlylint.org/docs/rules/image_alt.
-image_alt = true
-# Use tabs.
-# See https://www.curlylint.org/docs/rules/indent.
-indent = 4
-# `user-scalable=no` must not be used, and `maximum-scale` should be 2 or above.
-# See https://www.curlylint.org/docs/rules/meta_viewport.
-meta_viewport = true
-# The `autofocus` attribute must not be used.
-# See https://www.curlylint.org/docs/rules/no_autofocus.
-no_autofocus = true
-# Avoid positive `tabindex` values, change the order of elements on the page instead.
-# See https://www.curlylint.org/docs/rules/tabindex_no_positive.
-tabindex_no_positive = true
+#[tool.curlylint]
+#include = '\.(html|jinja|tpl|txt)$'
+#
+#[tool.curlylint.rules]
+#indent = 4
+#html_has_lang = 'en-GB'
+#
+## All role attributes must be valid.
+## See https://www.curlylint.org/docs/rules/aria_role.
+#aria_role = true
+## Forms cannot be rendered with as_table, as_ul, or as_p
+## See https://www.curlylint.org/docs/rules/django_forms_rendering.
+#django_forms_rendering = true
+## The `lang` attribute must be present.
+## See https://www.curlylint.org/docs/rules/html_has_lang.
+#html_has_lang = ["en", "en-US", "en-GB"]
+## The `alt` attribute must be present.
+## See https://www.curlylint.org/docs/rules/image_alt.
+#image_alt = true
+## Use tabs.
+## See https://www.curlylint.org/docs/rules/indent.
+#indent = 4
+## `user-scalable=no` must not be used, and `maximum-scale` should be 2 or above.
+## See https://www.curlylint.org/docs/rules/meta_viewport.
+#meta_viewport = true
+## The `autofocus` attribute must not be used.
+## See https://www.curlylint.org/docs/rules/no_autofocus.
+#no_autofocus = true
+## Avoid positive `tabindex` values, change the order of elements on the page instead.
+## See https://www.curlylint.org/docs/rules/tabindex_no_positive.
+#tabindex_no_positive = true

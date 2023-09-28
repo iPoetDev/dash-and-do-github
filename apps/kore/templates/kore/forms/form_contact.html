@@ -34,10 +34,12 @@
     hx-swap="outerHTML">
     <!-- ===================== ✅ FORM CSRF TOKEN ===================================  -->
     {% csrf_token %}
+    {% if contact_form.is_bound %}
     {% for formerror in contact_form.non_field_errors %}
         {{ formerror.errors }}
         {{ formerror }}
     {% endfor %}
+    {% endif %}
     {% for hidden_field in contact_form.hidden_fields %}
         {{ hidden_field.errors }}
         {{ hidden_field }}
@@ -100,6 +102,7 @@
                 for="{{ contact_form.fields.name.widget.attrs.id }}">
                 Full Name
             </label>
+            {% if contact_form.is_bound %}
             {% if contact_form.fields.name.errors %}
                 <span
                     class="[ input-message group ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
@@ -112,6 +115,7 @@
                         {{ error }}
                     {% endfor %}
                 </span>
+            {% endif %}
             {% endif %}
         </div>
         <!-- ========================= PUBLIC CONTACT ROW========================= -->
@@ -157,6 +161,7 @@
                 for="{{ contact_form.fields.email.widget.attrs.id }}">
                 Email
             </label>
+            {%  if contact_form.is_bound %}
             {% if contact_form.fields.email.errors %}
                 <span
                     class="[ input-message group ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
@@ -169,6 +174,7 @@
                         {{ error }}
                     {% endfor %}
                 </span>
+            {% endif %}
             {% endif %}
         </div>
     </fieldset>
@@ -215,6 +221,7 @@
                 id="contact-message-tag">
                 Message
             </label>
+            {% if contact_form.is_bound %}
             {% if contact_form.fields.message.errors %}
                 <span
                     class="[ input-message group ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
@@ -227,6 +234,7 @@
                         {{ error }}
                     {% endfor %}
                 </span>
+            {% endif %}
             {% endif %}
         </div>
         <!-- ========================= PUBLIC CONTACT ROW: CONTROLS =================== -->

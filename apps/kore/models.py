@@ -75,6 +75,7 @@ from dash_and_do.settings import DEFAULT_FROM_EMAIL
 
 
 class Contacts(models.Model):
+    # TODO: blank = False, null = True
     name = models.CharField(max_length=50,
                             name='contact_name')
     email = models.EmailField(max_length=50,

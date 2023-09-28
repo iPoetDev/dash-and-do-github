@@ -1,4 +1,3 @@
-#!/user/bin/env python3
 """
 This module contains the views for the kore app.
 
@@ -23,9 +22,9 @@ import traceback
 from django.http import Http404
 from django.http import HttpRequest
 from django.http import HttpResponse
+from django.template.response import TemplateResponse
 # Django Imports
 from django.shortcuts import render
-from django.template.response import TemplateResponse
 from django.views.decorators.cache import never_cache
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
@@ -36,6 +35,10 @@ from django.views.defaults import page_not_found as dj_page_not_found
 # Third Party Imports
 from django_htmx.middleware import HtmxDetails
 
+# Local: Project Imports
+from dash_and_do.htmx import is_htmx
+from dash_and_do.settings import DEBUG
+# Local: Kore
 from apps.kore.corehttp import (contact_email_response, contact_http_response,
                                 switch_form)
 from apps.kore.emailing.emails import send_mail_contact2
@@ -44,11 +47,9 @@ from apps.kore.forms import ContactForm
 from apps.kore.helpers import (pp_response,
                                pp_label)
 from apps.kore.values import (SiteMeta, Brand, Page, Template, HTTP, Forms)
-# Local: Project Imports
-from dash_and_do.htmx import is_htmx
-from dash_and_do.settings import DEBUG
-
-
+# Local: Users Forms
+from apps.users.views import DashSignupView, DashLoginView
+from apps.users.forms import DashSignupForm, DashLoginForm
 # OopCompanion:suppressRename
 
 # ====================== Home Page Views ===========================
@@ -73,7 +74,10 @@ def index(request):
     """
     # Don't' not use constants in tag labels within the context
     # Use constants for the context values
-    contact = ContactForm()
+    login = DashLoginForm(prefix='current')
+    signup = DashSignupForm(prefix='new')
+    contact = ContactForm(prefix='sitemessage')
+
     context = {
         'site': SiteMeta.NAME,
         'indextitle': Page.Index.TITLE,
@@ -85,7 +89,9 @@ def index(request):
         'sitecontact': SiteMeta.CONTACT,
         'brand': Brand,
         'page': Page,
-        'contact_form': contact,
+        'contact_form': contact,  # Render initial clear form on Get
+        'signup_form': signup,  # Render initial clear form on Get
+        'login_form': login,  # Render initial clear form on Get
         'contactname': contact.fields[ 'name' ],
         'contactemail': contact.fields[ 'email' ],
         'contactmessage': contact.fields[ 'message' ],
@@ -93,6 +99,13 @@ def index(request):
     }
     pp_label(label='Index: ContactForm')
     # Template.HOME is 'index.html' - is a Class.CONSTANT value format/abstract
+    # response = TemplateResponse(request, Template.HOME, context)
+    # Check for HTMX request
+    # if is_htmx(request):
+    #     # HTMX enabled response
+    #     # HTMX for header to update the url in the browser's address bar
+    #     response[ 'HX-Current-Url' ] = request.get_full_path()
+    # Render the templated response for index.html
     return render(request, Template.HOME, context)
 
 
@@ -111,7 +124,7 @@ def index(request):
 
 
 @require_http_methods([ HTTP.POST ])
-def form_contact(request):    # sourcery skip: dict-assign-update-to-union
+def form_contact(request):  # sourcery skip: dict-assign-update-to-union
     """
     Form contact view. | Access: All Users
     Checks for HTTP POST request and if the request is htmx.
@@ -122,7 +135,8 @@ def form_contact(request):    # sourcery skip: dict-assign-update-to-union
     :rtype: TemplateResponse
     :raises: None
     """
-    contact = ContactForm(request.POST or None)
+    contact = ContactForm(request.POST or None,
+                          prefix='contact')
     base_ctx = {}
     if contact.is_valid() and request.method == HTTP.POST:
         # send emailing, issue a HTTP Response,

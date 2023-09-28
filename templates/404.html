@@ -1,6 +1,5 @@
 <!-- @formatter:off -->
 {% extends "kore/head.html" %}
-{% load django_htmx %}
 
 {% block body %}
 
@@ -81,7 +80,6 @@
             {# src="{{ STATIC_URL }}debugtools/jquery.debug.js"> #}
         </script>-->
     <!-- ====================================== django debug toolbar | HTMX ===================================  -->
-    {% django_htmx_script %}
 </body>
 
 <!-- ================================= CORE APP | PUBLIC | PRIVATE | INDEX.HTML =============================== -->

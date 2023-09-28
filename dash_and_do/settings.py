@@ -189,10 +189,15 @@ if ADMIN_ENABLED:
 # - added: `debug_toolbar` for debugging
 # - added: `django_behave` for BDD testing
 
+
 INSTALLED_APPS += [
     'debug_toolbar',
     'djdt_permissions',
     # 'mail_panel',
+    'allauth',  # django-allauth
+    'allauth.account',  # allauth.account
+    'allauth.socialaccount',  # allauth.socialaccount
+    'allauth.socialaccount.providers.github',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -203,21 +208,13 @@ INSTALLED_APPS += [
 ]
 
 THIRDPARTY_APPS += [
-    # allauth
-    # 'allauth.socialaccount',
-    # ... include the providers you want to enable:
-    # 'allauth.socialaccount.providers.github',
     'rest_framework',
     # 'autocomplete', #django-htmx-autocomplete
     'corsheaders',  # django-cors-headers
-    'allauth',  # django-allauth
-    'allauth.account',  # allauth.account
-    'allauth.socialaccount',  # allauth.socialaccount
-    'allauth.socialaccount.providers.github',
     'anymail',  # django-anymail
     'mail_templated',  # django-mail-templated
     'widget_tweaks',  # django-widget-tweaks
-    'django_htmx',  # django-htmx
+     'django_htmx',  # django-htmx
 ]
 
 if DEBUG:
@@ -320,7 +317,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     # 'corsheaders.middleware.CorsMiddleware',
-    # 'django.middleware.common.CommonMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django_htmx.middleware.HtmxMiddleware',  # third party
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',  # checked
@@ -377,11 +374,8 @@ TEMPLATES = [
         'DIRS': [
             BASE_DIR / 'templates',
             BASE_DIR / 'apps/kore/templates/kore/',
+            BASE_DIR / 'apps/users/templates/users/',
             'venv/Lib/site-packages/debug_toolbar/templates/debug_toolbar/',
-            # BASE_DIR / 'apps/kore/templates/kore/all/',
-            # BASE_DIR / 'apps/kore/templates/kore/forms/',
-            # BASE_DIR / 'apps/kore/templates/kore/public/',
-            # BASE_DIR / 'apps/kore/templates/kore/private/',
             # BASE_DIR / 'apps/profile/templates/profile',
             # BASE_DIR / 'apps/dash/templates/dash',
         ],
@@ -452,7 +446,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = \
     envs.str('LOGIN_REDIRECT_URL', default='/')
 LOGIN_URL = \
-    envs.str('LOGIN_URL', default='/profile/login/')
+    envs.str('LOGIN_URL', default='/')
 LOGOUT_REDIRECT_URL = \
     envs.str('LOGOUT_REDIRECT_URL', default='/')
 
@@ -558,6 +552,8 @@ PASSWORD_HASHERS = [
 #   - added: allauth for Social contact Configurations explicitly
 #   - added: Adapter, Signup, Email Verification, Forms, Login, Query Email
 #   - adr: Store Tokens: Select token store in database or not
+#   - adr: Use email only, no username for authentication
+#   - adr: Use custom user model for authentication
 # - noted: Excluded any custom user models settings
 
 # Add the following adapter class to use
@@ -580,17 +576,17 @@ ACCOUNT_TEMPLATE_EXTENSION = 'html'  # checked 23/09/23
 # Signup
 # noinspection PyUnusedName
 ACCOUNT_FORMS = {
-    'signup': 'allauth.account.forms.SignupForm',
-    'login': 'allauth.account.forms.LoginForm',
-    'reset_password': 'allauth.account.forms.ResetPasswordForm',
-    'change_password': 'allauth.account.forms.ChangePasswordForm',
+    'signup': 'users.forms.SignupForm',  # highprior
+    'login': 'users.forms.LoginForm',  # highprior
+    'reset_password': 'allauth.account.forms.ResetPasswordForm',  # lowprior
+    'change_password': 'allauth.account.forms.ChangePasswordForm',  # lowprior
 }
 # noinspection PyUnusedName
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = False
 # noinspection PyUnusedName
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 # noinspection PyUnusedName
-ACCOUNT_SIGNUP_FORM_CLASS = None
+ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'
 ACCOUNT_SIGNUP_REDIRECT_URL = LOGIN_URL
 
 # Account Email
@@ -623,7 +619,7 @@ ACCOUNT_EMAIL_CONFIRMATION_COOLDOWN = 180  # checked 23/09/24
 
 # noinspection PyUnusedName
 if DEBUG:
-    ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 1
+    ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 10
 else:
     ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
 # noinspection PyUnusedName
@@ -658,8 +654,8 @@ ACCOUNT_SESSION_REMEMBER = None
 # Account Users
 # ACCOUNT_USER_DISPLAY = lambda user: user.username
 # noinspection PyUnusedName
-ACCOUNT_USERNAME_MIN_LENGTH = 3
-ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USERNAME_MIN_LENGTH = 6
+ACCOUNT_USERNAME_REQUIRED = False  # checked 23/09/28
 # noinspection PyUnusedName
 ACCOUNT_USERNAME_BLACKLIST = [ ]
 
@@ -667,8 +663,8 @@ ACCOUNT_USERNAME_BLACKLIST = [ ]
 ACCOUNT_USERNAME_VALIDATORS = [ ]
 
 # Account Custom Models
-ACCOUNT_USER_MODEL_EMAIL_FIELD = 'email'
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USER_MODEL_EMAIL_FIELD = 'email'  # checked 23/09/28
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None  # checked 23/09/28
 
 # ================== Django AllAuth Social ==================
 

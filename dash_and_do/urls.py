@@ -85,12 +85,13 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
+    path('accounts/', include('allauth.urls')),  # checked
+    # 2023-09-25
 
     path("__debug__/", include("debug_toolbar.urls")),
-    # index.html (root) is in kore.urls
     path('', include('kore.urls', namespace='kore')),
-    # path('profile/', include('profile.urls', namespace='profile')),
-    # path('profile/', include('allauth.urls', namespace='profile')),
-    # path('dash/', include('dash.urls', namespace='dash'))
+    path('', include('users.urls', namespace='users')),
 ]
+# path('profile/', include('profile.urls', namespace='profile')),
+# path('profile/', include('allauth.urls', namespace='profile')),
+# path('dash/', include('dash.urls', namespace='dash'))

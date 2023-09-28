@@ -1,51 +1,48 @@
 #!/user/bin/env python3
-"""
-    @File: <filename>.py
-    @Version: 0.3.0 to 0.3.0.?
-    @Desc: apps | <app> |  <module>
-    @Author: Charles Fowler
-    @Copyright: 2023
-    @Date Created: 23/09/?
-    @Date Modified: 23/09/??
-    @Python Version: 3.11.04
-    @Django Version: 4.2.3/.04/.05
-    @Notes / Ideas v Implement:
-        -  Option 3: A Custom User Model
-        Subsisitute the default User model by subclassing AbstractBaseUser
-        Defaul fields not preserved by subclassing:
-        Impacts existing methods
-        Entire new User Model, Update of settings .py
-        App has specif requirements (like using AllAuth)
-        Flex to use email as id token, not username,
-        Pro: most freedome, cons: most work
-    @Changelog:
-    - Added:
-        - added: Created initial file: 23/09/?24
-        - added: Added User Model: 23/09/?24
-        - added: Added UserManager: 23/09/?24
-    - Updated:
-        - updated:
-    @Plan:
-        - TODO:
-        - FIXME:
-        - CHECK:
+"""@File: <filename>.py
+@Version: 0.3.0 to 0.3.0.?
+@Desc: apps | <app> |  <module>
+@Author: Charles Fowler
+@Copyright: 2023
+@Date Created: 23/09/?
+@Date Modified: 23/09/??
+@Python Version: 3.11.04
+@Django Version: 4.2.3/.04/.05
+@Notes / Ideas v Implement:
+-  Option 3: A Custom User Model
+Subsisitute the default User model by subclassing AbstractBaseUser
+Defaul fields not preserved by subclassing:
+Impacts existing methods
+Entire new User Model, Update of settings .py
+App has specif requirements (like using AllAuth)
+Flex to use email as id token, not username,
+Pro: most freedome, cons: most work
+@Changelog:
+- Added:
+- added: Created initial file: 23/09/?24
+- added: Added User Model: 23/09/?24
+- added: Added UserManager: 23/09/?24
+- Updated:
+- updated:
+@Plan:
+- TODO:
+- FIXME:
+- CHECK:
 """
 
 # https://medium.com/
 # @ksarthak4ever/django-custom-user-model-allauth-for(-oauth-20)c84888c3184
 # OopCompanion:suppressRename
 
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
-    PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import PermissionsMixin
 from django.db import models
-from django.utils import timezone
 
 from apps.users.managers import DashUserManager
 
 
 class DashUser(AbstractBaseUser, PermissionsMixin):
-    """
-    Credit:
+    """Credit:
     - Author: Sarthak Kumar(@ksarthak4ever)
     - Title: Django Custom User Model + Allauth for OAuth
     - Date Created: 2019-04-02
@@ -66,7 +63,7 @@ class DashUser(AbstractBaseUser, PermissionsMixin):
     :param REQUIRED_FIELDS: list of required fields on sigh up
     :param objects: User Manager
     :return: User
-    :rtype: User
+    :rtype: User.
     """
 
     class Meta:
@@ -89,12 +86,12 @@ class DashUser(AbstractBaseUser, PermissionsMixin):
     objects = DashUserManager()
 
     def get_absolute_url(self):
-        """
-        Return the absolute URL for the DashUser instance.
+        """Return the absolute URL for the DashUser instance.
 
         :return: The absolute URL for the DashUser instance.
         """
         return "/users/%i/" % (self.pk)
 
     def __str__(self):
+        """Return the string representation of the DashUser instance."""
         return self.email

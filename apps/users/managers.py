@@ -1,37 +1,35 @@
 #!/user/bin/env python3
-"""
-    @File: <filename>.py
-    @Version: 0.3.0 to 0.3.0.?
-    @Desc: apps | users |  manager: DashUserManager ModelManager
-    @Author: Charles Fowler
-    @Copyright: 2023
-    @Date Created: 23/09/?
-    @Date Modified: 23/09/??
-    @Python Version: 3.11.04
-    @Django Version: 4.2.5
-    @Notes / Ideas v Implement:
-        -  Option 3: A Custom User Manager for Custom User Model
-        Subsisitute the default User model by subclassing AbstractBaseUser
-        Defaul fields not preserved by subclassing:
-        Impacts existing methods
-        Entire new User Model, Update of settings .py
-        App has specif requirements (like using AllAuth)
-        Flex to use email as id token, not username,
-        Pro: most freedome, cons: most work
-    @Changelog:
-    - Added:
-        - added: Created initial file: 23/09/??:
-    - Updated:
-        - updated:
-    @Plan:
-        - TODO:
-        - FIXME:
-        - CHECK:
+"""@File: <filename>.py
+@Version: 0.3.0 to 0.3.0.?
+@Desc: apps | users |  manager: DashUserManager ModelManager
+@Author: Charles Fowler
+@Copyright: 2023
+@Date Created: 23/09/?
+@Date Modified: 23/09/??
+@Python Version: 3.11.04
+@Django Version: 4.2.5
+@Notes / Ideas v Implement:
+-  Option 3: A Custom User Manager for Custom User Model
+Subsisitute the default User model by subclassing AbstractBaseUser
+Defaul fields not preserved by subclassing:
+Impacts existing methods
+Entire new User Model, Update of settings .py
+App has specif requirements (like using AllAuth)
+Flex to use email as id token, not username,
+Pro: most freedome, cons: most work
+@Changelog:
+- Added:
+- added: Created initial file: 23/09/??:
+- Updated:
+- updated:
+@Plan:
+- TODO:
+- FIXME:
+- CHECK:
 """
 
 from django.contrib.auth.models import BaseUserManager
 from django.utils import timezone
-
 
 # https://medium.com/
 # @ksarthak4ever/django-custom-user-model-allauth-for(-oauth-20)c84888c3184
@@ -39,8 +37,7 @@ from django.utils import timezone
 
 
 class DashUserManager(BaseUserManager):
-    """
-    Credit:
+    """Credit:
       - Author: Sarthak Kumar(@ksarthak4ever)
       - Title: Django Custom User Model + Allauth for OAuth
       - Date Created: 2019-04-01
@@ -50,13 +47,12 @@ class DashUserManager(BaseUserManager):
       - Last Accessed: 2023-09-24
     :method _create_user:
     :method create_user: Overrides, for email over user name implementation
-    :method create_superuser: Overrides, email over user name implementation
+    :method create_superuser: Overrides, email over user name implementation.
     """
 
     def _create_user(self, email, password, is_staff, is_superuser,
                      **extra_fields):
-        """
-        :param email: The email address of the user.
+        """:param email: The email address of the user.
         :param password: The password for the user.
         :param is_staff: Boolean indicating if the user is a staff member.
         :param is_superuser: Boolean indicating if the user is a superuser.
@@ -91,8 +87,7 @@ class DashUserManager(BaseUserManager):
         return user
 
     def create_user(self, email, password, **extra_fields):
-        """
-        Create a user with the given email and password.
+        """Create a user with the given email and password.
 
         :param email: The email of the user.
         :param password: The password for the user.
@@ -103,8 +98,7 @@ class DashUserManager(BaseUserManager):
         return self._create_user(email, password, False, False, **extra_fields)
 
     def create_superuser(self, email, password, **extra_fields):
-        """
-        Create a superuser with the given parameters.
+        """Create a superuser with the given parameters.
 
         :param email: The email of the superuser.
         :param password: The password of the superuser.

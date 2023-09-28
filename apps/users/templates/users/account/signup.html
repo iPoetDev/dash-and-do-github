@@ -1,0 +1,209 @@
+{% load i18n %}
+
+{#{% block head_title %}{% trans "Signup" %}{% endblock head_title %}#}
+
+{% block form_signup %}
+
+
+    {%  if signup_form %}
+    <form
+        class="[ form-signup ] [ w-[90%] h-full ] [ place-items-center ] [ mx-auto my-8 px-2 py-4 ] [ gap-8 ] [ space-2 ]"
+        action="{% url 'users:account_signup' %}"
+        aria-description="Sign Up Form"
+        data-form="signup"
+        data-view="public"
+        id="signup-form"
+        method="post"
+        name="signup-form"
+         hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+        hx-post="{% url 'users:account_signup' %}"
+        hx-trigger="submit"
+        hx-swap="outerHTML">
+        <!-- ===================== ✅ FORM CSRF TOKEN ===================================  -->
+            {% csrf_token %}
+            {% for formerror in signup_form.non_field_errors %}
+                {{ formerror.errors }}
+                {{ formerror }}
+            {% endfor %}
+        <!-- ======================= PUBLIC SIGNUP HIDDEN FIELDS ================================  -->
+{#            {% if redirect_field_value %}#}
+{#                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />#}
+{#            {% endif %}#}
+            {% for hidden_field in signup_form.hidden_fields %}
+                {{ hidden_field.errors }}
+                {{ hidden_field }}
+            {% endfor %}
+
+        <!-- ============================== PUBLIC SIGNUP ROW =============================== -->
+        <input type="hidden" name="prefix" value="{{ signup_form.prefix }}" />
+        <!-- ======================= PUBLIC SIGNUP FIELDS' 1 COLUMN ==============================  -->
+        <fieldset
+            class="[ form-card ] [ w-full h-full ] [ p-4 border ] [ bg-gray-100 ] [ rounded-lg ]"
+            data-view="public"
+            form="signup-form"
+            id="fields-signup-form">
+            <legend
+                class="[ form-card-label ] [ sr-only ]"
+                aria-description="Sign Up Form Label"
+                hidden="until-found"
+                id="label-signup-form">
+                Sign Up Form
+            </legend>
+            <!-- ============================== PUBLIC SIGNUP ROW ===============================  -->
+            <div
+                class="[ formrow ] [ relative ] [ w-full ] [ my-4 ]"
+                aria-description="Signup Menu Item"
+                data-view="public"
+                id="signup-bannerimg-row">
+                <img
+                    class="[ card-image ] [ w-full h-1/3 ] [ object-cover object-center ] [ rounded-t-md ]"
+                    alt="Signup Card Image"
+                    data-view="public"
+                    height=""
+                    id=""
+                    src=""
+                    width="" />
+                <h2>{% trans "Set up a New Account" %}</h2>
+            </div>
+        <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
+        <div
+            class="[ formrow ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
+            data-view="public"
+            id="signup-email-row">
+            <input
+                class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                id="{{ signup_form.email.field.widget.attrs.id }}"
+                aria-description="{{ signup_form.email.field.widget.attrs.aria_description }}"
+                aria-label="{{ signup_form.email.field.widget.attrs.aria_label }}"
+                autocomplete="{{ signup_form.email.field.widget.attrs.autocomplete }}"
+                data-view="{{ signup_form.email.field.widget.attrs.data_view }}"
+                maxlength="{{ signup_form.email.field.widget.attrs.maxlength }}"
+                minlength="{{ signup_form.email.field.widget.attrs.minlength }}"
+                name="{{ signup_form.email.field.widget.attrs.name }}"
+                pattern="{{ signup_form.email.field.widget.attrs.pattern }}"
+                placeholder="{{ signup_form.email.label }}"
+                required
+                tabindex="{{ signup_form.email.field.widget.attrs.tabindex }}"
+                title="{{ signup_form.email.field.widget.attrs.title }}"
+                type="email"
+                value="{{ signup_form.email.data|default:'' }}"/>
+            <label
+                class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                id="signup-email-tag"
+                data-view="{{ signup_form.email.field.widget.attrs.data_view }}"
+                for="{{ signup_form.email.field.widget.attrs.id }}">
+                {{ signup_form.email.label }}
+            </label>
+            {% if signup_form.email.errors %}
+              {% for error in signup_form.email.errors %}
+                <span class="[ input-message ] [ text-red-600 text-xs ]"
+                      data-status="invalid"
+                      data-view="public"
+                      id="invalid-signupmatch-msg">
+                    {{ error }}
+                </span>
+              {% endfor %}
+            {% endif %}
+        </div>
+         <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
+        <div
+            class="[ form-group ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
+            data-view="public"
+            id="signup-setpass-row">
+            <input
+                class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                id="{{ signup_form.newpassword.field.widget.attrs.id }}"
+                autocomplete="{{ signup_form.newpassword.field.widget.attrs.autocomplete }}"
+                data-view="public"
+                maxlength="50"
+                minlength="12"
+                name="{{ signup_form.newpassword.field.widget.attrs.name }}"
+                pattern="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{12,50}"
+                placeholder="{{ signup_form.newpassword.field.widget.attrs.placeholder }}"
+                required
+                tabindex="5"
+                title="{{ signup_form.newpassword.field.widget.attrs.title }}"
+                type="password"
+                value="{{ signup_form.newpassword.data|default:'' }}" />
+            <label
+                class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                id="set-password-tag"
+                data-view="public"
+                for="{{ signup_form.confirmpassword.field.widget.attrs.id }}">
+                {{ signup_form.confirmpassword.label }}
+            </label>
+            {% if signup_form.newpassword.errors or signup_form.confirmpassword.errors %}
+              {% for error in signup_form.newpassword.errors %}
+                <span class="[ input-message ] [ text-red-600 text-xs ]"
+                      data-status="invalid"
+                      data-view="public" id="invalid-signupmatch-msg">
+                    {{ error }}
+                </span>
+              {% endfor %}
+            {% endif %}
+        </div>
+        <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
+        <div
+            class="[ form-group ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
+            data-view="public"
+            id="signup-confpass-row">
+            <input
+                class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
+                id="{{ signup_form.confirmpassword.field.widget.attrs.id }}"
+                autocomplete="{{ signup_form.confirmpassword.field.widget.attrs.autocomplete }}"
+                data-view="public"
+                maxlength="50"
+                minlength="12"
+                name="{{ signup_form.confirmpassword.field.widget.attrs.name }}"
+                pattern="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{12,50}"
+                placeholder="{{ signup_form.confirmpassword.field.widget.attrs.placeholder }}"
+                required
+                tabindex="5"
+                title="{{ signup_form.confirmpassword.field.widget.attrs.title }}"
+                type="password"
+                value="{{ signup_form.confirmpassword.data|default:'' }}" />
+            <label
+                class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                id="set-password-tag"
+                aria-description="Create a password: a-z, A-Z, 0-9 with @,$,!,%,*,?,& and min: 12, max: 50. Must match."
+                data-view="public"
+                for="{{ signup_form.confirmpassword.field.widget.attrs.id }}">
+                {{ signup_form.confirmpassword.label }}
+            </label>
+            {% if signup_form.confirmpassword.errors or signup_form.newpassword.errors %}
+              {% for error in signup_form.confirmpassword.errors %}
+                <span class="[ input-message ] [ text-red-600 text-xs ]"
+                      data-status="invalid"
+                      data-view="public"
+                      id="invalid-signupmatch-msg">
+                    {{ error }}
+                </span>
+              {% endfor %}
+            {% endif %}
+        </div>
+        <!-- =============================== PUBLIC SIGNUP ROW ======================== -->
+        <div
+            class="[ form-group ] [ flex flex-row ] [ w-full ] [ justify-between items-center ] [ my-2 ]"
+            data-view="public"
+            id="signup-btn-row">
+            <!-- =========================== PUBLIC SIGNUP BUTTON ===================== -->
+            <input
+                class="[ input-field peer ] [ block w-full ] [ mb-4 ] [ p-2 ] [ border rounded-md outline-none ] | [ font-medium text-base text-white ] [ bg-gray-600 ] | [ focus:ring-blue-500 focus:border-blue-500 ]"
+                data-view="public"
+                tabindex="5"
+                type="submit"
+                value="{% trans "Create Account" %}" />
+        </div>
+            <p>{% blocktrans %}Already have an account? Then please <a href="">sign in, under top menu</a>
+                       .{% endblocktrans %}</p>
+        <!-- ========================= PUBLIC SIGNUP ROW========================= -->
+        <!-- ========================= FORGET PAGASSWORD: LINK ================= -->
+        <!-- ========================= FORGET PAGASSWORD: Reset.html =========== -->
+        </fieldset>
+    </form>
+    {% else %}
+        {# This message should never display. #}
+        <p> There has been an error. Contact the Site Adminiistrator</p>
+    {% endif %}
+
+{% endblock form_signup %}

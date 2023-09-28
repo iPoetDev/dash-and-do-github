@@ -66,7 +66,9 @@
             class="[ formrow ] [ relative ] [ w-full ] [ justify-items-start] [ my-4 ]"
             data-view="public"
             id="signup-user-row">
-            <!-- UAT: pattern & INPUT -->
+            <!-- UAT: pattern & INPUT
+             - checked: name="username" == allauth: username
+             -->
             <input
                 class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
                 id="signup-username"
@@ -91,13 +93,20 @@
                 for="signup-username">
                 Username
             </label>
+            {% if signup_form.is_bound %}
+            {% if signup_form.fields.message.errors %}
             <span
                 class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
                 data-status="invalid"
                 data-view="public"
                 id="invalid-signupuser-msg">
                 Please enter a valid username, min 6, max 30 in length.
+                {% for error in signup_form.fields.username.errors %}
+                        {{ error }}
+                {% endfor %}
             </span>
+            {% endif %}
+            {% endif %}
         </div>
         <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
         <div
@@ -139,6 +148,8 @@
                 for="signup-username">
                 Email
             </label>
+            {% if signup_form.is_bound %}
+            {% if signup_form.fields.email.errors %}
             <span
                 class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
                 data-status="invalid"
@@ -147,6 +158,8 @@
                 Please select a valid email address. <br />
                 (Symbols: _ + - are permitted before the @ symbol).
             </span>
+            {% endif %}
+            {% endif %}
         </div>
         <!-- ============================== PUBLIC SIGNUP ROW ========================= -->
         <div
@@ -169,7 +182,7 @@
                 data-view="public"
                 maxlength="50"
                 minlength="12"
-                name="new-password"
+                name="password1"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{12,50}"
                 placeholder="New Password"
                 required
@@ -211,7 +224,7 @@
                 data-view="public"
                 maxlength="50"
                 minlength="12"
-                name="confirm-password"
+                name="password2"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{12,50}"
                 placeholder="Confirm Password"
                 required
@@ -227,13 +240,20 @@
                 for="confirm-password">
                 Confirm Password
             </label>
+            {% if signup_form.is_bound %}
+            {% if signup_form.fields.password.errors or signup_form.fields.confirm.errors %}
             <span
                 class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
                 data-status="invalid"
                 data-view="public"
                 id="invalid-signupmatch-msg">
                 Please confirm that both password match.
+                {% for error in signup_form.fields.password.errors %}
+                        {{ error }}
+                {% endfor %}
             </span>
+            {% endif %}
+            {% endif %}
         </div>
         <!-- =============================== PUBLIC SIGNUP ROW ======================== -->
         <div

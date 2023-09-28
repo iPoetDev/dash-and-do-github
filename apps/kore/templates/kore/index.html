@@ -1,6 +1,5 @@
 <!-- @formatter:off -->
-{% extends "./head.html" %}
-{% load django_htmx %}
+{% extends "account/base.html" %}
 <!-- ==============================  DJANGO TEMPLATE & INCLUDE ==============================  -->
 <!-- ============================= CHANGELOG: - checked ✅ 23-09-18 =========================  -->
 <!-- ============================= EXTENDS:  - added ✅ ./base.html <head> ==================  -->
@@ -187,7 +186,6 @@
             {# src="{{ STATIC_URL }}debugtools/jquery.debug.js"> #}
         </script>-->
     <!-- ====================================== django debug toolbar | HTMX ===================================  -->
-    {% django_htmx_script %}
 </body>
 
 <!-- ================================= CORE APP | PUBLIC | PRIVATE | INDEX.HTML =============================== -->

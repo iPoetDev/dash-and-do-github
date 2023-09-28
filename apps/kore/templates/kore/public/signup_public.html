@@ -25,53 +25,57 @@
         id="signup-cta-card-content"
         aria-description="Sign Up CTA | Card | Inner"
         data-view="public">
-        <article
-            class="[ app-card ] [ flex flex-col flex-auto ] [ w-[90%] h-full md:h-full ] ] [ place-items-center ] [ mx-2 p-8 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] | [ bg-gray-300 ] [ text-slate-800 ] | [ rounded-md shadow-lg ]"
-            id="card-cta-signup"
-            aria-description="Call to Action | Sign Up | Header"
-            data-view="public"
-            data-card="signup">
-            <div
-                class="[ card-tag roadmap ] [ ]"
-                id="signup-promo-tag"
-                aria-description="Card Tags | Promo"
-                data-view="public"
-                hidden="until-found"
-                inert>
-                New
-            </div>
-            <div
-                class="[ card-row ] [ light:text-slate-800 ]"
-                id="signup-cardrow-header">
-                <h3
-                    class="[ card-tag ] [ ]"
-                    id="signup-card-heading"
-                    aria-description="Sign Up Form | Call to Action | Card Component">
-                    Sign Up: Dash & Do; Github Manager
-                </h3>
-            </div>
-            <div
-                class="[ card-row ] [ ]"
-                id="sign-cardrow-outline">
-                <p
-                    class="[ card-text ] [ mx-auto px-8 ] [ text-slate-800 ]"
-                    id="signup-card-features"
-                    aria-description="Sign Up Features">
-                    Key Features.
-                </p>
-            </div>
-            <div
-                class="[ card-row ] [ ]"
-                id="signup-cardrow-list">
-                <ul
-                    class="[ ] [ ]"
-                    id="signup-feature-list">
-                    <li>Create account</li>
-                    <li>Link your Github</li>
-                    <li>Inspect your Dashboard</li>
-                </ul>
-            </div>
-        </article>
+{#         <article#}
+{#            class="[ app-card ] [ flex flex-col flex-auto ] [ w-[90%] h-full md:h-full ] ] [ place-items-center ] [ mx-2 p-8 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] | [ bg-gray-300 ] [ text-slate-800 ] | [ rounded-md shadow-lg ]"#}
+{#            id="card-cta-signup"#}
+{#            aria-description="Call to Action | Sign Up | Header"#}
+{#            data-view="public"#}
+{#            data-card="signup">#}
+{#            <div#}
+{#                class="[ card-tag roadmap ] [ ]"#}
+{#                id="signup-promo-tag"#}
+{#                aria-description="Card Tags | Promo"#}
+{#                data-view="public"#}
+{#                hidden="until-found"#}
+{#                inert>#}
+{#                New#}
+{#            </div>#}
+{#            <div#}
+{#                class="[ card-row ] [ light:text-slate-800 ]"#}
+{#                id="signup-cardrow-header">#}
+{#                <h3#}
+{#                    class="[ card-tag ] [ ]"#}
+{#                    id="signup-card-heading"#}
+{#                    aria-description="Sign Up Form | Call to Action | Card Component">#}
+{#                    Sign Up: Dash & Do; Github Manager#}
+{#                </h3>#}
+{#            </div>#}
+{#            <div#}
+{#                class="[ card-row ] [ ]"#}
+{#                id="sign-cardrow-outline">#}
+{#                <p#}
+{#                    class="[ card-text ] [ mx-auto px-8 ] [ text-slate-800 ]"#}
+{#                    id="signup-card-features"#}
+{#                    aria-description="Sign Up Features">#}
+{#                    Key Features.#}
+{#                </p>#}
+{#            </div>#}
+{#            <div#}
+{#                class="[ card-row ] [ ]"#}
+{#                id="signup-cardrow-list">#}
+{#                <ul#}
+{#                    class="[ ] [ ]"#}
+{#                    id="signup-feature-list">#}
+{#                    <li>Create account</li>#}
+{#                    <li>Link your Github</li>#}
+{#                    <li>Inspect your Dashboard</li>#}
+{#                </ul>#}
+{#            </div>#}
+{#        </article>#}
+        {% if not request.user.is_authenticated %}
+                {% include 'users/account/login.html' %}
+        <!-- ===================== PUBLIC CARD SIGNUP FORM ===================================  -->
+        {% endif %}
     </div>
     <!-- ========================= CONTENT: MID 2nd Col/Ro : FORM SIGNUP | HTMX =================
      -->
@@ -83,7 +87,7 @@
         data-view="public">
         <!-- ===================== PUBLIC CARD SIGNUP FORM ===================================  -->
         {% if not request.user.is_authenticated %}
-                {% include '../forms/form_signup.html' %}
+                {% include 'users/account/signup.html' %}
         <!-- ===================== PUBLIC CARD SIGNUP FORM ===================================  -->
         {% else %}
         <!-- ===================== DISPLAY MESSAGE IF EVER THIS IS REACHED ===================  -->

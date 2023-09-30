@@ -1,4 +1,5 @@
 #!/user/bin/env python3
+# pylint: skipfile
 """
     This module contains the general logging functions for
     - all views, forms, users, emails(?)  | logging.
@@ -43,6 +44,7 @@ def log_views_request(request, label=None):
     :return: None
     :rtype: None
     """
+    # pylint: disable=unused-variable
     full_extra = {'request': request,
                   'label': label,
                   'user': request.user,
@@ -55,6 +57,7 @@ def log_views_request(request, label=None):
                   'content_params': request.content_params,
                   'resolver_match': request.resolver_match,
                   }
+    # pylint: disable=unused-variable
     lite_extra = {'request': request,
                   'label': label,
                   'user': request.user,
@@ -104,32 +107,61 @@ def log_views_response(response, label=None, desc=None):
                       'context': response.context_data,
                       'content_type': response[ 'Content-Type' ],
                       'status': response.status_code}
-
+    options = LoggerOptions(kind="django", on=True, off=False,
+                            detail=response_extra)
     # Get the 'django' logger
     logge = logging.getLogger('django')
-    # Info: View Response: <TemplateResponse status_code=200, "text/html; charset=utf-8"> (23-09-17)
+    # Info: View Response: <TemplateResponse status_code=200,
+    # "text/html; charset=utf-8"> (23-09-17)
     logge.info("DnD INFO: View Response: %s",
                response,
                extra=response_extra)
-    # Warning: View Response: <TemplateResponse status_code=200, "text/html; charset=utf-8"> (23-09-17)
+    # Warning: View Response: <TemplateResponse status_code=200,
+    # "text/html; charset=utf-8"> (23-09-17)
     logge.warning("DnD WARN: View Response: ",
                   exc_info=True,
                   extra=response_extra)
-    # Error: View Response: <TemplateResponse status_code=200, "text/html; charset=utf-8"> (23-09-17)
+    # Error: View Response: <TemplateResponse status_code=200,
+    # "text/html; charset=utf-8"> (23-09-17)
     logge.error("DnD ERROR: View: Response is: %s",
                 response,
                 exc_info=True,
                 stack_info=True,
-                extra=response_extra),
-    # Debug: View Response: <TemplateResponse status_code=200, "text/html; charset=utf-8"> (23-09-17)
+                extra=response_extra)
+    # Debug: View Response: <TemplateResponse status_code=200,
+    # "text/html; charset=utf-8"> (23-09-17)
     debug_response(message="DnD DEBUG: View Response: ",
                    obj=response,
-                   kind='django',
-                   detail=response_extra)
+                   logger_options=options)
 
 
 # noinspection PyUnusedFunction
 def send_debug_mail(send_func):
+    """
+    :param send_func: A function that sends an email. This function should
+     return a boolean value indicating whether the email was sent successfully
+     or not.
+    :return: The result returned by the `send_func` parameter.
+
+    This method `send_debug_mail` is responsible for sending a debug email
+    using the given `send_func`. It wraps the `send_func` with error handling
+     and logging functionality.
+
+    The `send_debug_mail` function attempts to send an email by calling the
+    `send_func`. If the `send_func` returns a truthy value, which indicates
+    that the email was sent successfully, it logs a debug message stating
+    "Email sent successfully."
+    Otherwise, it logs a debug message stating "Failed to send email."
+     The method then returns the result returned by the `send_func`.
+
+    If a `BadHeaderError` exception is raised during the email sending process
+    , it logs an exception message stating "Bad headers were detected in the
+     email." If any other unexpected exception occurs, it logs an exception
+     message stating "An unexpected error occurred in trying to send an email."
+
+    Note: This method requires the `logging` module and the `BadHeaderError`
+    exception from the `django.core.mail` module to be imported.
+    """
     # noinspection PyBroadException
     try:
         result = send_func()
@@ -137,12 +169,14 @@ def send_debug_mail(send_func):
             loggey.debug("Email sent successfully.")
         else:
             loggey.debug("Failed to send email.")
-        return result
     except BadHeaderError:
         loggey.exception("Bad headers were detected in the email.")
-    except Exception:
+        return None  # Add this line
+    except Exception:  # pylint: disable=broad-exception-caught
         loggey.exception(
             "An unexpected error occurred when trying to send an email.")
+        return None  # Add this line
+    return result
 
 
 # noinspection DuplicatedCode
@@ -169,13 +203,28 @@ def debug_request(message, obj, kind=None, on=True, off=False, detail=None):
 
 
 # noinspection DuplicatedCode
-def debug_response(message, obj, kind=None, on=True, off=False, detail= \
-    None):
-    # noinspection DuplicatedCode
+class LoggerOptions:
+    def __init__(self, kind=None, on=True, off=False, detail=None):
+        self.kind = kind
+        self.on = on
+        self.off = off
+        self.detail = detail
+
+def debug_response(message, obj, logger_options=None):
     """
-        Log a message with severity 'DEBUG' on the root logger.
-        """
-    logger = logging.getLogger(kind) if type is not None \
+    Log a message with severity 'DEBUG' on the root logger.
+
+    Usage:
+    e.g. debug
+    options = LoggerOptions(kind="some kind", on=True,
+                            off=False, detail=detail_dict)
+    debug_response("message", obj, options)
+    """
+    if logger_options is None:
+        logger_options = LoggerOptions()
+
+    logger = logging.getLogger(logger_options.kind) \
+        if logger_options.kind is not None \
         else logging.getLogger(__name__)
     logger.setLevel(logging.DEBUG)
     formatter = logging.Formatter(
@@ -184,8 +233,9 @@ def debug_response(message, obj, kind=None, on=True, off=False, detail= \
     )
     handler = logging.StreamHandler()
     handler.setFormatter(formatter)
+
     logger.debug(f'{message} %s',
                  obj,
-                 exc_info=on,
-                 stack_info=off,
-                 extra=detail)
+                 exc_info=logger_options.on,
+                 stack_info=logger_options.off,
+                 extra=logger_options.detail)

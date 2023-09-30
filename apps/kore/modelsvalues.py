@@ -1,33 +1,30 @@
 #!/user/bin/env python3
 # OopCompanion:suppressRename
-"""
-    @File: modelvalues.py
-    @Version: 0.3.0 to 0.3.0.?
-    @Desc: apps | <app> |  <module>
-    @Author: Charles Fowler
-    @Copyright: 2023
-    @Date Created: 23/09/?
-    @Date Modified: 23/09/??
-    @Python Version: 3.11.04
-    @Django Version: 4.2.3/.04/.05
-    @Notes / Ideas v Implement:
-        - .
-    @Changelog:
-    - Added:
-        - added: Created initial file: 23/09/??:
-    - Updated:
-        - updated:
-    @Plan:
-        - TODO:
-        - FIXME:
-        - CHECK:
+"""@File: modelvalues.py
+@Version: 0.3.0 to 0.3.0.?
+@Desc: apps | <app> |  <module>
+@Author: Charles Fowler
+@Copyright: 2023
+@Date Created: 23/09/?
+@Date Modified: 23/09/??
+@Python Version: 3.11.04
+@Django Version: 4.2.3/.04/.05
+@Notes / Ideas v Implement:
+- .
+@Changelog:
+- Added:
+- added: Created initial file: 23/09/??:
+- Updated:
+- updated:
+@Plan:
+- TODO:
+- FIXME:
+- CHECK:
 """
 
 
-class Forms:
-    """
-    Core Form Names
-    """
+class Forms:  # pylint: disable=too-few-public-methods
+    """Core Form Names"""
     GENERIC = 'form'
     CONTACT = 'contact_form'
     LOGIN = 'login_form'
@@ -39,17 +36,15 @@ class Forms:
     SETTINGS = 'settings_form'
 
 
-class ContactFields:
-    """
-    Contact Form Fields
-    """
+class ContactFields:  # pylint: disable=too-few-public-methods
+    """Contact Form Fields"""
     CONTACT_NAME = 'contact_name'
     CONTACT_EMAIL = 'contact_email'
     CONTACT_MESSAGE = 'contact_message'
     CONTACT_COPY = 'copy_sent'
 
 
-class ContactAttrs:
+class ContactAttrs:  # pylint: disable=too-few-public-methods
     """"
     Contact Form Attributes Values
     """

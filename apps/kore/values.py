@@ -1,118 +1,118 @@
 #!/user/bin/env python3
-
-
 # OopCompanion:suppressRename
-"""
-    @File: forms.py
-    @Version: 0.3.0 to 0.3.0.?
-    @Desc: apps | kore |  forms
-    @Author: Charles Fowler
-    @Copyright: 2023
-    @Date Created: 23/08/07
-    @Date Modified: 23/09/17
-    @Python Version: 3.11.04
-    @Django Version: 4.2.3
-    @Notes / Ideas v Implement:
-        - Customising for widgets tweeks, individual fields rendering.
-    @Changelog:
-    - Added:
-        - added: Created initial file: 23/08/07:
-        - added: Contact ModelForms: 23/08/07:
-        - added: docstrings: 23/09/12:
-    - Updated:
-        - updated: Per Field (Char/Email/Textarea) attributes (23/09/17)
-        - updated: Per Widget attribute: Name, Email attrs (23/09/17)
-        - updated: ClassAttrs strings values (23/09/17)
-        - updated: Validators: Name, Email (23/09/17)
-        - updated: Error Messages: Required, Invalid, Mix/Max Length (23/09/17)
-    @Plan:
-        - TODO:
-            - Create test cases for models.
-            - Define Test Scenarios
-                - Happy Path
-                - Edge Cases
-                - Other
+"""@File: forms.py
+@Version: 0.3.0 to 0.3.0.?
+@Desc: apps | kore |  forms
+@Author: Charles Fowler
+@Copyright: 2023
+@Date Created: 23/08/07
+@Date Modified: 23/09/17
+@Python Version: 3.11.04
+@Django Version: 4.2.3
+@Notes / Ideas v Implement:
+- Customising for widgets tweeks, individual fields rendering.
+@Changelog:
+- Added:
+- added: Created initial file: 23/08/07:
+- added: Contact ModelForms: 23/08/07:
+- added: docstrings: 23/09/12:
+- Updated:
+- updated: Per Field (Char/Email/Textarea) attributes (23/09/17)
+- updated: Per Widget attribute: Name, Email attrs (23/09/17)
+- updated: ClassAttrs strings values (23/09/17)
+- updated: Validators: Name, Email (23/09/17)
+- updated: Error Messages: Required, Invalid, Mix/Max Length (23/09/17)
+@Plan:
+- TODO:
+- Create test cases for models.
+- Define Test Scenarios
+- Happy Path
+- Edge Cases
+- Other
 """
 # Django Imports
 from django.contrib import messages
 
 
-class HTTP:
-    """
-    HTTP Methods
-    """
+class HTTP:  # pylint: disable=too-few-public-methods
+    """HTTP Methods"""
     GET = 'GET'
     POST = 'POST'
 
-    class STATUS:
-        """
-        HTTP Status Codes
-        """
+    class STATUS:  # pylint: disable=too-few-public-methods
+        """HTTP Status Codes"""
         OK = 200
         BAD_REQUEST = 400
+        FORBIDDEN = 403
         NOT_FOUND = 404
+        METHOD_NOT_ALLOWED = 405
+        GONE = 410
         INTERNAL_SERVER_ERROR = 500
         SERVICE_UNAVAILABLE = 503
         GATEWAY_TIMEOUT = 504
 
+    class MESSAGES:
+        """HTTP Status Messages"""
+        NOT_FOUND = 'Page Not Found: Core: 404 Error'
 
-class Template:
-    """
-    Template Paths
-    """
+
+class Template:  # pylint: disable=too-few-public-methods
+    """Template Paths"""
     HOME = 'index.html'
     CONTACT = './forms/form_contact.html'
     MENU_PUBLIC = 'menu_public.html'
     COREPAGE_NOT_FOUND = 'kore/404.html'
 
-    class Form:
-        """
-        Form Templates
+    class Form:  # pylint: disable=too-few-public-methods
+        """Form Templates
+
+        # noqa: S105: No password or reset , just config value
         """
         GENERIC = 'forms/form_generic.html'
         CONTACT = 'forms/form_contact.html'
         LOGIN = 'forms/form_login.html'
         SIGNUP = 'forms/form_signup.html'
-        PASSWORD_RESET = 'forms/form_password_reset.html'
-        PASSWORD_CHANGE = 'forms/form_password_change.html'
+        PASSWORD_RESET = 'forms/form_password_reset.html'  # noqa: S105
+        PASSWORD_CHANGE = 'forms/form_password_change.html'  # noqa: S105
         PROFILE = 'forms/form_profile.html'
         GITHUB = 'forms/form_github.html'
         SETTINGS = 'forms/form_settings.html'
 
 
-class Forms:
-    """
-    Core Form Names
+class Forms:  # pylint: disable=too-few-public-methods
+    """Core Form Names
+
+    # noqa: S105: No password or reset , just config value
     """
     GENERIC = 'form'
     CONTACT = 'contact_form'
     LOGIN = 'login_form'
     SIGNUP = 'signup_form'
-    PASSWORD_RESET = 'password_reset_form'
-    PASSWORD_CHANGE = 'password_change_form'
+    PASSWORD_RESET = 'password_reset_form'  # noqa: S105
+    PASSWORD_CHANGE = 'password_change_form'  # noqa: S105
     PROFILE = 'profile_form'
     GITHUB = 'github_form'
     SETTINGS = 'settings_form'
 
 
-class Ctx:
-    """
-    Context Variables
+class Ctx:  # pylint: disable=too-few-public-methods
+    """Context Variables
+
+    # noqa: S105: No password or reset , just config value
     """
     GENERIC_FORM = 'form'
     CONTACT_FORM = 'contact'
     LOGIN_FORM = 'login'
     SIGNUP_FORM = 'signup'
-    PASSWORD_RESET_FORM = 'password_reset'
-    PASSWORD_CHANGE_FORM = 'password_change'
+    PASSWORD_RESET_FORM = 'password_reset'  # noqa: S105
+    PASSWORD_CHANGE_FORM = 'password_change'  # noqa: S105
     PROFILE_FORM = 'profile'
     GITHUB_FORM = 'github'
     SETTINGS_FORM = 'settings'
 
 
-class SiteMeta:
-    """
-    Site Meta Data
+class SiteMeta:  # pylint: disable=too-few-public-methods
+    """Site Meta Data
     TITLE = 'title'
     URL = 'url'
     PERSON = 'person'
@@ -124,20 +124,17 @@ class SiteMeta:
     URL = 'https://dash-and-do.herokuapp.com/'
     PERSON = 'Charles J Fowler, @iPoetDev.github.com'
     DESC = 'A GitHub Portfolio Manager for the Dashboard and Do '
-    COPY = 'The Dash and Document GitHub is the copyright of Charles J Fowler, 2023-2028'
+    COPY = ('The Dash and Document GitHub is the '
+            'copyright of Charles J Fowler, 2023-2028')
     KEYWORDS = 'GitHub, Portfolio, Manager, Dashboard, Do, '
     CONTACT = 'Github: @iPoetDev'
 
 
-class Brand:
-    """
-    Brand Names
-    """
+class Brand:  # pylint: disable=too-few-public-methods
+    """Brand Names"""
 
-    class Site:
-        """
-        Site Brand Names
-        """
+    class Site:  # pylint: disable=too-few-public-methods
+        """Site Brand Names"""
         NAME = 'Dashboard and Do GitHub Manager'
         SHORT_NAME = 'Dash and Do'
         LOGO = 'dash_and_do/logo.png'
@@ -147,43 +144,41 @@ class Brand:
         FAVICON_ALT = 'Dash and Do Favicon'
         FAVICON_TITLE = 'Dash and Do Favicon'
 
+    class FAVICON:
+        """Favicon Configuration"""
+        XMLNS = 'http://www.w3.org/2000/svg'
+        VBOX = '0 0 100 100'
+        VIEWY = '.9em'
+        FONTSIZE = '90'
+        ICON= '🦊'
+        FORMAT = 'image/svg+xml'
 
-class Page:
-    """
-    Page Titles
-    """
+class Page:  # pylint: disable=too-few-public-methods
+    """Page Titles"""
 
-    class Index:
-        """
-        Index Page Details
-        """
+    class Index:  # pylint: disable=too-few-public-methods
+        """Index Page Details"""
         USE = 'all'
         TITLE = 'Home: Dashboard and Do GitHub Manager'
         ATITLE = 'Home: Dashboard and Do GitHub Manager'
         ATEXT = 'Home'
 
-    class About:
-        """
-        About Page Details | Static
-        """
+    class About:  # pylint: disable=too-few-public-methods
+        """About Page Details | Static"""
         USE = 'menu_public'
         TITLE = 'About: Dashboard and Do GitHub Manager'
         ATITLE = 'About: Dashboard and Do GitHub Manager'
         ATEXT = 'About'
 
-    class Contact:
-        """
-        Contact Section Partial/Fragment Details
-        """
+    class Contact:  # pylint: disable=too-few-public-methods
+        """Contact Section Partial/Fragment Details"""
         USE = 'menu_public'
         TITLE = 'Contact: Dashboard and Do GitHub Manager'
         ATITLE = 'Contact Us: Send an Message to Dash and Do'
         ATEXT = 'Contact'
 
-    class AccountMenu:
-        """
-        Account Menu Details
-        """
+    class AccountMenu:  # pylint: disable=too-few-public-methods
+        """Account Menu Details"""
         USE = 'menu_private'
         MENU_TITLE = 'Accounts Menu'
         ACCOUNT_BUTTEXT = 'Account'
@@ -197,29 +192,23 @@ class Page:
         LOGOUT_ATEXT = 'Logout'
 
 
-class Feedback:
-    """
-    Feedback Messages
-    """
+class Feedback:  # pylint: disable=too-few-public-methods
+    """Feedback Messages"""
     EMAILSUCCESS = 'Your message has been sent.'
     BADREQUEST = 'Bad request, please verify your message and try again.'
     SERVERERROR = 'Server error, your message could not be sent.'
     EMAILERROR = 'An error occurred, your message could not be sent.'
 
 
-class Signal:
-    """
-    Message Levels
-    """
+class Signal:  # pylint: disable=too-few-public-methods
+    """Message Levels"""
     INFO = 'info'
     SUCCESS = 'success'
     ERROR = 'error'
     FAIL = False
 
-    class MSG:
-        """
-        Message Levels
-        """
+    class MSG:  # pylint: disable=too-few-public-methods
+        """Message Levels"""
         DEBUG = messages.DEBUG
         INFO = messages.INFO
         SUCCESS = messages.SUCCESS
@@ -228,34 +217,28 @@ class Signal:
         FAIL = False
 
 
-class Log:
-    """
-    Log Messages
-    """
+class Log:  # pylint: disable=too-few-public-methods
+    """Log Messages"""
     INDEX = 'Index'
     CONTACT_FORM = 'Contact Form'
     MENU_PUBLIC = 'Public Menu'
 
-    class Desc:
-        """
-        Log Descriptions
-        """
+    class Desc:  # pylint: disable=too-few-public-methods
+        """Log Descriptions"""
         COMPLETED_FORM = 'Completed Form: Valid & POST'
         BOUNDED_FORM = 'Bounded: Invalid Form & POST'
         UNBOUND_FORM = 'Unbounded: Empty Form: Method != POST'
 
 
-class ContactFields:
-    """
-    Contact Form Fields
-    """
+class ContactFields:  # pylint: disable=too-few-public-methods
+    """Contact Form Fields"""
     CONTACT_NAME = 'contact_name'
     CONTACT_EMAIL = 'contact_email'
     CONTACT_MESSAGE = 'contact_message'
     CONTACT_COPY = 'copy_sent'
 
 
-class ContactAttrs:
+class ContactAttrs:  # pylint: disable=too-few-public-methods
     """"
     Contact Form Attributes Values
     """

@@ -1,63 +1,83 @@
-"""
-This module contains the views for the kore app.
+"""This module contains the views for the kore app.
 
-    @File: views.py
-    @Version: 0.3.0 to 0.3.0.?
-    @Desc: apps | kore |  views
-    @Author: Charles Fowler
-    @Copyright: 2023
-    @Date Created: 23/08/07
-    @Date Modified: 23/09/12
-    @Python Version: 3.11.04
-    @Django Version: 4.2.3
-    @Notes / Ideas v Implement:
-    @Changelog:
-    - noted: Use function based views for the kore app.
-    - added: login_required decorator to all puiblic views
-    - added: login_required decorator to all private views
+@File: views.py
+@Version: 0.3.0 to 0.3.0.?
+@Desc: apps | kore |  views
+@Author: Charles Fowler
+@Copyright: 2023
+@Date Created: 23/08/07
+@Date Modified: 23/09/12
+@Python Version: 3.11.04
+@Django Version: 4.2.3
+@Notes / Ideas v Implement:
+@Changelog:
+- noted: Use function based views for the kore app.
+- added: login_required decorator to all puiblic views
+- added: login_required decorator to all private views
 """
 import traceback
+
+# Local: Project Imports
+from dash_and_do.htmx import is_htmx
+from dash_and_do.settings import DEBUG
 
 # Django HTTP Imports
 from django.http import Http404
 from django.http import HttpRequest
 from django.http import HttpResponse
-from django.template.response import TemplateResponse
+
 # Django Imports
 from django.shortcuts import render
-from django.views.decorators.cache import never_cache
+from django.template.response import TemplateResponse
+
+# from django.views.decorators.cache import never_cache  # TODO
 from django.views.decorators.clickjacking import xframe_options_sameorigin
-from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
+
+# from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
+# TODO
 from django.views.decorators.http import require_GET
 from django.views.decorators.http import require_http_methods
+
 # Django View Imports
 from django.views.defaults import page_not_found as dj_page_not_found
+
 # Third Party Imports
 from django_htmx.middleware import HtmxDetails
 
-# Local: Project Imports
-from dash_and_do.htmx import is_htmx
-from dash_and_do.settings import DEBUG
 # Local: Kore
-from apps.kore.corehttp import (contact_email_response, contact_http_response,
-                                switch_form)
+from apps.kore.corehttp import contact_email_response
+from apps.kore.corehttp import contact_http_response
+from apps.kore.corehttp import switch_form
 from apps.kore.emailing.emails import send_mail_contact2
+
 # Local: App Imports
 from apps.kore.forms import ContactForm
-from apps.kore.helpers import (pp_response,
-                               pp_label)
-from apps.kore.values import (SiteMeta, Brand, Page, Template, HTTP, Forms)
+from apps.kore.helpers import pp_label
+from apps.kore.helpers import pp_response
+from apps.kore.values import HTTP
+from apps.kore.values import Brand
+from apps.kore.values import Forms
+from apps.kore.values import Page
+from apps.kore.values import SiteMeta
+from apps.kore.values import Template
+from apps.users.forms import DashLoginForm
+
 # Local: Users Forms
-from apps.users.views import DashSignupView, DashLoginView
-from apps.users.forms import DashSignupForm, DashLoginForm
+from apps.users.forms import DashSignupForm
+
 # OopCompanion:suppressRename
 
 # ====================== Home Page Views ===========================
 
 # https://github.com/adamchainz/django-htmx/blob/main/example/example/views.py
 # Typing pattern recommended by django-stubs:
-# https://github.com/typeddjango/django-stubs#how-can-i-create-a-httprequest-thats-guaranteed-to-have-an-authenticated-user
+# https://github.com/typeddjango/django-stubs#how-can-i-create-a-httprequest-
+# thats-guaranteed-to-have-an-authenticated-user
 class HtmxHttpRequest(HttpRequest):
+    """HTMX HTTP request
+
+    A HttpRequest that is guaranteed to have an authenticated user.
+    """
     htmx: HtmxDetails
 
 
@@ -66,8 +86,7 @@ class HtmxHttpRequest(HttpRequest):
 # @csrf_protect
 @require_GET
 def index(request):
-    """
-    Index view. | Access: All Users
+    """Index view. | Access: All Users
     :param request: The HTTP request object.
     :return: None
     :raises: None
@@ -125,8 +144,7 @@ def index(request):
 
 @require_http_methods([ HTTP.POST ])
 def form_contact(request):  # sourcery skip: dict-assign-update-to-union
-    """
-    Form contact view. | Access: All Users
+    """Form contact view. | Access: All Users
     Checks for HTTP POST request and if the request is htmx.
     Then checks if the form is valid and if so, sends the emailing.
     If the emailing is sent successfully, the user is redirected to the
@@ -147,11 +165,11 @@ def form_contact(request):  # sourcery skip: dict-assign-update-to-union
         # Handle a completed Response/HTMX Response
         pp_response(response, '1: View: contact_email response')
         # response
-        if response is not None and response.status_code == 200:
+        if response is not None and response.status_code == HTTP.STATUS.OK:
             contact.save()
             contact = ContactForm()
-            pp_response(response, '2: View: contact_email: SUCCESS')
-            print(f'contact_email: SUCCESS: {response.serialize()}')
+            # # pp_response(response, '2: View: contact_email: SUCCESS')
+            # print(f'contact_email: SUCCESS: {response.serialize()}')
             # corehttp.py: contact_http_response
             completed: TemplateResponse = contact_http_response(request,
                                                                 contact,
@@ -161,28 +179,27 @@ def form_contact(request):  # sourcery skip: dict-assign-update-to-union
             # Render the completed Response for form with status codes
             if completed is None:
                 # Geneate a 404
-                pp_label(
-                    label='form_contact: ContactForm: Completed is None')
-                raise Http404("Contact Form: Response is None.")
-            else:
-                # Render a completed form i.e. a new unbounded form
-                contact = ContactForm()
-                base_ctx = {Forms.CONTACT: contact}
-                pp_label(
-                    label='form_contact: ContactForm: Completed')
-                return render_completed_form(request, completed,
-                                             base_ctx, 'form_contact')
-        elif response is not None:
-            pp_label(label='3: View: contact_email: Response is not 200')
+                # pp_label(
+                #     label='form_contact: ContactForm: Completed is None')
+                raise Http404(HTTP.MESSAGES.NOT_FOUND)
+
+            # Render a completed form i.e. a new unbounded form
+            contact = ContactForm()
+            base_ctx = {Forms.CONTACT: contact}
+            # pp_label(
+            #     label='form_contact: ContactForm: Completed')
+            return render_completed_form(request, completed,
+                                         base_ctx, 'form_contact')
+        elif response is not None:  # noqa RET505
+            # pp_label(label='3: View: contact_email: Response is not 200')
             # Render the bounded Response for user to try again
             render_bounded_form(request, contact,
                                 Forms.CONTACT, base_ctx)
 
-        else:
-            pp_label(label='4: View: contact_email: Response is None')
-            contact = ContactForm()
-            render_unbounded_form(request, contact,
-                                  Forms.CONTACT, base_ctx)
+        # pp_label(label='4: View: contact_email: Response is None')
+        contact = ContactForm()
+        render_unbounded_form(request, contact,
+                              Forms.CONTACT, base_ctx)
 
     elif (not contact.is_valid() and contact.data and request.method ==
           HTTP.POST):
@@ -192,17 +209,17 @@ def form_contact(request):  # sourcery skip: dict-assign-update-to-union
                                    Forms.CONTACT, base_ctx)
 
     # If the reqeust is has no data, or if nothing POST
-    if contact.data is None or request.method != HTTP.POST:
-        # If the form data is empty or not HTTP POST, create a new form.
-        pp_label(label='6: form_contact: ContactForm: Empty & Not POST')
-        contact = ContactForm()
-        render_unbounded_form(request, contact,
-                              Forms.CONTACT, base_ctx)
+    # contact.data is None or request.method != HTTP.POST:
+    # If the form data is empty or not HTTP POST, create a new form.
+    # pp_label(label='6: form_contact: ContactForm: Empty & Not POST')
+    contact = ContactForm()
+    render_unbounded_form(request, contact,
+                          Forms.CONTACT, base_ctx)
+    return None
 
 
 def switch_views(label):
-    """
-    Switch the view by label.
+    """Switch the view by label.
     :param label:
     :return:
     """
@@ -219,13 +236,12 @@ def switch_views(label):
     return viewformlookup.get(label)
 
 
+# noinspection PySameParameterValue
 def render_completed_form(request,
                           response: TemplateResponse,
                           base_ctx: dict,
-                          viewname: str = 'form_contact') -> TemplateResponse:
-    """
-    Render the completed form.
-    """
+                          viewname: str = Forms.CONTACT) -> TemplateResponse:
+    """Render the completed form."""
     view = switch_views(viewname)
     pp_response(response, f'view: {view}: completed http response')
     # Render the completed Response for form with status codes
@@ -240,8 +256,7 @@ def render_completed_form(request,
 def render_bounded_form(request, form, label,
                         ctx, state_us=HTTP.STATUS.BAD_REQUEST) \
     -> TemplateResponse:
-    """
-    Render the bounded form.
+    """Render the bounded form.
     :param request: The HTTP request object.
     :param form: Form (Bounded or Unbounded)
     :param label: Form Label
@@ -267,8 +282,7 @@ def render_bounded_form(request, form, label,
 def render_unbounded_form(request, form, label,
                           ctx, state_us=HTTP.STATUS.OK) \
     -> TemplateResponse:
-    """
-    Render the unbounded form.
+    """Render the unbounded form.
     :param request: The HTTP request object.
     :param form: Form (Bounded or Unbounded)
     :param label: Form Label
@@ -291,83 +305,28 @@ def render_unbounded_form(request, form, label,
     return unbounded.render()
 
 
-# ====================== Only | Public Form Views ===========================
-
-
-@require_http_methods([ HTTP.POST ])
-@ensure_csrf_cookie
-@csrf_protect
-@never_cache
-def form_signup(request):
-    """
-    Form for Signup
-    Decorator to check if the user is logged in before executing the
-    form_signup function.
-
-    :param request: The HTTP request object.
-
-    :return: None
-
-    :raises: None
-    """
-    pass
-
-
-"""
-@Changelog:
- - added: 23-09-12
-"""
-
-
-@require_http_methods([ HTTP.POST ])
-@ensure_csrf_cookie
-@csrf_protect
-@never_cache
-def form_login(request):
-    """
-    Use decorator that checks if the user is authenticated before allowing access
-    to the function.
-
-    :param request: The HTTP request object.
-    :return: None
-    :exceptions: None
-    """
-    pass
-
-
-@require_http_methods([ HTTP.POST ])
-@ensure_csrf_cookie
-@csrf_protect
-@never_cache
-def form_reset(request):
-    """
-    Use decorator that checks if the user is authenticated before allowing access
-    to the function.
-
-    :param request: The HTTP request object.
-    :return: None
-    :exceptions: None
-    """
-    pass
-
-
 @require_GET
-def favicon(request: HtmxHttpRequest) -> HttpResponse:
-    """
-    Credit: github.com/adamchainz/django-htmx (as above)
-    - TODO: Update to own favicon
+def favicon(request: HtmxHttpRequest) -> HttpResponse:  # noqa: E501,ARG001
+    """Credit: github.com/adamchainz/django-htmx
+    TODO: Update to own favicon
     Favicon view. | Access: All Users
     :param request:
     :return:
     """
-    return HttpResponse(
-        (
-            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">'
-            + '<text y=".9em" font-size="90">🦊</text>'
-            + "</svg>"
-        ),
-        content_type="image/svg+xml",
-    )
+    xmlns = Brand.FAVICON.XMLNS
+    viewbox = Brand.FAVICON.VBOX
+    viewy = Brand.FAVICON.VIEWY
+    fontsize = Brand.FAVICON.FONTSIZE
+    icon = Brand.FAVICON.ICON
+    content = Brand.FAVICON.FORMAT
+    svg_template = \
+        f'''
+        <svg xmlns="{xmlns}" viewBox="{viewbox}">
+            <text y="{viewy}" font-size="{fontsize}">{icon}</text>
+        </svg>
+    '''
+
+    return HttpResponse(svg_template, content_type=content)
 
 
 @require_GET
@@ -380,12 +339,12 @@ def favicon(request: HtmxHttpRequest) -> HttpResponse:
 #     return render(request, "csrf-demo.html")
 
 def core_page_not_found(request, exception) -> HttpResponse:
-    """
-    404 Page Not Found view. | Access: All Users | Handler404 in urls.py
+    """404 Page Not Found view. | Access: All Users | Handler404 in urls.py
     :param request:
     :param exception:
     :return:
     """
+    # noinspection PyBroadException
     try:
         stack_trace = traceback.format_exc() if DEBUG else ''
         context = {
@@ -395,10 +354,10 @@ def core_page_not_found(request, exception) -> HttpResponse:
             'trace': stack_trace,
         }
         return render(request,
-                      Template.PAGE_NOT_FOUND,
+                      Template.COREPAGE_NOT_FOUND,  # 'kore/404.html'
                       context,
-                      status=404)
-    except Exception:
+                      status=HTTP.STATUS.NOT_FOUND)  # 404
+    except Exception:  # pylint: disable=broad-except
         # If something goes wrong, fall back to the
         # default Django page not found view
         return dj_page_not_found(request, exception)

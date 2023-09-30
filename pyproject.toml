@@ -7,7 +7,16 @@ select = ["E", "F", "I", "D", "YTT", "PL", "T20", "RSE", "RET", "SIM", "TID",
 ignore = [
     "D205",
     "D106",
-    "D415"]
+    "D415",
+    "ANN001",
+    "ANN201",
+    "F811",
+    "F405",
+    "S101",
+    "S105",
+    "T201",
+    "PLR0913",
+]
 
 # Ignoreing D106: Missing docstring in public nested class.
 # Ignoreing D205: 1 blank line required between summary line and description.
@@ -24,10 +33,13 @@ show-fixes = true
 show-source = true
 #fix = true
 format = "grouped"
-
+respect-gitignore = true
 # Tags
-task-tags = ["TODO", "FIXME", "todo", "fixme"]
+task-tags = ["TODO", "FIXME", "todo", "fixme", "CHECK", "check", "note", "added", "update", "noted"]
 
+src = ['apps/*', 'dash_and_do/*']
+include = ["*.py"]
+ignore-init-module-imports = true
 # Exclude a variety of commonly ignored directories.
 exclude = [
     ".bzr",
@@ -54,6 +66,12 @@ exclude = [
 ]
 # Per File
 
+extend-exclude = [
+    "apps/kore/migrations/**",
+    "apps/kore/featrures/**",
+    "apps\\kore\\migrations\\**",
+    "apps\\kore\\featrures\\**",
+]
 # Same as Black.
 line-length = 79
 
@@ -171,7 +189,7 @@ convention = "google"
 [tool.ruff.pylint]
 #allow-magic-value-types = ["int"]
 #Type: list["str" | "bytes" | "complex" | "float" | "int" | "tuple"]
-max-args = 6
+max-args = 8
 max-branches = 12
 max-returns = 6
 max-statements = 50

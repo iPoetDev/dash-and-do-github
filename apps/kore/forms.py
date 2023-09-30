@@ -1,34 +1,33 @@
 #!/user/bin/env python3
-"""
-    @File: forms.py
-    @Version: 0.3.0 to 0.3.0.?
-    @Desc: apps | kore |  forms
-    @Author: Charles Fowler
-    @Copyright: 2023
-    @Date Created: 23/08/07
-    @Date Modified: 23/09/17
-    @Python Version: 3.11.04
-    @Django Version: 4.2.3
-    @Notes / Ideas v Implement:
-        - Customising for widgets tweeks, individual fields rendering.
-    @Changelog:
-    - Added:
-        - added: Created initial file: 23/08/07:
-        - added: Contact ModelForms: 23/08/07:
-        - added: docstrings: 23/09/12:
-    - Updated:
-        - updated: Per Field (Char/Email/Textarea) attributes (23/09/17)
-        - updated: Per Widget attribute: Name, Email attrs (23/09/17)
-        - updated: ClassAttrs strings values (23/09/17)
-        - updated: Validators: Name, Email (23/09/17)
-        - updated: Error Messages: Required, Invalid, Mix/Max Length (23/09/17)
-    @Plan:
-        - TODO:
-            - Create test cases for models.
-            - Define Test Scenarios
-                - Happy Path
-                - Edge Cases
-                - Other
+"""@File: forms.py
+@Version: 0.3.0 to 0.3.0.?
+@Desc: apps | kore |  forms
+@Author: Charles Fowler
+@Copyright: 2023
+@Date Created: 23/08/07
+@Date Modified: 23/09/17
+@Python Version: 3.11.04
+@Django Version: 4.2.3
+@Notes / Ideas v Implement:
+- Customising for widgets tweeks, individual fields rendering.
+@Changelog:
+- Added:
+- added: Created initial file: 23/08/07:
+- added: Contact ModelForms: 23/08/07:
+- added: docstrings: 23/09/12:
+- Updated:
+- updated: Per Field (Char/Email/Textarea) attributes (23/09/17)
+- updated: Per Widget attribute: Name, Email attrs (23/09/17)
+- updated: ClassAttrs strings values (23/09/17)
+- updated: Validators: Name, Email (23/09/17)
+- updated: Error Messages: Required, Invalid, Mix/Max Length (23/09/17)
+@Plan:
+- TODO:
+- Create test cases for models.
+- Define Test Scenarios
+- Happy Path
+- Edge Cases
+- Other
 """
 
 #  Copyright (c) 2023.
@@ -39,7 +38,9 @@ from django.forms import ModelForm
 
 # Local
 from apps.kore.models import Contacts
-from apps.kore.modelsvalues import ContactAttrs, ContactFields, Forms
+from apps.kore.modelsvalues import ContactAttrs
+from apps.kore.modelsvalues import ContactFields
+from apps.kore.modelsvalues import Forms
 
 # OopCompanion:suppressRename
 
@@ -48,8 +49,7 @@ contactfields = ContactFields()
 
 
 class ContactForm(ModelForm):
-    """
-    Form for creating or updating a contact
+    """Form for creating or updating a contact
 
     :attribute  META inner class
     :constant FIELD_ALIASES: The aliases for the fields.
@@ -61,8 +61,7 @@ class ContactForm(ModelForm):
     """
 
     def __init__(self, *args, **kwargs):
-        """
-        Initialise the form.
+        """Initialise the form.
         :param self:
         :param args:
         :param kwargs:
@@ -71,10 +70,8 @@ class ContactForm(ModelForm):
         super().__init__(*args, **kwargs)
         self.label = Forms.CONTACT
 
-    class Meta:
-        """
-        ContactForm's Meta
-        """
+    class Meta:  # pylint: disable=too-few-public-methods
+        """ContactForm's Meta"""
         model = Contacts
         fields = [
             ContactFields.CONTACT_NAME,

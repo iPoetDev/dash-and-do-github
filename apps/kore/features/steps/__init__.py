@@ -20,9 +20,3 @@
 - FIXME:
 - CHECK:
 """
-
-# OopCompanion:suppressRename
-
-# class KoreApp(AppConfig):
-#     default_auto_field = 'django.db.models.BigAutoField'
-#     name = 'kore'  #

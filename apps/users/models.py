@@ -28,6 +28,7 @@ Pro: most freedome, cons: most work
 - TODO:
 - FIXME:
 - CHECK:
+  - DONE: Pylint: 10/10, 23/09/30
 """
 
 # https://medium.com/
@@ -66,7 +67,8 @@ class DashUser(AbstractBaseUser, PermissionsMixin):
     :rtype: User.
     """
 
-    class Meta:
+    class Meta:  # pylint: disable=R0903
+        """Meta definition for DashUser."""
         db_table = 'dashuser'  # optional, name of the table in db
         app_label = 'users'
         verbose_name = 'DashUser'
@@ -90,8 +92,9 @@ class DashUser(AbstractBaseUser, PermissionsMixin):
 
         :return: The absolute URL for the DashUser instance.
         """
-        return "/users/%i/" % (self.pk)
+        return f"/users/{self.pk}/"
 
     def __str__(self):
         """Return the string representation of the DashUser instance."""
-        return self.email
+        return f"{self.name} ({self.email})" \
+            if self.name else self.email or "No email"

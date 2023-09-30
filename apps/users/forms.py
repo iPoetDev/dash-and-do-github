@@ -20,20 +20,25 @@
 - TODO:
 - FIXME:
 - CHECK:
+    - DONE: PyLint: 2023-10-??
+    - DONE: Ruff: 2023-10-??
+    - IGNORE: PyLint:
 """
 # OopCompanion:suppressRename
 
-from allauth.account.forms import LoginForm
+# from allauth.account import forms as aa_forms
+# import allauth.account.forms as aa_forms
 from allauth.account.forms import PasswordField
 from allauth.account.forms import SetPasswordField
-from allauth.account.forms import SignupForm
+from allauth.account.forms import LoginForm
+from allauth.account.forms import SignupForm as SF
 from django import forms
 
 #
 from apps.users.helpers import set_remember_me_request as set_remember
 
 
-class Forms:
+class FormsVals:  # pylint: disable=too-few-public-methods
     """The `Forms` class.
 
     Provides a set of nested classes that represent various
@@ -41,7 +46,7 @@ class Forms:
     Inspired by 12 Factor App: https://12factor.net/config.
     """
 
-    class Fields:
+    class Fields:  # pylint: disable=too-few-public-methods
         """The `Fields` class.
 
         Provides a set of nested classes that represent.
@@ -51,7 +56,8 @@ class Forms:
         MAX_LENGTH = 50
         MIN_LENGTH = 8
 
-        class Password:
+
+        class Password:  # pylint: disable=too-few-public-methods
             """The `Password` class.
 
             Provides a set of nested classes that
@@ -69,15 +75,14 @@ class Forms:
             HTML_NEW = "password1"
             AUTO_COMPLETE = "password"
             AUTO_COMPLETE_NEW = "new-password"
-            PATTERN = ("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])"
-                       "(?=.*[@$!%*?&]).{12,50}")
+            PATTERN = r"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{12,50}"
             HELP_TEXT = ("Passwords use a-z, A-Z, 0-9 and "
                          "@,$,!,%,*,?,&, "
                          "min: 12, max: 50. Must match.")
             MIN_LENGTH = 12
             MAX_LENGTH = 50
 
-        class Email:
+        class Email:  # pylint: disable=too-few-public-methods
             """The `Email` class.
 
             Provides a set of nested classes that
@@ -88,12 +93,11 @@ class Forms:
             PLACEHOLDER = "Email"
             HTML_LABEL = "email"
             AUTO_COMPLETE = "email"
-            PATTERN = ("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]"
-                       "+\.[a-zA-Z0-9-.]+$.{8,50}")
+            PATTERN = r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{8,50}"
             HELP_TEXT = ("Choose a valid Email: a-z, A-Z, 0-9,"
                          " _ + - , min 8, max 50")
 
-        class Username:
+        class Username:  # pylint: disable=too-few-public-methods
             """The `Username` class.
 
             Provides a set of nested classes that
@@ -104,14 +108,14 @@ class Forms:
             PLACEHOLDER = "Username"
             HTML_LABEL = "username"
             AUTO_COMPLETE = "username"
-            PATTERN = ("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]"
-                       "+\.[a-zA-Z0-9-.]+$.{6,30}")
+            PATTERN = r"[a-zA-Z0-9_'-]{6,30}"
             HELP_TEXT = ("Choose a valid Username: a-z, A-Z, 0-9,"
                          " _ + - , min 6, max 30")
             MIN_LENGTH = 6
             MAX_LENGTH = 30
 
 
+# noinspection PyArgumentList
 class DashEmailAuthField(forms.EmailField):
     """The `DashEmailAuthField` class.
 
@@ -146,14 +150,14 @@ class DashEmailAuthField(forms.EmailField):
          perform any necessary initializations.
          It then sets the label, help text, and widget properties of the field.
 
-        The label is set to the value of Forms.Fields.Email.LABEL.
-        The help_text is set to the value of Forms.Fields.Email.HELP_TEXT.
+        The label is set to the value of FormsVals.Fields.Email.LABEL.
+        The help_text is set to the value of FormsVals.Fields.Email.HELP_TEXT.
         The widget is set to an instance of forms.EmailInput
          with custom field attributes.
         """
-        super().__init__(*args, **kwargs)
-        self.label = Forms.Fields.Email.LABEL
-        self.help_text = Forms.Fields.Email.HELP_TEXT
+        super().__init__(*args, **kwargs)  # noinspection PyArgumentList
+        self.label = FormsVals.Fields.Email.LABEL
+        self.help_text = FormsVals.Fields.Email.HELP_TEXT
         self.widget = forms.EmailInput(attrs=self.field_attrs())
 
     def update_attrs(self, **kwargs):
@@ -173,17 +177,17 @@ class DashEmailAuthField(forms.EmailField):
         """
         return {
             'id': 'signup-email',
-            'aria_description': Forms.Fields.Email.HELP_TEXT,
-            'aria_label': Forms.Fields.Email.TITLE,
-            'autocomplete': Forms.Fields.Email.AUTO_COMPLETE,
-            'data_view': Forms.Fields.PUBLIC,
-            'maxlength': f'{Forms.Fields.MAX_LENGTH}',
-            'minlength': f'{Forms.Fields.MIN_LENGTH}',
-            'name': Forms.Fields.Email.HTML_LABEL,
-            'pattern': Forms.Fields.Email.PATTERN,
-            'placeholder': Forms.Fields.Email.PLACEHOLDER,
-            'tabindex': Forms.Fields.TABINDEX,
-            'title': Forms.Fields.Email.TITLE,
+            'aria_description': FormsVals.Fields.Email.HELP_TEXT,
+            'aria_label': FormsVals.Fields.Email.TITLE,
+            'autocomplete': FormsVals.Fields.Email.AUTO_COMPLETE,
+            'data_view': FormsVals.Fields.PUBLIC,
+            'maxlength': f'{FormsVals.Fields.MAX_LENGTH}',
+            'minlength': f'{FormsVals.Fields.MIN_LENGTH}',
+            'name': FormsVals.Fields.Email.HTML_LABEL,
+            'pattern': FormsVals.Fields.Email.PATTERN,
+            'placeholder': FormsVals.Fields.Email.PLACEHOLDER,
+            'tabindex': FormsVals.Fields.TABINDEX,
+            'title': FormsVals.Fields.Email.TITLE,
         }
 
 
@@ -237,16 +241,16 @@ class DashUsernameField(forms.CharField):
         """
         return {
             'id': 'signup-username',
-            'aria_description': Forms.Fields.Username.HELP_TEXT,
-            'aria_label': Forms.Fields.Username.TITLE,
-            'autocomplete': Forms.Fields.Username.AUTO_COMPLETE,
-            'data_view': Forms.Fields.PUBLIC,
-            'maxlength': f'{Forms.Fields.Username.MAX_LENGTH}',
-            'minlength': f'{Forms.Fields.Username.MIN_LENGTH}',
-            'name': Forms.Fields.Username.HTML_LABEL,
-            'placeholder': Forms.Fields.Username.PLACEHOLDER,
-            'tabindex': Forms.Fields.TABINDEX,
-            'title': Forms.Fields.Username.TITLE,
+            'aria_description': FormsVals.Fields.Username.HELP_TEXT,
+            'aria_label': FormsVals.Fields.Username.TITLE,
+            'autocomplete': FormsVals.Fields.Username.AUTO_COMPLETE,
+            'data_view': FormsVals.Fields.PUBLIC,
+            'maxlength': f'{FormsVals.Fields.Username.MAX_LENGTH}',
+            'minlength': f'{FormsVals.Fields.Username.MIN_LENGTH}',
+            'name': FormsVals.Fields.Username.HTML_LABEL,
+            'placeholder': FormsVals.Fields.Username.PLACEHOLDER,
+            'tabindex': FormsVals.Fields.TABINDEX,
+            'title': FormsVals.Fields.Username.TITLE,
         }
 
 
@@ -310,18 +314,18 @@ class DashPasswordField(PasswordField):
         """
         return {
             'id': '',
-            'name': Forms.Fields.Password.HTML_LABEL,
-            'autocomplete': Forms.Fields.Password.AUTO_COMPLETE,
-            'placeholder': Forms.Fields.Password.PLACEHOLDER,
-            'aria_label': Forms.Fields.Password.TITLE,
-            'max_length': f'{Forms.Fields.Password.MAX_LENGTH}',
-            'min_length': f'{Forms.Fields.Password.MIN_LENGTH}',
-            'pattern': Forms.Fields.Password.PATTERN,
+            'name': FormsVals.Fields.Password.HTML_LABEL,
+            'autocomplete': FormsVals.Fields.Password.AUTO_COMPLETE,
+            'placeholder': FormsVals.Fields.Password.PLACEHOLDER,
+            'aria_label': FormsVals.Fields.Password.TITLE,
+            'max_length': f'{FormsVals.Fields.Password.MAX_LENGTH}',
+            'min_length': f'{FormsVals.Fields.Password.MIN_LENGTH}',
+            'pattern': FormsVals.Fields.Password.PATTERN,
             'required': True,
-            'data_view': Forms.Fields.PUBLIC,
-            'title': Forms.Fields.Password.TITLE,
-            'aria_description': Forms.Fields.Password.HELP_TEXT,
-            'tabindex': Forms.Fields.TABINDEX
+            'data_view': FormsVals.Fields.PUBLIC,
+            'title': FormsVals.Fields.Password.TITLE,
+            'aria_description': FormsVals.Fields.Password.HELP_TEXT,
+            'tabindex': FormsVals.Fields.TABINDEX
         }
 
 
@@ -361,9 +365,9 @@ class DashSetPasswordField(SetPasswordField, DashPasswordField):
         return {
             'id': '',
             'name': '',
-            'autocomplete': Forms.Fields.Password.AUTO_COMPLETE_NEW,
-            'placeholder': Forms.Fields.Password.PLACEHOLDER,
-            'title': Forms.Fields.Password.TITLE_NEW, }
+            'autocomplete': FormsVals.Fields.Password.AUTO_COMPLETE_NEW,
+            'placeholder': FormsVals.Fields.Password.PLACEHOLDER,
+            'title': FormsVals.Fields.Password.TITLE_NEW, }
 
 
 class DashLoginForm(LoginForm):
@@ -413,7 +417,7 @@ class DashLoginForm(LoginForm):
         https://django-allauth.readthedocs.io/en/latest/account/forms.html#login
         """
         # Add your own processing here.
-        ret = super(DashLoginForm, self).login(*args, **kwargs)
+        ret = super().login(*args, **kwargs)
         if self.is_valid():
             # Remember Me | Sessions Handling | Stay Logged In
             set_remember(self.request, self.cleaned_data.get('remember_me'))
@@ -421,7 +425,7 @@ class DashLoginForm(LoginForm):
         return ret
 
 
-class DashSignupForm(SignupForm):
+class DashSignupForm(SF):
     """Custom Signup Form from Django Allauth.forms.SignupForm.
 
     A custom signup form for the Dash application.
@@ -464,11 +468,13 @@ class DashSignupForm(SignupForm):
         :param args:
         :param kwargs:
         """
+
         data = kwargs.pop('data', None)
         super().__init__(data, *args, **kwargs)
         if data:
             self.is_valid()
 
+    # pylint: disable=useless-super-delegation,W0246
     def save(self, request):
         """Save Method.
 
@@ -479,7 +485,12 @@ class DashSignupForm(SignupForm):
          system. It takes in a Django request object and returns the created
          user object.
         """
-        return super(DashSignupForm, self).save(request)
+        # from allauth.account.forms import SignupForm
+        # self.base_signup_form_class = SignupForm
+        # - todo Add custom signup save / cleanup logic here
+        # - fixme W0246: Useless parent or super() delegation in method 'save'
+        # - fixme (useless-super-delegation)
+        return super().save(request)
 
     def clean(self):
         """Clean the form data.

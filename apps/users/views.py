@@ -1,4 +1,5 @@
 #!/user/bin/env python3
+# pylint: disable=R0901
 """@File: <filename>.py
 @Version: 0.3.0 to 0.3.0.?
 @Desc: apps | <app> |  <module>
@@ -19,6 +20,8 @@
 - TODO:
 - FIXME:
 - CHECK:
+    - DONE: PyLint 2023/09/30
+    - IGNORE: PyLint R0901,R0903
 """
 # OopCompanion:suppressRename
 # AllAuth Libraries
@@ -33,39 +36,60 @@ from allauth.exceptions import ImmediateHttpResponse
 # Django Libraries
 from django.http import HttpResponseRedirect
 
-from apps.users.forms import DashLoginForm
-
-# Local Libraries: Users
-from apps.users.forms import DashSignupForm
-from apps.users.helpers import redirect_response
-
 # Local Libraries: Dash and Do
 from dash_and_do.htmx import is_htmx
 from dash_and_do.settings import LOGIN_REDIRECT_URL
 from dash_and_do.settings import LOGOUT_REDIRECT_URL
 
+# Local Libraries: Users
+from apps.users.forms import DashLoginForm
+from apps.users.forms import DashSignupForm
+from apps.users.helpers import redirect_response
 
-class FormViews:
+
+class FormViews:  # pylint: disable=too-few-public-methods
     """Form Values: Strings."""
 
-    class Login:
+    class Login:  # pylint: disable=too-few-public-methods
+        """ Constants Class for Login FormView.
+
+        """
         CTXNAME = 'login_form'
         TEMPLATE = 'users/account/login.html'
         PREFIX = 'current'
 
-    class Signup:
+    class Signup:  # pylint: disable=too-few-public-methods
+        """ Constants Class for Signup FormView.
+
+
+        """
         CTXNAME = 'signup_form'
         TEMPLATE = 'users/account/signup.html'
         PREFIX = 'new'
 
-    class LogoutView:
+    class Confirm:  # pylint: disable=too-few-public-methods
+        """ Constants Class for Signup FormView.
+
+
+        """
+        CTXNAME = 'confirm_view'
+        TEMPLATE = 'account/email_confirm.html'
+        PREFIX = 'confirm'
+
+    class LogoutView:  # pylint: disable=too-few-public-methods
+        """ Constants Class for LogoutView.
+
+        """
         TEMPLATE = 'users/account/logout.html'
 
 
-class HTTP:
+class HTTP:  # pylint: disable=too-few-public-methods
     """HTTP Headers: Strings."""
 
-    class Headers:
+    class Headers:  # pylint: disable=too-few-public-methods
+        """ HTTP Headers: Strings.
+
+        """
         HX_REDIRECT = 'HX-Redirect'
         HTTP_LOCATION = 'Location'
 
@@ -76,14 +100,10 @@ class DashLoginView(LoginView):
     :param template_name: The name of the template to be rendered.
     :param success_url: The URL to redirect to upon successful response.
     :param form_class: The form class for rendering the login form.
-    :param login_url: The URL to redirect to if the user is not authenticated.
     :param redirect_field_name: The name of the redirect field.
-    :param redirect_authenticated_user: Boolean value indicating if
-        authenticated users should be redirected to the success URL.
     :param extra_context: Additional context data to be passed to the template.
     :param initial: Initial data for the form.
     """
-
 
     template_name = FormViews.Login.TEMPLATE  # specify your own template
     success_url = LOGIN_REDIRECT_URL  # Heads back to index
@@ -180,6 +200,7 @@ class DashLogoutView(LogoutView):
     template_name = FormViews.LogoutView.TEMPLATE  # specify your own template
     success_url = LOGOUT_REDIRECT_URL  # Heads back to index
 
+    # pylint: disable=W0246
     def dispatch(self, request, *args, **kwargs):
         """:param request: The HTTP request object.
         :param args: Optional positional arguments.
@@ -208,7 +229,11 @@ class DashLogoutView(LogoutView):
          instance of the `HttpRequest` class.
 
         """
-        return super().dispatch(request, *args, **kwargs)
+        # - todo Call the parent's dispatch method to add custom logic
+        # - fixme Current;y W0246: Useless parent or super() delegation
+        # - fixme in method 'dispatch' (useless-parent-delegation)
+        return super().dispatch(request, *args,
+                                **kwargs)  # pylint: disable=W0246
         # Add your custom logic here
 
     @staticmethod
@@ -216,7 +241,8 @@ class DashLogoutView(LogoutView):
         """Get the redirect URL for the next page after logout.
         :return: A string representing the redirect URL.
         """
-        return LOGOUT_REDIRECT_URL  # return to index
+        # return to index
+        return LOGOUT_REDIRECT_URL  # pylint: disable=too-many-ancestors
 
 
 class DashSignupView(SignupView):
@@ -325,11 +351,11 @@ class DashSignupView(SignupView):
                 self.request, self.user,
                 app_settings.EMAIL_VERIFICATION,
                 self.get_success_url())
-        except ImmediateHttpResponse as e:
-            return e.response
+        except ImmediateHttpResponse as i_h_r_except:
+            return i_h_r_except.response
+
 
 # Write the boilerplatfe for the allauth.account.views.ConfirmEmailView
-
 
 
 class DashConfirmEmailView(ConfirmEmailView):
@@ -338,4 +364,4 @@ class DashConfirmEmailView(ConfirmEmailView):
     def get_template_names(self):
         """Get template names."""
         # return your custom template
-        return ["account/email_confirm.html"]
+        return [ FormViews.Confirm.TEMPLATE ]

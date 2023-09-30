@@ -20,6 +20,8 @@
 - TODO:
 - FIXME:
 - CHECK:
+    - DONE: PyLint: 2023-09-30
+    - DONE: Ruff: 2023-09-28
 """
 from django.template.response import TemplateResponse
 

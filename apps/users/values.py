@@ -19,4 +19,7 @@
 - TODO:
 - FIXME:
 - CHECK:
+    - DONE: PyLint: 2023-10-??
+    - DONE: Ruff: 2023-10-??
+    - IGNORE: PyLint:
 """

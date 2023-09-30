@@ -26,6 +26,8 @@ Pro: most freedome, cons: most work
 - TODO:
 - FIXME:
 - CHECK:
+    - DONE: PyLint: 2023-09-30
+    - DONE: Ruff: 2023-09-28
 """
 
 from django.contrib.auth.models import BaseUserManager

@@ -19,13 +19,15 @@
 - TODO:
 - FIXME:
 - CHECK:
+    - DONE: PylInt: 23/09/30
+    - IGNORE: PylInt: Invalid name "app_name"
+      (should match ((?![0-9])\w+) pattern) (invalid-name)
 """
-from django.urls import include
 from django.urls import path
-
 from apps.users import views
 
-app_name = 'users'
+# Namespace for URL Patterns: users:route_link_reference
+app_name = 'users'  # pylint: disable=invalid-name
 """
 #    URLPatterns - Handles AllAuth
     - AllAuth Views/Templates: users.urls | kore.views
@@ -46,5 +48,4 @@ urlpatterns = [
     # 2) Password change & set
     # 3) Email change
     # 4) Account management
-    path('accounts/', include('allauth.urls')),
 ]

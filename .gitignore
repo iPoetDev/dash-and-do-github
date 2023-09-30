@@ -752,3 +752,16 @@ package-lock.json
 /IndexPageLogic.excalidraw
 /dash.sqlite3
 /.cliactions.yaml
+/dash_and_do/acceptance/**
+!/apps/kore/features/**
+/apps/kore/migrations/*
+/apps/users/migrations/*
+!/apps/users/features/*
+/docs/readme/ReadmeArchive-Drop.zip
+/docs/integration/15-styling/Appearance.md
+/docs/integration/15-styling/Interact.md
+/docs/integration/15-styling/Layout.md
+/docs/integration/15-styling/Structure.md
+/docs/integration/15-styling/Tailwind.md
+/docs/integration/15-styling/Tailwind Elements.md
+/docs/Context/Context.md

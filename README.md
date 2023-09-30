@@ -2,7 +2,7 @@
 
 > Dash & Do GitHub Manager: A Dashboard (Reporting) and Do (Act or Automate) for GitHub Repositories
 
-# 1.0 Introduction
+## 1.0 Introduction
 
 ---
 
@@ -17,9 +17,9 @@
 
 ---
 
-## 1.1. [Goals](#goals)
+### 1.1. [Goals](#goals)
 
-### 1.1.1 [App Goals](#app-goals)
+#### 1.1.1 [App Goals](#app-goals)
 
 -  To *manage a personal developer’s GitHub account* as a whole portfolio service, by connecting, and disconnecting, the
   web service with a developer GitHub account (maximum of 1 GitHub account).
@@ -28,7 +28,7 @@
 - Use a *To-do and Action task manager* for the developer in response to the state of their repositories so that they
   bulk edit on a single pane of glass pattern via a To Do and Tasker design. I.e. **The Do, aka Do & Act.**
 
-### 1.1.2 [Roadmap](#roadmap)
+#### 1.1.2 [Roadmap](#roadmap)
 
 - Version 0.5: Dash & Do `Core`:
     -  MVC Component
@@ -56,7 +56,7 @@
     - API Dependencies
     - Flows:
 
-### 1.1.2 [Project Goals](#project-goals)
+#### 1.1.2 [Project Goals](#project-goals)
 
 -   #Client/Assessor #RFP To build a full-stack site based on business logic used to control a centrally owned dataset.
 -   #Client/Assessor #RFP To set up an authentication mechanism and provide role-based access to the site's data or other
@@ -76,7 +76,7 @@
 
 ***
 
-## 1.2. [Live App](#live-app)
+### 1.2. [Live App](#live-app)
 
 -   To see the live app: https://{{app-slug}}/herokuapp.com
 
@@ -86,7 +86,7 @@
 
 ---
 
-## 1.3. [App Visual](#app-visuals)
+### 1.3. [App Visual](#app-visuals)
 
 ![Image]()
 
@@ -96,7 +96,7 @@
 >
 ***
 
-## 2. [Problem Statement](#problem-solve)
+## 2.0 [Problem Statement](#problem-solve)
 
 ### 2.1. [Domain Driven Scenarios](#domain-scenarios)
 
@@ -146,7 +146,7 @@ E.
 >
 ***
 
-## 3. [Project](#project)
+## 3.0 [Project](#project)
 
 ### 3.1. [Project Brief](#brief)
 
@@ -337,7 +337,7 @@ uses *Amount of Work* labels to categorise the scoring
 > .
 ***
 
-## 4. [Concept](#concept)
+## 4.0 [Concept](#concept)
 
 ### 4.1. [Real World Domain](#domain)
 
@@ -447,7 +447,7 @@ Institute, this may not be an isolated experience.
 >
 ***
 
-## 5. [Scope](#scope)
+## 5.0 [Scope](#scope)
 
 -   [ ] Criteria:
 -   [x] Completed? 🛫
@@ -524,7 +524,7 @@ Institute, this may not be an isolated experience.
 > .
 ---
 
-## 6. [Plan](#plan)
+## 6.0 [Plan](#plan)
 
 > PROJECT | SOLUTION: Definitions | Lists | Goals | Intent | Timeboxing
 
@@ -880,7 +880,7 @@ Institute, this may not be an isolated experience.
 -   [ ] **CHECKLISTS**:
     -   [ ] **WIKI**: To have completed the assessment criteria checklist as published in the [project wiki's](#).
 
-## 7. [Architecture](#architecture)
+## 7.0 [Architecture](#architecture)
 
 - .
 - .
@@ -958,7 +958,7 @@ url: "https://c4model.com/"
 - **Scope**: Sits outside of the intended own software system
 - **Diagram Audience**: Users, Assessors, Developers etc
 
-![](SYSTEM-GitHub-Developer-Account.png)
+![](SYSTEM-GitHub-Developer-Account%201.png)
 `Diagram: EXTERNAL SYSTEMS: GitHub Real World Domain & Datasource`
 
 ---
@@ -1355,7 +1355,7 @@ Server). [Sub System]
 
 ---
 
-## 8. [Design](#design)
+## 8.0 [Design](#design)
 
 > SOLUTION: #DESIGN #Front-end | UXD | Strategy | Scope | Structure | Skeleton | Surface
 
@@ -1623,7 +1623,7 @@ This means that:
 
 ***
 
-## 9. [Data](#)
+## 9.0 [Data](#)
 
 ***
 
@@ -1631,7 +1631,7 @@ This means that:
 
 ***
 
-## 10. [Build](#build)
+## 10.0 [Build](#build)
 
 ### 10.1. [Branching](#branches)
 
@@ -1869,7 +1869,7 @@ Pre-commit Hook
 
 ***
 
-## 11. [Code](#code)
+## 11.0 [Code](#code)
 
 ***
 
@@ -1877,7 +1877,7 @@ Pre-commit Hook
 
 ***
 
-## 12. [Test](#testing)
+## 12.0 [Test](#testing)
 
 ***
 
@@ -1885,7 +1885,7 @@ Pre-commit Hook
 
 ***
 
-## 13. [Quality](#quality)
+## 13.0 [Quality](#quality)
 
 ***
 
@@ -1893,15 +1893,990 @@ Pre-commit Hook
 
 ***
 
-## 14. [Features & User Acceptance](#)
+## 14.0 [Features & User Acceptance](#)
 
 ***
 
 >
 
+| Epics                        | Features | Stories | Linked Apps | Notes |
+| ---------------------------- | -------- | ------- | ----------- | ----- |
+| #1: Readme Drive Development <br> Documentation First | –:       | Developer Story (DX)     | –:          |       |
+| #2: Arch & Deploy <br> Decisions, Deployments, Platforms            |   –:       | Developer Story (DX)        |             |       |
+| #3: Agile Design & BDD: <br> Epics, Features, UAC, Stories, Acceptance  | –:         | Developer Story (DX)          |             |       |
+
+### 14.1.1 User Epics to Features
+
+| Epic | Features                                                               | Linked Apps | Detail Readme | Release Plan  | Notes |     |
+| ---- | ---------------------------------------------------------------------- | ----------- | ------------- | ------------- | ----- | --- |
+| #4: PUBLIC Core Web App <br> & Public/Private Views/Access  | #98 [PUBLIC: `index.html` Page: All Users and Unauthenticated Users]() | Kore        |               | 0.5 MVC Minor |       |     |
+| #4: PUBLIC Core Web App | #99 [PRIVATE: `index.html` Page: All Users and Authenticated Users]()  | Kore        |               | 0.5 MVC Minor |       |     |
+| #4: PUBLIC Core Web App | #100                                                                   |             |               | 0.5 MVC Minor |       |     |
+| #4: PUBLIC Core Web App | #101                                                                   |             |               | 0.5 MVC Minor |       |     |
+| #5:  |                                                                        |             |               | 0.5 MVC Minor |       |     |
+| #5:  |                                                                        |             |               | 0.5 MVC Minor |       |     |
+| #5:  |                                                                        |             |               | 0.5 MVC Minor |       |     |
+| #5:  |                                                                        |             |               | 0.5 MVC Minor |       |     |
+| #7:  |                                                                        |             |               |               |       |     |
+| #5:  |                                                                        |             |               |               |       |     |
+| #6:  |                                                                        |             |               |               |       |     |
+| #7:  |                                                                        |             |               |               |       |     |
+
+
+### 14.3. [BDD & User Acceptance](#user-acceptance)
+
+> SOLUTION: User Acceptance | User Story Testing
+
+-   [ ] Criteria
+-   [ ] Completed? 🛫
+
+#### 14.3.1 BBD
+
+- As per [BDD 101: Behavior-Driven Agile | Automation Panda.com](https://automationpanda.com/2017/02/01/bdd-101-bdd-and-agile/), 
+
+##### 14.3.1.1 Top Level Concepts
+- BBD - Behaviour Driven Testing: optimally used for **black box testing**, higher order testing for the user experience. Learn more from: [BDD | Automation Panda](https://automationpanda.com/bdd/)
+- Gherkin - domain specific language for behaviour scenarios. Learn more from: [BDD 101: The Gherkin Language | Automation Panda](https://automationpanda.com/2017/01/26/bdd-101-the-gherkin-language/)
+- Feature: A user product or feature under test. [In BDD, What Should Be A Feature? | Automation Panda](https://automationpanda.com/2017/10/19/in-bdd-what-should-be-a-feature/)
+- Scenario: Generally known as a test case, that concisely frames the behaviour under test.
+- Give | When | Then: The structure specification keywords that uses natural language. not jargon, for all users to understand.
+- Declarative: A focus on what behaviour is to happen, not how, and the expected outcome. 
+- Imperative: A focus on how behaviour operates, better suited to TDD and Unit testing.
+
+##### 14.3.1.2  Further Reading: 
+
+- [BDD | Automation Panda](https://automationpanda.com/bdd/)
+
+##### 14.3.1.3 AI Assisted Feature-Scenario Writing
+
+- The author crafted and shaped the JetBrains AI Assistant (beta) to _conversationally_ (i.e. back and forth prompt-output-refactor) define the following Feature-Scenario as User Acceptance.
+- This was a productivity, time manage and neural diversity win for the author.
+- The author edited, groomed, aligned with his manually edited Epics, Features, and User Stories.
+- These are then sorted, as per[ Python Behave](https://behave.readthedocs.io/en/latest/gherkin/#feature-testing-layout) and [Behave Django](https://behave-django.readthedocs.io/en/stable/usage.html), in side and along side the package/apps under test, in `.feature` files 
+
+##### 14.3.1.4 Manual over Automation
+
+- The intent and use of this approach, for the stage and development maturity of the author, is on
+    - Manual testing over automation
+    - Discovery of the features and behaviours (successful and side effects) scenarios
+    - The formation of the testing steps by breakdown and refinement of the  Scenario along the lines of user behaviour and expectations linked to each User Story
+
+- Why not automate (yet):
+    - Learning curve requirements, starting from a novice stand point.
+    - Extra effort v time management prioritisation.
+    - Additional complexity v risk prioritisation.
+    - Additional requirements and supplementary tooling for test environment configuration, management and tear down.
+
+All of these tests with have the `@manual` tag on each scenario, and maybe a few with `@automatable` just to indicate which could be automated in the future.
+
+---
+
+### 14.4 User Acceptance Testing
+
+#### 14.4.1: Public & Private Site, Pages, Navigation
+
+##### 14.4.1.1: Public Site, Pages & Navigation
+
+-   [ ] **Requirement**: Public Site, Pages & Navigation
+    - **Feature**: Public Site
+        - **Gherkin File**: *PublicSite.feature*  
+    - **Scenarios / Stories**:
+        - #82: ` Newly Visiting User's URL Story ` [#54 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/54)
+        - #81:  ` New Visting User Story ` [#81 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/81)
+        - #?? ` Show/Hide of Public Navigation and Page Components ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+        - #?? ` Site Branding ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+        - #?? ` Site Functionality/Responsiveness for Tablets+ screens ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+        - #?? ` Site Functionality/Responsiveness for Mobile only screen ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+
+###### 14.4.1.1.1 **UAC**: **`User Acceptance Test & Result`**
+        -  #82: ` Newly Visiting User's URL Story ` [#54 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/54)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+**UAC**: **`User Acceptance Criteria`**
+        -  #81:  ` New Visting User Story ` [#81 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/81)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+**UAC**: **`User Acceptance Criteria`**
+        -  #?? ` Show/Hide of Public Navigation and Page Components ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+**UAC**: **`User Acceptance Criteria`**
+        -  #?? ` Site Functionality/Responsiveness for Tablets+ screens ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+**UAC**: **`User Acceptance Criteria`**
+        -  #?? ` Site Functionality/Responsiveness for Mobile only screen ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+---
+
+##### 14.4.1.2 Private Site, Pages & Navigation
+
+-   [ ] **Requirement**: Private Site, Pages & Navigation
+    - **Feature**: Private Site
+        - **User Acceptance Criteria**: *PrivateSite.feature*  
+    - **Scenarios / Stories**:
+        - #82: ` Newly Visiting User's URL Story ` [#54 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/54)
+        - #81:  ` New Visting User Story ` [#81 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/81)
+        - #??:  ` Private Navigation and Private Components` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+        - #??:  ` Site Functionality/Responsiveness for Tablet+ screens ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+
+###### 14.4.1.2.1 **UAC**: **`User Acceptance Test & Result`**`**
+        -  #82: ` Newly Visiting User's URL Story ` [#54 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/54)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+- UAC
+    - #81: ` New Visting User Story ` [#54 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/54)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+ - UAC
+    - #??: ` Private Navigation/Components `  [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+ - UAC
+    - #??: ` Site for Tablet+ Screens  `  [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+ 
+---
+
+#### 14.4.2 Public Site: Account Creation, User Registration and Signup Form 
+
+-   [ ] **Requirement**: Public: Account Creation and User Registration
+    - **Feature**: Account Creation
+        - **User Acceptance Criteria**: *AccountCreate.feature*  
+    - **Scenarios / Stories**:
+        - #54: ` New Registration User Story ` [#54 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/54)
+        - #66:  ` Confirm Register User Story ` [#66 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/66)
+
+##### 14.4.2.1. **UAC**: **`User Acceptance Test & Result`**`**
+   -  #54: ` New Registration User's URL Story ` [#54 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/54)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+- UAC
+    - #66:  ` Confirm Register User Story ` [#66 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/66)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+---
+#### 14.4.3 Private Site: User Login, Account Authentication and Login Form 
+
+-   [ ] **Requirement**: Public: Account Creation and User Registration
+    - **Feature**: UserLogin
+        - **User Acceptance Criteria**: *UserLogin.feature*  
+    - **Scenarios / Stories**:
+        - #67:  ` Successful Login Existing User Story ` [#67 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/67)
+        - #68:  ` Unsuccessfully Login Existing User Story ` [#68 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/68)
+        - #74:  ` User Session Forgets Story ` [#74 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/74)
+
+##### 14.4.3.1 **UAC**: **`User Acceptance Test & Result`**
+
+   - #67:  ` Successful Login Existing User Story ` [#67 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/67)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+  - #68:  ` Unsuccessfully Login Existing User Story ` [#68 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/68)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+   - #74:  ` User Session Forgets Story ` [#74 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/74)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
 ***
 
-## 15. [Deploy](#deploy)
+#### 14.4.4 Private Site: User Profile & User Data Management
+
+-   [ ] **Requirement**: Private: User Profile Access, User Settings and Account Removal
+    - **Feature**: User Profile
+        - **User Acceptance Criteria**: *UserProfile.feature*  
+    - **Scenarios / Stories**:
+        - #75:  ` User Profile Access Story ` [#75 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/75)
+        - #76:  ` User Profile Update Story ` [#76 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/76)
+        - #77:  ` User Profile Deletion Story ` [#77 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/77)
+        - #78:  ` User Account Removal Story ` [#78 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/78)
+
+##### 14.4.4.1 **UAC**: **`User Acceptance Test & Result`**
+
+   - #75:  ` User Profile Access Story ` [#75 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/75)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+  - #76:  ` User Profile Update Story ` [#76 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/76)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+   -  #77:  ` User Profile Deletion Story ` [#77 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/77)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+   - #78:  ` User Account Removal Story ` [#78 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/78)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+---
+
+#### 14.4.5 Private Site: Staff User Access to Admin Site
+
+-   [ ] **Requirement**: Private: Manage the Site, Be a Staff User and Access Admin Site
+    - **Feature**: Administration Site with Staff User
+        - **User Acceptance Criteria**: *AdminSite.feature*  
+    - **Scenarios / Stories**:
+        - #79:  ` Admin User Profile Access Story ` [#79 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/79)
+        - #80:  ` Admin User Profile Update Story ` [#80 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/80)
+
+##### 14.4.5.1 **UAC**: **`User Acceptance Test & Result`**
+
+   - #79:  ` Admin User Profile Access Story ` [#79 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/79)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+   - #80:  ` Admin User Profile Update Story ` [#80 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/80)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+---
+
+#### 14.4.6 Messaging Site: Contact the Site Owner and Contact Form
+
+-   [ ] **Requirement**: All/Anonymous: Contact the Site Owner, Send Copy and Contact Form 
+    - **Feature**: Messaging the Site
+        - **User Acceptance Criteria**: *MessageSite.feature*  
+    - **Scenarios / Stories**:
+        - #126:  ` Contact Site: User Story ` [#126 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/126)
+        - #127:  ` Contact Email: User Story ` [#127 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/127)
+
+##### 14.4.6.1 **UAC**: **`User Acceptance Test & Result`**
+
+   - #126:  ` Contact Site: User Story ` [#126 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/126)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+   - #127:  ` Contact Email: User Story ` [#127 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/127)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+---
+
+#### 14.4.7 Public: Password Management: Reset, Verification and Change. 
+
+-   [ ] **Requirement**: Password Management
+    - **Feature**: PasswordManagement
+        - **User Acceptance Criteria**: *PasswordManage.feature*  
+    - **Scenarios / Stories**:
+        - #69:  ` Forgets Password User Story ` [#69 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/69)
+        - #70:  ` Verify Reset User Story ` [#70 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/70)
+
+##### 14.4.7.1 **UAC**: **`User Acceptance Test & Result`**
+
+   - #69:  ` Forgets Password User Story ` [#69 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/69)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+   - #70:  ` Verify Reset User Story ` [#70 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/70)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+---
+
+#### 14.4.8 Site Email Services
+
+-   [ ] **Requirement**: Site Email for Messaging, Account Creation, and Password Management 
+    - **Feature**: EmailServices
+        - **User Acceptance Criteria**: *EmailServices.feature*  
+    - **Scenarios / Stories**:
+        - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+        - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+        - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+
+##### 14.4.8.1 **UAC**: **`User Acceptance Test & Result`**
+
+
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+---
+
+#### 14.4.9 User Session Management
+
+-   [ ] **Requirement**: Site Email for Messaging, Account Creation, and Password Management 
+    - **Feature**: UserSessions
+        - **User Acceptance Criteria**: *UserSessions.feature*  
+    - **Scenarios / Stories**:
+        - #71:  ` Set + Persist Session: User Story ` [#71 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/71)
+        - #73:  ` User Session Authorised: User Story ` [#73 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/73)
+
+##### 14.4.8.1 **UAC**: **`User Acceptance Test & Result`**
+
+   - #71:  ` Set + Persist Session: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/71)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+   - #73:  ` User Session Authorised: User Story ` [#73 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/73)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+---
+
+#### 14.4.10 User Permission Management
+
+-   [ ] **Requirement**: Site Email for Messaging, Account Creation, and Password Management 
+    - **Feature**: EmailServices
+        - **User Acceptance Criteria**: *EmailServices.feature*  
+    - **Scenarios / Stories**:
+        - #84:  ` Unauthenticated User Login Story ` [#84 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/84)
+        - #85:  ` Unauthorised/Access User Login Story ` [#85 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/85)
+
+##### 14.4.10.1 **UAC**: **`User Acceptance Test & Result`**
+
+   - #84:  ` Unauthenticated User Login Story ` [#84 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/84)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+   - #85:  ` Unauthorised/Access User Login Story ` [#85 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/85)
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+---
+
+#### 14.4.11 Private: GitHub Feature: Dashboard
+
+-   [ ] **Requirement**: Private: GitHub Dashboard aka Dash; Report and Status
+    - **Feature**: GitHubDashboard (CRU)
+        - **User Acceptance Criteria**: *EmailServices.feature*  
+    - **Scenarios / Stories**:
+        - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+        - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+        - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+
+##### 14.4.11.1 **UAC**: **`User Acceptance Test & Result`**
+
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+---
+
+#### 14.4.12 Private: GitHub Feature: Do & Actions 
+
+-   [ ] **Requirement**: Private: GitHub Do aka Do; Actions: 
+    - **Feature**: GitHub Do & Action (CRUD)
+        - **User Acceptance Criteria**: *GitHubDofeature*  
+    - **Scenarios / Stories**:
+        - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+        - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+        - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+
+##### 14.4.12.1 **UAC**: **`User Acceptance Test & Result`**
+
+
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+---
+
+#### 14.4.?? ??
+
+-   [ ] **Requirement**: ??
+    - **Feature**: ??
+        - **User Acceptance Criteria**: ??.feature*  
+    - **Scenarios / Stories**:
+        - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+        - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+        - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
+
+##### 14.4.??.1 **UAC**: **`User Acceptance Test & Result`**
+
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
+---
+
+### 14.4. [Screenshots](#feature-screenshots)
+
+> SOLUTION: Features
+
+-   [ ] Criteria
+-   [ ] Completed? 🛫
+
+#### 14.5.1. Public & Private Site, Pages, Navigation
+
+> SOLUTION: Feature | Screenshot
+
+-   [ ] Criteria
+-   [ ] Completed? 🛫
+-   [ ] Screenshot of Public Pages, Private Pages
+-   [ ] Screenshot of Public Components, Private Components
+##### 14.4.1.1: Public Site, Pages & Navigation
+
+![Index: Public] ()
+**`SCREENSHOT-X.X: `** `:  Public: Index.html `
+
+![About] ()
+**`SCREENSHOT-X.X: `** `: Public: About.html `
+
+![FAQ] ()
+**`SCREENSHOT-X.X: `** `: Public: FAQ.html `
+
+##### 14.4.2.1: Private Site, Pages & Navigation
+
+![Index: Private] ()
+**`SCREENSHOT-X.X: `** `: Private Page `
+
+![Dash & Inform] ()
+**`SCREENSHOT-X.X: `** `: Private Page: Dash & Inform `
+
+![Do & Action] ()
+**`SCREENSHOT-X.X: `** `: Private Page: Do & Inform  `
+
+---
+
+#### 14.5.2. Public Site: Account Creation, User Registration and Signup Form 
+
+> SOLUTION: Feature | Screenshot
+
+-   [ ] Criteria
+-   [ ] Completed? 🛫
+-   [ ] Screenshot of Account Creation
+
+![Public: Signup] ()
+**`SCREENSHOT-X.X: `** `: Public: Sign Up Form, Index.html  `
+
+---
+
+#### 14.5.3. Private Site: User Login, Account Authentication and Login Form 
+
+> SOLUTION: Feature | Screenshot
+
+-   [ ] Criteria
+-   [ ] Completed? 🛫
+-   [ ] Screenshot of User Login and Login Flow
+
+![Public: Login] ()
+**`SCREENSHOT-X.X: `** `:  Public: Login Up Form/Menu, Index.html `
+
+---
+
+#### 14.5.4.Private Site: User Profile & User Data Management
+
+> SOLUTION: Feature | Screenshot
+
+-   [ ] Criteria
+-   [ ] Completed? 🛫
+-   [ ] Screenshot of User Profile
+
+![Private: User Profile] ()
+**`SCREENSHOT-X.X: `** `: Private: account.html `
+
+---
+
+#### 14.5.5. Private Site: Staff User Access to Admin Site
+
+> SOLUTION: Feature | Screenshot
+
+-   [ ] Criteria
+-   [ ] Completed? 🛫
+-   [ ] Screenshot of Admin Site behind a user’s login
+
+![] ()
+**`SCREENSHOT-X.X: `** `: Admin Site Login `
+
+![] ()
+**`SCREENSHOT-X.X: `** `: Admin Site Page `
+
+***
+#### 14.5.6.  Messaging Site: Contact the Site Owner and Contact Form
+
+> SOLUTION: Feature | Screenshot
+
+-   [ ] Criteria
+-   [ ] Completed? 🛫
+-  [ ] Screenshot of contact form
+ 
+![] ()
+**`SCREENSHOT-X.X: `** `: Contact Form, Index.html`
+
+***
+
+#### 14.5.7. Public: Password Management: Reset, Verification and Change. 
+
+> SOLUTION: Feature | Screenshot
+
+-   [ ] Criteria
+-   [ ] Completed? 🛫
+
+![] ()
+**`SCREENSHOT-X.X: `** `: Password Reset `
+
+![] ()
+**`SCREENSHOT-X.X: `** `: Password Verify `
+
+***
+
+#### 14.5.8. Site Email Services
+
+> SOLUTION: Feature | Screenshot
+
+-   [ ] Criteria
+-   [ ] Completed? 🛫
+-   [ ] Screenshots of email templates/verify pages
+
+![] ()
+**`SCREENSHOT-X.X: `** `: Email Template `
+
+![] ()
+**`SCREENSHOT-X.X: `** `: Email Verify Page `
+
+***
+
+#### 14.5.9. User Session Management
+
+> SOLUTION: Feature | Screenshot
+
+-   [ ] Criteria
+-   [ ] Completed? 🛫
+- Screenshot of remember me
+
+![] ()
+**`SCREENSHOT-X.X: `** `: Remember Me: On/Off: Set/Forget `
+
+---
+
+#### 14.5.10.User Permission Management
+
+> SOLUTION: Feature | Screenshot
+
+-   [ ] Criteria
+-   [ ] Completed? 🛫
+-   [ ] Side by side of public / private components/navigation
+
+![] ()
+**`SCREENSHOT-X.X: `** `: Public v Private Features `
+
+
+---
+
+#### 14.5.11. Private: GitHub Feature: Dashboard
+
+> SOLUTION: Feature | Screenshot
+
+-   [ ] Criteria
+-   [ ] Completed? 🛫
+-   [ ] Screenshot of Dash
+
+![] ()
+**`SCREENSHOT-X.X: `** `: GitHub Dashboard `
+
+---
+
+#### 14.5.12. Private: GitHub Feature: Do & Actions
+
+> SOLUTION: Feature | Screenshot
+
+-   [ ] Criteria
+-   [ ] Completed? 🛫
+-   [ ] Screen of 
+
+![] ()
+**`SCREENSHOT-X.X: `** `: GitHub Do & Action `
+
+
+---
+
+
+***
+
+## 15.0 [Deploy](#deploy)
 
 > SOLUTION: Host | Cloud | PaaS | Web App
 
@@ -1920,9 +2895,9 @@ Pre-commit Hook
 - How the code get automatically pushed to Heroku by using Trunk-based long-lived release branches.
 
 -   [ ] Choose Light or Dark version for final
-    ![](15-1-Commit-light.png)
+    ![](15-1-Commit-light%201.png)
 
-![](15-1-Commit-dark.png)
+![](15-1-Commit-dark%201.png)
 **`Diagram: Commit & Branch into Deployment`**
 
 ---
@@ -1941,7 +2916,7 @@ Pre-commit Hook
 -   [ ] Choose Light or Dark version for final
     ![[Pasted image 20230718131542.png]]
 
-![[Pasted image 20230718131534.png]]
+![[Heroku Deploy - Git Branching Stategies.png]]
 **`Diagram: From Build via Integration Branch Strategies into Heroku Apps`**
 
 ##### 15.2.1.1 Build/Dev Trunks
@@ -2157,7 +3132,7 @@ AssesmentLog:
     - _Type_: Relational Database Management Service.
     - _Language_: SQL
 
-![Source: Wikimedia.com](Postgresql_elephant.svg.png)
+![Source: Wikimedia.com](Logo%20Postgresql_elephant.png)
 
 ---
 
@@ -2185,7 +3160,7 @@ https://dash-and-do-github.herokuapp.com/
 
 ---
 
-## 17. [Assessment](#)
+## 17.0 [Assessment](#)
 
 ***
 

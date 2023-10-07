@@ -119,7 +119,7 @@ class DashSignupView(SignupView):
     redirect_url = LOGIN_REDIRECT_URL  # Heads back to index
 
     def post(self, request):
-        form = SignupForm(request.POST)
+        form = DashSignupForm(request.POST)
         if form.is_valid():
             # Process the data, create user, etc.
             return HttpResponseRedirect(self.get_success_url())

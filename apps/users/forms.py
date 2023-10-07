@@ -28,15 +28,10 @@
 
 # from allauth.account import forms as aa_forms
 # import allauth.account.forms as aa_forms
-from allauth.account import app_settings
-from allauth.account.adapter import get_adapter
 from allauth.account.forms import LoginForm
 from allauth.account.forms import PasswordField
 from allauth.account.forms import SetPasswordField
 from allauth.account.forms import SignupForm
-from allauth.account.utils import get_user_model
-from allauth.account.utils import user_email
-from allauth.account.utils import user_username
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
@@ -63,6 +58,10 @@ class FormVals:  # pylint: disable=too-few-public-methods
         MIN_LENGTH = 8
         STRIP = True
 
+        class Attrs:
+            NAME = 'name'
+            ID = 'id'
+
         class Email:  # pylint: disable=too-few-public-methods
             """The `Email` class.
 
@@ -72,13 +71,14 @@ class FormVals:  # pylint: disable=too-few-public-methods
             LABEL = 'Email Address'
             TITLE = 'Enter a Valid Email'
             PLACEHOLDER = 'Email'
+            FIELD = 'email'
             HTML_LABEL = 'email'
             AUTO_COMPLETE = 'email'
             PATTERN = r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{8,50}'
             HELP_TEXT = ('Choose a valid Email: a-z, A-Z, 0-9,'
                          ' _ + - , min 8, max 50')
             MIN_LENGTH = 8
-            MAX_LENGTH = 50
+            MAX_LENGTH = 75
             REQUIRED = False
             WHITESPACE = True
             ERROR_INVALID = 'Invalid: Enter a valid email address.'
@@ -126,6 +126,8 @@ class FormVals:  # pylint: disable=too-few-public-methods
             LABEL = 'Password'
             NEW = 'New Password'
             CONFIRM = 'Confirm Password'
+            FIELD_1 = 'password1'
+            FIELD_2 = 'password2'
             TITLE = 'Enter a Valid Password'
             TITLE_NEW = 'Enter a New Password'
             TITLE_CONFIRM = 'Confirm a Valid Password'
@@ -156,43 +158,46 @@ class FormVals:  # pylint: disable=too-few-public-methods
 
     class Errors:
         """"""
+
         @property
         def Email_Error_Messages(self):
             return {
-            'required':_(FormVals.Fields.Email.ERROR_REQUIRED),
-            'invalid':_(FormVals.Fields.Email.ERROR_INVALID),
-            'min_length':_(FormVals.Fields.Email.ERROR_MIN_LENGTH),
-            'max_length':_(FormVals.Fields.Email.ERROR_MAX_LENGTH),
-            'whitespace':_(FormVals.Fields.Email.ERROR_WHITESPACE),
-            'pattern':_(FormVals.Fields.Email.ERROR_PATTERN),
-            'unique':_(FormVals.Fields.Email.ERROR_UNIQUE),
-        }
+                'required':_(FormVals.Fields.Email.ERROR_REQUIRED),
+                'invalid':_(FormVals.Fields.Email.ERROR_INVALID),
+                'min_length':_(FormVals.Fields.Email.ERROR_MIN_LENGTH),
+                'max_length':_(FormVals.Fields.Email.ERROR_MAX_LENGTH),
+                'whitespace':_(FormVals.Fields.Email.ERROR_WHITESPACE),
+                'pattern':_(FormVals.Fields.Email.ERROR_PATTERN),
+                'unique':_(FormVals.Fields.Email.ERROR_UNIQUE),
+            }
 
         @property
         def Username_Error_Messages(self):
             return {
-            'required':_(FormVals.Fields.Username.ERROR_REQUIRED),
-            'invalid':_(FormVals.Fields.Username.ERROR_INVALID),
-            'min_length':_(FormVals.Fields.Username.ERROR_MIN_LENGTH),
-            'max_length':_(FormVals.Fields.Username.ERROR_MAX_LENGTH),
-            'whitespace':_(FormVals.Fields.Username.ERROR_WHITESPACE),
-            'pattern':_(FormVals.Fields.Username.ERROR_PATTERN),
-            'unique':_(FormVals.Fields.Username.ERROR_UNIQUE),
-        }
+                'required':_(FormVals.Fields.Username.ERROR_REQUIRED),
+                'invalid':_(FormVals.Fields.Username.ERROR_INVALID),
+                'min_length':_(FormVals.Fields.Username.ERROR_MIN_LENGTH),
+                'max_length':_(FormVals.Fields.Username.ERROR_MAX_LENGTH),
+                'whitespace':_(FormVals.Fields.Username.ERROR_WHITESPACE),
+                'pattern':_(FormVals.Fields.Username.ERROR_PATTERN),
+                'unique':_(FormVals.Fields.Username.ERROR_UNIQUE),
+            }
 
         @property
         def Password_Error_Messages(self):
             return {
-            'required':_(FormVals.Fields.Password.ERROR_REQUIRED),
-            'invalid':_(FormVals.Fields.Password.ERROR_INVALID),
-            'min_length':_(FormVals.Fields.Password.ERROR_MIN_LENGTH),
-            'max_length':_(FormVals.Fields.Password.ERROR_MAX_LENGTH),
-            'whitespace':_(FormVals.Fields.Password.ERROR_WHITESPACE),
-            'pattern':_(FormVals.Fields.Password.ERROR_PATTERN),
-            'unique':_(FormVals.Fields.Password.ERROR_UNIQUE),
-        }
+                'required':_(FormVals.Fields.Password.ERROR_REQUIRED),
+                'invalid':_(FormVals.Fields.Password.ERROR_INVALID),
+                'min_length':_(FormVals.Fields.Password.ERROR_MIN_LENGTH),
+                'max_length':_(FormVals.Fields.Password.ERROR_MAX_LENGTH),
+                'whitespace':_(FormVals.Fields.Password.ERROR_WHITESPACE),
+                'pattern':_(FormVals.Fields.Password.ERROR_PATTERN),
+                'unique':_(FormVals.Fields.Password.ERROR_UNIQUE),
+            }
+
 
 message_errors = FormVals.Errors()
+
 
 # noinspection PyArgumentList
 class DashEmailAuthField(forms.EmailField):
@@ -269,12 +274,11 @@ class DashEmailAuthField(forms.EmailField):
 
     def update_attrs(self):
         custom_attrs = {  # Construct custom attributes
-            'id': self.attr_id,
-            'name': self.attr_name,
+            'id':self.attr_id,
+            'name':self.attr_name,
         }
 
         self.widget.attrs.update(custom_attrs)
-
 
     @classmethod
     def field_attrs(cls):
@@ -444,7 +448,7 @@ class DashSetPasswordField(SetPasswordField, DashPasswordField):
         self.maxl = max if max is not None else FormVals.Fields.Password.MAX_LENGTH
         self.minl = min if min is not None else FormVals.Fields.Password.MIN_LENGTH
         # call  superclass init_attrs via DashPasswordField and MRO
-        self.init_attrs() # No args
+        self.init_attrs()  # No args
 
     def init_attrs(self):
         if isinstance(self.widget, forms.PasswordInput) and self.widget.attrs:
@@ -456,10 +460,11 @@ class DashSetPasswordField(SetPasswordField, DashPasswordField):
 
     def update_attrs(self):
         custom_attrs = {  # Construct custom attributes
-            'id': self.attr_id,
-            'name': self.attr_name,
+            'id':self.attr_id,
+            'name':self.attr_name,
         }
-        if hasattr(super(), 'update_attrs'):  # Call the super's update_attrs if exists
+        if hasattr(super(),
+                   'update_attrs'):  # Call the super's update_attrs if exists
             super().update_attrs(**custom_attrs)
         else:  # Just update using the current class method
             self.widget.attrs.update(custom_attrs)
@@ -550,25 +555,25 @@ class DashSignupForm(SignupForm):
     )
     password1 = DashSetPasswordField(
         help_text=FormVals.Fields.Password.HELP_TEXT,
-        attr_id='new-password',
+        attr_id='password1',
         attr_name='password1',
         min_length=FormVals.Fields.Password.MIN_LENGTH,
     )
     password2 = DashSetPasswordField(
         help_text=FormVals.Fields.Password.HELP_TEXT,
-        attr_id='confirm-password',
+        attr_id='password1',
         attr_name='password2',
         min_length=FormVals.Fields.Password.MIN_LENGTH,
     )
     # # print(email.widget.attrs.items())
-    # print(password1.widget.attrs.items())
+    print(password1.widget.attrs.items())
     # print(password1.widget.attrs['maxlength'])
     # print(password1.max_length)
     # print(password2.widget.attrs.items())
     is_saved = False
     use_required_attribute = False  # Disabled HTML5 required attribute
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, attrs_name=None, attrs_pwdname=None, *args, **kwargs):
         """DashSignupForm class.
 
         Initialize a new instance of the DashSignupForm class.
@@ -576,13 +581,17 @@ class DashSignupForm(SignupForm):
         :param kwargs:
         """
         data = kwargs.pop('data', None)
-        print(f'DashSignupForm: __init__(): data: {data}')
-        super(DashSignupForm, self).__init__(*args, **kwargs)
+        if data is not None:
+            print(f'DashSignupForm: __init__(): data keys: {data.keys()}')
+            for value in data.values():
+                print(f'DashSignupForm: __init__(): data Value: {value}')
 
+        print(f'DashSignupForm: __init__(): data: {data}') ## I see my form data
+        super().__init__(*args, **kwargs)
 
     def clean(self):
-        cleaned_data = super(SignupForm, self).clean()
-        print(f'DashSignupForm: Clean(): Form data: {cleaned_data}')
+        cleaned_data = super().clean()
+        print(f'DashSignupForm: Clean(): Form data: {cleaned_data}')  # Coming up empty
         password1 = cleaned_data.get('password1')
         password2 = cleaned_data.get('password2')
         print(f'DashSignupForm: Clean(): password1: {password1}')
@@ -590,7 +599,6 @@ class DashSignupForm(SignupForm):
 
         if password1 != password2:
             self.add_error('password', "Password does not match")
-
 
     # # pylint: disable=useless-super-delegation,W0246
     # def save(self, request):

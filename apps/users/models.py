@@ -73,8 +73,15 @@ class DashUser(AbstractBaseUser, PermissionsMixin):
         app_label = 'users'
         verbose_name = 'DashUser'
 
-    email = models.EmailField(max_length=254, unique=True)
-    name = models.CharField(max_length=254, null=True, blank=True)
+    email = models.EmailField(max_length=50,
+                              null=False,
+                              blank=False,
+                              unique=True,
+                              default='')
+    name = models.CharField(max_length=50,
+                            null=True,
+                            blank=True,
+                            default='')
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -83,7 +90,7 @@ class DashUser(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'email'
     EMAIL_FIELD = 'email'
-    REQUIRED_FIELDS = [ ]
+    REQUIRED_FIELDS = []
 
     objects = DashUserManager()
 
@@ -92,9 +99,9 @@ class DashUser(AbstractBaseUser, PermissionsMixin):
 
         :return: The absolute URL for the DashUser instance.
         """
-        return f"/users/{self.pk}/"
+        return f'/users/{self.pk}/'
 
     def __str__(self):
         """Return the string representation of the DashUser instance."""
-        return f"{self.name} ({self.email})" \
-            if self.name else self.email or "No email"
+        return f'{self.name} ({self.email})' \
+            if self.name else self.email or 'No email'

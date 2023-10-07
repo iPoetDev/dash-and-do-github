@@ -20,10 +20,9 @@
 - FIXME:
 - CHECK:
     - DONE: PylInt: 23/09/30
-    - IGNORE: PylInt: Invalid name "app_name"
-      (should match ((?![0-9])\w+) pattern) (invalid-name)
 """
 from django.urls import path
+
 from apps.users import views
 
 # Namespace for URL Patterns: users:route_link_reference
@@ -38,9 +37,9 @@ urlpatterns = [
     path('logout/', views.DashLogoutView.as_view(), name='account_logout'),
     path('signup/', views.DashSignupView.as_view(), name='account_signup'),
     path(
-        "confirm-email/<str:key>/",
+        'confirm-email/<str:key>/',
         views.DashConfirmEmailView.as_view(),
-        name="account_confirm_email",
+        name='account_confirm_email',
     ),
     # including allauth urls
     # Other views@

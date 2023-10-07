@@ -17,30 +17,21 @@
 """
 import traceback
 
-# Local: Project Imports
-from dash_and_do.htmx import is_htmx
-from dash_and_do.settings import DEBUG
-
 # Django HTTP Imports
 from django.http import Http404
 from django.http import HttpRequest
 from django.http import HttpResponse
-
 # Django Imports
 from django.shortcuts import render
 from django.template.response import TemplateResponse
-
 # from django.views.decorators.cache import never_cache  # TODO
 from django.views.decorators.clickjacking import xframe_options_sameorigin
-
 # from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 # TODO
 from django.views.decorators.http import require_GET
 from django.views.decorators.http import require_http_methods
-
 # Django View Imports
 from django.views.defaults import page_not_found as dj_page_not_found
-
 # Third Party Imports
 from django_htmx.middleware import HtmxDetails
 
@@ -49,21 +40,26 @@ from apps.kore.corehttp import contact_email_response
 from apps.kore.corehttp import contact_http_response
 from apps.kore.corehttp import switch_form
 from apps.kore.emailing.emails import send_mail_contact2
-
 # Local: App Imports
 from apps.kore.forms import ContactForm
 from apps.kore.helpers import pp_label
 from apps.kore.helpers import pp_response
-from apps.kore.values import HTTP
 from apps.kore.values import Brand
 from apps.kore.values import Forms
+from apps.kore.values import HTTP
 from apps.kore.values import Page
 from apps.kore.values import SiteMeta
 from apps.kore.values import Template
-from apps.users.forms import DashLoginForm
-
 # Local: Users Forms
+from apps.users.forms import DashLoginForm
 from apps.users.forms import DashSignupForm
+# Local: Project Imports
+from dash_and_do.htmx import is_htmx
+from dash_and_do.settings import DEBUG
+
+
+# Local: Users Values
+
 
 # OopCompanion:suppressRename
 
@@ -98,23 +94,23 @@ def index(request):
     contact = ContactForm(prefix='sitemessage')
 
     context = {
-        'site': SiteMeta.NAME,
-        'indextitle': Page.Index.TITLE,
-        'siteurl': SiteMeta.URL,
-        'siteperson': SiteMeta.PERSON,
-        'sitedesc': SiteMeta.DESC,
-        'siteright': SiteMeta.COPY,
-        'sitekeywords': SiteMeta.KEYWORDS,
-        'sitecontact': SiteMeta.CONTACT,
-        'brand': Brand,
-        'page': Page,
-        'contact_form': contact,  # Render initial clear form on Get
-        'signup_form': signup,  # Render initial clear form on Get
-        'login_form': login,  # Render initial clear form on Get
-        'contactname': contact.fields[ 'name' ],
-        'contactemail': contact.fields[ 'email' ],
-        'contactmessage': contact.fields[ 'message' ],
-        'contactcopy': contact.fields[ 'copy_sent' ],
+        'site':SiteMeta.NAME,
+        'indextitle':Page.Index.TITLE,
+        'siteurl':SiteMeta.URL,
+        'siteperson':SiteMeta.PERSON,
+        'sitedesc':SiteMeta.DESC,
+        'siteright':SiteMeta.COPY,
+        'sitekeywords':SiteMeta.KEYWORDS,
+        'sitecontact':SiteMeta.CONTACT,
+        'brand':Brand,
+        'page':Page,
+        'contact_form':contact,  # Render initial clear form on Get
+        'signup_form':signup,  # Render initial clear form on Get
+        'login_form':login,  # Render initial clear form on Get
+        'contactname':contact.fields['name'],
+        'contactemail':contact.fields['email'],
+        'contactmessage':contact.fields['message'],
+        'contactcopy':contact.fields['copy_sent'],
     }
     pp_label(label='Index: ContactForm')
     # Template.HOME is 'index.html' - is a Class.CONSTANT value format/abstract
@@ -125,7 +121,10 @@ def index(request):
     #     # HTMX for header to update the url in the browser's address bar
     #     response[ 'HX-Current-Url' ] = request.get_full_path()
     # Render the templated response for index.html
-    return render(request, Template.HOME, context)
+
+    ret = render(request, Template.HOME, context)
+    # print(str(ret.content, 'utf-8'))
+    return ret
 
 
 # def menu_public_context(request):
@@ -142,7 +141,7 @@ def index(request):
 # ====================== All | Public Form Views ===========================
 
 
-@require_http_methods([ HTTP.POST ])
+@require_http_methods([HTTP.POST])
 def form_contact(request):  # sourcery skip: dict-assign-update-to-union
     """Form contact view. | Access: All Users
     Checks for HTTP POST request and if the request is htmx.
@@ -185,7 +184,7 @@ def form_contact(request):  # sourcery skip: dict-assign-update-to-union
 
             # Render a completed form i.e. a new unbounded form
             contact = ContactForm()
-            base_ctx = {Forms.CONTACT: contact}
+            base_ctx = {Forms.CONTACT:contact}
             # pp_label(
             #     label='form_contact: ContactForm: Completed')
             return render_completed_form(request, completed,
@@ -203,7 +202,7 @@ def form_contact(request):  # sourcery skip: dict-assign-update-to-union
 
     elif (not contact.is_valid() and contact.data and request.method ==
           HTTP.POST):
-        pp_label(label='5: form_contact: ContactForm: Invalid')
+        # pp_label(label='5: form_contact: ContactForm: Invalid')
         contact = ContactForm()
         return render_bounded_form(request, contact,
                                    Forms.CONTACT, base_ctx)
@@ -224,14 +223,14 @@ def switch_views(label):
     :return:
     """
     viewformlookup = {
-        'form_contact': Forms.CONTACT,
-        'form_signup': Forms.SIGNUP,
-        'form_login': Forms.LOGIN,
-        'form_reset': Forms.PASSWORD_RESET,
-        'form_password_change': Forms.PASSWORD_CHANGE,
-        'form_profile': Forms.PROFILE,
-        'form_github': Forms.GITHUB,
-        'form_settings': Forms.SETTINGS,
+        'form_contact':Forms.CONTACT,
+        'form_signup':Forms.SIGNUP,
+        'form_login':Forms.LOGIN,
+        'form_reset':Forms.PASSWORD_RESET,
+        'form_password_change':Forms.PASSWORD_CHANGE,
+        'form_profile':Forms.PROFILE,
+        'form_github':Forms.GITHUB,
+        'form_settings':Forms.SETTINGS,
     }
     return viewformlookup.get(label)
 
@@ -242,8 +241,8 @@ def render_completed_form(request,
                           base_ctx: dict,
                           viewname: str = Forms.CONTACT) -> TemplateResponse:
     """Render the completed form."""
-    view = switch_views(viewname)
-    pp_response(response, f'view: {view}: completed http response')
+    switch_views(viewname)
+    # pp_response(response, f'view: {view}: completed http response')
     # Render the completed Response for form with status codes
     context = response.context_data
     context.update(base_ctx)  # merge base_ctx dict with original context data
@@ -269,7 +268,7 @@ def render_bounded_form(request, form, label,
     # Switch the Context form's name/per context render by form label's key.
     form_key = switch_form(label)
     # Assign the form to the context
-    bounded_ctx = {form_key: form}
+    bounded_ctx = {form_key:form}
     bounded_ctx |= ctx  # merge ctx: dict augmented union assigment
     # Reply with 400 for form validation error on bounded forms, or the
     # contingent status code from the emailing response
@@ -295,7 +294,7 @@ def render_unbounded_form(request, form, label,
     # Switch the Context form's name/per context render by form label's key.
     form_key = switch_form(label)
     # Assign the form to the context
-    unbounded_ctx = {form_key: form}
+    unbounded_ctx = {form_key:form}
     unbounded_ctx |= ctx  # merge ctx: dict augmented union assigment
     unbounded = TemplateResponse(request,
                                  Template.CONTACT,
@@ -348,10 +347,10 @@ def core_page_not_found(request, exception) -> HttpResponse:
     try:
         stack_trace = traceback.format_exc() if DEBUG else ''
         context = {
-            'message': 'Page not found',
-            'verbose': 'Sorry, but the page you were trying to view does not '
-                       'exist.',
-            'trace': stack_trace,
+            'message':'Page not found',
+            'verbose':'Sorry, but the page you were trying to view does not '
+                      'exist.',
+            'trace':stack_trace,
         }
         return render(request,
                       Template.COREPAGE_NOT_FOUND,  # 'kore/404.html'

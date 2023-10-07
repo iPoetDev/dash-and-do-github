@@ -79,17 +79,15 @@ from django.urls import path
 #   Page: Private
 # /dash/ - Dash.html => dash.urls
 # ================== Do'er App ======================
-# ================== Admin App ======================
-# IF DEBUG:
-# /admin/ - Admin Site => admin.site.urls
 
+# breakpoint()
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),  # checked
     # 2023-09-25
     path("__debug__/", include("debug_toolbar.urls")),
-    path('', include('kore.urls', namespace='kore')),
-    path('', include('users.urls', namespace='users')),
+    path('', include('apps.kore.urls', namespace='kore')),
+    path('', include('apps.users.urls', namespace='users')),
 ]
 # path('profile/', include('profile.urls', namespace='profile')),
 # path('profile/', include('allauth.urls', namespace='profile')),

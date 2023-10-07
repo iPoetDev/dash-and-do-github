@@ -151,7 +151,6 @@ if DEBUG:
 if DEBUG:
     ALLOWED_HOSTS += [ 'localhost', '127.0.0.1' ]
     INTERNAL_IPS = [ '127.0.0.1' ]
-    # INTERNAL_IPS = IpRangeList(['127.0.0.1/24', '192.168.0.0/16'])
 
 if not DEBUG:
     ALLOWED_HOSTS += [ '*.herokuapp.com' ]
@@ -191,7 +190,7 @@ if ADMIN_ENABLED:
 
 INSTALLED_APPS += [
     'debug_toolbar',
-    'djdt_permissions',
+    # 'djdt_permissions',
     # 'mail_panel',
     'allauth',  # django-allauth
     'allauth.account',  # allauth.account
@@ -222,6 +221,7 @@ if DEBUG:
         'django_extensions',
         'django_behave',
         'debug_toolbar_user_panel',
+        'django_pdb',
     ]
 
 DJANGO_APPS += [
@@ -256,7 +256,7 @@ if DEBUG:
         'debug_toolbar.panels.staticfiles.StaticFilesPanel',
         # 'debug_toolbar.panels.signals.SignalsPanel',
         'djt_csp.panel.SecurityPanel',
-        # 'debug_toolbar_user_panel.panels.UserPanel',
+        'debug_toolbar_user_panel.panels.UserPanel',
         # 'debug_toolbar.panels.versions.VersionsPanel',
         # 'debug_toolbar.panels.timer.TimerPanel',
         # 'djdt_permissions.panels.PermissionsPanel',
@@ -310,19 +310,23 @@ if DEBUG:
 # - Check for: Admin dependencies Authentication, Message
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-    # 'mail_panel.panels.MailToolbarPanel',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # Django's default middleware
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django_htmx.middleware.HtmxMiddleware',  # third party
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',  # checked
-    'allauth.account.middleware.AccountMiddleware',  # third party
-    'django.contrib.messages.middleware.MessageMiddleware',  # checked
-    'django.contrib.admindocs.middleware.XViewMiddleware',  # checked
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # other middlewares
+    # 'django.contrib.admindocs.middleware.XViewMiddleware',
+    'django_pdb.middleware.PdbMiddleware',# checked
+
+    # third party middlewares, usually added at the end
 ]
 
 # ================== Dev Middleware ==================
@@ -370,10 +374,10 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # 'BACKEND': 'django.template.backends.jinja.Jinja2',
         'DIRS': [
-            BASE_DIR / 'templates',
             BASE_DIR / 'apps/kore/templates/kore/',
             BASE_DIR / 'apps/users/templates/users/',
-            'venv/Lib/site-packages/debug_toolbar/templates/debug_toolbar/',
+            BASE_DIR / 'templates',
+            # 'venv/Lib/site-packages/debug_toolbar/templates/debug_toolbar/',
             # BASE_DIR / 'apps/profile/templates/profile',
             # BASE_DIR / 'apps/dash/templates/dash',
         ],
@@ -406,11 +410,11 @@ TEMPLATES = [
 # - removed: MIGRATION_MODULES for dash app,
 # - removed: MIGRATION_MODULES for profile app on epic-kore branch
 
-MIGRATION_MODULES = {
-    'kore': 'kore.migrations',
-    # 'profile': 'profile.migrations',
-    # 'dash': 'dash.migrations',
-}
+# MIGRATION_MODULES = {
+#     'kore': 'kore.migrations',
+#     # 'profile': 'profile.migrations',
+#     # 'dash': 'dash.migrations',
+# }
 
 # ================== Database ==================
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -426,7 +430,7 @@ if DEBUG and ADMIN_ENABLED:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'dash.sqlite3',
+            'NAME': BASE_DIR / 'development.sqlite3',
         }
     }
 
@@ -575,7 +579,7 @@ ACCOUNT_TEMPLATE_EXTENSION = 'html'  # checked 23/09/23
 # Signup
 # noinspection PyUnusedName
 ACCOUNT_FORMS = {
-    'signup': 'allauth.account.forms.SignupForm',  # highprior
+    'signup': 'apps.users.forms.DashSignupForm',  # highprior
     'login': 'allauth.account.forms.LoginForm',  # highprior
     'reset_password': 'allauth.account.forms.ResetPasswordForm',  # lowprior
     'change_password': 'allauth.account.forms.ChangePasswordForm',  # lowprior
@@ -799,7 +803,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'apps/dash', 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# ==================== Stoages Files ====================
+# ==================== Storages Files ====================
 
 # Credits:
 # https://www.reddit.com/r/django/comments/12chtin/
@@ -811,8 +815,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 if not DEBUG:
     STORAGES[ 'staticfiles' ] = {
         "BACKEND": \
-            ("django.contrib.staticfiles.storage"
-             ".ManifestStaticFilesStorage")}
+            "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+    }
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -827,11 +831,11 @@ MESSAGE_LEVEL = \
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 # noinspection PyUnusedName
 MESSAGE_TAGS = {
-    messages.DEBUG: envs.str('MESSAGE_TAGS_DEBUG', default='debug'),
-    messages.INFO: envs.str('MESSAGE_TAGS_INFO', default='info'),
-    messages.SUCCESS: envs.str('MESSAGE_TAGS_SUCCESS', default='success'),
-    messages.WARNING: envs.str('MESSAGE_TAGS_WARNING', default='warning'),
-    messages.ERROR: envs.str('MESSAGE_TAGS_ERROR', default='error'),
+    messages.DEBUG: envs.int('MESSAGE_TAGS_DEBUG', default='10'),
+    messages.INFO: envs.int('MESSAGE_TAGS_INFO', default='20'),
+    messages.SUCCESS: envs.int('MESSAGE_TAGS_SUCCESS', default='25'),
+    messages.WARNING: envs.int('MESSAGE_TAGS_WARNING', default='30'),
+    messages.ERROR: envs.int('MESSAGE_TAGS_ERROR', default='40'),
 }
 
 # ==================== Email & Notifications ====================
@@ -1172,22 +1176,21 @@ CSRF_COOKIE_AGE = \
 
 # # Added to .env file.
 # # Whether to use a secure cookie for the CSRF cookie/domain. Add to .env file.
-# CSRF_COOKIE_DOMAIN = \
-envs.str('CSRF_COOKIE_DOMAIN', default=None)
+# CSRF_COOKIE_DOMAIN = envs.str('CSRF_COOKIE_DOMAIN', default=None)
 
 # # https://docs.djangoproject.com/en/4.2/ref/settings/#csrf-trusted-origins
-# CSRF_TRUSTED_ORIGINS = \
-envs.list('CSRF_TRUSTED_ORIGINS', default=[ ])
+# CSRF_TRUSTED_ORIGINS = envs.list('CSRF_TRUSTED_ORIGINS', default=[ ])
 
 # # Whether to HTTP Only. False by default.
 CSRF_COOKIE_HTTPONLY = \
     envs.bool('CSRF_COOKIE_HTTPONLY', default=False)
-# CSRF_COOKIE_MASKED = \
-envs.bool('CSRF_COOKIE_MASKED', default=False)
+
+# CSRF_COOKIE_MASKED = envs.bool('CSRF_COOKIE_MASKED', default=False)
+
 CSRF_COOKIE_NAME = \
     envs.str('CSRF_COOKIE_NAME', default='csrfmiddlewaretoken')
-# CSRF_COOKIE_PATH = \
-envs.str('CSRF_COOKIE_PATH', default='/')
+
+# CSRF_COOKIE_PATH = envs.str('CSRF_COOKIE_PATH', default='/')
 
 # # See SESSION_COOKIE_SAMESITE flag for more info. Prevents X-Site requests.
 CSRF_COOKIE_SAMESITE = \

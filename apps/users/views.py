@@ -25,73 +25,134 @@
 """
 # OopCompanion:suppressRename
 # AllAuth Libraries
+
 from allauth.account import app_settings
 from allauth.account.utils import complete_signup
 from allauth.account.views import ConfirmEmailView
 from allauth.account.views import LoginView
 from allauth.account.views import LogoutView
 from allauth.account.views import SignupView
-from allauth.exceptions import ImmediateHttpResponse
-
-# Django Libraries
-from django.http import HttpResponseRedirect
+from allauth.core.exceptions import ImmediateHttpResponse
 
 # Local Libraries: Dash and Do
 from dash_and_do.htmx import is_htmx
 from dash_and_do.settings import LOGIN_REDIRECT_URL
 from dash_and_do.settings import LOGOUT_REDIRECT_URL
+from django.contrib import messages
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+
+# Django Libraries
+from django.shortcuts import redirect
+from django.template.loader import render_to_string
+from django.urls import reverse
+
+from apps.users.debugg import DebugAdapter as debugg
 
 # Local Libraries: Users
-from apps.users.forms import DashLoginForm
-from apps.users.forms import DashSignupForm
 from apps.users.helpers import redirect_response
 
+from .forms import DashLoginForm
+from .forms import DashSignupForm
+
+debugr = debugg()
 
 class FormViews:  # pylint: disable=too-few-public-methods
     """Form Values: Strings."""
 
-    class Login:  # pylint: disable=too-few-public-methods
-        """ Constants Class for Login FormView.
+    INDEX_REVERSE = 'kore:index'
+    TOGGLE_FRIENDLY = False
+    TOGGLE_ERROR = True
 
-        """
+    class Login:  # pylint: disable=too-few-public-methods
+        """Constants Class for Login FormView."""
         CTXNAME = 'login_form'
         TEMPLATE = 'users/account/login.html'
         PREFIX = 'current'
 
     class Signup:  # pylint: disable=too-few-public-methods
-        """ Constants Class for Signup FormView.
-
-
-        """
+        """Constants Class for Signup FormView."""
         CTXNAME = 'signup_form'
         TEMPLATE = 'users/account/signup.html'
-        PREFIX = 'new'
+        PREXIX_KEY = 'prefix'
+        PREFIX_UNBOUND = 'new'
+        PREFIX_BOUND = 'data'
+        UNEXPECTED_FRIENDLY = ('An unexpected issue occurred during '
+                               'registration. Please try again later.')
 
     class Confirm:  # pylint: disable=too-few-public-methods
-        """ Constants Class for Signup FormView.
-
-
-        """
+        """Constants Class for Signup FormView."""
         CTXNAME = 'confirm_view'
         TEMPLATE = 'account/email_confirm.html'
         PREFIX = 'confirm'
 
     class LogoutView:  # pylint: disable=too-few-public-methods
-        """ Constants Class for LogoutView.
-
-        """
+        """Constants Class for LogoutView."""
         TEMPLATE = 'users/account/logout.html'
 
 
 class HTTP:  # pylint: disable=too-few-public-methods
     """HTTP Headers: Strings."""
 
-    class Headers:  # pylint: disable=too-few-public-methods
-        """ HTTP Headers: Strings.
+    REDIRECTS = True
+    REDIRECTS_OFF = False
 
-        """
+    class Headers:  # pylint: disable=too-few-public-methods
+        """HTTP Headers: Strings."""
         HX_REDIRECT = 'HX-Redirect'
         HTTP_LOCATION = 'Location'
+        HX_CONTENT_TYPE = 'Content-Type'
+        HX_CONTENT_FORMAT = 'text/html'
+
+    class  Methods:
+        """HTTP Methods: Strings."""
+        GET = 'GET'
+        POST = 'POST'
+        PUT = 'PUT'
+
+class DashSignupView(SignupView):
+
+    template_name = FormViews.Signup.TEMPLATE  # specify your own template
+    success_url = LOGIN_REDIRECT_URL  # Heads back to index
+    form_class = DashSignupForm  # Custom AllAuth Signup Form
+    login_url = LOGIN_REDIRECT_URL  # Heads back to index
+    redirect_url = LOGIN_REDIRECT_URL  # Heads back to index
+
+    def post(self, request):
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            # Process the data, create user, etc.
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            # If form is not valid, re-render the form with error messages
+            signup_context =  context={FormViews.Signup.CTXNAME: form}
+            return render(request, FormViews.Signup.TEMPLATE, signup_context)
+
+    def form_valid(self, form):
+        """
+        If the form is valid, redirect to the supplied URL.
+        """
+        # Here you can add your custom logic before the user instance is saved
+        data = self.request.POST
+        # handle validation here...
+        # ??
+        # Call the parent class's method to handle the saving and redirection logic
+        response = super().form_valid(form)
+        # You can also add any logic that you want to execute after the user instance is saved
+        # For example, if you want to send a custom success message:
+        messages.success(self.request, 'User created successfully!')
+        return response
+
+    def form_invalid(self, form):
+        """
+        If the form is invalid, return the form with error messages to HTMX.
+        """
+        signup_context =  context={FormViews.Signup.CTXNAME: form}
+        form_html = render_to_string(self.template_name,
+                                     signup_context,
+                                     request=self.request)
+        messages.error(self.request, 'Your submission needs to be corrected.')
+        raise ImmediateHttpResponse(HttpResponse(form_html))
 
 
 class DashLoginView(LoginView):
@@ -162,7 +223,7 @@ class DashLoginView(LoginView):
         Note: This method is a part of the DashLoginView class.
         """
         context = super().get_context_data(**kwargs)
-        context[ FormViews.Login.CTXNAME ] = self.get_form()
+        context[FormViews.Login.CTXNAME] = self.get_form()
         return context
 
     def form_valid(self, form):  # noqa ARG002
@@ -245,114 +306,7 @@ class DashLogoutView(LogoutView):
         return LOGOUT_REDIRECT_URL  # pylint: disable=too-many-ancestors
 
 
-class DashSignupView(SignupView):
-    """- todo: UserPassesTestMixin: test if user is logged in
-    - added: get a new form_valid and add prefix to form
-    - added: get_context_data to add form to context for signup_form
-    - added: form_valid to return a TemplateResponse with HX-Redirect
-    - added: form_valid to return a HttpResponse with Location if JS disabled.
-    """
-    template_name = FormViews.Signup.TEMPLATE  # specify your own template
-    success_url = LOGIN_REDIRECT_URL  # Heads back to index
-    form_class = DashSignupForm  # Custom AllAuth Signup Form
-    login_url = LOGIN_REDIRECT_URL  # Heads back to index
 
-    def get(self, request, *args, **kwargs):
-        """Checks and directs user to a private index if authenticated.
-        Retrieve the login view.
-
-        :param request: The HTTP request object.
-        :param args: Additional positional arguments.
-        :param kwargs: Additional keyword arguments.
-        :return: An HTTP response object.
-
-        """
-        if request.user.is_authenticated:
-            return HttpResponseRedirect(LOGIN_REDIRECT_URL)
-        return super().get(request, *args, **kwargs)
-
-    def get_form(self, form_class=None):
-        """Gets the form and sets the form prefix.
-        :param form_class: (optional)
-            The form class for rendering the login form.
-            If not specified, the default form class for the view will be used.
-        :return: The instantiated form object
-            with the necessary form arguments and prefix.
-
-        This method is responsible for returning the login form to be rendered
-        in the view. The `form_class` parameter is optional, and if not
-        specified, the default form class for the view will be used.
-        The form object is instantiated with the necessary form arguments
-        and prefix for proper rendering.
-
-        Example usage:
-
-            form = self.get_form()
-            # Use the retrieved form object for further processing
-        """
-        if form_class is None:
-            form_class = self.get_form_class()
-        return form_class(**self.get_form_kwargs(),
-                          prefix=FormViews.Signup.PREFIX)  # form prefix
-
-    def get_context_data(self, **kwargs):
-        """Gets and sets a context form variable for the signup form.
-        :param kwargs: additional keyword arguments
-        :return: dictionary with context data.
-
-        This method adds additional context data to the view.
-        It returns a dictionary with the updated context data.
-        Assigned the signup form to the CTX signup_form variable.
-
-        Example usage:
-            context = self.get_context_data(foo='bar')
-            # context: {'foo': 'bar', ...}
-
-        Note: This method is a part of the DashLoginView class.
-        """
-        context = super().get_context_data(**kwargs)
-        # Name the form variable for SPA & Mutli-Form on page
-        # clean unbound form
-        context[ FormViews.Signup.CTXNAME ] = self.get_form()
-        return context
-
-    def form_valid(self, form):
-        """Process the valid form data.
-
-        :param form: The validated form data.
-        :return: An Template response (HttpResponse)
-        :rtype: HttpResponse | TemplateResponse
-
-        Saves the form data and redirects to the success URL.
-        """
-        form.save(self.request)
-        context = self.get_context_data()
-
-        if is_htmx(self.request):
-            return redirect_response(self.request,
-                                     self.template_name,
-                                     context,
-                                     self.success_url,
-                                     HTTP.Headers.HX_REDIRECT)
-
-        return redirect_response(self.request,
-                                 self.template_name,
-                                 context,
-                                 self.success_url,
-                                 HTTP.Headers.HTTP_LOCATION)
-
-    def complete(self):
-        """:param self
-        :return:
-        :rtype: HttpResponse | ImmediateHttpResponse
-        """
-        try:
-            return complete_signup(
-                self.request, self.user,
-                app_settings.EMAIL_VERIFICATION,
-                self.get_success_url())
-        except ImmediateHttpResponse as i_h_r_except:
-            return i_h_r_except.response
 
 
 # Write the boilerplatfe for the allauth.account.views.ConfirmEmailView
@@ -364,4 +318,4 @@ class DashConfirmEmailView(ConfirmEmailView):
     def get_template_names(self):
         """Get template names."""
         # return your custom template
-        return [ FormViews.Confirm.TEMPLATE ]
+        return [FormViews.Confirm.TEMPLATE]

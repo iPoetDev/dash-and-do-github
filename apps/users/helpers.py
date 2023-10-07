@@ -26,9 +26,14 @@
 from django.template.response import TemplateResponse
 
 
-def redirect_response(request, template_name, context, success_url,
+def redirect_response(request,
+                      template_name,
+                      context,
+                      success_url,
                       redirect_key):
-    """:param request: The HTTP request object.
+    """Redirect response helper function.
+
+    :param request: The HTTP request object.
     :param template_name: The name of the template to be rendered.
     :param context: The context data to be passed to the template.
     :param success_url: The URL to redirect to upon successful response.
@@ -38,9 +43,8 @@ def redirect_response(request, template_name, context, success_url,
     and redirect URL.
     :rtype: TemplateResponse
     """
-    response = \
-        TemplateResponse(request, template_name, context)
-    response[ redirect_key ] = success_url
+    response = TemplateResponse(request, template_name, context)
+    response[redirect_key] = success_url
     return response
 
 

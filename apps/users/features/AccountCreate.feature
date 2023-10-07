@@ -49,3 +49,18 @@ Feature: Account Creation
     When Bob attempts to register on Dash and Do
     Then Dash and Do should not create an account for Bob
     And Dash and Do should notify Bob that the details provided are incorrect
+
+  @same_email @manual
+  Scenario: Bob tries to create a second account after creating one
+    Given Bob has created an account on Dash and Do
+    When Bob tries to create another account with same email
+    Then Dash and Do should not create a new account for Bob
+    And Dash and Do should notify Bob that he already has an account
+    But Dash and Do should notify error messages to Bob
+
+  @different_email @manual
+  Scenario: Bob tries to create a second account after creating one
+    Given Bob has created an account on Dash and Do
+    When Bob tries to create another account with a different email
+    Then Dash and Do should create a new account for Bob
+    But Dasn and Do should not notify error messages to Bob

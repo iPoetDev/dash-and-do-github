@@ -140,7 +140,6 @@ class DashSignupView(SignupView):
         response = super().form_valid(form)
         # You can also add any logic that you want to execute after the user instance is saved
         # For example, if you want to send a custom success message:
-        messages.success(self.request, 'User created successfully!')
         return response
 
     def form_invalid(self, form):
@@ -151,7 +150,6 @@ class DashSignupView(SignupView):
         form_html = render_to_string(self.template_name,
                                      signup_context,
                                      request=self.request)
-        messages.error(self.request, 'Your submission needs to be corrected.')
         raise ImmediateHttpResponse(HttpResponse(form_html))
 
 

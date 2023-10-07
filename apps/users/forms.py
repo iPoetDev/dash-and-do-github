@@ -580,18 +580,12 @@ class DashSignupForm(SignupForm):
         :param args:
         :param kwargs:
         """
-        data = kwargs.pop('data', None)
-        if data is not None:
-            print(f'DashSignupForm: __init__(): data keys: {data.keys()}')
-            for value in data.values():
-                print(f'DashSignupForm: __init__(): data Value: {value}')
-
-        print(f'DashSignupForm: __init__(): data: {data}') ## I see my form data
+        data = kwargs.get('data', None)
         super().__init__(*args, **kwargs)
 
     def clean(self):
         cleaned_data = super().clean()
-        print(f'DashSignupForm: Clean(): Form data: {cleaned_data}')  # Coming up empty
+        print(f'DashSignupForm: Clean(): Form data: {cleaned_data}')  # fixed bug
         password1 = cleaned_data.get('password1')
         password2 = cleaned_data.get('password2')
         print(f'DashSignupForm: Clean(): password1: {password1}')

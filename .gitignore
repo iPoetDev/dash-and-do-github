@@ -765,3 +765,8 @@ package-lock.json
 /docs/integration/15-styling/Tailwind.md
 /docs/integration/15-styling/Tailwind Elements.md
 /docs/Context/Context.md
+/Context/
+/.vscode/
+/.fleet/
+/development.sqlite3
+/identifier.sqlite

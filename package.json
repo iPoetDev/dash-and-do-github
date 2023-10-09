@@ -15,7 +15,6 @@
     "post:tailwind": "npx tailwind -i static/css/tailwind.css -o static/css/ailwind-core.css --postcss --watch",
     "serve:tailwind": "live-server --port=8005 --host=127.0.0.1 --watch=**/*.html,**/*.css,**/*.js  --wait=250 & npx tailwind -i static/css/tailwind.css -o static/css/tailwind-core2.css --watch",
     "ws": "npx ws --hostname 127.0.0.1 --open"
-
   },
   "devDependencies": {
     "editorconfig": "^2.0.0",
@@ -53,7 +52,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.15",
     "browserslist": "^4.21.10",
-    "live-server": "^1.2.2",
+    "live-server": "^1.1.0",
     "local-web-server": "^5.3.0",
     "snazzy": "^9.0.0"
   },

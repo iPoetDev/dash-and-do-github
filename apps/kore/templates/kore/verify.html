@@ -1,0 +1,53 @@
+{% block signup_verify %}
+{#            <section#}
+{#                class="[ top-content ] [ flex-1 flex-end ] [ min-w-3/4 w-full min-h-350 ] [ mx-auto p-3 ] [ bg-gray-300 ]"#}
+{#                aria-description="Content - Hero"#}
+{#                aria-label="Hero Carousel"#}
+{#                data-content="top"#}
+{#                data-view="all"#}
+{#                id="top-section-content">#}
+{#                <!-- ========================= INCLUDE: TOP : HERO | CAROUSEL ================================  -->#}
+{##}
+{#                {% include "./all/hero.html" %}#}
+{##}
+{#                <!-- ========================= INCLUDE: TOP : HERO | CAROUSEL ================================  -->#}
+{#            </section>#}
+
+            <!-- ================================= CONTENT: MIDDLE: FEATURES =================================  -->
+            <!-- Block: Content | Mid Section: 1) Public & 2) Private  -->
+
+            <section
+                class="[ mid-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-4 ] | [ bg-gray-400 ] [ font-normal text-base text-black ]"
+                aria-description="Content - Confirmation"
+                aria-label="Content"
+                data-content="middle"
+                data-view="all"
+                id="middle-section-content">
+                <h1
+                    class="[ header-content ] [ invisible opacity-0 ] [ sr-only ]"
+                    id="header-middle-content"
+                    aria-description=""
+                    aria-label="Content header - middle of page"
+                    data-view="all"
+                    hidden="until-found">
+                    User Confirmation
+                </h1>
+
+                {# Checks if user is authenticated: shows the feature app cards, else shows the public sign up form #}
+                {% if request.user.is_authenticated %}
+                    <p>The user has an account and is already authenticated</p>
+                {% else %}
+                    {% for key, value in session_data.items %}
+                        <p>Session: {{ key }} | {{ value }}</p>
+                    {% endfor %}
+                    {% if request.session.is_confirmed %}
+                        <p>Your email has been confirmed. You can now log in for the first time.</p>
+                    {% elif request.session.is_valid %}
+                        <p>A verification email has been sent to {{ request.session.email }}.
+                            Please click the link in the email to verify your account.</p>
+                    {% endif %}
+                {% endif %}
+
+                <!-- ======================= CONTENT: MID 1st Col/Ro: FORM PROMO: CARDS ==================  -->
+            </section>
+{% endblock %}

@@ -54,7 +54,8 @@ urlpatterns = [
     # path('about/', views.static_about, name='about'),
     # path('fas/', views.static_faq, name='faq'),
     # path('error/', views.error_public, name='error'),
-    # path('verify/', views.verify_public, name='verify'),
+    path('verify/', views.verify_public, name='verify'),
+    path('confirm/', views.confirm_public, name='confirm'),
 
     path('form_contact/', views.form_contact, name='form_contact'),
     # path('form_signup/', views.signup, name='signup'),

@@ -76,6 +76,39 @@ class HtmxHttpRequest(HttpRequest):
     """
     htmx: HtmxDetails
 
+class SiteContext:
+    """Site Context"""
+
+    @property
+    def context(self):
+        return {
+            'sitename': SiteMeta.NAME,
+            'siteurl': SiteMeta.URL,-
+            'siteperson': SiteMeta.PERSON,
+            'sitedesc': SiteMeta.DESC,
+            'siteright': SiteMeta.COPY,
+            'sitekeywords': SiteMeta.KEYWORDS,
+            'sitecontact': SiteMeta.CONTACT,
+            'website': SiteMeta,
+            'brand': Brand,
+            'page': Page
+        }
+    @property
+    def index(self):
+        return {
+            'title':Page.Index.TITLE,
+        }
+    @property
+    def verify(self):
+        return {
+            'title':Page.Verify.TITLE,
+        }
+
+    @property
+    def confirm(self):
+        return {
+            'title':Page.Verify.TITLE,
+        }
 
 @xframe_options_sameorigin
 # @ensure_csrf_cookie
@@ -89,9 +122,9 @@ def index(request):
     """
     # Don't' not use constants in tag labels within the context
     # Use constants for the context values
-    login = DashLoginForm(prefix='current')
-    signup = DashSignupForm(prefix='new')
-    contact = ContactForm(prefix='sitemessage')
+    login = DashLoginForm()
+    signup = DashSignupForm()
+    contact = ContactForm()
 
     context = {
         'site':SiteMeta.NAME,
@@ -126,6 +159,35 @@ def index(request):
     # print(str(ret.content, 'utf-8'))
     return ret
 
+
+def verify_public(request):
+    """Verify view. | Access: All Users
+    :param request: The HTTP request object.
+    :return: None
+    :raises: None
+    """
+    site_ctx = SiteContext().context
+    verify_ctx = SiteContext().verify
+    context = {
+        **site_ctx,
+        **verify_ctx,
+    }
+    return render(request, Template.VERIFY, context)
+
+def confirm_public(request):
+    """
+    Confirm view. | Access: All Users
+    :param request: The HTTP request object.
+    :return: None
+    :raises: None
+    """
+    site_ctx = SiteContext().context
+    verify_ctx = SiteContext().verify
+    context = {
+        **site_ctx,
+        **verify_ctx,
+    }
+    return render(request, Template.CONFIRM, context)
 
 # def menu_public_context(request):
 #     """

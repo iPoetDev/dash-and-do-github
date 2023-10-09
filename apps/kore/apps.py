@@ -22,7 +22,8 @@
 """
 
 # OopCompanion:suppressRename
-
-# class KoreApp(AppConfig):
-#     default_auto_field = 'django.db.models.BigAutoField'
-#     name = 'kore'  #
+from django.apps import AppConfig
+class KoreApp(AppConfig):
+    """AppConfig for the kore app."""
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'apps.kore'  # The name of your Public application

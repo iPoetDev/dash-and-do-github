@@ -59,6 +59,9 @@ class HTTP:  # pylint: disable=too-few-public-methods
 class Template:  # pylint: disable=too-few-public-methods
     """Template Paths"""
     HOME = 'index.html'
+    ABOUT = 'about.html'
+    VERIFY = 'verify.html'
+    CONFIRM = 'kore/confirm.html'
     CONTACT = './forms/form_contact.html'
     MENU_PUBLIC = 'menu_public.html'
     COREPAGE_NOT_FOUND = 'kore/404.html'
@@ -169,6 +172,18 @@ class Page:  # pylint: disable=too-few-public-methods
         TITLE = 'About: Dashboard and Do GitHub Manager'
         ATITLE = 'About: Dashboard and Do GitHub Manager'
         ATEXT = 'About'
+
+    class Verify:  # pylint: disable=too-few-public-methods
+        """About Page Details | Static"""
+        USE = 'services_public'
+        IA = 'orphan'
+        NAV = 'excluded'
+        ROLE = 'services'
+        FLOW = 'signup -> email_confirm -> verify -> index -> login'
+        DESC: str = 'user confirmations and verification statuses'
+        TITLE = 'Verify: Dashboard and Do GitHub Manager'
+        ATITLE = 'Verify: Dashboard and Do GitHub Manager'
+        ATEXT = 'Verify'
 
     class Contact:  # pylint: disable=too-few-public-methods
         """Contact Section Partial/Fragment Details"""

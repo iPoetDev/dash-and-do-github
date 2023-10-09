@@ -91,7 +91,7 @@
                 {% if contact_form.fields.name.required %} required {% endif %}
                 tabindex="{{ contact_form.fields.name.widget.attrs.tab }}"
                 title="{{ contact_form.fields.name.help_text }}"
-                {% if contact_form.fields.name.value != None %} value="{{ contact_form.fields.name.value|stringformat:'s' }}" {% endif %}
+                value="{{ contact_form.name.value|stringformat:'s'|default_if_none:contact_form.name.data|stringformat:'s'|default:'' }}"
                 type="text" />
             <label
                 class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
@@ -133,9 +133,9 @@
                - [TLD]: Any: Lower-, upper-, 0-9
              Length: min: 8, max: 50
              -->
-            <!-- ========================= INPUT: PUBLIC CONTACT RENDER FIELD : EMAIL ===========================  -->
-
             <!-- ========================= INPUT: PUBLIC CONTACT RENDER FIELD : NAME ===========================  -->
+
+            <!-- ========================= INPUT: PUBLIC CONTACT RENDER FIELD : EMAIL ===========================  -->
             <input
                 class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
                 id="{{ contact_form.fields.email.widget.attrs.id }}"
@@ -151,7 +151,7 @@
                 {% if contact_form.fields.email.required %} required {% endif %}
                 tabindex="{{ contact_form.fields.name.widget.attrs.tabindex }}"
                 title="{{ contact_form.fields.email.help_text }}"
-                {% if contact_form.fields.email.value != None %} value="{{ contact_form.fields.email.value|stringformat:'s' }}" {% endif %}
+                value="{{ contact_form.email.value|stringformat:'s'|default_if_none:contact_form.email.data|default:'' }}"
                 type="email" />
             <label
                 class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
@@ -212,7 +212,7 @@
 {#                {% if contact_form.fields.message.required %} required {% endif %}#}
                 spellcheck="{{ contact_form.fields.message.widget.attrs.spell }}"
                 tabindex="{{ contact_form.fields.message.widget.attrs.tabindex }}"
-                {% if contact_form.fields.message.value != None %} value="{{ contact_form.fields.message.value|stringformat:'s' }}" {% endif %}
+                value="{{ contact_form.message.value|stringformat:'s'|default_if_none:contact_form.message.data|stringformat:'s'|default:'' }}"
                 title="{{ contact_form.fields.message.help_text }}">
             </textarea>
             <label

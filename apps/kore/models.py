@@ -63,18 +63,31 @@ class Contacts(models.Model):
     Methods:
         __str__: Returns a string representation of the contact.
 
+
     """
+
+    class Meta:
+        """Metadata for the model."""
+        db_table = 'dashcontact'
+        app_label = 'kore'
+        verbose_name = 'Contact'
+        verbose_name_plural = 'Contacts'
+
     name = models.CharField(max_length=50,
                             name='contact_name',
                             blank=False,
-                            null=False)
+                            null=False,
+                            default='Anonymous',
+                            verbose_name='Full Name')
     email = models.EmailField(max_length=50,
                               default=DEFAULT_FROM_EMAIL,
                               name='contact_email',
                               blank=False,
                               null=False)
     message = models.TextField(name='contact_message',
-                               blank=False)
+                               blank=False,
+                               null=False,
+                               verbose_name='Message')
     copySent = models.BooleanField(default=False,
                                    name='copy_sent')
 

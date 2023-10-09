@@ -25,33 +25,28 @@
 """
 # OopCompanion:suppressRename
 # AllAuth Libraries
-
-from allauth.account import app_settings
-from allauth.account.utils import complete_signup
 from allauth.account.views import ConfirmEmailView
 from allauth.account.views import LoginView
 from allauth.account.views import LogoutView
 from allauth.account.views import SignupView
 from allauth.core.exceptions import ImmediateHttpResponse
-
-# Local Libraries: Dash and Do
-from dash_and_do.htmx import is_htmx
-from dash_and_do.settings import LOGIN_REDIRECT_URL
-from dash_and_do.settings import LOGOUT_REDIRECT_URL
+# Django Libraries
 from django.contrib import messages
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-
-# Django Libraries
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
-from django.urls import reverse
-
-from apps.users.debugg import DebugAdapter as debugg
-
+from django.urls import reverse, reverse_lazy
+# Local Libraries: Dash and Do
+from dash_and_do.htmx import is_htmx, hx_redirect_success
+from dash_and_do.settings import LOGIN_REDIRECT_URL
+from dash_and_do.settings import LOGOUT_REDIRECT_URL
 # Local Libraries: Users
+from apps.users.debugg import DebugAdapter as debugg
 from apps.users.helpers import redirect_response
-
+from apps.users.helpers import get_last_status
+from apps.users.sessions import DashUserSession
+# Local Libraries
 from .forms import DashLoginForm
 from .forms import DashSignupForm
 
@@ -61,6 +56,8 @@ class FormViews:  # pylint: disable=too-few-public-methods
     """Form Values: Strings."""
 
     INDEX_REVERSE = 'kore:index'
+    VERIFY_REVERSE = 'kore:verify'
+    CONFIRM_REVERSE = 'kore:confirm'
     TOGGLE_FRIENDLY = False
     TOGGLE_ERROR = True
 
@@ -73,22 +70,36 @@ class FormViews:  # pylint: disable=too-few-public-methods
     class Signup:  # pylint: disable=too-few-public-methods
         """Constants Class for Signup FormView."""
         CTXNAME = 'signup_form'
-        TEMPLATE = 'users/account/signup.html'
+        TEMPLATE = 'kore/verify.html'
+        SUCCESS_URL = 'kore/verify.html'
+        CONFIRM_URL = 'account_confirm_email.html'
         PREXIX_KEY = 'prefix'
         PREFIX_UNBOUND = 'new'
         PREFIX_BOUND = 'data'
+        SUCCESS_MESSAGE = 'Please check your email to activate your account.'
         UNEXPECTED_FRIENDLY = ('An unexpected issue occurred during '
                                'registration. Please try again later.')
 
     class Confirm:  # pylint: disable=too-few-public-methods
         """Constants Class for Signup FormView."""
         CTXNAME = 'confirm_view'
-        TEMPLATE = 'account/email_confirm.html'
+        TEMPLATE = 'kore/confirm.html'
         PREFIX = 'confirm'
+        EMAIL_CTXKEY = 'email'
+        IS_CTXCONFIRM = 'can_confirm'
+
 
     class LogoutView:  # pylint: disable=too-few-public-methods
         """Constants Class for LogoutView."""
         TEMPLATE = 'users/account/logout.html'
+
+class SessionVals:
+    VALID = True
+    INVALID = False
+    CONFIRMED = True
+    NOTCONFIRM = False
+    VERIFIED = True
+    NOTVERIFIED = False
 
 
 class HTTP:  # pylint: disable=too-few-public-methods
@@ -113,19 +124,18 @@ class HTTP:  # pylint: disable=too-few-public-methods
 class DashSignupView(SignupView):
 
     template_name = FormViews.Signup.TEMPLATE  # specify your own template
-    success_url = LOGIN_REDIRECT_URL  # Heads back to index
+    success_url = reverse_lazy(FormViews.VERIFY_REVERSE)
     form_class = DashSignupForm  # Custom AllAuth Signup Form
-    login_url = LOGIN_REDIRECT_URL  # Heads back to index
-    redirect_url = LOGIN_REDIRECT_URL  # Heads back to index
 
-    def post(self, request):
+    def post(self, request,  *args, **kwargs):
+        super().post(request, *args, **kwargs)
         form = DashSignupForm(request.POST)
         if form.is_valid():
             # Process the data, create user, etc.
             return HttpResponseRedirect(self.get_success_url())
         else:
             # If form is not valid, re-render the form with error messages
-            signup_context =  context={FormViews.Signup.CTXNAME: form}
+            signup_context = {FormViews.Signup.CTXNAME: form}
             return render(request, FormViews.Signup.TEMPLATE, signup_context)
 
     def form_valid(self, form):
@@ -138,19 +148,43 @@ class DashSignupView(SignupView):
         # ??
         # Call the parent class's method to handle the saving and redirection logic
         response = super().form_valid(form)
-        # You can also add any logic that you want to execute after the user instance is saved
+        # You can also add any logic that you want to execute after the user
+        # instance is saved
+        # Link Request to custom session control: 1) Valid Email, 2) Flags
+        session_data = DashUserSession(self.request)
+        session_data.set_email(form.cleaned_data["email"])
+        session_data.set_verification_flags(SessionVals.VALID)
         # For example, if you want to send a custom success message:
+        messages.success(self.request, FormViews.Signup.SUCCESS_MESSAGE)
+        response = hx_redirect_success(self.request,
+                                         response,
+                                         self.success_url)
         return response
 
     def form_invalid(self, form):
         """
         If the form is invalid, return the form with error messages to HTMX.
         """
-        signup_context =  context={FormViews.Signup.CTXNAME: form}
+        signup_context =  context={FormViews.Signup.CTXNAME:
+                                       form}
         form_html = render_to_string(self.template_name,
                                      signup_context,
                                      request=self.request)
         raise ImmediateHttpResponse(HttpResponse(form_html))
+
+    def get_context_data(self):
+        context = super().get_context_data()
+        last_status = get_last_status(self.request)
+        session_data = DashUserSession(self.request).fetch_session_data()
+        if session_data:
+            context['session_data'] = session_data
+        if last_status:
+            context['latest_status'] = last_status
+        return context
+
+    def get_success_url(self):
+        # Redirect the user to the verification page
+        return reverse_lazy(FormViews.VERIFY_REVERSE)
 
 
 class DashLoginView(LoginView):
@@ -304,16 +338,35 @@ class DashLogoutView(LogoutView):
         return LOGOUT_REDIRECT_URL  # pylint: disable=too-many-ancestors
 
 
-
-
-
-# Write the boilerplatfe for the allauth.account.views.ConfirmEmailView
-
-
 class DashConfirmEmailView(ConfirmEmailView):
     """Confirm Email View."""
+    # template_name = FormViews.Confirm.TEMPLATE  # specify your own template
+    template_name = 'kore/confirm.html'
+    def get_redirect_url(self):
+        """Redirect to 'verify.html' after successful email verification."""
+        return reverse_lazy(FormViews.CONFIRM_REVERSE)  # name of your urlpattern
 
-    def get_template_names(self):
-        """Get template names."""
-        # return your custom template
-        return [FormViews.Confirm.TEMPLATE]
+    def get_context_data(self, **kwargs):
+        """Get context data for the view.
+        :param kwargs: Additional keyword arguments.
+        :return: A dictionary containing the context data.
+        """
+        context = super().get_context_data(**kwargs)
+        session_data = DashUserSession(self.request)
+        # Update the old session email data => confirm email if can_confirm
+        # Use the super's can_confirm bool to set the verification flags
+        # AllAuth.account.views.ConfirmEmailView line 432
+        if context[FormViews.Confirm.IS_CTXCONFIRM]:
+            session_data.set_email(context[FormViews.Confirm.EMAIL_CTXKEY])
+            # So True: Email is valid, confirm sent, and can_confirm: True
+            # Ti's over kill, and is tech debt: byt can_confirm is per view.
+            # While sessions are across viewa: for session control/history
+            session_data.set_verification_flags(SessionVals.VALID,
+                                                SessionVals.CONFIRMED,
+                                                SessionVals.VERIFIED)
+        else:
+            # So True: Email is valid, and confirm sent, but can_confirm: False
+            session_data.set_verification_flags(SessionVals.VALID,
+                                                SessionVals.CONFIRMED,
+                                                SessionVals.NOTVERIFIED)
+        return context

@@ -24,7 +24,7 @@
     - DONE: Ruff: 2023-09-28
 """
 from django.template.response import TemplateResponse
-
+from django.contrib import messages
 
 def redirect_response(request,
                       template_name,
@@ -62,3 +62,17 @@ def set_remember_me_request(request, remember_me):
     else:
         request.session.set_expiry(0)
         request.delete_cookie('remember_me')  # Session cookie
+
+def get_last_status(request):
+    """Helper function to get the last status from the session."""
+    all_messages = list(messages.get_messages(request))
+    last_message = all_messages[-1] if all_messages else None  # get the last message if messages exist
+    if last_message:
+        return last_message
+    return None
+
+def set_unverified_email(request, form):
+    email = form.cleaned_data['email']
+    # Process registration then add email to session
+    request.session['email'] = email
+    return request

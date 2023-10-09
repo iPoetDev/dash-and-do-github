@@ -41,6 +41,11 @@ urlpatterns = [
         views.DashConfirmEmailView.as_view(),
         name='account_confirm_email',
     ),
+    # path(
+    #     "confirm-email/",
+    #     views.email_verification_sent,
+    #     name="account_email_verification_sent",
+    # ),
     # including allauth urls
     # Other views@
     # 1) Password reset

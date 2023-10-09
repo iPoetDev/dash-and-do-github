@@ -77,7 +77,7 @@ class ContactForm(ModelForm):
             ContactFields.CONTACT_NAME,
             ContactFields.CONTACT_EMAIL,
             ContactFields.CONTACT_MESSAGE,
-            ContactFields.CONTACT_COPY ]
+            ContactFields.CONTACT_COPY]
 
     # Define form fields with custom widget names/attrs
     # contact-fullname name Strip is true, empty value is default.
@@ -89,29 +89,29 @@ class ContactForm(ModelForm):
         max_length=int(contactattrs.MAX),
         widget=forms.TextInput(
             attrs={
-                'name': ContactFields.CONTACT_NAME,
-                'id': ContactFields.CONTACT_NAME,
-                'autocomplete': contactattrs.AUTO_OFF,
-                'minlength': contactattrs.MIN,
+                'name':ContactFields.CONTACT_NAME,
+                'id':ContactFields.CONTACT_NAME,
+                'autocomplete':contactattrs.AUTO_OFF,
+                'minlength':contactattrs.MIN,
                 # 'maxlength': contactattrs.MAX,
-                'data_view': contactattrs.VIEW_ALL,
+                'data_view':contactattrs.VIEW_ALL,
                 # 'pattern': contactattrs.NAME_PATTERN,
-                'tabindex': '6',
+                'tabindex':'6',
             }
         ),
         help_text=contactattrs.NAME_HELP + \
                   contactattrs.VALID_RANGE,
         # validators=[valid_name],
         error_messages={
-            'required': contactattrs.NAME_REQ,
-            'invalid': f'The {contactattrs.NAME_LABEL} '
-                       f'{contactattrs.INVALID}',
-            'empty': f'The {contactattrs.NAME_LABEL} '
-                     f'{contactattrs.EMPTY}',
-            'min_length': f'The {contactattrs.NAME_LABEL} '
-                          f'must more than {contactattrs.MIN}.',
-            'max_length': f'The {contactattrs.NAME_LABEL} '
-                          f'must be less than {contactattrs.MAX}.',
+            'required':contactattrs.NAME_REQ,
+            'invalid':f'The {contactattrs.NAME_LABEL} '
+                      f'{contactattrs.INVALID}',
+            'empty':f'The {contactattrs.NAME_LABEL} '
+                    f'{contactattrs.EMPTY}',
+            'min_length':f'The {contactattrs.NAME_LABEL} '
+                         f'must more than {contactattrs.MIN}.',
+            'max_length':f'The {contactattrs.NAME_LABEL} '
+                         f'must be less than {contactattrs.MAX}.',
         }
     )
 
@@ -124,28 +124,28 @@ class ContactForm(ModelForm):
         max_length=int(contactattrs.MAX),
         widget=forms.EmailInput(
             attrs={
-                'name': ContactFields.CONTACT_EMAIL,
-                'id': ContactFields.CONTACT_EMAIL,
-                'autocomplete': contactattrs.AUTO_OFF,
-                'minlength': contactattrs.MIN,
+                'name':ContactFields.CONTACT_EMAIL,
+                'id':ContactFields.CONTACT_EMAIL,
+                'autocomplete':contactattrs.AUTO_OFF,
+                'minlength':contactattrs.MIN,
                 # 'maxlength': contactattrs.MAX,
-                'data_view': contactattrs.VIEW_ALL,
+                'data_view':contactattrs.VIEW_ALL,
                 # 'pattern': contactattrs.EMAIL_PATTERN,
-                'tabindex': '6'
+                'tabindex':'6'
             }
         ),
         help_text=contactattrs.EMAIL_HELP + contactattrs.VALID_RANGE,
         # validators=[valid_email],
         error_messages={
-            'required': contactattrs.EMAIL_REQ,
-            'invalid': f'The {contactattrs.EMAIL_LABEL}'
-                       f' {contactattrs.INVALID}',
-            'empty': f'The {contactattrs.EMAIL_LABEL} '
-                     f'{contactattrs.EMPTY}',
-            'min_length': f'The {contactattrs.EMAIL_LABEL} '
-                          f'must more than {contactattrs.MIN}.',
-            'max_length': f'The {contactattrs.EMAIL_LABEL}'
-                          f'must be less than {contactattrs.MAX}.',
+            'required':contactattrs.EMAIL_REQ,
+            'invalid':f'The {contactattrs.EMAIL_LABEL}'
+                      f' {contactattrs.INVALID}',
+            'empty':f'The {contactattrs.EMAIL_LABEL} '
+                    f'{contactattrs.EMPTY}',
+            'min_length':f'The {contactattrs.EMAIL_LABEL} '
+                         f'must more than {contactattrs.MIN}.',
+            'max_length':f'The {contactattrs.EMAIL_LABEL}'
+                         f'must be less than {contactattrs.MAX}.',
         }
     )
 
@@ -158,27 +158,27 @@ class ContactForm(ModelForm):
         max_length=int(contactattrs.AREA_MAX),
         widget=forms.Textarea(
             attrs={
-                'name': ContactFields.CONTACT_MESSAGE,
-                'id': ContactFields.CONTACT_MESSAGE,
-                'minlength': contactattrs.AREA_MIN,
+                'name':ContactFields.CONTACT_MESSAGE,
+                'id':ContactFields.CONTACT_MESSAGE,
+                'minlength':contactattrs.AREA_MIN,
                 # 'maxlength': contactattrs.AREA_MAX,
-                'data-view': contactattrs.VIEW_ALL,
-                'cols': contactattrs.AREA_COLS,
-                'rows': contactattrs.AREA_ROWS,
-                'spell': contactattrs.SPELLON,
-                'title': contactattrs.AREA_HELP + \
-                         contactattrs.AREA_RANGE,
-                'tabindex': '6',
+                'data-view':contactattrs.VIEW_ALL,
+                'cols':contactattrs.AREA_COLS,
+                'rows':contactattrs.AREA_ROWS,
+                'spell':contactattrs.SPELLON,
+                'title':contactattrs.AREA_HELP + \
+                        contactattrs.AREA_RANGE,
+                'tabindex':'6',
             },
         ),
         help_text='Compose your message here.',
         error_messages={
-            'empty': contactattrs.MSG_EMPTY,
-            'min_length': 'You have add more than '
-                          f'{contactattrs.AREA_MIN} '
-                          'for a message.',
-            'max_length': 'You have exceeded the max of'
-                          f' {contactattrs.AREA_MAX}.'
+            'empty':contactattrs.MSG_EMPTY,
+            'min_length':'You have add more than '
+                         f'{contactattrs.AREA_MIN} '
+                         'for a message.',
+            'max_length':'You have exceeded the max of'
+                         f' {contactattrs.AREA_MAX}.'
         }
     )
 
@@ -188,7 +188,7 @@ class ContactForm(ModelForm):
         required=False,
         widget=forms.CheckboxInput(
             attrs={
-                'name': ContactFields.CONTACT_COPY,
+                'name':ContactFields.CONTACT_COPY,
             }
         ),
         help_text=contactattrs.COPY_SENT,

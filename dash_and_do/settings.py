@@ -46,6 +46,7 @@ from pathlib import Path
 from environ import Env
 # Djnago Library
 from django.contrib.messages import constants as messages
+from django.urls import reverse_lazy
 # Local Library
 from .thirdparty import ANYMAIL  # noqa
 
@@ -559,8 +560,7 @@ PASSWORD_HASHERS = [
 # - noted: Excluded any custom user models settings
 
 # Add the following adapter class to use
-ACCOUNT_ADAPTER = \
-    'allauth.account.adapter.DefaultAccountAdapter'  # checked 23/09/23
+ACCOUNT_ADAPTER = 'apps.users.adapter.DashAccountAdapter'  # checked 23/09/23
 
 # Change the default behavior of authenticated users being redirected
 # to LOGIN_REDIRECT_URL
@@ -590,7 +590,7 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = False
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 # noinspection PyUnusedName
 ACCOUNT_SIGNUP_FORM_CLASS = ''  # DON'T: RISK OF CYCLIC IMPORTS
-ACCOUNT_SIGNUP_REDIRECT_URL = LOGIN_URL
+ACCOUNT_SIGNUP_REDIRECT_URL = 'verify/'
 
 # Account Email
 ACCOUNT_UNIQUE_EMAIL = True
@@ -609,11 +609,10 @@ ACCOUNT_MAX_EMAIL_ADDRESSES = 1  # checked 23/09/24
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'http'  # checked 23/09/23
 
 # noinspection PyUnusedName
-ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = \
-    LOGIN_URL  # checked 23/09/23
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = 'verify/'
 # 23/09/23
 # noinspection PyUnusedName
-ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = None
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'verify/'
 # noinspection PyUnusedName
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1  # checked 23/09/23
 ACCOUNT_EMAIL_CONFIRMATION_HMAC = False  # checked 23/09/23
@@ -826,8 +825,7 @@ if not DEBUG:
 # https://docs.djangoproject.com/en/4.2/ref/contrib/messages/#message-displaying
 
 # noinspection PyUnusedName
-MESSAGE_LEVEL = \
-    envs.str('MESSAGE_LEVEL', default='messages.DEBUG')
+MESSAGE_LEVEL = envs.int('MESSAGE_LEVEL', default=10)
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 # noinspection PyUnusedName
 MESSAGE_TAGS = {
@@ -1146,7 +1144,7 @@ SESSION_COOKIE_SECURE = \
     envs.bool('SESSION_COOKIE_SECURE', default=False)
 SESSION_ENGINE = \
     envs.str('SESSION_ENGINE',
-             default='django.contrib.sessions.backends.signed_cookies')
+             default='django.contrib.sessions.backends.db')
 SESSION_EXPIRE_AT_BROWSER_CLOSE = \
     envs.bool('SESSION_EXPIRE_AT_BROWSER_CLOSE',
               default=False)

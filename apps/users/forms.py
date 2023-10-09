@@ -72,6 +72,7 @@ class FormVals:  # pylint: disable=too-few-public-methods
             TITLE = 'Enter a Valid Email'
             PLACEHOLDER = 'Email'
             FIELD = 'email'
+            ID = 'signup-email'
             HTML_LABEL = 'email'
             AUTO_COMPLETE = 'email'
             PATTERN = r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{8,50}'
@@ -150,8 +151,9 @@ class FormVals:  # pylint: disable=too-few-public-methods
             TABINDEX_ENTER = 7
             REQUIRED = False
             WHITESPACE = True
+            ERROR_KEY = 'password'
             ERROR_INVALID = 'Invalid: Enter a valid password.'
-            ERROR_MATCH = 'Invalid: Passwords must match.'
+            ERROR_MATCH_P = 'Invalid: Passwords must match.'
             ERROR_MIN_LENGTH = 'Invalid: Passwords must be at least 12 characters.'
             ERROR_MAX_LENGTH = 'Invalid: Passwords must be less than 50 characters.'
             ERROR_REQUIRED = 'Invalid: Passwords are required.'
@@ -160,7 +162,7 @@ class FormVals:  # pylint: disable=too-few-public-methods
         """"""
 
         @property
-        def Email_Error_Messages(self):
+        def email_error_messages(self):
             return {
                 'required':_(FormVals.Fields.Email.ERROR_REQUIRED),
                 'invalid':_(FormVals.Fields.Email.ERROR_INVALID),
@@ -172,7 +174,7 @@ class FormVals:  # pylint: disable=too-few-public-methods
             }
 
         @property
-        def Username_Error_Messages(self):
+        def username_error_messages(self):
             return {
                 'required':_(FormVals.Fields.Username.ERROR_REQUIRED),
                 'invalid':_(FormVals.Fields.Username.ERROR_INVALID),
@@ -184,15 +186,12 @@ class FormVals:  # pylint: disable=too-few-public-methods
             }
 
         @property
-        def Password_Error_Messages(self):
+        def password_error_messages(self):
             return {
                 'required':_(FormVals.Fields.Password.ERROR_REQUIRED),
                 'invalid':_(FormVals.Fields.Password.ERROR_INVALID),
                 'min_length':_(FormVals.Fields.Password.ERROR_MIN_LENGTH),
                 'max_length':_(FormVals.Fields.Password.ERROR_MAX_LENGTH),
-                'whitespace':_(FormVals.Fields.Password.ERROR_WHITESPACE),
-                'pattern':_(FormVals.Fields.Password.ERROR_PATTERN),
-                'unique':_(FormVals.Fields.Password.ERROR_UNIQUE),
             }
 
 
@@ -350,8 +349,6 @@ class DashPasswordField(PasswordField):
                          max_length=max_length,
                          min_length=min_length,
                          **kwargs)
-        print(f'DashPassField: __init__(): max_length: {self.max_length}')
-        print(f'DashPassField: __init__(): min_length: {self.min_length}')
         self.attr_id = attr_id if not None \
             else FormVals.Fields.Password.HTML_LABEL
         self.attr_name = attr_name if not None \
@@ -546,154 +543,50 @@ class DashSignupForm(SignupForm):
     A custom signup form for the Dash application.
     """
     email = DashEmailAuthField(
-        attr_id='signup-email',
-        attr_name='email',
+        attr_id=FormVals.Fields.Email.ID,
+        attr_name=FormVals.Fields.Email.HTML_LABEL,
         label=FormVals.Fields.Email.LABEL,
-        help_text=FormVals.Fields.Email.HELP_TEXT,
+        # help_text=FormVals.Fields.Email.HELP_TEXT,
         max_length=FormVals.Fields.Email.MAX_LENGTH,
         min_length=FormVals.Fields.Email.MIN_LENGTH,
     )
+    # No max len for passwords as db fields have crypro hash length
+    # HTML5 validation for lengths.
     password1 = DashSetPasswordField(
-        help_text=FormVals.Fields.Password.HELP_TEXT,
-        attr_id='password1',
-        attr_name='password1',
+        attr_id=FormVals.Fields.Password.FIELD_1,
+        attr_name=FormVals.Fields.Password.FIELD_1,
+        # help_text=FormVals.Fields.Password.HELP_TEXT,
         min_length=FormVals.Fields.Password.MIN_LENGTH,
     )
     password2 = DashSetPasswordField(
-        help_text=FormVals.Fields.Password.HELP_TEXT,
-        attr_id='password1',
-        attr_name='password2',
+        attr_id=FormVals.Fields.Password.FIELD_2,
+        attr_name=FormVals.Fields.Password.FIELD_2,
+        # help_text=FormVals.Fields.Password.HELP_TEXT,
         min_length=FormVals.Fields.Password.MIN_LENGTH,
     )
-    # # print(email.widget.attrs.items())
-    print(password1.widget.attrs.items())
-    # print(password1.widget.attrs['maxlength'])
-    # print(password1.max_length)
-    # print(password2.widget.attrs.items())
+
     is_saved = False
     use_required_attribute = False  # Disabled HTML5 required attribute
 
-    def __init__(self, attrs_name=None, attrs_pwdname=None, *args, **kwargs):
+    def __init__(self, *args, attrs_email=None, attrs_password=None, **kwargs):
         """DashSignupForm class.
 
         Initialize a new instance of the DashSignupForm class.
         :param args:
         :param kwargs:
         """
+        attrs_email = attrs_email if attrs_email is not None \
+            else FormVals.Fields.Email.ID
+        attrs_password = attrs_password if attrs_password is not None \
+            else FormVals.Fields.Password.FIELD_1
         data = kwargs.get('data', None)
         super().__init__(*args, **kwargs)
 
     def clean(self):
         cleaned_data = super().clean()
-        print(f'DashSignupForm: Clean(): Form data: {cleaned_data}')  # fixed bug
-        password1 = cleaned_data.get('password1')
-        password2 = cleaned_data.get('password2')
-        print(f'DashSignupForm: Clean(): password1: {password1}')
-        print(f'DashSignupForm: Clean(): password2: {password2}')
+        password1 = cleaned_data.get(FormVals.Fields.Password.FIELD_1)
+        password2 = cleaned_data.get(FormVals.Fields.Password.FIELD_2)
 
         if password1 != password2:
-            self.add_error('password', "Password does not match")
-
-    # # pylint: disable=useless-super-delegation,W0246
-    # def save(self, request):
-    #     """Save Method.
-    #
-    #     :param request: Django request object
-    #     :return: User object
-    #
-    #     This method is used to save a signup form and create a new user in the
-    #      system. It takes in a Django request object and returns the created
-    #      user object.
-    #     """
-    #     # from allauth.account.forms import SignupForm
-    #     # self.base_signup_form_class = SignupForm
-    #     # - todo Add custom signup save / cleanup logic here
-    #     # - fixme W0246: Useless parent or super() delegation in method 'save'
-    #     # - fixme (useless-super-delegation)
-    #     print(f'SignUpForm: Save(): Form data: {self.cleaned_data}')
-    #     return super().save(request)
-    #
-    # def clean(self):
-    #     """Clean the form data.
-    #
-    #     This method validates:
-    #     1) Super().clean() links in a chain of super().clean() methods.
-    #     1) Checks the username field `username`: for handling Dummy
-    #      via adapter.
-    #     2) Checks the email field `email`: for handling Dummy via adapter.
-    #     3) Cleans the password field to minimum length:  via adapter method.
-    #         Uses a dummy user, as no user in db, as new user not created yet.
-    #        - App Settings: Minimum Password Length
-    #        - Django Valid: Is none.
-    #        - Validate: Hooks from  settings enabled
-    #             - refer: django.contrib.auth.validate_password
-    #     3) the password fields `password1` and `password2`: `DashSignupForm`
-    #        and  It ensures that both passwords match each other.
-    #
-    #     Attrs.name is html_name attribute, assigned by Forms fields
-    #     - note: This method is called by the `is_valid` method of the form.
-    #     - note: not calling in the super().clean() method
-    #     - note: Is a good practice to call the super().clean() to inherit all
-    #     - note: just copied and reimplemeted the super().clean() method
-    #     - todo: refactor to use super().clean() method later, once it works
-    #     - validate: 2023-10-04
-    #     :return: The cleaned form data.
-    #     :rtype: dict
-    #     """
-    #     super().clean()
-    #     if self.valid:
-    #         print(f'SignUpForm: Clean(): Form data: {self.cleaned_data}')
-    #     print('SignUpForm: Clean(): Form data: Fetch User: Dummy User')
-    #     User = get_user_model()  # pylint: disable=invalid-name
-    #     dummy_user = User()
-    #     user_username(dummy_user,
-    #                   self.cleaned_data.get(
-    #                       FormVals.Fields.Username.HTML_LABEL))
-    #     user_email(dummy_user,
-    #                self.cleaned_data.get(
-    #                    FormVals.Fields.Email.HTML_LABEL))
-    #     print(f'SignUpForm: Clean(): Form data: {self.cleaned_data}')
-    #     newpass = self.cleaned_data.get(FormVals.Fields.Password.HTML_NEW)
-    #     confirmpass = (
-    #         self.cleaned_data.get(FormVals.Fields.Password.HTML_CONFIRM))
-    #
-    #     print(f'{FormVals.Fields.Password.HTML_NEW}: {newpass}',
-    #           f'{FormVals.Fields.Password.HTML_CONFIRM}: {confirmpass}')
-    #
-    #     if newpass:
-    #         try:
-    #             print(f'SignUpForm: Clean(): Clean Pass: {newpass}')
-    #             get_adapter().clean_password(newpass, user=dummy_user)
-    #         except forms.ValidationError as invalid_password:
-    #             print(f'SignUpForm: Clean(): Error: Invalid Pass: {newpass}')
-    #             self.add_error(FormVals.Fields.Password.HTML_NEW,
-    #                            invalid_password)
-    #
-    #     if (
-    #         app_settings.SIGNUP_PASSWORD_ENTER_TWICE
-    #         and FormVals.Fields.Password.HTML_NEW in self.cleaned_data
-    #         and FormVals.Fields.Password.HTML_CONFIRM in self.cleaned_data
-    #     ) and newpass != confirmpass:
-    #         print(f'SignUpForm: Clean(): Error: No Match Pass: {newpass}')
-    #         self.add_error(
-    #             FormVals.Fields.Password.HTML_CONFIRM,
-    #             _(FormVals.Fields.Password.ERROR_MATCH),
-    #         )
-    #     return self.cleaned_data
-    #
-    # def try_save(self, request):
-    #     """Try Save Method extended.
-    #
-    #     :return: User object
-    #
-    #     This method is used to save a signup form and create a new user in the
-    #      system. It takes in a Django request object and returns the created
-    #      user object.
-    #     """
-    #     if self.account_already_exists:
-    #         self.is_saved = False
-    #
-    #     self.is_saved = True
-    #     if self.is_saved:
-    #         print(f'SignUpForm: Try_Save(): Form data: {self.cleaned_data}')
-    #     return super().try_save(request)
+            self.add_error(FormVals.Fields.Password.ERROR_KEY,
+                           FormVals.Fields.Password.ERROR_MATCH)

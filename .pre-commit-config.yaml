@@ -1,7 +1,7 @@
 repos:
   # Pre-Commit-Hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0 # Use the ref you want to point at
+    rev: v4.5.0 # Use the ref you want to point at
     hooks:
       - id: trailing-whitespace
 #      - id: debug-statements
@@ -22,7 +22,7 @@ repos:
   ############ PYTHON ############
   # Ruff (at end, with auto-fix)
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.0.291
+    rev: v0.0.292
     hooks:
       - id: ruff
         args: [ --fix, --exit-non-zero-on ]

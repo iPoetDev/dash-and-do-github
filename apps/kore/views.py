@@ -111,8 +111,6 @@ class SiteContext:
         }
 
 @xframe_options_sameorigin
-# @ensure_csrf_cookie
-# @csrf_protect
 @require_GET
 def index(request):
     """Index view. | Access: All Users
@@ -146,18 +144,7 @@ def index(request):
         'contactcopy':contact.fields['copy_sent'],
     }
     pp_label(label='Index: ContactForm')
-    # Template.HOME is 'index.html' - is a Class.CONSTANT value format/abstract
-    # response = TemplateResponse(request, Template.HOME, context)
-    # Check for HTMX request
-    # if is_htmx(request):
-    #     # HTMX enabled response
-    #     # HTMX for header to update the url in the browser's address bar
-    #     response[ 'HX-Current-Url' ] = request.get_full_path()
-    # Render the templated response for index.html
-
-    ret = render(request, Template.HOME, context)
-    # print(str(ret.content, 'utf-8'))
-    return ret
+    return render(request, Template.HOME, context)
 
 
 def verify_public(request):

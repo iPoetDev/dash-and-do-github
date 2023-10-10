@@ -241,8 +241,7 @@ class DashSignupView(SignupView):
         """
         context = super().get_context_data()
         last_status = get_last_status(self.request)
-        session_data = DashUserSession(self.request).fetch_session_data()
-        if session_data:
+        if session_data := DashUserSession(self.request).fetch_session_data():
             context['session_data'] = session_data
         if last_status:
             context['latest_status'] = last_status

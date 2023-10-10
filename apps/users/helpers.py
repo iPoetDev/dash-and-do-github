@@ -69,9 +69,7 @@ def get_last_status(request):
     all_messages = list(messages.get_messages(request))
     # get the last message if messages exist
     last_message = all_messages[-1] if all_messages else None
-    if last_message:
-        return last_message
-    return None
+    return last_message if last_message else None
 
 def set_unverified_email(request, form):
     """Set Unverified Email

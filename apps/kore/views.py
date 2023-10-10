@@ -26,7 +26,7 @@ from django.shortcuts import render
 from django.template.response import TemplateResponse
 # from django.views.decorators.cache import never_cache  # TODO
 from django.views.decorators.clickjacking import xframe_options_sameorigin
-# from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
+from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 # TODO
 from django.views.decorators.http import require_GET
 from django.views.decorators.http import require_http_methods
@@ -83,7 +83,7 @@ class SiteContext:
     def context(self):
         return {
             'sitename': SiteMeta.NAME,
-            'siteurl': SiteMeta.URL,-
+            'siteurl': SiteMeta.URL,
             'siteperson': SiteMeta.PERSON,
             'sitedesc': SiteMeta.DESC,
             'siteright': SiteMeta.COPY,
@@ -112,7 +112,7 @@ class SiteContext:
 
 @xframe_options_sameorigin
 # @ensure_csrf_cookie
-# @csrf_protect
+@csrf_protect
 @require_GET
 def index(request):
     """Index view. | Access: All Users
@@ -159,7 +159,9 @@ def index(request):
     # print(str(ret.content, 'utf-8'))
     return ret
 
-
+@xframe_options_sameorigin
+@csrf_protect
+@require_GET
 def verify_public(request):
     """Verify view. | Access: All Users
     :param request: The HTTP request object.
@@ -174,6 +176,9 @@ def verify_public(request):
     }
     return render(request, Template.VERIFY, context)
 
+@xframe_options_sameorigin
+@csrf_protect
+@require_GET
 def confirm_public(request):
     """
     Confirm view. | Access: All Users

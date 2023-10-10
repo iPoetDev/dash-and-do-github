@@ -64,7 +64,20 @@ class DebugAdapter:
                                 form,
                                 is_json=False,
                                 escape=False):
-        """Print form errors"""
+        """:param request: The HTTP request object.
+        :param form: The form object to check for errors.
+        :param is_json: Optional boolean value indicating whether
+            to print the errors as JSON or not. Default is False.
+        :param escape: Optional boolean value indicating whether
+            to escape HTML characters in the output. Default is False.
+        :return: None
+
+        Example usage:
+
+        request = HttpRequest()
+        form = SignupForm()
+        DebugAdapter.print_formerrors_signup(request, form)
+        """
         # Check for Form errors
         print(f'SignupView: form.errors: \n'
               f'{form.errors}')
@@ -95,6 +108,13 @@ class DebugAdapter:
 
     @staticmethod
     def print_post_data(classname, data, func='__init__'):
+        """:param classname: Name of the class where the method is called from.
+        :param data: The data passed as a dictionary.
+        :param func: Name of the method being called. Default: '__init__'.
+
+        :return: None
+
+        """
         if data is not None:
             print(f'{classname}: {func}(): data keys: {data.keys()}')
             for value in data.values():
@@ -103,4 +123,9 @@ class DebugAdapter:
 
     @staticmethod
     def print_cleandata(classname, cleandata, func='clean'):
+        """:param classname: Name of the class where the method is called from.
+        :param data: The data passed as a dictionary.
+        :param func: Name of the method being called. Default: '__init__'.
+        :return: None
+        """
         print(f'{classname}: {func}(): Form data: {cleandata}')  # fixed bug

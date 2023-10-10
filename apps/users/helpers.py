@@ -23,8 +23,9 @@
     - DONE: PyLint: 2023-09-30
     - DONE: Ruff: 2023-09-28
 """
-from django.template.response import TemplateResponse
 from django.contrib import messages
+from django.template.response import TemplateResponse
+
 
 def redirect_response(request,
                       template_name,
@@ -66,12 +67,31 @@ def set_remember_me_request(request, remember_me):
 def get_last_status(request):
     """Helper function to get the last status from the session."""
     all_messages = list(messages.get_messages(request))
-    last_message = all_messages[-1] if all_messages else None  # get the last message if messages exist
+    # get the last message if messages exist
+    last_message = all_messages[-1] if all_messages else None
     if last_message:
         return last_message
     return None
 
 def set_unverified_email(request, form):
+    """Set Unverified Email
+
+    This method sets the email address provided by the user in the `form`
+     parameter as the unverified email in the `request` session.
+
+    :param request: The HTTP request object.
+    :param form: The form object containing the user's email address.
+    :return: The modified `request` object with the unverified email
+    stored in the session.
+
+    Example Usage:
+    --------------
+    form = EmailForm(request.POST)
+    if form.is_valid():
+        set_unverified_email(request, form)
+        # Continue with the registration process
+        ...
+    """
     email = form.cleaned_data['email']
     # Process registration then add email to session
     request.session['email'] = email

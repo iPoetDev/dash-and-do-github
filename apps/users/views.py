@@ -30,27 +30,32 @@ from allauth.account.views import LoginView
 from allauth.account.views import LogoutView
 from allauth.account.views import SignupView
 from allauth.core.exceptions import ImmediateHttpResponse
+from dash_and_do.htmx import hx_redirect_success
+
+# Local Libraries: Dash and Do
+from dash_and_do.htmx import is_htmx
+from dash_and_do.settings import LOGIN_REDIRECT_URL
+from dash_and_do.settings import LOGOUT_REDIRECT_URL
+
 # Django Libraries
 from django.contrib import messages
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render
+from django.shortcuts import render
 from django.template.loader import render_to_string
-from django.urls import reverse, reverse_lazy
-# Local Libraries: Dash and Do
-from dash_and_do.htmx import is_htmx, hx_redirect_success
-from dash_and_do.settings import LOGIN_REDIRECT_URL
-from dash_and_do.settings import LOGOUT_REDIRECT_URL
+from django.urls import reverse_lazy
+
 # Local Libraries: Users
-from apps.users.debugg import DebugAdapter as debugg
-from apps.users.helpers import redirect_response
+from apps.users.debugg import DebugAdapter as Debugg
 from apps.users.helpers import get_last_status
+from apps.users.helpers import redirect_response
 from apps.users.sessions import DashUserSession
+
 # Local Libraries
 from .forms import DashLoginForm
 from .forms import DashSignupForm
 
-debugr = debugg()
+debugr = Debugg()
 
 class FormViews:  # pylint: disable=too-few-public-methods
     """Form Values: Strings."""
@@ -76,7 +81,8 @@ class FormViews:  # pylint: disable=too-few-public-methods
         PREXIX_KEY = 'prefix'
         PREFIX_UNBOUND = 'new'
         PREFIX_BOUND = 'data'
-        SUCCESS_MESSAGE = 'Please check your email to activate your account.'
+        SUCCESS_MESSAGE = ('Please check your email to '
+                           'activate your account.')
         UNEXPECTED_FRIENDLY = ('An unexpected issue occurred during '
                                'registration. Please try again later.')
 
@@ -94,6 +100,16 @@ class FormViews:  # pylint: disable=too-few-public-methods
         TEMPLATE = 'users/account/logout.html'
 
 class SessionVals:
+    """The SessionVals class: Set of constants/flags used for session values.
+
+    Attributes:
+        VALID (bool): Represents a valid session value.
+        INVALID (bool): Represents an invalid session value.
+        CONFIRMED (bool): Represents a confirmed session value.
+        NOTCONFIRM (bool): Represents a not confirmed session value.
+        VERIFIED (bool): Represents a verified session value.
+    NOTVERIFIED (bool): Represents a not verified session value.
+    """
     VALID = True
     INVALID = False
     CONFIRMED = True
@@ -122,31 +138,78 @@ class HTTP:  # pylint: disable=too-few-public-methods
         PUT = 'PUT'
 
 class DashSignupView(SignupView):
+    """DashSignupView class is a custom implementation of the SignupView class
+    from the allauth library.
+
+    It provides functionality for user signup and
+    handles the form validation and submission.
+
+    Attributes:
+    :param: template_name: The path to the template file for
+                rendering the signup view.
+    :param: success_url: The URL where the user will be redirected
+                after successful signup.
+    :param: form_class: A class representing the form used for user signup.
+
+    Methods:
+    :method: post
+            It handles the form submission and validation.
+            If the form is valid, it redirects the user to the success URL.
+            If the form is invalid, it re-renders the form with error messages.
+    :method: form_valid:
+            It is called when the form is valid.
+            It performs custom logic before saving the user instance.
+            It sets the email and verification flags in the user session.
+            It also sends a success message to the user.
+            Finally, it redirects the user to the success URL
+            using the `hx_redirect_success` function.
+    :method: form_invalid:
+            It is called when the form is invalid.
+            It raises an ImmediateHttpResponse with the rendered
+            form HTML to be handled by HTMX.
+    :method: get_context_data
+            It retrieves additional context data for the template rendering,
+             including the session data and the latest status.
+    :method: get_success_url:
+            Returns the success URL for the user after successful signup.
+
+    Note: This class relies on other imported modules and classes such as
+    ConfirmEmailView, LoginView, LogoutView, ImmediateHttpResponse,
+    hx_redirect_success, is_htmx, LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL,
+    messages, HttpResponse, HttpResponseRedirect, render, render_to_string,
+    reverse_lazy, DebugAdapter, get_last_status, and DashUserSession.
+    """
 
     template_name = FormViews.Signup.TEMPLATE  # specify your own template
     success_url = reverse_lazy(FormViews.VERIFY_REVERSE)
     form_class = DashSignupForm  # Custom AllAuth Signup Form
 
     def post(self, request,  *args, **kwargs):
+        """Post method for the SignupView class.
+
+        :param request: The HTTP request object.
+        :param args: Additional positional arguments.
+        :param kwargs: Additional keyword arguments.
+        :return: An HTTP response | HTTP Redirect object(s).
+        """
         super().post(request, *args, **kwargs)
         form = DashSignupForm(request.POST)
+        # Check if form is valid, redirect to success_url
         if form.is_valid():
             # Process the data, create user, etc.
             return HttpResponseRedirect(self.get_success_url())
-        else:
-            # If form is not valid, re-render the form with error messages
-            signup_context = {FormViews.Signup.CTXNAME: form}
-            return render(request, FormViews.Signup.TEMPLATE, signup_context)
+
+        # If form is not valid, re-render the form with error messages
+        signup_context = {FormViews.Signup.CTXNAME: form}
+        return render(request, FormViews.Signup.TEMPLATE, signup_context)
 
     def form_valid(self, form):
-        """
-        If the form is valid, redirect to the supplied URL.
-        """
+        """If the form is valid, redirect to the supplied URL."""
         # Here you can add your custom logic before the user instance is saved
-        data = self.request.POST
         # handle validation here...
         # ??
-        # Call the parent class's method to handle the saving and redirection logic
+        # Call the parent class's method to handle the saving and redirection
+        # logic
         response = super().form_valid(form)
         # You can also add any logic that you want to execute after the user
         # instance is saved
@@ -156,16 +219,15 @@ class DashSignupView(SignupView):
         session_data.set_verification_flags(SessionVals.VALID)
         # For example, if you want to send a custom success message:
         messages.success(self.request, FormViews.Signup.SUCCESS_MESSAGE)
-        response = hx_redirect_success(self.request,
+        return hx_redirect_success(self.request,
                                          response,
                                          self.success_url)
-        return response
 
     def form_invalid(self, form):
+        """If the form is invalid, return the form with error
+        messages to HTMX.
         """
-        If the form is invalid, return the form with error messages to HTMX.
-        """
-        signup_context =  context={FormViews.Signup.CTXNAME:
+        signup_context =  {FormViews.Signup.CTXNAME:
                                        form}
         form_html = render_to_string(self.template_name,
                                      signup_context,
@@ -173,6 +235,10 @@ class DashSignupView(SignupView):
         raise ImmediateHttpResponse(HttpResponse(form_html))
 
     def get_context_data(self):
+        """Addto session_data to context_data
+
+        :return: A dictionary containing the context data.
+        """
         context = super().get_context_data()
         last_status = get_last_status(self.request)
         session_data = DashUserSession(self.request).fetch_session_data()
@@ -183,6 +249,12 @@ class DashSignupView(SignupView):
         return context
 
     def get_success_url(self):
+        """Set the success_url for the view.
+
+        Uses a proxy (the reverse_lazy() function) to future proof changes
+        Uses a constant to have strings configured elsewhere
+        :return: A string representing the success URL from namespace URL.
+        """
         # Redirect the user to the verification page
         return reverse_lazy(FormViews.VERIFY_REVERSE)
 
@@ -290,7 +362,7 @@ class DashLogoutView(LogoutView):
     :param template_name: The name of the template to be rendered.
     :param success_url: The URL to redirect to upon successful response.
     """
-    template_name = FormViews.LogoutView.TEMPLATE  # specify your own template
+    template_name = FormViews.LogoutView.TEMPLATE
     success_url = LOGOUT_REDIRECT_URL  # Heads back to index
 
     # pylint: disable=W0246
@@ -344,7 +416,7 @@ class DashConfirmEmailView(ConfirmEmailView):
     template_name = 'kore/confirm.html'
     def get_redirect_url(self):
         """Redirect to 'verify.html' after successful email verification."""
-        return reverse_lazy(FormViews.CONFIRM_REVERSE)  # name of your urlpattern
+        return reverse_lazy(FormViews.CONFIRM_REVERSE)
 
     def get_context_data(self, **kwargs):
         """Get context data for the view.

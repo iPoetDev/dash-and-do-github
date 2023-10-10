@@ -21,11 +21,11 @@
 - **Usage**
     - Use to evaluate and explore the unfamiliar GitHub REST API ([Docs]([Quickstart for GitHub REST API - GitHub Docs](https://docs.github.com/en/rest/quickstart?apiVersion=2022-11-28)) | [API](https://api.github.com) )
     - Use to assert if the concept and design is viable for developers capacity and project timeframe.
-    - Used to test and assert in the solution design, certain functionality: 
+    - Used to test and assert in the solution design, certain functionality:
         - API heartbeat (service up/down), and Rate Limiting checks
-        - Valid responses & payloads 
+        - Valid responses & payloads
         - API/HTTP exception handling.
-    - Use to debug custom API queries on a 3rd party API 
+    - Use to debug custom API queries on a 3rd party API
 ### 12.1. AI Test Generation
 
 > SOLUTION: Automation | Code Test | Test Generation | AI Prompts

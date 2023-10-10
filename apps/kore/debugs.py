@@ -51,9 +51,9 @@ def debug_includes_console(request, template, ctx):
             '"\'')  # get name of included html file
         tpl = Template("{% include '" + include_name + "' %}")
         rendered = tpl.render(Context(ctx))
-        print("#### START INCLUDE: " + include_name + " ####")
+        print(f"#### START INCLUDE: {include_name} ####")
         print(rendered)
-        print("#### END INCLUDE: " + include_name + " ####\n")
+        print(f"#### END INCLUDE: {include_name}" + " ####\n")
 
 
 def debug_includes_files(request, template, ctx):
@@ -67,6 +67,6 @@ def debug_includes_files(request, template, ctx):
                 '"\'')  # get name of included html file
             tpl = Template("{% include '" + include_name + "' %}")
             rendered = tpl.render(Context(ctx))
-            debug_file.write("#### START INCLUDE: " + include_name + " ####\n")
+            debug_file.write(f"#### START INCLUDE: {include_name}" + " ####\n")
             debug_file.write(rendered + "\n")
-            debug_file.write("#### END INCLUDE: " + include_name + " ####\n\n")
+            debug_file.write(f"#### END INCLUDE: {include_name}" + " ####\n\n")

@@ -306,10 +306,10 @@ class DashEmailAuthField(forms.EmailField):
         """
         if isinstance(self.widget, forms.PasswordInput) and self.widget.attrs:
             self.widget.attrs.update(self.field_attrs())
-            self.update_attrs()
         else:
             self.widget = forms.PasswordInput(attrs=self.field_attrs())
-            self.update_attrs()
+
+        self.update_attrs()
 
     def update_attrs(self):
         """Update the attributes of the field's widget.
@@ -517,10 +517,10 @@ class DashSetPasswordField(SetPasswordField, DashPasswordField):
         """
         if isinstance(self.widget, forms.PasswordInput) and self.widget.attrs:
             self.widget.attrs.update(self.field_attrs())
-            self.update_attrs()
         else:
             self.widget = forms.PasswordInput(attrs=self.field_attrs())
-            self.update_attrs()
+
+        self.update_attrs()
 
     def update_attrs(self):
         """Update the attributes of the form field.

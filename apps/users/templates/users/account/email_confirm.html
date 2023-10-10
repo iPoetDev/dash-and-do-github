@@ -16,7 +16,7 @@
 {% if can_confirm %}
 <p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an email address for user {{ user_display }}.{% endblocktrans %}</p>
 
-<form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+<form method="post" action="{% url 'users:account_confirm_email' confirmation.key %}">
 {% csrf_token %}
     <button type="submit">{% trans 'Confirm' %}</button>
 </form>

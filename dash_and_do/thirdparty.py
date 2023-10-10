@@ -1,6 +1,20 @@
+#!/user/bin/env python3
+
 """
+This module contains the settings from thirdparty config.
 
-
+@File: thirdparty.py
+@Version: 0.2.0 to 0.3.0.?
+@Desc: project | dash_and_do | thirdparty.py: 3rd Party config
+@Author: Charles Fowler
+@Copyright: 2023
+@Date Created: 23/08/07
+@Date Modified: 23/09/30
+@Python Version: 3.11.04
+@Django Version: 4.2.3
+@Notes / Ideas v Implement:
+@Changelog:
+-
 """
 # ===================== Provider specific settings ===================== #
 # Changelog:
@@ -46,7 +60,8 @@ ANYMAIL = {
 # )
 
 # sentry_sdk.init(
-#     dsn="https://70bb04b94d9483eb6591c7d8f4d0221e@o4505894567346176.ingest.sentry.io/4505894604242944",
+#     dsn="https://70bb04b94d9483eb6591c7d8f4d0221e@o4505894567346176.ingest
+#     .sentry.io/4505894604242944",
 #     # https://docs.sentry.io/platforms/python/guides/django/
 #     integrations=[
 #         DjangoIntegration(

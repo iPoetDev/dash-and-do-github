@@ -22,9 +22,9 @@
 -   How the code get automatically pushed to Heroku by using Trunk-based long-lived release branches.
 
 -   [ ] Choose Light or Dark version for final
-        ![](15-1-Commit-light.png)
+        ![](15-1-Commit-light%201.png)
 
-![](15-1-Commit-dark.png)
+![](15-1-Commit-dark%201.png)
 **`Diagram: Commit & Branch into Deployment`**
 
 ---
@@ -43,7 +43,7 @@
 -   [ ] Choose Light or Dark version for final
         ![[Pasted image 20230718131542.png]]
 
-![[Pasted image 20230718131534.png]]
+![[Heroku Deploy - Git Branching Stategies.png]]
 **`Diagram: From Build via Integration Branch Strategies into Heroku Apps`**
 
 ##### 15.2.1.1 Build/Dev Trunks
@@ -258,7 +258,7 @@ AssesmentLog:
     -   _Type_: Relational Database Management Service.
     -   _Language_: SQL
 
-![Source: Wikimedia.com](Postgresql_elephant.svg.png)
+![Source: Wikimedia.com](Logo%20Postgresql_elephant.png)
 
 ---
 

@@ -2,192 +2,192 @@ appmap_dir: tmp\appmap
 language: python
 name: dash-and-do-github
 packages:
-    - path: tools
-    - path: pydocstyle
-    - path: filelock
-    - path: jwt
-    - path: pre_commit_update
-    - path: hooks
-    - path: astroid
-    - path: keyring
-    - path: mdurl
-    - path: pyflakes
-    - path: asttokens
-    - path: pkginfo
-    - path: test
-    - path: rich
-    - path: cachetools
-    - path: distlib
-    - path: sqlparse
-    - path: tox
-    - path: apeye_core
-    - path: flake8_django
-    - path: magic
-    - path: pyproject
-    - path: dulwich
-    - path: importlib_metadata
-    - path: formtools
-    - path: cloudinary
-    - path: console
-    - path: htmx_rest
-    - path: virtualenv
-    - path: cyclonedx
-    - path: django_extensions
-    - path: stevedore
-    - path: rapidfuzz
-    - path: pip
-    - path: examples
-    - path: identify
-    - path: urllib3
-    - path: django_htmx_refresh
-    - path: iniconfig
-    - path: more_itertools
-    - path: pycparser
-    - path: url_normalize
-    - path: rest_framework
-    - path: masonry
-    - path: trove_classifiers
-    - path: argcomplete
-    - path: pylint
-    - path: chardet
-    - path: classes
-    - path: apeye
-    - path: psycopg2
-    - path: html5lib
-    - path: requests
-    - path: pyproject_parser
-    - path: inspection
-    - path: attr
-    - path: cleo
-    - path: packageurl
-    - path: django_htmx
-    - path: pytest_django
-    - path: cachecontrol
-    - path: pytz
-    - path: ptyprocess
-    - path: tarsafe
-    - path: dom_toml
-    - path: htmx_viewsets
-    - path: json
-    - path: autocomplete
-    - path: crashtest
-    - path: platformdirs
-    - path: click
-    - path: bandit
-    - path: lib4sbom
-    - path: openid
-    - path: flake8_django_migrations
-    - path: humanize
-    - path: core
-    - path: publishing
-    - path: pylint_plugin_utils
-    - path: lockfile
-    - path: astor
-    - path: pyproject_api
-    - path: tomlkit
-    - path: environ
-    - path: config
-    - path: pexpect
-    - path: mixology
-    - path: version
-    - path: webencodings
-    - path: _distutils_hack
-    - path: puzzle
-    - path: dash_and_do
-    - path: dateutil
-    - path: yaml
-    - path: wheel
-    - path: cyclonedx_py
-    - path: pre_commit
-    - path: domdf_python_tools
-    - path: plugins
-    - path: rpds
-    - path: ruff
-    - path: _pytest
-    - path: colorama
-    - path: requests_toolbelt
-    - path: win32ctypes
-    - path: deprecated
-    - path: requests_oauthlib
-    - path: shippinglabel
-    - path: natsort
-    - path: _yaml
-    - path: userpath
-    - path: pyproject_hooks
-    - path: smmap
-    - path: toml
-    - path: sortedcontainers
-    - path: gitdb
-    - path: simple_django_htmx
-    - path: snowballstemmer
-    - path: idna
-    - path: installation
-    - path: utils
-    - path: poetry_plugin_export
-    - path: jsonschema
-    - path: cryptography
-    - path: setuptools
-    - path: docutils
-    - path: jsonschema_specifications
-    - path: installer
-    - path: pluggy
-    - path: pyparsing
-    - path: repositories
-    - path: ochrona
-    - path: pip_audit
-    - path: attrs
-    - path: jinja2
-    - path: isort
-    - path: certifi
-    - path: serializable
-    - path: sbom4files
-    - path: defusedxml
-    - path: build
-    - path: asgiref
-    - path: src
-    - path: pygments
-    - path: dj_database_url
-    - path: pre_commit_hooks
-    - path: allow_cidr
-    - path: iptools
-    - path: pipx
-    - path: sbom4python
-    - path: allauth
-    - path: cattrs
-    - path: pkg_resources
-    - path: msgpack
-    - path: layouts
-    - path: cffi
-    - path: vcs
-    - path: github
-    - path: tzdata
-    - path: charset_normalizer
-    - path: debug_toolbar
-    - path: cattr
-    - path: cloudinary_storage
-    - path: dill
-    - path: nacl
-    - path: lazy_object_proxy
-    - path: shellingham
-    - path: wrapt
-    - path: markdown_it
-    - path: packages
-    - path: markupsafe
-    - path: handy_archives
-    - path: pip_api
-    - path: packaging
-    - path: oauthlib
-    - path: requests_cache
-    - path: referencing
-    - path: django_htmx_ui
-    - path: flake8_aaa
-    - path: django
-    - path: pylint_django
-    - path: pbr
-    - path: sbom2dot
-    - path: semantic_version
-    - path: zipp
-    - path: flake8
-    - path: git
-    - path: dist_meta
-    - path: pytest
+  - path: allauth
+  #  - path: django
+  #  - path: django_htmx
+  - path: git
+  - path: gitdb
+  - path: github
+  - path: dash_and_do
+  #  - path: _distutils_hack
+  #  - path: _pytest
+  #  - path: _yaml
+  #  - path: allow_cidr
+  #  - path: apeye
+  #  - path: apeye_core
+  #  - path: argcomplete
+  #  - path: asgiref
+  #  - path: astor
+  #  - path: astroid
+  #  - path: asttokens
+  #  - path: attr
+  #  - path: attrs
+  #  - path: autocomplete
+  #  - path: bandit
+  #  - path: build
+  #  - path: cachecontrol
+  #  - path: cachetools
+  #  - path: cattr
+  #  - path: cattrs
+  #  - path: certifi
+  #  - path: cffi
+  #  - path: chardet
+  #  - path: charset_normalizer
+  #  - path: classes
+  #  - path: cleo
+  #  - path: click
+  #  - path: cloudinary
+  #  - path: cloudinary_storage
+  #  - path: colorama
+  #  - path: config
+  #  - path: console
+  #  - path: core
+  #  - path: crashtest
+  #  - path: cryptography
+  #  - path: cyclonedx
+  #  - path: cyclonedx_py
+  #  - path: dateutil
+  #  - path: debug_toolbar
+  #  - path: defusedxml
+  #  - path: deprecated
+  #  - path: dill
+  #  - path: dist_meta
+  #  - path: distlib
+  #  - path: dj_database_url
+  #  - path: django_extensions
+  #  - path: django_htmx_refresh
+  #  - path: django_htmx_ui
+  #  - path: docutils
+  #  - path: dom_toml
+  #  - path: domdf_python_tools
+  #  - path: dulwich
+  #  - path: environ
+  #  - path: examples
+  #  - path: filelock
+  #  - path: flake8
+  #  - path: flake8_aaa
+  #  - path: flake8_django
+  #  - path: flake8_django_migrations
+  #  - path: formtools
+  #  - path: handy_archives
+  #  - path: hooks
+  #  - path: html5lib
+  #  - path: htmx_rest
+  #  - path: htmx_viewsets
+  #  - path: humanize
+  #  - path: identify
+  #  - path: idna
+  #  - path: importlib_metadata
+  #  - path: iniconfig
+  #  - path: inspection
+  #  - path: installation
+  #  - path: installer
+  #  - path: iptools
+  #  - path: isort
+  #  - path: jinja2
+  #  - path: json
+  #  - path: jsonschema
+  #  - path: jsonschema_specifications
+  #  - path: jwt
+  #  - path: keyring
+  #  - path: layouts
+  #  - path: lazy_object_proxy
+  #  - path: lib4sbom
+  #  - path: lockfile
+  #  - path: magic
+  #  - path: markdown_it
+  #  - path: markupsafe
+  #  - path: masonry
+  #  - path: mdurl
+  #  - path: mixology
+  #  - path: more_itertools
+  #  - path: msgpack
+  #  - path: nacl
+  #  - path: natsort
+  #  - path: oauthlib
+  #  - path: ochrona
+  #  - path: openid
+  #  - path: packages
+  #  - path: packageurl
+  #  - path: packaging
+  #  - path: pbr
+  #  - path: pexpect
+  #  - path: pip
+  #  - path: pip_api
+  #  - path: pip_audit
+  #  - path: pipx
+  #  - path: pkg_resources
+  #  - path: pkginfo
+  #  - path: platformdirs
+  #  - path: pluggy
+  #  - path: plugins
+  #  - path: poetry_plugin_export
+  #  - path: pre_commit
+  #  - path: pre_commit_hooks
+  #  - path: pre_commit_update
+  #  - path: psycopg2
+  #  - path: ptyprocess
+  #  - path: publishing
+  #  - path: puzzle
+  #  - path: pycparser
+  #  - path: pydocstyle
+  #  - path: pyflakes
+  #  - path: pygments
+  #  - path: pylint
+  #  - path: pylint_django
+  #  - path: pylint_plugin_utils
+  #  - path: pyparsing
+  #  - path: pyproject
+  #  - path: pyproject_api
+  #  - path: pyproject_hooks
+  #  - path: pyproject_parser
+  #  - path: pytest
+  #  - path: pytest_django
+  #  - path: pytz
+  #  - path: rapidfuzz
+  #  - path: referencing
+  #  - path: repositories
+  #  - path: requests
+  #  - path: requests_cache
+  #  - path: requests_oauthlib
+  #  - path: requests_toolbelt
+  #  - path: rest_framework
+  #  - path: rich
+  #  - path: rpds
+  #  - path: ruff
+  #  - path: sbom2dot
+  #  - path: sbom4files
+  #  - path: sbom4python
+  #  - path: semantic_version
+  #  - path: serializable
+  #  - path: setuptools
+  #  - path: shellingham
+  #  - path: shippinglabel
+  #  - path: simple_django_htmx
+  #  - path: smmap
+  #  - path: snowballstemmer
+  #  - path: sortedcontainers
+  #  - path: sqlparse
+  #  - path: src
+  #  - path: stevedore
+  #  - path: tarsafe
+  #  - path: test
+  #  - path: toml
+  #  - path: tomlkit
+  #  - path: tools
+  #  - path: tox
+  #  - path: trove_classifiers
+  #  - path: tzdata
+  #  - path: url_normalize
+  #  - path: urllib3
+  #  - path: userpath
+  #  - path: utils
+  #  - path: vcs
+  #  - path: version
+  #  - path: virtualenv
+  #  - path: webencodings
+  #  - path: wheel
+  #  - path: win32ctypes
+  #  - path: wrapt
+  #  - path: yaml
+  #  - path: zipp

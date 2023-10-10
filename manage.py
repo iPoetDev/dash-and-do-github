@@ -36,5 +36,5 @@ def main():
                             category=DeprecationWarning,
                             module='pkg_resources')
 
-if __name__ == '__main__':
+if __name__ == '__main__':\
     main()

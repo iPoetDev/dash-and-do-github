@@ -1,48 +1,49 @@
 #!/user/bin/env python3
-"""
-    @File: emails.py
-    @Version: 0.3.0 to 0.3.1: Test Email sending
-    @Desc: apps | kore |  emailing | tests
-    @Author: Charles Fowler
-    @Copyright: 2023
-    @Date Created: 23/09/12
-    @Date Modified: 23/09/12
-    @Python Version: 3.11.04
-    @Django Version: 4.2.3
-    @Notes / Ideas v Implement:
-        - Test Email sending
-        - Use various emailing backends
-    @Changelog:
-    - Added:
-        - 23/09/19: Added docstrings
-        - 23/09/19: Created initial file
-        - 23/09/19: added MailPanel tests for emailing *
-        - 23/09/19: Adding Refactored test
-        case
-    - Updated:
-        - 23/09/19: Refactored Functions into messages.py and helpers.py
-        - 23/09/13: Refactored Imports ...
-            to reduce file level cycolmatic complexity
-    - Deprecated:
-        - 23/09/19: Deprecated
-    - Removed:
-        - 23/09/19: Removed
-    @Plan:
-        - TODO:
-            - Create test cases for models.
-              - Define Test Scenarios
-                - Happy Path
-                - Edge Cases
-                - Other
+"""@File: emails.py
+@Version: 0.3.0 to 0.3.1: Test Email sending
+@Desc: apps | kore |  emailing | tests
+@Author: Charles Fowler
+@Copyright: 2023
+@Date Created: 23/09/12
+@Date Modified: 23/09/12
+@Python Version: 3.11.04
+@Django Version: 4.2.3
+@Notes / Ideas v Implement:
+- Test Email sending
+- Use various emailing backends
+@Changelog:
+- Added:
+- 23/09/19: Added docstrings
+- 23/09/19: Created initial file
+- 23/09/19: added MailPanel tests for emailing *
+- 23/09/19: Adding Refactored test
+case
+- Updated:
+- 23/09/19: Refactored Functions into messages.py and helpers.py
+- 23/09/13: Refactored Imports ...
+to reduce file level cycolmatic complexity
+- Deprecated:
+- 23/09/19: Deprecated
+- Removed:
+- 23/09/19: Removed
+@Plan:
+- TODO:
+- Create test cases for models.
+- Define Test Scenarios
+- Happy Path
+- Edge Cases
+- Other
 """
 #  Copyright (c) 2023.
 # Python
 import logging
+
 from unittest import mock
 
 # Django
 from django.core import mail
-from django.test import TestCase, Client
+from django.test import Client
+from django.test import TestCase
 from django.test.utils import override_settings
 
 # OopCompanion:suppressRename
@@ -73,8 +74,7 @@ PATCH_CLIENT = 'django.test.Client'
 
 
 class TestEmail(TestCase):
-    """
-    TestEmail that tests & mocks the functionality of sending an emailing
+    """TestEmail that tests & mocks the functionality of sending an emailing
     using Django Unittest
 
     :class: TestEmail
@@ -87,8 +87,7 @@ class TestEmail(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        """
-        Setup for tests.
+        """Setup for tests.
         :method: setUpTestData
         :return:
         """
@@ -121,8 +120,7 @@ class TestEmail(TestCase):
         }
 
     def setUp(self):
-        """
-        Setup for tests.
+        """Setup for tests.
         :method: setUp
         :return:
         """
@@ -130,8 +128,7 @@ class TestEmail(TestCase):
 
     @override_settings(EMAIL_BACKEND=MAILPANEL_BACKEND)
     def test_send_email(self):
-        """
-        # HAPPY PATH
+        """# HAPPY PATH
         Test send emailing: Simple Test Send Function (no mocking)
         & * Console, Logging
         :method: test_send_email
@@ -154,8 +151,7 @@ class TestEmail(TestCase):
     @mock.patch(PATCH_DJSENDMAIL)
     @override_settings(EMAIL_BACKEND=MAILPANEL_BACKEND)
     def test_mock_send_email(self, mock_send_mail):
-        """
-        # HAPPY PATH
+        """# HAPPY PATH
         Mock Sending a test emailing.
             :param: self:
             :param mock_send_mail:
@@ -186,8 +182,7 @@ class TestEmail(TestCase):
     @mock.patch(PATCH_CLIENT)
     @override_settings(EMAIL_BACKEND=MAILPANEL_BACKEND)
     def test_mock_send_email_test_client(self, mock_client, mock_send_mail):
-        """
-        # HAPPY PATH
+        """# HAPPY PATH
         Mock Sending a test emailing with valid values.
             :param self:
             :param mock_client:
@@ -214,7 +209,8 @@ class TestEmail(TestCase):
                          self.email_asserts[ 'expect_limit' ])
 
         # ASSERT: Check content of the sent emailing
-        self.assertEqual(mail.outbox[ 0 ].subject, self.email_data[ 'subject' ],
+        self.assertEqual(mail.outbox[ 0 ].subject,
+                         self.email_data[ 'subject' ],
                          self.email_asserts[ 'expect_subject' ])
 
     @mock.patch(PATCH_DJSENDMAIL)  # Email Client/Send
@@ -222,8 +218,7 @@ class TestEmail(TestCase):
     def test_mock_send_email_valid_data(self,
                                         mock_client,
                                         mock_send_mail):
-        """
-        # HAPPY PATH
+        """# HAPPY PATH
         Mock Sending a test emailing with valid values.
         :param self:
         :param mock_client:
@@ -251,5 +246,6 @@ class TestEmail(TestCase):
                          self.email_asserts[ 'expect_limit' ])
 
         # ASSERT: Check content of the sent emailing
-        self.assertEqual(mail.outbox[ 0 ].subject, self.email_data[ 'subject' ],
+        self.assertEqual(mail.outbox[ 0 ].subject,
+                         self.email_data[ 'subject' ],
                          self.email_asserts[ 'expect_subject' ])

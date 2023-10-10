@@ -1,0 +1,151 @@
+<!-- @formatter:off -->
+{% extends "users/account/base.html" %}
+{% load i18n %}
+{% load account %}
+
+{% block body %}
+<!-- ================================= CORE APP | PUBLIC | PRIVATE | INDEX.HTML =============================== -->
+
+<body
+    class="[ ] [ flex flex-col items-stretch content-between ]"
+    data-app="core"
+    data-view="public"
+    id="all-body"
+    hx-ext="debug, event-header">
+    <!-- ============================================= SKIP LINK =============================================  -->
+    <!-- ============================ - added: Conditional Includes: Public | Private ======================== -->
+    <!-- ============================ - added: Public Skip Links  ======================== -->
+    <!-- ============================ - added: Private Skip Links ======================== -->
+    <!-- ============================ - note: Not Block Inheiriance ========================================== -->
+    <!-- ============================ - note: Includes: are static partials ================================== -->
+    <!-- Hide until found: https://www.w3.org/WAI/tutorials/menus/skip/ -->
+    <!-- https://webaim.org/techniques/skipnav/ -->
+
+    {% if request.user.is_authenticated %}
+        {% include "kore/private/skiplinks_private.html" %}
+    {% else %}
+        {% include "kore/public/skiplinks_public.html" %}
+    {% endif %}
+
+{#    {% filter force_escape %} {% debug %} {% endfilter %}#}
+    {% include "kore/all/header.html" %}
+
+
+    <main
+        class="[ page-main-content ] [ flex flex-row ] [ h-max ] [ mt-0 md:mt-1 lg:mt-6 ] [ px-4 pb-20 lg:pb-4 ] [ space-y-10 lg:space-y-0 lg:space-x-10 ]"
+        data-view="public"
+        id="main-page-content">
+        <!-- ===================================== CONTENT: PUBLIC : 1 COLUMN ================================  -->
+
+        <div
+            class="[ main-content ] [ flex flex-1 flex-col ] [ space-y-10 ] | [ transition-width duration-300 ease-out ] | [ font-normal text-base text-black ]"
+            role="region"
+            id="central-col2-content">
+            <!-- ================================= CONTENT: TOP: HERO ========================================  -->
+            <!-- Block[Row]: Content | Top Section: 1) All Views: Hero | Carousel -->
+
+{#            <section#}
+{#                class="[ top-content ] [ flex-1 flex-end ] [ min-w-3/4 w-full min-h-350 ] [ mx-auto p-3 ] [ bg-gray-300 ]"#}
+{#                aria-description="Content - Hero"#}
+{#                aria-label="Hero Carousel"#}
+{#                data-content="top"#}
+{#                data-view="all"#}
+{#                id="top-section-content">#}
+{#                <!-- ========================= INCLUDE: TOP : HERO | CAROUSEL ================================  -->#}
+{##}
+{#                {% include "kore/all/hero.html" %}#}
+{##}
+{#                <!-- ========================= INCLUDE: TOP : HERO | CAROUSEL ================================  -->#}
+{#            </section>#}
+
+            <!-- ================================= CONTENT: MIDDLE: FEATURES =================================  -->
+            <!-- Block: Content | Mid Section: 1) Public & 2) Private  -->
+
+            <section
+                class="[ mid-content ] [ flex-1 flex-end ] [ max-w-7/8 w-full min-h-350 ] [ mx-auto p-4 ] | [ bg-gray-400 ] [ font-normal text-base text-black ]"
+                aria-description="Content - Call to actions"
+                aria-label="Content"
+                data-content="middle"
+                data-view="all"
+                id="middle-section-content">
+                <h1
+                    class="[ header-content ] [ invisible opacity-0 ] [ sr-only ]"
+                    id="header-middle-content"
+                    aria-description=""
+                    aria-label="Content header - middle of page"
+                    data-view="all"
+                    hidden="until-found">
+                    User Registration | App Content
+                </h1>
+                {% if confirmation %}
+                    {% user_display confirmation.email_address.user as user_display %}
+
+                    {% if can_confirm %}
+                    <p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that
+                        <a href="mailto:{{ email }}">{{ email }}</a> is an email address for user {{ user_display }}.
+                    {% endblocktrans %}</p>
+                    {% endif %}
+                {% endif %}
+                {# Checks if user is authenticated: shows the feature app cards, else shows the public sign up form #}
+                {% if request.user.is_authenticated %}
+                    <p>The user has an account and is already authenticated</p>
+                {% else %}
+                    {% if request.session.account_verified and request.session.email_confirmed %}
+                        <p>Your account and email have been verified. You can now log in.</p>
+                    {% else %}
+                        {% if not request.session.account_verified %}
+                            <p>A verification email has been sent to {{ user.email }}.
+                               Please click the link in the email to verify your account.</p>
+{#                            {% include "account/email_confirm.html" %}#}
+                        {% endif %}
+                        {% if not request.session.email_confirmed and request.session.account_verified %}
+                            <p>Sorry, your email address could not be confirmed. Please try again later.</p>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                <!-- ======================= CONTENT: MID 1st Col/Ro: FORM PROMO: CARDS ==================  -->
+            </section>
+
+
+        </div>
+    </main>
+    <!-- ========================================= FOOTER ===================================================  -->
+
+    {% include "kore/all/footer.html" %}
+
+    <!-- ========================================= Scripts ===================================================  -->
+
+    <!-- ====================================== django debug toolbar | HTMX ===================================  -->
+
+    {% include "kore/all/scripts.html" %}
+
+    <!-- ====================================== django debug toolbar | HTMX ===================================  -->
+
+    {% if debug %}
+    <script>
+        console.log('Debug is ON, HTMX is active')
+        if (typeof window.htmx !== 'undefined') {
+            htmx.on('htmx:afterSettle', function (detail) {
+                if (typeof window.djdt !== 'undefined' && detail.target instanceof HTMLBodyElement) {
+                    djdt.show_toolbar()
+                }
+            })
+        }
+        console.log('=====================================')
+        htmx.logger = function(elt, event, data) {
+            if(console) {
+                console.log(event, elt, data);
+            }
+        }
+    </script>
+    {% endif %}
+    <!-- <script
+            {# type="text/javascript" #}
+            {# src="{{ STATIC_URL }}debugtools/jquery.debug.js"> #}
+        </script>-->
+    <!-- ====================================== django debug toolbar | HTMX ===================================  -->
+</body>
+
+<!-- ================================= CORE APP | PUBLIC | PRIVATE | INDEX.HTML =============================== -->
+
+{% endblock %}

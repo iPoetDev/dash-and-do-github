@@ -32,6 +32,19 @@
                 - Other
 """
 
+class HTMX:
+    """
+    HTMX Values
+    """
+    HTMX_REQUEST = 'hx-request'
+    HTMX_REDIRECT = 'HX-Redirect'
+    HTMX_TARGET = 'hx-target'
+    HTMX_TRIGGER = 'hx-trigger'
+    HTMX_INDICATOR = 'hx-indicator'
+    HTMX_SSE = 'hx-sse'
+    HTMX_PRESERVE = 'hx-preserve'
+    HTMX_PRESERVE_SCROLL = 'hx-preserve-scroll'
+
 
 def is_htmx(request):
     """
@@ -42,6 +55,19 @@ def is_htmx(request):
 """
     return request.headers.get('Htmx-Request')
 
+
+def hx_redirect_success(request, response, success_url):
+    """
+    Sets the HTMX redirect header to the given success url if the request is an HTMX request.
+
+    :param request:
+    :param response:
+    :param success_url:
+    :return: Suucessful repsonse with HTMX redirect header if request is an HTMX request.
+    """
+    if HTMX.HTMX_REQUEST in request.headers:  # Check if the request is an HTMX request
+        response[HTMX.HTMX_REDIRECT] = success_url
+    return response
 
 # noinspection PyUnusedFunction
 def add_htmx_header(headers, key, value):

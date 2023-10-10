@@ -25,8 +25,8 @@
 
 -   [ ] [EPIC #4: FEATURE: "Release: v0.5: PUBLIC Core Web App & Public/Private Views/Access" Design, Build, Test, Integrate, Deploy, Accept, Release (github.com)](https://github.com/iPoetDev/dash-and-do-github/milestone/6), #GitHubMilestone6
 
-- Linked App: 
-    - Kore: 
+- Linked App:
+    - Kore:
         - Path: apps\\kore
         - Dependencies:
             - Custom Views/Forms/Model
@@ -38,28 +38,28 @@
 
 -  [ ] [EPIC #5: FEATURE: “Release: v0.5: Users App: Management Design & Flow, Build, Test, Integrate, Deploy, Accept, Release (github.com) ](https://github.com/iPoetDev/dash-and-do-github/milestone/9)
 
-- Linked App: 
-    - User: 
+- Linked App:
+    - User:
         - Path: apps\\users
-        - Dependencies: 
+        - Dependencies:
             - Django AllAuth
             - Custom Views/Forms/Model
-    
-    
+
+
     -   [ ] #102  [FEAT :: VIEW: PUBLIC: New User Registration & Sign Up Form: Public Users || `index.html` <= `page.html`](https://github.com/iPoetDev/dash-and-do-github/issues/102)
     -   [ ] #103  [FEAT :: VIEW: PUBLIC: Existing User Access & Login Up Form: Public Users || `index.html` <= `page.html`](https://github.com/iPoetDev/dash-and-do-github/issues/103)
     -   [ ] #104  [FEAT :: VIEW: PUBLIC: Existing User Reset Passwords, Reset Password Form & Verify Reset: Public Users: || `verify.html` <= `simple.html`](https://github.com/iPoetDev/dash-and-do-github/issues/104)
 
 
 
-EPIC #5: FEATURE: “Release: v0.5: Private Accounts & User Profile” Design, Build, Test, Integrate, Deploy, Accept, Release (github.com) 
+EPIC #5: FEATURE: “Release: v0.5: Private Accounts & User Profile” Design, Build, Test, Integrate, Deploy, Accept, Release (github.com)
 
-    - Profile: 
+    - Profile:
         - Path: apps\\profile
         - Dependencies:
             - Custom Views/Forms/Model
-    
-    
+
+
     -   [ ] FEAT 00.0
     -   [ ] FEAT 00.0
     -   [ ] FEAT 00.0
@@ -91,7 +91,7 @@ EPIC #5: FEATURE: “Release: v0.5: Private Accounts & User Profile” Design, B
 
 `'USx.x' = User Story + ID Sequence. Sub ids are .x, but only whole features are User Story Tested`
 
-#### 14.2.1: Public & Private Site: Landing, Static and Service Pages 
+#### 14.2.1: Public & Private Site: Landing, Static and Service Pages
 
 - Linked:
     - *All following tagged with PUBLIC*
@@ -104,7 +104,7 @@ EPIC #5: FEATURE: “Release: v0.5: Private Accounts & User Profile” Design, B
     -   [ ] STORY #?? Show/Hide Public Authentication Navigation & Page Components for Unauthenticated Users
     -   [ ] STORY #?? Branding & Styling
     -   [x] STORY #81 [`New Visting User`: As a new visiting user to the Dash and Do GitHub website, and web app, I want to arrive on a landing page, a home page, which immediately gives me strong impression, clues and calls to action of purpose, identity, registration, and login. (See related component stories below).](https://github.com/iPoetDev/dash-and-do-github/issues/81)
-    -   [x] STORY #84: [`Unauthenticated User Login Story`: As an unauthenticated user, I want to not be able to restrict content and not have access to sensitive functionality so that all users have trust, confidence, integrity and availability in the web app and service (github.com)](https://github.com/iPoetDev/dash-and-do-github/issues/84) 
+    -   [x] STORY #84: [`Unauthenticated User Login Story`: As an unauthenticated user, I want to not be able to restrict content and not have access to sensitive functionality so that all users have trust, confidence, integrity and availability in the web app and service (github.com)](https://github.com/iPoetDev/dash-and-do-github/issues/84)
 
 -  [x] FEATURE: #99 [FEAT :: VIEW: PRIVATE: index.html Page: All Users and Authenticated Users: i.e. the Returning Visitor, Registered and Logged In Visitor (with ActIve Session) || index.html <= page.html (github.com)](https://github.com/iPoetDev/dash-and-do-github/issues/99)
     - Private Site: Home Page, Static Pages and Private Navigation/Views only.
@@ -115,7 +115,7 @@ EPIC #5: FEATURE: “Release: v0.5: Private Accounts & User Profile” Design, B
     -   [x] STORY #73 [`User Session Authorised Story`: As an authenticated user of Dash and Do GitHub web app, I want to authorised to access and persist this trusted state across one or more visits.](https://github.com/iPoetDev/dash-and-do-github/issues/73)
 #### 14.2.2: Public Site:  Account Creation, User Registration and Signup Form
 
-- Linked: 
+- Linked:
     - *14.2.1: Public Pages*
     - *14.2.3: User Login*
     - *14.2.8: Site Emailing Services*
@@ -127,7 +127,7 @@ EPIC #5: FEATURE: “Release: v0.5: Private Accounts & User Profile” Design, B
 
 #### 14.2.3: Public Site: User Login, Account Authentication and Private Access.
 
- - Linked: 
+ - Linked:
      - *14.2.2: Account Creation*
      - *14.2.4: User Profile*
      - *14.2.5: Admin Site Access*
@@ -135,7 +135,7 @@ EPIC #5: FEATURE: “Release: v0.5: Private Accounts & User Profile” Design, B
 
 -   [x] FEATURE#103 [FEAT :: VIEW: PUBLIC: Existing User Access & Login Up Form: Public Users || `index.html` <= `page.html`](https://github.com/iPoetDev/dash-and-do-github/issues/103)
 
-    -   [x] STORY #67 [`Existing Login User Story`: As an existing user, I want to find the login form, and have an option to remember me for next visit, as well as have an option to reset my password, so that I can successfully login.](https://github.com/iPoetDev/dash-and-do-github/issues/67) 
+    -   [x] STORY #67 [`Existing Login User Story`: As an existing user, I want to find the login form, and have an option to remember me for next visit, as well as have an option to reset my password, so that I can successfully login.](https://github.com/iPoetDev/dash-and-do-github/issues/67)
     -   [x] STORY #68 [`Unsuccessful Login Existing User Story`: As an existing user, I want to have a good user experience when I am unsuccessfully logging and have good notifications so that I have an improved user experience and increases my chance to login successfully](https://github.com/iPoetDev/dash-and-do-github/issues/68)
     -   [x] STORY #74 [`User Session Forgets Story`: As an authenticated user of Dash and Do GitHub web app, I want to have my session forgotten and the current session destroyed so that I have login and reauthenticate.](https://github.com/iPoetDev/dash-and-do-github/issues/74)
 
@@ -152,7 +152,7 @@ EPIC #5: FEATURE: “Release: v0.5: Private Accounts & User Profile” Design, B
 
 #### 14.2.5: Private Site: Staff User Access to Admin Site
 
- Linked: 
+ Linked:
      - *14.2.3:  User Login*
 
 -  [ ] FEATURE: Admin User
@@ -160,9 +160,9 @@ EPIC #5: FEATURE: “Release: v0.5: Private Accounts & User Profile” Design, B
     -   [ ] STORY #79 [`Admin User Profile Access Story`: As an authorised administrator user (role) of Dash and Do GitHub web app, I want to access and read all user profile in a specific admin user interface (comes de-facto with Django).](https://github.com/iPoetDev/dash-and-do-github/issues/79)
     -   [ ] STORY #80 [`Admin User Profile Update Story`: As an authorised administrator user (role) of Dash and Do GitHub web app, I want to create, edit, modify, and remove user profiles in a specific admin user interface (comes de-facto with Django).](https://github.com/iPoetDev/dash-and-do-github/issues/80)
 
-#### 14.2.6: Messaging the Site, Contact the Site Owner and Contact Form (Feature: # 101) 
+#### 14.2.6: Messaging the Site, Contact the Site Owner and Contact Form (Feature: # 101)
 
-- Linked: 
+- Linked:
     - *14.2.8: Site Email Services*
 
 -   [x] FEATURE #101 [FEAT :: VIEW: PUBLIC: Contact Email & Contact Form: All Users (Public Users and Private Users) || `index.html` <= `page.html`](https://github.com/iPoetDev/dash-and-do-github/issues/101)
@@ -170,9 +170,9 @@ EPIC #5: FEATURE: “Release: v0.5: Private Accounts & User Profile” Design, B
     -   [x] STORY #126 [`Contact Site User Story`: As an anonymous or prospective user of the Dash and Do GitHub web app, I want to create a contact message and sent it to the site contact.](https://github.com/iPoetDev/dash-and-do-github/issues/126)
     -   [x] STORY #127 [`Contact Email User Story`: As an anonymous or prospective user of the Dash and Do GitHub web app, I want to send a message, with an optional copy to sender, to send to site contact and use Email as a service.](https://github.com/iPoetDev/dash-and-do-github/issues/127)
 
-#### 14.2.7: Password Management: Reset, Verification and Change. (Feature: # 104) 
+#### 14.2.7: Password Management: Reset, Verification and Change. (Feature: # 104)
 
-- Linked: 
+- Linked:
     - *14.2.8: Site Email Services*
 
 -   [ ] FEATURE #104 [FEAT :: VIEW: PUBLIC: Existing User Reset Passwords, Reset Password Form & Verify Reset: Public Users: || `verify.html` <= `simple.html`](https://github.com/iPoetDev/dash-and-do-github/issues/104)
@@ -180,15 +180,15 @@ EPIC #5: FEATURE: “Release: v0.5: Private Accounts & User Profile” Design, B
     -   [ ] STORY #69 [`Forgets Password User Story`: As a forgetful user of the Dash and Do GitHub web app, I want to be able to reset my password and have a secure option to reset the password by an URI.](https://github.com/iPoetDev/dash-and-do-github/issues/69)
     -   [ ] STORY #70 [`Verify Password Reset User Story`: As a password resetting user of the Dash and Do GitHub web app, I want to be verified my newly reset password and have a secure option to reset the password by an URI.](https://github.com/iPoetDev/dash-and-do-github/issues/70)
 
-#### 14.2.8: Site Email Services 
+#### 14.2.8: Site Email Services
 
-- Linked: 
+- Linked:
     - *14.2.2: Account Creation*
     - *14.2.7. Password Management*
     - *14.2.6: Messaging the Site*
 
 -   [ ] FEATURE #100
-- 
+-
     -   [ ] STORY 00.0
     -   [ ] STORY 00.0
     -   [ ] STORY 00.0
@@ -200,14 +200,14 @@ EPIC #5: FEATURE: “Release: v0.5: Private Accounts & User Profile” Design, B
     - *14.2.3 User Login*
     - *14.2.10 User Permission*
 
--   [ ] FEATURE #??? User Session Management 
+-   [ ] FEATURE #??? User Session Management
 
     -   [ ] STORY #71 [`Set + Persist Session User Story`: As a returning user of Dash and Do GitHub web app, I want to be immediately logged into my account so that I do not have to login and reuse my password on every visit, by using a remember check box on login (opt in).](https://github.com/iPoetDev/dash-and-do-github/issues/71)
     -   [ ] STORY #73 [`User Session Authorised Story`: As an authenticated user of Dash and Do GitHub web app, I want to authorised to access and persist this trusted state across one or more visits.](https://github.com/iPoetDev/dash-and-do-github/issues/73)
     -   [ ] STORY 00.0
     -   [ ] STORY 00.0
 
-#### 14.2.10 User Permission Management 
+#### 14.2.10 User Permission Management
 
 - Linked:
     - 14.2.1 Public Pages
@@ -242,7 +242,7 @@ EPIC #5: FEATURE: “Release: v0.5: Private Accounts & User Profile” Design, B
 
 #### 14.3.1 BBD
 
-- As per [BDD 101: Behavior-Driven Agile | Automation Panda.com](https://automationpanda.com/2017/02/01/bdd-101-bdd-and-agile/), 
+- As per [BDD 101: Behavior-Driven Agile | Automation Panda.com](https://automationpanda.com/2017/02/01/bdd-101-bdd-and-agile/),
 
 ##### 14.3.1.1 Top Level Concepts
 - BBD - Behaviour Driven Testing: optimally used for **black box testing**, higher order testing for the user experience. Learn more from: [BDD | Automation Panda](https://automationpanda.com/bdd/)
@@ -250,10 +250,10 @@ EPIC #5: FEATURE: “Release: v0.5: Private Accounts & User Profile” Design, B
 - Feature: A user product or feature under test. [In BDD, What Should Be A Feature? | Automation Panda](https://automationpanda.com/2017/10/19/in-bdd-what-should-be-a-feature/)
 - Scenario: Generally known as a test case, that concisely frames the behaviour under test.
 - Give | When | Then: The structure specification keywords that uses natural language. not jargon, for all users to understand.
-- Declarative: A focus on what behaviour is to happen, not how, and the expected outcome. 
+- Declarative: A focus on what behaviour is to happen, not how, and the expected outcome.
 - Imperative: A focus on how behaviour operates, better suited to TDD and Unit testing.
 
-##### 14.3.1.2  Further Reading: 
+##### 14.3.1.2  Further Reading:
 
 - [BDD | Automation Panda](https://automationpanda.com/bdd/)
 
@@ -262,7 +262,7 @@ EPIC #5: FEATURE: “Release: v0.5: Private Accounts & User Profile” Design, B
 - The author crafted and shaped the JetBrains AI Assistant (beta) to _conversationally_ (i.e. back and forth prompt-output-refactor) define the following Feature-Scenario as User Acceptance.
 - This was a productivity, time manage and neural diversity win for the author.
 - The author edited, groomed, aligned with his manually edited Epics, Features, and User Stories.
-- These are then sorted, as per[ Python Behave](https://behave.readthedocs.io/en/latest/gherkin/#feature-testing-layout) and [Behave Django](https://behave-django.readthedocs.io/en/stable/usage.html), in side and along side the package/apps under test, in `.feature` files 
+- These are then sorted, as per[ Python Behave](https://behave.readthedocs.io/en/latest/gherkin/#feature-testing-layout) and [Behave Django](https://behave-django.readthedocs.io/en/stable/usage.html), in side and along side the package/apps under test, in `.feature` files
 
 ##### 14.3.1.4 Manual over Automation
 
@@ -289,7 +289,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 -   [ ] **Requirement**: Public Site, Pages & Navigation
     - **Feature**: Public Site
-        - **Gherkin File**: *PublicSite.feature*  
+        - **Gherkin File**: *PublicSite.feature*
     - **Scenarios / Stories**:
         - #82: ` Newly Visiting User's URL Story ` [#54 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/54)
         - #81:  ` New Visting User Story ` [#81 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/81)
@@ -375,7 +375,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 -   [ ] **Requirement**: Private Site, Pages & Navigation
     - **Feature**: Private Site
-        - **User Acceptance Criteria**: *PrivateSite.feature*  
+        - **User Acceptance Criteria**: *PrivateSite.feature*
     - **Scenarios / Stories**:
         - #82: ` Newly Visiting User's URL Story ` [#54 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/54)
         - #81:  ` New Visting User Story ` [#81 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/81)
@@ -438,14 +438,14 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
   - .
 - USER ACCEPTED: Yes ✅ | STOP 🚫
 ```
- 
+
 ---
 
-#### 14.4.2 Public Site: Account Creation, User Registration and Signup Form 
+#### 14.4.2 Public Site: Account Creation, User Registration and Signup Form
 
 -   [ ] **Requirement**: Public: Account Creation and User Registration
     - **Feature**: Account Creation
-        - **User Acceptance Criteria**: *AccountCreate.feature*  
+        - **User Acceptance Criteria**: *AccountCreate.feature*
     - **Scenarios / Stories**:
         - #54: ` New Registration User Story ` [#54 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/54)
         - #66:  ` Confirm Register User Story ` [#66 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/66)
@@ -480,11 +480,11 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 ```
 
 ---
-#### 14.4.3 Private Site: User Login, Account Authentication and Login Form 
+#### 14.4.3 Private Site: User Login, Account Authentication and Login Form
 
 -   [ ] **Requirement**: Public: Account Creation and User Registration
     - **Feature**: UserLogin
-        - **User Acceptance Criteria**: *UserLogin.feature*  
+        - **User Acceptance Criteria**: *UserLogin.feature*
     - **Scenarios / Stories**:
         - #67:  ` Successful Login Existing User Story ` [#67 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/67)
         - #68:  ` Unsuccessfully Login Existing User Story ` [#68 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/68)
@@ -540,7 +540,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 -   [ ] **Requirement**: Private: User Profile Access, User Settings and Account Removal
     - **Feature**: User Profile
-        - **User Acceptance Criteria**: *UserProfile.feature*  
+        - **User Acceptance Criteria**: *UserProfile.feature*
     - **Scenarios / Stories**:
         - #75:  ` User Profile Access Story ` [#75 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/75)
         - #76:  ` User Profile Update Story ` [#76 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/76)
@@ -611,7 +611,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 -   [ ] **Requirement**: Private: Manage the Site, Be a Staff User and Access Admin Site
     - **Feature**: Administration Site with Staff User
-        - **User Acceptance Criteria**: *AdminSite.feature*  
+        - **User Acceptance Criteria**: *AdminSite.feature*
     - **Scenarios / Stories**:
         - #79:  ` Admin User Profile Access Story ` [#79 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/79)
         - #80:  ` Admin User Profile Update Story ` [#80 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/80)
@@ -650,9 +650,9 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 #### 14.4.6 Messaging Site: Contact the Site Owner and Contact Form
 
--   [ ] **Requirement**: All/Anonymous: Contact the Site Owner, Send Copy and Contact Form 
+-   [ ] **Requirement**: All/Anonymous: Contact the Site Owner, Send Copy and Contact Form
     - **Feature**: Messaging the Site
-        - **User Acceptance Criteria**: *MessageSite.feature*  
+        - **User Acceptance Criteria**: *MessageSite.feature*
     - **Scenarios / Stories**:
         - #126:  ` Contact Site: User Story ` [#126 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/126)
         - #127:  ` Contact Email: User Story ` [#127 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/127)
@@ -689,11 +689,11 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 ---
 
-#### 14.4.7 Public: Password Management: Reset, Verification and Change. 
+#### 14.4.7 Public: Password Management: Reset, Verification and Change.
 
 -   [ ] **Requirement**: Password Management
     - **Feature**: PasswordManagement
-        - **User Acceptance Criteria**: *PasswordManage.feature*  
+        - **User Acceptance Criteria**: *PasswordManage.feature*
     - **Scenarios / Stories**:
         - #69:  ` Forgets Password User Story ` [#69 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/69)
         - #70:  ` Verify Reset User Story ` [#70 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/70)
@@ -732,9 +732,9 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 #### 14.4.8 Site Email Services
 
--   [ ] **Requirement**: Site Email for Messaging, Account Creation, and Password Management 
+-   [ ] **Requirement**: Site Email for Messaging, Account Creation, and Password Management
     - **Feature**: EmailServices
-        - **User Acceptance Criteria**: *EmailServices.feature*  
+        - **User Acceptance Criteria**: *EmailServices.feature*
     - **Scenarios / Stories**:
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
@@ -774,9 +774,9 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 #### 14.4.9 User Session Management
 
--   [ ] **Requirement**: Site Email for Messaging, Account Creation, and Password Management 
+-   [ ] **Requirement**: Site Email for Messaging, Account Creation, and Password Management
     - **Feature**: UserSessions
-        - **User Acceptance Criteria**: *UserSessions.feature*  
+        - **User Acceptance Criteria**: *UserSessions.feature*
     - **Scenarios / Stories**:
         - #71:  ` Set + Persist Session: User Story ` [#71 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/71)
         - #73:  ` User Session Authorised: User Story ` [#73 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/73)
@@ -815,9 +815,9 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 #### 14.4.10 User Permission Management
 
--   [ ] **Requirement**: Site Email for Messaging, Account Creation, and Password Management 
+-   [ ] **Requirement**: Site Email for Messaging, Account Creation, and Password Management
     - **Feature**: EmailServices
-        - **User Acceptance Criteria**: *EmailServices.feature*  
+        - **User Acceptance Criteria**: *EmailServices.feature*
     - **Scenarios / Stories**:
         - #84:  ` Unauthenticated User Login Story ` [#84 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/84)
         - #85:  ` Unauthorised/Access User Login Story ` [#85 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/85)
@@ -858,7 +858,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 -   [ ] **Requirement**: Private: GitHub Dashboard aka Dash; Report and Status
     - **Feature**: GitHubDashboard (CRU)
-        - **User Acceptance Criteria**: *EmailServices.feature*  
+        - **User Acceptance Criteria**: *EmailServices.feature*
     - **Scenarios / Stories**:
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
@@ -909,11 +909,11 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 ---
 
-#### 14.4.12 Private: GitHub Feature: Do & Actions 
+#### 14.4.12 Private: GitHub Feature: Do & Actions
 
--   [ ] **Requirement**: Private: GitHub Do aka Do; Actions: 
+-   [ ] **Requirement**: Private: GitHub Do aka Do; Actions:
     - **Feature**: GitHub Do & Action (CRUD)
-        - **User Acceptance Criteria**: *GitHubDofeature*  
+        - **User Acceptance Criteria**: *GitHubDofeature*
     - **Scenarios / Stories**:
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
@@ -955,7 +955,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 -   [ ] **Requirement**: ??
     - **Feature**: ??
-        - **User Acceptance Criteria**: ??.feature*  
+        - **User Acceptance Criteria**: ??.feature*
     - **Scenarios / Stories**:
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
@@ -1031,7 +1031,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 ---
 
-#### 14.5.2. Public Site: Account Creation, User Registration and Signup Form 
+#### 14.5.2. Public Site: Account Creation, User Registration and Signup Form
 
 > SOLUTION: Feature | Screenshot
 
@@ -1044,7 +1044,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 ---
 
-#### 14.5.3. Private Site: User Login, Account Authentication and Login Form 
+#### 14.5.3. Private Site: User Login, Account Authentication and Login Form
 
 > SOLUTION: Feature | Screenshot
 
@@ -1092,13 +1092,13 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 -   [ ] Criteria
 -   [ ] Completed? 🛫
 -  [ ] Screenshot of contact form
- 
+
 ![] ()
 **`SCREENSHOT-X.X: `** `: Contact Form, Index.html`
 
 ***
 
-#### 14.5.7. Public: Password Management: Reset, Verification and Change. 
+#### 14.5.7. Public: Password Management: Reset, Verification and Change.
 
 > SOLUTION: Feature | Screenshot
 
@@ -1175,7 +1175,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 -   [ ] Criteria
 -   [ ] Completed? 🛫
--   [ ] Screen of 
+-   [ ] Screen of
 
 ![] ()
 **`SCREENSHOT-X.X: `** `: GitHub Do & Action `

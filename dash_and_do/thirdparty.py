@@ -1,7 +1,6 @@
 #!/user/bin/env python3
 
-"""
-This module contains the settings from thirdparty config.
+"""This module contains the settings from thirdparty config.
 
 @File: thirdparty.py
 @Version: 0.2.0 to 0.3.0.?

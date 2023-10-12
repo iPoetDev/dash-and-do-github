@@ -1,6 +1,5 @@
 #!/user/bin/env python3
-"""
-@File: validating.py
+"""@File: validating.py
 @Version: 0.3.0 to 0.3.0.?
 @Desc: common | dash_and_do |  validating. helpers functions
 @Author: Charles Fowler
@@ -39,13 +38,13 @@ from django.core.validators import RegexValidator
 
 
 class Validation:  # pylint: disable=too-few-public-methods
-    """ Validation Constants
+    """Validation Constants
 
     Validation class for common validation functions.
     """
 
     class PATTERNS:  # pylint: disable=too-few-public-methods
-        """ Patterns for validation.
+        """Patterns for validation.
 
         Regex patterns for validation.
         :NAME: 6 to 50 alphanumeric characters only, for international names
@@ -62,7 +61,7 @@ class Validation:  # pylint: disable=too-few-public-methods
         }
 
     class MESSAGES:  # pylint: disable=too-few-public-methods
-        """ Short Messages for validation.
+        """Short Messages for validation.
 
         Validation messages for validation.
         :param: NAME: str: Invalid Name
@@ -80,7 +79,7 @@ class Validation:  # pylint: disable=too-few-public-methods
         }
 
     class LENGTHS:  # pylint: disable=too-few-public-methods
-        """ Lengths for validation.
+        """Lengths for validation.
 
         Validation lengths settings for validation of various fields.
         """
@@ -92,7 +91,7 @@ class Validation:  # pylint: disable=too-few-public-methods
         MIN_PASS = 12
 
     class ERRORS:  # pylint: disable=too-few-public-methods
-        """ Error messages for validation.
+        """Error messages for validation.
 
         Validation errors for validation.
         :NAME: Invalid Name: 6 to 50 alphanumeric characters only, for
@@ -114,7 +113,7 @@ class Validation:  # pylint: disable=too-few-public-methods
 
 
 def valid_name(value) -> None:
-    """ Validate Name / Username
+    """Validate Name / Username
 
     :param value: The name value to be validated.
     :return: None
@@ -134,8 +133,7 @@ def valid_name(value) -> None:
         raise ValidationError(Validation.ERRORS.NAME) from exc
 
 def valid_email(value) -> None:
-    """
-    Validates whether the given value is a valid email.
+    """Validates whether the given value is a valid email.
 
     :param value: The value to be validated as an email.
     :return: None
@@ -156,7 +154,7 @@ def valid_email(value) -> None:
         raise ValidationError(Validation.ERRORS.EMAIL) from exc
 
 def valid_password(value) -> None:
-    """ Validate Password
+    """Validate Password
 
     :param value: The password value to be validated.
     :return: None

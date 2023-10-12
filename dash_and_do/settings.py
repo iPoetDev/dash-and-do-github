@@ -13,8 +13,8 @@ Changelog:
 2023.10.10
 - Noted: Reviewed and updated the settings file. Pre 1st deploy to heroku.
 - Added:
-  - New settings if a setting is only for If DEBUG then Development only.
-  - New settings if a setting is only for If Not DEBUG then Production only.
+  - New settings if a setting is: If DEBUG then Development only.
+  - New settings if a setting is: If Not DEBUG then Deployment/Production only.
 - Added:
   - New Database settings for Postgress/Elephant for deployment/production.
   - New Storages settings for Cloudinary/Whitenoise for deployment/production.
@@ -79,7 +79,7 @@ from django.contrib.messages import constants as messages
 
 # Third Party
 # import django_behave
-from environ import Env
+from environ import Env  # django_environ
 
 # Local: Project Libraries
 from dash_and_do.thirdparty import ANYMAIL  # noqa
@@ -106,7 +106,7 @@ envs.read_env(env_file)
 emailenv = Env()
 # Replacing os.path.join(BASE_DIR, '.email')
 emailenv_file = BASE_DIR / '.email'
-emailenv.read_env(emailenv_file)
+envs.read_env(emailenv_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -121,12 +121,34 @@ emailenv.read_env(emailenv_file)
 SECRET_KEY = envs.str('SECRET_KEY')
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#secret-key-fallbacks
-SECRET_KEY_FALLBACKS = [ ]
+SECRET_KEY_FALLBACKS = []
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = envs.bool('DEBUG')
 TEMPLATE_DEBUG = envs.bool('TEMPLATE_DEBUG', default=DEBUG)
 ADMIN_ENABLED = envs.bool('ADMIN_ENABLED', default=DEBUG)
+
+# ============================ WARNINGS & CHECKS =============================
+
+# Supress System Check Warnings
+SILENCED_SYSTEM_CHECKS = []
+if DEBUG:
+    SILENCED_SYSTEM_CHECKS += [
+        # I have when not DEBUG: SECURE_HSTS_SECONDS = 63072000 (2 years)
+        'security.W004',  # not set a value for the SECURE_HSTS_SECONDS
+        # I have when not DEBUG: SECURE_SSL_REDIRECT = True
+        'security.W008',  # Your SECURE_SSL_REDIRECT setting is not set to True
+        # I have when not DEBUG: SECURE_SSL_REDIRECT = True
+        'security.W012',  # SESSION_COOKIE_SECURE is not set to True.
+        # I have when not DEBUG: SESSION_COOKIE_SECURE = True
+        'security.W016',  # not set CSRF_COOKIE_SECURE to True.
+    ]
+else:
+    # Shows when debug is False, then it is silenced.
+    SILENCED_SYSTEM_CHECKS += [
+        # I have when not DEBUG:
+        'security.W018',  # not have DEBUG set to True in deployment
+    ]
 
 # Supress the warning for Django 5.0
 if DEBUG:
@@ -161,8 +183,7 @@ APPEND_SLASH = \
 
 # +https://docs.djangoproject.com/en/4.2/ref/settings/#x-frame-options
 # CLICKJACKING/Decorators and Middleware
-X_FRAME_OPTIONS = envs.str('X_FRAME_OPTIONS', default='SAMEORIGIN')
-
+X_FRAME_OPTIONS = envs.str('X_FRAME_OPTIONS', default='DENY')
 
 # ============================================================================
 # Debugging & Internal IP
@@ -183,19 +204,19 @@ X_FRAME_OPTIONS = envs.str('X_FRAME_OPTIONS', default='SAMEORIGIN')
 
 
 # Common to Development and Production
-ALLOWED_HOSTS = [ ]
+ALLOWED_HOSTS = []
 
 # noinspection PyUnusedName
 if DEBUG:
     DEBUG_PROPAGATE_EXCEPTIONS = \
         envs.bool('DJANGO_DEBUG_PROPAGATE_EXCEPTIONS', default=True)
-    ALLOWED_HOSTS += [ 'localhost', '127.0.0.1' ]
-    INTERNAL_IPS = [ '127.0.0.1' ]
+    ALLOWED_HOSTS += ['localhost', '127.0.0.1']
+    INTERNAL_IPS = ['127.0.0.1']
     # See AllowCIDR Middleware
     ALLOWED_CIDR_NETS = ['192.168.0.0/16']
 
 if not DEBUG:
-    ALLOWED_HOSTS += [ '*.herokuapp.com' ]
+    ALLOWED_HOSTS += ['*.herokuapp.com']
 
 # Below the import statements
 
@@ -216,8 +237,8 @@ if not DEBUG:
 #   (only in debug mode), third-party apps, and then project-specific apps
 
 
-INSTALLED_APPS = [ ]
-DEVELOPMENT_APPS = [ ]
+INSTALLED_APPS = []
+DEVELOPMENT_APPS = []
 
 if DEBUG:
     INSTALLED_APPS += [
@@ -231,9 +252,9 @@ INSTALLED_APPS += [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'cloudinary_storage' # B4 staticfiles
+    'cloudinary_storage',  # B4 staticfiles
     'django.contrib.staticfiles',
-    'cloudinary', # After staticfiles
+    'cloudinary',  # After staticfiles
 ]
 
 if DEBUG:
@@ -245,6 +266,10 @@ if DEBUG:
 
 THIRD_PARTY_APPS = [
     # third party apps
+    'allauth',  # Required for allauth
+    'allauth.account',  # Required for allauth
+    'allauth.socialaccount',  # Required for allauth
+    'allauth.socialaccount.providers.github',  # Optional for allauth
     'rest_framework',
     'corsheaders',
     'anymail',
@@ -299,24 +324,24 @@ if DEBUG:
     DJT_NVU_URL = "https://html5.validator.nu/"
 
     DEBUG_TOOLBAR_CONFIG = {
-        'INSERT_BEFORE': '</body>',
-        'RENDER_PANELS': False,
-        'RESULTS_CACHE_SIZE': 150,
-        'ROOT_TAG_EXTRA_ATTRS': 'hx-preserve',
-        'SHOW_COLLAPSED': True,
-        'SHOW_TOOLBAR_CALLBACK': 'debug_toolbar.middleware.show_toolbar',
-        'OBSERVE_REQUEST_CALLBACK': 'debug_toolbar.toolbar.observe_request',
+        'INSERT_BEFORE':'</body>',
+        'RENDER_PANELS':False,
+        'RESULTS_CACHE_SIZE':150,
+        'ROOT_TAG_EXTRA_ATTRS':'hx-preserve',
+        'SHOW_COLLAPSED':True,
+        'SHOW_TOOLBAR_CALLBACK':'debug_toolbar.middleware.show_toolbar',
+        'OBSERVE_REQUEST_CALLBACK':'debug_toolbar.toolbar.observe_request',
         # panel options
-        'EXTRA_SIGNALS': [ ],
-        'ENABLE_STACKTRACES': True,
-        'ENABLE_STACKTRACES_LOCALS': True,
-        'HIDE_IN_STACKTRACES': (),
-        'PRETTIFY_SQL': True,
-        'PROFILER_CAPTURE_PROJECT_CODE': True,
-        'PROFILER_MAX_DEPTH': 10,
+        'EXTRA_SIGNALS':[],
+        'ENABLE_STACKTRACES':True,
+        'ENABLE_STACKTRACES_LOCALS':True,
+        'HIDE_IN_STACKTRACES':(),
+        'PRETTIFY_SQL':True,
+        'PROFILER_CAPTURE_PROJECT_CODE':True,
+        'PROFILER_MAX_DEPTH':10,
         # 'PROFILER_THRESHOLD_RATIO': 8,
-        'SHOW_TEMPLATE_CONTEXT': True,
-        'SKIP_TEMPLATE_PREFIXES': ('django/forms/widgets/', 'admin/widgets/'),
+        'SHOW_TEMPLATE_CONTEXT':True,
+        'SKIP_TEMPLATE_PREFIXES':('django/forms/widgets/', 'admin/widgets/'),
         # 'SQL_WARNING_THRESHOLD': 500,
     }
 
@@ -331,7 +356,7 @@ if DEBUG:
 if DEBUG:
     SILENCED_SYSTEM_CHECKS = \
         envs.list('DJANGO_SILENCED_SYSTEM_CHECKS',
-                  default=[ ])
+                  default=[])
 
 # ================================ Middleware ===============================
 # https://docs.djangoproject.com/en/4.2/ref/settings/#middleware
@@ -394,15 +419,15 @@ if DEBUG:
         # 'debug_toolbar.middleware.DebugToolbarMiddleware',
         'django.middleware.common.BrokenLinkEmailsMiddleware',
         'allow_cidr.middleware.AllowCIDRMiddleware',
-        'django_pdb.middleware.PdbMiddleware',# checked
+        'django_pdb.middleware.PdbMiddleware',  # checked
     ]
 
 # ================================DEBUG CACHE ===============================
 if DEBUG:
     # Use for django. MailPanel
     CACHES = {
-        'default': {
-            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        'default':{
+            'BACKEND':'django.core.cache.backends.dummy.DummyCache',
         }
     }
 
@@ -433,8 +458,9 @@ if DEBUG:
 #   - Some template directorires are currently commented out: Debug Toolbar,
 #     profile and dash apps.
 
+TEMPLATE_DIRS = []
 if DEBUG:
-    TEMPLATE_DIRS = [
+    TEMPLATE_DIRS += [
         BASE_DIR / 'apps/kore/templates/kore/',
         BASE_DIR / 'apps/users/templates/users/',
         BASE_DIR / 'templates',
@@ -445,7 +471,7 @@ if DEBUG:
     ]
 else:
     # Only include necessary template directories in production
-    TEMPLATE_DIRS  = [
+    TEMPLATE_DIRS += [
         BASE_DIR / 'apps/kore/templates/kore/',
         BASE_DIR / 'apps/users/templates/users/',
         BASE_DIR / 'templates',
@@ -453,12 +479,12 @@ else:
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': TEMPLATE_DIRS ,
-        'APP_DIRS': envs.bool('TEMPLATES_APP_DIRS', default=True),
-        'OPTIONS': {
-            'debug': DEBUG,
-            'context_processors': [
+        'BACKEND':'django.template.backends.django.DjangoTemplates',
+        'DIRS':TEMPLATE_DIRS,
+        'APP_DIRS':envs.bool('TEMPLATES_APP_DIRS', default=True),
+        'OPTIONS':{
+            'debug':DEBUG,
+            'context_processors':[
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.template.context_processors.csrf',
@@ -468,8 +494,8 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'libraries': {},
-            'string_if_invalid': 'Invalid Template: %s',
+            'libraries':{},
+            'string_if_invalid':'Invalid Template: %s',
         },
     },
 ]
@@ -517,7 +543,7 @@ TEMPLATES = [
 #   - AUTO FIELD is set to BigAutoField, so that the primary key is auto
 # - Fixed:
 #   - DB credentials are now read properly even when DATABASE_URL is not
-#     present, provided the individual DB parameters are set in the env.
+#     present, provided the individual DB parameters are set in the envs.
 # - TODO:
 #   - The `HOST` in the database configuration could use the values determined
 #   - by the `ENVIRONMENT` variable.
@@ -529,11 +555,14 @@ TEMPLATES = [
 #   - https://django-environ.readthedocs.io/en/latest/quickstart.html
 #     See Line 74-76:
 
+DATABASES = {}
+
 if DEBUG:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'development.sqlite3',
+        **DATABASES,
+        'default':{
+            'ENGINE':'django.db.backends.sqlite3',
+            'NAME':BASE_DIR / 'development.sqlite3',
         }
     }
 else:
@@ -542,18 +571,20 @@ else:
     if DATABASE_URL:
         # Load database from DATABASE_URL, using django-environ db() function
         DATABASES = {
-            'default': envs.db(),
+            **DATABASES,
+            'default':envs.db(),
         }
     else:
-         # Load individual DB parameters from environment variables
+        # Load individual DB parameters from environment variables
         DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.postgresql',
-                'NAME': envs.str('DB_NAME'),
-                'USER': envs.str('DB_USER'),
-                'PASSWORD': envs.str('DB_PASS'),
-                'HOST': envs.str('DB_HOST'),
-                'PORT': envs.str('DB_PORT'),
+            **DATABASES,
+            'default':{
+                'ENGINE':'django.db.backends.postgresql',
+                'NAME':envs.str('DB_NAME'),
+                'USER':envs.str('DB_USER'),
+                'PASSWORD':envs.str('DB_PASS'),
+                'HOST':envs.str('DB_HOST'),
+                'PORT':envs.str('DB_PORT'),
             }
         }
 
@@ -730,10 +761,10 @@ ACCOUNT_TEMPLATE_EXTENSION = 'html'  # checked 23/09/23
 # Signup
 # noinspection PyUnusedName
 ACCOUNT_FORMS = {
-    'signup': 'apps.users.forms.DashSignupForm',  # highprior
-    'login': 'allauth.account.forms.LoginForm',  # highprior
-    'reset_password': 'allauth.account.forms.ResetPasswordForm',  # lowprior
-    'change_password': 'allauth.account.forms.ChangePasswordForm',  # lowprior
+    'signup':'apps.users.forms.DashSignupForm',  # highprior
+    'login':'allauth.account.forms.LoginForm',  # highprior
+    'reset_password':'allauth.account.forms.ResetPasswordForm',  # lowprior
+    'change_password':'allauth.account.forms.ChangePasswordForm',  # lowprior
 }
 # noinspection PyUnusedName
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = False
@@ -808,10 +839,10 @@ ACCOUNT_SESSION_REMEMBER = None
 ACCOUNT_USERNAME_MIN_LENGTH = 6
 ACCOUNT_USERNAME_REQUIRED = False  # checked 23/09/28
 # noinspection PyUnusedName
-ACCOUNT_USERNAME_BLACKLIST = [ ]
+ACCOUNT_USERNAME_BLACKLIST = []
 
 # noinspection PyUnusedName
-ACCOUNT_USERNAME_VALIDATORS = [ ]
+ACCOUNT_USERNAME_VALIDATORS = []
 
 # Account Custom Models
 ACCOUNT_USER_MODEL_EMAIL_FIELD = 'email'  # checked 23/09/28
@@ -956,32 +987,32 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # DEBUG case (using local file systems)
 if DEBUG:
     STORAGES = {
-        'default': {
-            'BACKEND': 'django.core.files.storage.FileSystemStorage',
+        'default':{
+            'BACKEND':'django.core.files.storage.FileSystemStorage',
         },
-        'staticfiles': {
-            'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
-            'OPTIONS': {},
+        'staticfiles':{
+            'BACKEND':'django.contrib.staticfiles.storage.StaticFilesStorage',
+            'OPTIONS':{},
         },
     }
 # PRODUCTION case (using either cloudinary or `whitenoise`)
 else:
     STORAGES = {
-        'default': {
+        'default':{
             # Assuming you have a
             # "cloudinary_storage.storage.MediaCloudinaryStorage"
             # storage for MEDIA files
-            'BACKEND': 'cloudinary_storage.storage.MediaCloudinaryStorage',
+            'BACKEND':'cloudinary_storage.storage.MediaCloudinaryStorage',
         },
-        'staticfiles': {
+        'staticfiles':{
             # Either use Cloudinary for STATIC files,
             # a "cloudinary_storage.storage.StaticCloudinaryStorage" storage,
             # or use `whitenoise`
             # `django.contrib.staticfiles.storage.ManifestStaticFilesStorage`
-            'BACKEND': 'cloudinary_storage.storage.StaticCloudinaryStorage'
+            'BACKEND':'cloudinary_storage.storage.StaticCloudinaryStorage'
             if USE_CLOUDINARY_FOR_STATIC
             else 'whitenoise.storage.CompressedManifestStaticFilesStorage',
-            'OPTIONS': {},
+            'OPTIONS':{},
         },
     }
 
@@ -997,11 +1028,11 @@ MESSAGE_LEVEL = envs.int('MESSAGE_LEVEL', default=10)
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 # noinspection PyUnusedName
 MESSAGE_TAGS = {
-    messages.DEBUG: envs.int('MESSAGE_TAGS_DEBUG', default='10'),
-    messages.INFO: envs.int('MESSAGE_TAGS_INFO', default='20'),
-    messages.SUCCESS: envs.int('MESSAGE_TAGS_SUCCESS', default='25'),
-    messages.WARNING: envs.int('MESSAGE_TAGS_WARNING', default='30'),
-    messages.ERROR: envs.int('MESSAGE_TAGS_ERROR', default='40'),
+    messages.DEBUG:envs.int('MESSAGE_TAGS_DEBUG', default='10'),
+    messages.INFO:envs.int('MESSAGE_TAGS_INFO', default='20'),
+    messages.SUCCESS:envs.int('MESSAGE_TAGS_SUCCESS', default='25'),
+    messages.WARNING:envs.int('MESSAGE_TAGS_WARNING', default='30'),
+    messages.ERROR:envs.int('MESSAGE_TAGS_ERROR', default='40'),
 }
 
 # ================================== Email & Notifications ===================
@@ -1027,72 +1058,91 @@ MESSAGE_TAGS = {
 #   - DEBUG & non-DEBUG deployments in critical email configurations.
 
 # ==================================================== EMAIL =================
-DJSMTP_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-DJCONSOLE_BACKEND = "django.core.mail.backends.console.EmailBackend"
-DJMEMORY_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
-DJDUMMY_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
-ANYJET_BACKEND = "anymail.backends.mailjet.EmailBackend"
-if DEBUG:
-    MAILPANEL_BACKEND = 'mail_panel.backend.MailToolbarBackend'
+# Set Email Backend
+DJANGO_EMAIL_BACKENDS = {
+    "DJSMTP":"django.core.mail.backends.smtp.EmailBackend",
+    "DJCONSOLE":"django.core.mail.backends.console.EmailBackend",
+    "DJMEMORY":"django.core.mail.backends.locmem.EmailBackend",
+    "DJDUMMY":"django.core.mail.backends.dummy.EmailBackend",
+    "ANYJET":"anymail.backends.mailjet.EmailBackend"
+}
 
-# ==================================================== EMAIL: ESP ============
-MAILJET_API_URL = "https://api.mailjet.com/v3.1/"
+EMAIL_BACKEND = DJANGO_EMAIL_BACKENDS['DJCONSOLE'] if DEBUG \
+    else DJANGO_EMAIL_BACKENDS['DJSMTP']
 
-# Update ANYMAIL settings.
-ANYMAIL.update({
-    'MAILJET_API_KEY': envs.str('MJ_APIKEY_PUBLIC'),
-    'MAILJET_SECRET_KEY': envs.str('MJ_APIKEY_PRIVATE'),
-})
+# Set Email Service Provider (ESP)
+ANYMAIL = {}
 
+# Set Domain
 MX_DOMAIN = envs.str('MX_DOMAIN', default='dash-and-do.xyz')
 
-# ==================================================== EMAIL: WHO ============
-ADMIN_EMAIL = envs.str('ADMIN_EMAIL',
-                       default='webmaster@dash-and-do.xyz')
-SERVER_EMAIL = envs.str('SERVER_EMAIL',
-                        default='server@dash-and-do.xyz')  # noqa
+# Set admin email
+ADMIN_EMAIL = envs.str('ADMIN_EMAIL', default='webmaster@dash-and-do.xyz')
+SERVER_EMAIL = envs.str('SERVER_EMAIL', default='server@dash-and-do.xyz')
 ADMINS = [ADMIN_EMAIL]
 MANAGERS = ADMINS
-EMAIL_SUBJECT_PREFIX = envs.str('EMAIL_SUBJECT_PREFIX',
-                                default='[Django] ')
 
-# ==================================== EMAIL: BACKEND ========
+EMAIL_SUBJECT_PREFIX = envs.str('EMAIL_SUBJECT_PREFIX', default='[Django] ')
+EMAIL_USE_LOCALTIME = envs.bool('EMAIL_USE_LOCALTIME', default=False)
+EMAIL_TIMEOUT = envs.int('EMAIL_TIMEOUT', default=60)
 
-EMAIL_BACKEND = DJCONSOLE_BACKEND if DEBUG else DJSMTP_BACKEND
-
-# ==================================== EMAIL: DEBUG ==========
-# Switches SSL/TLS for email
-CERT = envs.bool('CERT', default=False)
-
-# Development mode
+# Configuration based on a toggle
+# Development Environment: Localhost
 if DEBUG:
-    DEFAULT_FROM_EMAIL = emailenv.str('DEFAULT_FROM_EMAIL',
-                                      'webmaster@dash-and-do.xyz')
-    EMAIL_HOST = emailenv.str('EMAIL_HOST', 'dash-and-do.xyz')
+    # Development: Localhost
+    DEFAULT_FROM_EMAIL = envs.str('EMAIL_HOST_PASSWORD',
+                                  default='webmaster@localhost')
+    EMAIL_HOST = envs.str('EMAIL_HOST_PASSWORD', default='localhost')
+    EMAIL_HOST_PASSWORD = envs.str('EMAIL_HOST_PASSWORD', default='')
+    EMAIL_HOST_USER = envs.str('EMAIL_HOST_USER', default='')
     EMAIL_PORT = 8025
-    EMAIL_USE_SSL = emailenv.bool('TEST_USE_SSL') if CERT \
-        else emailenv.bool('TEST_USE_TLS')
 
+# Production Environment: HerokuApp.com
+else: # noqa PLR5501
+    # Toggles for/against using Heroku's MailToGo for emails
+    if envs.bool('MAILERTOGO_USE', default=True):
+        MAILTOGO_FROM_EMAIL = envs.str('MAILTOGO_FROM_EMAIL')
+        DEFAULT_FROM_EMAIL = MAILTOGO_FROM_EMAIL
+        EMAIL_HOST = envs.str('MAILERTOGO_SMTP_HOST')
+        EMAIL_PORT = envs.int('MAILERTOGO_SMTP_PORT')
+        EMAIL_HOST_USER = envs.str('MAILERTOGO_SMTP_USER')
+        EMAIL_HOST_PASSWORD = envs.str('MAILERTOGO_SMTP_PASSWORD')
+    # Toggles for/against using Dash-and-Do.xyz for emails
+    elif envs.bool('DASH_XYZ_USE', default=False):
+        ADMIN_EMAIL = envs.str('ADMIN_EMAIL',
+                               default='webmaster@dash-and-do.xyz')
+        SERVER_EMAIL = envs.str('SERVER_EMAIL',
+                                default='server@dash-and-do.xyz')
+        DASH_FROM_EMAIL = envs.str('DASH_FROM_EMAIL')
+        DEFAULT_FROM_EMAIL = DASH_FROM_EMAIL
+        EMAIL_HOST = envs.str('DASH_HOST')
+        EMAIL_PORT = envs.int('DASH_PORT')
+        EMAIL_HOST_USER = envs.str('DASH_HOST_USER')
+        EMAIL_HOST_PASSWORD = envs.str('DASH_HOST_PASSWORD')
+    # Safe Default Empty State: Localhost
+
+    else:
+        DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+        EMAIL_HOST = 'localhost'
+        EMAIL_HOST_PASSWORD = envs.str('EMAIL_HOST_PASSWORD', '')
+        EMAIL_HOST_USER = envs.str('EMAIL_HOST_USER', '')
+        EMAIL_PORT = 25
+        EMAIL_TIMEOUT = 60
+
+# Configuration for SSL/TLS
+CERT = envs.bool('CERT', False)
+if CERT:
+    EMAIL_USE_SSL = True
+    EMAIL_USE_TLS = False
 else:
-    DEFAULT_FROM_EMAIL = emailenv.str('DEFAULT_FROM_EMAIL',
-                                      'webmaster@localhost')
-    EMAIL_HOST = emailenv.str('EMAIL_HOST', 'localhost')
-    EMAIL_PORT = emailenv.int('EMAIL_PORT', default=25)
-    EMAIL_USE_TLS = emailenv.bool('TEST_USE_TLS') if CERT \
-        else emailenv.bool('TEST_USE_TLS')
-
-# ==================================== EMAIL: ENV/CONFIG LOADING ==============
-EMAIL_HOST_PASSWORD = emailenv.str('EMAIL_HOST_PASSWORD')
-EMAIL_HOST_USER = emailenv.str('EMAIL_HOST_USER')
-EMAIL_USE_LOCALTIME = emailenv.bool('EMAIL_USE_LOCALTIME', default=False)
-EMAIL_TIMEOUT = emailenv.int('EMAIL_TIMEOUT', default=60)
-
+    EMAIL_USE_SSL = False
+    EMAIL_USE_TLS = True
 
 # ================================== Error Handling ==========================
 # https://docs.djangoproject.com/en/4.2/ref/settings/#ignorable-404-urls
 # - added: IGNORABLE_404_URLS forBrokenLinkEmailsMiddleware
 
-IGNORABLE_404_URLS = [ ]
+IGNORABLE_404_URLS = []
 
 # ================================== Logging =================================
 # https://docs.djangoproject.com/en/4.2/ref/settings/#logging
@@ -1121,17 +1171,17 @@ class LogConfig:  # pylint: disable=too-few-public-methods
 
 # https://docs.djangoproject.com/en/4.2/topics/logging/#configuring-logging
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'root': {
-        'handlers': [ 'console' ],
-        'level': 'DEBUG',
+    'version':1,
+    'disable_existing_loggers':False,
+    'root':{
+        'handlers':['console'],
+        'level':'DEBUG',
     },
-    'handlers': {
-        LogConfig.Handler.CONSOLE: {
-            "level": "DEBUG",
-            "filters": [ "require_debug_true" ],
-            'class': 'logging.StreamHandler',
+    'handlers':{
+        LogConfig.Handler.CONSOLE:{
+            "level":"DEBUG",
+            "filters":["require_debug_true"],
+            'class':'logging.StreamHandler',
         },
         # "file": {
         #     "level": "INFO",
@@ -1143,98 +1193,98 @@ LOGGING = {
         #     "backupCount": 5,
         #     # Optional: Sets the number of backup files to keep
         # },
-        LogConfig.Handler.TEMPLATE: {
-            "level": "INFO",
-            "class": "logging.handlers.RotatingFileHandler",
-            "filters": [ "require_debug_true" ],
-            "filename": "./logs/logging/templatedebug.log",
-            "maxBytes": 50000,
+        LogConfig.Handler.TEMPLATE:{
+            "level":"INFO",
+            "class":"logging.handlers.RotatingFileHandler",
+            "filters":["require_debug_true"],
+            "filename":"./logs/logging/templatedebug.log",
+            "maxBytes":50000,
             # Optional: Sets the maximum file size before rotation (in bytes)
-            "backupCount": 5,
+            "backupCount":5,
             # Optional: Sets the number of backup files to keep
         },
-        LogConfig.Handler.SERVER: {
-            "level": "WARN",
-            "class": "logging.StreamHandler",
-            "filters": [ "require_debug_true" ],
-            "formatter": LogConfig.Handler.SERVER,
+        LogConfig.Handler.SERVER:{
+            "level":"WARN",
+            "class":"logging.StreamHandler",
+            "filters":["require_debug_true"],
+            "formatter":LogConfig.Handler.SERVER,
         },
-        LogConfig.Handler.MAIL: {
-            "level": "ERROR",
-            "class": "django.utils.log.AdminEmailHandler",
-            'filters': [ 'require_debug_false' ],
-            "include_html": True,
-            "email_backend": "django.core.mail.backends.smtp.EmailBackend",
+        LogConfig.Handler.MAIL:{
+            "level":"ERROR",
+            "class":"django.utils.log.AdminEmailHandler",
+            'filters':['require_debug_false'],
+            "include_html":True,
+            "email_backend":"django.core.mail.backends.smtp.EmailBackend",
         },
     },
 
-    "loggers": {
-        "django": {
-            "handlers": [ LogConfig.Handler.CONSOLE, ],
-            "level": os.getenv("DJANGO_LOG_LEVEL", "ERROR"),
-            "propagate": False,
-            "formatter": "simple",
+    "loggers":{
+        "django":{
+            "handlers":[LogConfig.Handler.CONSOLE, ],
+            "level":os.getenv("DJANGO_LOG_LEVEL", "ERROR"),
+            "propagate":False,
+            "formatter":"simple",
         },
-        "debug": {
-            "handlers": [ LogConfig.Handler.CONSOLE, ],
-            "level": "DEBUG",
-            "propagate": True,
-            "formatter": "verbose",
+        "debug":{
+            "handlers":[LogConfig.Handler.CONSOLE, ],
+            "level":"DEBUG",
+            "propagate":True,
+            "formatter":"verbose",
         },
-        "django.request": {
-            "handlers": [ LogConfig.Handler.MAIL ],
-            "level": "ERROR",
-            "propagate": False,
-            "formatter": "verbose",
+        "django.request":{
+            "handlers":[LogConfig.Handler.MAIL],
+            "level":"ERROR",
+            "propagate":False,
+            "formatter":"verbose",
         },
-        LogConfig.Handler.SERVER: {
-            "handlers": [ LogConfig.Handler.SERVER ],
-            "level": "INFO",
-            "propagate": False,
-            "formatter": "django.server",
+        LogConfig.Handler.SERVER:{
+            "handlers":[LogConfig.Handler.SERVER],
+            "level":"INFO",
+            "propagate":False,
+            "formatter":"django.server",
         },
-        LogConfig.Handler.TEMPLATE: {
-            "handlers": [ LogConfig.Handler.CONSOLE,
-                          LogConfig.Handler.TEMPLATE ],
-            "level": "INFO",
-            "propagate": False,
-            "formatter": "verbose",
+        LogConfig.Handler.TEMPLATE:{
+            "handlers":[LogConfig.Handler.CONSOLE,
+                        LogConfig.Handler.TEMPLATE],
+            "level":"INFO",
+            "propagate":False,
+            "formatter":"verbose",
         },
-        "django.security.csrf": {
-            "handlers": [ "console" ],
-            "level": "WARN",
-            "propagate": False,
-            "formatter": "verbose",
+        "django.security.csrf":{
+            "handlers":["console"],
+            "level":"WARN",
+            "propagate":False,
+            "formatter":"verbose",
         },
-        "django.db.backends": {
-            "handlers": [ "console" ],
-            "level": "WARN",
-            "propagate": False,
-            "formatter": "simple",
-        },
-    },
-    "filters": {
-        "require_debug_true": {
-            "()": "django.utils.log.RequireDebugTrue",
-        },
-        "require_debug_false": {
-            "()": "django.utils.log.RequireDebugFalse",
+        "django.db.backends":{
+            "handlers":["console"],
+            "level":"WARN",
+            "propagate":False,
+            "formatter":"simple",
         },
     },
-    "formatters": {
-        "verbose": {
-            "format": "{levelname} {asctime} {module} {process:d} {thread:d} "
-                      "{message} {extra}",
-            "style": "{",
+    "filters":{
+        "require_debug_true":{
+            "()":"django.utils.log.RequireDebugTrue",
         },
-        "simple": {
-            "format": "{levelname} {message} {extra}",
-            "style": "{",
+        "require_debug_false":{
+            "()":"django.utils.log.RequireDebugFalse",
         },
-        LogConfig.Handler.SERVER: {
-            "()": "django.utils.log.ServerFormatter",
-            "format": "{server_time}] {message} {request} {status_code}",
-            "style": "{",
+    },
+    "formatters":{
+        "verbose":{
+            "format":"{levelname} {asctime} {module} {process:d} {thread:d} "
+                     "{message} {extra}",
+            "style":"{",
+        },
+        "simple":{
+            "format":"{levelname} {message} {extra}",
+            "style":"{",
+        },
+        LogConfig.Handler.SERVER:{
+            "()":"django.utils.log.ServerFormatter",
+            "format":"{server_time}] {message} {request} {status_code}",
+            "style":"{",
         }
     },
 }
@@ -1261,21 +1311,31 @@ LOGGING = {
 #   Commented out settings vis HTTP Strict Transport Security (HSTS),
 #       to be enabled and configured in a production environment.
 
+SSL_LEVEL_USE = False
+
 if DEBUG:
     # To keep your site even more secure
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_BROWSER_XSS_FILTER = True
-    SECURE_SSL_REDIRECT = False
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'http')
+    if SSL_LEVEL_USE:
+        SECURE_SSL_REDIRECT = False
+        # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+        # SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_SECONDS = 0
 
 if not DEBUG:
     # To keep your site even more secure
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_BROWSER_XSS_FILTER = True
-    SECURE_SSL_REDIRECT = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    # SECURE_SSL_HOST = envs.str('SECURE_SSL_HOST', default=None)
-
+    if SSL_LEVEL_USE:
+        SECURE_SSL_REDIRECT = True
+        # SECURE_SSL_HOST = envs.str('SECURE_SSL_HOST',
+        #                           default='*.herokuapp.com')
+        # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+        # SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_SECONDS = 63072000 if SSL_LEVEL_USE else 0
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = \
     envs.str('SECURE_CROSS_ORIGIN_OPENER_POLICY', default='same-origin')
@@ -1284,11 +1344,11 @@ SECURE_REFERRER_POLICY = \
     envs.str('SECURE_REFERRER_POLICY', default='same-origin')
 
 # if not DEBUG:
-    # Enable the HSTS header for securing your site even more.
-    # Increase this for production to 1 year=31536000.
-    # SECURE_HSTS_SECONDS = 3600  # This is equal to 1 hour.
-    # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    # SECURE_HSTS_PRELOAD = True
+# Enable the HSTS header for securing your site even more.
+# Increase this for production to 1 year=31536000.
+# SECURE_HSTS_SECONDS = 3600  # This is equal to 1 hour.
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
 
 
 # ================================== Proxy & Routing==========================
@@ -1426,7 +1486,7 @@ if not DEBUG:
     # Whether to use a secure cookie for the CSRF cookie.
     # False as we are using HTTP
     CSRF_COOKIE_SECURE = envs.bool('CSRF_COOKIE_SECURE',
-                                   default=False)
+                                   default=True)
 
 # ================================== CSRF: COMMON ============================
 # Age of CSRF Cookie, Default 1 week (in seconds).

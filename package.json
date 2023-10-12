@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "editorconfig": "^2.0.0",
-    "eslint": "^8.49.0",
+    "eslint": "^8.51.0",
     "eslint-config-defaults": "^9.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-semistandard": "^17.0.0",
@@ -30,31 +30,31 @@
     "eslint-scope": "^7.2.2",
     "eslint-utils": "^3.0.0",
     "htmlhint": "^1.1.4",
-    "htmx.org": "^1.9.5",
-    "postcss": "^8.4.29",
-    "prettier": "^3.0.3",
-    "prettier-plugin-django-alpine": "^1.1.1",
-    "prettier-plugin-tailwindcss": "^0.5.4",
+    "prettier-plugin-django-alpine": "^1.2.3",
+    "prettier-plugin-tailwindcss": "^0.5.5",
     "standard": "^17.1.0",
     "stylelint": "^15.10.3",
     "stylelint-config-recommended": "^13.0.0",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-config-tailwindcss": "^0.0.7",
     "stylelint-csstree-validator": "^3.0.0",
-    "tailwindcss": "^3.3.3",
-    "tailwindcss-owl": "^2.0.0",
-    "w3c-html-validator": "^1.4.0"
+    "w3c-html-validator": "^1.5.1",
+    "live-server": "^1.2.2",
+    "local-web-server": "^5.3.0",
+    "snazzy": "^9.0.0"
   },
   "browserslist": [
     ">0.3%, defaults and supports es6-module",
     "maintained node versions"
   ],
   "dependencies": {
-    "autoprefixer": "^10.4.15",
-    "browserslist": "^4.21.10",
-    "live-server": "^1.1.0",
-    "local-web-server": "^5.3.0",
-    "snazzy": "^9.0.0"
+    "htmx.org": "^1.9.6",
+    "postcss": "^8.4.31",
+    "prettier": "^3.0.3",
+    "tailwindcss": "^3.3.3",
+    "tailwindcss-owl": "^2.0.0",
+    "autoprefixer": "^10.4.16",
+    "browserslist": "^4.22.1",
   },
   "standard": {
     "ignore": [

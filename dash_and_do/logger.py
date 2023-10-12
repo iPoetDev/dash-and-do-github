@@ -1,29 +1,28 @@
 #!/user/bin/env python3
 # pylint: skipfile
-"""
-    This module contains the general logging functions for
-    - all views, forms, users, emails(?)  | logging.
+"""This module contains the general logging functions for
+- all views, forms, users, emails(?)  | logging.
 
-    @File: views.py
-    @Version: 0.3.5 to 0.3.0.?
-    @Desc: dash_and_do | logger: General logging for the project.
-    @Author: Charles Fowler
-    @Copyright: 2023
-    @Date Created: 23/08/17
-    @Date Modified: 23/09/17
-    @Python Version: 3.11.04
-    @Django Version: 4.2.3
-    @Notes / Ideas v Implement:
-        - Log the request object (form submission.
-        - Log the response object (form response).
-        - TODO: Log the form object (form data)
-        - TODO: Log the user object.
-        - TODO: Log the emailing object (emailing data)
-    @Changelog:
-    - noted: Use defacto logging for the project.
-    - noted: See settings.py | LOGGING for more info.
-    - added: log_views_request (23-09-17)
-    - added: log_views_response (23-09-17)
+@File: views.py
+@Version: 0.3.5 to 0.3.0.?
+@Desc: dash_and_do | logger: General logging for the project.
+@Author: Charles Fowler
+@Copyright: 2023
+@Date Created: 23/08/17
+@Date Modified: 23/09/17
+@Python Version: 3.11.04
+@Django Version: 4.2.3
+@Notes / Ideas v Implement:
+- Log the request object (form submission.
+- Log the response object (form response).
+- TODO: Log the form object (form data)
+- TODO: Log the user object.
+- TODO: Log the emailing object (emailing data)
+@Changelog:
+- noted: Use defacto logging for the project.
+- noted: See settings.py | LOGGING for more info.
+- added: log_views_request (23-09-17)
+- added: log_views_response (23-09-17)
 """
 import logging
 
@@ -34,9 +33,7 @@ loggey = logging.getLogger(__name__)
 
 # noinspection PyUnusedFunction,PyUnusedLocal
 def log_views_request(request, label=None):
-    """
-
-    Log the request object.
+    """Log the request object.
     Progressive logging levels/verbosity/data:
 
     :param request: The request object.
@@ -45,24 +42,12 @@ def log_views_request(request, label=None):
     :rtype: None
     """
     # pylint: disable=unused-variable
-    full_extra = {'request': request,
-                  'label': label,
-                  'user': request.user,
-                  'content_type': request.content_type,
-                  'method': request.method,
-                  'path': request.path,
-                  'path_info': request.path_info,
-                  'encoding': request.encoding,
-                  'scheme': request.scheme,
-                  'content_params': request.content_params,
-                  'resolver_match': request.resolver_match,
-                  }
     # pylint: disable=unused-variable
-    lite_extra = {'request': request,
-                  'label': label,
-                  'user': request.user,
-                  'method': request.method,
-                  'path': request.path,
+    lite_extra = {'request':request,
+                  'label':label,
+                  'user':request.user,
+                  'method':request.method,
+                  'path':request.path,
                   }
     # Info: View INFO: <WSGIRequest: POST '/'> (23-09-17)
     # loggey.info("DnD INFO: View Request: %s",
@@ -89,9 +74,7 @@ def log_views_request(request, label=None):
 
 # noinspection PyUnusedFunction
 def log_views_response(response, label=None, desc=None):
-    """
-
-    Log the response object.
+    """Log the response object.
     Progressive logging levels/verbosity/data:
 
     :param response:
@@ -101,12 +84,12 @@ def log_views_response(response, label=None, desc=None):
     :rtype: None
     """
     # Logging Key: Params
-    response_extra = {'response': response,
-                      'label': label,
-                      'description': desc,
-                      'context': response.context_data,
-                      'content_type': response[ 'Content-Type' ],
-                      'status': response.status_code}
+    response_extra = {'response':response,
+                      'label':label,
+                      'description':desc,
+                      'context':response.context_data,
+                      'content_type':response['Content-Type'],
+                      'status':response.status_code}
     options = LoggerOptions(kind="django", on=True, off=False,
                             detail=response_extra)
     # Get the 'django' logger
@@ -137,8 +120,7 @@ def log_views_response(response, label=None, desc=None):
 
 # noinspection PyUnusedFunction
 def send_debug_mail(send_func):
-    """
-    :param send_func: A function that sends an email. This function should
+    """:param send_func: A function that sends an email. This function should
      return a boolean value indicating whether the email was sent successfully
      or not.
     :return: The result returned by the `send_func` parameter.
@@ -182,10 +164,7 @@ def send_debug_mail(send_func):
 # noinspection DuplicatedCode
 def debug_request(message, obj, kind=None, on=True, off=False, detail=None):
     # noinspection DuplicatedCode
-    """
-        Log a message with severity 'DEBUG' on the root logger.
-        """
-
+    """Log a message with severity 'DEBUG' on the root logger."""
     logger = logging.getLogger(kind) if type is not None \
         else logging.getLogger(__name__)
     logger.setLevel(logging.DEBUG)
@@ -204,15 +183,35 @@ def debug_request(message, obj, kind=None, on=True, off=False, detail=None):
 
 # noinspection DuplicatedCode
 class LoggerOptions:
+    """Represents the options for configuring a logger.
+
+    :param kind: The kind of logger. Defaults to None.
+    :type kind: Any, optional
+    :param on: Whether the logger should be turned on. Defaults to True.
+    :type on: bool, optional
+    :param off: Whether the logger should be turned off. Defaults to False.
+    :type off: bool, optional
+    :param detail: The level of detail for the logger. Defaults to None.
+    :type detail: Any, optional
+    """
+
     def __init__(self, kind=None, on=True, off=False, detail=None):
+        """Initializes a LoggerOptions object with the given parameters.
+
+        :param kind: The kind of logger options.
+        :param on: A boolean specifying if the logger is turned on.
+        :param off: A boolean specifying if the logger is turned off.
+        :param detail: Additional details for the logger options.
+
+        """
         self.kind = kind
         self.on = on
         self.off = off
         self.detail = detail
 
+
 def debug_response(message, obj, logger_options=None):
-    """
-    Log a message with severity 'DEBUG' on the root logger.
+    """Log a message with severity 'DEBUG' on the root logger.
 
     Usage:
     e.g. debug
@@ -228,7 +227,8 @@ def debug_response(message, obj, logger_options=None):
         else logging.getLogger(__name__)
     logger.setLevel(logging.DEBUG)
     formatter = logging.Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - %(message)s - %(response)s - '
+        '%(asctime)s - %(name)s - %(levelname)s '
+        '- %(message)s - %(response)s - '
         '%(label)s - %(context)s - %(content_type)s - %(status)s - '
     )
     handler = logging.StreamHandler()

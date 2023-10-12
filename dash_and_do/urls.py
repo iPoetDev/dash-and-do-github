@@ -45,40 +45,6 @@ from django.urls import path
 # added: SiteMap in Comments as a Planner
 # added: Core index forms to kore.urls
 
-# ================== Site Map ================================
-# URLPatterns - .html Template: DjangoApp => urls.py | views.py
-# ================== Core App =======================
-#   Page: Public & Private
-# / - index.html: Home Page => Core Index.urls
-#   Page Parts: Private
-#   > /form_signup/ - Signup Form => kore.urls kore.views kore.forms kore.models
-#   > /form_login/ - Login Form => kore.urls| kore.views kore.forms kore.models
-#   > /form_password_reset/ - Password Reset Form => kore.urls | kore.views
-#     kore.forms kore.models
-#   Page Parts: Private
-#   > /link_logout/ - Accounts/Logout Link => profile.urls @ Sidebar, Menu
-#   | kore.view
-#   Page Parts: All
-#   > /form_contact/ - Password Reset Form => kore.urls | kore.views kore.forms
-#                      kore.emailing
-# /verify/ - verify.html - Verify Email => kore.urls | kore.views kore.http
-# (redirect)
-# ================== Accounts App ==================
-#   Page: Private
-# /account/ - profile.html: Accounts => profile.urls
-#   Page Parts: Private
-#   /profile/ - profile.html: Accounts/Profile => dash.urls
-#   Page Parts: Private
-#   > /form_profile/ - Profile Form => profile.urls
-#   > /form_password_change/ - Password Change Form => profile.urls
-#   /github/ - github.html: GitHub Integration
-#   Page Parts:
-#   > /form_github_token/ - Password Reset Form => profile.urls
-#   /link_logout/ - Accounts/Logout Link => profile.urls
-# ================== Dash App ======================
-#   Page: Private
-# /dash/ - Dash.html => dash.urls
-# ================== Do'er App ======================
 
 # breakpoint()
 urlpatterns = [

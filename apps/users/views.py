@@ -57,6 +57,7 @@ from .forms import DashSignupForm
 
 debugr = Debugg()
 
+
 class FormViews:  # pylint: disable=too-few-public-methods
     """Form Values: Strings."""
 
@@ -94,10 +95,10 @@ class FormViews:  # pylint: disable=too-few-public-methods
         EMAIL_CTXKEY = 'email'
         IS_CTXCONFIRM = 'can_confirm'
 
-
     class LogoutView:  # pylint: disable=too-few-public-methods
         """Constants Class for LogoutView."""
         TEMPLATE = 'users/account/logout.html'
+
 
 class SessionVals:
     """The SessionVals class: Set of constants/flags used for session values.
@@ -131,11 +132,12 @@ class HTTP:  # pylint: disable=too-few-public-methods
         HX_CONTENT_TYPE = 'Content-Type'
         HX_CONTENT_FORMAT = 'text/html'
 
-    class  Methods:
+    class Methods:
         """HTTP Methods: Strings."""
         GET = 'GET'
         POST = 'POST'
         PUT = 'PUT'
+
 
 class DashSignupView(SignupView):
     """DashSignupView class is a custom implementation of the SignupView class
@@ -184,7 +186,7 @@ class DashSignupView(SignupView):
     success_url = reverse_lazy(FormViews.VERIFY_REVERSE)
     form_class = DashSignupForm  # Custom AllAuth Signup Form
 
-    def post(self, request,  *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         """Post method for the SignupView class.
 
         :param request: The HTTP request object.
@@ -200,7 +202,7 @@ class DashSignupView(SignupView):
             return HttpResponseRedirect(self.get_success_url())
 
         # If form is not valid, re-render the form with error messages
-        signup_context = {FormViews.Signup.CTXNAME: form}
+        signup_context = {FormViews.Signup.CTXNAME:form}
         return render(request, FormViews.Signup.TEMPLATE, signup_context)
 
     def form_valid(self, form):
@@ -220,15 +222,15 @@ class DashSignupView(SignupView):
         # For example, if you want to send a custom success message:
         messages.success(self.request, FormViews.Signup.SUCCESS_MESSAGE)
         return hx_redirect_success(self.request,
-                                         response,
-                                         self.success_url)
+                                   response,
+                                   self.success_url)
 
     def form_invalid(self, form):
         """If the form is invalid, return the form with error
         messages to HTMX.
         """
-        signup_context =  {FormViews.Signup.CTXNAME:
-                                       form}
+        signup_context = {FormViews.Signup.CTXNAME:
+                              form}
         form_html = render_to_string(self.template_name,
                                      signup_context,
                                      request=self.request)
@@ -241,8 +243,7 @@ class DashSignupView(SignupView):
         """
         context = super().get_context_data()
         last_status = get_last_status(self.request)
-        session_data = DashUserSession(self.request).fetch_session_data()
-        if session_data:
+        if session_data := DashUserSession(self.request).fetch_session_data():
             context['session_data'] = session_data
         if last_status:
             context['latest_status'] = last_status
@@ -414,6 +415,7 @@ class DashConfirmEmailView(ConfirmEmailView):
     """Confirm Email View."""
     # template_name = FormViews.Confirm.TEMPLATE  # specify your own template
     template_name = 'kore/confirm.html'
+
     def get_redirect_url(self):
         """Redirect to 'verify.html' after successful email verification."""
         return reverse_lazy(FormViews.CONFIRM_REVERSE)

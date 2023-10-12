@@ -1932,7 +1932,7 @@ Pre-commit Hook
 
 #### 14.3.1 BBD
 
-- As per [BDD 101: Behavior-Driven Agile | Automation Panda.com](https://automationpanda.com/2017/02/01/bdd-101-bdd-and-agile/), 
+- As per [BDD 101: Behavior-Driven Agile | Automation Panda.com](https://automationpanda.com/2017/02/01/bdd-101-bdd-and-agile/),
 
 ##### 14.3.1.1 Top Level Concepts
 - BBD - Behaviour Driven Testing: optimally used for **black box testing**, higher order testing for the user experience. Learn more from: [BDD | Automation Panda](https://automationpanda.com/bdd/)
@@ -1940,10 +1940,10 @@ Pre-commit Hook
 - Feature: A user product or feature under test. [In BDD, What Should Be A Feature? | Automation Panda](https://automationpanda.com/2017/10/19/in-bdd-what-should-be-a-feature/)
 - Scenario: Generally known as a test case, that concisely frames the behaviour under test.
 - Give | When | Then: The structure specification keywords that uses natural language. not jargon, for all users to understand.
-- Declarative: A focus on what behaviour is to happen, not how, and the expected outcome. 
+- Declarative: A focus on what behaviour is to happen, not how, and the expected outcome.
 - Imperative: A focus on how behaviour operates, better suited to TDD and Unit testing.
 
-##### 14.3.1.2  Further Reading: 
+##### 14.3.1.2  Further Reading:
 
 - [BDD | Automation Panda](https://automationpanda.com/bdd/)
 
@@ -1952,7 +1952,7 @@ Pre-commit Hook
 - The author crafted and shaped the JetBrains AI Assistant (beta) to _conversationally_ (i.e. back and forth prompt-output-refactor) define the following Feature-Scenario as User Acceptance.
 - This was a productivity, time manage and neural diversity win for the author.
 - The author edited, groomed, aligned with his manually edited Epics, Features, and User Stories.
-- These are then sorted, as per[ Python Behave](https://behave.readthedocs.io/en/latest/gherkin/#feature-testing-layout) and [Behave Django](https://behave-django.readthedocs.io/en/stable/usage.html), in side and along side the package/apps under test, in `.feature` files 
+- These are then sorted, as per[ Python Behave](https://behave.readthedocs.io/en/latest/gherkin/#feature-testing-layout) and [Behave Django](https://behave-django.readthedocs.io/en/stable/usage.html), in side and along side the package/apps under test, in `.feature` files
 
 ##### 14.3.1.4 Manual over Automation
 
@@ -1979,7 +1979,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 -   [ ] **Requirement**: Public Site, Pages & Navigation
     - **Feature**: Public Site
-        - **Gherkin File**: *PublicSite.feature*  
+        - **Gherkin File**: *PublicSite.feature*
     - **Scenarios / Stories**:
         - #82: ` Newly Visiting User's URL Story ` [#54 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/54)
         - #81:  ` New Visting User Story ` [#81 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/81)
@@ -2065,7 +2065,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 -   [ ] **Requirement**: Private Site, Pages & Navigation
     - **Feature**: Private Site
-        - **User Acceptance Criteria**: *PrivateSite.feature*  
+        - **User Acceptance Criteria**: *PrivateSite.feature*
     - **Scenarios / Stories**:
         - #82: ` Newly Visiting User's URL Story ` [#54 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/54)
         - #81:  ` New Visting User Story ` [#81 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/81)
@@ -2128,14 +2128,14 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
   - .
 - USER ACCEPTED: Yes ✅ | STOP 🚫
 ```
- 
+
 ---
 
-#### 14.4.2 Public Site: Account Creation, User Registration and Signup Form 
+#### 14.4.2 Public Site: Account Creation, User Registration and Signup Form
 
 -   [ ] **Requirement**: Public: Account Creation and User Registration
     - **Feature**: Account Creation
-        - **User Acceptance Criteria**: *AccountCreate.feature*  
+        - **User Acceptance Criteria**: *AccountCreate.feature*
     - **Scenarios / Stories**:
         - #54: ` New Registration User Story ` [#54 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/54)
         - #66:  ` Confirm Register User Story ` [#66 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/66)
@@ -2170,11 +2170,11 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 ```
 
 ---
-#### 14.4.3 Private Site: User Login, Account Authentication and Login Form 
+#### 14.4.3 Private Site: User Login, Account Authentication and Login Form
 
 -   [ ] **Requirement**: Public: Account Creation and User Registration
     - **Feature**: UserLogin
-        - **User Acceptance Criteria**: *UserLogin.feature*  
+        - **User Acceptance Criteria**: *UserLogin.feature*
     - **Scenarios / Stories**:
         - #67:  ` Successful Login Existing User Story ` [#67 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/67)
         - #68:  ` Unsuccessfully Login Existing User Story ` [#68 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/68)
@@ -2230,7 +2230,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 -   [ ] **Requirement**: Private: User Profile Access, User Settings and Account Removal
     - **Feature**: User Profile
-        - **User Acceptance Criteria**: *UserProfile.feature*  
+        - **User Acceptance Criteria**: *UserProfile.feature*
     - **Scenarios / Stories**:
         - #75:  ` User Profile Access Story ` [#75 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/75)
         - #76:  ` User Profile Update Story ` [#76 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/76)
@@ -2301,7 +2301,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 -   [ ] **Requirement**: Private: Manage the Site, Be a Staff User and Access Admin Site
     - **Feature**: Administration Site with Staff User
-        - **User Acceptance Criteria**: *AdminSite.feature*  
+        - **User Acceptance Criteria**: *AdminSite.feature*
     - **Scenarios / Stories**:
         - #79:  ` Admin User Profile Access Story ` [#79 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/79)
         - #80:  ` Admin User Profile Update Story ` [#80 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/80)
@@ -2340,9 +2340,9 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 #### 14.4.6 Messaging Site: Contact the Site Owner and Contact Form
 
--   [ ] **Requirement**: All/Anonymous: Contact the Site Owner, Send Copy and Contact Form 
+-   [ ] **Requirement**: All/Anonymous: Contact the Site Owner, Send Copy and Contact Form
     - **Feature**: Messaging the Site
-        - **User Acceptance Criteria**: *MessageSite.feature*  
+        - **User Acceptance Criteria**: *MessageSite.feature*
     - **Scenarios / Stories**:
         - #126:  ` Contact Site: User Story ` [#126 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/126)
         - #127:  ` Contact Email: User Story ` [#127 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/127)
@@ -2379,11 +2379,11 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 ---
 
-#### 14.4.7 Public: Password Management: Reset, Verification and Change. 
+#### 14.4.7 Public: Password Management: Reset, Verification and Change.
 
 -   [ ] **Requirement**: Password Management
     - **Feature**: PasswordManagement
-        - **User Acceptance Criteria**: *PasswordManage.feature*  
+        - **User Acceptance Criteria**: *PasswordManage.feature*
     - **Scenarios / Stories**:
         - #69:  ` Forgets Password User Story ` [#69 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/69)
         - #70:  ` Verify Reset User Story ` [#70 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/70)
@@ -2422,9 +2422,9 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 #### 14.4.8 Site Email Services
 
--   [ ] **Requirement**: Site Email for Messaging, Account Creation, and Password Management 
+-   [ ] **Requirement**: Site Email for Messaging, Account Creation, and Password Management
     - **Feature**: EmailServices
-        - **User Acceptance Criteria**: *EmailServices.feature*  
+        - **User Acceptance Criteria**: *EmailServices.feature*
     - **Scenarios / Stories**:
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
@@ -2464,9 +2464,9 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 #### 14.4.9 User Session Management
 
--   [ ] **Requirement**: Site Email for Messaging, Account Creation, and Password Management 
+-   [ ] **Requirement**: Site Email for Messaging, Account Creation, and Password Management
     - **Feature**: UserSessions
-        - **User Acceptance Criteria**: *UserSessions.feature*  
+        - **User Acceptance Criteria**: *UserSessions.feature*
     - **Scenarios / Stories**:
         - #71:  ` Set + Persist Session: User Story ` [#71 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/71)
         - #73:  ` User Session Authorised: User Story ` [#73 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/73)
@@ -2505,9 +2505,9 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 #### 14.4.10 User Permission Management
 
--   [ ] **Requirement**: Site Email for Messaging, Account Creation, and Password Management 
+-   [ ] **Requirement**: Site Email for Messaging, Account Creation, and Password Management
     - **Feature**: EmailServices
-        - **User Acceptance Criteria**: *EmailServices.feature*  
+        - **User Acceptance Criteria**: *EmailServices.feature*
     - **Scenarios / Stories**:
         - #84:  ` Unauthenticated User Login Story ` [#84 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/84)
         - #85:  ` Unauthorised/Access User Login Story ` [#85 GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/85)
@@ -2548,7 +2548,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 -   [ ] **Requirement**: Private: GitHub Dashboard aka Dash; Report and Status
     - **Feature**: GitHubDashboard (CRU)
-        - **User Acceptance Criteria**: *EmailServices.feature*  
+        - **User Acceptance Criteria**: *EmailServices.feature*
     - **Scenarios / Stories**:
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
@@ -2599,11 +2599,11 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 ---
 
-#### 14.4.12 Private: GitHub Feature: Do & Actions 
+#### 14.4.12 Private: GitHub Feature: Do & Actions
 
--   [ ] **Requirement**: Private: GitHub Do aka Do; Actions: 
+-   [ ] **Requirement**: Private: GitHub Do aka Do; Actions:
     - **Feature**: GitHub Do & Action (CRUD)
-        - **User Acceptance Criteria**: *GitHubDofeature*  
+        - **User Acceptance Criteria**: *GitHubDofeature*
     - **Scenarios / Stories**:
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
@@ -2645,7 +2645,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 -   [ ] **Requirement**: ??
     - **Feature**: ??
-        - **User Acceptance Criteria**: ??.feature*  
+        - **User Acceptance Criteria**: ??.feature*
     - **Scenarios / Stories**:
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
         - #??:  ` ??: User Story ` [#?? GitHub](https://github.com/iPoetDev/dash-and-do-github/issues/??)
@@ -2721,7 +2721,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 ---
 
-#### 14.5.2. Public Site: Account Creation, User Registration and Signup Form 
+#### 14.5.2. Public Site: Account Creation, User Registration and Signup Form
 
 > SOLUTION: Feature | Screenshot
 
@@ -2734,7 +2734,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 ---
 
-#### 14.5.3. Private Site: User Login, Account Authentication and Login Form 
+#### 14.5.3. Private Site: User Login, Account Authentication and Login Form
 
 > SOLUTION: Feature | Screenshot
 
@@ -2782,13 +2782,13 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 -   [ ] Criteria
 -   [ ] Completed? 🛫
 -  [ ] Screenshot of contact form
- 
+
 ![] ()
 **`SCREENSHOT-X.X: `** `: Contact Form, Index.html`
 
 ***
 
-#### 14.5.7. Public: Password Management: Reset, Verification and Change. 
+#### 14.5.7. Public: Password Management: Reset, Verification and Change.
 
 > SOLUTION: Feature | Screenshot
 
@@ -2865,7 +2865,7 @@ All of these tests with have the `@manual` tag on each scenario, and maybe a few
 
 -   [ ] Criteria
 -   [ ] Completed? 🛫
--   [ ] Screen of 
+-   [ ] Screen of
 
 ![] ()
 **`SCREENSHOT-X.X: `** `: GitHub Do & Action `
@@ -3161,6 +3161,11 @@ https://dash-and-do-github.herokuapp.com/
 ---
 
 ## 17.0 [Assessment](#)
+
+### 17.0.1 Assessor Access
+
+- Assessors are granted access to
+  1. Site defauly Admin interface, after logging in.
 
 ***
 

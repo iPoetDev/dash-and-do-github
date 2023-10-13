@@ -37,22 +37,22 @@ to reduce file level cycolmatic complexity
 """
 #  Copyright (c) 2023.
 
-# Local: Common Libraries
-from dash_and_do.settings import DEFAULT_FROM_EMAIL as SITE_EMAIL
 from django.core.mail import BadHeaderError
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 
 from apps.kore.emailing.messages import contact_mail
 from apps.kore.emailing.messages import site_mail
-from apps.kore.emailing.values import HTTP
 from apps.kore.emailing.values import Field
-
+from apps.kore.emailing.values import HTTP
 # Local: App Libraries
 from apps.kore.emailing.values import Services
 from apps.kore.emailing.values import Switch
 from apps.kore.helpers import pp_email
 from apps.kore.helpers import pp_label
+# Local: Common Libraries
+from dash_and_do.settings import DEFAULT_FROM_EMAIL as SITE_EMAIL
+
 
 # Third parttom
 
@@ -66,19 +66,19 @@ def send_mail_contact(form) -> HttpResponse:
     :rtype: HttpResponse
     """
     # Contact Form particulars, valdiated and cleaned.
-    name = form.cleaned_data[ Field.NAME ]
-    email = form.cleaned_data[ Field.EMAIL ]
-    message = form.cleaned_data[ Field.MESSAGE ]
+    name = form.cleaned_data[Field.NAME]
+    email = form.cleaned_data[Field.EMAIL]
+    message = form.cleaned_data[Field.MESSAGE]
     copy = form.cleaned_data.get(Field.COPY)
     pp_label(f'send_mail_contact: top: {form.cleaned_data}')
     # Send emailing & prevent header injection (Django Docs)
-    if all([ name, email, message ]):
+    if all([name, email, message]):
         try:
             # pp_email(form.cleaned_data, label='send_mail_contact: IF: ')
             # To enable Fail Silently: fails=ON, default is OFF.
             site_mail(name, email, message,
-                      [ SITE_EMAIL ], copy,
-                      service=Services.BASIC)
+                [SITE_EMAIL], copy,
+                service=Services.BASIC)
             # pp_form(form,
             #         label='send_mail_contact: true: HTTPResponse: Ok 200')
         except BadHeaderError:
@@ -102,25 +102,25 @@ def send_mail_contact2(form) -> HttpResponse:
     :rtype: HttpResponse
     """
     # Contact Form particulars, valdiated and cleaned.
-    name = form.cleaned_data[ Field.NAME ]
-    email = form.cleaned_data[ Field.EMAIL ]
-    message = form.cleaned_data[ Field.MESSAGE ]
+    name = form.cleaned_data[Field.NAME]
+    email = form.cleaned_data[Field.EMAIL]
+    message = form.cleaned_data[Field.MESSAGE]
     # print(f'form.cleaned_data: {form.cleaned_data}')
     # copy = form.cleaned_data.get(Field.COPY)
     email_data = {
-        Field.NAME: name,
-        Field.EMAIL: email,
-        Field.MESSAGE: message
+        Field.NAME:name,
+        Field.EMAIL:email,
+        Field.MESSAGE:message
     }
     # Send emailing & prevent header injection (Django Docs)
-    if all([ name, email, message ]):
+    if all([name, email, message]):
         pp_email(form.cleaned_data, label='send_mail_contact2: IF: ')
         # To enable Fail Silently: fails=ON, default is OFF.
         email_response = contact_mail(name,
-                                      email,
-                                      message,
-                                      recipients=[ SITE_EMAIL ],
-                                      fails=Switch.SHOW)
+            email,
+            message,
+            recipients=[SITE_EMAIL],
+            fails=Switch.SHOW)
         pp_email(email_data, label='send_mail_contact_2: HTTPResponse: Ok '
                                    '200')
         return email_response

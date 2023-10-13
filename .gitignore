@@ -770,3 +770,10 @@ package-lock.json
 /.fleet/
 /development.sqlite3
 /identifier.sqlite
+/apps_users_unused.txt
+/apps_kore_unused.txt
+/dash_and_do_unused.txt
+/.secrets.baseline
+/package-dev.json
+/requirements-vevn.txt
+/appmap.yml

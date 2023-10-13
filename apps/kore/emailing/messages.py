@@ -40,15 +40,9 @@ from smtplib import SMTPException
 
 # Third Party Libraries
 from anymail.message import AnymailMessage
-from dash_and_do.settings import DEFAULT_FROM_EMAIL as SITE_EMAIL
-from dash_and_do.settings import emailenv as env
-
-# Local: Common Libraries
-from dash_and_do.utils import get_date
 from django.core.mail import BadHeaderError
 from django.core.mail import EmailMessage
 from django.core.mail import get_connection
-
 #  Copyright (c) 2023.
 # Framework Libraries
 from django.core.mail import send_mail
@@ -67,20 +61,23 @@ from apps.kore.emailing.values import MIME
 from apps.kore.emailing.values import SMTP
 from apps.kore.emailing.values import Sending
 from apps.kore.emailing.values import Services
-
 # Local: App Libraries
 # from apps.kore.helpers import (pp_form, pp_email, pp_response, pp_console)
 from apps.kore.emailing.values import Site
 from apps.kore.emailing.values import Switch
 from apps.kore.emailing.values import Template
 from apps.kore.helpers import pp_message
+from dash_and_do.settings import DEFAULT_FROM_EMAIL as SITE_EMAIL
+from dash_and_do.settings import emailenv as env
+# Local: Common Libraries
+from dash_and_do.utils import get_date
 
 
 def contact_mail(sub_ject: str,
-                 message: str,
-                 sender: str,
-                 recipients: list,
-                 fails: bool = Switch.ON) -> HttpResponse:
+    message: str,
+    sender: str,
+    recipients: list,
+    fails: bool = Switch.ON) -> HttpResponse:
     """Sends emailing to user/site contact when they submit a contact form.
     :param sub_ject:
     :param message:
@@ -94,8 +91,8 @@ def contact_mail(sub_ject: str,
     # Checks if the emailing was sent.  # pylint: disable=fixme
     try:
         result = send_mail(sub_ject, message, from_email=sender,
-                           recipient_list=recipients, fail_silently=fails,
-                           connection=smtp) == Sending.SUCCESS
+            recipient_list=recipients, fail_silently=fails,
+            connection=smtp) == Sending.SUCCESS
         # pp_response(result, label='contact_mail: send_mail()')
 
         # Returns a HTTP Response (with message) if successful/not.
@@ -103,13 +100,13 @@ def contact_mail(sub_ject: str,
             # Returns a HTTP Response (with message) if successful/not.
             # pp_console(HTTP.MSG_SENT, label='contact_mail: send_mail() OK')
             return HttpResponse(HTTP.MSG_SENT, status=HTTP.STATUS.OK,
-                                reason=HTTP.MSG_SENT)
+                reason=HTTP.MSG_SENT)
         # == 0 failed mail Sending.FAILURE
         # Returns a HTTP Response (with message) when not successful/.
         # pp_console(HTTP.MSG_FAILED, label='contact_mail: send_mail() FAIL')
         return HttpResponse(HTTP.MSG_FAILED,
-                            status=HTTP.STATUS.BAD_REQUEST,
-                            reason=HTTP.MSG_FAILED)
+            status=HTTP.STATUS.BAD_REQUEST,
+            reason=HTTP.MSG_FAILED)
     # Exception
     except SMTPException as server_error:
         print(server_error)
@@ -119,9 +116,9 @@ def contact_mail(sub_ject: str,
 
 
 def site_mail(name: str, sender: str, message: str, recipients: list,
-              # pylint: disable=too-many-arguments
-              copy: bool, service: str,
-              fails: bool = Switch.OFF) -> HttpResponse:
+    # pylint: disable=too-many-arguments
+    copy: bool, service: str,
+    fails: bool = Switch.OFF) -> HttpResponse:
     """Builds and sends emailing messages to user and site contact
 
     :param name: The mail sender's name.
@@ -142,11 +139,11 @@ def site_mail(name: str, sender: str, message: str, recipients: list,
         pp_message(subject, recipients, sender, message, fail=fails)
         # Returns a HTTP Response (with message) if successful/not.
         return send_control(subject(Site.NAME, name),
-                              message,
-                              sender,
-                              recipients,
-                              service,
-                              fails)
+            message,
+            sender,
+            recipients,
+            service,
+            fails)
         # pp_console(result, label='site_mail: send_control()')
 
     # pp_response(HTTP.MSG_FAILED, label='site_mail: send_control()')
@@ -156,7 +153,7 @@ def site_mail(name: str, sender: str, message: str, recipients: list,
 
 # noinspection PyUnusedFunction
 def template_mail(template: str, sub_ject: str, sender: str, recipients: list,
-                  context: dict, fails: bool = Switch.OFF) -> int:
+    context: dict, fails: bool = Switch.OFF) -> int:
     """Sends templated emailing to user/site contact when they
     submit a contact form.
     :param template:
@@ -169,19 +166,19 @@ def template_mail(template: str, sub_ject: str, sender: str, recipients: list,
     :rtype: int
     """
     ctx = {
-        'subject': sub_ject,
-        'sender': sender,
+        'subject':sub_ject,
+        'sender':sender,
     }
     context |= ctx
     return templatemailer(template, context, sender, recipients, fails)
 
 
 def send_control(sub_ject: str,
-                 message: str,
-                 sender: str,
-                 recipients: list,
-                 service: str,
-                 fails: bool = Switch.OFF) -> HttpResponse:
+    message: str,
+    sender: str,
+    recipients: list,
+    service: str,
+    fails: bool = Switch.OFF) -> HttpResponse:
     """Send Control: Check emailing service and send mail.
 
     :param sub_ject: The mail subject.
@@ -202,8 +199,8 @@ def send_control(sub_ject: str,
         # pp_message(subject, recipients, sender, message, fail=fails,
         #            label='== send_control: message ==')
         if send_mail(subject, message, from_email=sender,
-                     recipient_list=recipients, fail_silently=fails,
-                     connection=smtp) == Sending.SUCCESS:
+            recipient_list=recipients, fail_silently=fails,
+            connection=smtp) == Sending.SUCCESS:
             # Returns a HTTP Response (with message) when successful.
             # pp_console(HTTP.MSG_SENT,
             #            label=f'send_control: send_mail() {HTTP.MSG_SENT}')
@@ -221,8 +218,8 @@ def send_control(sub_ject: str,
 
 # noinspection PyUnusedFunction
 def send_default(subj, message,
-                 sender, recipients,
-                 copy=Switch.OFF, fail=Switch.OFF):
+    sender, recipients,
+    copy=Switch.OFF, fail=Switch.OFF):
     """Sends emailing to user/site contact when they submit a contact form.
 
     :param subj:
@@ -234,11 +231,11 @@ def send_default(subj, message,
     :return: HTTP Response: Invalid header found.
     """
     # Send emailing & prevent header injection (Django Docs)
-    if all([ subject, message, sender, recipients ]):
+    if all([subject, message, sender, recipients]):
         try:
             # Determine the cc list based on whether the sender
             # wants a copy of the message
-            cc_list = [ sender ] if copy else None
+            cc_list = [sender] if copy else None
 
             # Build the Email and Reply-To is sender.
             email = EmailMessage(
@@ -247,7 +244,7 @@ def send_default(subj, message,
                 from_email=sender,
                 to=recipients,
                 cc=cc_list,
-                reply_to=[ sender ]
+                reply_to=[sender]
             )
 
             # SafeMIMEText is used to clean the message body.
@@ -268,8 +265,8 @@ def send_default(subj, message,
 
 
 def any_mail(subj, sender, recipients, text_content, name='',
-             # pylint: disable=too-many-arguments
-             html_content='', fail=Switch.OFF) -> HttpResponse:
+    # pylint: disable=too-many-arguments
+    html_content='', fail=Switch.OFF) -> HttpResponse:
     """Sends emailing to user/site contact when they submit a contact form.
 
     :param subj:
@@ -283,7 +280,7 @@ def any_mail(subj, sender, recipients, text_content, name='',
     :rtype: HttpResponse
     """
     # Send emailing & prevent header injection (Django Docs)
-    if all([ subj, name, sender, recipients, text_content ]):
+    if all([subj, name, sender, recipients, text_content]):
         # Detect Header Injection, if cleaned, proceed/
         try:
             # Send the mail: Default Service | Failback service if provider
@@ -313,7 +310,7 @@ def any_mail(subj, sender, recipients, text_content, name='',
 
 # noinspection PyUnusedFunction
 def templated_contact(subj, name, sender, recipients,
-                      text_content, fail=Switch.OFF):
+    text_content, fail=Switch.OFF):
     """Sends emailing to user/site contact when they submit a contact form.
 
     :param subj: Default.
@@ -326,7 +323,7 @@ def templated_contact(subj, name, sender, recipients,
     """
     # Send emailing & prevent header injection (Django Docs)
     # if subject and sender and recipients and text_content and html_content:
-    if all([ subject, name, sender, recipients, text_content ]):
+    if all([subject, name, sender, recipients, text_content]):
         try:
             # Send the mail: Default Service | Failback service if provider
             # is not available. Admins adjust an enviromental string
@@ -335,13 +332,13 @@ def templated_contact(subj, name, sender, recipients,
             message = TemplatedMessage()
             message.template_name = Template.CONTACT_EMAIL
             message.context = {
-                Template.SUBJECT: subj,
-                Template.NAME: name,
-                Template.PLAIN: text_content,
-                Template.HTML: text_content,
-                Template.SITE: Site.NAME,
-                Template.URL: Site.URL,
-                Template.SENTON: get_date(),
+                Template.SUBJECT:subj,
+                Template.NAME:name,
+                Template.PLAIN:text_content,
+                Template.HTML:text_content,
+                Template.SITE:Site.NAME,
+                Template.URL:Site.URL,
+                Template.SENTON:get_date(),
             }
             # Returns a HTTP Response (with message) if successful/not.
             return send(message, fail)

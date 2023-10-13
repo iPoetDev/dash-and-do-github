@@ -17,7 +17,7 @@ Changelog:
   - New settings if a setting is: If Not DEBUG then Deployment/Production only.
 - Added:
   - New Database settings for Postgress/Elephant for deployment/production.
-  - New Storages settings for Cloudinary/Whitenoise for deployment/production.
+  - New Storages settings for just Whitenoise for deployment/production.
   - New Security Settings for Herokuapp.com using HTTPS on free dynos.
 - Updated:
   - Debugging & Internal IP:
@@ -36,8 +36,8 @@ Changelog:
         Production: None, see Common Middleware
   - Storage:
         Development: Files and Staticfiles
-        Production: Cloudinary Storage or Whitenoise
-    - Cloudinary Storage or Whitenoise
+        Production: Whitenoise
+    - Only Whitenoise
   - Emailing:
         Development:
         Production:
@@ -128,28 +128,6 @@ DEBUG = envs.bool('DEBUG')
 TEMPLATE_DEBUG = envs.bool('TEMPLATE_DEBUG', default=DEBUG)
 ADMIN_ENABLED = envs.bool('ADMIN_ENABLED', default=DEBUG)
 
-# ============================ WARNINGS & CHECKS =============================
-
-# Supress System Check Warnings
-SILENCED_SYSTEM_CHECKS = []
-if DEBUG:
-    SILENCED_SYSTEM_CHECKS += [
-        # I have when not DEBUG: SECURE_HSTS_SECONDS = 63072000 (2 years)
-        'security.W004',  # not set a value for the SECURE_HSTS_SECONDS
-        # I have when not DEBUG: SECURE_SSL_REDIRECT = True
-        'security.W008',  # Your SECURE_SSL_REDIRECT setting is not set to True
-        # I have when not DEBUG: SECURE_SSL_REDIRECT = True
-        'security.W012',  # SESSION_COOKIE_SECURE is not set to True.
-        # I have when not DEBUG: SESSION_COOKIE_SECURE = True
-        'security.W016',  # not set CSRF_COOKIE_SECURE to True.
-    ]
-else:
-    # Shows when debug is False, then it is silenced.
-    SILENCED_SYSTEM_CHECKS += [
-        # I have when not DEBUG:
-        'security.W018',  # not have DEBUG set to True in deployment
-    ]
-
 # Supress the warning for Django 5.0
 if DEBUG:
     # pylint: disable=import-outside-toplevel,ungrouped-imports
@@ -216,7 +194,11 @@ if DEBUG:
     ALLOWED_CIDR_NETS = ['192.168.0.0/16']
 
 if not DEBUG:
-    ALLOWED_HOSTS += ['*.herokuapp.com']
+    ALLOWED_HOSTS += [
+        'localhost',
+        '127.0.0.1'
+        '*.herokuapp.com'
+    ]
 
 # Below the import statements
 
@@ -224,8 +206,6 @@ if not DEBUG:
 # Changelog:
 # - Added: default Django apps: admin, auth, contenttypes, sessions,
 #   messages, staticfiles
-# - Noted: admin and cloudinary apps are conditionally added based on
-#   'admin_enabled' flag
 # - Added: development apps for debugging and enhancements: debug_toolbar,
 #   django_extensions, django_behave
 # - Updated: third-party apps. Added new apps: rest_framework, corsheaders,
@@ -252,9 +232,8 @@ INSTALLED_APPS += [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'cloudinary_storage',  # B4 staticfiles
     'django.contrib.staticfiles',
-    'cloudinary',  # After staticfiles
+    'cloudinary',  # Only for media, not static files
 ]
 
 if DEBUG:
@@ -356,7 +335,29 @@ if DEBUG:
 if DEBUG:
     SILENCED_SYSTEM_CHECKS = \
         envs.list('DJANGO_SILENCED_SYSTEM_CHECKS',
-                  default=[])
+            default=[])
+
+# ============================ WARNINGS & CHECKS =============================
+
+# Supress System Check Warnings
+SILENCED_SYSTEM_CHECKS = []
+if DEBUG:
+    SILENCED_SYSTEM_CHECKS += [
+        # I have when not DEBUG: SECURE_HSTS_SECONDS = 63072000 (2 years)
+        'security.W004',  # not set a value for the SECURE_HSTS_SECONDS
+        # I have when not DEBUG: SECURE_SSL_REDIRECT = True
+        'security.W008',  # Your SECURE_SSL_REDIRECT setting is not set to True
+        # I have when not DEBUG: SECURE_SSL_REDIRECT = True
+        'security.W012',  # SESSION_COOKIE_SECURE is not set to True.
+        # I have when not DEBUG: SESSION_COOKIE_SECURE = True
+        'security.W016',  # not set CSRF_COOKIE_SECURE to True.
+    ]
+else:
+    # Shows when debug is False, then it is silenced.
+    SILENCED_SYSTEM_CHECKS += [
+        # I have when not DEBUG:
+        'security.W018',  # not have DEBUG set to True in deployment
+    ]
 
 # ================================ Middleware ===============================
 # https://docs.djangoproject.com/en/4.2/ref/settings/#middleware
@@ -908,17 +909,17 @@ DECIMAL_SEPARATOR = \
 # Default: 2.5MB || Raised SuspiciousOperation (RequestDataTooBig)
 DATA_UPLOAD_MAX_MEMORY_SIZE = \
     envs.int('DATA_UPLOAD_MAX_MEMORY_SIZE',
-             default=2621440)
+        default=2621440)
 
 # Default: 1000 || Raised SuspiciousOperation (TooManyFieldsSent)
 DATA_UPLOAD_MAX_NUMBER_FIELDS = \
     envs.int('DATA_UPLOAD_MAX_NUMBER_FIELDS',
-             default=500)
+        default=500)
 
 # Default: 100 || Raised SuspiciousOperation (TooManyFiles)
 DATA_UPLOAD_MAX_NUMBER_FILES = \
     envs.int('DATA_UPLOAD_MAX_NUMBER_FILES',
-             default=10)
+        default=10)
 
 # ================================== File & Uploads ==========================
 # ChangeLog:
@@ -937,26 +938,23 @@ DATA_UPLOAD_MAX_NUMBER_FILES = \
 #       where collectstatic will collect static files for deployment.
 #    - A STORAGES for managing storage backends.
 #       It uses local file systems for file storage when in DEBUG mode and
-#       Uses cloudinary or `whitenoise` for serving files when not DEBUG mode.
+#       Uses `whitenoise` for serving media when not DEBUG mode.
 #  - Noted:
-#    - In the case of using Cloudinary for static files,
-#      a backend for StaticCloudinaryStorage is selected,
-#      otherwise, a `whitenoise` CompressedManifestStaticFilesStorage is used.
+#    - In the case of using `whitenoise` CompressedManifestStaticFilesStorage
+#    is used.
 #  - Noted:
 #    - The local file system storage backend is selected for 'default'
 #    when in DEBUG mode otherwise Cloudinary's MediaCloudinaryStorage is used.
 #  - Noted:
 #    - The local file system storage backend is selected for 'staticfiles'
-#    when in DEBUG mode otherwise a choice is made between one of the following
-#    depending on whether Cloudinary is intended for static files or not.
-#    Cloudinary's StaticCloudinaryStorage or
+#    when in DEBUG mode otherwise a choice is to use
 #    Whitenoise's CompressedManifestStaticFilesStorage
 #  - Noted: USE_CLOUDINARY_FOR_STATIC toggles for/against using Cloudinary.
 
 # Toggles for/against using Cloudinary for static files: Whitenose otherwise
 # Environment variable: CLOUDINARY_FOR_STATIC
-USE_CLOUDINARY_FOR_STATIC = envs.bool('CLOUDINARY_FOR_STATIC',
-                                      default=False)
+# USE_CLOUDINARY_FOR_STATIC = envs.bool('CLOUDINARY_FOR_STATIC',
+#     default=False)
 
 FILE_UPLOAD_HANDLERS = [
     'django.core.files.uploadhandler.MemoryFileUploadHandler',
@@ -1009,9 +1007,7 @@ else:
             # a "cloudinary_storage.storage.StaticCloudinaryStorage" storage,
             # or use `whitenoise`
             # `django.contrib.staticfiles.storage.ManifestStaticFilesStorage`
-            'BACKEND':'cloudinary_storage.storage.StaticCloudinaryStorage'
-            if USE_CLOUDINARY_FOR_STATIC
-            else 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+            'BACKEND':'whitenoise.storage.CompressedManifestStaticFilesStorage',
             'OPTIONS':{},
         },
     }
@@ -1091,14 +1087,14 @@ EMAIL_TIMEOUT = envs.int('EMAIL_TIMEOUT', default=60)
 if DEBUG:
     # Development: Localhost
     DEFAULT_FROM_EMAIL = envs.str('EMAIL_HOST_PASSWORD',
-                                  default='webmaster@localhost')
+        default='webmaster@localhost')
     EMAIL_HOST = envs.str('EMAIL_HOST_PASSWORD', default='localhost')
     EMAIL_HOST_PASSWORD = envs.str('EMAIL_HOST_PASSWORD', default='')
     EMAIL_HOST_USER = envs.str('EMAIL_HOST_USER', default='')
     EMAIL_PORT = 8025
 
 # Production Environment: HerokuApp.com
-else: # noqa PLR5501
+else:  # noqa PLR5501
     # Toggles for/against using Heroku's MailToGo for emails
     if envs.bool('MAILERTOGO_USE', default=True):
         MAILTOGO_FROM_EMAIL = envs.str('MAILTOGO_FROM_EMAIL')
@@ -1110,9 +1106,9 @@ else: # noqa PLR5501
     # Toggles for/against using Dash-and-Do.xyz for emails
     elif envs.bool('DASH_XYZ_USE', default=False):
         ADMIN_EMAIL = envs.str('ADMIN_EMAIL',
-                               default='webmaster@dash-and-do.xyz')
+            default='webmaster@dash-and-do.xyz')
         SERVER_EMAIL = envs.str('SERVER_EMAIL',
-                                default='server@dash-and-do.xyz')
+            default='server@dash-and-do.xyz')
         DASH_FROM_EMAIL = envs.str('DASH_FROM_EMAIL')
         DEFAULT_FROM_EMAIL = DASH_FROM_EMAIL
         EMAIL_HOST = envs.str('DASH_HOST')
@@ -1153,7 +1149,7 @@ IGNORABLE_404_URLS = []
 
 LOGGING_CONFIG = \
     envs.str('LOGGING_CONFIG',
-             default='logging.config.dictConfig')
+        default='logging.config.dictConfig')
 
 
 # ================================== Logging =================================
@@ -1245,7 +1241,7 @@ LOGGING = {
         },
         LogConfig.Handler.TEMPLATE:{
             "handlers":[LogConfig.Handler.CONSOLE,
-                        LogConfig.Handler.TEMPLATE],
+                LogConfig.Handler.TEMPLATE],
             "level":"INFO",
             "propagate":False,
             "formatter":"verbose",
@@ -1363,7 +1359,7 @@ SECURE_REFERRER_POLICY = \
 # https://docs.djangoproject.com/en/4.2/ref/settings/#signing-backend
 
 SIGNING_BACKEND = envs.str('SIGNING_BACKEND',
-                           default='django.core.signing.TimestampSigner')
+    default='django.core.signing.TimestampSigner')
 
 # ================================== Sessions ================================
 # ChangeLog: 2023-09-14 (Comment Out for implementation)
@@ -1386,47 +1382,47 @@ SIGNING_BACKEND = envs.str('SIGNING_BACKEND',
 # ================================== Sessions: ENGINE ========================
 SESSION_ENGINE = \
     envs.str('SESSION_ENGINE',
-             default='django.contrib.sessions.backends.db')
+        default='django.contrib.sessions.backends.db')
 
 # ================================== Sessions: DEVELOPMENT ===================
 if DEBUG:
     # Domain for the session cookie; None means the domain of the request
     # which set the cookie will be used
     SESSION_COOKIE_DOMAIN = envs.str('SESSION_COOKIE_DOMAIN',
-                                     default=None)
+        default=None)
 
     # Whether to use a secure cookie for the session
     # (i.e. cookie should only be sent over HTTPS);
     # Typically False in development when you might not be running over HTTPS
     SESSION_COOKIE_SECURE = envs.bool('SESSION_COOKIE_SECURE',
-                                      default=False)
+        default=False)
 
 # ================================== Sessions: DEPLOYMENT ====================
 if not DEBUG:
     # Domain for the session cookie; .herokuapp.com ensures the session cookie
     # is valid for all subdomains under herokuapp.com
     SESSION_COOKIE_DOMAIN = envs.str('SESSION_COOKIE_DOMAIN',
-                                     default='.herokuapp.com')
+        default='.herokuapp.com')
 
     # Whether to use a secure cookie for the session
     # (i.e. cookie should only be sent over HTTPS);
     # True is standard in deployment, as you'd usually run over HTTPS
     # in a production environment
     SESSION_COOKIE_SECURE = envs.bool('SESSION_COOKIE_SECURE',
-                                      default=True)
+        default=True)
 
 # ================================== Sessions: COMMON ========================
 # Age of session cookie, Default 2 weeks (in seconds).
 SESSION_COOKIE_AGE = envs.int('SESSION_COOKIE_AGE',
-                              default=60 * 60 * 24 * 7 * 2)
+    default=60 * 60 * 24 * 7 * 2)
 # Whether to use an HTTP Only cookie for the session;
 # Prevents client-side JavaScript from accessing the session cookie
 SESSION_COOKIE_HTTPONLY = envs.bool('SESSION_COOKIE_HTTPONLY',
-                                    default=True)
+    default=True)
 
 # Name of the cookie used to store the session data
 SESSION_COOKIE_NAME = envs.str('SESSION_COOKIE_NAME',
-                               default='sessionid')
+    default='sessionid')
 
 # Path for which the session cookie is active;
 # Can be used to limit the cookie to a specific path within your domain
@@ -1437,7 +1433,7 @@ SESSION_COOKIE_PATH = envs.str('SESSION_COOKIE_PATH', default='/')
 # In this case, 'Lax' sends the cookie with same-site and top-level navigations
 # (which is safe to know the source of a request)
 SESSION_COOKIE_SAMESITE = envs.str('SESSION_COOKIE_SAMESITE',
-                                   default='Lax')
+    default='Lax')
 
 # Whether the session should expire when the browser is closed;
 # If True, the session will expire when user closes the browser
@@ -1477,41 +1473,41 @@ if DEBUG:
     # Whether to use a secure cookie for the CSRF cookie.
     # False as we are using HTTP
     CSRF_COOKIE_SECURE = envs.bool('CSRF_COOKIE_SECURE',
-                                   default=False)
+        default=False)
 # ================================== CSRF: PRODUCTION ========================
 if not DEBUG:
     # Domain for the CSRF cookie
     CSRF_COOKIE_DOMAIN = envs.str('CSRF_COOKIE_DOMAIN',
-                                  default='.herokuapp.com')
+        default='.herokuapp.com')
     # Whether to use a secure cookie for the CSRF cookie.
     # False as we are using HTTP
     CSRF_COOKIE_SECURE = envs.bool('CSRF_COOKIE_SECURE',
-                                   default=True)
+        default=True)
 
 # ================================== CSRF: COMMON ============================
 # Age of CSRF Cookie, Default 1 week (in seconds).
 CSRF_COOKIE_AGE = envs.int('CSRF_COOKIE_AGE',
-                           default=60 * 60 * 24 * 7)
+    default=60 * 60 * 24 * 7)
 # A list of hosts which are trusted origins for unsafe requests (e.g. POST)
 CSRF_TRUSTED_ORIGINS = envs.list('CSRF_TRUSTED_ORIGINS',
-                                 default=[])
+    default=[])
 # Whether to use a secure cookie for the CSRF HTTP Only. False by default.
 CSRF_COOKIE_HTTPONLY = envs.bool('CSRF_COOKIE_HTTPONLY',
-                                 default=False)
+    default=False)
 # Name of the CSRF cookie
 CSRF_COOKIE_NAME = envs.str('CSRF_COOKIE_NAME',
-                            default='csrfmiddlewaretoken')
+    default='csrfmiddlewaretoken')
 # Path for which the CSRF cookie is active
 CSRF_COOKIE_PATH = envs.str('CSRF_COOKIE_PATH',
-                            default='/')
+    default='/')
 # See SESSION_COOKIE_SAMESITE flag for more info. Prevents X-Site requests.
 CSRF_COOKIE_SAMESITE = envs.str('CSRF_COOKIE_SAMESITE',
-                                default='Lax')
+    default='Lax')
 # Name of the header used for CSRF authentication
 CSRF_HEADER_NAME = envs.str('CSRF_HEADER_NAME',
-                            default='HTTP_X_CSRFTOKEN')
+    default='HTTP_X_CSRFTOKEN')
 # Whether to store the CSRF token in the user's session instead of a cookie
 CSRF_USE_SESSIONS = envs.bool('CSRF_USE_SESSIONS',
-                              default=False)
+    default=False)
 # View used when a CSRF authentication fails
 CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'

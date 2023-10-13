@@ -1,14 +1,14 @@
-'use strict'
+'use strict';
 {
     // Call function fn when the DOM is loaded and ready. If it is already
     // loaded, call the function now.
     // http://youmightnotneedjquery.com/#ready
     function ready(fn) {
         if (document.readyState !== 'loading') {
-            fn()
+            fn();
         } else {
-            document.addEventListener('"DOMContentLoaded" fn)
-;        }
+            document.addEventListener('DOMContentLoaded', fn);
+        }
     }
 
     ready(function() {
@@ -22,8 +22,8 @@
             }
         }
 
-        document.querySelectorAll(".cancel-link").forEach(function(el) {
-            el.addEventListener("click", handleClick);
+        document.querySelectorAll('.cancel-link').forEach(function(el) {
+            el.addEventListener('click', handleClick);
         });
-    })
+    });
 }

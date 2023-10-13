@@ -44,8 +44,6 @@ todo: change name v reuse
 # OS Libraries
 import traceback
 
-## Local: Common Libraries
-from dash_and_do.settings import DEBUG
 from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
 from django.http import HttpResponseServerError
@@ -58,6 +56,9 @@ from apps.kore.values import Feedback
 from apps.kore.values import Forms
 from apps.kore.values import Signal
 from apps.kore.values import Template
+## Local: Common Libraries
+from dash_and_do.settings import DEBUG
+
 
 # OopCompanion:suppressRename
 
@@ -91,13 +92,13 @@ def contact_http_response(request, form, response, htmx_request) \
     :param response: The response from the emailing service.
     :param htmx_request: Boolean value for if the request is htmx.
     :return: Formated tempalated HTTP response with status codes.
-     =>   :method: contact_response
-     =>   :method: contact_htmx_responses
-     =>   :args:
-     =>       HTTP request,
-     =>       Form: contact,
-     =>       HTMX Request Object: Boolean,
-     =>       HTTP Response
+    =>   :method: contact_response
+    =>   :method: contact_htmx_responses
+    =>   :args:
+    =>       HTTP request,
+    =>       Form: contact,
+    =>       HTMX Request Object: Boolean,
+    =>       HTTP Response
     :rtype: TemplateResponse or None
     :raises: None
     """
@@ -109,9 +110,9 @@ def contact_http_response(request, form, response, htmx_request) \
             pp_label(f'contact_http_response: htmx_request: {htmx_request}')
             # HTMX Request & Response, JavaScript Enabled
             return contact_htmx_responses(request,
-                                          htmx_request,
-                                          form,
-                                          response)
+                htmx_request,
+                form,
+                response)
 
         # - debugged: 2023-09-21
         pp_label(f'contact_http_response: Non HTMX: {htmx_request}')
@@ -132,14 +133,14 @@ def render_404(request, template_name=Template.COREPAGE_NOT_FOUND) -> (
     """
     stack_trace = traceback.format_exc() if DEBUG else ''
     context = {
-        'message': 'Response not found',
-        'trace': stack_trace
+        'message':'Response not found',
+        'trace':stack_trace
     }
     # Return a 404 response, with the template.
     return TemplateResponse(request,
-                            template_name,
-                            context,
-                            status=404)
+        template_name,
+        context,
+        status=404)
 
 
 def contact_email_response(form, send_mail_func) \
@@ -159,21 +160,21 @@ def contact_email_response(form, send_mail_func) \
         HTTP.STATUS.OK:  # pylint: # disable=no-else-return # noqa: E501, RET505
         # pp_label(f'contact_email_response: OK  : {email_response}')
         return HttpResponse(HTTP.MSG_SENT,
-                            status=200)
+            status=200)
 
     # for invalid header in emailing, signal a bad request
     # Typing for the HTTP response
     elif email_response.status_code == HTTP.STATUS.BAD_REQUEST:  # noqa RET505
         # pp_label(f'contact_email_response: BAD_REQUEST  : {email_response}')
         return HttpResponseBadRequest(HTTP.BAD_REQUEST,
-                                      status=400)
+            status=400)
 
     # for invalid header in emailing, signal a bad request
     # Typing for the HTTP response
     elif email_response.status_code == HTTP.STATUS.NOT_FOUND:
         # pp_label(f'contact_email_response: NOT_FOUND  : {email_response}')
         return HttpResponseBadRequest(HTTP.NOT_FOUND,
-                                      status=404)
+            status=404)
 
     # 500: for failed email servers, Typing for the HTTP response
     elif email_response.status_code == \
@@ -182,14 +183,14 @@ def contact_email_response(form, send_mail_func) \
         #     f'contact_email_response: INTERNAL_SERVER_ERROR  :
         #     {email_response}')
         return HttpResponseServerError(HTTP.INTERNAL_SERVER_ERROR,
-                                       status=500)
+            status=500)
 
     # for other non-defined errors
     else:
         # pp_label(f'contact_email_response: UNKNOWN_ERROR  :
         # {email_response}')
         return HttpResponse(HTTP.EMAILERRORS.UNKNOWN_ERROR,
-                            status=email_response.status)
+            status=email_response.status)
     # No None. Code should never reach here.
 
 
@@ -201,14 +202,14 @@ def contact_htmx_responses(request, htmx_request, contact, response) \
     :param response:
     :param contact
     :return: Formated tempalated HTTP response
-     =>   :method: templated_contact_response
-     =>   :args:
-     =>       HTTP request,
-     =>       Form: contact,
-     =>       Template.CONTACT: ./form/form_contact.html,
-     =>       Signals: Messages.SUCCESS, Messages.ERROR,
-     =>       Feedback: EMAILSUCCESS, BADREQUEST, SERVERERROR, EMAILERROR,
-     =>       HTTP Response Status Codes: 200, 400, 405, 500
+    =>   :method: templated_contact_response
+    =>   :args:
+    =>       HTTP request,
+    =>       Form: contact,
+    =>       Template.CONTACT: ./form/form_contact.html,
+    =>       Signals: Messages.SUCCESS, Messages.ERROR,
+    =>       Feedback: EMAILSUCCESS, BADREQUEST, SERVERERROR, EMAILERROR,
+    =>       HTTP Response Status Codes: 200, 400, 405, 500
     :rtype: TemplateResponse or None
 
     """
@@ -219,28 +220,28 @@ def contact_htmx_responses(request, htmx_request, contact, response) \
 
     http_client_error_codes = \
         {HTTP.STATUS.BAD_REQUEST,
-         HTTP.STATUS.FORBIDDEN,
-         HTTP.STATUS.METHOD_NOT_ALLOWED,
-         HTTP.STATUS.GONE}
+            HTTP.STATUS.FORBIDDEN,
+            HTTP.STATUS.METHOD_NOT_ALLOWED,
+            HTTP.STATUS.GONE}
 
     http_server_error_codes = \
         {HTTP.STATUS.INTERNAL_SERVER_ERROR}
 
-    if all([ response.status_code in http_success_codes,
-             htmx_request ]):  # pylint: disable=no-else-return
+    if all([response.status_code in http_success_codes,
+        htmx_request]):  # pylint: disable=no-else-return
         # Successful Email: 200 Ok, Fresh unbounded form.
         # pp_label('HTMX: contact_responses: SUCCESS: '
         #          f'{response.serialize()}')
         return template_response(request,
-                                 contact,
-                                 Forms.CONTACT,
-                                 Template.CONTACT,
-                                 Signal.SUCCESS,
-                                 Feedback.EMAILSUCCESS,
-                                 response.status_code,
-                                 fail=Signal.FAIL)
-    elif all([ response.status_code in http_client_error_codes,  # noqa: RET505
-               htmx_request ]):
+            contact,
+            Forms.CONTACT,
+            Template.CONTACT,
+            Signal.SUCCESS,
+            Feedback.EMAILSUCCESS,
+            response.status_code,
+            fail=Signal.FAIL)
+    elif all([response.status_code in http_client_error_codes,  # noqa: RET505
+        htmx_request]):
         # Response Codes for
         # 400: Bad Request:         Return bounded form with errors
         # 403: Forbidden:           Return bounded form with errors
@@ -249,53 +250,53 @@ def contact_htmx_responses(request, htmx_request, contact, response) \
         # pp_label('contact_responses: BAD REQUEST: '
         #          f'{response.serialize()}')
         return template_response(request,
-                                 contact,
-                                 Forms.CONTACT,
-                                 Template.CONTACT,
-                                 Signal.ERROR,
-                                 Feedback.BADREQUEST,
-                                 response.status_code,
-                                 fail=Signal.FAIL)
-    elif all([ response.status_code in http_server_error_codes,
-               htmx_request ]):
+            contact,
+            Forms.CONTACT,
+            Template.CONTACT,
+            Signal.ERROR,
+            Feedback.BADREQUEST,
+            response.status_code,
+            fail=Signal.FAIL)
+    elif all([response.status_code in http_server_error_codes,
+        htmx_request]):
         # Server Error: 500, Return unbounded form with errors
         # pp_label('HTMX: contact_responses: SERVER ERROR: New Form '
         #          f'{response.serialize()}')
         return template_response(request,
-                                 contact,
-                                 Forms.CONTACT,
-                                 Template.CONTACT,
-                                 Signal.ERROR,
-                                 Feedback.SERVERERROR,
-                                 response.status_code,
-                                 fail=Signal.FAIL)
-    elif all([ response is None, htmx_request ]):
+            contact,
+            Forms.CONTACT,
+            Template.CONTACT,
+            Signal.ERROR,
+            Feedback.SERVERERROR,
+            response.status_code,
+            fail=Signal.FAIL)
+    elif all([response is None, htmx_request]):
         # 500: Server Error:     Return unbounded form no errors, clean slate
         # Cover up the server error and return a fresh form, so recovery is
         # seemless to the user.
         # pp_label('HTMX: contact_responses: SERVER ERROR: New Form '
         #          f'{response.serialize()}')
         return template_response(request,
-                                 contact,
-                                 Forms.CONTACT,
-                                 Template.CONTACT,
-                                 Signal.ERROR,
-                                 Feedback.EMAILERROR,
-                                 HTTP.STATUS.NOT_FOUND,  # 404
-                                 fail=Signal.FAIL)
+            contact,
+            Forms.CONTACT,
+            Template.CONTACT,
+            Signal.ERROR,
+            Feedback.EMAILERROR,
+            HTTP.STATUS.NOT_FOUND,  # 404
+            fail=Signal.FAIL)
     else:
         # ??: Status Code not defined, Error Unknown
         # pp_label('HTMX: contact_responses: response UNKNOWN: '
         #          f'{response.serialize}')
         return template_response(request,
-                                 contact,
-                                 Forms.CONTACT,
-                                 Template.CONTACT,
-                                 # 'forms/form_contact.html',
-                                 Signal.ERROR,
-                                 Feedback.EMAILERROR,
-                                 response.status_code,  # 404
-                                 fail=Signal.FAIL)
+            contact,
+            Forms.CONTACT,
+            Template.CONTACT,
+            # 'forms/form_contact.html',
+            Signal.ERROR,
+            Feedback.EMAILERROR,
+            response.status_code,  # 404
+            fail=Signal.FAIL)
 
 
 def contact_responses(request, contact, response) \
@@ -320,27 +321,27 @@ def contact_responses(request, contact, response) \
 
     http_client_error_codes = \
         {HTTP.STATUS.BAD_REQUEST,  # 400
-         HTTP.STATUS.FORBIDDEN,  # 403
-         HTTP.STATUS.METHOD_NOT_ALLOWED,  # 405
-         HTTP.STATUS.GONE}  # 410
+            HTTP.STATUS.FORBIDDEN,  # 403
+            HTTP.STATUS.METHOD_NOT_ALLOWED,  # 405
+            HTTP.STATUS.GONE}  # 410
 
     http_server_error_codes = \
         {HTTP.STATUS.INTERNAL_SERVER_ERROR}
 
     # - debugged: 2023-09-21
     if response.status_code \
-        in http_success_codes:  # pylint: disable=no-else-return # noqa E501, RET505
+        in http_success_codes:  # noqa E501, RET505
         # Successful Email: 200 Ok, Fresh unbounded form.
         # pp_label('contact_responses: SUCCESS: '
         #          f'{response.serialize()}')
         return template_response(request,
-                                 contact,
-                                 Forms.CONTACT,
-                                 Template.CONTACT,
-                                 Signal.MSG.SUCCESS,
-                                 Feedback.EMAILSUCCESS,
-                                 response.status_code,  # 200
-                                 fail=Signal.FAIL)
+            contact,
+            Forms.CONTACT,
+            Template.CONTACT,
+            Signal.MSG.SUCCESS,
+            Feedback.EMAILSUCCESS,
+            response.status_code,  # 200
+            fail=Signal.FAIL)
     elif response.status_code in http_client_error_codes:
         # Response Codes for
         # 400: Bad Request:         Return bounded form with errors
@@ -350,13 +351,13 @@ def contact_responses(request, contact, response) \
         # pp_label('contact_responses: BAD REQUEST: '
         #          f'{response.serialize()}')
         return template_response(request,
-                                 contact,
-                                 Forms.CONTACT,
-                                 Template.CONTACT,
-                                 Signal.MSG.ERROR,
-                                 Feedback.BADREQUEST,
-                                 response.status_code,  # 400, 403, 405, 410
-                                 fail=Signal.FAIL)
+            contact,
+            Forms.CONTACT,
+            Template.CONTACT,
+            Signal.MSG.ERROR,
+            Feedback.BADREQUEST,
+            response.status_code,  # 400, 403, 405, 410
+            fail=Signal.FAIL)
     elif response.status_code in http_server_error_codes:
         # 500: Server Error:     Return unbounded form no errors, clean slate
         # Cover up the server error and return a fresh form, so recovery is
@@ -364,47 +365,47 @@ def contact_responses(request, contact, response) \
         # pp_label('contact_responses: SERVER ERROR: New Form '
         #          f'{response.serialize()}')
         return template_response(request,
-                                 contact,
-                                 Forms.CONTACT,
-                                 Template.CONTACT,
-                                 Signal.MSG.ERROR,
-                                 Feedback.SERVERERROR,
-                                 response.status_code,  # 500
-                                 fail=Signal.FAIL)
+            contact,
+            Forms.CONTACT,
+            Template.CONTACT,
+            Signal.MSG.ERROR,
+            Feedback.SERVERERROR,
+            response.status_code,  # 500
+            fail=Signal.FAIL)
     elif response is None:
         # 404: Not Found when response is None.
         # Allow user to retry the request with form data.
         # pp_label('contact_responses: response is None:')
         return template_response(request,
-                                 contact,
-                                 Forms.CONTACT,
-                                 Template.CONTACT,
-                                 Signal.MSG.ERROR,
-                                 Feedback.EMAILERROR,
-                                 HTTP.STATUS.NOT_FOUND,  # 404
-                                 fail=Signal.FAIL)
+            contact,
+            Forms.CONTACT,
+            Template.CONTACT,
+            Signal.MSG.ERROR,
+            Feedback.EMAILERROR,
+            HTTP.STATUS.NOT_FOUND,  # 404
+            fail=Signal.FAIL)
 
     # Code should never reach here
     # pp_label('contact_responses: response UNKNOWN: '
     #          f'{response.serialize}')
     return template_response(request,
-                             contact,
-                             Forms.CONTACT,
-                             Template.CONTACT,
-                             Signal.MSG.ERROR,
-                             Feedback.EMAILERROR,
-                             response.status_code,  # 404
-                             fail=Signal.FAIL)
+        contact,
+        Forms.CONTACT,
+        Template.CONTACT,
+        Signal.MSG.ERROR,
+        Feedback.EMAILERROR,
+        response.status_code,  # 404
+        fail=Signal.FAIL)
 
 
 def template_response(request,  # pylint: disable=R0913
-                      form,
-                      label,
-                      template,
-                      signal,
-                      message,
-                      status,
-                      fail=True) -> TemplateResponse:
+    form,
+    label,
+    template,
+    signal,
+    message,
+    status,
+    fail=True) -> TemplateResponse:
     """Creates and returns a TemplateResponse and form associated with a
     HTTP Request, along with a Django signal message and Feedback message,
     per HTTP Response Status Code.
@@ -426,13 +427,13 @@ def template_response(request,  # pylint: disable=R0913
     # Switch the Context form's name/per context render by form label's key.
     form_key = switch_form(label)
     # Assign the form to the context
-    context = {form_key: form}
+    context = {form_key:form}
     # return the form and the template response
     return TemplateResponse(request, template, context, status)
 
 
 def switch_form(form_label=Forms.GENERIC,
-                ctx_formkey=Ctx.GENERIC_FORM) -> dict:
+    ctx_formkey=Ctx.GENERIC_FORM) -> dict:
     """Form Switch for different contexts.
     :param form_label:
     :param ctx_formkey:
@@ -440,19 +441,21 @@ def switch_form(form_label=Forms.GENERIC,
     :rtype: dict
     """
     form_lookup = {
-        Forms.CONTACT: Ctx.CONTACT_FORM,
-        Forms.LOGIN: Ctx.LOGIN_FORM,
-        Forms.SIGNUP: Ctx.SIGNUP_FORM,
-        Forms.PASSWORD_RESET: Ctx.PASSWORD_RESET_FORM,
-        Forms.PASSWORD_CHANGE: Ctx.PASSWORD_CHANGE_FORM,
-        Forms.PROFILE: Ctx.PROFILE_FORM,
-        Forms.GITHUB: Ctx.GITHUB_FORM,
-        Forms.SETTINGS: Ctx.SETTINGS_FORM,
+        Forms.CONTACT:Ctx.CONTACT_FORM,
+        Forms.LOGIN:Ctx.LOGIN_FORM,
+        Forms.SIGNUP:Ctx.SIGNUP_FORM,
+        Forms.PASSWORD_RESET:Ctx.PASSWORD_RESET_FORM,
+        Forms.PASSWORD_CHANGE:Ctx.PASSWORD_CHANGE_FORM,
+        Forms.PROFILE:Ctx.PROFILE_FORM,
+        Forms.GITHUB:Ctx.GITHUB_FORM,
+        Forms.SETTINGS:Ctx.SETTINGS_FORM,
     }
     return form_lookup.get(form_label, ctx_formkey)
 
+
 # noqa ARG001
-def response_messaages(signal, message, fail=True):  # pylint: disable=W0613 # noqa ARG001
+def response_messaages(signal, message,
+    fail=True):  # pylint: disable=W0613 # noqa ARG001
     """:param signal:
     :param message:
     :param fail:

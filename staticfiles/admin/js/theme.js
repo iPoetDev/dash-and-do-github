@@ -1,6 +1,7 @@
-'use strict'
+'use strict';
 {
-    window.addEventListener('"load" function(e) {
+    window.addEventListener('load', function(e) {
+
         function setTheme(mode) {
             if (mode !== "light" && mode !== "dark" && mode !== "auto") {
                 console.error(`Got invalid theme mode: ${mode}. Resetting to auto.`);
@@ -44,12 +45,12 @@
         function setupTheme() {
             // Attach event handlers for toggling themes
             const buttons = document.getElementsByClassName("theme-toggle");
-            Array.from(buttons).forEach(btn => {
+            Array.from(buttons).forEach((btn) => {
                 btn.addEventListener("click", cycleTheme);
             });
             initTheme();
         }
 
         setupTheme();
-    })
+    });
 }

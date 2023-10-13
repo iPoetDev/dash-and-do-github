@@ -1,15 +1,15 @@
 /*global gettext, interpolate, ngettext*/
-'use strict'
+'use strict';
 {
     function show(selector) {
         document.querySelectorAll(selector).forEach(function(el) {
-            el.classList.remove('"hidden"
-;        })
-;    }
+            el.classList.remove('hidden');
+        });
+    }
 
     function hide(selector) {
         document.querySelectorAll(selector).forEach(function(el) {
-            el.classList.add("hidden");
+            el.classList.add('hidden');
         });
     }
 
@@ -51,7 +51,7 @@
         }
         actionCheckboxes.forEach(function(el) {
             el.checked = checked;
-            el.closest("tr").classList.toggle(options.selectedClass, checked);
+            el.closest('tr').classList.toggle(options.selectedClass, checked);
         });
     }
 
@@ -64,13 +64,10 @@
         // and contains the total amount of objects in the queryset
         const actions_icnt = Number(counter.dataset.actionsIcnt);
         counter.textContent = interpolate(
-            ngettext("%(sel)s of %(cnt)s selected", "%(sel)s of %(cnt)s selected", sel),
-            {
+            ngettext('%(sel)s of %(cnt)s selected', '%(sel)s of %(cnt)s selected', sel), {
                 sel: sel,
                 cnt: actions_icnt
-            },
-            true
-        )
+            }, true);
         const allToggle = document.getElementById(options.allToggleId);
         allToggle.checked = sel === actionCheckboxes.length;
         if (allToggle.checked) {
@@ -89,7 +86,7 @@
         acrossClears: "div.actions span.clear",
         allToggleId: "action-toggle",
         selectedClass: "selected"
-    }
+    };
 
     window.Actions = function(actionCheckboxes, options) {
         options = Object.assign({}, defaults, options);
@@ -97,21 +94,21 @@
         let lastChecked = null;
         let shiftPressed = false;
 
-        document.addEventListener("keydown", event => {
+        document.addEventListener('keydown', (event) => {
             shiftPressed = event.shiftKey;
         });
 
-        document.addEventListener("keyup", event => {
+        document.addEventListener('keyup', (event) => {
             shiftPressed = event.shiftKey;
         });
 
-        document.getElementById(options.allToggleId).addEventListener("click", function(event) {
+        document.getElementById(options.allToggleId).addEventListener('click', function(event) {
             checker(actionCheckboxes, options, this.checked);
             updateCounter(actionCheckboxes, options);
         });
 
         document.querySelectorAll(options.acrossQuestions + " a").forEach(function(el) {
-            el.addEventListener("click", function(event) {
+            el.addEventListener('click', function(event) {
                 event.preventDefault();
                 const acrossInputs = document.querySelectorAll(options.acrossInput);
                 acrossInputs.forEach(function(acrossInput) {
@@ -122,7 +119,7 @@
         });
 
         document.querySelectorAll(options.acrossClears + " a").forEach(function(el) {
-            el.addEventListener("click", function(event) {
+            el.addEventListener('click', function(event) {
                 event.preventDefault();
                 document.getElementById(options.allToggleId).checked = false;
                 clearAcross(options);
@@ -132,7 +129,7 @@
         });
 
         function affectedCheckboxes(target, withModifier) {
-            const multiSelect = lastChecked && withModifier && lastChecked !== target;
+            const multiSelect = (lastChecked && withModifier && lastChecked !== target);
             if (!multiSelect) {
                 return [target];
             }
@@ -141,14 +138,12 @@
             const lastCheckedIndex = checkboxes.findIndex(el => el === lastChecked);
             const startIndex = Math.min(targetIndex, lastCheckedIndex);
             const endIndex = Math.max(targetIndex, lastCheckedIndex);
-            const filtered = checkboxes.filter(
-                (el, index) => startIndex <= index && index <= endIndex
-            );
+            const filtered = checkboxes.filter((el, index) => (startIndex <= index) && (index <= endIndex));
             return filtered;
-        }
+        };
 
-        Array.from(document.getElementById("result_list").tBodies).forEach(function(el) {
-            el.addEventListener("change", function(event) {
+        Array.from(document.getElementById('result_list').tBodies).forEach(function(el) {
+            el.addEventListener('change', function(event) {
                 const target = event.target;
                 if (target.classList.contains('action-select')) {
                     const checkboxes = affectedCheckboxes(target, shiftPressed);
@@ -158,43 +153,33 @@
                 } else {
                     list_editable_changed = true;
                 }
-            })
-        })
-
-        document
-            .querySelector("#changelist-form button[name=index]")
-            .addEventListener("click", function(event) {
-                if (list_editable_changed) {
-                    const confirmed = confirm(
-                        gettext(
-                            "You have unsaved changes on individual editable fields. If you run an action, your unsaved changes will be lost."
-                        )
-                    );
-                    if (!confirmed) {
-                        event.preventDefault();
-                    }
-                }
             });
+        });
 
-        const el = document.querySelector("#changelist-form input[name=_save]");
+        document.querySelector('#changelist-form button[name=index]').addEventListener('click', function(event) {
+            if (list_editable_changed) {
+                const confirmed = confirm(gettext("You have unsaved changes on individual editable fields. If you run an action, your unsaved changes will be lost."));
+                if (!confirmed) {
+                    event.preventDefault();
+                }
+            }
+        });
+
+        const el = document.querySelector('#changelist-form input[name=_save]');
         // The button does not exist if no fields are editable.
         if (el) {
-            el.addEventListener("click", function(event) {
+            el.addEventListener('click', function(event) {
                 if (document.querySelector('[name=action]').value) {
                     const text = list_editable_changed
-                        ? gettext(
-                            "You have selected an action, but you haven’t saved your changes to individual fields yet. Please click OK to save. You’ll need to re-run the action."
-                        )
-                        : gettext(
-                            "You have selected an action, and you haven’t made any changes on individual fields. You’re probably looking for the Go button rather than the Save button."
-                        )
+                        ? gettext("You have selected an action, but you haven’t saved your changes to individual fields yet. Please click OK to save. You’ll need to re-run the action.")
+                        : gettext("You have selected an action, and you haven’t made any changes on individual fields. You’re probably looking for the Go button rather than the Save button.");
                     if (!confirm(text)) {
                         event.preventDefault();
                     }
                 }
-            })
+            });
         }
-    }
+    };
 
     // Call function fn when the DOM is loaded and ready. If it is already
     // loaded, call the function now.
@@ -203,14 +188,14 @@
         if (document.readyState !== 'loading') {
             fn();
         } else {
-            document.addEventListener("DOMContentLoaded", fn);
+            document.addEventListener('DOMContentLoaded', fn);
         }
     }
 
     ready(function() {
-        const actionsEls = document.querySelectorAll("tr input.action-select");
+        const actionsEls = document.querySelectorAll('tr input.action-select');
         if (actionsEls.length > 0) {
             Actions(actionsEls);
         }
-    })
+    });
 }

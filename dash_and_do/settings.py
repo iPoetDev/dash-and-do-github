@@ -1074,10 +1074,9 @@ DASH_FROM = envs.str('MAILERTOGO_FROM_USER', default='webmaster')
 DASH_FROM_SERVER = envs.str('MAILERTOGO_FROM_USER', default='server')
 DASH_DOMAIN = envs.str('MAILTOGO_DOMAIN', default='dash-and-do.xyz')
 # Set admin email
-ADMIN_EMAIL = envs.str('ADMIN_EMAIL',
-    default=f'{DASH_FROM}@{DASH_DOMAIN}'
-SERVER_EMAIL = envs.str('SERVER_EMAIL',
-    default=f'{DASH_FROM_SERVER}@{DASH_DOMAIN}'
+ADMIN_EMAIL = envs.str('ADMIN_EMAIL', default=f'{DASH_FROM}@{DASH_DOMAIN}')
+SERVER_EMAIL = envs.str('SERVER_EMAIL', default=f'{DASH_FROM_SERVER}'
+                                                f'@{DASH_DOMAIN}')
 ADMINS = [ADMIN_EMAIL]
 MANAGERS = ADMINS
 
@@ -1114,10 +1113,9 @@ else:  # noqa PLR5501
         FROM_SERVER = envs.str('DASH_FROM_SERVER', default='server')
         DASH_DOMAIN= envs.str('DASH_DOMAIN', default='dash-and-do.xyz')
         DEFAULT_FROM_EMAIL = f'{FROM}@{DASH_DOMAIN}'
-        ADMIN_EMAIL = envs.str('ADMIN_EMAIL',
-            default=f'{FROM}@{DASH_DOMAIN}'
-        SERVER_EMAIL = envs.str('SERVER_EMAIL',
-            default=f'{FROM_SERVER}@{DASH_DOMAIN}'
+        ADMIN_EMAIL = envs.str('ADMIN_EMAIL', default=f'{FROM}@{DASH_DOMAIN}')
+        SERVER_EMAIL = envs.str('SERVER_EMAIL', default=f'{FROM_SERVER}'
+                                                        f'@{DASH_DOMAIN}')
         EMAIL_HOST = envs.str('DASH_HOST')
         EMAIL_PORT = envs.int('DASH_PORT')
         EMAIL_HOST_USER = envs.str('DASH_HOST_USER')
@@ -1196,29 +1194,29 @@ LOGGING = {
         #     "backupCount": 5,
         #     # Optional: Sets the number of backup files to keep
         # },
-        LogConfig.Handler.TEMPLATE:{
-            'level':'INFO',
-            'class':'logging.handlers.RotatingFileHandler',
-            'filters':['require_debug_true'],
-            'filename':'./logs/logging/templatedebug.log',
-            'maxBytes':50000,
-            # Optional: Sets the maximum file size before rotation (in bytes)
-            'backupCount':5,
-            # Optional: Sets the number of backup files to keep
-        },
-        LogConfig.Handler.SERVER:{
-            'level':'WARN',
-            'class':'logging.StreamHandler',
-            'filters':['require_debug_true'],
-            'formatter':LogConfig.Handler.SERVER,
-        },
-        LogConfig.Handler.MAIL:{
-            'level':'ERROR',
-            'class':'django.utils.log.AdminEmailHandler',
-            'filters':['require_debug_false'],
-            'include_html':True,
-            'email_backend':'django.core.mail.backends.smtp.EmailBackend',
-        },
+        # LogConfig.Handler.TEMPLATE:{
+        #     'level':'INFO',
+        #     'class':'logging.handlers.RotatingFileHandler',
+        #     'filters':['require_debug_true'],
+        #     'filename':'./logs/logging/templatedebug.log',
+        #     'maxBytes':50000,
+        #     # Optional: Sets the maximum file size before rotation (in bytes)
+        #     'backupCount':5,
+        #     # Optional: Sets the number of backup files to keep
+        # },
+        # LogConfig.Handler.SERVER:{
+        #     'level':'WARN',
+        #     'class':'logging.StreamHandler',
+        #     'filters':['require_debug_true'],
+        #     'formatter':LogConfig.Handler.SERVER,
+        # },
+        # LogConfig.Handler.MAIL:{
+        #     'level':'ERROR',
+        #     'class':'django.utils.log.AdminEmailHandler',
+        #     'filters':['require_debug_false'],
+        #     'include_html':True,
+        #     'email_backend':'django.core.mail.backends.smtp.EmailBackend',
+        # },
     },
     'loggers':{
         'django':{
@@ -1233,37 +1231,37 @@ LOGGING = {
             'propagate':True,
             'formatter':'verbose',
         },
-        'django.request':{
-            'handlers':[LogConfig.Handler.MAIL],
-            'level':'ERROR',
-            'propagate':False,
-            'formatter':'verbose',
-        },
-        LogConfig.Handler.SERVER:{
-            'handlers':[LogConfig.Handler.SERVER],
-            'level':'INFO',
-            'propagate':False,
-            'formatter':'django.server',
-        },
-        LogConfig.Handler.TEMPLATE:{
-            'handlers':[LogConfig.Handler.CONSOLE,
-                LogConfig.Handler.TEMPLATE],
-            'level':'INFO',
-            'propagate':False,
-            'formatter':'verbose',
-        },
-        'django.security.csrf':{
-            'handlers':['console'],
-            'level':'WARN',
-            'propagate':False,
-            'formatter':'verbose',
-        },
-        'django.db.backends':{
-            'handlers':['console'],
-            'level':'WARN',
-            'propagate':False,
-            'formatter':'simple',
-        },
+        # 'django.request':{
+        #     'handlers':[LogConfig.Handler.MAIL],
+        #     'level':'ERROR',
+        #     'propagate':False,
+        #     'formatter':'verbose',
+        # },
+        # LogConfig.Handler.SERVER:{
+        #     'handlers':[LogConfig.Handler.SERVER],
+        #     'level':'INFO',
+        #     'propagate':False,
+        #     'formatter':'django.server',
+        # },
+        # LogConfig.Handler.TEMPLATE:{
+        #     'handlers':[LogConfig.Handler.CONSOLE,
+        #         LogConfig.Handler.TEMPLATE],
+        #     'level':'INFO',
+        #     'propagate':False,
+        #     'formatter':'verbose',
+        # },
+        # 'django.security.csrf':{
+        #     'handlers':['console'],
+        #     'level':'WARN',
+        #     'propagate':False,
+        #     'formatter':'verbose',
+        # },
+        # 'django.db.backends':{
+        #     'handlers':['console'],
+        #     'level':'WARN',
+        #     'propagate':False,
+        #     'formatter':'simple',
+        # },
     },
     'filters':{
         'require_debug_true':{

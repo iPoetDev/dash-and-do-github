@@ -22,6 +22,7 @@ Changelog:
 #  Copyright (c) 2023.
 
 from django.contrib import admin
+from django.conf import settings
 from django.urls import include
 from django.urls import path
 
@@ -45,15 +46,23 @@ from django.urls import path
 # added: SiteMap in Comments as a Planner
 # added: Core index forms to kore.urls
 
+from django.conf import settings
+from django.urls import include, path
+from django.contrib import admin
 
-# breakpoint()
-urlpatterns = [
+urlpatterns = [] # Base variable defintion
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path("__debug__/", include(debug_toolbar.urls)),
+    ]
+
+urlpatterns += [
     path('admin/', admin.site.urls),
-    # 2023-09-25
-    path("__debug__/", include("debug_toolbar.urls")),
     path('', include('apps.kore.urls', namespace='kore')),
     path('', include('apps.users.urls', namespace='users')),
-    path('accounts/', include('allauth.urls')),  # checked
+    path('accounts/', include('allauth.urls')),
 ]
 # path('profile/', include('profile.urls', namespace='profile')),
 # path('profile/', include('allauth.urls', namespace='profile')),

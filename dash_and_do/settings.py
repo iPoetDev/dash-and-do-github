@@ -1075,9 +1075,9 @@ DASH_FROM_SERVER = envs.str('MAILERTOGO_FROM_USER', default='server')
 DASH_DOMAIN = envs.str('MAILTOGO_DOMAIN', default='dash-and-do.xyz')
 # Set admin email
 ADMIN_EMAIL = envs.str('ADMIN_EMAIL',
-    default=f'{DASH_FROM}@{DASH_DOMAIN}')
+    default=f'{DASH_FROM}@{DASH_DOMAIN}'
 SERVER_EMAIL = envs.str('SERVER_EMAIL',
-    default=f'{DASH_FROM_SERVER}@{DASH_DOMAIN})
+    default=f'{DASH_FROM_SERVER}@{DASH_DOMAIN}'
 ADMINS = [ADMIN_EMAIL]
 MANAGERS = ADMINS
 
@@ -1115,9 +1115,9 @@ else:  # noqa PLR5501
         DASH_DOMAIN= envs.str('DASH_DOMAIN', default='dash-and-do.xyz')
         DEFAULT_FROM_EMAIL = f'{FROM}@{DASH_DOMAIN}'
         ADMIN_EMAIL = envs.str('ADMIN_EMAIL',
-            default=f'{FROM}@{MAILERTOGO_DOMAIN}')
+            default=f'{FROM}@{DASH_DOMAIN}'
         SERVER_EMAIL = envs.str('SERVER_EMAIL',
-            default=f'{FROM_SERVER}@{DASH_DOMAIN})
+            default=f'{FROM_SERVER}@{DASH_DOMAIN}'
         EMAIL_HOST = envs.str('DASH_HOST')
         EMAIL_PORT = envs.int('DASH_PORT')
         EMAIL_HOST_USER = envs.str('DASH_HOST_USER')

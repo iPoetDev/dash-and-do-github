@@ -93,8 +93,8 @@ class DashUserManager(BaseUserManager):
 
         :param email: The email of the user.
         :param password: The password for the user.
-        :param extra_fields:
-            Additional fields to be included when creating the user.
+        :param extra_fields: Additional fields to be included when
+            creating the user.
         :return: The created user.
         """
         return self._create_user(email, password, False, False, **extra_fields)
@@ -106,7 +106,6 @@ class DashUserManager(BaseUserManager):
         :param password: The password of the superuser.
         :param extra_fields: Extra fields for the superuser model.
         :return: The created superuser.
-
         """
         user = self._create_user(email, password, True, True, **extra_fields)
         user.save(using=self._db)

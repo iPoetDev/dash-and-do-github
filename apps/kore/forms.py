@@ -49,29 +49,28 @@ contactfields = ContactFields()
 
 
 class ContactForm(ModelForm):
-    """Form for creating or updating a contact
+    """Form for creating or updating a contact.
 
-    :attribute  META inner class
-    :constant FIELD_ALIASES: The aliases for the fields.
-    :method clean: Cleans the form data.
-    :property  name: The name of the contact.
-    :property  emailing: The emailing of the contact.
-    :property  message: The message of the contact.
-    :property  copySent: Whether to send a copy of the message to the sender.
+    :attribute  META inner class :constant FIELD_ALIASES: The aliases
+    for the fields. :method clean: Cleans the form data. :property
+    name: The name of the contact. :property  emailing: The emailing of
+    the contact. :property  message: The message of the contact.
+    :property  copySent: Whether to send a copy of the message to the
+    sender.
     """
 
     def __init__(self, *args, **kwargs):
         """Initialise the form.
+
         :param self:
         :param args:
-        :param kwargs:
-        :property label: The label for the form.
+        :param kwargs: :property label: The label for the form.
         """
         super().__init__(*args, **kwargs)
         self.label = Forms.CONTACT
 
     class Meta:  # pylint: disable=too-few-public-methods
-        """ContactForm's Meta"""
+        """ContactForm's Meta."""
         model = Contacts
         fields = [
             ContactFields.CONTACT_NAME,

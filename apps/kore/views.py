@@ -77,7 +77,7 @@ from apps.users.forms import DashSignupForm
 # https://github.com/typeddjango/django-stubs#how-can-i-create-a-httprequest-
 # thats-guaranteed-to-have-an-authenticated-user
 class HtmxHttpRequest(HttpRequest):
-    """HTMX HTTP request
+    """HTMX HTTP request.
 
     A HttpRequest that is guaranteed to have an authenticated user.
     """
@@ -85,7 +85,7 @@ class HtmxHttpRequest(HttpRequest):
 
 
 class SiteContext:
-    """Site Context"""
+    """Site Context."""
 
     @property
     def context(self):
@@ -155,7 +155,9 @@ class SiteContext:
 @csrf_protect
 @require_GET
 def index(request):
-    """Index view. | Access: All Users
+    """Index view.
+
+    | Access: All Users
     :param request: The HTTP request object.
     :return: None
     :raises: None
@@ -203,7 +205,9 @@ def index(request):
 @csrf_protect
 @require_GET
 def verify_public(request):
-    """Verify view. | Access: All Users
+    """Verify view.
+
+    | Access: All Users
     :param request: The HTTP request object.
     :return: None
     :raises: None
@@ -221,7 +225,9 @@ def verify_public(request):
 @csrf_protect
 @require_GET
 def confirm_public(request):
-    """Confirm view. | Access: All Users
+    """Confirm view.
+
+    | Access: All Users
     :param request: The HTTP request object.
     :return: None
     :raises: None
@@ -251,10 +257,12 @@ def confirm_public(request):
 
 @require_http_methods([HTTP.POST])
 def form_contact(request):  # sourcery skip: dict-assign-update-to-union
-    """Form contact view. | Access: All Users
-    Checks for HTTP POST request and if the request is htmx.
-    Then checks if the form is valid and if so, sends the emailing.
-    If the emailing is sent successfully, the user is redirected to the
+    """Form contact view.
+
+    | Access: All Users Checks for HTTP POST request and if the request
+    is htmx. Then checks if the form is valid and if so, sends the
+    emailing. If the emailing is sent successfully, the user is
+    redirected to the
     :param request: The HTTP request object.
     :return: Rendered TemplateResponse for Contact Form
     :rtype: TemplateResponse
@@ -327,6 +335,7 @@ def form_contact(request):  # sourcery skip: dict-assign-update-to-union
 
 def switch_views(label):
     """Switch the view by label.
+
     :param label:
     :return:
     """
@@ -364,6 +373,7 @@ def render_bounded_form(request, form, label,
                         ctx, state_us=HTTP.STATUS.BAD_REQUEST) \
     -> TemplateResponse:
     """Render the bounded form.
+
     :param request: The HTTP request object.
     :param form: Form (Bounded or Unbounded)
     :param label: Form Label
@@ -390,6 +400,7 @@ def render_unbounded_form(request, form, label,
                           ctx, state_us=HTTP.STATUS.OK) \
     -> TemplateResponse:
     """Render the unbounded form.
+
     :param request: The HTTP request object.
     :param form: Form (Bounded or Unbounded)
     :param label: Form Label
@@ -446,7 +457,9 @@ def favicon(request: HtmxHttpRequest) -> HttpResponse:  # noqa: E501,ARG001
 #     return render(request, "csrf-demo.html")
 
 def core_page_not_found(request, exception) -> HttpResponse:
-    """404 Page Not Found view. | Access: All Users | Handler404 in urls.py
+    """404 Page Not Found view.
+
+    | Access: All Users | Handler404 in urls.py
     :param request:
     :param exception:
     :return:

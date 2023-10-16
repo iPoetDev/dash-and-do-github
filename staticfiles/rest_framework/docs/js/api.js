@@ -1,3 +1,5 @@
+// noinspection Annotator
+
 var responseDisplay = 'data'
 var coreapi = window.coreapi
 var schema = window.schema

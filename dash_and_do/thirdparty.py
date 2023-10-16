@@ -36,20 +36,20 @@
 # }
 
 ANYMAIL = {
-    "MAILGUN_API_KEY": "12345",
-    "SEND_DEFAULTS": {
-        "metadata": {
-            "service": "Dash and Do",
+    'MAILGUN_API_KEY': '12345',
+    'SEND_DEFAULTS': {
+        'metadata': {
+            'service': 'Dash and Do',
         },
-        "tags": [ "dash-and-do" ],
-        "track_clicks": False,
-        "track_opens": False,
+        'tags': [ 'dash-and-do' ],
+        'track_clicks': False,
+        'track_opens': False,
 
     },
-    "IGNORE_RECIPIENT_STATUS": True,
-    "IGNORE_UNSUPPORTED_FEATURES": True,
-    "REQUESTS_TIMEOUT": (30.0, 60.0),
-    "DEBUG_API_REQUESTS": False,
+    'IGNORE_RECIPIENT_STATUS': True,
+    'IGNORE_UNSUPPORTED_FEATURES': True,
+    'REQUESTS_TIMEOUT': (30.0, 60.0),
+    'DEBUG_API_REQUESTS': False,
 }
 
 # https://docs.sentry.io/platforms/python/guides/logging/

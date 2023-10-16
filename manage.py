@@ -27,14 +27,14 @@ def main():
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "
-            "available on your PYTHONPATH environment variable? Did you "
-            "forget to activate a virtual environment?"
+            'available on your PYTHONPATH environment variable? Did you '
+            'forget to activate a virtual environment?'
         ) from exc
     execute_from_command_line(sys.argv)
     # Supress warnings
     # djt_nvu\panel.py:20, pkg_resources is deprecated as an API.
     # https://setuptools.pypa.io/en/latest/pkg_resources.html
-    warnings.filterwarnings("ignore",
+    warnings.filterwarnings('ignore',
                             category=DeprecationWarning,
                             module='pkg_resources')
 

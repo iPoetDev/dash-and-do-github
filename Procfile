@@ -1,2 +1,2 @@
-web: gunicorn dash_and_do.wsgi -c dash_and_do/gunicorn.conf.py --log-file - --log-level info
-```
+waitress-serve --listen="*:$PORT" --trusted-proxy='*' --trusted-proxy-headers='x-forwarded-for x-forwarded-proto x-forwarded-port'  --log-untrusted-proxy-headers --clear-untrusted-proxy-headers --threads=1 --expose_tracebacks=True dash_and_do.wsgi:application
+# web: waitress-serve --listen="*:$PORT" --trusted-proxy=$WAITRESS_TRUSTED_PROXY --trusted-proxy-headers=$WAITRESS_TRUSTED_PROXY_HEADERS --log-untrusted-proxy-headers --clear-untrusted-proxy-headers --threads=$HEROKU_MAX_WEB_CONCURRENCY --log-level=$WAITRESS_LOG_LEVEL --log-file=$WAITRESS_LOG_OUTPUT --expose_tracebacks=$WAITRESs_ENABLE_TBACKS dash_and_do.wsgi:application

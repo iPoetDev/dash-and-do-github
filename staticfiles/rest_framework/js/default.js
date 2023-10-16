@@ -1,3 +1,5 @@
+// noinspection Annotator
+
 $(document).ready(function () {
     // JSON highlighting.
     prettyPrint()

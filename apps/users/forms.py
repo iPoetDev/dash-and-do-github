@@ -65,8 +65,8 @@ class FormVals:  # pylint: disable=too-few-public-methods
         class Email:  # pylint: disable=too-few-public-methods
             """The `Email` class.
 
-            Provides a set of nested classes that
-            represent various properties of an email field.
+            Provides a set of nested classes that represent various
+            properties of an email field.
             """
             LABEL = 'Email Address'
             TITLE = 'Enter a Valid Email'
@@ -98,8 +98,8 @@ class FormVals:  # pylint: disable=too-few-public-methods
         class Username:  # pylint: disable=too-few-public-methods
             """The `Username` class.
 
-            Provides a set of nested classes that
-            represent various properties of a username field.
+            Provides a set of nested classes that represent various
+            properties of a username field.
             """
             LABEL = 'Username'
             TITLE = 'Enter a Valid Username'
@@ -129,8 +129,8 @@ class FormVals:  # pylint: disable=too-few-public-methods
         class Password:  # pylint: disable=too-few-public-methods
             """The `Password` class.
 
-            Provides a set of nested classes that
-            represent various properties of a password field.
+            Provides a set of nested classes that represent various
+            properties of a password field.
             """
             LABEL = 'Password'
             NEW = 'New Password'
@@ -170,12 +170,12 @@ class FormVals:  # pylint: disable=too-few-public-methods
             ERROR_REQUIRED = 'Invalid: Passwords are required.'
 
     class Errors:
-        """Error Dicts for Form Fields
+        """Error Dicts for Form Fields.
 
-        :property email_error_messages: Error messages for the email field.
-        :property username_error_messages: Error messages for the username
-        field.
-        :property password_error_messages: Error messages for the password
+        :property email_error_messages: Error messages for the email
+        field. :property username_error_messages: Error messages for the
+        username field. :property password_error_messages: Error
+        messages for the password
         """
 
         @property
@@ -197,9 +197,10 @@ class FormVals:  # pylint: disable=too-few-public-methods
         @property
         def username_error_messages(self):
             """Return the error messages for the username field in a
-             dictformat.
+            dictformat.
 
-            :return: a dict with the error messages for the username field
+            :return: a dict with the error messages for the username
+                  field
             """
             return {
                 'required':_(FormVals.Fields.Username.ERROR_REQUIRED),
@@ -213,10 +214,11 @@ class FormVals:  # pylint: disable=too-few-public-methods
 
         @property
         def password_error_messages(self):
-            """Return the error messages for the password field in
-             a dictformat.
+            """Return the error messages for the password field in a
+            dictformat.
 
-            :return: a dict with the error messages for the password field
+            :return: a dict with the error messages for the password
+                  field
             """
             return {
                 'required':_(FormVals.Fields.Password.ERROR_REQUIRED),
@@ -296,11 +298,12 @@ class DashEmailAuthField(forms.EmailField):
     def init_attrs(self):
         """Initialize widget attributes based on the field type.
 
-        This method updates the widget attributes of a form field based on
-        its type. If the widget is a PasswordInput and already has attributes,
-        it updates those attributes using the field_attrs() method. Otherwise,
-        it creates a new PasswordInput widget with the field_attrs() as
-        attributes and sets it as the widget for the field.
+        This method updates the widget attributes of a form field based
+        on its type. If the widget is a PasswordInput and already has
+        attributes, it updates those attributes using the field_attrs()
+        method. Otherwise, it creates a new PasswordInput widget with
+        the field_attrs() as attributes and sets it as the widget for
+        the field.
 
         :return: None
         """
@@ -314,8 +317,9 @@ class DashEmailAuthField(forms.EmailField):
     def update_attrs(self):
         """Update the attributes of the field's widget.
 
-        This method updates the attributes of the field's widget by adding
-        custom attributes based on the field's attr_id and attr_name.
+        This method updates the attributes of the field's widget by
+        adding custom attributes based on the field's attr_id and
+        attr_name.
 
         :return: None
         """
@@ -428,8 +432,8 @@ class DashPasswordField(PasswordField):
     def update_attrs(self, **kwargs):
         """Updates the attributes of the current instance's widget.
 
-        :param kwargs: Dictionary of attribute-value pairs to
-        update the widget attributes.
+        :param kwargs: Dictionary of attribute-value pairs to update the
+            widget attributes.
         :return: None
         """
         # Call update_attrs of super classes, if it exists
@@ -463,10 +467,9 @@ class DashPasswordField(PasswordField):
 
 class DashSetPasswordField(SetPasswordField, DashPasswordField):
     """The `DashSetPasswordField` class is a custom password field
-    implementation in Django, which inherits from both `SetPasswordField`
-    and `DashPasswordField`.
-    It provides additional functionality and customization options
-    for password field inputs.
+    implementation in Django, which inherits from both `SetPasswordField` and
+    `DashPasswordField`. It provides additional functionality and customization
+    options for password field inputs.
 
     Attributes:
         - `attr_id`: The ID attribute for the password field input.
@@ -556,8 +559,8 @@ class DashSetPasswordField(SetPasswordField, DashPasswordField):
 
 
 class DashLoginForm(LoginForm):
-    """A custom login form for the Dash application.
-    Extend and override the allauth.account.forms.LoginForm.
+    """A custom login form for the Dash application. Extend and override the
+    allauth.account.forms.LoginForm.
 
     This form extends the allauth.account.forms.LoginForm class for custom
      functionality.
@@ -582,10 +585,6 @@ class DashLoginForm(LoginForm):
         Initialize a new instance of the DashLoginForm class.
         :param args:
         :param kwargs:
-
-        Pops the request.Post data and passes it to the parent class.
-        Sets the remember_me field label. to Remember Me
-        If data is passed to the form, it is validated.
         """
         data = kwargs.pop('data', None)
         super().__init__(data, *args, **kwargs)
@@ -594,9 +593,9 @@ class DashLoginForm(LoginForm):
             self.is_valid()
 
     def login(self, *args, **kwargs):
-        """Handles the login process and sets the remember me cookie.
-        :param args: (optional) Additional positional arguments
-        :param kwargs: (optional) Additional keyword arguments.
+        """Handles the login process and sets the remember me cookie. :param
+        args: (optional) Additional positional arguments :param kwargs:
+        (optional) Additional keyword arguments.
 
         :return: The result of the original `login` method execution.
         django-allauth.readthedocs.io/en/latest/account/forms.html#login
@@ -612,6 +611,7 @@ class DashLoginForm(LoginForm):
 
 class DashSignupForm(SignupForm):
     """Custom Signup Form from Django Allauth.forms.SignupForm.
+
     A custom signup form for the Dash application.
     """
     email = DashEmailAuthField(
@@ -655,8 +655,8 @@ class DashSignupForm(SignupForm):
         super().__init__(*args, **kwargs)
 
     def clean(self):
-        """This method is used to clean the form data of the
-        `DashSignupForm` class.
+        """This method is used to clean the form data of the `DashSignupForm`
+        class.
 
         :return: None
         """

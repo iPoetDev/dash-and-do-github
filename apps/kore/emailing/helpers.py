@@ -50,6 +50,7 @@ from apps.kore.emailing.values import Switch
 
 def subject(site, name) -> str:
     """Build the subject line for the email.
+
     :param site:
     :param name:
     :return: Composite subject line
@@ -100,6 +101,7 @@ def send(message, fail) -> HttpResponse:
 
 def any_status(message):
     """Sends emailing to user/site contact when they submit a contact form.
+
     :param message:
     :return:
     """
@@ -108,9 +110,12 @@ def any_status(message):
 
 def any_config(message, sender, tracking=Switch.OFF):
     """Configures AnyMail message settings.
+
     :param message: AnymailMessage: AnymailMessage object
-    :param sender: str: From Email Address, Return-Path header, Bounce Address.
-    :param tracking: boolean: Enable/Disable Open Tracking at Message Level
+    :param sender: str: From Email Address, Return-Path header, Bounce
+        Address.
+    :param tracking: boolean: Enable/Disable Open Tracking at Message
+        Level
     :return: message: AnyMailMessage: Configured AnymailMessage object
     """
     # Return-Path header (used for bounces) defaults to From header

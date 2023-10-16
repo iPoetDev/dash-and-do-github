@@ -26,19 +26,18 @@ from django.urls import reverse
 
 
 class FormViews:
-    """FormViews class provides a Constants for Strings/Configurations
-    as per 12Factor App methodology.
+    """FormViews class provides a Constants for Strings/Configurations as per
+    12Factor App methodology.
 
     Attributes:
         EMAILCONFIRM_REVERSE (str): The reverse URL name for the
          email confirmation view, see apps.users.urls.py
-
     """
     EMAILCONFIRM_REVERSE = 'users:account_confirm_email'
 
 
 class DashAccountAdapter(DefaultAccountAdapter):
-    """DashAccountAdapter
+    """DashAccountAdapter.
 
     This module contains the `DashAccountAdapter` class,
     Is a subclass of `DefaultAccountAdapter`.
@@ -49,7 +48,6 @@ class DashAccountAdapter(DefaultAccountAdapter):
 
     Methods:
         - get_email_confirmation_url
-
     """
 
     def get_email_confirmation_url(self, request, emailconfirmation):

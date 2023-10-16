@@ -777,3 +777,8 @@ package-lock.json
 /package-dev.json
 /requirements-vevn.txt
 /appmap.yml
+/heroku-local.bat
+/start-serve.ps1
+/start-serve.sh
+/start-serve.bat
+/heroku-local-run.ps1

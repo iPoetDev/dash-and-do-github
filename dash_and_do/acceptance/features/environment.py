@@ -1,7 +1,5 @@
 #  Copyright (c) 2023.
-"""
-behave environment module for testing behave-django
-"""
+"""Behave environment module for testing behave-django."""
 # from behave import use_fixture
 # from my_django.behave_fixtures import django_test_runner, django_test_case
 # import os

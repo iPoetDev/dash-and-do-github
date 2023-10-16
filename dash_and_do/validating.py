@@ -38,7 +38,7 @@ from django.core.validators import RegexValidator
 
 
 class Validation:  # pylint: disable=too-few-public-methods
-    """Validation Constants
+    """Validation Constants.
 
     Validation class for common validation functions.
     """
@@ -113,7 +113,7 @@ class Validation:  # pylint: disable=too-few-public-methods
 
 
 def valid_name(value) -> None:
-    """Validate Name / Username
+    """Validate Name / Username.
 
     :param value: The name value to be validated.
     :return: None
@@ -144,7 +144,6 @@ def valid_email(value) -> None:
 
     Usage:
     - Used on Models/Forms to validate email fields
-
     """
     email_validator = \
         RegexValidator(Validation.PATTERNS.EMAIL, Validation.MESSAGES.EMAIL)
@@ -154,7 +153,7 @@ def valid_email(value) -> None:
         raise ValidationError(Validation.ERRORS.EMAIL) from exc
 
 def valid_password(value) -> None:
-    """Validate Password
+    """Validate Password.
 
     :param value: The password value to be validated.
     :return: None

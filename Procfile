@@ -1,1 +1,1 @@
-web: waitress-serve --listen="*:$PORT" --trusted-proxy='*' --trusted-proxy-headers='x-forwarded-for x-forwarded-proto x-forwarded-port'  --log-untrusted-proxy-headers --clear-untrusted-proxy-headers --threads=1 --expose_tracebacks dash_and_do.wsgi:application
+web: waitress-serve --listen="*:$PORT" --trusted-proxy='*' --trusted-proxy-headers='x-forwarded-for x-forwarded-proto x-forwarded-port'  --log-untrusted-proxy-headers --clear-untrusted-proxy-headers --threads=1 --expose-tracebacks dash_and_do.wsgi:application

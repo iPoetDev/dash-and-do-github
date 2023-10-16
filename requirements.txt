@@ -34,7 +34,6 @@ django-htmx~=1.17.0
 django-js-lib-htmx~=1.1.0
 django-mail-templated~=2.6.5
 django-robots~=6.1
-django-waitress~=0.1.0
 django-widget-tweaks~=1.5.0
 djangorestframework~=3.14.0
 djdt-permissions~=1.0.2
@@ -51,5 +50,5 @@ pytz~=2023.3
 rich~=13.4.2
 sentry-sdk~=1.32.0
 simple-django-htmx~=1.0.1
-waitress==2.1.2 # Swapin for gunicorn, windows support
+waitress~=2.1.2 # Swapin for gunicorn, windows support
 whitenoise~=6.6.0

@@ -151,7 +151,7 @@ class DashLoggingMiddleware:
             response_code =  {attr_values.get('response_status')}
             return f"\n================== {response_code} ================\n{attr_values.get('datetime_stamp')} {attr_values.get('ip_address')} {attr_values.get('protocol')} \nHost: {attr_values.get('host')} QueryString: {attr_values.get('query_string')}\nRemoteUser: {attr_values.get('remote_user')} \nRequestMethod: {attr_values.get('request_method')} Path: {attr_values.get('path_info')} ResponseStatus: {attr_values.get('response_status')}\n=====================================\n\n"
         except Exception as e:
-            err_message = (f'Exception occurred in build_response_string '
+            err_message = ('Exception occurred in build_response_string '
                            f'method: {str(e)}')
             logger.error(err_message, exc_info=True)
             return 'An error occurred while building the response string.'

@@ -54,6 +54,7 @@ it's a good idea to set preload_app = True.
 This setting will reduce the time needed for a new worker to boot up
 
 """
+
 from os import environ
 from dash_and_do.settings import DEBUG
 # envs load from .env file in settings and imports to settings
@@ -70,21 +71,13 @@ HEROKU_LOCAL = envs.bool('HEROKU_LOCAL')
 HEROKU_LOCAL_PORT = envs.str('HEROKU_LOCAL_PORT', '8001')
 
 # Heroku Local: Mimic Heroku Dyno, Gunicorn
-if DEBUG and HEROKU_LOCAL:
+if DEBUG and HEROKU_LOCAL or not DEBUG and HEROKU_LOCAL:
     # Default condition for local development
     bind = f'127.0.0.1:{HEROKU_LOCAL_PORT}'
-elif not DEBUG and HEROKU_LOCAL:
-    # Test condition for local development
-    bind = f'127.0.0.1:{HEROKU_LOCAL_PORT}'
-
 # Heroku Remote: Network Access
-if not DEBUG and not HEROKU_LOCAL:
+if not DEBUG and not HEROKU_LOCAL or DEBUG and not HEROKU_LOCAL:
     # Default condition for remote/production
     bind = '0.0.0.0:' + environ.get('PORT', '8000')
-elif DEBUG and not HEROKU_LOCAL:
-    # Test condition for remote/production
-    bind = '0.0.0.0:' + environ.get('PORT', '8000')
-
 # Free Tier
 workers = 1
 timeout = 120

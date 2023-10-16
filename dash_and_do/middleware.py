@@ -126,11 +126,10 @@ class DashLoggingMiddleware:
             'path_info':'PATH_INFO'
         }
 
-        filtered_headers = {attr:safe_headers.get(header, '') for attr, header
-            in
-            attributes.items()}
-
-        return filtered_headers
+        return {
+            attr: safe_headers.get(header, '')
+            for attr, header in attributes.items()
+        }
 
     def build_response_string(self, request, response):
         try:
@@ -150,25 +149,7 @@ class DashLoggingMiddleware:
             #
 
             response_code =  {attr_values.get('response_status')}
-            response_string = (
-                f'\n'
-                f'================== {response_code} ================'
-                f'\n'
-                f"{attr_values.get('datetime_stamp')} "
-                f"{attr_values.get('ip_address')} "
-                f"{attr_values.get('protocol')} \n"
-                f"Host: {attr_values.get('host')} "
-                f"QueryString: {attr_values.get('query_string')}\n"
-                f"RemoteUser: {attr_values.get('remote_user')} \n"
-                f"RequestMethod: {attr_values.get('request_method')} "
-                f"Path: {attr_values.get('path_info')} "
-                f"ResponseStatus: {attr_values.get('response_status')}"
-                f'\n'
-                f'=====================================\n'
-                f'\n'
-            )
-            return response_string
-
+            return f"\n================== {response_code} ================\n{attr_values.get('datetime_stamp')} {attr_values.get('ip_address')} {attr_values.get('protocol')} \nHost: {attr_values.get('host')} QueryString: {attr_values.get('query_string')}\nRemoteUser: {attr_values.get('remote_user')} \nRequestMethod: {attr_values.get('request_method')} Path: {attr_values.get('path_info')} ResponseStatus: {attr_values.get('response_status')}\n=====================================\n\n"
         except Exception as e:
             err_message = (f"Exception occurred in build_response_string "
                            f"method: {str(e)}")

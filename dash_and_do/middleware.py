@@ -95,7 +95,7 @@ class DashLoggingMiddleware:
             response_string = (
                 '\n'
                 f'================ 400 | 500 ERROR ========\n'
-                f'400 | 500: Error Response: '
+                '400 | 500: Error Response: '
                 f' {response.status_code}\n'
                 f' {response_detail}\n'
                 f'Detail: {error_detail}\n\n'

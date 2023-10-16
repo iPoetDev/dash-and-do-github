@@ -68,7 +68,7 @@ class DashLoggingMiddleware:
             response_string = (
                 '\n'
                 f'================= 200 OK ================\n'
-                f'200+: Successful Response:'
+                '200+: Successful Response:'
                 f' {response.status_code}\n'
                 f' {response_detail}\n'
                 f'========================================\n'

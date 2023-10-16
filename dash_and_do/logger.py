@@ -33,8 +33,7 @@ loggey = logging.getLogger(__name__)
 
 # noinspection PyUnusedFunction,PyUnusedLocal
 def log_views_request(request, label=None):
-    """Log the request object.
-    Progressive logging levels/verbosity/data:
+    """Log the request object. Progressive logging levels/verbosity/data:
 
     :param request: The request object.
     :param label: A label for the request. (optional)
@@ -53,7 +52,7 @@ def log_views_request(request, label=None):
     # loggey.info("DnD INFO: View Request: %s",
     #             request,
     #                     extra={'request': request, 'label': label})
-    loggey.info("DnD INFO: View Request: %s",
+    loggey.info('DnD INFO: View Request: %s',
                 request,
                 exc_info=True,
                 stack_info=False,
@@ -66,7 +65,7 @@ def log_views_request(request, label=None):
     #              exc_info=True,
     #              stack_info=True,
     #              extra=lite_extra)),
-    debug_request(message="DnD DEBUG: View Request: ",
+    debug_request(message='DnD DEBUG: View Request: ',
                   obj=request,
                   kind='django',
                   detail=lite_extra)
@@ -74,8 +73,7 @@ def log_views_request(request, label=None):
 
 # noinspection PyUnusedFunction
 def log_views_response(response, label=None, desc=None):
-    """Log the response object.
-    Progressive logging levels/verbosity/data:
+    """Log the response object. Progressive logging levels/verbosity/data:
 
     :param response:
     :param label: A label for the response. (optional)
@@ -90,30 +88,30 @@ def log_views_response(response, label=None, desc=None):
                       'context':response.context_data,
                       'content_type':response['Content-Type'],
                       'status':response.status_code}
-    options = LoggerOptions(kind="django", on=True, off=False,
+    options = LoggerOptions(kind='django', on=True, off=False,
                             detail=response_extra)
     # Get the 'django' logger
     logge = logging.getLogger('django')
     # Info: View Response: <TemplateResponse status_code=200,
     # "text/html; charset=utf-8"> (23-09-17)
-    logge.info("DnD INFO: View Response: %s",
+    logge.info('DnD INFO: View Response: %s',
                response,
                extra=response_extra)
     # Warning: View Response: <TemplateResponse status_code=200,
     # "text/html; charset=utf-8"> (23-09-17)
-    logge.warning("DnD WARN: View Response: ",
+    logge.warning('DnD WARN: View Response: ',
                   exc_info=True,
                   extra=response_extra)
     # Error: View Response: <TemplateResponse status_code=200,
     # "text/html; charset=utf-8"> (23-09-17)
-    logge.error("DnD ERROR: View: Response is: %s",
+    logge.error('DnD ERROR: View: Response is: %s',
                 response,
                 exc_info=True,
                 stack_info=True,
                 extra=response_extra)
     # Debug: View Response: <TemplateResponse status_code=200,
     # "text/html; charset=utf-8"> (23-09-17)
-    debug_response(message="DnD DEBUG: View Response: ",
+    debug_response(message='DnD DEBUG: View Response: ',
                    obj=response,
                    logger_options=options)
 
@@ -148,15 +146,15 @@ def send_debug_mail(send_func):
     try:
         result = send_func()
         if result:
-            loggey.debug("Email sent successfully.")
+            loggey.debug('Email sent successfully.')
         else:
-            loggey.debug("Failed to send email.")
+            loggey.debug('Failed to send email.')
     except BadHeaderError:
-        loggey.exception("Bad headers were detected in the email.")
+        loggey.exception('Bad headers were detected in the email.')
         return None  # Add this line
     except Exception:  # pylint: disable=broad-exception-caught
         loggey.exception(
-            "An unexpected error occurred when trying to send an email.")
+            'An unexpected error occurred when trying to send an email.')
         return None  # Add this line
     return result
 
@@ -189,7 +187,8 @@ class LoggerOptions:
     :type kind: Any, optional
     :param on: Whether the logger should be turned on. Defaults to True.
     :type on: bool, optional
-    :param off: Whether the logger should be turned off. Defaults to False.
+    :param off: Whether the logger should be turned off. Defaults to
+        False.
     :type off: bool, optional
     :param detail: The level of detail for the logger. Defaults to None.
     :type detail: Any, optional
@@ -202,7 +201,6 @@ class LoggerOptions:
         :param on: A boolean specifying if the logger is turned on.
         :param off: A boolean specifying if the logger is turned off.
         :param detail: Additional details for the logger options.
-
         """
         self.kind = kind
         self.on = on

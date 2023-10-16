@@ -62,8 +62,6 @@ class Contacts(models.Model):
 
     Methods:
         __str__: Returns a string representation of the contact.
-
-
     """
 
     class Meta:

@@ -52,8 +52,8 @@ from apps.users.helpers import redirect_response
 from apps.users.sessions import DashUserSession
 
 # Local Libraries
-from .forms import DashLoginForm
-from .forms import DashSignupForm
+from apps.users.forms import DashLoginForm
+from apps.users.forms import DashSignupForm
 
 debugr = Debugg()
 
@@ -217,7 +217,7 @@ class DashSignupView(SignupView):
         # instance is saved
         # Link Request to custom session control: 1) Valid Email, 2) Flags
         session_data = DashUserSession(self.request)
-        session_data.set_email(form.cleaned_data["email"])
+        session_data.set_email(form.cleaned_data['email'])
         session_data.set_verification_flags(SessionVals.VALID)
         # For example, if you want to send a custom success message:
         messages.success(self.request, FormViews.Signup.SUCCESS_MESSAGE)
@@ -226,9 +226,8 @@ class DashSignupView(SignupView):
                                    self.success_url)
 
     def form_invalid(self, form):
-        """If the form is invalid, return the form with error
-        messages to HTMX.
-        """
+        """If the form is invalid, return the form with error messages to
+        HTMX."""
         signup_context = {FormViews.Signup.CTXNAME:
                               form}
         form_html = render_to_string(self.template_name,
@@ -237,7 +236,7 @@ class DashSignupView(SignupView):
         raise ImmediateHttpResponse(HttpResponse(form_html))
 
     def get_context_data(self):
-        """Addto session_data to context_data
+        """Addto session_data to context_data.
 
         :return: A dictionary containing the context data.
         """
@@ -252,9 +251,10 @@ class DashSignupView(SignupView):
     def get_success_url(self):
         """Set the success_url for the view.
 
-        Uses a proxy (the reverse_lazy() function) to future proof changes
-        Uses a constant to have strings configured elsewhere
-        :return: A string representing the success URL from namespace URL.
+        Uses a proxy (the reverse_lazy() function) to future proof
+        changes Uses a constant to have strings configured elsewhere
+        :return: A string representing the success URL from namespace
+            URL.
         """
         # Redirect the user to the verification page
         return reverse_lazy(FormViews.VERIFY_REVERSE)
@@ -267,7 +267,8 @@ class DashLoginView(LoginView):
     :param success_url: The URL to redirect to upon successful response.
     :param form_class: The form class for rendering the login form.
     :param redirect_field_name: The name of the redirect field.
-    :param extra_context: Additional context data to be passed to the template.
+    :param extra_context: Additional context data to be passed to the
+        template.
     :param initial: Initial data for the form.
     """
 
@@ -283,7 +284,6 @@ class DashLoginView(LoginView):
         :param args: Additional positional arguments.
         :param kwargs: Additional keyword arguments.
         :return: An HTTP response object.
-
         """
         if request.user.is_authenticated:
             return HttpResponseRedirect(LOGIN_REDIRECT_URL)
@@ -313,9 +313,9 @@ class DashLoginView(LoginView):
                           prefix=FormViews.Login.PREFIX)
 
     def get_context_data(self, **kwargs):
-        """Gets and sets a context form variable for the login form.
-        :param kwargs: additional keyword arguments
-        :return: dictionary with context data.
+        """Gets and sets a context form variable for the login form. :param
+        kwargs: additional keyword arguments :return: dictionary with context
+        data.
 
         This method adds additional context data to the view.
         It returns a dictionary with the updated context data.
@@ -336,12 +336,11 @@ class DashLoginView(LoginView):
 
         :param form: Form containing the data submitted by the user.
         :return: An HTTP response redirecting to the success URL.
-
-        Validates the form data submitted by the user during the login process.
-        If the request is made via HX (Hypertext Transfer Protocol),
-            it redirects to the success URL using the HX_REDIRECT header.
-        Otherwise,
-            it redirects to the success URL using the HTTP_LOCATION header.
+            Validates the form data submitted by the user during the
+            login process. If the request is made via HX (Hypertext
+            Transfer Protocol), it redirects to the success URL using
+            the HX_REDIRECT header. Otherwise, it redirects to the
+            success URL using the HTTP_LOCATION header.
         """
         context = self.get_context_data()
 
@@ -405,6 +404,7 @@ class DashLogoutView(LogoutView):
     @staticmethod
     def get_next_redirect_url():
         """Get the redirect URL for the next page after logout.
+
         :return: A string representing the redirect URL.
         """
         # return to index
@@ -422,6 +422,7 @@ class DashConfirmEmailView(ConfirmEmailView):
 
     def get_context_data(self, **kwargs):
         """Get context data for the view.
+
         :param kwargs: Additional keyword arguments.
         :return: A dictionary containing the context data.
         """

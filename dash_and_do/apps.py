@@ -23,12 +23,12 @@ from django.apps import AppConfig
 
 
 class DashAndDoConfig(AppConfig):
-    """Dash & Do Project/Central Configuration
+    """Dash & Do Project/Central Configuration.
 
     This class is the configuration for the Dash & Do Project/Central.
     """
     name = 'dash_and_do'
-    verbose_name = "Dash & Do"
+    verbose_name = 'Dash & Do'
 
     def ready(self):
         """Ready - Dash & Do Project/Central

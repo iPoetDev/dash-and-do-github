@@ -86,19 +86,16 @@ from dash_and_do.settings import DEBUG
 def contact_http_response(request, form, response, htmx_request) \
     -> TemplateResponse:
     """Handles the response in response JS/HTMX is enabled/disabled.
+
     Progerssive Enhancement failed back.
     :param request: The HTTP request object.
     :param form: A form, saved to to the Database
     :param response: The response from the emailing service.
     :param htmx_request: Boolean value for if the request is htmx.
-    :return: Formated tempalated HTTP response with status codes.
-    =>   :method: contact_response
-    =>   :method: contact_htmx_responses
-    =>   :args:
-    =>       HTTP request,
-    =>       Form: contact,
-    =>       HTMX Request Object: Boolean,
-    =>       HTTP Response
+    :return: Formated tempalated HTTP response with status codes. =>
+        :method: contact_response => :method: contact_htmx_responses
+        => :args: => HTTP request, => Form: contact, =>
+        HTMX Request Object: Boolean, => HTTP Response
     :rtype: TemplateResponse or None
     :raises: None
     """
@@ -126,7 +123,9 @@ def contact_http_response(request, form, response, htmx_request) \
 
 def render_404(request, template_name=Template.COREPAGE_NOT_FOUND) -> (
     TemplateResponse):
-    """Renders a 404 error page. Adds a stack trace when in debug mode.
+    """Renders a 404 error page.
+
+    Adds a stack trace when in debug mode.
     :param request:
     :param template_name:
     :return:
@@ -145,8 +144,8 @@ def render_404(request, template_name=Template.COREPAGE_NOT_FOUND) -> (
 
 def contact_email_response(form, send_mail_func) \
     -> HttpResponse:
-    """Post Email Handler
-    :param form:
+    """Post Email Handler :param form:
+
     :param send_mail_func:
     :return: HttpResponse or None
     :rtype: HttpResponse or None
@@ -197,21 +196,18 @@ def contact_email_response(form, send_mail_func) \
 def contact_htmx_responses(request, htmx_request, contact, response) \
     -> (TemplateResponse or None):
     """Resolve HTTP Responses, for HTMX (JS enabled).
+
     :param request:
     :param htmx_request:
-    :param response:
-    :param contact
-    :return: Formated tempalated HTTP response
-    =>   :method: templated_contact_response
-    =>   :args:
-    =>       HTTP request,
-    =>       Form: contact,
-    =>       Template.CONTACT: ./form/form_contact.html,
-    =>       Signals: Messages.SUCCESS, Messages.ERROR,
-    =>       Feedback: EMAILSUCCESS, BADREQUEST, SERVERERROR, EMAILERROR,
-    =>       HTTP Response Status Codes: 200, 400, 405, 500
+    :param response: :param contact
+    :return: Formated tempalated HTTP response => :method:
+        templated_contact_response => :args: => HTTP request, =>
+        Form: contact, => Template.CONTACT:
+        ./form/form_contact.html, => Signals: Messages.SUCCESS,
+        Messages.ERROR, => Feedback: EMAILSUCCESS, BADREQUEST,
+        SERVERERROR, EMAILERROR, => HTTP Response Status Codes:
+        200, 400, 405, 500
     :rtype: TemplateResponse or None
-
     """
     # - todo: 2023-09-21
 
@@ -302,6 +298,7 @@ def contact_htmx_responses(request, htmx_request, contact, response) \
 def contact_responses(request, contact, response) \
     -> (TemplateResponse or None):
     """Resolve HTTP Responses, for Progressive Enhancement (JS disabled).
+
     :param request:
     :param contact:
     :param response:
@@ -406,9 +403,9 @@ def template_response(request,  # pylint: disable=R0913
     message,
     status,
     fail=True) -> TemplateResponse:
-    """Creates and returns a TemplateResponse and form associated with a
-    HTTP Request, along with a Django signal message and Feedback message,
-    per HTTP Response Status Code.
+    """Creates and returns a TemplateResponse and form associated with a HTTP
+    Request, along with a Django signal message and Feedback message, per HTTP
+    Response Status Code.
 
     :param request: HTTP Request
     :param form: Form (Bounded or Unbounded)
@@ -435,6 +432,7 @@ def template_response(request,  # pylint: disable=R0913
 def switch_form(form_label=Forms.GENERIC,
     ctx_formkey=Ctx.GENERIC_FORM) -> dict:
     """Form Switch for different contexts.
+
     :param form_label:
     :param ctx_formkey:
     :return: dictionary lookup key: form key: form name for context

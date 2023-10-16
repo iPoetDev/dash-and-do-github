@@ -27,7 +27,7 @@ from django.contrib.sessions.backends.db import (
 
 
 class DashSessions:
-    """DashSessions Documentation
+    """DashSessions Documentation.
 
     This module contains the DashSessions class, which provides a convenient
      wrapper around Django's session management.
@@ -66,22 +66,19 @@ class DashSessions:
         get(key, default=None): Retrieve the value of a session variable.
         session_data: Property to access the session data as a dictionary.
         session_data(data): Setter to set session data for the current user.
-
     """
     def __init__(self):
         """Initializes a DashSessions object.
 
-        This method initializes a DashSessions object by creating a session
-        store using Django's
-        SessionStore class.
+        This method initializes a DashSessions object by creating a
+        session store using Django's SessionStore class.
         """
         self._session_store = DjangoSessionStore()
 
     def __getattr__(self, name):
         """Use Django's DjangoSessionStore method to manage session life cycle
-        We create, read and delete by invoking save, load and delete method
-        of DjangoSessionStore
-        """
+        We create, read and delete by invoking save, load and delete method of
+        DjangoSessionStore."""
         if name in ['save', 'create', 'load', 'delete']:
             return getattr(self._session_store, name)
         return None
@@ -98,10 +95,10 @@ class DashSessions:
         """Retrieve the value of a session variable with the given key.
 
         :param key: The key of the session variable.
-        :param default: The default value to return if the session variable
-        is not found.
+        :param default: The default value to return if the session
+            variable is not found.
         :return: The value of the session variable with the given key,
-        or the default value if not found.
+            or the default value if not found.
         """
         return self._session_store.get(key, default)
 
@@ -131,7 +128,7 @@ class DashSessions:
             for key, value in data.items():
                 self.set(key, value)
         else:
-            raise ValueError("Please provide a dict.")
+            raise ValueError('Please provide a dict.')
 
 
 class DashUserSession(DashSessions):
@@ -162,8 +159,10 @@ class DashUserSession(DashSessions):
     def close_user_session(self, forget_me):
         """Close User Session.
 
-        :param forget_me: Indicates whether to forget the user or not. (bool)
-        :return: True if the user session is closed, False otherwise. (bool)
+        :param forget_me: Indicates whether to forget the user or not.
+            (bool)
+        :return: True if the user session is closed, False otherwise.
+            (bool)
         """
         if forget_me:
             logout(self.request)
@@ -181,8 +180,7 @@ class DashUserSession(DashSessions):
         return self.request.user
 
     def get_session_key(self):
-        """Get the current session key from Django's
-        session management.
+        """Get the current session key from Django's session management.
 
         :return: the session key
         :rtype: str
@@ -201,8 +199,7 @@ class DashUserSession(DashSessions):
     def get_unverified_email(self):
         """Get the email from the session.
 
-        :return: The email if it exists in the session,
-        None otherwise.
+        :return: The email if it exists in the session, None otherwise.
         """
         return self.request.session.get('email', None)
 
@@ -211,8 +208,10 @@ class DashUserSession(DashSessions):
         """Set the verification flags for the user session.
 
         :param is_valid: A boolean signals whether the user is valid.
-        :param is_verified: A boolean signals whether the user is verified.
-        :param is_confirmed: A boolean signals whether the user is confirmed.
+        :param is_verified: A boolean signals whether the user is
+            verified.
+        :param is_confirmed: A boolean signals whether the user is
+            confirmed.
         :return: None
         """
         flags = {
@@ -243,7 +242,7 @@ class DashUserSession(DashSessions):
     def fetch_session_items(self):
         """Fetches all items stored in the session.
 
-        :return: A list of key-value pairs representing the items
-        stored in the session.
+        :return: A list of key-value pairs representing the items stored
+            in the session.
         """
         return self.request.session.items()

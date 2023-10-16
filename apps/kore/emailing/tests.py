@@ -50,19 +50,19 @@ from django.test.utils import override_settings
 
 # Default: Django's SMTP
 # noinspection PyUnusedName
-DJSTMP_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+DJSTMP_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # noinspection PyUnusedName
-STMP_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+STMP_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # Use for development only: to stdout, only
 # noinspection PyUnusedName
-DJCONSOLE_BACKEND = "django.core.mail.backends.console.EmailBackend"
+DJCONSOLE_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # DJ Test Runner uses this for testing
 # noinspection PyUnusedName
-DJMEMORY_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
+DJMEMORY_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
 # noinspection PyUnusedName
-DJDUMMY_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
+DJDUMMY_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 # noinspection PyUnusedName
-ANYJET_BACKEND = "anymail.backends.mailjet.EmailBackend"
+ANYJET_BACKEND = 'anymail.backends.mailjet.EmailBackend'
 MAILPANEL_BACKEND = 'mail_panel.backend.MailToolbarBackend'
 
 # Send Mail
@@ -75,19 +75,17 @@ PATCH_CLIENT = 'django.test.Client'
 
 class TestEmail(TestCase):
     """TestEmail that tests & mocks the functionality of sending an emailing
-    using Django Unittest
+    using Django Unittest.
 
-    :class: TestEmail
-    :method: setUpTestData: Setup once per class
-    :method: setUp: Set once per method
-    :method: test_send_email
+    :class: TestEmail :method: setUpTestData: Setup once per class
+    :method: setUp: Set once per method :method: test_send_email
     :method: mock_test_send_email
-
     """
 
     @classmethod
     def setUpTestData(cls):
         """Setup for tests.
+
         :method: setUpTestData
         :return:
         """
@@ -121,6 +119,7 @@ class TestEmail(TestCase):
 
     def setUp(self):
         """Setup for tests.
+
         :method: setUp
         :return:
         """
@@ -129,6 +128,7 @@ class TestEmail(TestCase):
     @override_settings(EMAIL_BACKEND=MAILPANEL_BACKEND)
     def test_send_email(self):
         """# HAPPY PATH
+
         Test send emailing: Simple Test Send Function (no mocking)
         & * Console, Logging
         :method: test_send_email
@@ -151,10 +151,10 @@ class TestEmail(TestCase):
     @mock.patch(PATCH_DJSENDMAIL)
     @override_settings(EMAIL_BACKEND=MAILPANEL_BACKEND)
     def test_mock_send_email(self, mock_send_mail):
-        """# HAPPY PATH
-        Mock Sending a test emailing.
-            :param: self:
-            :param mock_send_mail:
+        """# HAPPY PATH Mock Sending a test emailing.
+
+        :param: self:
+        :param mock_send_mail:
         """
         # ACT Email Response: Via a route and emailing data
         response = self.client.post(self.route,
@@ -182,11 +182,11 @@ class TestEmail(TestCase):
     @mock.patch(PATCH_CLIENT)
     @override_settings(EMAIL_BACKEND=MAILPANEL_BACKEND)
     def test_mock_send_email_test_client(self, mock_client, mock_send_mail):
-        """# HAPPY PATH
-        Mock Sending a test emailing with valid values.
-            :param self:
-            :param mock_client:
-            :param mock_send_mail:
+        """# HAPPY PATH Mock Sending a test emailing with valid values.
+
+        :param self:
+        :param mock_client:
+        :param mock_send_mail:
         """
         # ARRANGE
         mock_client.return_value.post.return_value = \
@@ -218,8 +218,8 @@ class TestEmail(TestCase):
     def test_mock_send_email_valid_data(self,
                                         mock_client,
                                         mock_send_mail):
-        """# HAPPY PATH
-        Mock Sending a test emailing with valid values.
+        """# HAPPY PATH Mock Sending a test emailing with valid values.
+
         :param self:
         :param mock_client:
         :param mock_send_mail:

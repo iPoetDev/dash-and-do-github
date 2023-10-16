@@ -24,7 +24,7 @@
 
 
 class Forms:  # pylint: disable=too-few-public-methods
-    """Core Form Names"""
+    """Core Form Names."""
     GENERIC = 'form'
     CONTACT = 'contact_form'
     LOGIN = 'login_form'
@@ -37,7 +37,7 @@ class Forms:  # pylint: disable=too-few-public-methods
 
 
 class ContactFields:  # pylint: disable=too-few-public-methods
-    """Contact Form Fields"""
+    """Contact Form Fields."""
     CONTACT_NAME = 'contact_name'
     CONTACT_EMAIL = 'contact_email'
     CONTACT_MESSAGE = 'contact_message'
@@ -45,9 +45,7 @@ class ContactFields:  # pylint: disable=too-few-public-methods
 
 
 class ContactAttrs:  # pylint: disable=too-few-public-methods
-    """"
-    Contact Form Attributes Values
-    """
+    """" Contact Form Attributes Values."""
     FULL_NAME = 'Full Name'
     NAME_LABEL = 'name'
     NAME_HELP = 'A full name will be alphebetical characters only, - / \' '

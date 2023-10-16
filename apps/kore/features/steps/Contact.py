@@ -53,47 +53,47 @@ class MessageSite:
         """
 
         class Given:
-            """Given I am an anonymous user"""
-            GIVEN1 = "I am an anonymous user"
+            """Given I am an anonymous user."""
+            GIVEN1 = 'I am an anonymous user'
 
         class When:
-            """When I visit the index page"""
-            WHEN1 = "I visit the index page"
-            WHEN2 = "I navigate to the contact form on the index page"
-            WHEN3 = "I fill in the contact form"
-            WHEN4 = "I submit the contact form"
+            """When I visit the index page."""
+            WHEN1 = 'I visit the index page'
+            WHEN2 = 'I navigate to the contact form on the index page'
+            WHEN3 = 'I fill in the contact form'
+            WHEN4 = 'I submit the contact form'
 
         class Then:
-            """Then  the Status code is 200"""
-            THEN1 = "the Status code is 200"
-            THEN2 = "I should see the message " \
+            """Then  the Status code is 200."""
+            THEN1 = 'the Status code is 200'
+            THEN2 = 'I should see the message ' \
                     "\"Thank you for your message. It has been sent.\""
 
     class ASSERTS:
-        """ASSERTS Strings
+        """ASSERTS Strings.
 
         Assertion Constants.
         """
         STATUS = HTTP.STATUS.OK
-        MESSAGE = "Thank you for your message. It has been sent."
-        FORM = "contact_form"
+        MESSAGE = 'Thank you for your message. It has been sent.'
+        FORM = 'contact_form'
 
     class CTX:
-        """CTX Strings
+        """CTX Strings.
 
         Test Context
         """
-        INDEX = "index"
-        CLIENT = "client"
-        RESPONSE = "response"
+        INDEX = 'index'
+        CLIENT = 'client'
+        RESPONSE = 'response'
         DATA = {'name': 'Test Name',
                 'email': 'test@example.com',
                 'message': 'This is a test message'}
-        FORMVIEW = "submit_contact_form"
-        FORMNAME = "contact_form"
+        FORMVIEW = 'submit_contact_form'
+        FORMNAME = 'contact_form'
 
 
-behave.use_step_matcher("re")
+behave.use_step_matcher('re')
 
 
 # noinspection PyUnusedFunction

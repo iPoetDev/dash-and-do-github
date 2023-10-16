@@ -15,25 +15,25 @@
 # OopCompanion:suppressRename
 
 class Site:  # pylint: disable=too-few-public-methods
-    """Site name and URL"""
+    """Site name and URL."""
     NAME = 'Dash and Do: A Personal GitHub Portfolio Manager'
     URL = 'https://dash-and-do.herokuapp.com/'
 
 
 
 class Services:  # pylint: disable=too-few-public-methods
-    """Service Options"""
+    """Service Options."""
     BASIC = 'send_mail'
     CUSTOM = 'any_mail'
 
 
 class SMTP:  # pylint: disable=too-few-public-methods
-    """SMTP Settings"""
+    """SMTP Settings."""
     BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 class HTTP:  # pylint: disable=too-few-public-methods
-    """HTTP Messages"""
+    """HTTP Messages."""
     INVALID_HEADER = 'Invalid header found.'
     BAD_REQUEST = 'Bad Request'
     BAD_REQUEST_MSG = 'Bad Reuqest: Message Failed'
@@ -47,7 +47,7 @@ class HTTP:  # pylint: disable=too-few-public-methods
     REDIRECT_URL_PATH = '/'
 
     class STATUS:  # pylint: disable=too-few-public-methods
-        """HTTP Status Codes"""
+        """HTTP Status Codes."""
         OK = 200
         BAD_REQUEST = 400
         FORBIDDEN = 403
@@ -59,7 +59,7 @@ class HTTP:  # pylint: disable=too-few-public-methods
         GATEWAY_TIMEOUT = 504
 
     class EMAILERRORS:  # pylint: disable=too-few-public-methods
-        """Email Status Codes"""
+        """Email Status Codes."""
         SERVICE_UNAVAILABLE = \
             'Service Unavailable: Email service is currently unavailable'
         GATEWAY_TIMEOUT = \
@@ -69,19 +69,19 @@ class HTTP:  # pylint: disable=too-few-public-methods
 
 
 class Sending:  # pylint: disable=too-few-public-methods
-    """Sending Status"""
+    """Sending Status."""
     SUCCESS = 1
     FAIL = 0
 
 
 class MIME:  # pylint: disable=too-few-public-methods
-    """MIME Types"""
+    """MIME Types."""
     PLAIN = 'text/plain'
     HTML = 'text/html'
 
 
 class Field:  # pylint: disable=too-few-public-methods
-    """Form Fields"""
+    """Form Fields."""
     NAME = 'contact_name'
     EMAIL = 'contact_email'
     MESSAGE = 'contact_message'
@@ -90,7 +90,7 @@ class Field:  # pylint: disable=too-few-public-methods
 
 
 class Switch:  # pylint: disable=too-few-public-methods
-    """Switches"""
+    """Switches."""
     OFF = False
     ON = True
     SHOW = False
@@ -98,7 +98,7 @@ class Switch:  # pylint: disable=too-few-public-methods
 
 
 class Template:  # pylint: disable=too-few-public-methods
-    """Template Paths"""
+    """Template Paths."""
     CONTACT_EMAIL = 'emailing/contact.tpl'
     SUBJECT = 'subject'
     NAME = 'senders_name'

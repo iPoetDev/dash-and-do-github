@@ -29,8 +29,8 @@ pretty.install()
 
 
 def debuginfo():
-    """Debug Info
-    :return:
+    """Debug Info :return:
+
     :rtype str
     """
     frame = inspect.currentframe().f_back
@@ -41,6 +41,7 @@ def debuginfo():
 
 def pp_form(form, label=None):
     """Pretty print form & values.
+
     :param form:
     :param label: Name of Holder Function
     :return:
@@ -60,6 +61,7 @@ def pp_form(form, label=None):
 
 def pp_email(data: dict, label: str = None):
     """Pretty print response.
+
     :param data:
     :param label: Name of Holder Function
     :return:
@@ -81,6 +83,7 @@ def pp_message(subject,  # pylint: disable=too-many-arguments,R0913
                fail=None,
                label=None):
     """Pretty print response.
+
     :param subject:
     :param sender:
     :param recipients:
@@ -88,8 +91,7 @@ def pp_message(subject,  # pylint: disable=too-many-arguments,R0913
     :param copy:
     :param smtp:
     :param authuser:
-    :param fail:
-    :label: Name of Holder Function
+    :param fail: :label: Name of Holder Function
     :param label: Name of Holder Function
     :return:
     """
@@ -101,6 +103,7 @@ def pp_message(subject,  # pylint: disable=too-many-arguments,R0913
 
 def pp_response(response, label=None):
     """Pretty print response.
+
     :param response:
     :param label: Name of Holder Function
     :return:
@@ -111,6 +114,7 @@ def pp_response(response, label=None):
 
 def pp_function(function, label=None):
     """Pretty print function.
+
     :param function:
     :param label: Name of Holder Function
     :return:
@@ -122,6 +126,7 @@ def pp_function(function, label=None):
 
 def pp_file(label=None):
     """Pretty print location.
+
     :param label: Name of Holder Function
     :return:
     """
@@ -131,6 +136,7 @@ def pp_file(label=None):
 
 def pp_locate(obj=None, label=None):
     """Pretty print location.
+
     :param obj: object to print
     :param label: Name of Function or Statement
     :return: None
@@ -149,6 +155,7 @@ def pp_locate(obj=None, label=None):
 
 def pp_console(obj: object, label=None):  # noqa: A
     """Pretty print object.
+
     :param obj: object to print
     :param label: Name of Holder Function
     :return: None
@@ -163,6 +170,7 @@ def pp_console(obj: object, label=None):  # noqa: A
 # noinspection PyUnusedFunction
 def pp_consoleform(form, label=None):
     """Pretty print object.
+
     :param form: object to print
     :param label: Name of Holder Function
     :return: None
@@ -176,6 +184,7 @@ def pp_consoleform(form, label=None):
 
 def pp_label(label):
     """Pretty print object.
+
     :param label: Name of Holder Function
     :return: None
     """

@@ -33,7 +33,7 @@
 
 
 class HTMX:
-    """HTMX Values"""
+    """HTMX Values."""
     HTMX_REQUEST = 'hx-request'
     HTMX_REDIRECT = 'HX-Redirect'
     HTMX_TARGET = 'hx-target'
@@ -45,24 +45,25 @@ class HTMX:
 
 
 def is_htmx(request):
-    """Checks if the given request is an HTMX request by looking for the
-    'Htmx-Request' header.
+    """Checks if the given request is an HTMX request by looking for the 'Htmx-
+    Request' header.
 
     :param: request (HttpRequest): The HTTP request object.
-    :returns: str: Value of the 'Htmx-Request' header if present, else None.
+    :returns: str: Value of the 'Htmx-Request' header if present, else
+        None.
     """
     return request.headers.get('Htmx-Request')
 
 
 def hx_redirect_success(request, response, success_url):
-    """Sets the HTMX redirect header to the given success url if the request
-     is an HTMX request.
+    """Sets the HTMX redirect header to the given success url if the request is
+    an HTMX request.
 
     :param request:
     :param response:
     :param success_url:
-    :return: Suucessful repsonse with HTMX redirect header if request is an
-     HTMX request.
+    :return: Suucessful repsonse with HTMX redirect header if request is
+        an HTMX request.
     """
     # Check if the request is an HTMX request
     if HTMX.HTMX_REQUEST in request.headers:
@@ -72,13 +73,12 @@ def hx_redirect_success(request, response, success_url):
 
 # noinspection PyUnusedFunction
 def add_htmx_header(headers, key, value):
-    """Adds an HTMX header to an existing dictionary of headers.
-    :usage: HTTP Request Headers, HTTP Responses
+    """Adds an HTMX header to an existing dictionary of headers. :usage: HTTP
+    Request Headers, HTTP Responses.
 
     :param: headers (dict): The dictionary of headers to add to.
     :param: key (str): The key of the header to add.
     :param: value (str): The value of the header to add.
-
     :returns: dic: The dictionary of headers with the new header added.
     """
     headers[key] = value
@@ -88,6 +88,7 @@ def add_htmx_header(headers, key, value):
 # noinspection PyUnusedFunction
 def parse_htmx_response(response):
     """Parses an HTMX response into a dictionary.
+
     :param response:
     :return: dic: The dictionary of response data
     """
@@ -101,6 +102,7 @@ def parse_htmx_response(response):
 # noinspection PyUnusedFunction
 def set_htmx_status(response, status_code):
     """Sets the status code of an HTMX response.
+
     :param response: HTTP Response
     :param status_code:
     :return: HTTP Response with updated status code
@@ -112,6 +114,7 @@ def set_htmx_status(response, status_code):
 # noinspection PyUnusedFunction
 def set_htmx_content(response, content):
     """Sets the content of an HTMX response.
+
     :param response:
     :param content:
     :return:

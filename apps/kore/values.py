@@ -35,12 +35,12 @@ from django.contrib import messages
 
 
 class HTTP:  # pylint: disable=too-few-public-methods
-    """HTTP Methods"""
+    """HTTP Methods."""
     GET = 'GET'
     POST = 'POST'
 
     class STATUS:  # pylint: disable=too-few-public-methods
-        """HTTP Status Codes"""
+        """HTTP Status Codes."""
         OK = 200
         BAD_REQUEST = 400
         FORBIDDEN = 403
@@ -52,12 +52,12 @@ class HTTP:  # pylint: disable=too-few-public-methods
         GATEWAY_TIMEOUT = 504
 
     class MESSAGES:
-        """HTTP Status Messages"""
+        """HTTP Status Messages."""
         NOT_FOUND = 'Page Not Found: Core: 404 Error'
 
 
 class Template:  # pylint: disable=too-few-public-methods
-    """Template Paths"""
+    """Template Paths."""
     HOME = 'index.html'
     ABOUT = 'about.html'
     VERIFY = 'verify.html'
@@ -67,7 +67,7 @@ class Template:  # pylint: disable=too-few-public-methods
     COREPAGE_NOT_FOUND = 'kore/404.html'
 
     class Form:  # pylint: disable=too-few-public-methods
-        """Form Templates
+        """Form Templates.
 
         # noqa: S105: No password or reset , just config value
         """
@@ -83,7 +83,7 @@ class Template:  # pylint: disable=too-few-public-methods
 
 
 class Forms:  # pylint: disable=too-few-public-methods
-    """Core Form Names
+    """Core Form Names.
 
     # noqa: S105: No password or reset , just config value
     """
@@ -99,7 +99,7 @@ class Forms:  # pylint: disable=too-few-public-methods
 
 
 class Ctx:  # pylint: disable=too-few-public-methods
-    """Context Variables
+    """Context Variables.
 
     # noqa: S105: No password or reset , just config value
     """
@@ -115,14 +115,8 @@ class Ctx:  # pylint: disable=too-few-public-methods
 
 
 class SiteMeta:  # pylint: disable=too-few-public-methods
-    """Site Meta Data
-    TITLE = 'title'
-    URL = 'url'
-    PERSON = 'person'
-    DESCRIPTION = 'description'
-    KEYWORDS = 'keywords'
-    CONTACT = 'contact'
-    """
+    """Site Meta Data TITLE = 'title' URL = 'url' PERSON = 'person' DESCRIPTION
+    = 'description' KEYWORDS = 'keywords' CONTACT = 'contact'."""
     NAME = 'Dashboard and Do GitHub Manager'
     URL = 'https://dash-and-do.herokuapp.com/'
     PERSON = 'Charles J Fowler, @iPoetDev.github.com'
@@ -134,10 +128,10 @@ class SiteMeta:  # pylint: disable=too-few-public-methods
 
 
 class Brand:  # pylint: disable=too-few-public-methods
-    """Brand Names"""
+    """Brand Names."""
 
     class Site:  # pylint: disable=too-few-public-methods
-        """Site Brand Names"""
+        """Site Brand Names."""
         NAME = 'Dashboard and Do GitHub Manager'
         SHORT_NAME = 'Dash and Do'
         LOGO = 'dash_and_do/logo.png'
@@ -148,7 +142,7 @@ class Brand:  # pylint: disable=too-few-public-methods
         FAVICON_TITLE = 'Dash and Do Favicon'
 
     class FAVICON:
-        """Favicon Configuration"""
+        """Favicon Configuration."""
         XMLNS = 'http://www.w3.org/2000/svg'
         VBOX = '0 0 100 100'
         VIEWY = '.9em'
@@ -157,24 +151,24 @@ class Brand:  # pylint: disable=too-few-public-methods
         FORMAT = 'image/svg+xml'
 
 class Page:  # pylint: disable=too-few-public-methods
-    """Page Titles"""
+    """Page Titles."""
 
     class Index:  # pylint: disable=too-few-public-methods
-        """Index Page Details"""
+        """Index Page Details."""
         USE = 'all'
         TITLE = 'Home: Dashboard and Do GitHub Manager'
         ATITLE = 'Home: Dashboard and Do GitHub Manager'
         ATEXT = 'Home'
 
     class About:  # pylint: disable=too-few-public-methods
-        """About Page Details | Static"""
+        """About Page Details | Static."""
         USE = 'menu_public'
         TITLE = 'About: Dashboard and Do GitHub Manager'
         ATITLE = 'About: Dashboard and Do GitHub Manager'
         ATEXT = 'About'
 
     class Verify:  # pylint: disable=too-few-public-methods
-        """About Page Details | Static"""
+        """About Page Details | Static."""
         USE = 'services_public'
         IA = 'orphan'
         NAV = 'excluded'
@@ -186,14 +180,14 @@ class Page:  # pylint: disable=too-few-public-methods
         ATEXT = 'Verify'
 
     class Contact:  # pylint: disable=too-few-public-methods
-        """Contact Section Partial/Fragment Details"""
+        """Contact Section Partial/Fragment Details."""
         USE = 'menu_public'
         TITLE = 'Contact: Dashboard and Do GitHub Manager'
         ATITLE = 'Contact Us: Send an Message to Dash and Do'
         ATEXT = 'Contact'
 
     class AccountMenu:  # pylint: disable=too-few-public-methods
-        """Account Menu Details"""
+        """Account Menu Details."""
         USE = 'menu_private'
         MENU_TITLE = 'Accounts Menu'
         ACCOUNT_BUTTEXT = 'Account'
@@ -208,7 +202,7 @@ class Page:  # pylint: disable=too-few-public-methods
 
 
 class Feedback:  # pylint: disable=too-few-public-methods
-    """Feedback Messages"""
+    """Feedback Messages."""
     EMAILSUCCESS = 'Your message has been sent.'
     BADREQUEST = 'Bad request, please verify your message and try again.'
     SERVERERROR = 'Server error, your message could not be sent.'
@@ -216,14 +210,14 @@ class Feedback:  # pylint: disable=too-few-public-methods
 
 
 class Signal:  # pylint: disable=too-few-public-methods
-    """Message Levels"""
+    """Message Levels."""
     INFO = 'info'
     SUCCESS = 'success'
     ERROR = 'error'
     FAIL = False
 
     class MSG:  # pylint: disable=too-few-public-methods
-        """Message Levels"""
+        """Message Levels."""
         DEBUG = messages.DEBUG
         INFO = messages.INFO
         SUCCESS = messages.SUCCESS
@@ -233,20 +227,20 @@ class Signal:  # pylint: disable=too-few-public-methods
 
 
 class Log:  # pylint: disable=too-few-public-methods
-    """Log Messages"""
+    """Log Messages."""
     INDEX = 'Index'
     CONTACT_FORM = 'Contact Form'
     MENU_PUBLIC = 'Public Menu'
 
     class Desc:  # pylint: disable=too-few-public-methods
-        """Log Descriptions"""
+        """Log Descriptions."""
         COMPLETED_FORM = 'Completed Form: Valid & POST'
         BOUNDED_FORM = 'Bounded: Invalid Form & POST'
         UNBOUND_FORM = 'Unbounded: Empty Form: Method != POST'
 
 
 class ContactFields:  # pylint: disable=too-few-public-methods
-    """Contact Form Fields"""
+    """Contact Form Fields."""
     CONTACT_NAME = 'contact_name'
     CONTACT_EMAIL = 'contact_email'
     CONTACT_MESSAGE = 'contact_message'
@@ -254,9 +248,7 @@ class ContactFields:  # pylint: disable=too-few-public-methods
 
 
 class ContactAttrs:  # pylint: disable=too-few-public-methods
-    """"
-    Contact Form Attributes Values
-    """
+    """" Contact Form Attributes Values."""
     FULL_NAME = 'Full Name'
     NAME_LABEL = 'name'
     NAME_HELP = 'A full name will be alphebetical characters only, - / \' '

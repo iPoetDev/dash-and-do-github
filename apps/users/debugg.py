@@ -37,25 +37,25 @@ class DebugAdapter:
 
     @staticmethod
     def print_post(request):
-        """Print post data
+        """Print post data.
 
         :param request:
         """
         print('===========================')
         print(f'SignupView: post: {request}')
-        print(f"request.POST: {request.POST}")
+        print(f'request.POST: {request.POST}')
         for key, value in request.POST.items():
             print(f'Key: {key}, Value: {value}')
         print('===========================')
 
     @staticmethod
     def print_get(request):
-        """Print get data
+        """Print get data.
 
         :param request:
         """
         print(f'SignupView: get: {request}')
-        print(f"request.GET: {request.GET}")
+        print(f'request.GET: {request.GET}')
         for key, value in request.GET.items():
             print(f'Key: {key}, Value: {value}')
 

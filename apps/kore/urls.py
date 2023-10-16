@@ -41,7 +41,6 @@ app_name = 'kore'  # pylint: disable=invalid-name
 #                      kore.email
 # /verify/ - verify.html - Verify Email =>
 #        kore.urls | kore.views kore.http (redirect)
-
 """
 #    URLPatterns - Handles Full Pages
     - Index: kore.urls | kore.views

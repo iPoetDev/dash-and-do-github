@@ -41,14 +41,14 @@ def get_date():
 
 
 def escape_html_and_newlines(data):
-    soup = BeautifulSoup(data, "html.parser")
+    soup = BeautifulSoup(data, 'html.parser')
     text = soup.get_text()
     return text.replace('\n', '  -  ')
 
 def get_error_detail(response):
-    if hasattr(response, "content"):
+    if hasattr(response, 'content'):
         content = response.content
         if isinstance(content, bytes):
             content = content.decode('utf-8')
         return escape_html_and_newlines(content)
-    return "Unknown error"
+    return 'Unknown error'

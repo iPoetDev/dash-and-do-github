@@ -79,6 +79,7 @@ def contact_mail(sub_ject: str,
     recipients: list,
     fails: bool = Switch.ON) -> HttpResponse:
     """Sends emailing to user/site contact when they submit a contact form.
+
     :param sub_ject:
     :param message:
     :param sender:
@@ -119,7 +120,7 @@ def site_mail(name: str, sender: str, message: str, recipients: list,
     # pylint: disable=too-many-arguments
     copy: bool, service: str,
     fails: bool = Switch.OFF) -> HttpResponse:
-    """Builds and sends emailing messages to user and site contact
+    """Builds and sends emailing messages to user and site contact.
 
     :param name: The mail sender's name.
     :param sender: The mail sender's emailing.
@@ -154,13 +155,10 @@ def site_mail(name: str, sender: str, message: str, recipients: list,
 # noinspection PyUnusedFunction
 def template_mail(template: str, sub_ject: str, sender: str, recipients: list,
     context: dict, fails: bool = Switch.OFF) -> int:
-    """Sends templated emailing to user/site contact when they
-    submit a contact form.
-    :param template:
-    :param sub_ject:
-    :param sender:
-    :param recipients:
+    """Sends templated emailing to user/site contact when they submit a contact
+    form. :param template: :param sub_ject: :param sender: :param recipients:
     :param context:
+
     :param fails:
     :return: 0 - No email sent, 1 - email sent
     :rtype: int

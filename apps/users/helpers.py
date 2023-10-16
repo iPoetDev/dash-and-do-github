@@ -38,10 +38,10 @@ def redirect_response(request,
     :param template_name: The name of the template to be rendered.
     :param context: The context data to be passed to the template.
     :param success_url: The URL to redirect to upon successful response.
-    :param redirect_key: The key for mapping the success_url in the response.
-
-    :return: A TemplateResponse: Specified template, context data,
-    and redirect URL.
+    :param redirect_key: The key for mapping the success_url in the
+        response.
+    :return: A TemplateResponse: Specified template, context data, and
+        redirect URL.
     :rtype: TemplateResponse
     """
     response = TemplateResponse(request, template_name, context)
@@ -53,7 +53,8 @@ def set_remember_me_request(request, remember_me):
     """Helper function to set a remember me cookie.
 
     :param request: The HttpRequest object
-    :param remember_me: Boolean value indicating if Remember Me is checked
+    :param remember_me: Boolean value indicating if Remember Me is
+        checked
     """
     if remember_me:
         # Set a cookie on the response indicating this
@@ -74,7 +75,7 @@ def get_last_status(request):
     return None
 
 def set_unverified_email(request, form):
-    """Set Unverified Email
+    """Set Unverified Email.
 
     This method sets the email address provided by the user in the `form`
      parameter as the unverified email in the `request` session.

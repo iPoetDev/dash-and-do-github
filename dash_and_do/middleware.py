@@ -79,7 +79,7 @@ class DashLoggingMiddleware:
             response_string = (
                 '\n'
                 f'================= 300 REDIRECT =========\n'
-                f'300+: Redirect Response:'
+                '300+: Redirect Response:'
                 f' {response.status_code}\n'
                 f' {response_detail}\n'
                 f'========================================\n'

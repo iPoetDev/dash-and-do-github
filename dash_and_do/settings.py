@@ -137,6 +137,10 @@ if DEBUG:
 
     warnings.simplefilter('ignore', RemovedInDjango50Warning)
 
+if DEBUG:
+    RUNSERVERPLUS_SERVER_ADDRESS_PORT = '127.0.0.1:8003'
+    RUNSERVERPLUS_POLLER_RELOADER_INTERVAL = 10
+
 # ================================ Server & Hosting ==========================
 # https://docs.djangoproject.com/en/4.2/ref/settings/#wsgi-application
 # - added: default charset to utf-8.
@@ -182,7 +186,7 @@ X_FRAME_OPTIONS = envs.str('X_FRAME_OPTIONS', default='DENY')
 
 
 # Common to Development and Production
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # noinspection PyUnusedName
 if DEBUG:
@@ -222,7 +226,7 @@ DEVELOPMENT_APPS = []
 
 if DEBUG:
     INSTALLED_APPS += [
-        'debug_toolbar',
+        # 'debug_toolbar',
     ]
 
 INSTALLED_APPS += [
@@ -232,6 +236,7 @@ INSTALLED_APPS += [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'cloudinary',  # Only for media, not static files
 ]
@@ -383,7 +388,12 @@ else:
 
 # Define the middleware common to both development and production
 MIDDLEWARE = [
+    # Custom, Logs in/out traffic: top of unmodified: request/response stack.
+    'dash_and_do.middleware.DashLoggingMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # Defaults: intersects and modifies all request/respsonse stack.
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django_htmx.middleware.HtmxMiddleware',
@@ -392,21 +402,20 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
+    'allow_cidr.middleware.AllowCIDRMiddleware',
+    'django_pdb.middleware.PdbMiddleware'
 ]
 
-# Development specific middleware
-if DEBUG:
-    MIDDLEWARE = [
-        'debug_toolbar.middleware.DebugToolbarMiddleware',
-        *MIDDLEWARE,
-        'django.middleware.common.BrokenLinkEmailsMiddleware',
-        'allow_cidr.middleware.AllowCIDRMiddleware',
-        'django_pdb.middleware.PdbMiddleware'
-    ]
-# Production specific middleware
-else:
-    # Middleware specific to production can be added here
-    pass
+# # Development specific middleware
+# if DEBUG:
+#     MIDDLEWARE = [
+#         *MIDDLEWARE,
+#     ]
+# # Production specific middleware
+# else:
+#     # Middleware specific to production can be added here
+#     pass
 
 # ================================ Dev Middleware ============================
 # - : Debug Toolbar
@@ -982,6 +991,27 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+# ================================== WHITENOISE ==============================
+# https://whitenoise.readthedocs.io/en/latest/django.html
+
+
+WHITENOISE_ROOT = BASE_DIR / 'staticfiles'
+WHITENOISE_AUTOREFRESH = DEBUG  # Toggle per settings.DEBUG
+WHITENOISE_USE_FINDERS = DEBUG  # Toggle per settings.DEBUG
+WHITENOISE_MANIFEST_STRICT = DEBUG # Toggle per settings.DEBUG
+WHITENOISE_MAX_AGE = None
+WHITENOISE_INDEX_FILE = False
+WHITENOISE_MIMETYPES = None
+WHITENOISE_CHARSET = 'utf-8'
+WHITENOISE_ALLOW_ALL_ORIGINS = True
+WHITENOISE_SKIP_COMPRESS_EXTENSIONS = ('jpg', 'jpeg', 'png', 'gif', 'webp',
+'zip', 'gz', 'tgz', 'bz2', 'tbz', 'xz', 'br', 'swf', 'flv', 'woff', 'woff2')
+WHITENOISE_ADD_HEADERS_FUNCTION = None
+# WHITENOISE_IMMUTABLE_FILE_TEST =  immutable_file_test
+WHITENOISE_STATIC_PREFIX = '/static/'
+WHITENOISE_KEEP_ONLY_HASHED_FILES = False
+
+# ================================== Static Files ============================
 # DEBUG case (using local file systems)
 if DEBUG:
     STORAGES = {
@@ -989,7 +1019,8 @@ if DEBUG:
             'BACKEND':'django.core.files.storage.FileSystemStorage',
         },
         'staticfiles':{
-            'BACKEND':'django.contrib.staticfiles.storage.StaticFilesStorage',
+            # 'BACKEND':'django.contrib.staticfiles.storage.StaticFilesStorage',
+            'BACKEND':'whitenoise.storage.CompressedStaticFilesStorage',
             'OPTIONS':{},
         },
     }
@@ -1007,7 +1038,9 @@ else:
             # a "cloudinary_storage.storage.StaticCloudinaryStorage" storage,
             # or use `whitenoise`
             # `django.contrib.staticfiles.storage.ManifestStaticFilesStorage`
-            'BACKEND':'whitenoise.storage.CompressedManifestStaticFilesStorage',
+            # 'BACKEND':'whitenoise.storage
+            # .CompressedManifestStaticFilesStorage',
+            'BACKEND':'whitenoise.storage.CompressedStaticFilesStorage',
             'OPTIONS':{},
         },
     }
@@ -1100,7 +1133,7 @@ else:  # noqa PLR5501
     # Toggles for/against using Heroku's MailToGo for emails
     if envs.bool('MAILERTOGO_USE', default=True):
         FROM = envs.str('MAILERTOGO_FROM_USER', default='webmaster')
-        MAILERTOGO_DOMAIN= envs.str('MAILERTOGO_DOMAIN',
+        MAILERTOGO_DOMAIN = envs.str('MAILERTOGO_DOMAIN',
             default='dash-and-do.xyz')
         DEFAULT_FROM_EMAIL = f'{FROM}@{MAILERTOGO_DOMAIN}'
         EMAIL_HOST = envs.str('MAILERTOGO_SMTP_HOST')
@@ -1111,7 +1144,7 @@ else:  # noqa PLR5501
     elif envs.bool('DASH_XYZ_USE', default=False):
         FROM = envs.str('DASH_FROM_USER', default='webmaster')
         FROM_SERVER = envs.str('DASH_FROM_SERVER', default='server')
-        DASH_DOMAIN= envs.str('DASH_DOMAIN', default='dash-and-do.xyz')
+        DASH_DOMAIN = envs.str('DASH_DOMAIN', default='dash-and-do.xyz')
         DEFAULT_FROM_EMAIL = f'{FROM}@{DASH_DOMAIN}'
         ADMIN_EMAIL = envs.str('ADMIN_EMAIL', default=f'{FROM}@{DASH_DOMAIN}')
         SERVER_EMAIL = envs.str('SERVER_EMAIL', default=f'{FROM_SERVER}'

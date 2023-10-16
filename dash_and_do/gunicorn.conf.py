@@ -55,10 +55,42 @@ This setting will reduce the time needed for a new worker to boot up
 
 """
 from os import environ
+from dash_and_do.settings import DEBUG
+# envs load from .env file in settings and imports to settings
+# Works locally and on Heroku.
+from dash_and_do.settings import envs
 
-bind = '0.0.0.0:' + environ.get('PORT', '8000')
+# The Proc file has
+# web: gunicorn dash_and_do.wsgi -c dash_and_do/gunicorn.conf.py --log-file - --log-level debug
+
+
+# Load a flah to toggle Heroku Local
+HEROKU_LOCAL = envs.bool('HEROKU_LOCAL')
+# Differentiate Heroku Local Port from Runserver Port
+HEROKU_LOCAL_PORT = envs.str('HEROKU_LOCAL_PORT', '8001')
+
+# Heroku Local: Mimic Heroku Dyno, Gunicorn
+if DEBUG and HEROKU_LOCAL:
+    # Default condition for local development
+    bind = f'127.0.0.1:{HEROKU_LOCAL_PORT}'
+elif not DEBUG and HEROKU_LOCAL:
+    # Test condition for local development
+    bind = f'127.0.0.1:{HEROKU_LOCAL_PORT}'
+
+# Heroku Remote: Network Access
+if not DEBUG and not HEROKU_LOCAL:
+    # Default condition for remote/production
+    bind = '0.0.0.0:' + environ.get('PORT', '8000')
+elif DEBUG and not HEROKU_LOCAL:
+    # Test condition for remote/production
+    bind = '0.0.0.0:' + environ.get('PORT', '8000')
+
 # Free Tier
 workers = 1
 timeout = 120
 reload = True  # for development
 preload_app = True
+# workers = environ.get('GUNICORN_FREEWEB_DYNO', 1)
+# timeout = environ.get('GUNICORN_TIMEOUT', 120)
+# reload = environ.get('GUNICORN_RELOAD', True)  # for development
+# preload_app = environ.get('GUNICORN_PRELOAD_APP', True)

@@ -1,3 +1,5 @@
+// noinspection Annotator
+
 function replaceDocument(docString) {
     var doc = document.open('text/html')
 

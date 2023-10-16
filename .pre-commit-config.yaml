@@ -62,7 +62,7 @@ repos:
     hooks:
       - id: absolufy-imports # archived, depreacted
   - repo: https://github.com/PyCQA/docformatter
-    rev: v1.7.1
+    rev: v1.7.5
     hooks:
       - id: docformatter
         # automatically formats docstrings: follows a subset of PEP 257

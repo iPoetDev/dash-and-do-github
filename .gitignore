@@ -782,3 +782,12 @@ package-lock.json
 /start-serve.sh
 /start-serve.bat
 /heroku-local-run.ps1
+/start_server.py
+/tmp/appmap/
+/.run/Pre-commit Run.run.xml
+/.run/Pre-commit Update.run.xml
+/.mirrord/mirrord.json
+/scripts/Django Migrate Users.run.xml
+/scripts/Django Print Active Settings.run.xml
+/scripts/Django Shell+.run.xml
+/scripts/Runserver Services.run.xml

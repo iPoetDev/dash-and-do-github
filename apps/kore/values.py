@@ -147,8 +147,9 @@ class Brand:  # pylint: disable=too-few-public-methods
         VBOX = '0 0 100 100'
         VIEWY = '.9em'
         FONTSIZE = '90'
-        ICON= '🦊'
+        ICON = '🦊'
         FORMAT = 'image/svg+xml'
+
 
 class Page:  # pylint: disable=too-few-public-methods
     """Page Titles."""

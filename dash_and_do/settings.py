@@ -246,6 +246,7 @@ if DEBUG:
         # apps for development
         'django_extensions',
         'django_behave',
+        'django_pdb',
     ]
 
 THIRD_PARTY_APPS = [
@@ -403,19 +404,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.BrokenLinkEmailsMiddleware',
-    'allow_cidr.middleware.AllowCIDRMiddleware',
-    'django_pdb.middleware.PdbMiddleware'
 ]
-
-# # Development specific middleware
-# if DEBUG:
-#     MIDDLEWARE = [
-#         *MIDDLEWARE,
-#     ]
-# # Production specific middleware
-# else:
-#     # Middleware specific to production can be added here
-#     pass
 
 # ================================ Dev Middleware ============================
 # - : Debug Toolbar
@@ -426,8 +415,6 @@ MIDDLEWARE = [
 
 if DEBUG:
     MIDDLEWARE += [
-        # 'debug_toolbar.middleware.DebugToolbarMiddleware',
-        'django.middleware.common.BrokenLinkEmailsMiddleware',
         'allow_cidr.middleware.AllowCIDRMiddleware',
         'django_pdb.middleware.PdbMiddleware',  # checked
     ]

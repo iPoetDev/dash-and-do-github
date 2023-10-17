@@ -122,9 +122,9 @@ def send_mail_contact2(form) -> HttpResponse:
             recipients=[SITE_EMAIL],
             fails=Switch.SHOW)
         pp_email(email_data, label='send_mail_contact_2: HTTPResponse: Ok '
-                                   '200')
+                '200')
         return email_response
 
     pp_email(email_data, label='send_mail_contact_2: HTTPResponse: Failed '
-                               '???')
+            '???')
     return HttpResponse(HTTP.MSG_FAILED)

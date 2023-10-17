@@ -39,9 +39,9 @@ class DashLoggingMiddleware:
     def __call__(self, request):
         # Log the request
         request_headers = self.safe_headers(request.META)
-        request_string = (f"Request: {request.method} "
-                          f"{request.get_full_path()}, "
-                          f"Headers: {request_headers}")
+        request_string = (f'Request: {request.method} '
+                          f'{request.get_full_path()}, '
+                          f'Headers: {request_headers}')
         logger.debug(request_string)
 
         # Handle response and any potential exceptions
@@ -54,12 +54,12 @@ class DashLoggingMiddleware:
 
     def handle_response(self, request):
         response = None
-        response_string = "\nAn error occurred while handling the response.\n"
+        response_string = '\nAn error occurred while handling the response.\n'
         try:
             response = self.get_response(request)
             response_string = self.build_response_string(request, response)
         except Exception as e:
-            err_message = f"\nException occurred: {str(e)}\n"
+            err_message = f'\nException occurred: {str(e)}\n'
             logger.error(err_message, exc_info=True)
         return response_string, response
 
@@ -68,9 +68,9 @@ class DashLoggingMiddleware:
             response_string = (
                 '\n'
                 f'================= 200 OK ================\n'
-                f"200+: Successful Response:"
-                f" {response.status_code}\n"
-                f" {response_detail}\n"
+                f'200+: Successful Response:'
+                f' {response.status_code}\n'
+                f' {response_detail}\n'
                 f'========================================\n'
                 '\n'
             )
@@ -79,9 +79,9 @@ class DashLoggingMiddleware:
             response_string = (
                 '\n'
                 f'================= 300 REDIRECT =========\n'
-                f"300+: Redirect Response:"
-                f" {response.status_code}\n"
-                f" {response_detail}\n"
+                f'300+: Redirect Response:'
+                f' {response.status_code}\n'
+                f' {response_detail}\n'
                 f'========================================\n'
                 '\n'
             )
@@ -95,10 +95,10 @@ class DashLoggingMiddleware:
             response_string = (
                 '\n'
                 f'================ 400 | 500 ERROR ========\n'
-                f"400 | 500: Error Response: "
-                f" {response.status_code}\n"
-                f" {response_detail}\n"
-                f"Detail: {error_detail}\n\n"
+                f'400 | 500: Error Response: '
+                f' {response.status_code}\n'
+                f' {response_detail}\n'
+                f'Detail: {error_detail}\n\n'
                 f'========================================\n'
                 '\n'
             )
@@ -109,7 +109,7 @@ class DashLoggingMiddleware:
         safe_headers = headers.copy()
 
         if sensitive:
-            sensitive_headers = ["HTTP_COOKIE", "HTTP_AUTHORIZATION"]
+            sensitive_headers = ['HTTP_COOKIE', 'HTTP_AUTHORIZATION']
             for header in sensitive_headers:
                 safe_headers.pop(header, None)  # Remove sensitive headers
 
@@ -138,8 +138,8 @@ class DashLoggingMiddleware:
 
             attr_values = {
                 'datetime_stamp':datetime_stamp,
-                'response_status':response.status_code if response else "No "
-                                                                        "response",
+                'response_status':response.status_code if response else 'No '
+                                                                        'response',
                 **safe_headers
             }
             # This will prevent a KeyError in case an attribute is
@@ -151,7 +151,7 @@ class DashLoggingMiddleware:
             response_code =  {attr_values.get('response_status')}
             return f"\n================== {response_code} ================\n{attr_values.get('datetime_stamp')} {attr_values.get('ip_address')} {attr_values.get('protocol')} \nHost: {attr_values.get('host')} QueryString: {attr_values.get('query_string')}\nRemoteUser: {attr_values.get('remote_user')} \nRequestMethod: {attr_values.get('request_method')} Path: {attr_values.get('path_info')} ResponseStatus: {attr_values.get('response_status')}\n=====================================\n\n"
         except Exception as e:
-            err_message = (f"Exception occurred in build_response_string "
-                           f"method: {str(e)}")
+            err_message = (f'Exception occurred in build_response_string '
+                           f'method: {str(e)}')
             logger.error(err_message, exc_info=True)
-            return "An error occurred while building the response string."
+            return 'An error occurred while building the response string.'

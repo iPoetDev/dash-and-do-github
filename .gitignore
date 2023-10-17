@@ -791,3 +791,7 @@ package-lock.json
 /scripts/Django Print Active Settings.run.xml
 /scripts/Django Shell+.run.xml
 /scripts/Runserver Services.run.xml
+/apps/users/templates/users/account/__signup.html
+/apps/users/userview/__init__.py
+/apps/users/userview/dasholdviews.py
+/apps/users/tests-ai-gen/tests_dash_signup_view.py

@@ -452,6 +452,7 @@ def switch_form(form_label=Forms.GENERIC,
 
 
 # noqa ARG001
+# noinspection PyUnusedLocal
 def response_messaages(signal, message,
     fail=True):  # pylint: disable=W0613 # noqa ARG001
     """:param signal:

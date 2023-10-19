@@ -847,7 +847,7 @@ Zube.io was chosen as
 
 
 ---
-> [Previous]() | [Top]() | <a id="6-11-verify">6.11</a> | [Bottom]() | [Next](readme.md#7-0-architecture)
+> [Previous]() | [Top]() | <a id="6-11-verify">6.11</a> | [Bottom]() | [Next](#7-0-architecture)
 ***
 ### 6.11. [Verification](#verify)
 

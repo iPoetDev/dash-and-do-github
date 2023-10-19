@@ -260,21 +260,12 @@ These relative points are a story point matrix of *Certainty/Risk* (y-axis) agai
 
 ### 3.4. [Readme]()
 
-> PROJECT: Style | Approach | Key Deliverable
-
--   [x] Criteria: README
--   [ ] Completed? 🛫
-
-- In English.
-- Defined upfront, at start of the project cycle, a planning and delivery tool, not as an afterthought.
-- Highly descriptive.
-- Heading Hierarchy.
-- Sequenced heading numbering.
-- Headings linked and anchored.
-- Highly detailed.
-- Not Conventional, counter traditional and beyond the CI recommendation.
-- Professional-grade project management and solution documentation.
-- In the style of Readme Driven Development, this was written first before any code was committed.
+| Language | Style | Headings | Notes |
+| :- | :- | :- | :- |
+| In English. | Highly descriptive. | Heading Hierarchy. | Defined upfront, at start of the project cycle, a planning and delivery tool, not as an afterthought. | 
+| |  Highly detailed. | Sequenced heading numbering.| Not Conventional, counter traditional and beyond the CI recommendation. | 
+| | Use of Tables | Headings linked and anchored| Professional-grade project management and solution documentation. | 
+| | Use of Graphics | Uses a Table of Content |  In the style of Readme Driven Development, this outlined and written first before any code was committed. |
 
 ***
 > .
@@ -326,38 +317,26 @@ These relative points are a story point matrix of *Certainty/Risk* (y-axis) agai
 
 ### 4.3. [Web App Capabilities](#app-capabilities)
 
--   [ ] Criteria:
--   [ ] Review
--   [ ] Completed?
-
 This app will serve users with the following:
 
 | Priority | User Ability | Goal | Keywords |
 | -------- | ------------ | ---- | -------- |
-| Must Have         | To _`use, integrate`_ GitHub as a _`primary, secondary`_ _`social login`_.   | To _`access, connect`_ and _`authenticate`_ to the main web _`app, service`_.     | #Authentication #Access #Authorisation #Onboarding|
-
-
-- Ability, **_must have_**, to _`use|integrate`_ GitHub as a _`primary|secondary`_ _`social login`_ to _`access|connect`_ and _`authenticate`_ to the main web _`app|service`_. 
-- Ability, **_must have_**, to _`interact`_ with GitHub's API to access the public application and data interfaces of the GitHub platform, so to _`manipulate`_ and _`aggregate`_ one's own _`account|repository`_ data. #API #RestFul
-- Ability, **_should have_**, to _`analyse`_ all repositories, _`public and|or private`_ and _`categorise`_ them, in bulk: #Repositories #DataAnalysis
-    - The scope and frequency of languages uses. GitHub has this feature per repository.
-    - The scope and frequency of file types uses (?). Subject to GitHub API definitions and terms of service.
-    - The presence/absence of labels, number and completeness.
-- Ability, **_should have_**, to _`report`_, using a _`client|server`_ rendered visual summarisation and collation approach, on the state of all repositories, and to _`provide`_ a an **_`"at a glance"`_** snapshot on the state of the account's repositories.
-- Ability, **_could have_**, to perform bulk actions on specific GitHub features like:
-    - **_Labels_** #FeatureCRUD
-    - **_`Config.yml`_** #FileIO #API-I/O
-    - **_Common Files_**, or Common Project files (see below). #FileI/O #API-I/O
-- Ability, **could have**, to `store` a central file _`type|store`_, i.e. a pre-defined template, for a specific purpose and then `'Copy'` and `'Apply'` across those repository that do not have them. #FileIO #API-I/O
-    - **Will not** have the ability to edit or change these files inside the web app.
-        - This is out of scope as IDEs and the basic GitHub editing functionalities serve this role.
-            - **Will not** have the ability to manipulate GitHub Account Settings or have the permission granted to
-              them.
-              #NotInScope
-- Ability, **should have**, to _`remove`_ a GitHub _`social login`_ as a _`primary|secondary`_ source of _`access`_, _`authorisation`_ and or _`authentication`_, without affecting the primary login model and access control. #GitHub  #Integration #OffBoarding
+| **Must** Have | To _`use, integrate`_ GitHub as a _`primary, secondary`_ _`social login`_.   | To _`access, connect`_ and _`authenticate`_ to the main web _`app, service`_.     | #Authentication #Access #Authorisation #Onboarding|
+| **Must** Have | To _`interact`_ with GitHub's API to access the public application and data interfaces of the GitHub platform| To _`manipulate`_ and _`aggregate`_ one's own _`account, repository`_ data. | #API #RestFul|
+| **Should** Have | To _`analyse`_ all repositories, _`public and, or private`_ and _`categorise`_ them | - |  #Repositories #DataAnalysis |
+| - | The scope and frequency of languages uses. GitHub has this feature per repository. | - | | 
+| - | The scope and frequency of file types uses (?). Subject to GitHub API definitions and terms of service.| - | | 
+| - | The presence/absence of labels, number and completeness. | - | | 
+| **Should** Have | To _`report`_, using a _`client, server`_ rendered visual summarisation and collation approach, on the state of all repositories| To _`provide`_ a an **_`"at a glance"`_** snapshot on the state of the account's repositories.|  |
+| **Should** Have | To _`remove`_ a GitHub _`social login`_ as a _`primary, secondary`_ source of _`access`_, _`authorisation`_ and or _`authentication`_, | ithout affecting the primary login model and access control.  | #GitHub  #Integration #OffBoarding |
+| **Could** Have | To perform bulk actions on specific GitHub features like: |  |  |
+| - | **_Labels_** | | #FeatureCRUD |
+| **Could** Have | To `store` a central file _`type, store`_, i.e. a pre-defined template, for a specific purpose | So to `'Copy'` and `'Apply'` across those repository that do not have them. |  |
+| **Will not** have | The ability to edit or change these files inside the web app. | This is out of scope as IDEs and the basic GitHub editing functionalities serve this role. | | 
+| **Will not** have | The ability to manipulate GitHub Account Settings or have the permission granted to them. | | | 
 
 ---
->
+> 
 ***
 
 ### 4.4. [Real User Frustration](#user-frustrations)
@@ -395,7 +374,9 @@ This comes from the author/developer’s personal experience and frustrations. G
 >
 ***
 
-### 4.5. [Real World Solution & Idea]
+### 4.5. [Real World Solution & Idea](#solution-to-idea)
+
+
 
 ---
 >
@@ -431,49 +412,47 @@ This comes from the author/developer’s personal experience and frustrations. G
 
 ## 6.0 [Plan](#plan)
 
-> PROJECT | SOLUTION: Definitions | Lists | Goals | Intent | Timeboxing
-
--   [ ] Criteria:
--   [ ] Completed? 🛫
-
-> > - A README has visualisation/presentation constraints for presenting matrix like interconnected data, as below, due
-      to its linear nature.
->> - Note that the author has created and split readme into 17 sections, given the projected length/complexity of the
-     final
-     readme.
+> > - A README has visualisation/presentation constraints for presenting matrix like interconnected data, as below, due to its linear nature.
+> > - Note that the author has created and split readme into 17 sections, given the projected length/complexity of the final readme.
 > > - Refer to the following preconfigured GitHub tooling/features for a more interactive Agile tool.
-> > - These planning artefacts are outline lists or checklists, not active deliverables.
+> > - These planning artefacts are outline lists / tables or checklists, not active deliverables.
 
 ### 6.1. [Planning Tool](#agile-tool)
 
 > PROJECT: Tooling
 
+| Chosen | Use Cases | - | Alternatives |
+| :-- | :-- | :-- | :-- | 
+| Zube.io| Epic, Stories, Issue Triage, Label sync | - | ZenHub (Paid) |
+| GitHub Issues, Templates | GitHub Miletsones, GitHub Issues, GitHub Labels | - | GitHub Project (Free) |
+| Zube syncs with GitHub Issues | | - | Jira (Freemium) |
 
-**Choices**:
+Zube.io was chosen as 
+- It is free (for less than 4 users, 
+- It is integrated, localised, and syncs with GitHub is a recommended platform for VCS, though more effort/labour/investment to setup, configure from a blank start.
+- As author, 
+	- It was preferred to use a older style of managing Agile via Issues and using Zube.io 
+	- It was less preferred by the GitHub Projects (which uses GitHub Issues as a foundation). 
 
-- _Chosen_: Zube.io AND **<ins>GitHub (Free)</ins>
-  **: `GitHub Projects`, `GitHub Issues`, `GitHub Milestones`, `GitHub Labels`.
-    - because it is free, integrated, localised, and GitHub is a recommended platform for VCS, though more
-      effort/labour/investment to setup, configure from a blank start.
-- _Alternatives_: ZenHub (Paid) | Jira (Heavyweight, Freemimum) | etc
+**Assessors have been given access by a dedicated access email**
 
 ---
 
 ### 6.2. [Sprints](#sprints)
 
-> PROJECT: Iterations | Planning Horizon
+#### 6.2.1. Sprint Strategy 
 
--   [ ] Criteria:
--   [x] Completed? 🛫
+| Kick Off | Due | Planning Horizon | Nos of Sprints | Duration | Notes |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| <ins>10th July 2023</ins> | <ins>11th Nov 2023</ins> | 2-3 Weeks | 19 Weeks | 5 to 7 Days | Sprint frequency and length will be adjusted according to life, project and assignment timebox constraints. |
 
-- Kick off:
-    - Start: \*<ins>10th July 2023</ins>
-    - Early Due: _<ins>10th October 2023</ins>_ (12+ weeks)
-    - Expected Due: _<ins>21th October 2023</ins>_ (14+ weeks)
-- Planning Horizon is 2 weeks, max 3 weeks.
-- There are **`12|13|14 nos of`** Sprints for Due.
-- Each are **`5|7`** days in length _allowing for some down/off time_
-- The frequency and length will be adjusted according to life, project and assignment timebox constraints.
+#### 6.2.2 Project
+
+
+
+#### 6.2.3 Reports
+
+
 
 ---
 
@@ -568,54 +547,308 @@ This comes from the author/developer’s personal experience and frustrations. G
   and extends HTML thus minimising JavaScript in a similar role: **_HTMX_** : **ACCEPTED**
 
 ---
+### 6.5. Epic v Feature v Stories Relation
 
-### 6.5. [Epics](#epics)
 
--
-    -
+![[Pasted image 20231019202706.png]]
 
-#### 6.5.1. Definition of Done
+![[Pasted image 20231019202732.png]]
+### 6.6. [Epics](#epics)
 
--   ***
+> Organised via **`Milestones`**. 
+> Uses **`Features`** as a primary sub-component of an **`Epic`**, and not directly a **`User Story`**.
+#### 6.6.1 Definition
 
-### 6.6. [Features](#features)
+- An **`Agile Epic`** is a large body of work that will be delivered over multiple sprints, often supported by a business case and funding.
+- Has a business case as they are significant pieces of work that strategically add value.
+- **`Epics`** help to: 
+	1. Break work down, 
+	2. Organise units of work, while ...
+	3. Continuing to work towards a bigger goal.
+- **`Epics`**: 
+	- Can be broken down into specific pieces of work, called **`Features`**.
+	- These are based on the needs and requests of customers or end users.
+	- Are sized or split as necessary to be delivered by the Agile teams.
+#### 6.6.2 Project
 
--
+- Uses a collation of related feature driven/defined **`Epics`**.
+- Uses [`GitHub Milestones`](https://github.com/iPoetDev/dash-and-do-github/milestones "Dash & Do Miletsones") to define, manage and track the Epics as collation of related [`GitHub Issues`](https://github.com/iPoetDev/dash-and-do-github/issues). per Epic
 
-#### 6.6.1. Definition of Done
+|  # | Epic Title  | Due Date  | Intent  |
+| :--   |  :--   |:--   |:--   |:--   |
+| 00 | [REPOSITORY: Setup, Configuration, Maintenance](https://github.com/iPoetDev/dash-and-do-github/milestone/1) | | |
+| 01  | [EPIC #1: Readme Driven Development](https://github.com/iPoetDev/dash-and-do-github/milestone/3) |    |   |
+| 02  | [EPIC #2 "The Arch & Deploy":](https://github.com/iPoetDev/dash-and-do-github/milestone/4) |    |   |
+| 03  | [EPIC #3: "Agile Design, Features, Specifications: UAC & BDD"](https://github.com/iPoetDev/dash-and-do-github/milestone/5)|    |   |
+| 04  | [EPIC #4: FEATURE: "Release: v0.5: Core Web App, UI, Public and Private UI, Forms"](https://github.com/iPoetDev/dash-and-do-github/milestone/6) |    |   |
+| 05  | [EPIC #5: FEATURE: "Release: v0.5: Users App: Management & Flow"](https://github.com/iPoetDev/dash-and-do-github/milestone/9) |    |   |
+| 06  | [EPIC #6: FEATURE: "Release v1.0: Dash (DashBoard/Reporting/Summaries) "](https://github.com/iPoetDev/dash-and-do-github/milestone/7)  |    |   |
+| 07  | [EPIC #7: FEATURE: "Release V1.5 Do (Tasker, Bulk)"](https://github.com/iPoetDev/dash-and-do-github/milestone/8)  |    |   |
 
--   ***
+#### 6.6.3 Format
 
-### 6.7. [User Stories](#stories)
+- **Main Elements**
+	- Include user, the product and design requirement
+	- Expressed as a narrative that expresses future desired state.
 
--
+- **Structure**
+> **For**:        `<users>` | `<audience>` | `<group>`
+> **Who**:      `<user case>` | `<user story>` | `<user goal>`
+> **Our**:       `<product name>` | `<product description>`
+> **Is A**:       `<requirement type>` | `<requirement role`
+> **Requirement**:       `<requirement>` | `<deliverable>`
 
-#### 6.7.1. [Definition of Done](#done)
+***
+### 6.7. [Features](#features)
 
--   ***
+> Organised via a GitHub Issue & Issue Templates: 
 
-### 6.8. [Test Methodologies](#test-methods)
+#### 6.7.1. Definition
 
-- .
+- A feature is a chunk of work from the Epic
+	- Is a deliverable that adds value and moves towards completing the Epic.
+- A feature should:
+	- provide business value 
+	- it should be estimable 
+	- it must have enough definition for the team to provide an estimate of the work involved in implementing it 
+	 - be small enough to fit within 1 to 3 sprints 
+		 - therefore, if it is too big, it should be broken down further 
+	 - be testable 
+		 - should be understandable as to what to test in a feature 
+		 - should pass the testing in order to be acceptable to the customer.
 
-### 6.9. [Security Assurance](#security-assure)
+#### 6.7.2 Project
 
--   ***
+| # | Feature Title | Due Date | Intent | Epic 🔼| Story 🔽 |
+| :-- |:-- |:-- |:-- |:-- |:-- |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+
+#### 6.7.3 Format
+
+- **Main Elements**
+	- Feature Short Descriptor, i.e a Title
+	- Feature Benefit: Outline of key affordance / dis-benefit
+	- User Acceptance Criteria <sup>1</sup>: Outline of the key quality point or completion state of the feature
+ 
+- **Structure**
+> **FEATURE**:                 `<short title>`    
+> **BENEFIT**:                  `<benefit of feature>` |  `<value of feature>`
+> **ACCEPTANCE **<sup>1</sup>:  `<uac>` | `<criteria>`
+
+***
+
+### 6.8. [User Stories](#stories)
+
+> Organises via a GitHub Issue: 
+
+#### 6.8.1. Definition
+
+- A **`User Story`** are ... 
+	- written from the perspective of an end user.:
+		- ... _are short requirements/requests_ ... from end user
+		-  ... _are improvements/enhancements arsing_ ... from end user's concerns.
+	- also `Enabler Tasks` 
+		- that support the work of completing a `Feature`
+- A `User Story` should:
+	- are units of effort that teams can usually complete within a single sprint.
+	- describe a need that can be satisfied by introducing a new feature.
+	- describe a need that can be satisfied by changing an existing feature.
+	- stories identify what someone wants to accomplish with your product and why.
+
+#### 6.8.2 Project
+
+| # | Story Title | Due Date | Intent | Epic | Story |
+| :-- |:-- |:-- |:-- |:-- |:-- |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+|      |    |    |   |    |    |
+
+#### 6.8.3 Format
+
+- **Main Elements**
+	- User/Persona, 
+	- User Goal/Objective,
+	- User Outcome that satisfies
+
+- **Structure**
+> **AS A**:          `<user role>` | `<user persona>` | `<user>`
+> **I WANT**:     `<user goal>` | `<user objective`
+> **SO THAT**:  `<user outcome>` | `<satisfied end-state`
+
+
+***
+
+### 6.9. [Test Methodologies](#test-methods)
+
+> Uses: 
+>  - Manual Testing based on the Test Scripts based on Behaviour Driven Testing
+>  - Backbox Feature Testing
+>  - Behaviour Driven Development
+
+#### 6.9.1 Definition
+
+- **Manual Testing**
+	- The development and execution of the test cases without using any automated testing tools.
+	- Manual Testing Objective are:
+		1. To detect the issues, bugs, and defects of a software application.
+		2. To perform manual user acceptance for features and user journeys.
+	 - **A constraint in this project methods is to use manual testing only, due to competency and time constraints.**  
+
+- **Black Box Testing**:
+	- Is performed with no knowledge of a system’s internals.
+	- Can be carried out to evaluate the functionality, security, performance, and other aspects of an application.
+	- Used by **`BDD`** (see below) and *`Given ... When ... Then` Scenario* based testing.
+
+- **Behaviour Driven Development**
+	- Is a software development process that puts feature behaviours first.
+	- A _behaviour_ is how a feature operates within a well-defined scenario of inputs, actions, and outcomes
+		- Behaviours are identified using [specification by example](https://en.wikipedia.org/wiki/Specification_by_example).
+		- Behaviour specs become:
+			- The requirements, 
+			- The acceptance criteria,
+			- The acceptance tests.
+			- The feature acceptance results.
+	- These can be automated, however for purposes of this project, only manual testing is planned and in scope.
+	- Each of these artefacts (Features, Scenarios, Given When Ten Steps) are declarative specs for unique product behaviours that become  the units of coverage
+	- Sources: 
+		- [BDD 101: Introducing BDD | Automation Panda](https://automationpanda.com/2017/01/25/bdd-101-introducing-bdd/)
+		- [BDD 101: Behaviour-Driven Agile | Automation Panda](https://automationpanda.com/2017/02/01/bdd-101-bdd-and-agile/)
+		- [BDD 101: Manual Testing | Automation Panda](https://automationpanda.com/2017/10/08/bdd-101-manual-testing/)
+
+#### 6.9.2 Project
+
+| # | UA Feature | Scenario | Intent | Epic | Feature | Story  |
+| :-- |:-- |:-- |:-- |:-- |:-- | :-- |
+|      |    |    |   |    |    |    |
+|      |    |    |   |    |    |    |
+|      |    |    |   |    |    |    |
+|      |    |    |   |    |    |    |
+|      |    |    |   |    |    |    |
+|      |    |    |   |    |    |    |
+|      |    |    |   |    |    |    |
+|      |    |    |   |    |    |    |
+|      |    |    |   |    |    |    |
+|      |    |    |   |    |    |    |
+|      |    |    |   |    |    |    |
+|      |    |    |   |    |    |    |
+|      |    |    |   |    |    |    |
+
+#### 6.9.3 Format
+
+- **Main Elements**
+	- Uses a `.Feature` file format
+	- Uses the `Gherkin` syntax.
+	- Has:
+		- Feature Section & Definition: Short title and the user story (in the description) under test.
+		- Scenario (or Example): 
+		- Test Case Steps: 
+	- Is similar to User Stories
+		- I WANT => WHEN
+		- AS A => GIVEN
+		- SO THAT => THEN
+	- Maps to AAA of TDD
+		- GIVEN => ARRANGE
+		- WHEN => ACT
+		- THEN => ASSERT
+
+- **Structure**:
+> **FEATURE**:  to provide a high-level description of a software feature, and to group related scenarios.
+> 	**RULE**:	 The (optional)  representation of one _business rule_ that should be implemented.
+> 	**DESCRIPTION**: Free-form descriptions
+> **BACKGROUND**: to add some context to the scenarios that follow it, and covers are _incidental details_.
+> **SCENARIO**: a _concrete example_ that _illustrates_ a business rule.
+> **STEPS**:
+>     **GIVEN**: describe the initial context of the system - the _scene_ of the scenario - from the past.
+> 	    *AND | BUT*:
+>     **WHEN**: to describe an event, or an _action_
+> 	    *AND | BUT*:
+> 	 **THEN**: describe an _expected_ outcome, or result.
+> 	    *AND | BUT*:  
+
+- **Reference**
+	- Explaining Gherkin is outside of the scope of this Readme and Project. 
+	- To learning more on the composition and description of Gherkin as a DSL for Behaviour Driven Development:
+		- [Gherkin Reference - Cucumber Documentation](https://cucumber.io/docs/gherkin/reference/)
+		- [BDD 101: Gherkin By Example | Automation Panda](https://automationpanda.com/2017/01/27/bdd-101-gherkin-by-example/)
+		- [BDD 101: Writing Good Gherkin | Automation Panda](https://automationpanda.com/2017/01/30/bdd-101-writing-good-gherkin/)
+	- Sources:
+		- [BDD | Automation Panda](https://automationpanda.com/bdd/)
+		- [Behaviour-Driven Development | Cucumber Documentation](https://cucumber.io/docs/bdd/)
+
+#### 6.9.4 Tooling
+
+- **IDE**:
+	- *PyCharm*:
+		- [BDD Testing Framework | PyCharm Documentation (jetbrains.com)](https://www.jetbrains.com/help/pycharm/bdd-frameworks.html)
+	- *Plugins*:
+		-  [Cucumber + The best Cucumber user experience to run, edit, print Gherkin features](https://plugins.jetbrains.com/plugin/16289-cucumber-)
+		- [Gherkin Overview : Visualizes the structure of test projects incorporating .feature files, for Cucumber](https://plugins.jetbrains.com/plugin/16716-gherkin-overview)
+- **Package**:
+	- Behave
+	- Django-Behave:
+- **Files**:
+	- `.features`: Useful for defining the feature specification, scenario by examples, and manual test script/cases.
+		- Define the Happy Path of successful user flow.
+		- Define the Edge Cases/Variants of variations and exceptional states.
+	- `steps.py`: Useful for automation of 
+
+***
 
 ### 6.10. [User Acceptance](#acceptance)
 
--   [ ] Criteria:
--   [ ] Template:
--   [ ] Completed? 🛫
+> 6.9 Covers the essence of User Acceptance. 
+> For the purpose of this project, this section covered the USER ACCEPTANCE for this assessment.
 
--
+- Covered by Section 14.0 of this README.
+#### 6.10.1 Definition
 
-#### 6.10.1. [Definition of Done](#done)
+- User acceptance testing (UAT), is also known as _application testing_ or _end-user testing_
+	- Is a phase of software development in which the software is tested in the real world by its intended audience.
+	- UAT is often the last phase.
+	- Is performed before the tested software is released to its intended market.
+- The goal of UAT is to ensure software can handle real-world tasks and perform up to development specifications.
+- User acceptance testing validates the testing done at the end of the development cycle.
+#### 6.10.2 Format
 
--   [ ] Criteria:
+```
+- The author has tested by <action> <resource/feature/story>
+	- 1:
+	- 2:
+	- 3:
+- As a user, the author can ...
+- The result was ...
+=============================================================
+- UAT: `User Acceptance Test Statement`
+  - .
+- USER ACCEPTED: Yes ✅ | STOP 🚫
+```
+
 
 ---
-
+> [Previous]() | [Top]() | <a id="6-11-verify">6.11</a> | [Bottom]() | [Next](readme.md#7-0-architecture)
+***
 ### 6.11. [Verification](#verify)
 
 - Given the academic context for project and solution delivery, meeting the academic requirements and assessment, as
@@ -785,6 +1018,10 @@ This comes from the author/developer’s personal experience and frustrations. G
 -   [ ] **CHECKLISTS**:
     -   [ ] **WIKI**: To have completed the assessment criteria checklist as published in the [project wiki's](#).
 
+
+---
+> [Previous]() | [Top]() | <a id="7-0-architecture">7.0</a> | [Bottom]() | [Next]()
+***
 ## 7.0 [Architecture](#architecture)
 
 - .

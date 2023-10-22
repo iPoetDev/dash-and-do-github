@@ -66,20 +66,33 @@
 | ---------- | ---  |---------- | --- | ------------- |
 | <ins>DASH &amp; DO GH MANAGER</ins>|   | `dash-and-do-for-github` | | https://github.com/ipoetdev/dash-and-do-for-github |
 
-
 ---
 > .
-
 ---
 
 ## README: Preface
 
-- This Readme using tables for complex/intense data presentation. 
+- This readme is extensive. So tables and jump links aid in the presentation.
+### Summary Tables
+- This Readme using tables for complex/intense data/content presentation. 
 - However, GitHub's default readme / content view constraints the width and limits the tables or forces left to right over-scrolling.
 - To improve your reading experience , you could (by your own choice) install one of these two browser extensions.
 	- **Wide GitHub:** Chrome | Edge | Firefox: [Wide GitHub - Chrome Web Store (google.com)](https://chrome.google.com/webstore/detail/wide-github/kaalofacklcidaampbokdplbklpeldpj)
 	- **Widescreen for GitHub**: Chrome | Edge | Firefox| [Widescreen for GitHub - Chrome Web Store (google.com)](https://chrome.google.com/webstore/detail/widescreen-for-github/elikdceclccjilahimjfceoalhdbndan)
 - <ins><strong>Caveat</strong>: Do your own checks and security assessments before installing any other software.</ins>
+
+### Navigation:
+- Navigating the Readme:
+	- Use the Jump Links of: 
+		- Previous (Sub-) Section
+		- Next (Sub-) Section
+		- Top (of Document)
+		- Bottom (of Document)
+
+**Sample**
+---
+> [Previous](  "Example: Previous (Sub-) Section") | [Top](  "Example: Top of Document") | <a id="location" title="Location: Here">Document Location</a> | [Bottom](  "Example: End of Document") | [Next](  "Example: Next (Sub-)Section")
+***
 
 ***
 >  REMOVE BEFORE SUBMIT: Reviewed: 2023-10-19
@@ -638,14 +651,14 @@ Zube.io was chosen as
 #### 6.7.3 Format
 
 - **Main Elements**
-	- Feature Short Descriptor, i.e a Title
+	- Feature Short Descriptor, i.e. a Title
 	- Feature Benefit: Outline of key affordance / dis-benefit
 	- User Acceptance Criteria <sup>1</sup>: Outline of the key quality point or completion state of the feature
  
 - **Structure**
 > **FEATURE**:                 `<short title>`    
 > **BENEFIT**:                  `<benefit of feature>` |  `<value of feature>`
-> **ACCEPTANCE **<sup>1</sup>:  `<uac>` | `<criteria>`
+> **ACCEPTANCE** <sup>1</sup>:      `<uac>` | `<criteria>`
 
 ***
 
@@ -660,7 +673,8 @@ Zube.io was chosen as
 		- ... _are short requirements/requests_ ... from end user
 		-  ... _are improvements/enhancements arsing_ ... from end user's concerns.
 	- also `Enabler Tasks` 
-		- that support the work of completing a `Feature`
+		- that support the work of completing a `Feature`.
+		- usually Technology Choices or Infrastructural Choices enablement (i.e. ADR etc).
 - A `User Story` should:
 	- are units of effort that teams can usually complete within a single sprint.
 	- describe a need that can be satisfied by introducing a new feature.

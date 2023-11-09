@@ -28,6 +28,7 @@ import logging
 
 from django.core.mail import BadHeaderError
 
+
 loggey = logging.getLogger(__name__)
 
 
@@ -42,11 +43,11 @@ def log_views_request(request, label=None):
     """
     # pylint: disable=unused-variable
     # pylint: disable=unused-variable
-    lite_extra = {'request':request,
-                  'label':label,
-                  'user':request.user,
-                  'method':request.method,
-                  'path':request.path,
+    lite_extra = {'request': request,
+                  'label': label,
+                  'user': request.user,
+                  'method': request.method,
+                  'path': request.path,
                   }
     # Info: View INFO: <WSGIRequest: POST '/'> (23-09-17)
     # loggey.info("DnD INFO: View Request: %s",
@@ -82,12 +83,12 @@ def log_views_response(response, label=None, desc=None):
     :rtype: None
     """
     # Logging Key: Params
-    response_extra = {'response':response,
-                      'label':label,
-                      'description':desc,
-                      'context':response.context_data,
-                      'content_type':response['Content-Type'],
-                      'status':response.status_code}
+    response_extra = {'response': response,
+                      'label': label,
+                      'description': desc,
+                      'context': response.context_data,
+                      'content_type': response['Content-Type'],
+                      'status': response.status_code}
     options = LoggerOptions(kind='django', on=True, off=False,
                             detail=response_extra)
     # Get the 'django' logger
@@ -237,3 +238,66 @@ def debug_response(message, obj, logger_options=None):
                  exc_info=logger_options.on,
                  stack_info=logger_options.off,
                  extra=logger_options.detail)
+
+
+class IgnoreFilter(logging.Filter):
+    """
+    The IgnoreFilter class is a logging filter that can be used to ignore
+     log messages that contain a specific string.
+
+    :args:
+        ignore_string (str): The string to ignore in log messages.
+
+    """
+    def __init__(self, ignore_string):
+        """
+        Constructor method for IgnoreFilter class.
+
+        :param ignore_string: The string to ignore in log messages.
+        :type ignore_string: str
+
+        """
+        super().__init__()
+        self.ignore_string = ignore_string
+
+    def filter(self, record):
+        """
+        :param record: The log record to be filtered.
+        :type record: logging.LogRecord
+        :return: True if the log record should be included,
+                False if it should be ignored.
+        :rtype: bool
+        """
+        return self.ignore_string not in record.getMessage()
+
+
+class MiddlewareFilter(logging.Filter):
+    """
+    The IgnoreFilter class is a logging filter that can be used to ignore
+     log messages that contain a specific string.
+
+    :args:
+        ignore_string (str): The string to ignore in log messages.
+
+    """
+
+    def __init__(self, exclude_string):
+        """
+        Constructor method for MiddlewareFilter class.
+
+        :param ignore_string: The string to ignore in log messages.
+        :type ignore_string: str
+
+        """
+        super().__init__()
+        self.exclude_string = exclude_string
+
+    def filter(self, record):
+        """
+        :param record: The log record to be filtered.
+        :type record: logging.LogRecord
+        :return: True if the log record should be included,
+                False if it should be ignored.
+        :rtype: bool
+        """
+        return self.exclude_string not in record.getMessage()

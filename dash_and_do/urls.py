@@ -21,11 +21,6 @@ Changelog:
 
 #  Copyright (c) 2023.
 
-from django.contrib import admin
-from django.conf import settings
-from django.urls import include
-from django.urls import path
-
 # ================== URL Patterns ==================
 # Changed 2023-08-15
 # added: URL + includes for DEV when Admin enabled
@@ -45,21 +40,21 @@ from django.urls import path
 # Changed 2023-08-24:
 # added: SiteMap in Comments as a Planner
 # added: Core index forms to kore.urls
-
 from django.conf import settings
-from django.urls import include, path
 from django.contrib import admin
+from django.urls import include
+from django.urls import path
 
 urlpatterns = [] # Base variable defintion
 
 if settings.DEBUG:
-    import debug_toolbar
+    # import debug_toolbar
     urlpatterns = [
-        path('__debug__/', include(debug_toolbar.urls)),
     ]
 
 urlpatterns += [
-    path('admin/', admin.site.urls),
+    # path('__debug__/', include(debug_toolbar.urls)),
+    # path('admin/', admin.site.urls),
     path('', include('apps.kore.urls', namespace='kore')),
     path('', include('apps.users.urls', namespace='users')),
     path('accounts/', include('allauth.urls')),

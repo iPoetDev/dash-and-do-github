@@ -1,37 +1,141 @@
 #!/user/bin/env python3
-"""
-    @File: <filename>.py
-    @Version: 0.3.0 to 0.3.0.?
-    @Desc: apps | <app> |  <module>
-    @Author: Charles Fowler
-    @Copyright: 2023
-    @Date Created: 23/09/?
-    @Date Modified: 23/09/??
-    @Python Version: 3.11.04
-    @Django Version: 4.2.3/.04/.05
-    @Notes / Ideas v Implement:
-        - .
-    @Changelog:
-    - Added:
-        - added: Created initial file: 23/09/??:
-    - Updated:
-        - updated:
-    @Plan:
-        - TODO:
-        - FIXME:
-        - CHECK:
+"""@File: <filename>.py
+@Version: 0.3.0 to 0.3.0.?
+@Desc: apps | <app> |  <module>
+@Author: Charles Fowler
+@Copyright: 2023
+@Date Created: 23/09/?
+@Date Modified: 23/09/??
+@Python Version: 3.11.04
+@Django Version: 4.2.3/.04/.05
+@Notes / Ideas v Implement:
+- .
+@Changelog:
+- Added:
+- added: Created initial file: 23/09/??:
+- Updated:
+- updated:
+@Plan:
+- TODO:
+- FIXME:
+- CHECK:
 """
 import logging
+
+from dash_and_do.utils import get_date
+
 # from datetime import datetime
 from dash_and_do.utils import get_error_detail
-from dash_and_do.utils import get_date
 
 logger = logging.getLogger(__name__)
 
 
+class RequestLoggingMiddleware:
+    """
+    Initialize the RequestLoggingMiddleware class.
+
+
+    """
+    def __init__(self, get_response):
+        """
+        Initialize the RequestLoggingMiddleware class.
+
+        :param get_response: A callable to get the response for the request.
+        :type get_response: callable
+        """
+        self.get_response = get_response
+        self.requestlogger = logging.getLogger('django.request')
+
+    def __call__(self, request):
+        """ Logs and Captures all the request parameters
+
+       Do note, sensitive data such as user's IP address, authorization headers
+        etc are contained in the headers as well as meta. Ensure that your
+        production logging does not cause privacy violations or data exposure.
+
+        1) Deployment: Remove prior to deployment or only show if
+         a) the DEBUG is true and
+         b) the internal IPS is local 127.
+
+        Hooks django.request loggers
+        And handles the
+        1) request headers
+        2) request meta
+        3) request GET
+        4) request POST
+
+        :param request: The incoming request object.
+        :type request: django.http.HttpRequest
+        :return: The HTTP response object.
+        :rtype: django.http.HttpResponse
+        """
+        # Headers
+        self.requestlogger.debug('Request Headers:'
+                                 f' {self.request_headers(request)}')
+        # Meta
+        # self.requestlogger.debug('Request Meta:  '
+        #                          f'{self.request_meta(request)}')
+        self.requestlogger.debug(f'=========================================')
+        # Get
+        self.requestlogger.debug(f'Request GET: {self.request_get(request) if
+                                    not None else 'No GET Data'}')
+        self.requestlogger.debug(f'=========================================')
+        # Post
+        self.requestlogger.debug(f'Request POST: {self.request_post(request) if
+                                             not None else 'No POST Data'}')
+        self.requestlogger.debug(f'=========================================')
+        self.requestlogger.debug(f'Request Details"'
+                                 f'{self.request_details(request)}')
+        response = self.get_response(request)
+        return response
+
+    def request_headers(self, request):
+        sorted_headers = dict(
+            sorted(request.headers.items(), key=lambda x: x[0].lower()))
+        return sorted_headers
+
+    # noinspection PyMethodMayBeStatic
+    def request_meta(self, request):
+        sorted_meta = dict(
+            sorted(request.META.items(), key=lambda x: x[0].lower()))
+        return sorted_meta
+
+    # noinspection PyMethodMayBeStatic
+    def request_post(self, request):
+        if request.method == 'POST':
+            sorted_data = dict(sorted(request.POST.items(),
+                                      key=lambda x: x[0].lower()))
+            return sorted_data
+        else:
+            return None
+
+    # noinspection PyMethodMayBeStatic
+    def request_get(self, request):
+        if request.method == 'GET':
+            sorted_data = dict(sorted(request.GET.items(),
+                                      key=lambda x: x[0].lower()))
+            return sorted_data
+        else:
+            return None
+
+    def request_details(self, request):
+        """"""
+        data = ''
+        if request.method == 'GET':
+            data = f'GET: HOST: {request.get_host()}\n'
+            data = f'GET: PATH INFO: {request.get_full_path_info()}\n'
+
+        if request.method == 'POST':
+            data = f'POST: HOST: {request.get_host()}\n'
+            data = f'POST: PATH INFO: {request.get_full_path_info()}\n'
+
+        return data
+
+
 class DashLoggingMiddleware:
     """Middleware class to log requests and responses in a Django
-    application."""
+    application.
+    """
 
     def __init__(self, get_response):
         self.get_response = get_response
@@ -174,3 +278,42 @@ class DashLoggingMiddleware:
                            f"method: {str(e)}")
             logger.error(err_message, exc_info=True)
             return "An error occurred while building the response string."
+
+
+class SessionCSRFLoggingMiddleware:
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        """:param request: The incoming request object.
+        :type request: HttpRequest
+        :return: The response generated by the downstream middleware.
+        :rtype: HttpResponse
+
+        This method is the entry point for the SessionCSRFLoggingMiddleware.
+        It is invoked when a request is made to the server.
+        It logs
+        - the session data,
+        - the CSRF cookie and token, and
+        then passes the request to the next middleware in the stack.
+        The response generated by the downstream middleware is then returned.
+
+        Example usage:
+
+        middleware = SessionCSRFLoggingMiddleware()
+        response = middleware(request)
+        """
+        session_data = request.session
+        print(session_data)  # or use logging methods
+        # csrf_cookie = request.META.get('CSRF_COOKIE', '')
+        # if csrf_cookie:
+        #     print('CSRF_COOKIE: ' + csrf_cookie)
+
+        csrf_token = request.META.get('X-Csrftoken', '')
+        if csrf_token:
+            print(csrf_token)  # or use logging methods
+
+        response = self.get_response(request)
+
+        return response

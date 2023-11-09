@@ -32,7 +32,7 @@ fix-only = true
 show-fixes = true
 show-source = true
 #fix = true
-format = "grouped"
+#format = "grouped"
 respect-gitignore = true
 # Tags
 task-tags = ["TODO", "FIXME", "todo", "fixme", "CHECK", "check", "note", "added", "update", "noted"]

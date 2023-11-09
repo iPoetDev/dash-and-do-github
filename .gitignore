@@ -791,7 +791,103 @@ package-lock.json
 /scripts/Django Print Active Settings.run.xml
 /scripts/Django Shell+.run.xml
 /scripts/Runserver Services.run.xml
-/apps/users/templates/users/account/__signup.html
+/apps/users/templates/users/uaccount/__signup.html
 /apps/users/userview/__init__.py
 /apps/users/userview/dasholdviews.py
 /apps/users/tests-ai-gen/tests_dash_signup_view.py
+/.chats/
+/.obsidian/
+/.ruff_cache/
+/apps/users/dash-and-do-github-archive.lnk
+/make.bat
+/Makefile
+/serve.py
+/table-export-001.csv
+/dash-and-do-github-archive.lnk
+/codeLineStack.xml
+/.run/Change PWD.run.xml
+/.run/Check.run.xml
+/.run/Check Database Default Local.run.xml
+/.run/Check Deploy.run.xml
+/.run/Chrome_8003.run.xml
+/.run/DBShell.run.xml
+/.run/DJ Web Test_ Dash & Do.run.xml
+/.run/DJ Web_ Dash & Do.run.xml
+/.run/DJ Web_ Dash & Do - JS Debug.run.xml
+/.run/Edge_8004.run.xml
+/.run/Heroku Login.run.xml
+/.run/Proposector Summary.run.xml
+/.run/Propspector Full.run.xml
+/.run/Ruff Check.run.xml
+/.run/Ruff Check App Users.run.xml
+/.run/Ruff Check Watch All.run.xml
+/.run/run.run.xml
+/.run/RunServer+ _ 8009.run.xml
+/.run/Runserver_8010.run.xml
+/.run/Runserver_8010 Console.run.xml
+/.run/Runserver_8010 Terminal.run.xml
+/.run/Shell_ DJ Python .run.xml
+/.run/TestServer Fixture.run.xml
+/.run/Validate Templates (1).run.xml
+/.run/Validate Templates Break.run.xml
+/source/conf.py
+/source/index.rst
+/docs/issues/admin session 500 index/2023-10-31 18_33_00-Site administration _ Django site admin and 2 more pages - Profile 1 - Microsoft.png
+/docs/issues/admin session 500 index/2023-10-31 18_35_31-Home_ Dashboard and Do GitHub Manager and 17 more pages - Personal - Microsoft​ .png
+/docs/issues/admin session 500 index/2023-10-31 19_02_48-DevTools - 127.0.0.1_8010_.png
+/docs/issues/admin session 500 index/2023-10-31 19_03_27-DevTools - 127.0.0.1_8010_.png
+/docs/issues/admin session 500 index/2023-10-31 19_05_29-.png
+/docs/issues/admin session 500 index/2023-10-31 19_06_29-DevTools - 127.0.0.1_8010_.png
+/docs/issues/admin session 500 index/2023-10-31 19_06_57-DevTools - 127.0.0.1_8010_.png
+/docs/issues/admin session 500 index/iPython.md
+/docs/issues/admin session 500 index/Untitled.canvas
+/docs/issues/dashloginview request none/2023-10-29 18_00_49-dash-and-do-github [epic-kore] – users_views.py.png
+/docs/issues/dashloginview request none/2023-10-29 18_17_17-DashLoginView - Request Logging  - Authentication.png
+/docs/issues/dashloginview request none/2023-10-29 18_17_17-DashLoginView - Stack Trace - Authentication.png
+/docs/issues/dashloginview request none/2023-10-29 18_17_17-DashLoginView - Stack Trace 1 - Authentication.png
+/docs/issues/dashloginview request none/2023-10-29 18_17_17-DashLoginView - Stack Trace 2 - Authentication.png
+/docs/issues/dashloginview request none/2023-10-29 18_17_17-DashLoginView - Stack Trace 3 - Authentication.png
+/docs/issues/dashloginview request none/2023-10-29 18_17_17-DashLoginView - Stack Trace 4 - Authentication.png
+/docs/issues/htmx-csrf/403 FORBIDDEN.md
+/docs/issues/htmx-csrf/403 Forbidden and a Valid CSRF - SignupView - Dispatch.png
+/docs/issues/htmx-csrf/403 Forbidden and a Valid CSRF -  Look in 200 OK Cookie warning Domain.png
+/docs/issues/htmx-csrf/403 Forbidden and a Valid CSRF htmx configRequest.png
+/docs/issues/htmx-csrf/403 Forbidden and a Valid CSRF HTMX Request.png
+/docs/issues/htmx-csrf/403 Forbidden and a Valid CSRF HTMX Request - CSRF Failure View with annotations.png
+/docs/issues/htmx-csrf/403 Forbidden and a Valid CSRF HTMX Request - Template HTML.png
+/docs/issues/htmx-csrf/403 Forbidden and a Valid CSRF HTMX Request  - Payload.png
+/docs/issues/htmx-csrf/403 Forbidden and a Valid CSRF HTMX XHR DevTools Network#.png
+/docs/issues/htmx-csrf/403 Issues - Settings - Cookies.png
+/docs/issues/htmx-csrf/403 Issues - Settings - Security CORS.png
+/docs/issues/htmx-csrf/403 Issues - Settings - Sessions.png
+/docs/issues/htmx-csrf/2023-10-25 18_12_19-Home_ Dashboard and Do GitHub Manager and 7 more pages - Profile 1 - Microsoft​ .png
+/docs/issues/htmx-csrf/Cookie Not Set.png
+/docs/issues/htmx-csrf/CSRF Checklist Notes.md
+/docs/issues/htmx-csrf/CSRF 403 Issue.canvas
+/docs/issues/htmx-csrf/CSRF-FlowDiagram-mermaid-2023-10-27-100819.png
+/docs/issues/htmx-csrf/Pasted image 20231019202706.png
+/docs/issues/htmx-csrf/Pasted image 20231019202732.png
+/docs/issues/htmx-csrf/Pasted image 20231026104745.png
+/docs/issues/htmx-csrf/Pasted image 20231026162334.png
+/docs/issues/htmx-csrf/Pasted image 20231027121901.png
+/docs/issues/htmx-csrf/Solution Options.md
+/docs/issues/Login/2023-11-05 19_03_54-Services - dash-and-do-github [epic-kore] Index Normal Logging - Stack Info.png
+/docs/issues/Login/2023-11-05 19_03_54-Services - dash-and-do-github [epic-kore] Request- Login Form HTMX.png
+/docs/issues/Login/2023-11-05 20_47_53-Exception Stack - dash-and-do-github - AttributeError _SixMetaPathImporter missing __path__.png
+/docs/issues/Login/2023-11-05 20_47_53-Exception Stack - dash-and-do-github - Login Flow.png
+/docs/issues/Login/2023-11-05 20_47_53-Exception Stack - dash-and-do-github - Mermaid - Login Flow.png
+/docs/issues/Login/2023-11-05 20_47_53-Exception Stack - dash-and-do-github - View -- Post -- Form -- Bound Error.png
+/docs/issues/Login/2023-11-05 21_37_28-Exception Stack - dash-and-do-github - Login Flow Logging.png
+/docs/issues/Login/Authentication.md
+/docs/issues/Login/Custom Authentication Backend - Options.md
+/docs/issues/Login/Exception Stack.md
+/docs/issues/Login/Issue Sequence Diagram.md
+/docs/issues/Login/Login Flow.canvas
+/docs/issues/Login/Login Flow.md
+/docs/issues/Login/Login Not Authenticating.md
+/docs/readme/Code/Logging,md
+/docs/issues/dashloginview request none/2023-10-29 18_00_49-dash-and-do-github [epic-kore] – users_views.py.png
+/docs/issues/Login/2023-11-05 19_03_54-Services - dash-and-do-github [epic-kore] Index Normal Logging - Stack Info.png
+/docs/issues/Login/2023-11-05 19_03_54-Services - dash-and-do-github [epic-kore] Request- Login Form HTMX.png
+/docs/issues/
+/dash_and_do/dash-and-do-github-archive.lnk

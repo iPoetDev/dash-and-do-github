@@ -33,10 +33,7 @@ Pro: most freedome, cons: most work
 from django.contrib.auth.models import BaseUserManager
 from django.utils import timezone
 
-# https://medium.com/
-# @ksarthak4ever/django-custom-user-model-allauth-for(-oauth-20)c84888c3184
-# OopCompanion:suppressRename
-
+# https://medium.com/@ksarthak4ever/django-custom-user-model-allauth-for(-oauth-20)c84888c3184
 
 class DashUserManager(BaseUserManager):
     """Credit:
@@ -54,7 +51,9 @@ class DashUserManager(BaseUserManager):
 
     def _create_user(self, email, password, is_staff, is_superuser,
                      **extra_fields):
-        """:param email: The email address of the user.
+        """ Private method used for creating users, staffs and superusers
+
+        :param email: The email address of the user.
         :param password: The password for the user.
         :param is_staff: Boolean indicating if the user is a staff member.
         :param is_superuser: Boolean indicating if the user is a superuser.
@@ -97,7 +96,23 @@ class DashUserManager(BaseUserManager):
             creating the user.
         :return: The created user.
         """
-        return self._create_user(email, password, False, False, **extra_fields)
+        return self._create_user(email, password,
+                                 False, False,
+                                 **extra_fields)
+
+    # noinspection PyUnusedFunction
+    def create_staff(self, email, password, **extra_fields):
+        """Create a staff member with the given email and password.
+
+        :param email: The email of the staff user.
+        :param password: The password for the user.
+        :param extra_fields: Additional fields to be included when
+            creating the user.
+        :return: The created staff user.
+        """
+        return self._create_user(email, password,
+                                 True, False,
+                                 **extra_fields)
 
     def create_superuser(self, email, password, **extra_fields):
         """Create a superuser with the given parameters.
@@ -107,6 +122,6 @@ class DashUserManager(BaseUserManager):
         :param extra_fields: Extra fields for the superuser model.
         :return: The created superuser.
         """
-        user = self._create_user(email, password, True, True, **extra_fields)
-        user.save(using=self._db)
-        return user
+        return self._create_user(email, password,
+                                 True, True,
+                                 **extra_fields)

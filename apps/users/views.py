@@ -23,6 +23,8 @@
     - DONE: PyLint 2023/09/30
     - IGNORE: PyLint R0901,R0903
 """
+import logging
+
 # OopCompanion:suppressRename
 # AllAuth Libraries
 from allauth.account.views import ConfirmEmailView
@@ -30,54 +32,69 @@ from allauth.account.views import LoginView
 from allauth.account.views import LogoutView
 from allauth.account.views import SignupView
 from allauth.core.exceptions import ImmediateHttpResponse
+from allauth.account.utils import passthrough_next_redirect_url
 from dash_and_do.htmx import hx_redirect_success
-
-# Local Libraries: Dash and Do
-from dash_and_do.htmx import is_htmx
+from dash_and_do.settings import DEBUG
 from dash_and_do.settings import LOGIN_REDIRECT_URL
 from dash_and_do.settings import LOGOUT_REDIRECT_URL
+
+# from dash_and_do.settings import SESSION_COOKIE_AGE as DEFAULT_SESSION_AGE
+# Local Libraries: Dash and Do
+from dash_and_do.utils import get_date
 
 # Django Libraries
 from django.contrib import messages
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
+from django.template.response import TemplateResponse
+# from django.middleware.csrf import get_token
 from django.shortcuts import render
 from django.template.loader import render_to_string
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+# from django.utils.decorators import method_decorator
+# from django.views.decorators.csrf import ensure_csrf_cookie
 
 # Local Libraries: Users
 from apps.users.debugg import DebugAdapter as Debugg
-from apps.users.helpers import get_last_status
-from apps.users.helpers import redirect_response
-from apps.users.sessions import DashUserSession
 
 # Local Libraries
 from apps.users.forms import DashLoginForm
 from apps.users.forms import DashSignupForm
+from apps.users.helpers import get_last_status
+from apps.users.sessions import DashUserSession
+from apps.users.values import SiteContext
+
 
 debugr = Debugg()
 
 
 class FormViews:  # pylint: disable=too-few-public-methods
     """Form Values: Strings."""
-
+    DEFAULT_FORM_KEY = 'form'
     INDEX_REVERSE = 'kore:index'
     VERIFY_REVERSE = 'kore:verify'
     CONFIRM_REVERSE = 'kore:confirm'
     TOGGLE_FRIENDLY = False
     TOGGLE_ERROR = True
 
+
     class Login:  # pylint: disable=too-few-public-methods
         """Constants Class for Login FormView."""
+        VIEWNAME = 'DashLoginView'
         CTXNAME = 'login_form'
-        TEMPLATE = 'users/account/login.html'
+        TEMPLATE = 'forms/form_login.html'
         PREFIX = 'current'
+        REMEMBER = 'remember'
+
 
     class Signup:  # pylint: disable=too-few-public-methods
         """Constants Class for Signup FormView."""
+        VIEWNAME = 'DashSignupView'
         CTXNAME = 'signup_form'
-        TEMPLATE = 'kore/verify.html'
-        SUCCESS_URL = 'kore/verify.html'
+        TEMPLATE = 'verify.html'
+        SIGNUP_KEY = 'signup_url'
+        SIGNUP_URL = 'users:account_signup'
+        SUCCESS_URL = 'verify.html'
         CONFIRM_URL = 'account_confirm_email.html'
         PREXIX_KEY = 'prefix'
         PREFIX_UNBOUND = 'new'
@@ -87,17 +104,20 @@ class FormViews:  # pylint: disable=too-few-public-methods
         UNEXPECTED_FRIENDLY = ('An unexpected issue occurred during '
                                'registration. Please try again later.')
 
+
+    # noinspection PyUnusedClass
     class Confirm:  # pylint: disable=too-few-public-methods
         """Constants Class for Signup FormView."""
         CTXNAME = 'confirm_view'
-        TEMPLATE = 'kore/confirm.html'
+        TEMPLATE = 'confirm.html'
         PREFIX = 'confirm'
         EMAIL_CTXKEY = 'email'
         IS_CTXCONFIRM = 'can_confirm'
 
+
     class LogoutView:  # pylint: disable=too-few-public-methods
         """Constants Class for LogoutView."""
-        TEMPLATE = 'users/account/logout.html'
+        TEMPLATE = 'account/logout.html'
 
 
 class SessionVals:
@@ -117,14 +137,22 @@ class SessionVals:
     NOTCONFIRM = False
     VERIFIED = True
     NOTVERIFIED = False
+    # If "remember" is not set, expire the session
+    # hen the user closes their browser.
+    EXPIRE_NOT_SET = -1
+    REMEMBER = 60 * 60 * 24 * 7 * 2
+    BROWSER_CLOSE = 0
 
 
-class HTTP:  # pylint: disable=too-few-public-methods
+# noinspection PyUnusedClass
+class HTTP:  # pylint: disable=too-few-public-methods # noinspection
     """HTTP Headers: Strings."""
 
     REDIRECTS = True
     REDIRECTS_OFF = False
 
+
+    # noinspection PyUnusedClass
     class Headers:  # pylint: disable=too-few-public-methods
         """HTTP Headers: Strings."""
         HX_REDIRECT = 'HX-Redirect'
@@ -132,11 +160,30 @@ class HTTP:  # pylint: disable=too-few-public-methods
         HX_CONTENT_TYPE = 'Content-Type'
         HX_CONTENT_FORMAT = 'text/html'
 
-    class Methods:
+
+    # noinspection PyUnusedClass
+    class Methods:  # noinspection
         """HTTP Methods: Strings."""
         GET = 'GET'
         POST = 'POST'
         PUT = 'PUT'
+
+
+logger = logging.getLogger(__name__)
+sitecontext = SiteContext()
+
+
+def log_template(view, request, context, template,
+                 exec=False, trace=True, level=1):
+    """Log Template."""
+    logger = logging.getLogger('django.template')
+    logger.debug(view,
+                 exc_info=exec,
+                 stack_info=trace,
+                 stacklevel=level,
+                 extra={'request': request,
+                        'template': template,
+                        'context': context})
 
 
 class DashSignupView(SignupView):
@@ -186,6 +233,19 @@ class DashSignupView(SignupView):
     success_url = reverse_lazy(FormViews.VERIFY_REVERSE)
     form_class = DashSignupForm  # Custom AllAuth Signup Form
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.logger = None
+        self.setlog('django.request')
+
+    def get(self, request, *args, **kwargs):
+        signup = self.form_class()  # signup is the labeled form instance
+        self.log(FormViews.Signup.VIEWNAME, self.request,
+                 signup, 'GET')
+        return render(request,
+                      self.template_name,
+                      {'signup_form': signup})
+
     def post(self, request, *args, **kwargs):
         """Post method for the SignupView class.
 
@@ -194,16 +254,18 @@ class DashSignupView(SignupView):
         :param kwargs: Additional keyword arguments.
         :return: An HTTP response | HTTP Redirect object(s).
         """
+        # Validate the form.
         super().post(request, *args, **kwargs)
-        form = DashSignupForm(request.POST)
+        signup = self.get_form()  # signup is the labeled form instance
         # Check if form is valid, redirect to success_url
-        if form.is_valid():
-            # Process the data, create user, etc.
+        if signup.is_valid():
+            # Redirect on valid.
             return HttpResponseRedirect(self.get_success_url())
-
-        # If form is not valid, re-render the form with error messages
-        signup_context = {FormViews.Signup.CTXNAME:form}
-        return render(request, FormViews.Signup.TEMPLATE, signup_context)
+        else:
+            # If form is not valid, re-render the form with error messages
+            signup_context = {FormViews.Signup.CTXNAME: signup}
+            return TemplateResponse(request, FormViews.Signup.TEMPLATE,
+                                    signup_context, content_type='text/html')
 
     def form_valid(self, form):
         """If the form is valid, redirect to the supplied URL."""
@@ -212,24 +274,19 @@ class DashSignupView(SignupView):
         # ??
         # Call the parent class's method to handle the saving and redirection
         # logic
+        # Call the parent class's method to handle the saving and redirection
+        # logic
         response = super().form_valid(form)
-        # You can also add any logic that you want to execute after the user
-        # instance is saved
-        # Link Request to custom session control: 1) Valid Email, 2) Flags
-        session_data = DashUserSession(self.request)
-        session_data.set_email(form.cleaned_data['email'])
-        session_data.set_verification_flags(SessionVals.VALID)
         # For example, if you want to send a custom success message:
         messages.success(self.request, FormViews.Signup.SUCCESS_MESSAGE)
-        return hx_redirect_success(self.request,
-                                   response,
-                                   self.success_url)
+
+        return hx_redirect_success(self.request, response, self.success_url)
 
     def form_invalid(self, form):
         """If the form is invalid, return the form with error messages to
-        HTMX."""
-        signup_context = {FormViews.Signup.CTXNAME:
-                              form}
+        HTMX.
+        """
+        signup_context = {FormViews.Signup.CTXNAME: form}
         form_html = render_to_string(self.template_name,
                                      signup_context,
                                      request=self.request)
@@ -259,101 +316,214 @@ class DashSignupView(SignupView):
         # Redirect the user to the verification page
         return reverse_lazy(FormViews.VERIFY_REVERSE)
 
+    def setlog(self, loggr, debugg=DEBUG):
+        """ Sets the logger for the class
+
+        :param loggr: The logger to be used for logging.
+        :param debugg: Django's DEBUG indicating whether to log or not
+        based on the DEBUG setting.
+        """
+        if debugg:
+            self.logger = logging.getLogger(loggr)
+        else:
+            self.logger = None
+
+    def log(self, view, request, form=None, method=None):
+        """ Logs the request and form details for debugging purposes.
+
+        :param view: The name of the view.
+        :type view: str
+        :param request: The request object received from the client.
+        :type request: django.http.HttpRequest
+        :param form: The form object containing user login information.
+        :type form: apps.users.forms.DashLoginForm
+        :param method: The HTTP method used for the request.
+        :type method: str
+        :return: None
+        :rtype: NoneType
+
+        This method logs the request and form details for debugging purposes
+         in the DashLoginView class.
+         It uses the requestlogger to log the POST data and form information.
+         If the requestlogger is not provided, no logging will occur.
+
+        Example usage:
+            view = DashLoginView()
+            view.log(request, form)
+        """
+        if self.logger is not None:  # i.e. Only on DEBUG
+            if method is not None:
+                self.logger.debug(f'{view}: {method}: {request.POST}')
+            if form is not None:
+                self.logger.debug(f'{view}: {method}: form: {form}')
+
 
 class DashLoginView(LoginView):
-    """DashLoginView from Django AllAuth LoginView.
-
-    :param template_name: The name of the template to be rendered.
-    :param success_url: The URL to redirect to upon successful response.
-    :param form_class: The form class for rendering the login form.
-    :param redirect_field_name: The name of the redirect field.
-    :param extra_context: Additional context data to be passed to the
-        template.
-    :param initial: Initial data for the form.
-    """
-
-    template_name = FormViews.Login.TEMPLATE  # specify your own template
-    success_url = LOGIN_REDIRECT_URL  # Heads back to index
+    template_name = FormViews.Login.TEMPLATE
+    success_url = reverse_lazy(FormViews.INDEX_REVERSE)
     form_class = DashLoginForm
 
-    def get(self, request, *args, **kwargs):
-        """Checks and directs user to a private index if authenticated.
-        Retrieve the login view.
-
-        :param request: The HTTP request object.
-        :param args: Additional positional arguments.
-        :param kwargs: Additional keyword arguments.
-        :return: An HTTP response object.
-        """
-        if request.user.is_authenticated:
-            return HttpResponseRedirect(LOGIN_REDIRECT_URL)
-        return super().get(request, *args, **kwargs)
-
-    def get_form(self, form_class=None):
-        """:param form_class: (optional)
-            The form class for rendering the login form.
-            If not specified, the default form class for the view will be used.
-        :return: The instantiated form object
-            with the necessary form arguments and prefix.
-
-        This method is responsible for returning the login form to be rendered
-        in the view. The `form_class` parameter is optional, and if not
-        specified, the default form class for the view will be used.
-        The form object is instantiated with the necessary form arguments
-        and prefix for proper rendering.
-
-        Example usage:
-
-            form = self.get_form()
-            # Use the retrieved form object for further processing
-        """
-        if form_class is None:
-            form_class = self.get_form_class()
-        return form_class(**self.get_form_kwargs(),
-                          prefix=FormViews.Login.PREFIX)
+    # - TODO: Redirect user based on their role after successful login
+    #     Is is staff: redirect to admin dashboard, however research suggest
+    #     that AllAuth does not handle admin logins, and that it is best to
+    #     use a redirect to its login page, so assessor has two accesses
+    #     1) Correct use of a superuser (admin only, no reuse)
+    #     2) Creates a normal user to verify for functionality.
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.logger = None
+        self.setlog('django.request')
 
     def get_context_data(self, **kwargs):
-        """Gets and sets a context form variable for the login form. :param
-        kwargs: additional keyword arguments :return: dictionary with context
-        data.
+        """ Update the context data: logn form, signup url
 
-        This method adds additional context data to the view.
-        It returns a dictionary with the updated context data.
-        Assigned the signup form to the CTX login_form variable.
-
-        Example usage:
-            context = self.get_context_data(foo='bar')
-            # context: {'foo': 'bar', ...}
-
-        Note: This method is a part of the DashLoginView class.
+        :param kwargs: Additional keyword arguments
+        :type kwargs: dict
+        :return: The updated context data
+        :rtype: dict
         """
+        # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
-        context[FormViews.Login.CTXNAME] = self.get_form()
+        # Check if 'form' key exists in the context
+        if FormViews.DEFAULT_FORM_KEY in context:  # 'form'
+            # Map 'login_form' to the 'form' object
+            context[FormViews.Login.CTXNAME] = context[  # 'login_form'
+                FormViews.DEFAULT_FORM_KEY]  # 'form'
+            # Remove the default 'form' key safely from the context
+            context.pop(FormViews.DEFAULT_FORM_KEY, None)  # 'form'
+        # Update the signup_url in the context for Local App
+        context[FormViews.Signup.SIGNUP_KEY] = passthrough_next_redirect_url(
+            self.request,
+            reverse(FormViews.Signup.SIGNUP_URL),
+            self.redirect_field_name)
         return context
 
-    def form_valid(self, form):  # noqa ARG002
-        """Process the valid form data.
+    def get(self, request, *args, **kwargs):
+        login = self.form_class()  # signup is the labeled form instance
+        if DEBUG:
+            self.log(FormViews.Login.VIEWNAME,
+                     self.request,
+                     login,
+                     'GET')
+            log_template(FormViews.Login.VIEWNAME + ': GET',
+                         self.request,
+                         self.get_context_data(),
+                         self.template_name)
+        return render(self.request,
+                      self.template_name,
+                      {'login_form': login})
 
-        :param form: Form containing the data submitted by the user.
-        :return: An HTTP response redirecting to the success URL.
-            Validates the form data submitted by the user during the
-            login process. If the request is made via HX (Hypertext
-            Transfer Protocol), it redirects to the success URL using
-            the HX_REDIRECT header. Otherwise, it redirects to the
-            success URL using the HTTP_LOCATION header.
+    def post(self, request, *args, **kwargs):
+        login = self.get_form()  # form for login and introspection/logging
+        # Checks for valid login.
+        if login.is_valid():
+            remember_me = login.cleaned_data.get(FormViews.Login.REMEMBER)
+            if remember_me:
+                request.session.set_expiry(SessionVals.REMEMBER)  # 2 weeks
+            else:
+                request.session.set_expiry(SessionVals.BROWSER_CLOSE)  # 1 week
+        # Process the form as per the super request.
+        if DEBUG:
+            self.log(FormViews.Login.VIEWNAME,
+                     self.request,
+                     login,
+                     'POST')
+            log_template(FormViews.Login.VIEWNAME + ': POST',
+                         self.request,
+                         self.get_context_data(),
+                         self.template_name)
+        return super().post(request, *args, **kwargs)
+
+    # Supresses Unresolved attribute reference 'user' for class 'WSGIRequest'
+    # noinspection PyUnresolvedReferences
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        # Check if user is authenticated (which indicates active session)
+        if self.request.user.is_authenticated:
+            # When session is active: set configuration of the session here.
+            # For instance, you may want to set a value in the session:
+            # User tracking, session control, etc.
+            self.request.session['session_start_time'] = get_date()
+        else:
+            # Handle case when a session is not active.
+            # Possibly you may want to redirect to login page.
+            # Possibly reloading the index page `/` on invalid requests
+            return HttpResponseRedirect(LOGIN_REDIRECT_URL)
+        return response
+
+    # noinspection PyUnresolvedReferences
+    # - todo: Add custom logging here, if in scope
+    # - todo: add application clean up logic
+    def form_invalid(self, form):
+        if self.request.user.is_authenticated:
+            user_identifier = (self.request.user.username or
+                               self.request.user.email)
+            if user_identifier:
+                error_message = ('Invalid form submission by user: '
+                                 f'{user_identifier}')
+                if DEBUG:
+                    form.add_error(None, error_message)
+        return super().form_invalid(form)
+
+    def get_authenticated_redirect_url(self):
         """
-        context = self.get_context_data()
+        Returns the URL to redirect the user to after authentication.
 
-        if is_htmx(self.request):
-            return redirect_response(self.request,
-                                     self.template_name, context,
-                                     self.success_url,
-                                     HTTP.Headers.HX_REDIRECT)
+        :return: The URL to redirect the user to after authentication.
+        :rtype: str
+        """
+        # Checks, defensively, if the user is authenticated, and
+        #  checks if the redirect_field_name is set against
+        #   a APPROVED LIST OF URLS (like a lookup for all app urlss)
+        # Assume all input is malicious. i.e. self.redirect_field_name
+        # Use an "accept known good" input validation strategy,
+        # noinspection PyUnusedLocal
+        redirect_field_name = self.redirect_field_name
+        # then update the self.redirect_field_name to the new value, else,
+        # logs the user out and kills the current session.
+        authorised_redirect_url = super().get_authenticated_redirect_url()
+        return authorised_redirect_url
 
-        return redirect_response(self.request,
-                                 self.template_name, context,
-                                 self.success_url,
-                                 HTTP.Headers.HTTP_LOCATION)
+    def setlog(self, loggr, debugg=DEBUG):
+        """ Sets the logger for the class
+
+        :param loggr: The logger to be used for logging.
+        :param debugg: Django's DEBUG indicating whether to log or not
+        based on the DEBUG setting.
+        """
+        if debugg:
+            self.logger = logging.getLogger(loggr)
+        else:
+            self.logger = None
+
+    def log(self, view, request, form=None, method=None):
+        """
+
+        :param view: The name of the view.
+        :type view: str
+        :param request: The request object received from the client.
+        :type request: django.http.HttpRequest
+        :param form: The form object containing user login information.
+        :type form: apps.users.forms.DashLoginForm
+        :param method: The HTTP method used for the request.
+        :type method: str
+        :return: None
+        :rtype: NoneType
+
+        This method logs the request and form details for debugging purposes
+         in the DashLoginView class.
+         It uses the requestlogger to log the POST data and form information.
+         If the requestlogger is not provided, no logging will occur.
+
+        Example usage:
+            view = DashLoginView()
+            view.log(request, form)
+        """
+        if self.logger is not None:  # i.e. Only on DEBUG
+            if method is not None:
+                self.logger.debug(f'{view}: {method}: {request.POST}')
+            if form is not None:
+                self.logger.debug(f'{view}: {method}: form: {form}')
 
 
 class DashLogoutView(LogoutView):
@@ -401,6 +571,7 @@ class DashLogoutView(LogoutView):
                                 **kwargs)  # pylint: disable=W0246
         # Add your custom logic here
 
+    # noinspection PyUnusedFunction
     @staticmethod
     def get_next_redirect_url():
         """Get the redirect URL for the next page after logout.
@@ -414,7 +585,7 @@ class DashLogoutView(LogoutView):
 class DashConfirmEmailView(ConfirmEmailView):
     """Confirm Email View."""
     # template_name = FormViews.Confirm.TEMPLATE  # specify your own template
-    template_name = 'kore/confirm.html'
+    template_name = 'confirm.html'
 
     def get_redirect_url(self):
         """Redirect to 'verify.html' after successful email verification."""
@@ -428,20 +599,14 @@ class DashConfirmEmailView(ConfirmEmailView):
         """
         context = super().get_context_data(**kwargs)
         session_data = DashUserSession(self.request)
-        # Update the old session email data => confirm email if can_confirm
-        # Use the super's can_confirm bool to set the verification flags
-        # AllAuth.account.views.ConfirmEmailView line 432
-        if context[FormViews.Confirm.IS_CTXCONFIRM]:
-            session_data.set_email(context[FormViews.Confirm.EMAIL_CTXKEY])
-            # So True: Email is valid, confirm sent, and can_confirm: True
-            # Ti's over kill, and is tech debt: byt can_confirm is per view.
-            # While sessions are across viewa: for session control/history
-            session_data.set_verification_flags(SessionVals.VALID,
-                                                SessionVals.CONFIRMED,
-                                                SessionVals.VERIFIED)
-        else:
-            # So True: Email is valid, and confirm sent, but can_confirm: False
-            session_data.set_verification_flags(SessionVals.VALID,
-                                                SessionVals.CONFIRMED,
-                                                SessionVals.NOTVERIFIED)
+        #
+        site_ctx = sitecontext.context
+        confirm_ctx = sitecontext.confirm
+        #
+        context.update(
+            {
+                **site_ctx,
+                **confirm_ctx,
+            }
+        )
         return context

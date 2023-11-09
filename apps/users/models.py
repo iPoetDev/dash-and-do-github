@@ -20,9 +20,9 @@ Pro: most freedome, cons: most work
 @Changelog:
 - Added:
 - added: Created initial file: 23/09/?24
-- added: Added User Model: 23/09/?24
-- added: Added UserManager: 23/09/?24
-- Updated:
+- added: Added User Model: 23/09/24
+- added: Added UserManager: 23/09/24
+- Updated: User Model additional methods: 23/11/01
 - updated:
 @Plan:
 - TODO:
@@ -38,6 +38,7 @@ Pro: most freedome, cons: most work
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
+from django.utils import timezone
 
 from apps.users.managers import DashUserManager
 
@@ -85,7 +86,9 @@ class DashUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-    last_login = models.DateTimeField(null=True, blank=True)
+    last_login = models.DateTimeField(null=True,
+                                      blank=True,
+                                      default=timezone.now)
     date_joined = models.DateTimeField(auto_now_add=True)
 
     USERNAME_FIELD = 'email'
@@ -105,3 +108,46 @@ class DashUser(AbstractBaseUser, PermissionsMixin):
         """Return the string representation of the DashUser instance."""
         return f'{self.name} ({self.email})' \
             if self.name else self.email or 'No email'
+
+    def get_full_name(self):
+        """ Returns the full name (email) of the user.
+
+        :param self: DashUser: The instance of the `DashUser` class.
+        :return: The full name of the user.
+        :rtype: str
+        """
+        # The user is identified by their email address
+        return self.email
+
+    def get_short_name(self):
+        """ Return the short name (email) of the user.
+
+            :param self: DashUser: The instance of the `DashUser` class.
+            :return: The short name of the user.
+            :rtype: str
+        """
+        # The user is identified by their email address
+        return self.email
+
+    # noinspection PyUnusedFunction
+    def has_perm(self, perm, obj=None):
+        """Does the user have a specific permission?"""
+        # Simplest possible answer: Yes, always
+        return True
+
+    def has_module_perms(self, app_label):
+        """Does the user have permissions to view the app `app_label`?"""
+        # Simplest possible answer: Yes, always
+        return True
+
+    # noinspection PyUnusedFunction
+    @property
+    def is_a_staff(self):
+        """Is the user a member of staff?"""
+        return self.is_staff
+
+    # noinspection PyUnusedFunction
+    @property
+    def is_a_super(self):
+        """Is the user a admin member?"""
+        return self.is_superuser

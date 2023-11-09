@@ -34,8 +34,8 @@ app_name = 'users'  # pylint: disable=invalid-name
 
 urlpatterns = [
     path('login/', views.DashLoginView.as_view(), name='account_login'),
-    path('logout/', views.DashLogoutView.as_view(), name='account_logout'),
     path('signup/', views.DashSignupView.as_view(), name='account_signup'),
+    path('logout/', views.DashLogoutView.as_view(), name='account_logout'),
     path(
         'confirm-email/<str:key>/',
         views.DashConfirmEmailView.as_view(),

@@ -78,7 +78,8 @@ class DashSessions:
     def __getattr__(self, name):
         """Use Django's DjangoSessionStore method to manage session life cycle
         We create, read and delete by invoking save, load and delete method of
-        DjangoSessionStore."""
+        DjangoSessionStore.
+        """
         if name in ['save', 'create', 'load', 'delete']:
             return getattr(self._session_store, name)
         return None

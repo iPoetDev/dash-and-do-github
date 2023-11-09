@@ -122,8 +122,7 @@ class DebugAdapter:
 
     @staticmethod
     def print_cleandata(classname, cleandata, func='clean'):
-        """
-        :param classname: Name of the class where the method is called from.
+        """:param classname: Name of the class where the method is called from.
         :param cleandata: The data passed as a dictionary.
         :param func: Name of the method being called. Default: '__init__'.
         :return: None

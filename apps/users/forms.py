@@ -28,16 +28,16 @@
 
 # from allauth.account import forms as aa_forms
 # import allauth.account.forms as aa_forms
+import logging
 from allauth.account.forms import LoginForm
 from allauth.account.forms import PasswordField
 from allauth.account.forms import SetPasswordField
 from allauth.account.forms import SignupForm
 from django import forms
+from django.contrib.auth.models import AnonymousUser
 from django.utils.translation import gettext_lazy as _
-
-#
-from apps.users.helpers import set_remember_me_request as set_remember
-
+from dash_and_do.settings import DEBUG
+from apps.users.adapter import dash_adapter
 
 class FormVals:  # pylint: disable=too-few-public-methods
     """The `Forms` class.
@@ -46,6 +46,7 @@ class FormVals:  # pylint: disable=too-few-public-methods
     form fields and their properties.
     Inspired by 12 Factor App: https://12factor.net/config.
     """
+
 
     class Fields:  # pylint: disable=too-few-public-methods
         """The `Fields` class.
@@ -58,9 +59,18 @@ class FormVals:  # pylint: disable=too-few-public-methods
         MIN_LENGTH = 8
         STRIP = True
 
+
+        # noinspection PyUnusedClass
         class Attrs:
+            """ Attrs efines common attribute names used within the project.
+
+            :attrs: NAME (str): A constant attribute representing the name.
+            :attrs: ID (str): A constant attribute representing the ID.
+
+            """
             NAME = 'name'
             ID = 'id'
+
 
         class Email:  # pylint: disable=too-few-public-methods
             """The `Email` class.
@@ -93,7 +103,7 @@ class FormVals:  # pylint: disable=too-few-public-methods
                                 'whitespace.')
             ERROR_PATTERN = 'Invalid: Email must have <@domain.tld>'
             ERROR_UNIQUE = 'Invalid: Email already exists.'
-            ERROR_REQUIRED = 'Invalid: Email is required.'
+
 
         class Username:  # pylint: disable=too-few-public-methods
             """The `Username` class.
@@ -124,7 +134,7 @@ class FormVals:  # pylint: disable=too-few-public-methods
             ERROR_PATTERN = ('Invalid: Username must be a-z,'
                              ' A-Z, 0-9, _, +, -.')
             ERROR_UNIQUE = 'Invalid: Username already exists.'
-            ERROR_REQUIRED = 'Invalid: Username is required.'
+
 
         class Password:  # pylint: disable=too-few-public-methods
             """The `Password` class.
@@ -135,6 +145,7 @@ class FormVals:  # pylint: disable=too-few-public-methods
             LABEL = 'Password'
             NEW = 'New Password'
             CONFIRM = 'Confirm Password'
+            FIELD = 'password'
             FIELD_1 = 'password1'
             FIELD_2 = 'password2'
             TITLE = 'Enter a Valid Password'
@@ -169,6 +180,21 @@ class FormVals:  # pylint: disable=too-few-public-methods
                                 ' less than 50 characters.')
             ERROR_REQUIRED = 'Invalid: Passwords are required.'
 
+
+        class Remember:  # pylint: disable=too-few-public-methods
+            """The Remember class is a utility class that represents the
+            "Remember Me" feature attributes as strings in a login form.
+            """
+            LABEL = 'Remember'
+            TITLE = 'Remember Me for next login'
+            HTML_LABEL = 'remember'
+            DEFAULT = False
+            HELP_LABEL = 'Uncheck this box if to login on each visit.'
+            REQUIRED = False
+            VALUE = False
+            ANTI_TAMPER = False
+
+
     class Errors:
         """Error Dicts for Form Fields.
 
@@ -178,6 +204,7 @@ class FormVals:  # pylint: disable=too-few-public-methods
         messages for the password
         """
 
+        # noinspection PyUnusedFunction
         @property
         def email_error_messages(self):
             """Return the error messages for the email field in a dictformat.
@@ -185,15 +212,16 @@ class FormVals:  # pylint: disable=too-few-public-methods
             :return: a dict with the error messages for the email field
             """
             return {
-                'required':_(FormVals.Fields.Email.ERROR_REQUIRED),
-                'invalid':_(FormVals.Fields.Email.ERROR_INVALID),
-                'min_length':_(FormVals.Fields.Email.ERROR_MIN_LENGTH),
-                'max_length':_(FormVals.Fields.Email.ERROR_MAX_LENGTH),
-                'whitespace':_(FormVals.Fields.Email.ERROR_WHITESPACE),
-                'pattern':_(FormVals.Fields.Email.ERROR_PATTERN),
-                'unique':_(FormVals.Fields.Email.ERROR_UNIQUE),
+                'required': _(FormVals.Fields.Email.ERROR_REQUIRED),
+                'invalid': _(FormVals.Fields.Email.ERROR_INVALID),
+                'min_length': _(FormVals.Fields.Email.ERROR_MIN_LENGTH),
+                'max_length': _(FormVals.Fields.Email.ERROR_MAX_LENGTH),
+                'whitespace': _(FormVals.Fields.Email.ERROR_WHITESPACE),
+                'pattern': _(FormVals.Fields.Email.ERROR_PATTERN),
+                'unique': _(FormVals.Fields.Email.ERROR_UNIQUE),
             }
 
+        # noinspection PyUnusedFunction
         @property
         def username_error_messages(self):
             """Return the error messages for the username field in a
@@ -203,15 +231,16 @@ class FormVals:  # pylint: disable=too-few-public-methods
                   field
             """
             return {
-                'required':_(FormVals.Fields.Username.ERROR_REQUIRED),
-                'invalid':_(FormVals.Fields.Username.ERROR_INVALID),
-                'min_length':_(FormVals.Fields.Username.ERROR_MIN_LENGTH),
-                'max_length':_(FormVals.Fields.Username.ERROR_MAX_LENGTH),
-                'whitespace':_(FormVals.Fields.Username.ERROR_WHITESPACE),
-                'pattern':_(FormVals.Fields.Username.ERROR_PATTERN),
-                'unique':_(FormVals.Fields.Username.ERROR_UNIQUE),
+                'required': _(FormVals.Fields.Username.ERROR_REQUIRED),
+                'invalid': _(FormVals.Fields.Username.ERROR_INVALID),
+                'min_length': _(FormVals.Fields.Username.ERROR_MIN_LENGTH),
+                'max_length': _(FormVals.Fields.Username.ERROR_MAX_LENGTH),
+                'whitespace': _(FormVals.Fields.Username.ERROR_WHITESPACE),
+                'pattern': _(FormVals.Fields.Username.ERROR_PATTERN),
+                'unique': _(FormVals.Fields.Username.ERROR_UNIQUE),
             }
 
+        # noinspection PyUnusedFunction
         @property
         def password_error_messages(self):
             """Return the error messages for the password field in a
@@ -221,13 +250,15 @@ class FormVals:  # pylint: disable=too-few-public-methods
                   field
             """
             return {
-                'required':_(FormVals.Fields.Password.ERROR_REQUIRED),
-                'invalid':_(FormVals.Fields.Password.ERROR_INVALID),
-                'min_length':_(FormVals.Fields.Password.ERROR_MIN_LENGTH),
+                'required': _(FormVals.Fields.Password.ERROR_REQUIRED),
+                'invalid': _(FormVals.Fields.Password.ERROR_INVALID),
+                'min_length': _(FormVals.Fields.Password.ERROR_MIN_LENGTH),
             }
 
 
 message_errors = FormVals.Errors()
+
+logger = logging.getLogger(__name__)
 
 
 # noinspection PyArgumentList
@@ -283,9 +314,9 @@ class DashEmailAuthField(forms.EmailField):
                          max_length=max_length,
                          min_length=min_length,
                          **kwargs)
-        self.attr_id = attr_id if not None \
-            else FormVals.Fields.Email.HTML_LABEL
-        self.attr_name = attr_name if not None \
+        self.attr_id = attr_id if attr_id is not None else (
+            FormVals.Fields.Email.HTML_LABEL)
+        self.attr_name = attr_name if attr_name is not None \
             else FormVals.Fields.Email.HTML_LABEL
         self.help_text = kwargs.get('help_text',
                                     FormVals.Fields.Email.HELP_TEXT)
@@ -295,6 +326,7 @@ class DashEmailAuthField(forms.EmailField):
         self.strip = kwargs.get('strip', FormVals.Fields.Email.WHITESPACE)
         self.widget = forms.EmailInput(attrs=self.field_attrs())
 
+    # noinspection PyUnusedFunction
     def init_attrs(self):
         """Initialize widget attributes based on the field type.
 
@@ -324,8 +356,8 @@ class DashEmailAuthField(forms.EmailField):
         :return: None
         """
         custom_attrs = {  # Construct custom attributes
-            'id':self.attr_id,
-            'name':self.attr_name,
+            'id': self.attr_id,
+            'name': self.attr_name,
         }
 
         self.widget.attrs.update(custom_attrs)
@@ -339,18 +371,18 @@ class DashEmailAuthField(forms.EmailField):
         :return:
         """
         return {
-            'id':'signup-email',
-            'name':FormVals.Fields.Email.HTML_LABEL,
-            'aria_description':FormVals.Fields.Email.HELP_TEXT,
-            'aria_label':FormVals.Fields.Email.TITLE,
-            'autocomplete':FormVals.Fields.Email.AUTO_COMPLETE,
-            'placeholder':FormVals.Fields.Email.PLACEHOLDER,
-            'data_view':FormVals.Fields.PUBLIC,
-            'maxlength':f'{FormVals.Fields.MAX_LENGTH}',
-            'minlength':f'{FormVals.Fields.MIN_LENGTH}',
-            'pattern':FormVals.Fields.Email.PATTERN,
-            'tabindex':FormVals.Fields.TABINDEX,
-            'title':FormVals.Fields.Email.TITLE,
+            'id': 'signup-email',
+            'name': FormVals.Fields.Email.HTML_LABEL,
+            'aria_description': FormVals.Fields.Email.HELP_TEXT,
+            'aria_label': FormVals.Fields.Email.TITLE,
+            'autocomplete': FormVals.Fields.Email.AUTO_COMPLETE,
+            'placeholder': FormVals.Fields.Email.PLACEHOLDER,
+            'data_view': FormVals.Fields.PUBLIC,
+            'maxlength': f'{FormVals.Fields.MAX_LENGTH}',
+            'minlength': f'{FormVals.Fields.MIN_LENGTH}',
+            'pattern': FormVals.Fields.Email.PATTERN,
+            'tabindex': FormVals.Fields.TABINDEX,
+            'title': FormVals.Fields.Email.TITLE,
         }
 
 
@@ -400,9 +432,9 @@ class DashPasswordField(PasswordField):
                          max_length=max_length,
                          min_length=min_length,
                          **kwargs)
-        self.attr_id = attr_id if not None \
+        self.attr_id = attr_id if attr_id is not None \
             else FormVals.Fields.Password.HTML_LABEL
-        self.attr_name = attr_name if not None \
+        self.attr_name = attr_name if attr_name is not None \
             else FormVals.Fields.Password.HTML_LABEL
         # Sets Field defaults from custom constants
         self.help_text = kwargs.get('help_text',
@@ -419,7 +451,6 @@ class DashPasswordField(PasswordField):
         """Initializes the attributes of the field's widget.
 
         Initializes the attributes of the field's widget.
-        :param kwargs:
         """
         # If the widget and its attributes already exist, update them
         if isinstance(self.widget, forms.PasswordInput) and self.widget.attrs:
@@ -449,19 +480,19 @@ class DashPasswordField(PasswordField):
         :rtype: dict
         """
         return {
-            'id':'',
-            'name':FormVals.Fields.Password.HTML_LABEL,
-            'aria_description':FormVals.Fields.Password.HELP_TEXT,
-            'aria_label':FormVals.Fields.Password.TITLE,
-            'autocomplete':FormVals.Fields.Password.AUTO_COMPLETE,
-            'placeholder':FormVals.Fields.Password.PLACEHOLDER,
-            'data_view':FormVals.Fields.PUBLIC,
-            'maxlength':f'{FormVals.Fields.Password.MAX_LENGTH}',
-            'minlength':f'{FormVals.Fields.Password.MIN_LENGTH}',
+            'id': '',
+            'name': FormVals.Fields.Password.HTML_LABEL,
+            'aria_description': FormVals.Fields.Password.HELP_TEXT,
+            'aria_label': FormVals.Fields.Password.TITLE,
+            'autocomplete': FormVals.Fields.Password.AUTO_COMPLETE,
+            'placeholder': FormVals.Fields.Password.PLACEHOLDER,
+            'data_view': FormVals.Fields.PUBLIC,
+            'maxlength': f'{FormVals.Fields.Password.MAX_LENGTH}',
+            'minlength': f'{FormVals.Fields.Password.MIN_LENGTH}',
             # 'pattern': FormVals.Fields.Password.PATTERN,
-            'required':FormVals.Fields.Password.REQUIRED,
-            'title':FormVals.Fields.Password.TITLE,
-            'tabindex':FormVals.Fields.Password.TABINDEX_NEW
+            'required': FormVals.Fields.Password.REQUIRED,
+            'title': FormVals.Fields.Password.TITLE,
+            'tabindex': FormVals.Fields.Password.TABINDEX_NEW
         }
 
 
@@ -491,8 +522,7 @@ class DashSetPasswordField(SetPasswordField, DashPasswordField):
     minl = FormVals.Fields.Password.MIN_LENGTH
 
     def __init__(self, *args, attr_id=None, attr_name=None,
-                 max=None, min=None,
-                 **kwargs):
+                 maxl=None, minl=None, **kwargs):
         """:param args: additional arguments to pass to the parent class
         constructor
         :param attr_id: ID attribute for the field's widget
@@ -506,9 +536,9 @@ class DashSetPasswordField(SetPasswordField, DashPasswordField):
         # Route custom attributes to the field's widget via self/update_attrs
         self.attr_id = attr_id
         self.attr_name = attr_name
-        self.maxl = max if max is not None \
+        self.maxl = maxl if maxl is not None \
             else FormVals.Fields.Password.MAX_LENGTH
-        self.minl = min if min is not None \
+        self.minl = minl if minl is not None \
             else FormVals.Fields.Password.MIN_LENGTH
         # call  superclass init_attrs via DashPasswordField and MRO
         self.init_attrs()  # No args
@@ -531,8 +561,8 @@ class DashSetPasswordField(SetPasswordField, DashPasswordField):
         :return: None
         """
         custom_attrs = {  # Construct custom attributes
-            'id':self.attr_id,
-            'name':self.attr_name,
+            'id': self.attr_id,
+            'name': self.attr_name,
         }
         if hasattr(super(),
                    'update_attrs'):  # Call the super's update_attrs if exists
@@ -548,65 +578,14 @@ class DashSetPasswordField(SetPasswordField, DashPasswordField):
         # add or update attrs specific to DashSetPasswordField
         # Update with the signup defauls when setting a password
         base_attrs.update({
-            'id':'',
-            'name':'',
-            'autocomplete':FormVals.Fields.Password.AUTO_COMPLETE_NEW,
-            'placeholder':FormVals.Fields.Password.PLACEHOLDER_NEW,
-            'tabindex':FormVals.Fields.Password.TABINDEX_NEW,
-            'title':FormVals.Fields.Password.TITLE_NEW
+            'id': '',
+            'name': '',
+            'autocomplete': FormVals.Fields.Password.AUTO_COMPLETE_NEW,
+            'placeholder': FormVals.Fields.Password.PLACEHOLDER_NEW,
+            'tabindex': FormVals.Fields.Password.TABINDEX_NEW,
+            'title': FormVals.Fields.Password.TITLE_NEW
         })
         return base_attrs
-
-
-class DashLoginForm(LoginForm):
-    """A custom login form for the Dash application. Extend and override the
-    allauth.account.forms.LoginForm.
-
-    This form extends the allauth.account.forms.LoginForm class for custom
-     functionality.
-    It adds a "Remember Me" checkbox field to the login form.
-
-    Usage:
-      form = DashLoginForm(data=request.POST)
-      if form.is_valid():
-          form.login(request)
-      ...
-
-    Attributes:
-        remember_me (forms.BooleanField): A checkbox field to allow users to
-         indicate if they want to be remembered.
-    """
-    # Add additional fields if necessary
-    remember_me = forms.BooleanField(required=False)
-
-    def __init__(self, *args, **kwargs):
-        """DashLoginForm class.
-
-        Initialize a new instance of the DashLoginForm class.
-        :param args:
-        :param kwargs:
-        """
-        data = kwargs.pop('data', None)
-        super().__init__(data, *args, **kwargs)
-        self.fields['remember_me'].label = 'Remember Me'
-        if data:
-            self.is_valid()
-
-    def login(self, *args, **kwargs):
-        """Handles the login process and sets the remember me cookie. :param
-        args: (optional) Additional positional arguments :param kwargs:
-        (optional) Additional keyword arguments.
-
-        :return: The result of the original `login` method execution.
-        django-allauth.readthedocs.io/en/latest/account/forms.html#login
-        """
-        # Add your own processing here.
-        ret = super().login(*args, **kwargs)
-        if self.is_valid():
-            # Remember Me | Sessions Handling | Stay Logged In
-            set_remember(self.request, self.cleaned_data.get('remember_me'))
-        # You must return the original result.
-        return ret
 
 
 class DashSignupForm(SignupForm):
@@ -667,3 +646,234 @@ class DashSignupForm(SignupForm):
         if password1 != password2:
             self.add_error(FormVals.Fields.Password.ERROR_KEY,
                            FormVals.Fields.Password.ERROR_MATCH)
+
+
+class DashLoginForm(LoginForm):
+    """The `DashLoginForm` class extends `allauth.account.forms`'s `LoginForm`
+
+    Used for creating a login form specific to the Dash app.
+
+    Attributes:
+    :password: DashPasswordField: Extends AllAuth`s Password field
+    :remember`: boolean: Checkbox field user wants to be remembered or not.
+    :has_remember_set: boolean: indicating if the remember field has
+        been tampered with.
+
+    Methods:
+    :__init__: Initializes a new instance of the customized Login form
+    :init_login_field: Initializes the login field
+    :is_valid: Validates the form data
+    :clean():
+    :login: Logs in the user: Use for debugging / Testing
+
+    """
+    password = DashPasswordField(
+        attr_id=FormVals.Fields.Password.FIELD,
+        attr_name=FormVals.Fields.Password.FIELD,
+        min_length=FormVals.Fields.Password.MIN_LENGTH,
+    )
+
+    remember = forms.BooleanField(
+        label=FormVals.Fields.Remember.LABEL,
+        required=FormVals.Fields.Remember.REQUIRED,
+    )
+    # Start with false, as we don't know if the POST field has been tampered
+    # with. Could repeat for email/password, but out of scope/ in POC.
+    has_remember_set = FormVals.Fields.Remember.ANTI_TAMPER
+
+    def __init__(self, *args, **kwargs):
+        """ A new instance of the DashLoginForm class.
+
+        :param args: positional arguments
+        :type args: tuple
+        :param kwargs: keyword arguments
+        :type kwargs: dict
+        """
+        super().__init__(*args, **kwargs)
+        # Updating the existing login field
+        self.init_login_field()
+
+    def init_login_field(self):
+        """Custom: Initializes the login field.
+
+        This method initializes the login field by updating the attributes
+        of the field's widget.
+        :return: None
+        """
+        self.fields['login'].widget.attrs['id'] = FormVals.Fields.Email.ID
+        self.fields['login'].label = FormVals.Fields.Email.LABEL
+        self.fields['login'].max_length = FormVals.Fields.Email.MAX_LENGTH
+        self.fields['login'].min_length = FormVals.Fields.Email.MIN_LENGTH
+
+    # def errors(self):
+    #     """Return an ErrorDict for the data provided for the form."""
+    #     errors = super().errors()
+    #     if self._errors is None:
+    #         logger.debug('ERRORS: No errors')
+    #     else:
+    #         logger.debug(f'ERRORS: {self._errors}, after clean called')
+    #     return self._errors
+
+    def is_valid(self):
+        """Used to validate the form data of the `DashLoginForm`
+        """
+        validity = super().is_valid()
+        if DEBUG and validity:
+            logger.debug('is_valid: Is bound and has no errors')
+            logger.debug(f'is_valid: User: {self.user}') if self.user else None
+        else:
+            logger.debug('is_valid: Is bound and has errors')
+        return validity
+
+    def clean(self):
+        """Clean method of the DashLoginForm class.
+
+        Returns: None: Calls the clean method from the superclass.
+
+        Notes:
+            - This clean method is used to validate and clean the form data.
+            - It calls the clean method from the superclass.
+            - Uuses the dash_adapter.test_for_remember() function to check
+                and set the validity of the remember field.
+            - The remember field is checked if it is valid and present
+            in the cleaned_data i.e. not tampered with.
+            - Doesn't stop the cleaning of the form, it handles errors and
+                logging related to the remember field.
+        """
+        cleaned_data = super().clean()  # Keep default clean behavior
+        if DEBUG:
+            self.log('clean')
+            if self.user and cleaned_data and DEBUG:
+                logger.info(f'User: {self.user}', )
+            elif cleaned_data and DEBUG:
+                logger.info(f'Cleaned Data: {cleaned_data}')
+        # dash_adapter.test_for_remember(cleaned_data, self,
+        #                                FormVals.Fields.Remember.HTML_LABEL)
+        return cleaned_data
+
+    def login(self, request, redirect_url=None):
+        """ Login (via) for Debugging
+
+        :param request: The HTTP request object.
+        :type request: django.http.HttpRequest
+        :param redirect_url: Redirects the user to after successful login.
+            Defaults to None.
+        :type redirect_url: str
+        :return: The authenticated user or None.
+        :rtype: django.contrib.auth.models.User or None
+
+        This method is used to handle user login.
+        It takes in the HTTP request object and an optional redirect URL.
+        It attempts to log in the user using the super().login method of the
+        DashLoginForm class.
+        If the user is successfully authenticated, it logs a debug message
+        indicating the successful login.
+        If the user login fails, logs a debug message indicating the failure.
+        If any exceptions occur during the login process,
+            it logs an error and raises the exception.
+        """
+        response = super().login(request, redirect_url)
+        if DEBUG:
+            user = request.user
+            try:
+                # Call the login method of the original LoginForm
+                if user.is_authenticated:
+                    logger.debug(f'LOGIN: User {user}: '
+                                 'Logged in Successfully',
+                                 extra={'user': user,
+                                        'request': request,
+                                        'response': response}
+                                 )
+                elif not user.is_authenticated:
+                    logger.debug(f'LOGIN: User {user}'
+                                 'Failed to: User is not authenticated.',
+                                 extra={'user': user,
+                                        'request': request,
+                                        'response': response}
+                                 )
+                else:
+                    # Check some potential reasons
+                    if not user.is_active:
+                        logger.debug(f'LOGIN: Not active User {user} '
+                                     f'Failed to log in: User is not active.',
+                                     extra={'user': user,
+                                            'request': request,
+                                            'response': response}
+                                     )
+                    else:
+                        logger.debug(f'LOGIN: User {user} '
+                                     'Failed to log in: Unknown reason.',
+                                     extra={'user': user,
+                                            'request': request,
+                                            'response': response}
+                                     )
+                if user is not isinstance(user, AnonymousUser):
+                    logger.debug(f'Login Attempt: {user.username}'
+                                 f'Authenticated: {user.is_authenticated}: '
+                                 f'Active: {user.is_active}',
+                                 extra={
+                                'username': user.username,
+                                'is_authenticated': user.is_authenticated,
+                                'is_active': user.is_active,
+                    })
+                else:
+                    logger.debug(f'LOGIN: User : {user} : is an AnonymousUser.'
+                                 f'Request: {request}: Response: {response}',
+                                 extra={'user': user, 'request': request,
+                                        'response': response})
+            except Exception as e:
+                # If an exception arises, log the error
+                logger.debug('Error while logging in: {}'.format(str(e)),
+                             extra={'user': user, 'request': request,
+                                    'response': response})
+                raise
+        # Normal Login flow
+        return response
+
+    def user_credentials(self):
+        """ User Credentials for Debugging
+
+        :return: The credentials of the user.
+        :rtype: str
+        """
+        creds = super().user_credentials()
+        if DEBUG:
+            logger.debug(f'USER CREDENTIALS: Credentials {creds}:'
+                         'Stored.')
+            logger.debug(f'USER CREDENTIALS: Login: '
+                         f'{self.cleaned_data["login"]}: HTTP POST: '
+                         f'Cleaned')
+            logger.debug(f'USER CREDENTIALS: Login: '
+                         f'{self.cleaned_data["password"]}: HTTP POST:'
+                         f' Cleaned')
+        return creds
+
+    def log(self, name):
+        """
+        :param name: The name of the method.
+        :type name: str
+        :return: None
+        :rtype: None
+
+        This method logs debug information for the DashLoginForm class.
+        The method first checks if DEBUG mode is enabled, and if it is,
+        it retrieves the 'django.request' logger.
+        If exists, logger logs a debug message with the following information:
+        - The name of the class and method being logged.
+        - The request object, if available,
+            or a string indicating the method needs inspecting.
+
+        Example usage:
+
+        form = DashLoginForm()
+        form.log("example_method")
+        """
+        requestlogger = logging.getLogger('django.request') if DEBUG else None
+        if requestlogger is not None:
+            requestlogger.debug(
+                f"DashLoginForm.{name}(): "
+                f"Request: "
+                f""
+                f"{"Inspect Method" if self.request is None else
+                self.request}"
+            )

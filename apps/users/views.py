@@ -25,6 +25,7 @@
 """
 import logging
 
+from allauth.account.utils import passthrough_next_redirect_url
 # OopCompanion:suppressRename
 # AllAuth Libraries
 from allauth.account.views import ConfirmEmailView
@@ -32,37 +33,35 @@ from allauth.account.views import LoginView
 from allauth.account.views import LogoutView
 from allauth.account.views import SignupView
 from allauth.core.exceptions import ImmediateHttpResponse
-from allauth.account.utils import passthrough_next_redirect_url
-from dash_and_do.htmx import hx_redirect_success
-from dash_and_do.settings import DEBUG
-from dash_and_do.settings import LOGIN_REDIRECT_URL
-from dash_and_do.settings import LOGOUT_REDIRECT_URL
-
-# from dash_and_do.settings import SESSION_COOKIE_AGE as DEFAULT_SESSION_AGE
-# Local Libraries: Dash and Do
-from dash_and_do.utils import get_date
-
 # Django Libraries
 from django.contrib import messages
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from django.template.response import TemplateResponse
 # from django.middleware.csrf import get_token
 from django.shortcuts import render
 from django.template.loader import render_to_string
-from django.urls import reverse_lazy, reverse
-# from django.utils.decorators import method_decorator
-# from django.views.decorators.csrf import ensure_csrf_cookie
+from django.template.response import TemplateResponse
+from django.urls import reverse, reverse_lazy
 
 # Local Libraries: Users
 from apps.users.debugg import DebugAdapter as Debugg
-
 # Local Libraries
 from apps.users.forms import DashLoginForm
 from apps.users.forms import DashSignupForm
 from apps.users.helpers import get_last_status
 from apps.users.sessions import DashUserSession
 from apps.users.values import SiteContext
+from dash_and_do.htmx import hx_redirect_success
+from dash_and_do.settings import DEBUG
+from dash_and_do.settings import LOGIN_REDIRECT_URL
+from dash_and_do.settings import LOGOUT_REDIRECT_URL
+# from dash_and_do.settings import SESSION_COOKIE_AGE as DEFAULT_SESSION_AGE
+# Local Libraries: Dash and Do
+from dash_and_do.utils import get_date
+
+
+# from django.utils.decorators import method_decorator
+# from django.views.decorators.csrf import ensure_csrf_cookie
 
 
 debugr = Debugg()

@@ -1,0 +1,49 @@
+# https://prospector.landscape.io/en/master/usage.html
+output-format: text
+
+strictness: low
+member-warnings: false
+test-warnings: false
+doc-warnings: true
+max-line-length: 79
+
+ignore-paths:
+  - docs
+  - venv
+  - node_modules
+
+uses:
+  - django
+
+pylint:
+  run: false
+
+pep8:
+  full: true
+
+dodgy:
+  run: true
+
+
+pycodestyle:
+  disable:
+    - W602
+    - W603
+  enable:
+    - W601
+  options:
+    max-line-length: 79
+
+mccabe:
+  run: false
+  options:
+    max-complexity: 10
+
+mypy:
+  run: true
+  options:
+    ignore-missing-imports: true
+    follow-imports: skip
+
+vulture:
+  run: true

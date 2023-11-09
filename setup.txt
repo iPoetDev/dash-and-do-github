@@ -1,0 +1,44 @@
+[flake8]
+jobs = 4
+indent-size = 4
+count = True
+statistics = True
+show-source = False
+color = "always"
+disable-noqa = False
+hang-closing - False
+require-plugins = []
+enable-extensions = []
+filename = []
+select = []
+max-line-length = 79
+tee = True
+output-file = "stat-results/flake8.md"
+ignore = E266,E303,E128,E701,W504
+# it's not a bug that we aren't using contact of hacking, ignore:
+# H101: Use TODO(NAME)
+# H202: assertRaises Exception too broad
+# H233: Python 3.x incompatible use of print operator
+# H301: one import per line
+# H306: imports not in alphabetical order (time, os)
+# H401: docstring should not start with a space
+# H403: multi line docstrings should end on a new line
+# H404: multi line docstring should start without a leading new line
+# H405: multi line docstring summary not separated with an empty line
+# H501: Do not use self.__dict__ for string formatting
+extend-ignore = H101,H202,H233,H301,H306,H401,H403,H404,H405,H501
+exclude =
+    .git,
+    .ai,
+    .obsidian,
+    __pycache__,
+    docs,
+    repository,
+    old,
+    build,
+    dist,
+    *.pyc,
+    *.egg-info,
+    *.egg,
+    venv
+max-complexity = 15

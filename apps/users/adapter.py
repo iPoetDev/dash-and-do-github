@@ -21,10 +21,12 @@
 - CHECK:
 """
 import logging  ### CUSTOM LOGGING Changelog: added: 2023-10-29
+
 from allauth.account.adapter import DefaultAccountAdapter
 from allauth.utils import build_absolute_uri
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
+
 from dash_and_do.settings import DEBUG
 
 

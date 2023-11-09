@@ -25,6 +25,7 @@ from django.urls import path
 
 from apps.users import views
 
+
 # Namespace for URL Patterns: users:route_link_reference
 app_name = 'users'  # pylint: disable=invalid-name
 """

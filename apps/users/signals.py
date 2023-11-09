@@ -32,8 +32,10 @@ EXAMPLES?:
 # Globals
 from allauth.account.signals import email_confirmation_sent
 from django.dispatch import receiver
+
 # Custom
 from dash_and_do.settings import DEBUG, LOCAL_IP, RS_PORT
+
 
 @receiver(email_confirmation_sent)
 def console_print_comfirmurl(sender, confirmation, **kwargs):

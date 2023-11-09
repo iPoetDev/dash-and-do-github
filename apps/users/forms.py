@@ -29,6 +29,7 @@
 # from allauth.account import forms as aa_forms
 # import allauth.account.forms as aa_forms
 import logging
+
 from allauth.account.forms import LoginForm
 from allauth.account.forms import PasswordField
 from allauth.account.forms import SetPasswordField
@@ -36,8 +37,9 @@ from allauth.account.forms import SignupForm
 from django import forms
 from django.contrib.auth.models import AnonymousUser
 from django.utils.translation import gettext_lazy as _
+
 from dash_and_do.settings import DEBUG
-from apps.users.adapter import dash_adapter
+
 
 class FormVals:  # pylint: disable=too-few-public-methods
     """The `Forms` class.

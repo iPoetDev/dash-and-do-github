@@ -25,10 +25,12 @@
 """
 # Imports
 import logging
-# Django
-from django.contrib.auth import get_user_model
+
 # AllAuth
 from allauth.account.auth_backends import AuthenticationBackend
+# Django
+from django.contrib.auth import get_user_model
+
 # Custom
 from dash_and_do.settings import DEBUG
 

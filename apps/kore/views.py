@@ -16,6 +16,7 @@
 - added: login_required decorator to all private views
 """
 import traceback
+import logging
 
 # Local: Project Imports
 from dash_and_do.htmx import is_htmx
@@ -65,6 +66,7 @@ from apps.kore.values import Template
 from apps.users.forms import DashLoginForm
 from apps.users.forms import DashSignupForm
 
+
 # Local: Users Values
 
 
@@ -104,16 +106,16 @@ class SiteContext:
             - 'page': The page of the site (Page).
         """
         return {
-            'sitename':SiteMeta.NAME,
-            'siteurl':SiteMeta.URL,
-            'siteperson':SiteMeta.PERSON,
-            'sitedesc':SiteMeta.DESC,
-            'siteright':SiteMeta.COPY,
-            'sitekeywords':SiteMeta.KEYWORDS,
-            'sitecontact':SiteMeta.CONTACT,
-            'website':SiteMeta,
-            'brand':Brand,
-            'page':Page
+            'sitename': SiteMeta.NAME,
+            'siteurl': SiteMeta.URL,
+            'siteperson': SiteMeta.PERSON,
+            'sitedesc': SiteMeta.DESC,
+            'siteright': SiteMeta.COPY,
+            'sitekeywords': SiteMeta.KEYWORDS,
+            'sitecontact': SiteMeta.CONTACT,
+            'website': SiteMeta,
+            'brand': Brand,
+            'page': Page
         }
 
     @property
@@ -124,7 +126,7 @@ class SiteContext:
             - 'title': The title of the page (Page.Index.TITLE).
         """
         return {
-            'title':Page.Index.TITLE,
+            'title': Page.Index.TITLE,
         }
 
     @property
@@ -135,7 +137,7 @@ class SiteContext:
             - 'title': The title of the page (Page.Index.TITLE).
         """
         return {
-            'title':Page.Verify.TITLE,
+            'title': Page.Verify.TITLE,
         }
 
     @property
@@ -146,8 +148,23 @@ class SiteContext:
             - 'title': The title of the page (Page.Index.TITLE).
         """
         return {
-            'title':Page.Verify.TITLE,
+            'title': Page.Confirm.TITLE,
         }
+
+
+sitecontext = SiteContext()
+
+def log_template(view, request, context, template,
+                 exec=False, trace=True, level=1):
+    """Log Template."""
+    logger = logging.getLogger('django.template')
+    logger.debug(view,
+                 exc_info=exec,
+                 stack_info=trace,
+                 stacklevel=level,
+                 extra={'request': request,
+                        'template': Template.HOME,
+                        'context': context})
 
 
 @xframe_options_sameorigin
@@ -169,23 +186,23 @@ def index(request):
     contact = ContactForm()
 
     context = {
-        'site':SiteMeta.NAME,
-        'indextitle':Page.Index.TITLE,
-        'siteurl':SiteMeta.URL,
-        'siteperson':SiteMeta.PERSON,
-        'sitedesc':SiteMeta.DESC,
-        'siteright':SiteMeta.COPY,
-        'sitekeywords':SiteMeta.KEYWORDS,
-        'sitecontact':SiteMeta.CONTACT,
-        'brand':Brand,
-        'page':Page,
-        'contact_form':contact,  # Render initial clear form on Get
-        'signup_form':signup,  # Render initial clear form on Get
-        'login_form':login,  # Render initial clear form on Get
-        'contactname':contact.fields['name'],
-        'contactemail':contact.fields['email'],
-        'contactmessage':contact.fields['message'],
-        'contactcopy':contact.fields['copy_sent'],
+        'site': SiteMeta.NAME,
+        'title': Page.Index.TITLE,
+        'siteurl': SiteMeta.URL,
+        'siteperson': SiteMeta.PERSON,
+        'sitedesc': SiteMeta.DESC,
+        'siteright': SiteMeta.COPY,
+        'sitekeywords': SiteMeta.KEYWORDS,
+        'sitecontact': SiteMeta.CONTACT,
+        'brand': Brand,
+        'page': Page,
+        'contact_form': contact,  # Render initial clear form on Get
+        'signup_form': signup,  # Render initial clear form on Get
+        'login_form': login,  # Render initial clear form on Get
+        'contactname': contact.fields['name'],
+        'contactemail': contact.fields['email'],
+        'contactmessage': contact.fields['message'],
+        'contactcopy': contact.fields['copy_sent'],
     }
     pp_label(label='Index: ContactForm')
     # Template.HOME is 'index.html' - is a Class.CONSTANT value format/abstract
@@ -196,8 +213,16 @@ def index(request):
     #     # HTMX for header to update the url in the browser's address bar
     #     response[ 'HX-Current-Url' ] = request.get_full_path()
     # Render the templated response for index.html
-
-    return render(request, Template.HOME, context)
+    if DEBUG:
+        # Log the template
+        log_template('Index',
+                     request,
+                     context,
+                     Template.HOME)
+    # Return the rendered response
+    return render(request,
+                  Template.HOME,
+                  context)
     # print(str(ret.content, 'utf-8'))
 
 
@@ -212,13 +237,19 @@ def verify_public(request):
     :return: None
     :raises: None
     """
-    site_ctx = SiteContext().context
-    verify_ctx = SiteContext().verify
+    site_ctx = sitecontext.context
+    verify_ctx = sitecontext.verify
     context = {
-        **site_ctx,
+        # **site_ctx,
         **verify_ctx,
     }
-    return render(request, Template.VERIFY, context)
+    if DEBUG:
+        log_template('Verify',
+                     request,
+                     context,
+                     Template.VERIFY)
+    return render(request, Template.VERIFY,
+                  context)
 
 
 @xframe_options_sameorigin
@@ -232,25 +263,20 @@ def confirm_public(request):
     :return: None
     :raises: None
     """
-    site_ctx = SiteContext().context
-    verify_ctx = SiteContext().verify
+    site_ctx = sitecontext.context
+    confirm_ctx = sitecontext.confirm
     context = {
         **site_ctx,
-        **verify_ctx,
+        **confirm_ctx,
     }
-    return render(request, Template.CONFIRM, context)
+    if DEBUG:
+        log_template('Confirm',
+                     request,
+                     context,
+                     Template.CONFIRM)
+    return render(request, Template.CONFIRM,
+                  context)
 
-
-# def menu_public_context(request):
-#     """
-#     Public Menu Context. | Access: All Users
-#     :param request: The HTTP request object.
-#     :return: None
-#     :raises: None
-#     """
-#     context = {}
-#     log_views_request(request, label=Log.INDEX)
-#     return render(request, Template.MENU_PUBLIC, context)
 
 # ====================== All | Public Form Views ===========================
 
@@ -300,7 +326,7 @@ def form_contact(request):  # sourcery skip: dict-assign-update-to-union
 
             # Render a completed form i.e. a new unbounded form
             contact = ContactForm()
-            base_ctx = {Forms.CONTACT:contact}
+            base_ctx = {Forms.CONTACT: contact}
             # pp_label(
             #     label='form_contact: ContactForm: Completed')
             return render_completed_form(request, completed,
@@ -340,14 +366,14 @@ def switch_views(label):
     :return:
     """
     viewformlookup = {
-        'form_contact':Forms.CONTACT,
-        'form_signup':Forms.SIGNUP,
-        'form_login':Forms.LOGIN,
-        'form_reset':Forms.PASSWORD_RESET,
-        'form_password_change':Forms.PASSWORD_CHANGE,
-        'form_profile':Forms.PROFILE,
-        'form_github':Forms.GITHUB,
-        'form_settings':Forms.SETTINGS,
+        'form_contact': Forms.CONTACT,
+        'form_signup': Forms.SIGNUP,
+        'form_login': Forms.LOGIN,
+        'form_reset': Forms.PASSWORD_RESET,
+        'form_password_change': Forms.PASSWORD_CHANGE,
+        'form_profile': Forms.PROFILE,
+        'form_github': Forms.GITHUB,
+        'form_settings': Forms.SETTINGS,
     }
     return viewformlookup.get(label)
 
@@ -386,7 +412,7 @@ def render_bounded_form(request, form, label,
     # Switch the Context form's name/per context render by form label's key.
     form_key = switch_form(label)
     # Assign the form to the context
-    bounded_ctx = {form_key:form}
+    bounded_ctx = {form_key: form}
     bounded_ctx |= ctx  # merge ctx: dict augmented union assigment
     # Reply with 400 for form validation error on bounded forms, or the
     # contingent status code from the emailing response
@@ -413,7 +439,7 @@ def render_unbounded_form(request, form, label,
     # Switch the Context form's name/per context render by form label's key.
     form_key = switch_form(label)
     # Assign the form to the context
-    unbounded_ctx = {form_key:form}
+    unbounded_ctx = {form_key: form}
     unbounded_ctx |= ctx  # merge ctx: dict augmented union assigment
     unbounded = TemplateResponse(request,
                                  Template.CONTACT,
@@ -468,10 +494,10 @@ def core_page_not_found(request, exception) -> HttpResponse:
     try:
         stack_trace = traceback.format_exc() if DEBUG else ''
         context = {
-            'message':'Page not found',
-            'verbose':'Sorry, but the page you were trying to view does not '
-                      'exist.',
-            'trace':stack_trace,
+            'message': 'Page not found',
+            'verbose': 'Sorry, but the page you were trying to view does not '
+                       'exist.',
+            'trace': stack_trace,
         }
         return render(request,
                       Template.COREPAGE_NOT_FOUND,  # 'kore/404.html'

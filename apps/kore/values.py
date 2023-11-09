@@ -61,8 +61,8 @@ class Template:  # pylint: disable=too-few-public-methods
     HOME = 'index.html'
     ABOUT = 'about.html'
     VERIFY = 'verify.html'
-    CONFIRM = 'kore/confirm.html'
-    CONTACT = './forms/form_contact.html'
+    CONFIRM = 'confirm.html'
+    CONTACT = 'forms/form_contact.html'
     MENU_PUBLIC = 'menu_public.html'
     COREPAGE_NOT_FOUND = 'kore/404.html'
 
@@ -116,7 +116,8 @@ class Ctx:  # pylint: disable=too-few-public-methods
 
 class SiteMeta:  # pylint: disable=too-few-public-methods
     """Site Meta Data TITLE = 'title' URL = 'url' PERSON = 'person' DESCRIPTION
-    = 'description' KEYWORDS = 'keywords' CONTACT = 'contact'."""
+    = 'description' KEYWORDS = 'keywords' CONTACT = 'contact'.
+    """
     NAME = 'Dashboard and Do GitHub Manager'
     URL = 'https://dash-and-do.herokuapp.com/'
     PERSON = 'Charles J Fowler, @iPoetDev.github.com'
@@ -179,6 +180,20 @@ class Page:  # pylint: disable=too-few-public-methods
         TITLE = 'Verify: Dashboard and Do GitHub Manager'
         ATITLE = 'Verify: Dashboard and Do GitHub Manager'
         ATEXT = 'Verify'
+
+
+    class Confirm:  # pylint: disable=too-few-public-methods
+        """About Page Details | Static."""
+        USE = 'services_public'
+        IA = 'orphan'
+        NAV = 'excluded'
+        ROLE = 'services'
+        FLOW = ('signup -> verify -> email_confirm (link) -> confirm -> index '
+                '->ogin')
+        DESC: str = 'user confirmations and verification statuses'
+        TITLE = 'Confirm: Dashboard and Do GitHub Manager'
+        ATITLE = 'Confirm: Dashboard and Do GitHub Manager'
+        ATEXT = 'Confirm'
 
     class Contact:  # pylint: disable=too-few-public-methods
         """Contact Section Partial/Fragment Details."""

@@ -40,9 +40,15 @@ from smtplib import SMTPException
 
 # Third Party Libraries
 from anymail.message import AnymailMessage
+from dash_and_do.settings import DEFAULT_FROM_EMAIL as SITE_EMAIL
+from dash_and_do.settings import emailenv as env
+
+# Local: Common Libraries
+from dash_and_do.utils import get_date
 from django.core.mail import BadHeaderError
 from django.core.mail import EmailMessage
 from django.core.mail import get_connection
+
 #  Copyright (c) 2023.
 # Framework Libraries
 from django.core.mail import send_mail
@@ -61,16 +67,13 @@ from apps.kore.emailing.values import MIME
 from apps.kore.emailing.values import SMTP
 from apps.kore.emailing.values import Sending
 from apps.kore.emailing.values import Services
+
 # Local: App Libraries
 # from apps.kore.helpers import (pp_form, pp_email, pp_response, pp_console)
 from apps.kore.emailing.values import Site
 from apps.kore.emailing.values import Switch
 from apps.kore.emailing.values import Template
 from apps.kore.helpers import pp_message
-from dash_and_do.settings import DEFAULT_FROM_EMAIL as SITE_EMAIL
-from dash_and_do.settings import emailenv as env
-# Local: Common Libraries
-from dash_and_do.utils import get_date
 
 
 def contact_mail(sub_ject: str,

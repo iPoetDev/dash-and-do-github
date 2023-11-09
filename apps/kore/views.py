@@ -15,33 +15,24 @@
 - added: login_required decorator to all puiblic views
 - added: login_required decorator to all private views
 """
-import traceback
 import logging
-
-# Local: Project Imports
-from dash_and_do.htmx import is_htmx
-from dash_and_do.settings import DEBUG
+import traceback
 
 # Django HTTP Imports
 from django.http import Http404
 from django.http import HttpRequest
 from django.http import HttpResponse
-
 # Django Imports
 from django.shortcuts import render
 from django.template.response import TemplateResponse
-
 # from django.views.decorators.cache import never_cache  # TODO
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.csrf import csrf_protect
-
 # TODO
 from django.views.decorators.http import require_GET
 from django.views.decorators.http import require_http_methods
-
 # Django View Imports
 from django.views.defaults import page_not_found as dj_page_not_found
-
 # Third Party Imports
 from django_htmx.middleware import HtmxDetails
 
@@ -50,21 +41,22 @@ from apps.kore.corehttp import contact_email_response
 from apps.kore.corehttp import contact_http_response
 from apps.kore.corehttp import switch_form
 from apps.kore.emailing.emails import send_mail_contact2
-
 # Local: App Imports
 from apps.kore.forms import ContactForm
 from apps.kore.helpers import pp_label
 from apps.kore.helpers import pp_response
-from apps.kore.values import HTTP
 from apps.kore.values import Brand
 from apps.kore.values import Forms
+from apps.kore.values import HTTP
 from apps.kore.values import Page
 from apps.kore.values import SiteMeta
 from apps.kore.values import Template
-
 # Local: Users Forms
 from apps.users.forms import DashLoginForm
 from apps.users.forms import DashSignupForm
+# Local: Project Imports
+from dash_and_do.htmx import is_htmx
+from dash_and_do.settings import DEBUG
 
 
 # Local: Users Values

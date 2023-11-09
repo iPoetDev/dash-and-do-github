@@ -44,8 +44,6 @@ todo: change name v reuse
 # OS Libraries
 import traceback
 
-## Local: Common Libraries
-from dash_and_do.settings import DEBUG
 from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
 from django.http import HttpResponseServerError
@@ -58,6 +56,9 @@ from apps.kore.values import Feedback
 from apps.kore.values import Forms
 from apps.kore.values import Signal
 from apps.kore.values import Template
+## Local: Common Libraries
+from dash_and_do.settings import DEBUG
+
 
 # OopCompanion:suppressRename
 

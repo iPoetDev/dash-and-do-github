@@ -72,6 +72,7 @@ class FormViews:  # pylint: disable=too-few-public-methods
     DEFAULT_FORM_KEY = 'form'
     INDEX_REVERSE = 'kore:index'
     VERIFY_REVERSE = 'kore:verify'
+    PRIVATE_REVERSE = 'kore:private'
     CONFIRM_REVERSE = 'kore:confirm'
     TOGGLE_FRIENDLY = False
     TOGGLE_ERROR = True
@@ -359,7 +360,7 @@ class DashSignupView(SignupView):
 
 class DashLoginView(LoginView):
     template_name = FormViews.Login.TEMPLATE
-    success_url = reverse_lazy(FormViews.INDEX_REVERSE)
+    success_url = reverse_lazy(FormViews.PRIVATE_REVERSE)
     form_class = DashLoginForm
 
     # - TODO: Redirect user based on their role after successful login

@@ -18,6 +18,8 @@
 import logging
 import traceback
 
+# Django Auth Imports
+from django.contrib.auth.decorators import login_required
 # Django HTTP Imports
 from django.http import Http404
 from django.http import HttpRequest
@@ -28,10 +30,12 @@ from django.template.response import TemplateResponse
 # from django.views.decorators.cache import never_cache  # TODO
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.csrf import csrf_protect
-# TODO
 from django.views.decorators.http import require_GET
 from django.views.decorators.http import require_http_methods
+# Django URl
+from django.urls import reverse_lazy
 # Django View Imports
+from django.views import View
 from django.views.defaults import page_not_found as dj_page_not_found
 # Third Party Imports
 from django_htmx.middleware import HtmxDetails
@@ -143,6 +147,16 @@ class SiteContext:
             'title': Page.Confirm.TITLE,
         }
 
+    @property
+    def private(self):
+        """Provides the context data for the private view.
+
+        :return: A dictionary containing the context data for the private view.
+            - 'title': The title of the page (Page.Index.TITLE).
+        """
+        return {
+            'title': Page.Private.TITLE,
+        }
 
 sitecontext = SiteContext()
 
@@ -270,8 +284,59 @@ def confirm_public(request):
                   context)
 
 
+@xframe_options_sameorigin
+# @ensure_csrf_cookie
+@csrf_protect
+@require_GET
+@login_required(login_url='kore:index') # Login is index or form_login url
+def private(request):
+    site_ctx = sitecontext.context
+    private_ctx = sitecontext.private
+    context = {
+        **site_ctx,
+        **private_ctx,
+    }
+    if DEBUG:
+        log_template('Private',
+                     request,
+                     context,
+                     Template.PRIVATE)
+    return render(request,
+                  Template.PRIVATE, # 'kore/private.html'
+                  context)
+
+
+# ====================== All | Public | Page Partials ======================
+
+
+
+class MidSectionPartialView(View):
+
+    include_private = "private/appcards_private.html"
+    include_public = "public/signup_public.html"
+
+    def get(self, request):
+        """ Gets: App Private Cards ot Signup from the MidSectionPartialView
+
+        The GET request for the MidsectionView class for a page partial.
+        The page partial is part of the the index, has to render on GET /
+        Uses HTML partials to render the page partial.
+        It renders the appropriate template based on whether the user is authenticated or not.
+
+        :param request: The HTTP request object.
+        :type request: HttpRequest
+        :return: The rendered HTTP response.
+        :rtype: HttpResponse
+        """
+        # Partial template: depends if the user is authenticated or not.
+        card_or_signup = self.include_private \
+            if request.user.is_authenticated \
+            else self.include_public
+        return render(request, card_or_signup)
+
 # ====================== All | Public Form Views ===========================
 
+midsectionpartial = MidSectionPartialView.as_view()
 
 @require_http_methods([HTTP.POST])
 def form_contact(request):  # sourcery skip: dict-assign-update-to-union

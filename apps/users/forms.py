@@ -810,14 +810,9 @@ class DashLoginForm(LoginForm):
                                             'response': response}
                                      )
                 if user is not isinstance(user, AnonymousUser):
-                    logger.debug(f'Login Attempt: {user.username}'
+                    logger.debug(f'Login Attempt: {user}'
                                  f'Authenticated: {user.is_authenticated}: '
-                                 f'Active: {user.is_active}',
-                                 extra={
-                                'username': user.username,
-                                'is_authenticated': user.is_authenticated,
-                                'is_active': user.is_active,
-                    })
+                                 f'Active: {user.is_active}')
                 else:
                     logger.debug(f'LOGIN: User : {user} : is an AnonymousUser.'
                                  f'Request: {request}: Response: {response}',

@@ -50,16 +50,16 @@ app_name = 'kore'  # pylint: disable=invalid-name
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('private/', views.private, name='private'),
     # path('about/', views.static_about, name='about'),
     # path('fas/', views.static_faq, name='faq'),
     # path('error/', views.error_public, name='error'),
     path('verify/', views.verify_public, name='verify'),
     path('confirm/', views.confirm_public, name='confirm'),
-
+    # MidSection from Index GET /
+    path('midsection/', views.midsectionpartial, name='midsection'),
+    # Forms
     path('form_contact/', views.form_contact, name='form_contact'),
-    # path('form_signup/', views.signup, name='signup'),
-    # path('form_login/', views.login, name='login'),
-    # path('form_reset/', views.reset, name='reset'),
 ]
 
 thirdparty = [

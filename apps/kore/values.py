@@ -62,6 +62,7 @@ class Template:  # pylint: disable=too-few-public-methods
     ABOUT = 'about.html'
     VERIFY = 'verify.html'
     CONFIRM = 'confirm.html'
+    PRIVATE = 'private.html'
     CONTACT = 'forms/form_contact.html'
     MENU_PUBLIC = 'menu_public.html'
     COREPAGE_NOT_FOUND = 'kore/404.html'
@@ -201,6 +202,13 @@ class Page:  # pylint: disable=too-few-public-methods
         TITLE = 'Contact: Dashboard and Do GitHub Manager'
         ATITLE = 'Contact Us: Send an Message to Dash and Do'
         ATEXT = 'Contact'
+
+    class Private:
+        """Private Page Details."""
+        USE = 'menu_private'
+        TITLE = 'Private: Dashboard and Do GitHub Manager'
+        ATITLE = 'Private: Dashboard and Do GitHub Manager'
+        ATEXT = 'Private'
 
     class AccountMenu:  # pylint: disable=too-few-public-methods
         """Account Menu Details."""

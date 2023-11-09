@@ -4,21 +4,17 @@
 <body
     class="[ ] [ flex flex-col items-stretch content-between ]"
     data-app="core"
-    data-view="public"
+    data-view="private"
     id="all-body"
     hx-ext="debug, event-header">
     <!-- Hide until found: https://www.w3.org/WAI/tutorials/menus/skip/ -->
     <!-- https://webaim.org/techniques/skipnav/ -->
-    {% if request.user.is_authenticated %}
-        {% include "private/skiplinks_private.html" %}
-    {% else %}
-        {% include "public/skiplinks_public.html" %}
-    {% endif %}
+    {% include "private/skiplinks_private.html" %}
+
     {% include "header.html" %}
-{#    {% debug %}#}
     <main
         class="[ page-main-content ] [ flex flex-row ] [ h-max ] [ mt-0 md:mt-1 lg:mt-6 ] [ px-4 pb-20 lg:pb-4 ] [ space-y-10 lg:space-y-0 lg:space-x-10 ]"
-        data-view="public"
+        data-view="private"
         id="main-page-content">
         <!-- ===================================== CONTENT: PUBLIC : 1 COLUMN ================================  -->
         <div
@@ -41,9 +37,10 @@
             </section>
 
             <section>
-                {% if not request.user.is_authenticated %}
-                    {% include 'forms/form_login.html' %}
-                {% endif %}
+{#                {% if not request.user.is_authenticated %}#}
+{#                    {% include 'forms/form_login.html' %}#}
+{#                {% endif %}#}
+
             </section>
             <!-- ================================= CONTENT: MIDDLE: FEATURES =================================  -->
             <!-- Block: Content | Mid Section: 1) Public & 2) Private  -->
@@ -61,21 +58,10 @@
                     aria-label="Content header - middle of page"
                     data-view="all"
                     hidden="until-found">
-                    User Registration | App Content
+                    Private Home Page
                 </h1>
-
-                <!-- ======================= CONTENT: MID 1st Col/Ro: FORM PROMO: CARDS ==================  -->
-                <!-- ====================== - added: Conditional: User is Logged | Not =======================  -->
-                <!-- ====================== - added: If True: Show App Pages Feature =========================  -->
-                <!-- ====================== - added: If False: Show Sign Up Feature ==========================  -->
-
-                 Checks if user is authenticated: shows the feature app cards, else shows the public sign up form
                 <!-- The div to be replaced -->
-                <div id="middle-section-swap" hx-get="{% url 'kore:midsection' %}" hx-swap="interHTML">
-                    <!-- ====================== - added: Conditional: User is Logged | Not =======================  -->
-                    I am loggged out
-                </div>
-                <!-- ======================= CONTENT: MID 1st Col/Ro: FORM PROMO: CARDS ==================  -->
+{#                {%  include "private/appcards_private.html" %}#}
             </section>
 
             <!-- ================================= CONTENT: BOTTOM: FOOTER ===================================  -->
@@ -97,17 +83,17 @@
                     Contact Form
                 </h1>
                 <!--
-                {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
+{#                {% if messages %}#}
+{#                    <ul class="messages">#}
+{#                        {% for message in messages %}#}
+{#                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
+{#                {% endif %}#}
 -->
                 <!-- ========================= CONTENT: MID : FORM CONTACT | HTMX ========================  -->
 
-                {% include "all/contact.html" %}
+{#                {% include "all/contact.html" %}#}
 
                 <!-- ========================= CONTENT: MID : FORM CONTACT | HTMX ========================  -->
             </section>

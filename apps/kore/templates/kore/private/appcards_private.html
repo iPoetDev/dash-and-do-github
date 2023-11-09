@@ -1,10 +1,4 @@
 <!-- @formatter:off -->
-<!-- ============================= CONTENT: PRIVATE: MID : APP CARDS =======================  -->
-<!-- ============================= CHANGELOG: - checked ✅ 23-09-18 ========================  -->
-<!-- ============================= INCLUDED:  - added ✅ index.html ========================  -->
-<!-- ============================= PLANS:  - todo ❓ URLS: Feature URLS =====================  -->
-<!-- ============================= PLANS:  - todo ❓ PAGE: Links variables ==================  -->
-
 <article
     class="[ app-cta private ] [ hidden ] [ w-auto h-fit ] [ place-items-center ] [ m-8 ] [ gap-4 ] [ space-x-2 md:space-y-2 ] [ rounded-md shadow-lg ]"
     id="appcards-cards-cta-content"
@@ -13,7 +7,8 @@
     data-private="true"
     data-view="private"
     hidden="hidden"
-    title="App Cards | Call to Action | Logged In | 1 x2 Grid | 2 Card Components">
+    title="App Cards | Call to Action | Logged In | 1 x2 Grid | 2 Card Components"
+    hx-include="#middle-section-swap">
     <h2
         class="[ card-label ] [ hidden ] [ sr-only ]"
         id="private-cta-header"
@@ -41,7 +36,7 @@
                     class="[ card-tag ] [ ]"
                     id="app-card-heading"
                     aria-description="Dashboard Call to Action | Logged In | Call to Action | Card Component">
-                    Dash & Inform
+                    Dash &amp; Inform
                 </h3>
             </div>
             <div
@@ -92,7 +87,7 @@
                     class="[ card-tag ] [ ]"
                     id="do-card-heading"
                     aria-description="Do Call to Action | Logged In | Call to Action | Card Component">
-                    Do & Act (Disabled)
+                    Do &amp; Act (Disabled)
                 </h3>
             </div>
             <div

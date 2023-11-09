@@ -659,7 +659,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ================================ Auth Redirects ============================
 
 LOGIN_REDIRECT_URL = \
-    envs.str('LOGIN_REDIRECT_URL', default='/')
+    envs.str('LOGIN_REDIRECT_URL', default='private/')
 LOGIN_URL = \
     envs.str('LOGIN_URL', default='/')
 LOGOUT_REDIRECT_URL = \
@@ -699,7 +699,7 @@ LOGOUT_REDIRECT_URL = \
 # The authentication backend is order-sensitive. Meets the first positive match.
 AUTHENTICATION_BACKENDS = [
     # Custom app.user authentication for logging and inspection.
-    'apps.users.auth_backends.LoggingAuthenticationBackend'
+    # 'apps.users.auth_backends.LoggingAuthenticationBackend',
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -813,7 +813,7 @@ ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True  # checked 23/09/23
 # Specifies the login method to use: username, emailing, or username_email
 ACCOUNT_AUTHENTICATION_METHOD = 'email'  # checked 23/09/25
 # noinspection PyUnusedName
-ACCOUNT_CONFIRM_EMAIL_ON_GET = False  # checked 23/09/23
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True  # checked 23/09/23
 # Multiple Emails. Max 1
 ACCOUNT_CHANGE_EMAIL = False  # checked 23/09/23
 # Template
@@ -1333,11 +1333,11 @@ LOGGING = {
         #     'level': LOGGING_LEVEL,  # Debug | Not Debug
         #     'propagate': PROPAGATE,  # True
         # } if DEBUG else None,
-        # 'django.template': {
-        #     'handlers': [HANDLER],
-        #     'level': TEMPLATE_LEVEL,  # Debug | Not Debug
-        #     # 'propagate': PROPAGATE,  # True
-        # },
+        'django.template': {
+            'handlers': [HANDLER],
+            'level': TEMPLATE_LEVEL,  # Debug | Not Debug
+            # 'propagate': PROPAGATE,  # True
+        },
         'django.db.backends': {
             'handlers': [HANDLER],
             'level': LOGGING_LEVEL,  # Debug | Not Debug

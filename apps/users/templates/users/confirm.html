@@ -1,7 +1,8 @@
 <!-- @formatter:off -->
-{% extends "users/account/base.html" %}
+{% extends "sitebase.html" %}
 {% load i18n %}
 {% load account %}
+{% load static %}
 
 {% block signup_confirm %}
 <!-- ================================= CORE APP | PUBLIC | PRIVATE | INDEX.HTML =============================== -->
@@ -22,13 +23,13 @@
     <!-- https://webaim.org/techniques/skipnav/ -->
 
     {% if request.user.is_authenticated %}
-        {% include "kore/private/skiplinks_private.html" %}
+        {% include "private/skiplinks_private.html" %}
     {% else %}
-        {% include "kore/public/skiplinks_public.html" %}
+        {% include "public/skiplinks_public.html" %}
     {% endif %}
 
 {#    {% filter force_escape %} {% debug %} {% endfilter %}#}
-    {% include "kore/all/header.html" %}
+    {% include "header.html" %}
 
 
     <main
@@ -53,7 +54,7 @@
 {#                id="top-section-content">#}
 {#                <!-- ========================= INCLUDE: TOP : HERO | CAROUSEL ================================  -->#}
 {##}
-{#                {% include "kore/all/hero.html" %}#}
+{#                {% include "all/hero.html" %}#}
 {##}
 {#                <!-- ========================= INCLUDE: TOP : HERO | CAROUSEL ================================  -->#}
 {#            </section>#}
@@ -111,13 +112,13 @@
     </main>
     <!-- ========================================= FOOTER ===================================================  -->
 
-    {% include "kore/all/footer.html" %}
+    {% include "all/footer.html" %}
 
     <!-- ========================================= Scripts ===================================================  -->
 
     <!-- ====================================== django debug toolbar | HTMX ===================================  -->
 
-    {% include "kore/all/scripts.html" %}
+    {% include "all/scripts.html" %}
 
     <!-- ====================================== django debug toolbar | HTMX ===================================  -->
 

@@ -73,8 +73,7 @@
 {#            </div>#}
 {#        </article>#}
         {% if not request.user.is_authenticated %}
-                {% include 'users/account/login.html' %}
-        <!-- ===================== PUBLIC CARD SIGNUP FORM ===================================  -->
+                 {% include 'forms/form_login.html' %}
         {% endif %}
     </div>
     <!-- ========================= CONTENT: MID 2nd Col/Ro : FORM SIGNUP | HTMX =================
@@ -87,7 +86,7 @@
         data-view="public">
         <!-- ===================== PUBLIC CARD SIGNUP FORM ===================================  -->
         {% if not request.user.is_authenticated %}
-                {% include 'users/account/signup.html' %}
+                {% include 'forms/form_signup.html' %}
         <!-- ===================== PUBLIC CARD SIGNUP FORM ===================================  -->
         {% else %}
         <!-- ===================== DISPLAY MESSAGE IF EVER THIS IS REACHED ===================  -->

@@ -32,22 +32,18 @@
                     hidden="until-found">
                     User Confirmation
                 </h1>
-
                 {# Checks if user is authenticated: shows the feature app cards, else shows the public sign up form #}
                 {% if request.user.is_authenticated %}
                     <p>The user has an account and is already authenticated</p>
-                {% else %}
-                    {% for key, value in session_data.items %}
-                        <p>Session: {{ key }} | {{ value }}</p>
-                    {% endfor %}
-                    {% if request.session.is_confirmed %}
-                        <p>Your email has been confirmed. You can now log in for the first time.</p>
-                    {% elif request.session.is_valid %}
-                        <p>A verification email has been sent to {{ request.session.email }}.
-                            Please click the link in the email to verify your account.</p>
-                    {% endif %}
+{#                {% else %}#}
+{#                    {% if request.session.is_confirmed %}#}
+{#                        <p>Your email has been confirmed. You can now log in for the first time.</p>#}
+{#                    {% elif request.session.is_valid %}#}
+{#                        <p>A verification email has been sent to {{ request.session.email }}.#}
+{#                            Please click the link in the email to verify your account.</p>#}
+{#                    {% endif %}#}
                 {% endif %}
 
                 <!-- ======================= CONTENT: MID 1st Col/Ro: FORM PROMO: CARDS ==================  -->
             </section>
-{% endblock %}
+{% endblock signup_verify %}

@@ -1,10 +1,10 @@
+{% extends "sitebase.html" %}
 <!-- @formatter:off -->
-{% extends "users/account/base.html" %}
 {% load i18n %}
 {% load account %}
-
+{% load static %}
 {% block body %}
-<!-- ================================= CORE APP | PUBLIC | PRIVATE | INDEX.HTML =============================== -->
+<!-- ================================= KORE APP | PUBLIC | EMAIL CONFIRM | CONFIRM.HTML =============================== -->
 
 <body
     class="[ ] [ flex flex-col items-stretch content-between ]"
@@ -12,24 +12,18 @@
     data-view="public"
     id="all-body"
     hx-ext="debug, event-header">
-    <!-- ============================================= SKIP LINK =============================================  -->
-    <!-- ============================ - added: Conditional Includes: Public | Private ======================== -->
-    <!-- ============================ - added: Public Skip Links  ======================== -->
-    <!-- ============================ - added: Private Skip Links ======================== -->
-    <!-- ============================ - note: Not Block Inheiriance ========================================== -->
-    <!-- ============================ - note: Includes: are static partials ================================== -->
+
     <!-- Hide until found: https://www.w3.org/WAI/tutorials/menus/skip/ -->
     <!-- https://webaim.org/techniques/skipnav/ -->
 
     {% if request.user.is_authenticated %}
-        {% include "kore/private/skiplinks_private.html" %}
+        {% include "private/skiplinks_private.html" %}
     {% else %}
-        {% include "kore/public/skiplinks_public.html" %}
+        {% include "public/skiplinks_public.html" %}
     {% endif %}
 
 {#    {% filter force_escape %} {% debug %} {% endfilter %}#}
-    {% include "kore/all/header.html" %}
-
+    {% include "header.html" %}
 
     <main
         class="[ page-main-content ] [ flex flex-row ] [ h-max ] [ mt-0 md:mt-1 lg:mt-6 ] [ px-4 pb-20 lg:pb-4 ] [ space-y-10 lg:space-y-0 lg:space-x-10 ]"
@@ -53,7 +47,7 @@
 {#                id="top-section-content">#}
 {#                <!-- ========================= INCLUDE: TOP : HERO | CAROUSEL ================================  -->#}
 {##}
-{#                {% include "kore/all/hero.html" %}#}
+{#                {% include "all/hero.html" %}#}
 {##}
 {#                <!-- ========================= INCLUDE: TOP : HERO | CAROUSEL ================================  -->#}
 {#            </section>#}
@@ -81,43 +75,33 @@
                     {% user_display confirmation.email_address.user as user_display %}
 
                     {% if can_confirm %}
-                    <p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that
-                        <a href="mailto:{{ email }}">{{ email }}</a> is an email address for user {{ user_display }}.
-                    {% endblocktrans %}</p>
+                        <p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that
+                            <a href="mailto:{{ email }}">{{ email }}</a> is an email address for user {{ user_display }}.
+                        {% endblocktrans %}</p>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                        <p>The user has an account and is already authenticated</p>
+                    {% endif %}
+                    {% if not request.user.is_authenticated %}
+                        <p>The user has an account and is not already authenticated</p>
                     {% endif %}
                 {% endif %}
-                {# Checks if user is authenticated: shows the feature app cards, else shows the public sign up form #}
                 {% if request.user.is_authenticated %}
                     <p>The user has an account and is already authenticated</p>
-                {% else %}
-                    {% if request.session.account_verified and request.session.email_confirmed %}
-                        <p>Your account and email have been verified. You can now log in.</p>
-                    {% else %}
-                        {% if not request.session.account_verified %}
-                            <p>A verification email has been sent to {{ user.email }}.
-                               Please click the link in the email to verify your account.</p>
-{#                            {% include "account/email_confirm.html" %}#}
-                        {% endif %}
-                        {% if not request.session.email_confirmed and request.session.account_verified %}
-                            <p>Sorry, your email address could not be confirmed. Please try again later.</p>
-                        {% endif %}
-                    {% endif %}
                 {% endif %}
                 <!-- ======================= CONTENT: MID 1st Col/Ro: FORM PROMO: CARDS ==================  -->
             </section>
-
-
         </div>
     </main>
     <!-- ========================================= FOOTER ===================================================  -->
 
-    {% include "kore/all/footer.html" %}
+    {% include "all/footer.html" %}
 
     <!-- ========================================= Scripts ===================================================  -->
 
     <!-- ====================================== django debug toolbar | HTMX ===================================  -->
 
-    {% include "kore/all/scripts.html" %}
+    {% include "all/scripts.html" %}
 
     <!-- ====================================== django debug toolbar | HTMX ===================================  -->
 
@@ -148,4 +132,4 @@
 
 <!-- ================================= CORE APP | PUBLIC | PRIVATE | INDEX.HTML =============================== -->
 
-{% endblock %}
+{% endblock body %}

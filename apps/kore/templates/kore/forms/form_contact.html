@@ -1,23 +1,5 @@
 <!-- @formatter:off -->
-<!-- ===================== PUBLIC INCLUDES CONTACT FORM =====================================  -->
-<!-- ==============================  DJANGO TEMPLATE & INCLUDE ==============================  -->
-<!-- ============================= CHANGELOG: - -added ✅ 23-09-18 ==========================  -->
-<!-- ============================= EXTENDS:  - added ✅ ./all/contact.html ==================  -->
-<!-- ============================= BLOCK:  - added ✅ form_contact.html =====================  -->
-<!-- ============================= AUTH:  - added ✅ OK USER | ANONYMOUS  ===================  -->
-<!-- ============================= AUTH:  - added ✅ PAGE: Menu variables ===================  -->
 {% block form_contact %}
-<!-- ===================== ALL ANON CONTACT FORM ===================================  -->
-<!-- ===================== - added TODO: View:form_contact() ================================  -->
-<!-- ===================== - added TODO: widget_tweeks ======================================  -->
-<!-- ===================== - added TODO: HTMX & Post/Target =================================  -->
-<!-- ===================== - added TODO: Validation =========================================  -->
-<!-- ===================== - added TODO: hidden fields ======================================  -->
-<!-- ===================== - added TODO: FORM Success/Error =================================  -->
-<!-- ===================== - added TODO: FIELDS Success/Error ===============================  -->
-<!-- ===================== - added TODO: Email & Verify =====================================  -->
-<!-- ===================== PLANS:  - TODO ❓ MESSAGES: If loggged out =======================  -->
-<!-- ===================== ALL ANON CONTACT FORM =========================================  -->
 
 <form
     class="[ form-contact ] [ flex flex-auto flex-col lg:flex-row ] [ w-[90%] h-full ] [ justify-items-start items-stretch md:self-stretch ] [ mx-auto my-8 p-8 ] [ gap-2 lg:gap-8 ] [ space-2 ] [ bg-gray-600 ] [ rounded-md shadow-lg ]"
@@ -85,11 +67,11 @@
                 autocomplete="{{ contact_form.fields.name.widget.attrs.autocomplete }}"
                 data-view="{{ contact_form.fields.name.widget.attrs.data_view }}"
                 {#maxlength="{{ contact_form.fields.name.widget.attrs.max_length }}"#}
-                minlength="{{ contact_form.fields.name.widget.attrs.min_length }}"
+                minlength="{{ contact_form.fields.name.widget.attrs.minlength }}"
                 {#pattern="{{ contact_form.fields.name.widget.attrs.pattern }}"#}
                 placeholder="Full Name"
                 {% if contact_form.fields.name.required %} required {% endif %}
-                tabindex="{{ contact_form.fields.name.widget.attrs.tab }}"
+                tabindex="8"
                 title="{{ contact_form.fields.name.help_text }}"
                 value="{{ contact_form.name.value|stringformat:'s'|default_if_none:contact_form.name.data|stringformat:'s'|default:'' }}"
                 type="text" />
@@ -149,7 +131,7 @@
                 {#pattern="{{ contact_form.fields.email.widget.attrs.pattern }}"#}
                 placeholder="Email"
                 {% if contact_form.fields.email.required %} required {% endif %}
-                tabindex="{{ contact_form.fields.name.widget.attrs.tabindex }}"
+                tabindex="8"
                 title="{{ contact_form.fields.email.help_text }}"
                 value="{{ contact_form.email.value|stringformat:'s'|default_if_none:contact_form.email.data|default:'' }}"
                 type="email" />
@@ -211,7 +193,7 @@
                 placeholder="Message"
 {#                {% if contact_form.fields.message.required %} required {% endif %}#}
                 spellcheck="{{ contact_form.fields.message.widget.attrs.spell }}"
-                tabindex="{{ contact_form.fields.message.widget.attrs.tabindex }}"
+                tabindex="8"
                 value="{{ contact_form.message.value|stringformat:'s'|default_if_none:contact_form.message.data|stringformat:'s'|default:'' }}"
                 title="{{ contact_form.fields.message.help_text }}">
             </textarea>
@@ -269,5 +251,5 @@
     <!-- ===================== PUBLIC CARD CONTACT FORM ===================================  -->
 </form>
 <!-- ===================== ALL ANON CONTACT FORM =========================================  -->
-{% endblock %}
+{% endblock form_contact %}
 <!-- ===================== PUBLIC INCLUDES CONTACT FORM ===================================  -->

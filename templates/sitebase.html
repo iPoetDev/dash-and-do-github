@@ -14,27 +14,27 @@
     id="public-page"
     lang="en-GB">
     <head
-        title="Welcome to the {{ sitename }} "
+        title="Welcome to the {{ site }} "
         id="base">
         <meta charset="utf-8" />
-        <meta
-            content="{{ siteurl }}"
-            name="origin" />
-        <meta
-            content="{{ siteright }}"
-            name="copyright" />
-        <meta
-            content="{{ siteperson }}"
-            name="author" />
-        <meta
-            content="{{ siteperson }}"
-            name="creator" />
-        <meta
-            content="{{ siteperson }}"
-            name="designer" />
-        <meta
-            content="{{ sitecontact }}"
-            name="contact" />
+{#        <meta#}
+{#            content="{{ siteurl }}"#}
+{#            name="origin" />#}
+{#        <meta#}
+{#            content="{{ siteright }}"#}
+{#            name="copyright" />#}
+{#        <meta#}
+{#            content="{{ siteperson }}"#}
+{#            name="author" />#}
+{#        <meta#}
+{#            content="{{ siteperson }}"#}
+{#            name="creator" />#}
+{#        <meta#}
+{#            content="{{ siteperson }}"#}
+{#            name="designer" />#}
+{#        <meta#}
+{#            content="{{ sitecontact }}"#}
+{#            name="contact" />#}
         <meta
             content="Dublin, Ireland; Europe"
             name="geo.lmk" />
@@ -61,43 +61,35 @@
         {% if not debug %}
             <!-- =======================================🔽 PROD TAILWIND 🔽======================================  -->
             <link
-                href="../static/css/tailwind-core3.css"
+                href="{% static 'css/tailwind-core3.css' %}"
                 rel="stylesheet"
-                type="text/css" />
+                type="text/css"/>
             <link
-                href="../static/css/dash-and-do-core.css"
+                href="{% static 'css/dash-and-do-core.css' %}"
                 rel="stylesheet"
-                type="text/css" />
+                type="text/css"/>
         {% else %}
             <!-- =======================================🔽 DEV ONLY GIMLI TAILWINDS 🔽===========================  -->
             <script src="https://cdn.tailwindcss.com"></script>
             <link
-                href="../static/css/tailwind-core3.css"
+                href="{% static 'css/tailwind-core3.css' %}"
                 rel="stylesheet"
                 type="text/css" />
             <link
-                href="../static/css/dash-and-do-core.css"
+                href="{% static 'css/dash-and-do-core.css' %}"
                 rel="stylesheet"
                 type="text/css" />
         {% endif %}
+        <!-- =======================================🔽 PROD HTMX 🔽==========================================  -->
+        <!-- https://htmx.org/extensions/#reference -->
+        <script src="{% static 'js/htmx.org/dist/htmx.min.js' %}" defer></script>
+        <script src="{% static 'js/htmx.org/dist/ext/debug.js' %}" defer></script>
+        <script src="{% static 'js/htmx.org/dist/ext/ajax-header.js' %}" defer></script>
+        <script src="{% static 'js/htmx.org/dist/ext/remove-me.js' %}" defer></script>
+        <script src="{% static 'js/htmx.org/dist/ext/response-targets.js' %}" defer></script>
+        <script src="{% static 'js/htmx.org/dist/ext/event-header.js' %}" defer></script>
 
-        {% if not debug %}
-            <!-- =======================================🔽 PROD HTMX 🔽==========================================  -->
-            {% load static %}
-            <script src="{% static 'htmx.min.js' %}" defer></script>
-        {% else %}
-            <!-- =======================================🔽 DEV HTMX 🔽==========================================  -->
-            <!-- https://htmx.org/extensions/#reference -->
-            <script src="https://unpkg.com/htmx.org@1.9.5"
-                    integrity="sha384-xcuj3WpfgjlKF+FXhSQFQ0ZNr39ln+hwjN3npfM9VBnUskLolQAcN80McRIVOPuO"
-                    crossorigin="anonymous"></script>
-            <script src="https://unpkg.com/htmx.org/dist/ext/debug.js"></script>
-            <script src="https://unpkg.com/htmx.org/dist/ext/ajax-header.js"></script>
-            <script src="https://unpkg.com/htmx.org/dist/ext/remove-me.js"></script>
-            <script src="https://unpkg.com/htmx.org/dist/ext/response-targets.js"></script>
-            <script src="https://unpkg.com/htmx.org/dist/ext/event-header.js"></script>
-        {% endif %}
-        <title title="{{ indextitle }}">{{ indextitle }}</title>
+        <title title="{{ title }}">{{ title }}</title>
     </head>
     <!-- ===========================================🔽 BODY 🔽=================================================  -->
     {% block body %}

@@ -118,7 +118,7 @@
             <!-- ===================== PUBLIC DROPDOWN LOGIN FORM ===========================  -->
 
             {% if not request.user.is_authenticated %}
-                {% include "../forms/form_login.html" %}
+{#                {% include "forms/form_login.html" %}#}
             <!-- ===================== DISPLAY MESSAGE WHEN LOGGED IN ===================  -->
             {% else %}
             <!-- ===================== PRE-CONDITION: EARLIER IF CHECKS FOR AUTH =================  -->
@@ -137,4 +137,4 @@
         </div>
     </li>
 </ul>
-{% endblock %}
+{% endblock menu_public %}

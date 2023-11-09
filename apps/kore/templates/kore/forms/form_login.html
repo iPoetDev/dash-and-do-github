@@ -1,152 +1,190 @@
 <!-- @formatter:off -->
-<!-- ==============================  DJANGO TEMPLATE & INCLUDE =============================  -->
-<!-- ============================= CHANGELOG: - TODO ❓ 23-09-18 ===========================  -->
-<!-- ============================= EXTENDS:  - added ✅ ./public/menu_public.html ==========  -->
-<!-- ============================= BLOCK:  - added ✅ form_login.html ======================  -->
-<!-- ============================= AUTH:  - added ✅ ANON USER: If not logged in ===========  -->
-<!-- ============================= AUTH:  - added ✅ PAGE: Menu variables ==================  -->
-<!-- ============================= PLANS:  - TODO ❓ MESSAGES: <           >  ===============  -->
-
+<!-- ==============================  DJANGO TEMPLATE & INCLUDE ==============================  -->
+{% load i18n %}
+{% load account %}
 {% block form_login %}
 <!-- ===================== PUBLIC DROPDOWN LOGIN FORM ===========================  -->
-<form
-    class="[ form-login ]"
-    action="#"
-    data-form="login"
-    data-view="public"
-    id="login-form"
-    method="post"
-    name="login-form"
-    hx-post="server-script-goes-here"
-    hx-trigger="submit"
-    hx-swap="outerHTML">
-    <!-- ======================= PUBLIC LOGIN FIELDS' 1 COLUMN ===================  -->
-    <fieldset
-        class="[ form-card ] [ w-full h-full ] [ p-4 border ] [ bg-gray-100 ] [ rounded-lg ]"
-        data-menu="card"
-        data-view="public"
-        form="login-form"
-        id="fields-login-form"
-        name="login-form">
-        <legend
-            class="[ form-card-label ] [ sr-only ]"
-            aria-description="Login Form Card | Username | Password | Remember-me Checkbox | Login button"
-            hidden="until-found"
-            id="label-login-form">
-            Login Form
-        </legend>
-        <!-- ========================= PUBLIC LOGIN ROW========================= -->
-        <div
-            class="[ formrow ] [ relative ] [ my-4 ]"
-            aria-description="Login Menu Item: Username"
+    {% if login_form %}
+        <form
+            class="[ form-login ]"
+            {# action="{% url 'users:account_login' %}"#}
+            data-form="login"
             data-view="public"
-            id="login-user-row">
-            <!-- TODO: pattern="/^[\w-]+$/" -->
-
-            <input
-                class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
-                id="login-username"
-                aria-description="Enter Username: Input Length: min: 6, max: 30"
-                autocomplete="username"
+            id="login-form"
+            method="post"
+            name="login-form"
+            hx-headers='{"X-CSRFToken": "{{ csrf_token|escapejs }}"}'
+            hx-post="{% url 'users:account_login' %}"
+            hx-trigger="submit"
+            hx-swap="outerHTML">
+            {% csrf_token %}
+            <!-- ======================= PUBLIC LOGIN FIELDS' 1 COLUMN ===================  -->
+            <!-- ======================= PUBLIC LOGIN FIELDS' 1 COLUMN ===================  -->
+            {#            {% if redirect_field_value %}#}
+            {#                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />#}
+            {#            {% endif %}#}
+            <!-- ======================= PUBLIC LOGIN FIELDS' 1 COLUMN ===================  -->
+            <fieldset
+                class="[ form-card ] [ w-full h-full ] [ p-4 border ] [ bg-gray-100 ] [ rounded-lg ]"
+                data-menu="card"
                 data-view="public"
-                maxlength="30"
-                minlength="6"
-                name="username"
-                placeholder="Username"
-                required
-                tabindex="2"
-                title="Enter a valid Username"
-                type="text" />
-            <label
-                class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
-                id="login-username-tag"
-                aria-description="Enter account username"
-                aria-labelledby="login-username"
-                data-view="public"
-                for="login-username">
-                Username
-            </label>
-            <span
-                class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
-                data-view="public"
-                id="invalid-username-msg">
-                Please enter a valid username
-            </span>
-        </div>
-        <!-- ========================= PUBLIC LOGIN ROW========================= -->
-        <div
-            class="[ form-group ] [ relative ] [ my-4 ]"
-            data-view="public"
-            id="login-pass-row">
-            <!-- TODO:  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{12,}" -->
-            <!-- TODO:  pattern="/^[a-zA-Z0-9@#$%^&*]{8,}$/" -->
-            <input
-                class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]"
-                id="login-password"
-                aria-description="Passwords using a-zA-Z0-9 and sumbols"
-                aria-label="Enter a password"
-                autocomplete="current-password"
-                data-view="public"
-                name="password"
-                placeholder="Password"
-                required
-                title="Enter a valid Password"
-                type="password" />
-            <label
-                class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
-                id="login-password-tag"
-                aria-labelledby="login-password"
-                aria-description="Enter account password"
-                data-view="public"
-                for="login-password">
-                Password
-            </label>
-            <span
-                class="[ input-message ] [ hidden group-invalid:block ] [ text-red-600 text-xs ]"
-                data-view="public"
-                id="invalid-password-msg">
-                Please enter a valid password, lowercase, uppercase, 0-9, symbols
-            </span>
-        </div>
-        <!-- ========================= PUBLIC LOGIN BUTTON ======================== -->
-        <div
-            class="[ form-group ] [ flex flex-row ] [ justify-between items-center ] [ my-2 ]"
-            aria-description="Login Menu Item: Checkbox and Button"
-            data-view="public"
-            id="login-btn-row">
-            <!-- ========================= REMEMBER ME CHECKBOX ======================== -->
-            <div
-                class="[ flex flex-col ] [ items-center ]"
-                id="login-row-checkbox">
-                <input
-                    class="[ input-field form-checkbox ] [ m-1 ] [ h-5 w-5 ] [ rounded-md ] [ text-blue-600 ] [ focus:ring-blue-500 ]"
-                    aria-description="Remember login for next visit"
-                    aria-label="Remember me checkbox"
-                    id="remember-me"
-                    name="remember-me"
-                    value="remember"
-                    type="checkbox" />
-                <label
-                    class="[ text-sm text-gray-500 ]"
-                    aria-labelledby="remember-me"
-                    aria-description="Checkbox to remember login details"
-                    for="remember-me">
-                    Remember
-                </label>
-            </div>
-            <!-- ========================= PUBLIC LOGIN BUTTON ======================== -->
-            <div class="[ flex ] [ items-end ]">
-                <input
-                    class="[ input-field peer ] [ block w-full ] [ mb-4 ] [ p-2 ] [ border rounded-md outline-none ] [ font-medium text-base text-gray-500 ] | [ focus:ring-blue-500 focus:border-blue-500 ]"
-                    aria-description="Submit form to login and access account"
+                form="login-form"
+                id="fields-login-form"
+                name="login-form">
+                <legend
+                    class="[ form-card-label ] [ sr-only ]"
+                    aria-description="Login Form Card"
+                    hidden="until-found"
+                    id="label-login-form">
+                    Login Form
+                </legend>
+                <!-- ========================= PUBLIC LOGIN ROW========================= -->
+                <div
+                    class="[ formrow ] [ relative ] [ my-4 ]"
+                    aria-description="Login Menu Item: Email"
                     data-view="public"
-                    type="submit"
-                    value="Login" />
-            </div>
-        </div>
-        <!-- ========================= PUBLIC LOGIN ROW========================= -->
-        <!-- ========================= FORGET PAGASSWORD: LINK ================= -->
-        <!-- ========================= FORGET PAGASSWORD: Reset.html =========== -->
-    </fieldset>
-</form>
-{% endblock %}
+                    id="login-user-row">
+                    {% for field in login_form %}
+                        {% if field.name == 'login' %}
+                            <label
+                                class="[ input-label ] [ w-full ] [ text-start text-gray-500 ]"
+                                id="login-username-tag"
+                                aria-description="Enter account username"
+                                aria-labelledby="{{ field.name }}"
+                                data-view="public"
+                                for="id_{{ field.name }}">
+                                {{ field.label }}
+                            </label>
+                            <input
+                                class="[ input-field ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ]"
+                                id="id_{{ field.name }}"
+                                aria-description="Enter Username: Input Length: min: 6, max: 30"
+                                autocomplete="{{ field.field.widget.attrs.autocomplete|default:'email' }}"
+                                data-view="public"
+                                maxlength="30"
+                                minlength="6"
+                                name="{{ field.name }}"
+                                placeholder="{{ field.label }}"
+                                {% if field.field.required %} required {% endif %}
+                                tabindex="2"
+                                title="{{ field.help_text }}"
+                                type="text"
+                                {% if field.value != None %} value="{{ field.value|escape }}" {% endif %} />
+                            {% if field.errors %}
+                                {% for error in field.errors %}
+                                <span
+                                    class="[ input-message ] [ hidden ] [ text-red-600 text-xs ]"
+                                    data-view="public"
+                                    id="invalid-email-msg">
+                                    Please enter a valid {{ field.label }}<br>
+                                    {% if field.help_text %}
+                                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                                    {% endif %}
+                                </span>
+                                {% endfor %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <!-- ========================= PUBLIC LOGIN ROW========================= -->
+                <div
+                    class="[ formrow ] [ relative ] [ my-4 ]"
+                    aria-description="Login Menu Item: Password"
+                    data-view="public"
+                    id="login-password-row">
+                    {% for field in login_form %}
+                        {% if field.name == 'password' %}
+                            <label
+                                class="[ input-label ] [ w-full ] [ text-start text-gray-500 ]"
+                                id="login-password-tag"
+                                aria-description="Enter account password"
+                                aria-labelledby="{{ field.name }}"
+                                data-view="public"
+                                for="id_{{ field.name }}">
+                                {{ field.label }}
+                            </label>
+                            <input
+                                class="[ input-field ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ]"
+                                id="id_{{ field.name }}"
+                                aria-description="Enter Password: min: 12, max: 50"
+                                autocomplete="{{ field.field.widget.attrs.autocomplete|default:'current-password' }}"
+                                data-view="public"
+                                maxlength="50"
+                                minlength="12"
+                                name="{{ field.name }}"
+                                placeholder="{{ field.label }}"
+                                {% if field.field.required %} required {% endif %}
+                                tabindex="2"
+                                title=""
+                                type="password"
+                                {% if field.value != None %} value="{{ field.value|escape }}" {% endif %} />
+                            {% if field.errors %}
+                                {% for error in field.errors %}
+                                    <span
+                                        class="[ input-message ] [ text-red-600 text-xs ]"
+                                        data-status="invalid"
+                                        data-view="public"
+                                        id="invalid-password-msg">
+                                        Please enter a valid {{ field.label }}<br>
+                                        {% if field.help_text %}
+                                            <small class="form-text text-muted">{{ field.help_text }}</small>
+                                        {% endif %}
+                                    </span>
+                                {% endfor %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <!-- ========================= PUBLIC LOGIN BUTTON ======================== -->
+                <div
+                    class="[ form-group ] [ flex flex-row ] [ justify-between items-center ] [ my-2 ]"
+                    aria-description="Login Menu Item: Checkbox and Button"
+                    data-view="public"
+                    id="login-btn-row">
+                    <!-- ========================= REMEMBER ME CHECKBOX ======================== -->
+                        <div
+                            class="[ flex flex-col ] [ items-center ]"
+                            id="login-row-checkbox">
+                            {% for field in login_form %}
+                                {% if field.name == 'remember' %}
+                                    <input
+                                        class="[ input-field form-checkbox ] [ m-1 ] [ h-5 w-5 ] [ rounded-md ] [ text-blue-600 ] [ focus:ring-blue-500 ]"
+                                        id="id_{{ field.name }}"
+                                        name="{{ field.name }}"
+                                        {% if field.value != None %} value="{{ field.value|escape }}" {% endif %}
+                                        aria-description="Remember login for next visit"
+                                        aria-label="{{ field.label }}"
+                                        type="{{ field.field.widget.input_type }}"
+                                        value="{{ field.name }}"
+                                        {% if field.value %} checked {% endif %}
+                                    />
+                                    <label
+                                        class="[ text-sm text-gray-500 ]"
+                                        for="id_{{ field.name }}"
+                                        aria-description="Checkbox to remember login details"
+                                        aria-labelledby="id_{{ field.name }}">
+                                        {{ field.label }}
+                                    </label>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    <!-- ========================= PUBLIC LOGIN BUTTON ======================== -->
+                    <div class="[ flex ] [ items-end ]">
+                        <input
+                            class="[ input-field peer ] [ block w-full ] [ mb-4 ] [ p-2 ] [ border rounded-md outline-none ] [ font-medium text-base text-gray-500 ] | [ focus:ring-blue-500 focus:border-blue-500 ]"
+                            aria-description="Submit form to login and access account"
+                            data-view="public"
+                            type="submit"
+                            value="Login" />
+                    </div>
+                </div>
+                <!-- ========================= PUBLIC LOGIN ROW========================= -->
+                <!-- ========================= FORGET PAGASSWORD: LINK ================= -->
+                <!-- ========================= FORGET PAGASSWORD: Reset.html =========== -->
+            </fieldset>
+        </form>
+    {% else %}
+        This message should never display.
+        <p> There has been an error. Contact the Site Adminiistrator</p>
+    {% endif %}
+{% endblock form_login %}

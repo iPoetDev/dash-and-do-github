@@ -1,28 +1,39 @@
 <!-- @formatter:off -->
-<!-- ============================= SCRIPTS: ALL: PAGES ======================================  -->
-<!-- ============================= CHANGELOG: - checked ✅ 23-09-18 ========================  -->
-<!-- ============================= INCLUDED:  - added ✅ index.html  STATIC ================  -->
-<!-- ================================== Scripts | Slide Bar ===================================================  -->
-<script
-    id="hero_slider_carousel"
-    title="Hero Slider JS |  Custom"
-    defer
-    src="../static/js/nav-sidebar-toggle.js"></script>
-<!-- ================================== Scripts | Hero Carousel ===================================================  -->
-
-<!--         <script -->
-<!--             id="hero_slider_carousel" -->
-<!--             title="Hero Slider JS |  Custom" -->
-<!--             defer -->
-<!--             src="../static/css/hero-slider-carousel.js"></script> -->
-<!-- ================================== Scripts | HTMX Errors ===================================================  -->
 <script>
-    // Get the CSRF token value
-    var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value
+    document.body.addEventListener('htmx:configRequest', function(event) {
+        var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        console.log(csrfToken)
+        event.detail.headers['X-CSRFToken'] = csrfToken;
+    });
+</script>
+{% if debug %}
+    {% load static %}
+    <script src="{% static 'js/htmx.org/dist/htmx.min.js' %}">
+        console.log('Debug is ON, HTMX is active')
+        if (typeof window.htmx !== 'undefined') {
+            htmx.on('htmx:afterSettle', function (detail) {
+                if (typeof window.djdt !== 'undefined' && detail.target instanceof HTMLBodyElement) {
+                    djdt.show_toolbar()
+                }
+            })
+        }
+        console.log('=====================================')
+        htmx.logger = function(elt, event, data) {
+            if(console) {
+                console.log(event, elt, data);
+            }
+        }
+    </script>
+{% endif %}
 
-    document.body.addEventListener('htmx:configRequest', function (event) {
-        // Add the X-CSRFToken header
-        // This is important for Django to validate the form submission
-        event.detail.headers['HTTP_X_CSRFToken'] = csrfToken
-    })
+<script src="{% static 'js/htmx.org/dist/htmx.min.js' %}">
+    {% if debug %}
+        if (typeof window.htmx !== "undefined") {
+            htmx.on("htmx:afterSettle", function(detail) {
+                if (typeof window.djdt !== "undefined"  && detail.target instanceof HTMLBodyElement) {
+                    djdt.show_toolbar();
+                }
+            });
+        }
+    {% endif %}
 </script>

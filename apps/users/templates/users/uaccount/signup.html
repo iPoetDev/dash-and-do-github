@@ -1,0 +1,50 @@
+{% load i18n %}
+{% block form_signup %}
+
+    {% block head_title %}{% trans "Sign Up" %}{% endblock head_title %}
+
+{#    {% if request.user.is_authenticated %}#}
+{#        <p>The user has an account and is already authenticated</p>#}
+{#    {% else %}#}
+{#        {% if request.session.account_verified and request.session.email_confirmed %}#}
+{#            <p>Your account and email have been verified. You can now log in.</p>#}
+{#        {% else %}#}
+{#            {% if not request.session.account_verified %}#}
+{#                <p>A verification email has been sent to {{ user.email }}.#}
+{#                   Please click the link in the email to verify your account.</p>#}
+{#                            {% include "account/email_confirm.html" %}#}
+{#            {% endif %}#}
+{#            {% if not request.session.email_confirmed and request.session.account_verified %}#}
+{#                <p>Sorry, your email address could not be confirmed. Please try again later.</p>#}
+{#            {% endif %}#}
+{#        {% endif %}#}
+{#    {% endif %}#}
+
+        <!-- ======================= PUBLIC SIGNUP MESSAGE ===================================  -->
+        {% if last_status %}
+            <ul class="messages">
+                <li{% if last_status.tags %} class="{{ last_status.tags }}"{% endif %}>{{ last_status }}</li>
+            </ul>
+        {% endif %}
+
+    <form class="[ form-signup ] [ w-[90%] h-full ] [ place-items-center ] [ mx-auto my-8 px-2 py-4 ] [ gap-8 ] [ space-2 ]"
+        action="{% url 'users:account_signup' %}"
+        aria-description="Sign Up Form"
+        data-form="signup"
+        data-view="public"
+        id="signup-form"
+        method="post"
+        name="signup-form"
+        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+        hx-post="{% url 'users:account_signup' %}"
+        hx-trigger="submit"
+        hx-swap="HX-Redirect">
+        {% csrf_token %}
+        {{ signup_form.as_div }}
+        {# {% if redirect_field_value %}#}
+        {#    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />#}
+        {# {% endif %}#}
+        <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+    </form>
+
+{% endblock form_signup %}

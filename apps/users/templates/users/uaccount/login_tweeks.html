@@ -1,0 +1,183 @@
+
+
+{% load i18n %}
+{% load widget_tweaks %}
+{#{% load account socialaccount %}#}
+
+{#{% block head_title %}{% trans "Sign In" %}{% endblock head_title %}#}
+
+{% block form_login %}
+
+    {#<h1>{% trans "Sign In" %}</h1>#}
+
+    {#{% get_providers as socialaccount_providers %}#}
+
+    {#{% if socialaccount_providers %}#}
+    {#<p>{% blocktrans with site.name as site_name %}Please sign in with one#}
+    {#of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>#}
+    {#for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>#}
+
+    {#<div class="socialaccount_ballot">#}
+    {##}
+    {#  <ul class="socialaccount_providers">#}
+    {#    {% include "socialaccount/snippets/provider_list.html" with process="login" %}#}
+    {#  </ul>#}
+    {##}
+    {#  <div class="login-or">{% trans 'or' %}</div>#}
+    {##}
+    {#</div>#}
+
+    {#{% include "socialaccount/snippets/login_extra.html" %}#}
+
+    {#{% else %}#}
+    {#<p>{% blocktrans %}If you have not created an account yet, then please#}
+    {#<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>#}
+    {#{% endif %}#}
+    {% if login_form %}
+        <form
+            class="[ form-login ]"
+            action="{% url 'users:account_login' %}"
+            data-form="login"
+            data-view="public"
+            id="login-form"
+            method="post"
+            name="login-form"
+            hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+            hx-post="{% url 'users:account_login' %}"
+            hx-trigger="submit"
+            hx-swap="outerHTML">
+            {% csrf_token %}
+            {% with loginerr=login_form.non_field_errors %}
+                {% if loginerr %}
+                    {% for formerror in loginerr %}
+                        {{ formerror.errors }}
+                        {{ formerror }}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <!-- ======================= PUBLIC LOGIN FIELDS' 1 COLUMN ===================  -->
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <input type="hidden" name="next" value="{{ login_form.prefix }}" />
+            <fieldset
+                class="[ form-card ] [ w-full h-full ] [ p-4 border ] [ bg-gray-100 ] [ rounded-lg ]"
+                data-menu="card"
+                data-view="public"
+                form="login-form"
+                id="fields-login-form"
+                name="login-form">
+                <legend
+                    class="[ form-card-label ] [ sr-only ]"
+                    aria-description="Login Form Card | Username | Password | Remember-me Checkbox | Login button"
+                    hidden="until-found"
+                    id="label-login-form">
+                    Login Form
+                </legend>
+                <!-- ========================= PUBLIC LOGIN ROW========================= -->
+                {% for field in login_form %}
+                    {% if field.name == 'email' %}
+                        <div
+                            class="[ formrow ] [ relative ] [ my-4 ]"
+                            aria-description="Login Menu Item: Username"
+                            data-view="public"
+                            id="login-user-row">
+                            {% render_field field class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]" %}
+                            {% render_field field class="[ input-field peer ] [ w-full h-10 ] [ mb-4 ] [ border p-2 ] [ rounded-md ] [ text-start gray-900 ] [ placeholder-transparent ] | [ valid:bg-green-100 invalid:bg-red-100 :invalid:bg-white-100 ] [ focus:outline-none focus:border-rose-600 ] [ focus:not(:placeholder-shown) ]" %}
+                            <label
+                                class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                id="login-username-tag"
+                                aria-description="Enter account username"
+                                aria-labelledby="{{ field.name }}"
+                                data-view="public"
+                                for="{{ field.name }}">
+                                {{ field.label }}
+                            </label>
+                            {% if field.errors %}
+                                {% for error in field.errors %}
+                                    <span class="[ input-message ] [ text-red-600 text-xs ]"
+                                          data-status="invalid"
+                                          data-view="public"
+                                          id="invalid-login-msg">
+                                    {{ error }}
+                                </span>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <!-- ========================= PUBLIC LOGIN ROW========================= -->
+                <div
+                    class="[ form-group ] [ relative ] [ my-4 ]"
+                    data-view="public"
+                    id="login-pass-row">
+                    {% for field in login_form %}
+                        {% if field.name == 'password' %}
+                            {% render_field field class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ]  [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]" %}
+                            <label
+                                class="[ input-label ] [ w-full ] [ absolute -top-[5] left-1 ] [ text-start text-gray-500 ] | [ peer-placeholder-shown:text-base ] [ peer-placeholder-shown:text-gray-400 ] [ peer-placeholder-shown:top-2 ] | [ peer-focus:-top-4 peer-focus:text-gray-600 peer-focus:text-sm ] [ transition-all duration-300 ease-in-out ]"
+                                id="login-password-tag"
+                                aria-labelledby="{{ field.name }}"
+                                aria-description="Enter account password"
+                                data-view="public"
+                                for="{{ field.name }}">
+                                {{ field.label }} 1
+                            </label>
+                            {% if field.errors %}
+                                {% for error in field.errors %}
+                                    <span class="[ input-message ] [ text-red-600 text-xs ]"
+                                          data-status="invalid"
+                                          data-view="public"
+                                          id="invalid-login-msg">
+                                    {{ error }}
+                                </span>
+                                {% endfor %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                <br>
+                <br>
+                </div>
+                <!-- ========================= PUBLIC LOGIN BUTTON ======================== -->
+                <div
+                    class="[ form-group ] [ flex flex-row ] [ justify-between items-center ] [ my-2 ]"
+                    aria-description="Login Menu Item: Checkbox and Button"
+                    data-view="public"
+                    id="login-btn-row">
+                    <!-- ========================= REMEMBER ME CHECKBOX ======================== -->
+                    {% for field in login_form %}
+                        {% if field.name == 'remember' %}
+                            <div
+                                class="[ flex flex-col ] [ items-center ]"
+                                id="login-row-checkbox">
+                                {% render_field field class="[ input-field form-checkbox ] [ m-1 ] [ h-5 w-5 ] [ rounded-md ] [ text-blue-600 ] [ focus:ring-blue-500 ]" %}
+                                <label
+                                    class="[ text-sm text-gray-500 ]"
+                                    aria-labelledby="{{ field.name }}"
+                                    aria-description="Checkbox to remember login details"
+                                    for="{{ field.name }}">
+                                    {{ field.label }}
+                                </label>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    <!-- ========================= PUBLIC LOGIN BUTTON ======================== -->
+                    <div class="[ flex ] [ items-end ]">
+                        <input
+                            class="[ input-field peer ] [ block w-full ] [ mb-4 ] [ p-2 ] [ border rounded-md outline-none ] [ font-medium text-base text-gray-500 ] | [ focus:ring-blue-500 focus:border-blue-500 ]"
+                            aria-description="Submit form to login and access account"
+                            data-view="public"
+                            type="submit"
+                            value="Login" />
+                    </div>
+                </div>
+                <!-- ========================= PUBLIC LOGIN ROW========================= -->
+                <!-- ========================= FORGET PAGASSWORD: LINK ================= -->
+                <!-- ========================= FORGET PAGASSWORD: Reset.html =========== -->
+            </fieldset>
+        </form>
+    {% else %}
+        {# This message should never display. #}
+        <p> There has been an error. Contact the Site Adminiistrator</p>
+    {% endif %}
+{% endblock form_login %}

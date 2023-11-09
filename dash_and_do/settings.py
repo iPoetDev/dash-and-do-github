@@ -71,19 +71,17 @@ Changelog:
 
 # System Library
 import os
-
 from pathlib import Path
 
 # Django Library
 from django.contrib.messages import constants as messages
-
 # Third Party
 # noinspection PyPackageRequirements
 from environ import Env  # noinspection: disable=import-error
 
+from dash_and_do.logger import IgnoreFilter
 # Local: Project Libraries
 from dash_and_do.thirdparty import ANYMAIL  # noqa
-from dash_and_do.logger import IgnoreFilter
 
 
 # ================================== Third Party ===============

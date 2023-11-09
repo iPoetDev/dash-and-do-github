@@ -28,6 +28,7 @@ import datetime
 
 from bs4 import BeautifulSoup
 
+
 DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 

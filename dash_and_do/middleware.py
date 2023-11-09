@@ -23,9 +23,9 @@
 import logging
 
 from dash_and_do.utils import get_date
-
 # from datetime import datetime
 from dash_and_do.utils import get_error_detail
+
 
 logger = logging.getLogger(__name__)
 

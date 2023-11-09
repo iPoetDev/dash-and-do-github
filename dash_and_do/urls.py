@@ -41,7 +41,6 @@ Changelog:
 # added: SiteMap in Comments as a Planner
 # added: Core index forms to kore.urls
 from django.conf import settings
-from django.contrib import admin
 from django.urls import include
 from django.urls import path
 

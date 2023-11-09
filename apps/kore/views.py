@@ -27,15 +27,14 @@ from django.http import HttpResponse
 # Django Imports
 from django.shortcuts import render
 from django.template.response import TemplateResponse
+# Django URl
+# Django View Imports
+from django.views import View
 # from django.views.decorators.cache import never_cache  # TODO
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_GET
 from django.views.decorators.http import require_http_methods
-# Django URl
-from django.urls import reverse_lazy
-# Django View Imports
-from django.views import View
 from django.views.defaults import page_not_found as dj_page_not_found
 # Third Party Imports
 from django_htmx.middleware import HtmxDetails

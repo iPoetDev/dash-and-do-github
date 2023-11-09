@@ -18,6 +18,7 @@ from django.urls import path
 
 from apps.kore import views
 
+
 app_name = 'kore'  # pylint: disable=invalid-name
 
 # ================== Site Map ================================

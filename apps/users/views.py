@@ -359,6 +359,36 @@ class DashSignupView(SignupView):
 
 
 class DashLoginView(LoginView):
+    """ DashLoginView is a class-based view that handles the login
+    functionality in the application.
+
+    Attributes:
+    :param: template_name (str): The name of the template to be used for
+            rendering the login page.
+    :param: success_url (str): The URL to redirect the user to after
+            successful login.
+    :param: form_class (class): The form class to be used for rendering the login form.
+
+    Methods:
+    :method: __init__(self, *args, **kwargs):
+             Initializes the DashLoginView object.
+    :method: get_context_data(self, **kwargs) -> dict:
+             Updates the context data for the template.
+    :method: get(self, request, *args, **kwargs) -> HttpResponse:
+             Handles the GET request for the login page.
+    :method: post(self, request, *args, **kwargs) -> HttpResponse:
+             Handles the POST request for the login page.
+    :method: form_valid(self, form) -> HttpResponse:
+             Handles the case when the form is valid.
+    :method: form_invalid(self, form) -> HttpResponse:
+             Handles the case when the form is invalid.
+    :method: get_authenticated_redirect_url(self) -> str:
+             Returns the URL to redirect the user to after authentication.
+    :method: setlog(self, loggr, debugg=DEBUG):
+             Sets the logger for the class.
+    :method: log(self, view, request, form=None, method=None):
+             Logs the request and form details for debugging purposes.
+    """
     template_name = FormViews.Login.TEMPLATE
     success_url = reverse_lazy(FormViews.PRIVATE_REVERSE)
     form_class = DashLoginForm
@@ -434,7 +464,6 @@ class DashLoginView(LoginView):
                          self.template_name)
         return super().post(request, *args, **kwargs)
 
-    # Supresses Unresolved attribute reference 'user' for class 'WSGIRequest'
     # noinspection PyUnresolvedReferences
     def form_valid(self, form):
         response = super().form_valid(form)
